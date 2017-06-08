@@ -18,7 +18,8 @@ public class TableFormat {
         String[] split = s.split("\r\n");
         for (int i = 1; i < split.length; i++) {
             String[] rows = split[i].split("导出了");
-            //System.out.println(rows[0]);
+            String[] split1 = rows[0].split("表");
+            System.out.println(split1[1].trim());
             //System.out.println(rows[1]);
         }
 
