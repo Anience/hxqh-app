@@ -1,13 +1,8 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.dao.UserDao;
-import com.hxqh.eam.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created by lh on 2017/4/14.
@@ -28,12 +23,7 @@ public class UserServiceImpl  implements UserService {
     @Value("${com.hxqh.agp.lang.zh}")
     private String langZh;
 
-    @Autowired
-    private UserDao userDao;
 
-    public List<User> getUserList() {
-        return userDao.findAll();
-    }
 
 
 

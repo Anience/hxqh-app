@@ -474,11 +474,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.7</version>
         </dependency>
-        <!-- 导入Mysql数据库链接jar包 -->
+        <!-- Oracle -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.30</version>
+            <groupId>oracle.ojdbc</groupId>
+            <artifactId>oracle-ojdbc</artifactId>
+            <version>14</version>
         </dependency>
         <!--  权限控制shiro -->
         <dependency>

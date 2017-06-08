@@ -52,16 +52,15 @@
 	<!-- DataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://${jdbc.host}:${jdbc.port}/${jdbc.database}" />
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="jdbc:oracle:thin:@${jdbc.host}:${jdbc.port}/${jdbc.database}" />
 		<property name="username" value="${jdbc.user}" />
 		<property name="password" value="${jdbc.password}" />
 		<property name="maxActive" value="130" />
 		<property name="maxWait" value="3000" />
 		<property name="removeAbandoned" value="true" />
 		<property name="removeAbandonedTimeout" value="180" />
-
+		<property name="validationQuery" value="SELECT 1 FROM DUAL" />
 	</bean>
 
 	<!-- 配置国际化资源文件 -->

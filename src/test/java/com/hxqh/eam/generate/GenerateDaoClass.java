@@ -11,18 +11,16 @@ import java.io.*;
  */
 public class GenerateDaoClass {
 
-	private static String[] MBOName = {"PubMap","VMap"};
+	private static String[] MBOName = {"App","Attribute","Domain"};
 	
 
 	public static void main(String[] args) throws IOException {
-		File mboFile = new File("D:\\HXQH\\dev\\IDEA\\ssh-lab\\src\\test\\resources\\dao.property");
-		File daoImpl = new File("D:\\HXQH\\dev\\IDEA\\ssh-lab\\src\\test\\resources\\daoImpl.property");
-
+		File mboFile = new File("src/test/resources/dao.property");
+		File daoImpl = new File("src/test/resources/daoImpl.property");
 
 		for (String string : MBOName) {
 			String mboStr = FileUtil.txt2String(mboFile).replaceAll("XXXXX", string+"Dao").replaceAll("YYYYY",string);
 			FileUtil.WriteStringToFile("src/"+string+"Dao"+".java",mboStr);
-
 
 			//daoImpl
 			StringBuilder sb = new StringBuilder(string);
