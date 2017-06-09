@@ -22,7 +22,19 @@ public class TableFormat {
             System.out.println(split1[1].trim());
             //System.out.println(rows[1]);
         }
-
     }
+
+
+    @Test
+    public void testMbo() {
+        File file = new File("src/test/resources/table.list");
+        String s = FileUtil.txt2String(file);
+//        System.out.println(s);
+        String[] split = s.split("\r\n");
+        for (int i = 1; i < split.length; i++) {
+            System.out.println(split[i]);
+        }
+    }
+
 
 }
