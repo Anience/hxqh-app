@@ -3,9 +3,11 @@ package com.hxqh.eam.test;
 import com.hxqh.eam.dao.AppDao;
 import com.hxqh.eam.dao.AttributecfgDao;
 import com.hxqh.eam.dao.G03unitDao;
+import com.hxqh.eam.dao.SfMyPortalTabDao;
 import com.hxqh.eam.model.App;
 import com.hxqh.eam.model.Attributecfg;
 import com.hxqh.eam.model.G03unit;
+import com.hxqh.eam.model.SfMyPortalTab;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +34,8 @@ public class SystemTest {
     @Resource
     private G03unitDao g03unitDao;
 
+    @Resource
+    private SfMyPortalTabDao sfMyPortalTabDao;
     @Test
     public void testGetAppDate() {
         List<App> appDaoAll = appDao.findAll();
@@ -46,6 +50,9 @@ public class SystemTest {
 
         List<G03unit> g03unitList = g03unitDao.findAll();
         Assert.assertTrue(g03unitList.size()>0);
+
+        List<SfMyPortalTab> sfMyPortalTabList = sfMyPortalTabDao.findAll();
+        Assert.assertTrue(sfMyPortalTabList.size()>0);
 
     }
 
