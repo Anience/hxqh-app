@@ -1,13 +1,7 @@
 package com.hxqh.eam.test;
 
-import com.hxqh.eam.dao.AppDao;
-import com.hxqh.eam.dao.AttributecfgDao;
-import com.hxqh.eam.dao.G03unitDao;
-import com.hxqh.eam.dao.SfMyPortalTabDao;
-import com.hxqh.eam.model.App;
-import com.hxqh.eam.model.Attributecfg;
-import com.hxqh.eam.model.G03unit;
-import com.hxqh.eam.model.SfMyPortalTab;
+import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,27 +30,36 @@ public class SystemTest {
 
     @Resource
     private SfMyPortalTabDao sfMyPortalTabDao;
+
+    @Resource
+    private OrganizationDao organizationDao;
+
+    @Resource
+    private SfOrganizationUserLobDao sfOrganizationUserLobDao;
+
     @Test
     public void testGetAppDate() {
         List<App> appDaoAll = appDao.findAll();
-        Assert.assertTrue(appDaoAll.size()>0);
+        Assert.assertTrue(appDaoAll.size() > 0);
 
         App app = appDao.find("iaet324stt9re3c81wvovuqx89t");
-        Assert.assertEquals(app.getApptype(),"app");
-        Assert.assertEquals(app.getDescription(),"Cron Task");
+        Assert.assertEquals(app.getApptype(), "app");
+        Assert.assertEquals(app.getDescription(), "Cron Task");
 
         List<Attributecfg> attributecfgList = attributecfgDao.findAll();
-        Assert.assertTrue(attributecfgList.size()>0);
+        Assert.assertTrue(attributecfgList.size() > 0);
 
         List<G03unit> g03unitList = g03unitDao.findAll();
-        Assert.assertTrue(g03unitList.size()>0);
+        Assert.assertTrue(g03unitList.size() > 0);
 
         List<SfMyPortalTab> sfMyPortalTabList = sfMyPortalTabDao.findAll();
-        Assert.assertTrue(sfMyPortalTabList.size()>0);
+        Assert.assertTrue(sfMyPortalTabList.size() > 0);
 
+        List<Organization> organizationList = organizationDao.findAll();
+        Assert.assertTrue(organizationList.size() > 0);
+
+        List<SfOrganizationUserLob> organizationUserLobList = sfOrganizationUserLobDao.findAll();
+        Assert.assertTrue(organizationUserLobList.size() > 0);
     }
-
-
-
 
 }

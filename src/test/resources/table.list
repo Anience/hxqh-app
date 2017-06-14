@@ -1,8 +1,9 @@
-G04people
-G03tax
-Iocdigitaloperattor
-Menubtn
-SfLogPvStat
-SfMyPortalLayout
-SfMyPortalTab
-SfOrganizationRole
+G03classstructure
+HxRestrictObject
+HxSignatureop
+Jbpm4Property
+Mark
+SfOrganisationSystemsafe
+SfOrganizationDepartment
+SfOrganizationRolechart
+SfOrganizationUserLob
