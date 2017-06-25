@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sfLogPvStatDao")
 public class SfLogPvStatDaoImpl extends DaoSupport<SfLogPvStat> implements SfLogPvStatDao {

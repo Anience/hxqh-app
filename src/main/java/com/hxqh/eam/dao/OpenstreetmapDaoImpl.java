@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("openstreetmapDao")
 public class OpenstreetmapDaoImpl extends DaoSupport<Openstreetmap> implements OpenstreetmapDao {

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("hxAuthgroupAppDao")
 public class HxAuthgroupAppDaoImpl extends DaoSupport<HxAuthgroupApp> implements HxAuthgroupAppDao {

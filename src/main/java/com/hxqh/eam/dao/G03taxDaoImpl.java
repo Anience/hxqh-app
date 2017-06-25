@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("g03taxDao")
 public class G03taxDaoImpl extends DaoSupport<G03tax> implements G03taxDao {

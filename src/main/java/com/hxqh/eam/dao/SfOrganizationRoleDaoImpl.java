@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sfOrganizationRoleDao")
 public class SfOrganizationRoleDaoImpl extends DaoSupport<SfOrganizationRole> implements SfOrganizationRoleDao {

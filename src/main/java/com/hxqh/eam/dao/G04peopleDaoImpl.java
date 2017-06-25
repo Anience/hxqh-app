@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("g04peopleDao")
 public class G04peopleDaoImpl extends DaoSupport<G04people> implements G04peopleDao {

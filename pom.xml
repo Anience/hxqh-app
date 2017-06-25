@@ -20,8 +20,7 @@
         <cxf.version>3.1.6</cxf.version>
         <aspectj.version>1.8.8</aspectj.version>
         <slf4j.version>1.7.20</slf4j.version>
-        <log4j.version></log4j.version>
-        <dom4j.version></dom4j.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <repositories>
@@ -67,63 +66,6 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-core</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-bindings-soap</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-bindings-xml</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-databinding-jaxb</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-simple</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-ws-addr</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-wsdl</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-ws-policy</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-
-
         <!-- hibenate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -239,14 +181,6 @@
             <artifactId>jetty-xml</artifactId>
             <version>9.2.15.v20160210</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>com.jfinal</groupId>
-            <artifactId>jfinal</artifactId>
-            <version>2.2</version>
-        </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -257,7 +191,16 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -474,11 +417,17 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.7</version>
         </dependency>
-        <!-- Oracle -->
+        <!-- Oracle 9i 10g 11g -->
+        <!--<dependency>-->
+        <!--<groupId>oracle.ojdbc</groupId>-->
+        <!--<artifactId>oracle-ojdbc</artifactId>-->
+        <!--<version>14</version>-->
+        <!--</dependency>-->
+        <!-- Oracle 12c -->
         <dependency>
-            <groupId>oracle.ojdbc</groupId>
-            <artifactId>oracle-ojdbc</artifactId>
-            <version>14</version>
+            <groupId>ojdbc7</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2</version>
         </dependency>
         <!--  权限控制shiro -->
         <dependency>
@@ -546,7 +495,7 @@
 
     </dependencies>
     <build>
-        <finalName>hxqh-eam</finalName>
+        <finalName>dashboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sfMyPortalLayoutDao")
 public class SfMyPortalLayoutDaoImpl extends DaoSupport<SfMyPortalLayout> implements SfMyPortalLayoutDao {

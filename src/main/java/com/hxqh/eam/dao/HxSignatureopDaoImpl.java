@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("hxSignatureopDao")
 public class HxSignatureopDaoImpl extends DaoSupport<HxSignatureop> implements HxSignatureopDao {

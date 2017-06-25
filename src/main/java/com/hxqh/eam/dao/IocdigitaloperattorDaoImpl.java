@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("iocdigitaloperattorDao")
 public class IocdigitaloperattorDaoImpl extends DaoSupport<Iocdigitaloperattor> implements IocdigitaloperattorDao {

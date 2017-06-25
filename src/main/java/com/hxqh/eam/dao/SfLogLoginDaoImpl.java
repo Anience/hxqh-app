@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sfLogLoginDao")
 public class SfLogLoginDaoImpl extends DaoSupport<SfLogLogin> implements SfLogLoginDao {

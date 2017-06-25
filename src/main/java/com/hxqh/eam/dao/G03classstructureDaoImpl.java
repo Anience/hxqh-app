@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("g03classstructureDao")
 public class G03classstructureDaoImpl extends DaoSupport<G03classstructure> implements G03classstructureDao {

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("objectcfgDao")
 public class ObjectcfgDaoImpl extends DaoSupport<Objectcfg> implements ObjectcfgDao {

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("appDao")
 public class AppDaoImpl extends DaoSupport<App> implements AppDao {

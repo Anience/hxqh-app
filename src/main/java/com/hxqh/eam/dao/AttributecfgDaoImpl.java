@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("attributecfgDao")
 public class AttributecfgDaoImpl extends DaoSupport<Attributecfg> implements AttributecfgDao {

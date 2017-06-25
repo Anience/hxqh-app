@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("domainDao")
 public class DomainDaoImpl extends DaoSupport<Domain> implements DomainDao {

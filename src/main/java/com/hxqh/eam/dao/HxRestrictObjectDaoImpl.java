@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("hxRestrictObjectDao")
 public class HxRestrictObjectDaoImpl extends DaoSupport<HxRestrictObject> implements HxRestrictObjectDao {

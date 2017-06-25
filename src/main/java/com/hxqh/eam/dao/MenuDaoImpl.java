@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("menuDao")
 public class MenuDaoImpl extends DaoSupport<Menu> implements MenuDao {

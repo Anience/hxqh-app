@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("hxAuthgroupMenuDao")
 public class HxAuthgroupMenuDaoImpl extends DaoSupport<HxAuthgroupMenu> implements HxAuthgroupMenuDao {

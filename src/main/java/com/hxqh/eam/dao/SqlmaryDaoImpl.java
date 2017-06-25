@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sqlmaryDao")
 public class SqlmaryDaoImpl extends DaoSupport<Sqlmary> implements SqlmaryDao {

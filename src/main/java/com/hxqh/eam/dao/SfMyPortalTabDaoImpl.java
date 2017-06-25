@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- *
  * @author lh
- *
  */
 @Repository("sfMyPortalTabDao")
 public class SfMyPortalTabDaoImpl extends DaoSupport<SfMyPortalTab> implements SfMyPortalTabDao {

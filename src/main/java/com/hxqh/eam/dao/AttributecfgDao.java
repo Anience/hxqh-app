@@ -5,9 +5,7 @@ import com.hxqh.eam.common.basedao.Dao;
 import com.hxqh.eam.model.Attributecfg;
 
 /**
- *
  * @author lh
- *
  */
 public interface AttributecfgDao extends Dao<Attributecfg> {
 }
