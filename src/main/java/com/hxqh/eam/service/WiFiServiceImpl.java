@@ -1,8 +1,11 @@
 package com.hxqh.eam.service;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.view.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by lh on 2017/4/14.
@@ -10,20 +13,60 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("wiFiService")
 public class WiFiServiceImpl implements WiFiService {
 
-    @Value("${com.hxqh.agp.appid}")
-    private String APP_ID;
+    @Autowired
+    private VWifiDailyDao vWifiDailyDao;
+    @Autowired
+    private VWifiDistributionDao vWifiDistributionDao;
+    @Autowired
+    private VWifiMonitoringDao vWifiMonitoringDao;
+    @Autowired
+    private VWifiMttrDao vWifiMttrDao;
+    @Autowired
+    private VWifiNumberDao vWifiNumberDao;
+    @Autowired
+    private VWifiTicketDao vWifiTicketDao;
+    @Autowired
+    private VWifiTrafficBottomDao vWifiTrafficBottomDao;
+    @Autowired
+    private VWifiTrafficTopDao vWifiTrafficTopDao;
 
-    @Value("${com.hxqh.agp.securitykey}")
-    private String SECURITY_KEY;
+    @Override
+    public List<VWifiTrafficBottom> vWifiTrafficBottomData() {
+        return vWifiTrafficBottomDao.findAll();
+    }
 
-    @Value("${com.hxqh.agp.lang.en}")
-    private String langEn;
+    @Override
+    public List<VWifiTrafficTop> vWifiTrafficTopData() {
+        return vWifiTrafficTopDao.findAll();
+    }
 
-    @Value("${com.hxqh.agp.lang.zh}")
-    private String langZh;
+    @Override
+    public List<VWifiNumber> vWifiNumberData() {
+        return vWifiNumberDao.findAll();
+    }
 
+    @Override
+    public List<VWifiTicket> vWifiTicketData() {
+        return vWifiTicketDao.findAll();
+    }
 
+    @Override
+    public List<VWifiDaily> vWifiDailyData() {
+        return vWifiDailyDao.findAll();
+    }
 
+    @Override
+    public List<VWifiDistribution> vWifiDistributionData() {
+        return vWifiDistributionDao.findAll();
+    }
 
+    @Override
+    public List<VWifiMttr> vWifiMttrData() {
+        return vWifiMttrDao.findAll();
+    }
 
+    @Override
+    public List<VWifiMonitoring> vWifiMonitoringData() {
+        return vWifiMonitoringDao.findAll();
+    }
 }

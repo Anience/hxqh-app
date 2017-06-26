@@ -1,4 +1,8 @@
-    @RequestMapping(value = "/XXXX", method = RequestMethod.GET)
-    public String XXXX() {
-        return "YYYY/XXXX";
-    }
+/**
+ *  XXXX  页面跳转接口
+ * @return
+ */
+@RequestMapping(value = "/XXXX", method = RequestMethod.GET)
+public String XXXX() {
+    return "YYYY/XXXX";
+}

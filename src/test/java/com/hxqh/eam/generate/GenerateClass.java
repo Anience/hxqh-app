@@ -14,12 +14,19 @@ public class GenerateClass {
 
     public static void main(String[] args) throws IOException {
         //generateDaoCode();
+        //generateActionCode("enterprise");
         generateActionCode("enterprise");
     }
 
 
+
+
+    /**
+     * 生成Controller 页面跳转代码
+     */
     private static void generateActionCode(String action) {
         File actionTemplate = new File("src/test/resources/controller.property");
+        File actionData = new File("src/test/resources/controllerData.property");
 
         //生成Mbo实体
         File func = new File("src/test/resources/func.list");
@@ -29,17 +36,23 @@ public class GenerateClass {
 
         int i = 0;
         for (String string : mBOName) {
-            if(i==0)
-            {
+            if (i == 0) {
                 i++;
                 continue;
             }
             String mboStr = FileUtil.txt2String(actionTemplate).replaceAll("XXXX", string).replaceAll("YYYY", action);
             System.out.println(mboStr);
+
+            StringBuilder sb = new StringBuilder(string);
+            sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
+            String dataString = FileUtil.txt2String(actionData).replaceAll("XXXX", string).replaceAll("YYYY", sb.toString() + "Data");
+            System.out.println(dataString);
         }
     }
 
-
+    /**
+     * 生成Dao模块
+     */
     private static void generateDaoCode() {
         File mboFile = new File("src/test/resources/dao.property");
         File daoImpl = new File("src/test/resources/daoImpl.property");
@@ -52,8 +65,7 @@ public class GenerateClass {
 
         int i = 0;
         for (String string : mBOName) {
-            if(i==0)
-            {
+            if (i == 0) {
                 i++;
                 continue;
             }

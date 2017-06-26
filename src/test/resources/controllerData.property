@@ -1,0 +1,10 @@
+/**
+ *  YYYY 页面跳转接口
+ * @return
+ */
+@ResponseBody
+@RequestMapping(value = "/YYYY", method = RequestMethod.GET)
+public List<XXXX> YYYY() {
+    List<XXXX> dig13List = digitalService.YYYY();
+    return dig13List;
+}
