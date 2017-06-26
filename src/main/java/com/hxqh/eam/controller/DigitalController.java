@@ -4,6 +4,8 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.base.Status;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.DigitalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,10 @@ public class DigitalController {
     @Autowired
     private DigitalService digitalService;
 
+
     /**
-     *  digital13 页面跳转接口
+     * digital13 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/digital13", method = RequestMethod.GET)
@@ -31,20 +35,23 @@ public class DigitalController {
     }
 
     /**
-     *  digital13Data 数据接口
-     *  Access 2017-6-26 11:05:05
+     * digital13Data 数据接口
+     * Access 2017-6-26 11:05:05
+     *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/digital13Data", method = RequestMethod.GET)
-    public List<VDig13> digital13Data() {
+    @RequestMapping(value = "/vDigital13Data", method = RequestMethod.GET)
+    public Dig13Dto digital13Data() {
         List<VDig13> dig13List = digitalService.digital13Data();
-        return dig13List;
+        Dig13Dto dig13Dto = new Dig13Dto(dig13List, Status.IOC13);
+        return dig13Dto;
     }
 
 
     /**
-     *  digital14 页面跳转接口
+     * digital14 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/digital14", method = RequestMethod.GET)
@@ -54,19 +61,22 @@ public class DigitalController {
 
 
     /**
-     *  vDig14Data 数据接口
-     *  Access 2017-6-26 11:05:12
+     * vDig14Data 数据接口
+     * Access 2017-6-26 11:05:12
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vDig14Data", method = RequestMethod.GET)
-    public List<VDig14> vDig14Data() {
+    public Dig14Dto vDig14Data() {
         List<VDig14> dig13List = digitalService.vDig14Data();
-        return dig13List;
+        Dig14Dto dig14Dto = new Dig14Dto(dig13List, Status.IOC14);
+        return dig14Dto;
     }
 
     /**
-     *  digital17 页面跳转接口
+     * digital17 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/digital17", method = RequestMethod.GET)
@@ -75,19 +85,22 @@ public class DigitalController {
     }
 
     /**
-     *  vDig17Data 数据接口
-     *  Access 2017-6-26 11:05:50
+     * vDig17Data 数据接口
+     * Access 2017-6-26 11:05:50
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vDig17Data", method = RequestMethod.GET)
-    public List<VDig17> vDig17Data() {
-        List<VDig17> dig13List = digitalService.vDig17Data();
-        return dig13List;
+    public Dig17Dto vDig17Data() {
+        List<VDig17> dig17List = digitalService.vDig17Data();
+        Dig17Dto dig17Dto = new Dig17Dto(dig17List, Status.IOC17);
+        return dig17Dto;
     }
 
     /**
-     *  digital18 页面跳转接口
+     * digital18 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/digital18", method = RequestMethod.GET)
@@ -96,19 +109,22 @@ public class DigitalController {
     }
 
     /**
-     *  vDig18Data 数据接口
-     *  Access 2017-6-26 11:06:08
+     * vDig18Data 数据接口
+     * Access 2017-6-26 11:06:08
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vDig18Data", method = RequestMethod.GET)
-    public List<VDig18> vDig18Data() {
+    public Dig18Dto vDig18Data() {
         List<VDig18> dig13List = digitalService.vDig18Data();
-        return dig13List;
+        Dig18Dto dig18Dto = new Dig18Dto(dig13List, Status.IOC18);
+        return dig18Dto;
     }
 
     /**
-     *  digital13141718 页面跳转接口
+     * digital13141718 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/digital13141718", method = RequestMethod.GET)
@@ -117,16 +133,14 @@ public class DigitalController {
     }
 
     /**
-     *  vDig13141718Data 数据接口
+     * vDig13141718Data 数据接口
      *
      * @return
      */
-    //TODO 暂时不能用
     @ResponseBody
     @RequestMapping(value = "/vDig13141718Data", method = RequestMethod.GET)
-    public List<VDig18> vDig13141718Data() {
-        List<VDig18> dig13List = digitalService.vDig13141718Data();
-        return dig13List;
+    public Dig13141718Dto vDig13141718Data() {
+        return digitalService.vDig13141718Data();
     }
 
 }
