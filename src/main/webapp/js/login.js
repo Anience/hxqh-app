@@ -9,8 +9,8 @@ $(function(){
             $("#tip").text("用户名或者密码不能为空");
         }else{
             $.ajax({
-                url: ctx+"/system/login",
-                method: "post",
+                url: _ctx+"/system/login",
+                method: "get",
                 data: {
                     name : username,
                     password  : pwd

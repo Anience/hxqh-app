@@ -6,8 +6,9 @@
 	<meta charset='utf-8'>
 	<title>登录页面</title>
 	<meta name="keywords" content="">
-	<link rel="stylesheet" href="${ctx}/css/reset.css">
-	<link rel="stylesheet" href="${ctx}css/login.css">
+	<%--<link rel="stylesheet" href="${ctx}/css/reset.css">
+	<link rel="stylesheet" href="${ctx}/css/login.css">--%>
+	<script src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="${ctx}/js/login.js"></script>
 	<script>
 		var _ctx = "${ctx}";
@@ -42,7 +43,7 @@
 					<a href="" class="forgot">Forgot Password</a>
 				</div>
 				<div class="login-btn">
-					<a href="javasript:void(0);">Sign in</a>
+					<a href="javasript:void(0);" id="login">Sign in</a>
 				</div>
 			</div>
 		</div>
