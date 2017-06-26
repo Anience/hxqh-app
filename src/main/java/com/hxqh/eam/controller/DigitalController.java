@@ -31,7 +31,7 @@ public class DigitalController {
      */
     @RequestMapping(value = "/digital13", method = RequestMethod.GET)
     public String digital13() {
-        return "digital/digital13";
+        return "digital/digital";
     }
 
     /**

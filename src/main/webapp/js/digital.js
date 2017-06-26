@@ -5,7 +5,12 @@ $(function () {
     var digitalData = new Vue({
         el: "#digital-Data",
         data: {
-
+            tit:"",
+            dig13List: [],
+            dig14List: [],
+            dig17List: [],
+            dig18List: [],
+            digList: []
         },
         methods: {
 
@@ -13,10 +18,11 @@ $(function () {
         created: function () {
             var self = this;
             $.ajax({
-                url: "${ctx}/inventory/inventoryData",
+                url: _ctx+"/digital/vDigital13Data",
                 method: "get",
                 dataType: "json",
                 success: function (data) {
+                   console.log(data);
 
                 },
                 error: function () {
