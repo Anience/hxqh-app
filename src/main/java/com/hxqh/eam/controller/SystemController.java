@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,12 @@ public class SystemController {
     @Autowired
     private SystemService systemService;
 
+    /**
+     * 登录Function
+     * @param loginDto  登录dto
+     * @param map 前台返回信息
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(LoginDto loginDto,Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
@@ -59,6 +66,22 @@ public class SystemController {
             return "system/login";
         }
     }
+
+    /**
+     * 注销，销毁Session 重定向至login
+     *
+     * @return
+     */
+//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+//    public String logout(HttpSession session) {
+//        session.removeAttribute("sessionInfo");
+//        session.invalidate();
+//        return "redirect:/login.jsp";
+//    }
+
+
+
+
 
 
 
