@@ -27,6 +27,16 @@ public class SystemController {
     private SystemService systemService;
 
     /**
+     *  digital13 页面跳转接口
+     * @return
+     */
+    @RequestMapping(value = "/first", method = RequestMethod.GET)
+    public String digital13() {
+        return "login";
+    }
+
+
+    /**
      * 登录Function
      * @param loginDto  登录dto
      * @param map 前台返回信息

@@ -2,4 +2,4 @@
     pageEncoding="utf-8"%>
 <%@ include file="WEB-INF/jsp/commons/taglibs.jsp" %>
 <h1>Success</h1>
-<c:redirect url="/ano/ano81Data"></c:redirect>
+<c:redirect url="/system/first"></c:redirect>
