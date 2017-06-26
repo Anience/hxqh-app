@@ -16,6 +16,4 @@ public class Account  {
 		return AlgorithmUtils.md5Hex(password == null ? "" : password.trim());
 	}
 
-
-
 }

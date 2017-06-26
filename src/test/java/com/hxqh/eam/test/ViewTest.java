@@ -28,9 +28,6 @@ public class ViewTest {
     @Resource
     private VAno81Dao vAno81Dao;
 
-    @Resource
-    private SfOrganizationAccountDao organizationAccountDao;
-
     @Autowired
     private SystemService systemService;
 
