@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.dto.Dig13141718Dto;
 import com.hxqh.eam.model.view.VDig13;
 import com.hxqh.eam.model.view.VDig14;
 import com.hxqh.eam.model.view.VDig17;
@@ -21,7 +22,7 @@ public interface DigitalService {
 
     public abstract List<VDig18> vDig18Data();
 
-    public abstract List<VDig18> vDig13141718Data();
+    public abstract Dig13141718Dto vDig13141718Data();
 
 
 }
