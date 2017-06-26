@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.base.SessionInfo;
 import com.hxqh.eam.model.dto.action.LoginDto;
@@ -35,28 +36,27 @@ public class SystemController {
         if (loginUserList.size() > 0) {
             String password = null;
             try {
-                //TODO 获取加密后的pwd
-                //password = MXCipherXUtils.encodePwd(loginDto.getPassword());
+                password= Account.encrypt(loginDto.getPassword());
                 if (loginUserList.get(0).getPassword().toUpperCase().equals(password)) {
                     //加入Session中
                     SfOrganizationAccount login = loginUserList.get(0);
                     SessionInfo sessionInfo = new SessionInfo();
                     sessionInfo.setName(login.getName());
                     map.put("userInfo", sessionInfo);
-                    return "system/asset";
+                    return "system/index";
                 } else {
-                    result.put("message", "用户名或密码不正确!");
-                    return "system/fail";
+                    result.put("message", "Password authentication error!");
+                    return "system/login";
                 }
             } catch (Exception e) {
-                result.put("message", "系统异常，请联系管理员！");
+                result.put("message", "System exception, please contact the administrator！");
                 e.printStackTrace();
-                return "system/fail";
+                return "system/login";
             }
         } else {
             //用户名不存在
-            result.put("message", "用户名或密码不正确!");
-            return "system/fail";
+            result.put("message", "The account does not exist!");
+            return "system/login";
         }
     }
 
