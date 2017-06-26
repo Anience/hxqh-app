@@ -1,0 +1,47 @@
+.digital{
+	background: #03081C;
+	width: 100%;
+	height: 100%;
+}
+table.dig-13{
+	cellpadding: 2;
+	cellspacing: 0;
+	width: 100%;
+	color: #fff;
+}
+table.dig-13 td{
+	border:1px solid #000000;
+}
+table.dig-13 thead{
+    background: #005e8a;
+}
+table.dig-13 thead tr{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+table.dig-13 thead tr:nth-child(1){
+	font-size: 24pt;
+}
+table.dig-13 thead tr:nth-child(2),table.dig-13 thead tr:nth-child(3){
+	font-size: 20pt;
+}
+table.dig-13 thead tr:nth-child(4){
+	text-align: left;
+    background-color: #1F3E50;
+    font-size: 26px;
+}
+table.dig-13 tbody{
+	text-align:center;
+	background-color:#0C0E26;
+	font-size:20px;
+}
+table.dig-13 tbody tr{
+	height: 75px;
+}
+table.dig-13 tbody tr:nth-child(1){
+	background: #0C0E26;
+}
+table.dig-13 tbody tr:nth-child(2){
+	background: #112B3A;
+}
