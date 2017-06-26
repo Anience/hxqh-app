@@ -32,6 +32,7 @@ public class DigitalController {
 
     /**
      *  digital13Data 数据接口
+     *  Access 2017-6-26 11:05:05
      * @return
      */
     @ResponseBody
@@ -54,6 +55,7 @@ public class DigitalController {
 
     /**
      *  vDig14Data 数据接口
+     *  Access 2017-6-26 11:05:12
      * @return
      */
     @ResponseBody
@@ -74,6 +76,7 @@ public class DigitalController {
 
     /**
      *  vDig17Data 数据接口
+     *  Access 2017-6-26 11:05:50
      * @return
      */
     @ResponseBody
@@ -94,6 +97,7 @@ public class DigitalController {
 
     /**
      *  vDig18Data 数据接口
+     *  Access 2017-6-26 11:06:08
      * @return
      */
     @ResponseBody
@@ -114,8 +118,10 @@ public class DigitalController {
 
     /**
      *  vDig13141718Data 数据接口
+     *
      * @return
      */
+    //TODO 暂时不能用
     @ResponseBody
     @RequestMapping(value = "/vDig13141718Data", method = RequestMethod.GET)
     public List<VDig18> vDig13141718Data() {

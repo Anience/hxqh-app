@@ -22,11 +22,20 @@ public class MobileController {
     private MobileService mobileService;
 
 
+    /**
+     *  mobile87 页面跳转接口
+     * @return
+     */
     @RequestMapping(value = "/mobile87", method = RequestMethod.GET)
     public String mobile87() {
         return "mobile/mobile87";
     }
 
+    /**
+     *  vMob87Data 数据接口
+     *  Access 2017-6-26 11:19:23
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob87Data", method = RequestMethod.GET)
     public List<VMob87> vMob87Data() {
@@ -34,6 +43,11 @@ public class MobileController {
         return dig13List;
     }
 
+    /**
+     *  vMob87ClassData 数据接口
+     *  Access 2017-6-26 11:19:29
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob87ClassData", method = RequestMethod.GET)
     public List<VMob87Class> vMob87ClassData() {
@@ -41,11 +55,21 @@ public class MobileController {
         return dig13List;
     }
 
+
+    /**
+     *  mobile86 页面跳转接口
+     * @return
+     */
     @RequestMapping(value = "/mobile86", method = RequestMethod.GET)
     public String mobile86() {
         return "mobile/mobile86";
     }
 
+    /**
+     *  vMob86Data 数据接口
+     *  Access 2017-6-26 11:19:42
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob86Data", method = RequestMethod.GET)
     public List<VMob86> vMob86Data() {
@@ -53,11 +77,20 @@ public class MobileController {
         return dig13List;
     }
 
+    /**
+     *  mobile88 页面跳转接口
+     * @return
+     */
     @RequestMapping(value = "/mobile88", method = RequestMethod.GET)
     public String mobile88() {
         return "mobile/mobile88";
     }
 
+    /**
+     *  vMob88Data 数据接口
+     *  Access 2017-6-26 11:19:56
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob88Data", method = RequestMethod.GET)
     public List<VMob88> vMob88Data() {
@@ -65,16 +98,22 @@ public class MobileController {
         return dig13List;
     }
 
-    @RequestMapping(value = "/mobile89", method = RequestMethod.GET)
-    public String mobile89() {
-        return "mobile/mobile89";
-    }
 
+
+    /**
+     *  mobile91 页面跳转接口
+     * @return
+     */
     @RequestMapping(value = "/mobile91", method = RequestMethod.GET)
-    public String mobile91() {
-        return "mobile/mobile91";
+    public String mobile92() {
+        return "mobile/mobile92";
     }
 
+    /**
+     *  vMob91Data 数据接口
+     *  Access  2017-6-26 11:20:24
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob91Data", method = RequestMethod.GET)
     public List<VMob91> vMob91Data() {
@@ -82,12 +121,12 @@ public class MobileController {
         return dig13List;
     }
 
-    @RequestMapping(value = "/mobile92", method = RequestMethod.GET)
-    public String mobile92() {
-        return "mobile/mobile92";
-    }
 
-
+    /**
+     *  vMob92Data 数据接口
+     *  Access  2017-6-26 11:20:48
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/vMob92Data", method = RequestMethod.GET)
     public List<VMob92> vMob92Data() {

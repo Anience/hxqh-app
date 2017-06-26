@@ -33,7 +33,7 @@ public class WiFiController {
 
     /**
      * vWifiTrafficBottomData 数据接口
-     *
+     * Access 2017-6-26 11:21:26
      * @return
      */
     @ResponseBody
@@ -46,7 +46,7 @@ public class WiFiController {
 
     /**
      * vWifiTrafficTopData 数据接口
-     *
+     * Access 2017-6-26 11:21:32
      * @return
      */
     @ResponseBody
@@ -67,7 +67,7 @@ public class WiFiController {
 
     /**
      * vWifiNumberData 数据接口
-     *
+     * Access 2017-6-26 11:21:40
      * @return
      */
     @ResponseBody
@@ -88,7 +88,7 @@ public class WiFiController {
 
     /**
      * vWifiTicketData 数据接口
-     *
+     *  Access 2017-6-26 11:23:07
      * @return
      */
     @ResponseBody
@@ -110,7 +110,7 @@ public class WiFiController {
 
     /**
      * vWifiDailyData 数据接口
-     *
+     * Access 2017-6-26 11:23:25
      * @return
      */
     @ResponseBody
@@ -132,7 +132,7 @@ public class WiFiController {
 
     /**
      * vWifiDistributionData 数据接口
-     *
+     * Access 2017-6-26 11:23:29
      * @return
      */
     @ResponseBody
@@ -153,7 +153,7 @@ public class WiFiController {
 
     /**
      * vWifiMttrData 数据接口
-     *
+     * Access 2017-6-26 11:23:51
      * @return
      */
     @ResponseBody
@@ -174,7 +174,7 @@ public class WiFiController {
 
     /**
      * vWifiMonitoringData 数据接口
-     *
+     * Access 2017-6-26 11:24:01
      * @return
      */
     @ResponseBody
