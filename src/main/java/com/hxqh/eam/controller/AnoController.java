@@ -12,8 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/ano")
 public class AnoController {
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public String getAuthorDetail() {
-        return "success";
+
+    @RequestMapping(value = "/ano81", method = RequestMethod.GET)
+    public String ano81() {
+        return "ano/ano81";
     }
+
+    @RequestMapping(value = "/ano82", method = RequestMethod.GET)
+    public String ano82() {
+        return "ano/ano82";
+    }
+
+
 }

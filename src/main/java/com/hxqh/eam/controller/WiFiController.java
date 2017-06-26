@@ -12,8 +12,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/wifi")
 public class WiFiController {
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public String getAuthorDetail() {
-        return "success";
+    @RequestMapping(value = "/wifi", method = RequestMethod.GET)
+    public String wifi() {
+        return "wifi/wifi";
     }
+
+    @RequestMapping(value = "/number", method = RequestMethod.GET)
+    public String number() {
+        return "wifi/number";
+    }
+
+    @RequestMapping(value = "/ticket", method = RequestMethod.GET)
+    public String ticket() {
+        return "wifi/ticket";
+    }
+
+    @RequestMapping(value = "/daily", method = RequestMethod.GET)
+    public String daily() {
+        return "wifi/daily";
+    }
+
+    @RequestMapping(value = "/distribution", method = RequestMethod.GET)
+    public String distribution() {
+        return "wifi/distribution";
+    }
+
+    @RequestMapping(value = "/mttr", method = RequestMethod.GET)
+    public String mttr() {
+        return "wifi/mttr";
+    }
+
+    @RequestMapping(value = "/monitoring", method = RequestMethod.GET)
+    public String monitoring() {
+        return "wifi/monitoring";
+    }
+
+
 }

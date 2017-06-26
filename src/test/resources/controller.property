@@ -1,0 +1,4 @@
+    @RequestMapping(value = "/XXXX", method = RequestMethod.GET)
+    public String XXXX() {
+        return "YYYY/XXXX";
+    }

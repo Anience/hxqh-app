@@ -9,10 +9,38 @@ import java.io.*;
  *
  * @author lh
  */
-public class GenerateDaoClass {
+public class GenerateClass {
 
 
     public static void main(String[] args) throws IOException {
+        //generateDaoCode();
+        generateActionCode("enterprise");
+    }
+
+
+    private static void generateActionCode(String action) {
+        File actionTemplate = new File("src/test/resources/controller.property");
+
+        //生成Mbo实体
+        File func = new File("src/test/resources/func.list");
+        String s = FileUtil.txt2String(func);
+        //        System.out.println(s);
+        String[] mBOName = s.split("\r\n");
+
+        int i = 0;
+        for (String string : mBOName) {
+            if(i==0)
+            {
+                i++;
+                continue;
+            }
+            String mboStr = FileUtil.txt2String(actionTemplate).replaceAll("XXXX", string).replaceAll("YYYY", action);
+            System.out.println(mboStr);
+        }
+    }
+
+
+    private static void generateDaoCode() {
         File mboFile = new File("src/test/resources/dao.property");
         File daoImpl = new File("src/test/resources/daoImpl.property");
 

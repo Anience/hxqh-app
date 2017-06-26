@@ -1,6 +1,8 @@
 package com.hxqh.eam.test;
 
+import com.hxqh.eam.dao.SfOrganizationAccountDao;
 import com.hxqh.eam.dao.VAno81Dao;
+import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.view.VAno81;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,10 +24,16 @@ public class ViewTest {
     @Resource
     private VAno81Dao vAno81Dao;
 
+    @Resource
+    private SfOrganizationAccountDao organizationAccountDao;
+
     @Test
     public void testGetViewData() {
         List<VAno81> all = vAno81Dao.findAll();
         Assert.assertTrue(all.size() > 0);
+        List<SfOrganizationAccount> organizationAccountList = organizationAccountDao.findAll();
+        Assert.assertTrue(organizationAccountList.size() > 0);
+
     }
 
 }
