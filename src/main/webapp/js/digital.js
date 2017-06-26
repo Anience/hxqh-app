@@ -3,7 +3,7 @@
  */
 $(function () {
     var digitalData = new Vue({
-        el: "#digital-Data",
+        el: "#digital-data",
         data: {
             tit:"",
             dig13List: [],
@@ -22,7 +22,8 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                   console.log(data);
+                    self.tit = data.name;
+                    self.digList = data.vDig13List;
 
                 },
                 error: function () {
