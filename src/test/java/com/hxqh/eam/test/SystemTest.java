@@ -1,22 +1,18 @@
 package com.hxqh.eam.test;
 
-import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.*;
+import com.hxqh.eam.common.LetterUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
-import java.util.List;
-
 /**
  * Created by lh on 2017/5/5.
  */
 
-@ContextConfiguration(locations = "classpath:spring/applicationContext.xml")
-@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "classpath:spring/applicationContext.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
 public class SystemTest {
 
 //    @Resource
@@ -61,5 +57,16 @@ public class SystemTest {
 //        List<SfOrganizationUserLob> organizationUserLobList = sfOrganizationUserLobDao.findAll();
 //        Assert.assertTrue(organizationUserLobList.size() > 0);
     }
+
+    @Test
+    public void testCapture() {
+        String s = "Xx";
+        Assert.assertTrue("xx".equals(LetterUtil.firstLetterToLowercase(s)));
+        Assert.assertTrue("x".equals(LetterUtil.firstLetterSubString(s)));
+    }
+
+
+
+
 
 }
