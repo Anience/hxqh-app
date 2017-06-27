@@ -25,4 +25,18 @@ $(function(){
             })
         }
     });
+
+    function checkLogin(){
+        if (addForm.user.value == "")
+        {
+            alert("请填写用户名！");
+            return false;
+        }
+        if (addForm.title.value.length < 5)
+        {
+            alert("标题不能少于5个字符！");
+            return false;
+        }
+        return true;
+    }
 });

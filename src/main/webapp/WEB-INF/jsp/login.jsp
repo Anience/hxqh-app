@@ -6,8 +6,8 @@
 	<meta charset='utf-8'>
 	<title>登录页面</title>
 	<meta name="keywords" content="">
-	<%--<link rel="stylesheet" href="${ctx}/css/reset.css">
-	<link rel="stylesheet" href="${ctx}/css/login.css">--%>
+	<link rel="stylesheet" href="${ctx}/css/reset.css">
+	<link rel="stylesheet" href="${ctx}/css/login.css">
 	<script src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="${ctx}/js/login.js"></script>
 	<script>
@@ -21,30 +21,33 @@
 		<div class="login-form">
 			<div class="form-layout">
 				<h4>TelKom Dashboard</h4>
-				<div class="login-item">
-					<label>UserName:</label>
-					<input type="text" id="userName"/>
-					<p class="msg-user"></p>
-				</div>
-				<div class="login-item">
-					<label>Passsword:</label>
-					<input type="password" id="pwd"/>
-					<p class="msg-pwd"></p>
-				</div>
-				<div class="login-item">
-					<label>Language:</label>
-					<select name="_Language">
-						<option value="en">EN</option>
-						<option value="zh_CN">CH</option>
-					</select>
-				</div>
-				<div>
-					<input type="checkbox" name=""/>Remember
-					<a href="" class="forgot">Forgot Password</a>
-				</div>
-				<div class="login-btn">
-					<a href="javasript:void(0);" id="login">Sign in</a>
-				</div>
+				<form action="${ctx}/system/login" onsubmit="return checkLogin();">
+					<div class="login-item">
+						<label>UserName:</label>
+						<input type="text" id="userName" name="name"/>
+						<p class="msg-user"></p>
+					</div>
+					<div class="login-item">
+						<label>Passsword:</label>
+						<input type="password" id="pwd" name="password"/>
+						<p class="msg-pwd"></p>
+					</div>
+					<div class="login-item">
+						<label>Language:</label>
+						<select name="_Language">
+							<option value="en">EN</option>
+							<option value="zh_CN">CH</option>
+						</select>
+					</div>
+					<div>
+						<input type="checkbox" name=""/>Remember
+						<a href="" class="forgot">Forgot Password</a>
+					</div>
+					<div class="login-btn">
+						<button type="submit" name="submit">Sign in</button>
+						<%--<a href="javasript:void(0);" id="login">Sign in</a>--%>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
