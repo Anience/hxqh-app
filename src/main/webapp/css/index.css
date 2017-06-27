@@ -1,0 +1,55 @@
+.header{
+    width: 100%;
+    height: 45px;
+    background: #399; 
+}
+.admin{
+    position: relative;
+}
+.admin:nth-child(1){
+    height: 100%;
+    width: 200px;
+    display: block;
+    float: right;
+    background: #6acabd;
+}
+.admin a span{
+    width: 50px;
+    color: #FFF;
+    display: block;
+    text-align: center;
+    height: 100%;
+    line-height: 45px;
+    font-size: 13px;
+    float: right;
+}
+.admin img{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 2px;
+    float: right;
+}
+.admin a i{
+    width: 10px;
+    height: 10px;
+    float: right;
+    background: red;
+}
+.admin-down-ul{
+    position: absolute;
+    right: 0px;
+    top: 45px;
+    background: #fff;
+    border: 1px solid #000;
+}
+.admin-down-ul li a{
+   font-size: 13px;
+   border-bottom: 1px solid #ccc;
+   padding-left: 40px;
+   height: 40px;
+   line-height: 40px;
+   width: 160px;
+   display: block;
+}

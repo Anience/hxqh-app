@@ -1,0 +1,51 @@
+.ticket-layout{
+    width: 100%;
+    height: 100%;
+    background: #03081C;
+    overflow: hidden;
+}
+.ticket-layout h4{
+    color: #FFFFFF;
+    background: #1F3E50;
+    line-height: 50px;
+    text-align: left;
+    font-size: 30px;
+    font-family: 'Arial';
+    padding-left: 20px;
+}
+.ticket-layout table{
+    width: 100%;
+    text-align: center;
+}
+.ticket-layout table thead tr{
+    background: #005E8A;
+    color: #fff;
+    font-size: 20pt;
+}
+.ticket-layout table thead tr:nth-child(1){
+    height: 50px;
+    line-height: 50px;
+}
+.ticket-layout table thead tr:nth-child(2),.ticket-layout table thead tr:nth-child(3){
+    height: 70px;
+    line-height: 70px;
+}
+.ticket-layout table tr td{
+    border: 2px solid #0C0E26;
+    color: #fff;
+}
+.ticket-layout table thead tr:nth-child(3) td{
+    width: 7%;
+}
+.ticket-layout table tbody tr{
+    height: 61px;
+    line-height: 61px;
+    font-size: 18px;
+    font-family: Arial;
+}
+.ticket-layout table tbody tr:nth-child(even){
+    background: #112B3A;
+}
+.dis-td{
+    line-height: 30px;
+}
