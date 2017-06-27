@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.WiFiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,29 +33,19 @@ public class WiFiController {
     }
 
     /**
-     * vWifiTrafficBottomData 数据接口
+     * vWifiTrafficData 数据接口
      * Access 2017-6-26 11:21:26
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vWifiTrafficBottomData", method = RequestMethod.GET)
-    public List<VWifiTrafficBottom> vWifiTrafficBottomData() {
-        List<VWifiTrafficBottom> dig13List = wiFiService.vWifiTrafficBottomData();
-        return dig13List;
+    @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
+    public WifiTrafficTdo vWifiTrafficData() {
+        List<VWifiTrafficBottom>  bottomList= wiFiService.vWifiTrafficBottomData();
+        List<VWifiTrafficTop> topList = wiFiService.vWifiTrafficTopData();
+        WifiTrafficTdo wifiTrafficTdo = new WifiTrafficTdo(bottomList,topList);
+        return wifiTrafficTdo;
     }
 
-
-    /**
-     * vWifiTrafficTopData 数据接口
-     * Access 2017-6-26 11:21:32
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/vWifiTrafficTopData", method = RequestMethod.GET)
-    public List<VWifiTrafficTop> vWifiTrafficTopData() {
-        List<VWifiTrafficTop> dig13List = wiFiService.vWifiTrafficTopData();
-        return dig13List;
-    }
 
     /**
      *  number   页面跳转接口
