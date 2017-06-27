@@ -45,7 +45,7 @@ public class SystemController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(LoginDto loginDto,Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
-         return webLogin(loginUserList, loginDto, map);
+        return webLogin(loginUserList, loginDto, map);
     }
 
     private String webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
@@ -60,7 +60,7 @@ public class SystemController {
                     SessionInfo sessionInfo = new SessionInfo();
                     sessionInfo.setName(login.getName());
                     map.put("userInfo", sessionInfo);
-                    return "system/index";
+                    return "index";
                 } else {
                     result.put("message", "Password authentication error!");
                     return "login";
