@@ -56,7 +56,7 @@ public class DigitalController {
      */
     @RequestMapping(value = "/digital14", method = RequestMethod.GET)
     public String digital14() {
-        return "digital/digital14";
+        return "digital/digital";
     }
 
 
@@ -81,7 +81,7 @@ public class DigitalController {
      */
     @RequestMapping(value = "/digital17", method = RequestMethod.GET)
     public String digital17() {
-        return "digital/digital17";
+        return "digital/digital";
     }
 
     /**
@@ -105,7 +105,7 @@ public class DigitalController {
      */
     @RequestMapping(value = "/digital18", method = RequestMethod.GET)
     public String digital18() {
-        return "digital/digital18";
+        return "digital/digital";
     }
 
     /**
@@ -129,7 +129,7 @@ public class DigitalController {
      */
     @RequestMapping(value = "/digital13141718", method = RequestMethod.GET)
     public String digital13141718() {
-        return "digital/digital13141718";
+        return "digital/digital";
     }
 
     /**
