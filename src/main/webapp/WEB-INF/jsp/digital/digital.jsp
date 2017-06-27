@@ -18,7 +18,7 @@
 <body>
 <div class="digital">
 	<div class="dig-layout">
-		<table class="dig-13">
+		<table class="dig-13" id="digital-data">
 			<thead>
 				<tr>
 					<td rowspan="3">OPERATIONAL</td>
@@ -46,41 +46,25 @@
 					<td>ACH</td>
 				</tr>
 				<tr>
-					<td colspan="14">DIGITAL MUSIC (Melon)</td>
+					<td colspan="14">{{tit}}</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>a.  Active User</td>
-					<td style="font-family: Brush Script MT;">Ribu</td>
-					<td>12,400</td>
-					<td>89.78%</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>a.  Active User</td>
-					<td style="font-family: Brush Script MT;">Ribu</td>
-					<td>12,400</td>
-					<td>89.78%</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr v-for="item of digList">
+					<td>{{item.ioc1}}</td>
+					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
+					<td>{{item.ioc3}}</td>
+					<td>{{item.ioc4}}</td>
+					<td>{{item.ioc5}}</td>
+					<td>{{item.ioc6}}</td>
+					<td>{{item.ioc7}}</td>
+					<td>{{item.ioc8}}</td>
+					<td>{{item.ioc9}}</td>
+					<td>{{item.ioc10}}</td>
+					<td>{{item.ioc11}}</td>
+					<td>{{item.ioc12}}</td>
+					<td>{{item.ioc13}}</td>
+					<td>{{item.ioc14}}</td>
 				</tr>
 			</tbody>
 		</table>

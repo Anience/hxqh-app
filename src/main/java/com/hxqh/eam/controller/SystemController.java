@@ -63,17 +63,17 @@ public class SystemController {
                     return "system/index";
                 } else {
                     result.put("message", "Password authentication error!");
-                    return "system/login";
+                    return "login";
                 }
             } catch (Exception e) {
                 result.put("message", "System exception, please contact the administrator！");
                 e.printStackTrace();
-                return "system/login";
+                return "login";
             }
         } else {
             //用户名不存在
             result.put("message", "The account does not exist!");
-            return "system/login";
+            return "login";
         }
     }
 
