@@ -19,9 +19,26 @@ public class VWifiTrafficTop implements Serializable {
 
 	private String da;
 	@Id
+	private Integer rn;
+
 	private String name;
 
 	public VWifiTrafficTop() {
+	}
+
+	public VWifiTrafficTop(BigDecimal count, String da, Integer rn, String name) {
+		this.count = count;
+		this.da = da;
+		this.rn = rn;
+		this.name = name;
+	}
+
+	public Integer getRn() {
+		return rn;
+	}
+
+	public void setRn(Integer rn) {
+		this.rn = rn;
 	}
 
 	public BigDecimal getCount() {

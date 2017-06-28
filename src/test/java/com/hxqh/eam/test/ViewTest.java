@@ -8,6 +8,7 @@ import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VEntBusBottomOne;
+import com.hxqh.eam.model.view.VWifiTrafficTop;
 import com.hxqh.eam.service.SystemService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -51,6 +53,13 @@ public class ViewTest {
         SfOrganizationAccount account = loginUserList.get(0);
         Assert.assertTrue(account.getPassword().equals(Account.encrypt(loginDto.getPassword())));
     }
+
+    @Test
+    public void test() {
+
+    }
+
+
 
 
 }
