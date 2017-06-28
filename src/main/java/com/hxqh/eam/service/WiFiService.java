@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 
 import java.util.List;
@@ -10,9 +11,7 @@ import java.util.List;
 public interface WiFiService {
 
 
-    public abstract List<VWifiTrafficBottom> vWifiTrafficBottomData();
-
-    public abstract List<VWifiTrafficTop> vWifiTrafficTopData();
+    public abstract WifiTrafficTdo getTrafficData();
 
     public abstract List<VWifiNumber> vWifiNumberData();
 
@@ -25,4 +24,6 @@ public interface WiFiService {
     public abstract List<VWifiMttr> vWifiMttrData();
 
     public abstract List<VWifiMonitoring> vWifiMonitoringData();
+
+
 }

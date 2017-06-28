@@ -40,9 +40,8 @@ public class WiFiController {
     @ResponseBody
     @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
     public WifiTrafficTdo vWifiTrafficData() {
-        List<VWifiTrafficBottom>  bottomList= wiFiService.vWifiTrafficBottomData();
-        List<VWifiTrafficTop> topList = wiFiService.vWifiTrafficTopData();
-        WifiTrafficTdo wifiTrafficTdo = new WifiTrafficTdo(bottomList,topList);
+        WifiTrafficTdo wifiTrafficTdo = wiFiService.getTrafficData();
+
         return wifiTrafficTdo;
     }
 

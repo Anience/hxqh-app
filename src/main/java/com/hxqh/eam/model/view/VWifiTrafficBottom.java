@@ -19,9 +19,20 @@ public class VWifiTrafficBottom implements Serializable {
 
 	private String da;
 	@Id
+	private Integer rn;
+
+
 	private String name;
 
 	public VWifiTrafficBottom() {
+	}
+
+	public Integer getRn() {
+		return rn;
+	}
+
+	public void setRn(Integer rn) {
+		this.rn = rn;
 	}
 
 	public BigDecimal getCount() {
