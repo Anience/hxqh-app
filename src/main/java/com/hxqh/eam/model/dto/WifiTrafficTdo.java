@@ -10,6 +10,8 @@ public class WifiTrafficTdo {
 
     private List<WifiTrafficTopTdo> strTop;
     private List<String> nameList;
+    private List<String> nameBottomList;
+    private List<WifiTrafficTopTdo> strBottom;
 
     public List<WifiTrafficTopTdo> getStrTop() {
         return strTop;
@@ -25,5 +27,21 @@ public class WifiTrafficTdo {
 
     public void setNameList(List<String> nameList) {
         this.nameList = nameList;
+    }
+
+    public List<String> getNameBottomList() {
+        return nameBottomList;
+    }
+
+    public void setNameBottomList(List<String> nameBottomList) {
+        this.nameBottomList = nameBottomList;
+    }
+
+    public List<WifiTrafficTopTdo> getStrBottom() {
+        return strBottom;
+    }
+
+    public void setStrBottom(List<WifiTrafficTopTdo> strBottom) {
+        this.strBottom = strBottom;
     }
 }

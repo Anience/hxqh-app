@@ -24,6 +24,11 @@ public class WiFiServiceImpl implements WiFiService {
             "TREG 6",
             "TREG 7"};
 
+    private static final String[] CONS = {"CONS",
+            "DWS",
+            "EBIS"};
+
+
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
     @Autowired
@@ -45,15 +50,50 @@ public class WiFiServiceImpl implements WiFiService {
 
     @Override
     public WifiTrafficTdo getTrafficData() {
+        List<String> nameTopList = new LinkedList<>();
+        List<String> nameBottomList = new LinkedList<>();
+        List<WifiTrafficTopTdo> strTop = new LinkedList<>();
+        List<WifiTrafficTopTdo> strBottom = new LinkedList<>();
+
+        StringBuilder stringBuilderTop = new StringBuilder(2048);
+        StringBuilder stringBuilderBottom = new StringBuilder(2048);
+
         //先取出全部数据
         List<VWifiTrafficTop> trafficTopList = vWifiTrafficTopDao.findAll();
-        // List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
-        List<String> nameList = new LinkedList<>();
-        List<WifiTrafficTopTdo> strTop = new LinkedList<>();
+        List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
 
-        StringBuilder stringBuilder = new StringBuilder(2048);
+        topJson(trafficTopList, nameTopList, strTop, stringBuilderTop);
+        topBottom(trafficBottomList,nameBottomList,strBottom,stringBuilderBottom);
+        WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
+        trafficTdo.setNameList(nameTopList);
+        trafficTdo.setStrTop(strTop);
+        trafficTdo.setNameBottomList(nameBottomList);
+        trafficTdo.setStrBottom(strBottom);
+        return trafficTdo;
+    }
 
+    private void topBottom(List<VWifiTrafficBottom> trafficBottomList, List<String> nameBottomList, List<WifiTrafficTopTdo> strBottom, StringBuilder stringBuilderBottom) {
+        int i = 1, j = 0;
+        for (int x = 0; x < trafficBottomList.size(); x++) {
+            stringBuilderBottom.append(trafficBottomList.get(x).getCount()).append(",");
+            if (i % 26 == 0) {
+                String str = stringBuilderBottom.toString();
+                str = dealJson(str);
+                WifiTrafficTopTdo topTdo = new WifiTrafficTopTdo(CONS[j], str);
+                strBottom.add(topTdo);
+                stringBuilderBottom = new StringBuilder(2048);
+                j++;
+            }
+            i++;
+        }
 
+        for (int x = 0; x < 26; x++) {
+            nameBottomList.add(trafficBottomList.get(x).getName());
+        }
+
+    }
+
+    private void topJson(List<VWifiTrafficTop> trafficTopList, List<String> nameList, List<WifiTrafficTopTdo> strTop, StringBuilder stringBuilder) {
         int i = 1, j = 0;
         for (int x = 0; x < trafficTopList.size(); x++) {
             stringBuilder.append(trafficTopList.get(x).getCount()).append(",");
@@ -69,22 +109,14 @@ public class WiFiServiceImpl implements WiFiService {
             i++;
         }
 
-
         for (int x = 0; x < 26; x++) {
             nameList.add(trafficTopList.get(x).getName());
         }
-
-
-        WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
-        trafficTdo.setNameList(nameList);
-        trafficTdo.setStrTop(strTop);
-
-        return trafficTdo;
     }
 
     private String dealJson(String str) {
         String substring = str.substring(0, str.length() - 1);
-        return "[" + substring + "]";
+        return substring;
     }
 
     @Override
