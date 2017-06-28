@@ -42,7 +42,7 @@ public class SystemController {
      * @param map 前台返回信息
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(LoginDto loginDto,Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);

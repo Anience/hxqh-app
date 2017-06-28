@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.WifiDailyDto;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.WiFiService;
@@ -105,9 +106,10 @@ public class WiFiController {
      */
     @ResponseBody
     @RequestMapping(value = "/vWifiDailyData", method = RequestMethod.GET)
-    public List<VWifiDaily> vWifiDailyData() {
-        List<VWifiDaily> dig13List = wiFiService.vWifiDailyData();
-        return dig13List;
+    public WifiDailyDto vWifiDailyData() {
+
+        WifiDailyDto dailyDto = wiFiService.vWifiDailyData();
+        return dailyDto;
     }
 
     /**

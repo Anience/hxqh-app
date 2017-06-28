@@ -1,6 +1,7 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.dto.WifiDailyDto;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.dto.WifiTrafficTopTdo;
 import com.hxqh.eam.model.view.*;
@@ -16,7 +17,8 @@ import java.util.*;
 public class WiFiServiceImpl implements WiFiService {
 
 
-    private static final String[] TREG = {"TREG 1",
+    private static final String[] TREG = {
+            "TREG 1",
             "TREG 2",
             "TREG 3",
             "TREG 4",
@@ -24,10 +26,9 @@ public class WiFiServiceImpl implements WiFiService {
             "TREG 6",
             "TREG 7"};
 
-    private static final String[] CONS = {"CONS",
-            "DWS",
-            "EBIS"};
+    private static final String[] CONS = {"CONS", "DWS", "EBIS"};
 
+    private static final String[] DAILY = {"DCS", "DES", "DGS"};
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -63,7 +64,8 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
 
         topJson(trafficTopList, nameTopList, strTop, stringBuilderTop);
-        topBottom(trafficBottomList,nameBottomList,strBottom,stringBuilderBottom);
+        topBottom(trafficBottomList, nameBottomList, strBottom, stringBuilderBottom);
+
         WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
         trafficTdo.setNameList(nameTopList);
         trafficTdo.setStrTop(strTop);
@@ -130,9 +132,52 @@ public class WiFiServiceImpl implements WiFiService {
     }
 
     @Override
-    public List<VWifiDaily> vWifiDailyData() {
-        return vWifiDailyDao.findAll();
+    public WifiDailyDto vWifiDailyData() {
+        List<VWifiDaily> dailyList = vWifiDailyDao.findAll();
+
+        List<String> list = new LinkedList<>();
+        List<WifiTrafficTopTdo> strC = new LinkedList<>();
+
+        StringBuilder stringBuilderC = new StringBuilder(2048);
+
+        getList(dailyList,list);
+
+        getJson(dailyList,  strC, stringBuilderC);
+
+        WifiDailyDto trafficTdo = new WifiDailyDto(list,strC);
+        return trafficTdo;
     }
+
+    private void getJson(List<VWifiDaily> trafficTopList, List<WifiTrafficTopTdo> strTop, StringBuilder stringBuilder) {
+        int i = 1, j = 0;
+        for (int x = 0; x < trafficTopList.size(); x++) {
+            stringBuilder.append(trafficTopList.get(x).getCount()).append(",");
+
+            if (i % 4 == 0) {
+                String str = stringBuilder.toString();
+                str = dealJson(str);
+                WifiTrafficTopTdo topTdo = new WifiTrafficTopTdo(DAILY[j], str);
+                strTop.add(topTdo);
+                stringBuilder = new StringBuilder(2048);
+                j++;
+            }else if(trafficTopList.size()-i<2)
+            {
+                String str = stringBuilder.toString();
+                str = dealJson(str);
+                WifiTrafficTopTdo topTdo = new WifiTrafficTopTdo(DAILY[j], str);
+                strTop.add(topTdo);
+            }
+            i++;
+        }
+    }
+
+    private void getList(List<VWifiDaily> trafficTopList, List<String> list ){
+       for (int x = 0; x < 4; x++) {
+           list.add(trafficTopList.get(x).getName());
+       }
+    }
+
+
 
     @Override
     public List<VWifiDistribution> vWifiDistributionData() {

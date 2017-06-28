@@ -13,6 +13,8 @@ public class WifiTrafficTdo {
     private List<String> nameBottomList;
     private List<WifiTrafficTopTdo> strBottom;
 
+
+
     public List<WifiTrafficTopTdo> getStrTop() {
         return strTop;
     }
