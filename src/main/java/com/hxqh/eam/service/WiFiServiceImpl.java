@@ -62,10 +62,8 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiTrafficTop> trafficTopList = vWifiTrafficTopDao.findAll();
         List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
 
-
         topJson(trafficTopList, nameTopList, strTop, stringBuilderTop);
         topBottom(trafficBottomList,nameBottomList,strBottom,stringBuilderBottom);
-
         WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
         trafficTdo.setNameList(nameTopList);
         trafficTdo.setStrTop(strTop);
@@ -78,7 +76,6 @@ public class WiFiServiceImpl implements WiFiService {
         int i = 1, j = 0;
         for (int x = 0; x < trafficBottomList.size(); x++) {
             stringBuilderBottom.append(trafficBottomList.get(x).getCount()).append(",");
-
             if (i % 26 == 0) {
                 String str = stringBuilderBottom.toString();
                 str = dealJson(str);
@@ -119,7 +116,7 @@ public class WiFiServiceImpl implements WiFiService {
 
     private String dealJson(String str) {
         String substring = str.substring(0, str.length() - 1);
-        return "[" + substring + "]";
+        return substring;
     }
 
     @Override
