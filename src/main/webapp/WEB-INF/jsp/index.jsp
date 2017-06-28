@@ -5,7 +5,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/main.css" type="text/css" media="screen" />
-	<script type="text/javascript" src="${ctx}/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/tendina.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/AL-index.js"></script>
 </head>
@@ -59,8 +59,6 @@
 				<li><a href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Distribution Status Report</a></li>
 				<li><a href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MTTR Targets<li>
                 <li><a href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive<li>
-
-
                 <li><a href="" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Map</a></li>
 				<li><a href="" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WAG & Controller</a></li>
 				<li><a href="${ctx}/wifi/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>EVENT BUMN LABUHAN BAJO</a></li>

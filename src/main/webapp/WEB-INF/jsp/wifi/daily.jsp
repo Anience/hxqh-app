@@ -11,7 +11,7 @@
 		var _ctx = "${ctx}";
 	</script>
 	<style>
-		.traffic-layout{
+		.daily-layout{
 			width: 100%;
 			height: 100%;
 			background: #03071D;
@@ -19,11 +19,10 @@
 	</style>
 </head>
 <body>
-	<div class="traffic-layout">
-		<div class="row" style="height: 400px;width:100%;" id="echart1"></div>
-		<div class="row" style="height: 400px;width:100%;" id="echart2"></div>
+	<div class="daily-layout">
+		<div id="echart1" style="height: 400px;width: 100%;"></div>
 	</div>
 </body>
-<script type="text/javascript" src="${ctx}/js/traffic.js"></script>
+<script type="text/javascript" src="${ctx}/js/daily.js"></script>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

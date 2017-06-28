@@ -29,7 +29,7 @@ public class WiFiController {
      */
     @RequestMapping(value = "/wifi", method = RequestMethod.GET)
     public String wifi() {
-        return "wifi/wifi";
+        return "wifi/traffic";
     }
 
     /**

@@ -105,8 +105,8 @@ public class MobileController {
      * @return
      */
     @RequestMapping(value = "/mobile91", method = RequestMethod.GET)
-    public String mobile92() {
-        return "mobile/mobile92";
+    public String mobile91() {
+        return "mobile/mob91";
     }
 
     /**
@@ -121,6 +121,14 @@ public class MobileController {
         return dig13List;
     }
 
+    /**
+     *  mobile91 页面跳转接口
+     * @return
+     */
+    @RequestMapping(value = "/mobile92", method = RequestMethod.GET)
+    public String mobile92() {
+        return "mobile/mob92";
+    }
 
     /**
      *  vMob92Data 数据接口
