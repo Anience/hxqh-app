@@ -9,7 +9,7 @@ $(function(){
             dataType: "json",
             success: function(data){
                 initEchart("echart1",data.strTop,data.nameList);
-                /*initEchart("echart2",data.trafficBottomList);*/
+                initEchart("echart2",data.strBottom,data.nameBottomList);
             },
             error: function(){
 
@@ -17,10 +17,14 @@ $(function(){
         })
     }
     function initEchart(domId,echartSData,echartName) {
-        var legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
-        var xAxisData = echartName;
+        var legendData = [];
         var seriesData = [];
-        console.log(echartSData);
+        var xAxisData = echartName;
+        if(domId=="echart1"){
+            legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
+        }else{
+            legendData = ['CONS','DWS','EBIS'];
+        }
         for(var i=0,len=echartSData.length;i<len;i++){
             var tmpObj = {};
             tmpObj.type = 'line';

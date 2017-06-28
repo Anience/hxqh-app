@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
+	<script src="${ctx}/script/vue.js"></script>
+	<script src="${ctx}/js/ticket.js"></script>
+	<script>
+		var _ctx = "${ctx}";
+	</script>
 </head>
 <body>
 <div class="ticket-layout">
@@ -43,39 +48,23 @@
 			<td>AP</td>
 		</tr>
 		</thead>
-		<tbody>
-		<tr>
-			<td>NAS</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-		</tr>
-		<tr>
-			<td>TREG-1</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-			<td>12</td>
-		</tr>
+		<tbody id="ticket-data">
+			<tr v-for="item of ticketList">
+				<td>{{item.ioc1}}</td>
+				<td>{{item.ioc2}}</td>
+				<td>{{item.ioc3}}</td>
+				<td>{{item.ioc4}}</td>
+				<td>{{item.ioc5}}</td>
+				<td>{{item.ioc6}}</td>
+				<td>{{item.ioc7}}</td>
+				<td>{{item.ioc8}}</td>
+				<td>{{item.ioc9}}</td>
+				<td>{{item.ioc10}}</td>
+				<td>{{item.ioc11}}</td>
+				<td>{{item.ioc12}}</td>
+				<td>{{item.ioc13}}</td>
+				<td style="color: red;">kalah</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

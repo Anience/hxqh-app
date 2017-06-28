@@ -20,7 +20,7 @@
 			<span>admin</span>
 			<img src="${ctx}/imgs/none_user.gif" class="admin-img" />
 		</a>
-		<ul class="admin-down-ul">
+		<ul class="admin-down-ul" style="display: none;">
 			<li>
 				<a href="">
 				    <i class="icon-set icon-user"></i>

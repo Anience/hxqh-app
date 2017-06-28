@@ -15,13 +15,15 @@
 			width: 100%;
 			height: 100%;
 			background: #03071D;
+			padding-top: 5%;
+			padding-bottom: 5%;
 		}
 	</style>
 </head>
 <body>
 	<div class="traffic-layout">
-		<div class="row" style="height: 400px;width:100%;" id="echart1"></div>
-		<div class="row" style="height: 400px;width:100%;" id="echart2"></div>
+		<div class="row" style="height: 50%;width:100%;" id="echart1"></div>
+		<div class="row" style="height: 50%;width:100%;" id="echart2"></div>
 	</div>
 </body>
 <script type="text/javascript" src="${ctx}/js/traffic.js"></script>
