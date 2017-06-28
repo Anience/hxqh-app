@@ -20,7 +20,7 @@ public class GenerateClass {
 
     public static void main(String[] args) throws IOException {
         //generateDaoCode();
-        generateControllerAndServiceCode("wifi", "view");
+        //generateControllerAndServiceCode("enterprise", "view");
     }
 
 

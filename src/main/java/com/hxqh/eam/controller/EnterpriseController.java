@@ -4,13 +4,23 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.BussinessDto;
+import com.hxqh.eam.model.dto.EnterpriseDto;
+import com.hxqh.eam.model.dto.GovernmentDto;
+import com.hxqh.eam.service.EnterpriseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/enterprise")
 public class EnterpriseController {
+
+    @Autowired
+    private EnterpriseService enterpriseService;
+
 
     @RequestMapping(value = "/enterprise222324B1", method = RequestMethod.GET)
     public String enterprise222324B1() {
@@ -27,10 +37,52 @@ public class EnterpriseController {
         return "enterprise/enterprise222324B4";
     }
 
+
+
+    /**
+     *  bussiness 页面跳转
+     * @return
+     */
     @RequestMapping(value = "/enterpriseBussiness", method = RequestMethod.GET)
     public String enterpriseBussiness() {
         return "enterprise/enterpriseBussiness";
     }
+
+
+    /**
+     *  bussiness 数据接口
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/bussinessData", method = RequestMethod.GET)
+    public BussinessDto bussinessData() {
+        BussinessDto bussinessDto = enterpriseService.getbussinessData();
+        return bussinessDto;
+    }
+
+    /**
+     *  government 数据接口
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/governmentData", method = RequestMethod.GET)
+    public GovernmentDto governmentData() {
+        GovernmentDto governmentDto = enterpriseService.getgovernmentData();
+        return governmentDto;
+    }
+
+
+    /**
+     *  enterprise 数据接口
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/enterpriseData", method = RequestMethod.GET)
+    public EnterpriseDto enterpriseData() {
+        EnterpriseDto enterpriseDto = enterpriseService.getenterpriseData();
+        return enterpriseDto;
+    }
+
 
     @RequestMapping(value = "/enterpriseGovernment", method = RequestMethod.GET)
     public String enterpriseGovernment() {
@@ -71,5 +123,8 @@ public class EnterpriseController {
     public String enterprise303132E4() {
         return "enterprise/enterprise303132E4";
     }
+
+
+
 
 }
