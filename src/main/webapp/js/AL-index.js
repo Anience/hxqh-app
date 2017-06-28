@@ -11,31 +11,32 @@ $(document).ready(function(){
         }
     });
 	
-	$("#menu li a.firsta").click(function(){
+	/*$("#menu li a.firsta").click(function(){
 			var status=$(this).next("ul").css("display");
-			var firstchild_a=$(this).find("i");
-			var all_lis=$(this).parents("ul").find("a.firsta i");
-			all_lis.removeClass("xlcddown");
-			all_lis.addClass("xlcd");
-				
+			var firstchild_a_i=$(this).find("i").last();
+            $("#menu li a.firsta").css("background","#339999");
+            $("#menu li a.firsta").css("color","#fff");
 			if(status=="none"){
-				firstchild_a.removeClass("xlcd");
-				firstchild_a.addClass("xlcddown");
+                firstchild_a_i.removeClass("first-a-up");
+                firstchild_a_i.addClass("first-a-down");
+                $(this).css("background","#f5f5f5");
+                $(this).css("color","#339999");
 			}else{
-				firstchild_a.removeClass("xlcddown");
-				firstchild_a.addClass("xlcd");	
+                firstchild_a_i.removeClass("first-a-down");
+                firstchild_a_i.addClass("first-a-up");
+                $(this).css("background","#339999");
+                $(this).css("color","#fff");
 			}
 		
-		});
+		});*/
 });
-
 $(function(){
 	
-	$("#menu li.menu-list>ul>li").click(function(){
+	/*$("#menu li.menu-list>ul>li").click(function(){
 		$("#menu li.menu-list>ul>li").find("a").removeClass("specialclass");
 		$(this).find("a",this).addClass("specialclass");
 		
-	})
+	})*/
 })
 	
 $(function(){

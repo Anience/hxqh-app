@@ -4,7 +4,9 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/main.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/index.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/tendina.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/AL-index.js"></script>
@@ -16,11 +18,22 @@
 		<a href="#">
 			<i class="icon-down"></i>
 			<span>admin</span>
-			<img src="" class="admin-img" />
+			<img src="${ctx}/imgs/none_user.gif" class="admin-img" />
 		</a>
 		<ul class="admin-down-ul">
-			<li><a href="">Settings</a></li>
-			<li><a href="">LogOut</a></li>
+			<li>
+				<a href="">
+				    <i class="icon-set icon-user"></i>
+					Settings
+				</a>
+			</li>
+			<div class="line"></div>
+			<li>
+				<a href="">
+					<i class="icon-logout icon-user"></i>
+					LogOut
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
@@ -29,7 +42,7 @@
 <div class="left-menu">
 	<ul id="menu">
 		<li class="menu-list">
-			<a target="menuFrame" class="firsta" ><i  class="glyph-icon jggl"></i>CENTER MAP<span class="sz"></span></a>
+			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>CENTER MAP<i class="first-a-down"></i></a>
 			<ul>
 				<li class="menu-list"> <a  href="${ctx}/query/showRegionMap" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>OpenStreetMap<span class="sz"></span></a></li>
 			</ul>
@@ -50,7 +63,7 @@
 			<%--</ul>--%>
 		<%--</li>--%>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC WIFI<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WIFI<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Traffic</a></li>
 				<li><a href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Number of Access Point</a></li>
@@ -66,14 +79,14 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC DashBoard<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DashBoard<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>testurl</a></li>
 				<li><a href="${ctx}/query/authorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>shangchuan</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC ENTERPRISE<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ENTERPRISE<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-1</a></li>
 				<li><a href="${ctx}/query/authorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Bussiness</a></li>
@@ -90,7 +103,7 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC CUSTOMER FB<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC CUSTOMER FB<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Summary</a></li>
 				<li><a href="${ctx}/query/authorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Indihome</a></li>
@@ -99,7 +112,7 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC MOBILE<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/mobile/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-85</a></li>
 				<li><a href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-87</a></li>
@@ -113,7 +126,7 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC DIGITAL<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DIGITAL<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/digital/digital13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
 				<li><a href="${ctx}/digital/digital14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
@@ -127,14 +140,14 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC ANO<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ANO<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-81</a></li>
 				<li><a href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-82</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="glyph-icon zzgl"></i>IOC WHOLESALE INT'L<span class="sz"></span></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE INT'L<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WHO-34,35,36-OLO-1</a></li>
 			</ul>
