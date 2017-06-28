@@ -8,7 +8,7 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.trafficTopList);
+                initEchart("echart1",data.strTop,data.nameList);
                 /*initEchart("echart2",data.trafficBottomList);*/
             },
             error: function(){
@@ -16,13 +16,19 @@ $(function(){
             }
         })
     }
-    function initEchart(domId,echartData) {
-        var legendData = [];
-        var xAxisData = ['周一','周二','周三','周四','周五','周六','周日'];
+    function initEchart(domId,echartSData,echartName) {
+        var legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
+        var xAxisData = echartName;
         var seriesData = [];
-        /*for(var i=0,len=echartData.length;i<len;i++){
-            legendData = echartData[i].name;
-        }*/
+        console.log(echartSData);
+        for(var i=0,len=echartSData.length;i<len;i++){
+            var tmpObj = {};
+            tmpObj.type = 'line';
+            tmpObj.stack = '总量';
+            tmpObj.name = echartSData[i].da;
+            tmpObj.data = echartSData[i].str.split(",");
+            seriesData.push(tmpObj)
+        }
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
@@ -46,7 +52,7 @@ $(function(){
                     fontSize: 12,
                     color: '#666C7F',
                 },
-                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                data:legendData
             },
             calculable : true,
             xAxis : [
@@ -82,38 +88,7 @@ $(function(){
                     },
                 }
             ],
-            series : [
-                {
-                    name:'邮件营销',
-                    type:'line',
-                    stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'联盟广告',
-                    type:'line',
-                    stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'视频广告',
-                    type:'line',
-                    stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'直接访问',
-                    type:'line',
-                    stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'搜索引擎',
-                    type:'line',
-                    stack: '总量',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
+            series :  seriesData
         };
         myChart.setOption(option);
     }
