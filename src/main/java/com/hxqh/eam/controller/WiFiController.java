@@ -6,6 +6,7 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.dto.DailyDto;
 import com.hxqh.eam.model.dto.TrafficTdo;
+import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.WiFiService;
@@ -164,9 +165,9 @@ public class WiFiController {
      */
     @ResponseBody
     @RequestMapping(value = "/vWifiMttrData", method = RequestMethod.GET)
-    public List<VWifiMttr> vWifiMttrData() {
-        List<VWifiMttr> dig13List = wiFiService.vWifiMttrData();
-        return dig13List;
+    public WifiMttrDto vWifiMttrData() {
+        WifiMttrDto mttrDto = wiFiService.vWifiMttrData();
+        return mttrDto;
     }
 
     /**
