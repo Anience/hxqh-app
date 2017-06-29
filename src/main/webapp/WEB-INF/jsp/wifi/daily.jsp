@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="daily-layout">
-		<div id="echart1" style="height: 400px;width: 100%;"></div>
+		<div id="echart1" style="height: 80%;width: 100%;"></div>
 	</div>
 </body>
 <script type="text/javascript" src="${ctx}/js/wifi/daily.js"></script>

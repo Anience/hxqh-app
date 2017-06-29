@@ -4,28 +4,43 @@
 $(function(){
     function initData(){
         $.ajax({
-            url: _ctx+"/wifi/vWifiDailyData",
+            url: _ctx+"/wifi/wifiDailyData",
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.trafficTopList);
-                /*initEchart("echart2",data.trafficBottomList);*/
+                initEchart("echart1",data.list,data.skuIdMap);
             },
             error: function(){
 
             }
         })
     }
-    function initEchart(domId,echartData) {
+    function initEchart(domId,yData,serisData) {
+        var yName = yData;
+        var lendName = ["DCS","DES","DGS"];
+        var serisDatas = [];
+        for(var name in serisData){
+            var tmpObj = {};
+            tmpObj.name = name;
+            tmpObj.type ="line";
+            tmpObj.data = serisData[name];
+            serisDatas.push(tmpObj);
+        }
+        console.log(serisDatas);
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
                 text: "Daily Ticket Distribution",
-                x: "left"
+                x: "left",
+                backgroundColor:'#161C2F',
+                textStyle:{
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Arial, Verdana, sans-serif'
+                }
             },
-            tooltip: {
-                trigger: "item",
-                formatter: "{a} <br/>{b} : {c}"
+            tooltip : {
+                trigger: 'axis'
             },
             legend: {
                 orient:'vertical',
@@ -35,25 +50,28 @@ $(function(){
                     fontSize: 12,
                     color: '#666C7F',
                 },
-                data: ["2的指数", "3的指数"]
+                data:lendName
             },
-            xAxis: [
+            calculable : true,
+            xAxis : [
                 {
-                    type: "category",
-                    name: "x",
-                    splitLine: {show: false},
+                    type : 'category',
+                    boundaryGap : false,
+                    splitLine: {
+                        show: false,
+                    },
                     axisLabel:{
                         show: true,
                         textStyle: {
                             color: '#666C7F',   //x轴字体颜色
                         }
                     },
-                    data: ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
+                    data : yName
                 }
             ],
-            yAxis: [
+            yAxis : [
                 {
-                    type: "log",
+                    type : 'value',
                     splitLine: {
                         show: true,
                         lineStyle: {
@@ -63,27 +81,12 @@ $(function(){
                     axisLabel:{
                         show: true,
                         textStyle: {
-                            color: '#666C7F',   //x轴字体颜色
+                            color: '#666C7F',   //y轴字体颜色
                         }
                     },
-                    name: "y"
                 }
             ],
-            calculable: true,
-            series: [
-                {
-                    name: "3的指数",
-                    type: "line",
-                    data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669]
-
-                },
-                {
-                    name: "2的指数",
-                    type: "line",
-                    data: [1, 2, 4, 8, 16, 32, 64, 128, 256]
-
-                }
-            ]
+            series :  serisDatas
         };
         myChart.setOption(option);
     }
