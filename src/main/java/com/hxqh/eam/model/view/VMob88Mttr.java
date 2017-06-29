@@ -6,20 +6,21 @@ import java.math.BigDecimal;
 
 
 /**
- * The persistent class for the V_MOB_88 database table.
+ * The persistent class for the V_MOB_88_MTTR database table.
  * 
  */
 @Entity
-@Table(name="V_MOB_88")
-public class VMob88 implements Serializable {
+@Table(name="V_MOB_88_MTTR")
+public class VMob88Mttr implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String name;
 
 	@Column(name="\"VALUE\"")
 	private BigDecimal value;
 
-	public VMob88() {
+	public VMob88Mttr() {
 	}
 
 	public String getName() {

@@ -4,6 +4,8 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.Mob88Dto;
+import com.hxqh.eam.model.dto.Mob91Dto;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,11 +95,10 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/vMob88Data", method = RequestMethod.GET)
-    public List<VMob88> vMob88Data() {
-        List<VMob88> dig13List = mobileService.vMob88Data();
-        return dig13List;
+    public Mob88Dto vMob88Data() {
+        Mob88Dto mob88Dto = mobileService.getMob88Data();
+        return mob88Dto;
     }
-
 
 
     /**
@@ -116,8 +117,8 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/vMob91Data", method = RequestMethod.GET)
-    public List<VMob91> vMob91Data() {
-        List<VMob91> dig13List = mobileService.vMob91Data();
+    public Mob91Dto vMob91Data() {
+        Mob91Dto dig13List = mobileService.vMob91Data();
         return dig13List;
     }
 
@@ -141,6 +142,5 @@ public class MobileController {
         List<VMob92> dig13List = mobileService.vMob92Data();
         return dig13List;
     }
-
 
 }
