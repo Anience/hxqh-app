@@ -35,17 +35,6 @@ public class WiFiController {
         return "wifi/traffic";
     }
 
-    /**
-     * vWifiTrafficData 数据接口
-     * Access 2017-6-26 11:21:26
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
-    public WifiTrafficTdo vWifiTrafficData() {
-        WifiTrafficTdo wifiTrafficTdo = wiFiService.getTrafficData();
-        return wifiTrafficTdo;
-    }
 
     /**
      * vWifiTrafficData 数据接口
@@ -53,8 +42,8 @@ public class WiFiController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/wifiTrafficData", method = RequestMethod.GET)
-    public TrafficTdo wifiTrafficData() {
+    @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
+    public TrafficTdo vWifiTrafficData() {
         TrafficTdo wifiTrafficTdo = wiFiService.getWifiTrafficData();
         return wifiTrafficTdo;
     }

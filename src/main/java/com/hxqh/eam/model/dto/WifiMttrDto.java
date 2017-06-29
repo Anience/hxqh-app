@@ -4,6 +4,7 @@ import com.hxqh.eam.model.view.VWifiMttr;
 import com.hxqh.eam.model.view.VWifiMttrList;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/6/29.
@@ -11,12 +12,12 @@ import java.util.List;
 public class WifiMttrDto {
 
     private List<VWifiMttr> vWifiMttrList;
-    private List<VWifiMttrList> mttrListList;
+    private Map<String ,List<VWifiMttrList>> mttrListList;
 
     public WifiMttrDto() {
     }
 
-    public WifiMttrDto(List<VWifiMttr> vWifiMttrList, List<VWifiMttrList> mttrListList) {
+    public WifiMttrDto(List<VWifiMttr> vWifiMttrList, Map<String, List<VWifiMttrList>> mttrListList) {
         this.vWifiMttrList = vWifiMttrList;
         this.mttrListList = mttrListList;
     }
@@ -29,11 +30,11 @@ public class WifiMttrDto {
         this.vWifiMttrList = vWifiMttrList;
     }
 
-    public List<VWifiMttrList> getMttrListList() {
+    public Map<String, List<VWifiMttrList>> getMttrListList() {
         return mttrListList;
     }
 
-    public void setMttrListList(List<VWifiMttrList> mttrListList) {
+    public void setMttrListList(Map<String, List<VWifiMttrList>> mttrListList) {
         this.mttrListList = mttrListList;
     }
 }

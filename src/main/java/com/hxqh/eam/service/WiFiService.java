@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface WiFiService {
 
-    WifiTrafficTdo getTrafficData();
 
     List<VWifiNumber> vWifiNumberData();
 
