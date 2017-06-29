@@ -70,8 +70,8 @@
 				<li><a href="${ctx}/wifi/ticket" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Ticket Monitoring</a></li>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Daily Ticket Distribution</a></li>
 				<li><a href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Distribution Status Report</a></li>
-				<li><a href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MTTR Targets</a><li>
-                <li><a href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive</a><li>
+				<li><a href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MTTR Targets</a></li>
+                <li><a href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive</a></li>
                 <li><a href="https://dashboard.telkom.co.id/idwifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Map</a></li>
 				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WAG & Controller</a></li>
 				<li><a href="${ctx}/wifi/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>EVENT BUMN LABUHAN BAJO</a></li>
@@ -130,11 +130,10 @@
 				<li><a href="${ctx}/digital/13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
 				<li><a href="${ctx}/digital/14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
 				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-15</a></li>
-
 				<li><a href="${ctx}/digital/17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>
 				<li><a href="${ctx}/digital/18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>
 				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
-				<li><a href="${ctx}/digital/digital13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13,14,17,18</a></li>
+				<li><a href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13,14,17,18</a></li>
 				<li><a href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-16,20</a></li>
 			</ul>
 		</li>

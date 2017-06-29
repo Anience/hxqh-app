@@ -46,11 +46,11 @@
 					<td>REAL</td>
 					<td>ACH</td>
 				</tr>
-				<tr>
+			</thead>
+			<tbody v-if="!isShow">
+				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{tit}}</td>
 				</tr>
-			</thead>
-			<tbody>
 				<tr v-for="item of digList">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
@@ -68,6 +68,88 @@
 					<td>{{item.ioc14}}</td>
 				</tr>
 			</tbody>
+			<tbody v-if="isShow">
+				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
+					<td colspan="14">{{dig13Dto.name}}</td>
+				</tr>
+				<tr v-for="item of dig13Dto.vDig13List">
+					<td>{{item.ioc1}}</td>
+					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
+					<td>{{item.ioc3}}</td>
+					<td>{{item.ioc4}}</td>
+					<td>{{item.ioc5}}</td>
+					<td>{{item.ioc6}}</td>
+					<td>{{item.ioc7}}</td>
+					<td>{{item.ioc8}}</td>
+					<td>{{item.ioc9}}</td>
+					<td>{{item.ioc10}}</td>
+					<td>{{item.ioc11}}</td>
+					<td>{{item.ioc12}}</td>
+					<td>{{item.ioc13}}</td>
+					<td>{{item.ioc14}}</td>
+				</tr>
+
+				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
+					<td colspan="14">{{dig14Dto.name}}</td>
+				</tr>
+				<tr v-for="item of dig14Dto.dig14List">
+					<td>{{item.ioc1}}</td>
+					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
+					<td>{{item.ioc3}}</td>
+					<td>{{item.ioc4}}</td>
+					<td>{{item.ioc5}}</td>
+					<td>{{item.ioc6}}</td>
+					<td>{{item.ioc7}}</td>
+					<td>{{item.ioc8}}</td>
+					<td>{{item.ioc9}}</td>
+					<td>{{item.ioc10}}</td>
+					<td>{{item.ioc11}}</td>
+					<td>{{item.ioc12}}</td>
+					<td>{{item.ioc13}}</td>
+					<td>{{item.ioc14}}</td>
+				</tr>
+
+				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
+					<td colspan="14">{{dig17Dto.name}}</td>
+				</tr>
+				<tr v-for="item of dig17Dto.dig17List">
+					<td>{{item.ioc1}}</td>
+					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
+					<td>{{item.ioc3}}</td>
+					<td>{{item.ioc4}}</td>
+					<td>{{item.ioc5}}</td>
+					<td>{{item.ioc6}}</td>
+					<td>{{item.ioc7}}</td>
+					<td>{{item.ioc8}}</td>
+					<td>{{item.ioc9}}</td>
+					<td>{{item.ioc10}}</td>
+					<td>{{item.ioc11}}</td>
+					<td>{{item.ioc12}}</td>
+					<td>{{item.ioc13}}</td>
+					<td>{{item.ioc14}}</td>
+				</tr>
+
+				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
+					<td colspan="14">{{dig18Dto.name}}</td>
+				</tr>
+				<tr v-for="item of dig18Dto.dig18List">
+					<td>{{item.ioc1}}</td>
+					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
+					<td>{{item.ioc3}}</td>
+					<td>{{item.ioc4}}</td>
+					<td>{{item.ioc5}}</td>
+					<td>{{item.ioc6}}</td>
+					<td>{{item.ioc7}}</td>
+					<td>{{item.ioc8}}</td>
+					<td>{{item.ioc9}}</td>
+					<td>{{item.ioc10}}</td>
+					<td>{{item.ioc11}}</td>
+					<td>{{item.ioc12}}</td>
+					<td>{{item.ioc13}}</td>
+					<td>{{item.ioc14}}</td>
+				</tr>
+			</tbody>
+
 		</table>
 	</div>
 </div>

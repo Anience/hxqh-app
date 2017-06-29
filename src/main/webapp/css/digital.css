@@ -26,10 +26,11 @@ table.dig-13 thead tr:nth-child(1){
 table.dig-13 thead tr:nth-child(2),table.dig-13 thead tr:nth-child(3){
 	font-size: 20pt;
 }
-table.dig-13 thead tr:nth-child(4){
+.dig-tit{
 	text-align: left;
     background-color: #1F3E50;
     font-size: 26px;
+	height: 46px;
 }
 table.dig-13 tbody{
 	text-align:center;
@@ -39,9 +40,9 @@ table.dig-13 tbody{
 table.dig-13 tbody tr{
 	height: 75px;
 }
-table.dig-13 tbody tr:nth-child(1){
+table.dig-13 tbody tr:nth-child(odd){
 	background: #0C0E26;
 }
-table.dig-13 tbody tr:nth-child(2){
+table.dig-13 tbody tr:nth-child(even){
 	background: #112B3A;
 }
