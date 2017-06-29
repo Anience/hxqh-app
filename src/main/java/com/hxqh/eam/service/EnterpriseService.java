@@ -13,9 +13,9 @@ import com.hxqh.eam.model.dto.GovernmentDto;
 public interface EnterpriseService {
 
 
-    public abstract BussinessDto getbussinessData();
+    BussinessDto getbussinessData();
 
-    public abstract GovernmentDto getgovernmentData();
+    GovernmentDto getgovernmentData();
 
-    public abstract EnterpriseDto getenterpriseData();
+    EnterpriseDto getenterpriseData();
 }

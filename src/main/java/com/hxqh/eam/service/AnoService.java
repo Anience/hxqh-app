@@ -11,7 +11,7 @@ import java.util.List;
 public interface AnoService {
 
 
-    public abstract List<VAno81> getAno81Data();
+    List<VAno81> getAno81Data();
 
-    public abstract List<VAno82> getAno82Data();
+    List<VAno82> getAno82Data();
 }

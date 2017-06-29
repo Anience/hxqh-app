@@ -13,22 +13,19 @@ import java.util.List;
  */
 public interface WiFiService {
 
+    WifiTrafficTdo getTrafficData();
 
-    public abstract WifiTrafficTdo getTrafficData();
+    List<VWifiNumber> vWifiNumberData();
 
-    public abstract List<VWifiNumber> vWifiNumberData();
+    List<VWifiTicket> vWifiTicketData();
 
-    public abstract List<VWifiTicket> vWifiTicketData();
+    List<VWifiDistribution> vWifiDistributionData();
 
+    WifiMttrDto vWifiMttrData();
 
-    public abstract List<VWifiDistribution> vWifiDistributionData();
+    List<VWifiMonitoring> vWifiMonitoringData();
 
-    public abstract WifiMttrDto vWifiMttrData();
+    DailyDto wifiDailyData();
 
-    public abstract List<VWifiMonitoring> vWifiMonitoringData();
-
-
-    public abstract DailyDto wifiDailyData();
-
-    public abstract TrafficTdo getWifiTrafficData();
+    TrafficTdo getWifiTrafficData();
 }

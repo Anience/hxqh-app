@@ -1,5 +1,7 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.dto.Mob88Dto;
+import com.hxqh.eam.model.dto.Mob91Dto;
 import com.hxqh.eam.model.view.*;
 
 import java.util.List;
@@ -9,16 +11,15 @@ import java.util.List;
  */
 public interface MobileService {
 
+    Mob91Dto vMob91Data();
 
-    public abstract List<VMob91> vMob91Data();
+    List<VMob92> vMob92Data();
 
-    public abstract List<VMob92> vMob92Data();
+    List<VMob87Class> vMob87ClassData();
 
-    public abstract List<VMob88> vMob88Data();
+    List<VMob86> vMob86Data();
 
-    public abstract List<VMob87Class> vMob87ClassData();
+    List<VMob87> vMob87Data();
 
-    public abstract List<VMob86> vMob86Data();
-
-    public abstract List<VMob87> vMob87Data();
+    Mob88Dto getMob88Data();
 }

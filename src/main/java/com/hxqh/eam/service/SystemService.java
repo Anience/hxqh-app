@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface SystemService {
 
-    public abstract List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto);
+    List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto);
 
 
 }

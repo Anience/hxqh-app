@@ -14,15 +14,15 @@ import java.util.List;
 public interface DigitalService {
 
 
-    public abstract List<VDig13> digital13Data();
+    List<VDig13> digital13Data();
 
-    public abstract List<VDig14> vDig14Data();
+    List<VDig14> vDig14Data();
 
-    public abstract List<VDig17> vDig17Data();
+    List<VDig17> vDig17Data();
 
-    public abstract List<VDig18> vDig18Data();
+    List<VDig18> vDig18Data();
 
-    public abstract Dig13141718Dto vDig13141718Data();
+    Dig13141718Dto vDig13141718Data();
 
 
 }
