@@ -1,6 +1,7 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.model.dto.WifiDailyDto;
+import com.hxqh.eam.model.dto.DailyDto;
+import com.hxqh.eam.model.dto.TrafficTdo;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 
@@ -18,7 +19,6 @@ public interface WiFiService {
 
     public abstract List<VWifiTicket> vWifiTicketData();
 
-    public abstract WifiDailyDto vWifiDailyData();
 
     public abstract List<VWifiDistribution> vWifiDistributionData();
 
@@ -27,4 +27,7 @@ public interface WiFiService {
     public abstract List<VWifiMonitoring> vWifiMonitoringData();
 
 
+    public abstract DailyDto wifiDailyData();
+
+    public abstract TrafficTdo getWifiTrafficData();
 }

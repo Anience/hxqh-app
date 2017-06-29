@@ -4,7 +4,8 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
-import com.hxqh.eam.model.dto.WifiDailyDto;
+import com.hxqh.eam.model.dto.DailyDto;
+import com.hxqh.eam.model.dto.TrafficTdo;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.WiFiService;
@@ -42,7 +43,18 @@ public class WiFiController {
     @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
     public WifiTrafficTdo vWifiTrafficData() {
         WifiTrafficTdo wifiTrafficTdo = wiFiService.getTrafficData();
+        return wifiTrafficTdo;
+    }
 
+    /**
+     * vWifiTrafficData 数据接口
+     * Access 2017-6-26 11:21:26
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/wifiTrafficData", method = RequestMethod.GET)
+    public TrafficTdo wifiTrafficData() {
+        TrafficTdo wifiTrafficTdo = wiFiService.getWifiTrafficData();
         return wifiTrafficTdo;
     }
 
@@ -99,18 +111,20 @@ public class WiFiController {
         return "wifi/daily";
     }
 
+
     /**
-     * vWifiDailyData 数据接口
-     * Access 2017-6-26 11:23:25
+     * wifiDailyData 数据接口
+     *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vWifiDailyData", method = RequestMethod.GET)
-    public WifiDailyDto vWifiDailyData() {
+    @RequestMapping(value = "/wifiDailyData", method = RequestMethod.GET)
+    public DailyDto wifiDailyData() {
 
-        WifiDailyDto dailyDto = wiFiService.vWifiDailyData();
+        DailyDto dailyDto = wiFiService.wifiDailyData();
         return dailyDto;
     }
+
 
     /**
      *  distribution   页面跳转接口
