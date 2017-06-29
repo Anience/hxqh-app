@@ -42,9 +42,9 @@ public class GenerateCode {
             }
             String firstLetterSubString = LetterUtil.firstLetterSubStringAndToLowercase(fun);
 
-//            outResource(model, res, fun, firstLetterSubString);
-           outFind(model, find, fun, firstLetterSubString);
-            //outlistDto(model, listDto, fun, firstLetterSubString);
+            outResource(model, res, fun, firstLetterSubString);
+//           outFind(model, find, fun, firstLetterSubString);
+//            outlistDto(model, listDto, fun, firstLetterSubString);
         }
     }
 

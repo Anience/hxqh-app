@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.MapDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.service.AnoService;
@@ -66,5 +67,28 @@ public class AnoController {
         List<VAno82> ano82Data = anoService.getAno82Data();
         return ano82Data;
     }
+
+
+    /**
+     *  map 页面跳转接口
+     * @return
+     */
+    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    public String map() {
+        return "map/map";
+    }
+
+    /**
+     * ano82 数据接口
+     * Access 2017-6-26 09:40:29
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/mapData", method = RequestMethod.GET)
+    public MapDto mapData() {
+        MapDto mapData = anoService.getMapData();
+        return null;
+    }
+
 
 }
