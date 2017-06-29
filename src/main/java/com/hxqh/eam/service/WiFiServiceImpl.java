@@ -1,10 +1,7 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.dto.DailyDto;
-import com.hxqh.eam.model.dto.TrafficTdo;
-import com.hxqh.eam.model.dto.WifiTrafficTdo;
-import com.hxqh.eam.model.dto.WifiTrafficTopTdo;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +47,8 @@ public class WiFiServiceImpl implements WiFiService {
     @Autowired
     private VWifiTrafficTopDao vWifiTrafficTopDao;
 
+    @Autowired
+    private VWifiMttrListDao vWifiMttrListDao;
 
     @Override
     public WifiTrafficTdo getTrafficData() {
@@ -140,8 +139,11 @@ public class WiFiServiceImpl implements WiFiService {
     }
 
     @Override
-    public List<VWifiMttr> vWifiMttrData() {
-        return vWifiMttrDao.findAll();
+    public WifiMttrDto vWifiMttrData() {
+        List<VWifiMttr> wifiMttrList = vWifiMttrDao.findAll();
+        List<VWifiMttrList> mttrListList = vWifiMttrListDao.findAll();
+        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, mttrListList);
+        return mttrDto;
     }
 
     @Override
@@ -197,7 +199,7 @@ public class WiFiServiceImpl implements WiFiService {
             /*如果取不到数据,那么直接new一个空的ArrayList**/
             groupList(bottomMap, tempList, skuVo.getCount(), skuVo.getDa());
         }
-        TrafficTdo trafficTdo = new TrafficTdo(nameList,topMap,bottomMap);
+        TrafficTdo trafficTdo = new TrafficTdo(nameList, topMap, bottomMap);
         return trafficTdo;
     }
 

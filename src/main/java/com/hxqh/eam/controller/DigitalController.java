@@ -10,11 +10,15 @@ import com.hxqh.eam.model.view.*;
 import com.hxqh.eam.service.DigitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/digital")
@@ -23,42 +27,31 @@ public class DigitalController {
     @Autowired
     private DigitalService digitalService;
 
-
     /**
-     * digital13 页面跳转接口
+     * digital13  digital14 digital17 digital18页面跳转接口
      *
      * @return
      */
-    @RequestMapping(value = "/digital13", method = RequestMethod.GET)
-    public String digital13() {
-        return "digital/digital";
+    @RequestMapping(value = "/{page}", method = RequestMethod.GET)
+    public ModelAndView digital(@PathVariable String page) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", page);
+        return new ModelAndView("digital/digital",result);
     }
 
     /**
      * digital13Data 数据接口
-     * Access 2017-6-26 11:05:05
      *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vDigital13Data", method = RequestMethod.GET)
     public Dig13Dto digital13Data() {
+
         List<VDig13> dig13List = digitalService.digital13Data();
         Dig13Dto dig13Dto = new Dig13Dto(dig13List, Status.IOC13);
         return dig13Dto;
     }
-
-
-    /**
-     * digital14 页面跳转接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/digital14", method = RequestMethod.GET)
-    public String digital14() {
-        return "digital/digital";
-    }
-
 
     /**
      * vDig14Data 数据接口
@@ -72,16 +65,6 @@ public class DigitalController {
         List<VDig14> dig13List = digitalService.vDig14Data();
         Dig14Dto dig14Dto = new Dig14Dto(dig13List, Status.IOC14);
         return dig14Dto;
-    }
-
-    /**
-     * digital17 页面跳转接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/digital17", method = RequestMethod.GET)
-    public String digital17() {
-        return "digital/digital";
     }
 
     /**
@@ -99,16 +82,6 @@ public class DigitalController {
     }
 
     /**
-     * digital18 页面跳转接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/digital18", method = RequestMethod.GET)
-    public String digital18() {
-        return "digital/digital";
-    }
-
-    /**
      * vDig18Data 数据接口
      * Access 2017-6-26 11:06:08
      *
@@ -121,6 +94,9 @@ public class DigitalController {
         Dig18Dto dig18Dto = new Dig18Dto(dig13List, Status.IOC18);
         return dig18Dto;
     }
+
+
+
 
     /**
      * digital13141718 页面跳转接口

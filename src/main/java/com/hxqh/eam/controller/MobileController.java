@@ -28,7 +28,7 @@ public class MobileController {
      */
     @RequestMapping(value = "/mobile87", method = RequestMethod.GET)
     public String mobile87() {
-        return "mobile/mobile87";
+        return "mobile/mob87";
     }
 
     /**
@@ -62,7 +62,7 @@ public class MobileController {
      */
     @RequestMapping(value = "/mobile86", method = RequestMethod.GET)
     public String mobile86() {
-        return "mobile/mobile86";
+        return "mobile/mob86";
     }
 
     /**
@@ -83,7 +83,7 @@ public class MobileController {
      */
     @RequestMapping(value = "/mobile88", method = RequestMethod.GET)
     public String mobile88() {
-        return "mobile/mobile88";
+        return "mobile/mob88";
     }
 
     /**

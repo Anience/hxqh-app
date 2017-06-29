@@ -19,7 +19,7 @@ public class GenerateClass {
     private static final String DAO = "import com.hxqh.eam.dao.";
 
     public static void main(String[] args) throws IOException {
-        //generateDaoCode();
+        generateDaoCode();
         //generateControllerAndServiceCode("enterprise", "view");
     }
 
