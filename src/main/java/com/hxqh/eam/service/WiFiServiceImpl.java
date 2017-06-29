@@ -168,8 +168,19 @@ public class WiFiServiceImpl implements WiFiService {
             groupList(skuIdMap, tempList, skuVo.getCount(), skuVo.getDa());
         }
 
-        DailyDto dailyDto = new DailyDto(skuIdMap, list);
+        //补零
+        List<BigDecimal> des = skuIdMap.get(DAILY[2]);
+        if(des.size()<4)
+        {
+            int i = 4-des.size();
+            for (int j=0;j<i;j++)
+            {
+                des.add(new BigDecimal(0));
+            }
+            skuIdMap.put(DAILY[2],des);
+        }
 
+        DailyDto dailyDto = new DailyDto(skuIdMap, list);
         return dailyDto;
     }
 
