@@ -14,6 +14,8 @@ import java.math.BigDecimal;
 public class VWifiDaily implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	private Integer rn;
+
 	@Column(name="\"COUNT\"")
 	private BigDecimal count;
 
@@ -22,6 +24,14 @@ public class VWifiDaily implements Serializable {
 	private String name;
 
 	public VWifiDaily() {
+	}
+
+	public Integer getRn() {
+		return rn;
+	}
+
+	public void setRn(Integer rn) {
+		this.rn = rn;
 	}
 
 	public BigDecimal getCount() {

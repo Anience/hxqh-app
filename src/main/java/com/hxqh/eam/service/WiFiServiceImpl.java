@@ -1,12 +1,15 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.dto.DailyDto;
+import com.hxqh.eam.model.dto.TrafficTdo;
 import com.hxqh.eam.model.dto.WifiTrafficTdo;
 import com.hxqh.eam.model.dto.WifiTrafficTopTdo;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -16,7 +19,8 @@ import java.util.*;
 public class WiFiServiceImpl implements WiFiService {
 
 
-    private static final String[] TREG = {"TREG 1",
+    private static final String[] TREG = {
+            "TREG 1",
             "TREG 2",
             "TREG 3",
             "TREG 4",
@@ -24,10 +28,9 @@ public class WiFiServiceImpl implements WiFiService {
             "TREG 6",
             "TREG 7"};
 
-    private static final String[] CONS = {"CONS",
-            "DWS",
-            "EBIS"};
+    private static final String[] CONS = {"CONS", "DWS", "EBIS"};
 
+    private static final String[] DAILY = {"DCS", "DES", "DGS"};
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -63,7 +66,8 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
 
         topJson(trafficTopList, nameTopList, strTop, stringBuilderTop);
-        topBottom(trafficBottomList,nameBottomList,strBottom,stringBuilderBottom);
+        topBottom(trafficBottomList, nameBottomList, strBottom, stringBuilderBottom);
+
         WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
         trafficTdo.setNameList(nameTopList);
         trafficTdo.setStrTop(strTop);
@@ -129,10 +133,6 @@ public class WiFiServiceImpl implements WiFiService {
         return vWifiTicketDao.findAll();
     }
 
-    @Override
-    public List<VWifiDaily> vWifiDailyData() {
-        return vWifiDailyDao.findAll();
-    }
 
     @Override
     public List<VWifiDistribution> vWifiDistributionData() {
@@ -147,5 +147,68 @@ public class WiFiServiceImpl implements WiFiService {
     @Override
     public List<VWifiMonitoring> vWifiMonitoringData() {
         return vWifiMonitoringDao.findAll();
+    }
+
+    @Override
+    public DailyDto wifiDailyData() {
+        List<VWifiDaily> dailyList = vWifiDailyDao.findAll();
+
+        List<String> list = new LinkedList<>();
+        for (int x = 0; x < 4; x++) {
+            list.add(dailyList.get(x).getName());
+        }
+
+        /* 分组算法**/
+        Map<String, List<BigDecimal>> skuIdMap = new HashMap<>();
+        for (VWifiDaily skuVo : dailyList) {
+            List<BigDecimal> tempList = skuIdMap.get(skuVo.getDa());
+            /*如果取不到数据,那么直接new一个空的ArrayList**/
+            groupList(skuIdMap, tempList, skuVo.getCount(), skuVo.getDa());
+        }
+
+        DailyDto dailyDto = new DailyDto(skuIdMap, list);
+
+        return dailyDto;
+    }
+
+    @Override
+    public TrafficTdo getWifiTrafficData() {
+        //先取出全部数据
+        List<VWifiTrafficTop> trafficTopList = vWifiTrafficTopDao.findAll();
+        List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
+
+
+        List<String> nameList = new LinkedList<>();
+        for (int x = 0; x < 26; x++) {
+            nameList.add(trafficTopList.get(x).getName());
+        }
+
+         /* 分组算法**/
+        Map<String, List<BigDecimal>> topMap = new HashMap<>();
+        for (VWifiTrafficTop skuVo : trafficTopList) {
+            List<BigDecimal> tempList = topMap.get(skuVo.getDa());
+            /*如果取不到数据,那么直接new一个空的ArrayList**/
+            groupList(topMap, tempList, skuVo.getCount(), skuVo.getDa());
+        }
+
+        Map<String, List<BigDecimal>> bottomMap = new HashMap<>();
+        for (VWifiTrafficBottom skuVo : trafficBottomList) {
+            List<BigDecimal> tempList = bottomMap.get(skuVo.getDa());
+            /*如果取不到数据,那么直接new一个空的ArrayList**/
+            groupList(bottomMap, tempList, skuVo.getCount(), skuVo.getDa());
+        }
+        TrafficTdo trafficTdo = new TrafficTdo(nameList,topMap,bottomMap);
+        return trafficTdo;
+    }
+
+    private void groupList(Map<String, List<BigDecimal>> skuIdMap, List<BigDecimal> tempList, BigDecimal count, String da) {
+        if (tempList == null) {
+            tempList = new LinkedList<>();
+            tempList.add(count);
+            skuIdMap.put(da, tempList);
+        } else {
+        /*某个sku之前已经存放过了,则直接追加数据到原来的List里**/
+            tempList.add(count);
+        }
     }
 }

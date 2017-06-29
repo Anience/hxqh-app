@@ -21,7 +21,7 @@
 		<div class="login-form">
 			<div class="form-layout">
 				<h4>TelKom Dashboard</h4>
-				<form action="${ctx}/system/login" onsubmit="return checkLogin();">
+				<form action="${ctx}/system/login" method="post" onsubmit="return checkLogin();">
 					<div class="login-item">
 						<label>UserName:</label>
 						<input type="text" id="userName" name="name"/>
