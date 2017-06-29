@@ -23,6 +23,6 @@
 		<div id="echart1" style="height: 400px;width: 100%;"></div>
 	</div>
 </body>
-<script type="text/javascript" src="${ctx}/js/daily.js"></script>
+<script type="text/javascript" src="${ctx}/js/wifi/daily.js"></script>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

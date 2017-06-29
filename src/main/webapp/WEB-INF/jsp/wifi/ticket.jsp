@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="${ctx}/script/vue.js"></script>
-	<script src="${ctx}/js/ticket.js"></script>
+	<script src="${ctx}/js/wifi/ticket.js"></script>
 	<script>
 		var _ctx = "${ctx}";
 	</script>

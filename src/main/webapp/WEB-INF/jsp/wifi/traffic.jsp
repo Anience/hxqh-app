@@ -26,6 +26,6 @@
 		<div class="row" style="height: 50%;width:100%;" id="echart2"></div>
 	</div>
 </body>
-<script type="text/javascript" src="${ctx}/js/traffic.js"></script>
+<script type="text/javascript" src="${ctx}/js/wifi/traffic.js"></script>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

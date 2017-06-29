@@ -20,8 +20,8 @@ $(function(){
         var xAxisData = ['周一','周二','周三','周四','周五','周六','周日'];
         var seriesData = [];
         /*for(var i=0,len=echartData.length;i<len;i++){
-            legendData = echartData[i].name;
-        }*/
+         legendData = echartData[i].name;
+         }*/
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             tooltip : {

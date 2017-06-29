@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
+	<script>
+		var _ctx = "${ctx}";
+	</script>
 </head>
 <body>
 <div id="mob88">
@@ -25,46 +29,46 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>NAS</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-1</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-2</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-3</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-4</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-5</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-6</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
-					<tr>
-						<td>TREG-7</td>
-						<td>1/18</td>
-						<td>1/20</td>
-					</tr>
+						<tr>
+							<td>NAS</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-1</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-2</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-3</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-4</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-5</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-6</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
+						<tr>
+							<td>TREG-7</td>
+							<td>1/18</td>
+							<td>1/20</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -77,4 +81,5 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="${ctx}/js/mob88.js"></script>
 </html>

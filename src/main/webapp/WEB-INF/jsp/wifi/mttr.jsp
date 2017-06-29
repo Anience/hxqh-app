@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="${ctx}/js/mttr.js"></script>
+	<script type="text/javascript" src="${ctx}/js/wifi/mttr.js"></script>
 	<script src="${ctx}/script/vue.js"></script>
 	<script>
 		var _ctx = "${ctx}";

@@ -10,6 +10,9 @@
 	<script>
 		var _ctx = "${ctx}";
 	</script>
+	<script>
+		var _ctx = "${ctx}";
+	</script>
 	<style>
 		#mob91{
 			width: 100%;

@@ -4,8 +4,8 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="${ctx}/css/ano.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/ticket.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
@@ -15,40 +15,36 @@
 </head>
 <body>
 <div class="ticket-layout">
-	<h4>WIFI TICKET MONITORING</h4>
-	<table class="ticket">
+	<h4>Number of Access Point</h4>
+	<table class="num">
 		<thead>
 			<tr>
-				<td rowspan="3">TREG</td>
-				<td colspan="6">Gangguan H-1</td>
-				<td colspan="7">Gangguan HI</td>
+				<td rowspan="2">TREG</td>
+				<td colspan="4">Kategori</td>
+				<td colspan="4">Vendor</td>
+				<td colspan="4">Status</td>
+				<td colspan="2">Skema Bisnis</td>
+				<td rowspan="2">Total</td>
 			</tr>
 			<tr>
-				<td colspan="2">OPEN</td>
-				<td colspan="2">CLOSE</td>
-				<td colspan="2">OPEN H-1</td>
-				<td colspan="2">CREATED</td>
-				<td colspan="2">CLOSE</td>
-				<td colspan="2">OPEN</td>
-				<td rowspan="2">STATUS</td>
-			</tr>
-			<tr>
-				<td>Tiket</td>
+				<td>POI Platinum</td>
+				<td>Gold</td>
+				<td>Regular</td>
+				<td>Others</td>
+				<td>AUTELAN</td>
+				<td>CISCO</td>
 				<td>AP</td>
-				<td>Tiket</td>
-				<td>AP</td>
-				<td>Tiket</td>
-				<td>AP</td>
-				<td>Tiket</td>
-				<td>AP</td>
-				<td>Tiket</td>
-				<td>AP</td>
-				<td>Tiket</td>
-				<td>AP</td>
+				<td>HUAWEI</td>
+				<td>TP_LINK</td>
+				<td>Up Down</td>
+				<td>Under Verify</td>
+				<td>No status </td>
+				<td>Basic</td>
+				<td>Manage Service</td>
 			</tr>
 		</thead>
-		<tbody id="ano82-data">
-			<tr v-for="item of anoList">
+		<tbody id="num-data">
+			<tr v-for="item of numList">
 				<td>{{item.ioc1}}</td>
 				<td>{{item.ioc2}}</td>
 				<td>{{item.ioc3}}</td>
@@ -60,10 +56,16 @@
 				<td>{{item.ioc9}}</td>
 				<td>{{item.ioc10}}</td>
 				<td>{{item.ioc11}}</td>
+				<td>{{item.ioc12}}</td>
+				<td>{{item.ioc13}}</td>
+				<td>{{item.ioc14}}</td>
+				<td>{{item.ioc15}}</td>
+				<td>{{item.ioc16}}</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/ano/ano81.js"></script>
+<script type="text/javascript" src="${ctx}/js/wifi/num.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

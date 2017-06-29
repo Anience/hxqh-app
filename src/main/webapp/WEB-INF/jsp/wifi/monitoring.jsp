@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
+	<script>
+		var _ctx = "${ctx}";
+	</script>
 </head>
 <body>
 <div class="ticket-layout">
@@ -59,75 +63,37 @@
 			<td>T</td>
 		</tr>
 		</thead>
-		<tbody>
-		<tr>
-			<td>TREG 1</td>
-
-			<td>12</td>
-			<td>48</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-		</tr>
-		<tr>
-			<td>TREG 1</td>
-
-			<td>12</td>
-			<td>48</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-
-			<td>2</td>
-			<td>8</td>
-			<td>8</td>
-			<td>8</td>
-		</tr>
+		<tbody id="moni-data">
+			<tr v-for="item of moniList">
+				<td>{{item.ioc1}}</td>
+				<td>{{item.ioc2}}</td>
+				<td>{{item.ioc3}}</td>
+				<td>{{item.ioc4}}</td>
+				<td>{{item.ioc5}}</td>
+				<td>{{item.ioc6}}</td>
+				<td>{{item.ioc7}}</td>
+				<td>{{item.ioc8}}</td>
+				<td>{{item.ioc9}}</td>
+				<td>{{item.ioc10}}</td>
+				<td>{{item.ioc11}}</td>
+				<td>{{item.ioc12}}</td>
+				<td>{{item.ioc13}}</td>
+				<td>{{item.ioc14}}</td>
+				<td>{{item.ioc15}}</td>
+				<td>{{item.ioc16}}</td>
+				<td>{{item.ioc17}}</td>
+				<td>{{item.ioc18}}</td>
+				<td>{{item.ioc19}}</td>
+				<td>{{item.ioc20}}</td>
+				<td>{{item.ioc21}}</td>
+				<td>{{item.ioc22}}</td>
+				<td>{{item.ioc23}}</td>
+				<td>{{item.ioc24}}</td>
+				<td>{{item.ioc25}}</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
 </body>
+<script type="text/javascript" src="${ctx}/js/wifi/monitoring.js"></script>
 </html>

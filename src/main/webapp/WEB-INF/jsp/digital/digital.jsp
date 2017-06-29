@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="${ctx}/css/digital.css">
 	<script src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="${ctx}/script/vue.js"></script>
-	<script src="${ctx}/js/digital.js"></script>
+	<script src="${ctx}/js/digital/digital.js"></script>
 	<script>
 		var _ctx = "${ctx}";
 	</script>
