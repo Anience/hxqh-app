@@ -13,6 +13,7 @@
 	<script src="${ctx}/js/digital/digital.js"></script>
 	<script>
 		var _ctx = "${ctx}";
+		var urlNum = "${page}";
 	</script>
 </head>
 <body>

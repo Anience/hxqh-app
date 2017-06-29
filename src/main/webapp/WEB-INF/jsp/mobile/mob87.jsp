@@ -42,5 +42,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mob87.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/mob87.js"></script>
 </html>

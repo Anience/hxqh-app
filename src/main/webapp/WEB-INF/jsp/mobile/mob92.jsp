@@ -26,6 +26,6 @@
 		<div id="echart1" style="width: 100%;height: 100%;"></div>
 	</div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mob92.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/mob92.js"></script>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

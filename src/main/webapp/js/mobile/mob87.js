@@ -13,7 +13,7 @@ $(function () {
         created: function () {
             var self = this;
             $.ajax({
-                url: _ctx+"/wifi/vWifiNumberData",
+                url: _ctx+"/mobile/vMob87Data",
                 method: "get",
                 dataType: "json",
                 success: function (data) {

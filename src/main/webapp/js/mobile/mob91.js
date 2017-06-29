@@ -3,9 +3,10 @@
  */
 $(function () {
     var digitalData = new Vue({
-        el: "#ano81-data",
+        el: "#mob91-data",
         data: {
-            anoList:[]
+            mobLeft:[],
+            mobRight:[]
         },
         methods: {
 
@@ -13,12 +14,12 @@ $(function () {
         created: function () {
             var self = this;
             $.ajax({
-                url: _ctx+"/wifi/vWifiNumberData",
+                url: _ctx+"/mobile/vMob91Data",
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.anoList = data;
-
+                    self.mobLeft = data;
+                    self.mobRight = data;
                 },
                 error: function () {
 

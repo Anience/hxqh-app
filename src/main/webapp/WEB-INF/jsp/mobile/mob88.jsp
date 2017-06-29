@@ -20,13 +20,13 @@
 			<div class="col-sm-1"></div>
 			<div class="col-sm-3">
 				<h4>Performance</h4>
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="mob88-data">
 					<thead>
-					<tr>
-						<td></td>
-						<td>SCR:</td>
-						<td>PDP-SR:</td>
-					</tr>
+						<tr>
+							<td></td>
+							<td>SCR:</td>
+							<td>PDP-SR:</td>
+						</tr>
 					</thead>
 					<tbody>
 						<tr>
@@ -81,5 +81,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mob88.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/mob88.js"></script>
 </html>

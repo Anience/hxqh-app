@@ -14,41 +14,22 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
-	<h4>WIFI TICKET MONITORING</h4>
-	<table class="ticket">
+<div class="ano-layout">
+	<h4>Gamas Node Metro & Access</h4>
+	<table class="ano82" cellpadding="2" id="ano82-data">
 		<thead>
-		<tr>
-			<td rowspan="3">TREG</td>
-			<td colspan="6">Gangguan H-1</td>
-			<td colspan="7">Gangguan HI</td>
-		</tr>
-		<tr>
-			<td colspan="2">OPEN</td>
-			<td colspan="2">CLOSE</td>
-			<td colspan="2">OPEN H-1</td>
-			<td colspan="2">CREATED</td>
-			<td colspan="2">CLOSE</td>
-			<td colspan="2">OPEN</td>
-			<td rowspan="2">STATUS</td>
-		</tr>
-		<tr>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-		</tr>
+			<tr style="height: 50px;">
+				<td>Priority</td>
+				<td>Incident</td>
+				<td>Date</td>
+				<td>Alarm Summary</td>
+				<td>Status</td>
+				<td>Symptom</td>
+				<td>Solution</td>
+			</tr>
 		</thead>
-		<tbody id="ano82-data">
-			<tr v-for="item of anoList">
+		<tbody>
+			<tr v-for="item in anoList">
 				<td>{{item.ioc1}}</td>
 				<td>{{item.ioc2}}</td>
 				<td>{{item.ioc3}}</td>
@@ -56,10 +37,6 @@
 				<td>{{item.ioc5}}</td>
 				<td>{{item.ioc6}}</td>
 				<td>{{item.ioc7}}</td>
-				<td>{{item.ioc8}}</td>
-				<td>{{item.ioc9}}</td>
-				<td>{{item.ioc10}}</td>
-				<td>{{item.ioc11}}</td>
 			</tr>
 		</tbody>
 	</table>

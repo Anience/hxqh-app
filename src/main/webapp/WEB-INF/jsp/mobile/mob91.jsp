@@ -13,49 +13,39 @@
 		var _ctx = "${ctx}";
 	</script>
 </head>
-<div id="mob91">
+<div id="mob91" >
 	<h3>SQUAT</h3>
-	<div class="row">
+	<div class="row" id="mob91-data">
 		<div class="col-sm-6">
 			<table>
 				<thead>
-				<tr>
-					<td colspan="7">ALPHA</td>
-				</tr>
-				<tr>
-					<td rowspan="2">TREG</td>
-					<td colspan="2">TICKETS</td>
-					<td colspan="2">PICKUP</td>
-					<td colspan="2">COMPLY</td>
-				</tr>
-				<tr>
-					<td>TOTAL</td>
-					<td>ASSIGNED</td>
-					<td>TOTAL</td>
-					<td>%</td>
-					<td>TOTAL</td>
-					<td>%</td>
-				</tr>
+					<tr>
+						<td colspan="7">ALPHA</td>
+					</tr>
+					<tr>
+						<td rowspan="2">TREG</td>
+						<td colspan="2">TICKETS</td>
+						<td colspan="2">PICKUP</td>
+						<td colspan="2">COMPLY</td>
+					</tr>
+					<tr>
+						<td>TOTAL</td>
+						<td>ASSIGNED</td>
+						<td>TOTAL</td>
+						<td>%</td>
+						<td>TOTAL</td>
+						<td>%</td>
+					</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>NAS</td>
-					<td>ASSIGNED</td>
-					<td>TOTAL</td>
-					<td>%</td>
-					<td>TOTAL</td>
-					<td>%</td>
-					<td>%</td>
-				</tr>
-				<tr>
-					<td>REG-1</td>
-					<td>ASSIGNED</td>
-					<td>TOTAL</td>
-					<td>%</td>
-					<td>TOTAL</td>
-					<td>%</td>
-					<td>%</td>
-				</tr>
+					<tr v-for="item in mobLeft">
+						<td>{{item.ioc2}}</td>
+						<td>{{item.ioc3}}</td>
+						<td>{{item.ioc4}}</td>
+						<td>{{item.ioc5}}</td>
+						<td>{{item.ioc6}}</td>
+						<td>{{item.ioc7}}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -81,23 +71,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>NAS</td>
-						<td>ASSIGNED</td>
-						<td>TOTAL</td>
-						<td>%</td>
-						<td>TOTAL</td>
-						<td>%</td>
-						<td>%</td>
-					</tr>
-					<tr>
-						<td>REG-1</td>
-						<td>ASSIGNED</td>
-						<td>TOTAL</td>
-						<td>%</td>
-						<td>TOTAL</td>
-						<td>%</td>
-						<td>%</td>
+					<tr v-for="item in mobRight">
+						<td>{{item.ioc2}}</td>
+						<td>{{item.ioc3}}</td>
+						<td>{{item.ioc4}}</td>
+						<td>{{item.ioc5}}</td>
+						<td>{{item.ioc6}}</td>
+						<td>{{item.ioc7}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -105,5 +85,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mob91.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/mob91.js"></script>
 </html>

@@ -127,12 +127,12 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DIGITAL<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/digital/digital13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
-				<li><a href="${ctx}/digital/digital14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
+				<li><a href="${ctx}/digital/13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
+				<li><a href="${ctx}/digital/14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
 				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-15</a></li>
 
-				<li><a href="${ctx}/digital/digital17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>
-				<li><a href="${ctx}/digital/digital18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>
+				<li><a href="${ctx}/digital/17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>
+				<li><a href="${ctx}/digital/18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>
 				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
 				<li><a href="${ctx}/digital/digital13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13,14,17,18</a></li>
 				<li><a href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-16,20</a></li>

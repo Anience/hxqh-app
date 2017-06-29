@@ -49,15 +49,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="bg-red">94.77</td>
-								<td class="bg-red">94.77</td>
-								<td class="bg-blue">94.77</td>
-							</tr>
-							<tr>
-								<td class="bg-red">94.77</td>
-								<td class="bg-red">94.77</td>
-								<td class="bg-blue">94.77</td>
+							<tr v-for="item in mobList">
+								<td class="bg-red">{{item.ioc2}}</td>
+								<td class="bg-red">{{item.ioc3}}</td>
+								<td class="bg-blue">{{item.ioc4}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -73,15 +68,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="bg-red">94.77</td>
-								<td class="bg-red">94.77</td>
-								<td class="bg-blue">94.77</td>
-							</tr>
-							<tr>
-								<td class="bg-red">94.77</td>
-								<td class="bg-red">94.77</td>
-								<td class="bg-blue">94.77</td>
+							<tr v-for="item in mobList">
+								<td class="bg-red">{{item.ioc5}}</td>
+								<td class="bg-red">{{item.ioc6}}</td>
+								<td class="bg-blue">{{item.ioc7}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -92,5 +82,5 @@
 	</div>ss
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mob86.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/mob86.js"></script>
 </html>

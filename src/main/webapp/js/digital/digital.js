@@ -17,14 +17,14 @@ $(function () {
         },
         created: function () {
             var self = this;
+            var tmpurl = _ctx+"/digital/vDigital"+urlNum+"Data";
             $.ajax({
-                url: _ctx+"/digital/vDigital13Data",
+                url: tmpurl,
                 method: "get",
                 dataType: "json",
                 success: function (data) {
                     self.tit = data.name;
                     self.digList = data.vDig13List;
-
                 },
                 error: function () {
 
