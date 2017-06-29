@@ -60,7 +60,7 @@ public class DigitalController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vDig14Data", method = RequestMethod.GET)
+    @RequestMapping(value = "/vDigital14Data", method = RequestMethod.GET)
     public Dig14Dto vDig14Data() {
         List<VDig14> dig13List = digitalService.vDig14Data();
         Dig14Dto dig14Dto = new Dig14Dto(dig13List, Status.IOC14);
@@ -74,7 +74,7 @@ public class DigitalController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vDig17Data", method = RequestMethod.GET)
+    @RequestMapping(value = "/vDigital17Data", method = RequestMethod.GET)
     public Dig17Dto vDig17Data() {
         List<VDig17> dig17List = digitalService.vDig17Data();
         Dig17Dto dig17Dto = new Dig17Dto(dig17List, Status.IOC17);
@@ -88,7 +88,7 @@ public class DigitalController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vDig18Data", method = RequestMethod.GET)
+    @RequestMapping(value = "/vDigital18Data", method = RequestMethod.GET)
     public Dig18Dto vDig18Data() {
         List<VDig18> dig13List = digitalService.vDig18Data();
         Dig18Dto dig18Dto = new Dig18Dto(dig13List, Status.IOC18);
