@@ -28,7 +28,7 @@ public class DigitalController {
     private DigitalService digitalService;
 
     /**
-     * digital13  digital14 digital17 digital18页面跳转接口
+     * digital13  digital14 digital17 digital18   13141718 公用页面跳转接口
      *
      * @return
      */
@@ -95,26 +95,13 @@ public class DigitalController {
         return dig18Dto;
     }
 
-
-
-
-    /**
-     * digital13141718 页面跳转接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/digital13141718", method = RequestMethod.GET)
-    public String digital13141718() {
-        return "digital/digital";
-    }
-
     /**
      * vDig13141718Data 数据接口
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/vDig13141718Data", method = RequestMethod.GET)
+    @RequestMapping(value = "/vDigital13141718Data", method = RequestMethod.GET)
     public Dig13141718Dto vDig13141718Data() {
         return digitalService.vDig13141718Data();
     }

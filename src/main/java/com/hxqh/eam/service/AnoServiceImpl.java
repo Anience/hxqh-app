@@ -1,9 +1,8 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.dao.VAno81Dao;
-import com.hxqh.eam.dao.VAno82Dao;
-import com.hxqh.eam.model.view.VAno81;
-import com.hxqh.eam.model.view.VAno82;
+import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.dto.MapDto;
+import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +22,16 @@ public class AnoServiceImpl implements AnoService {
     @Autowired
     private VAno82Dao ano82Dao;
 
+    @Autowired
+    private VMapMaplineDao mapMaplineDao;
+
+    @Autowired
+    private VMapNeighbourDao mapNeighbourDao;
+
+    @Autowired
+    private VMapStreetmapDao mapStreetmapDao;
+
+
     @Override
     public List<VAno81> getAno81Data() {
         return vAno81Dao.findAll();
@@ -31,5 +40,14 @@ public class AnoServiceImpl implements AnoService {
     @Override
     public List<VAno82> getAno82Data() {
         return ano82Dao.findAll();
+    }
+
+    @Override
+    public MapDto getMapData() {
+        List<VMapMapline> mapMapline = mapMaplineDao.findAll();
+        List<VMapNeighbour> mapNeighbour = mapNeighbourDao.findAll();
+        List<VMapStreetmap> mapStreetmap = mapStreetmapDao.findAll();
+        MapDto mapDto = new MapDto(mapMapline,mapNeighbour,mapStreetmap);
+        return mapDto;
     }
 }
