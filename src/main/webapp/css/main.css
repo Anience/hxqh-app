@@ -191,7 +191,8 @@
     margin-left: 230px;
     background: #fff;
     height: 93%;
-    overflow: auto;
+    overflow: hidden;
+
 }
 
 .content {

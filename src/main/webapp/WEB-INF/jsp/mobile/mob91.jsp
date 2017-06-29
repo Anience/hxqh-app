@@ -39,6 +39,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="item in mobLeft">
+						<td>{{item.ioc1}}</td>
 						<td>{{item.ioc2}}</td>
 						<td>{{item.ioc3}}</td>
 						<td>{{item.ioc4}}</td>
@@ -72,6 +73,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="item in mobRight">
+						<td>{{item.ioc1}}</td>
 						<td>{{item.ioc2}}</td>
 						<td>{{item.ioc3}}</td>
 						<td>{{item.ioc4}}</td>

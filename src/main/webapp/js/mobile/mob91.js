@@ -18,8 +18,8 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.mobLeft = data;
-                    self.mobRight = data;
+                    self.mobLeft = data.mob91LeftList;
+                    self.mobRight = data.mob9RightList;
                 },
                 error: function () {
 
