@@ -13,14 +13,14 @@ import javax.persistence.*;
 public class VMapStreetmap implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Object mapx;
+	private String mapx;
 
-	private Object mapy;
+	private String mapy;
 
 	@Id
-	private Object name;
+	private String name;
 
-	private Object openstreetmapid;
+	private String openstreetmapid;
 
 	@Column(name="\"TYPE\"")
 	private String type;
@@ -28,44 +28,43 @@ public class VMapStreetmap implements Serializable {
 	public VMapStreetmap() {
 	}
 
-	public Object getMapx() {
-		return this.mapx;
+	public String getMapx() {
+		return mapx;
 	}
 
-	public void setMapx(Object mapx) {
+	public void setMapx(String mapx) {
 		this.mapx = mapx;
 	}
 
-	public Object getMapy() {
-		return this.mapy;
+	public String getMapy() {
+		return mapy;
 	}
 
-	public void setMapy(Object mapy) {
+	public void setMapy(String mapy) {
 		this.mapy = mapy;
 	}
 
-	public Object getName() {
-		return this.name;
+	public String getName() {
+		return name;
 	}
 
-	public void setName(Object name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Object getOpenstreetmapid() {
-		return this.openstreetmapid;
+	public String getOpenstreetmapid() {
+		return openstreetmapid;
 	}
 
-	public void setOpenstreetmapid(Object openstreetmapid) {
+	public void setOpenstreetmapid(String openstreetmapid) {
 		this.openstreetmapid = openstreetmapid;
 	}
 
 	public String getType() {
-		return this.type;
+		return type;
 	}
 
 	public void setType(String type) {
 		this.type = type;
 	}
-
 }

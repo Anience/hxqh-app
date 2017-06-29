@@ -15,56 +15,55 @@ public class VMapNeighbour implements Serializable {
 
 	private String linecolor;
 
-	private Object neighbourx;
+	private String neighbourx;
 
-	private Object neighboury;
+	private String neighboury;
 
 	@Id
-	private Object nodex;
+	private String nodex;
 
-	private Object nodey;
+	private String nodey;
 
 	public VMapNeighbour() {
 	}
 
 	public String getLinecolor() {
-		return this.linecolor;
+		return linecolor;
 	}
 
 	public void setLinecolor(String linecolor) {
 		this.linecolor = linecolor;
 	}
 
-	public Object getNeighbourx() {
-		return this.neighbourx;
+	public String getNeighbourx() {
+		return neighbourx;
 	}
 
-	public void setNeighbourx(Object neighbourx) {
+	public void setNeighbourx(String neighbourx) {
 		this.neighbourx = neighbourx;
 	}
 
-	public Object getNeighboury() {
-		return this.neighboury;
+	public String getNeighboury() {
+		return neighboury;
 	}
 
-	public void setNeighboury(Object neighboury) {
+	public void setNeighboury(String neighboury) {
 		this.neighboury = neighboury;
 	}
 
-	public Object getNodex() {
-		return this.nodex;
+	public String getNodex() {
+		return nodex;
 	}
 
-	public void setNodex(Object nodex) {
+	public void setNodex(String nodex) {
 		this.nodex = nodex;
 	}
 
-	public Object getNodey() {
-		return this.nodey;
+	public String getNodey() {
+		return nodey;
 	}
 
-	public void setNodey(Object nodey) {
+	public void setNodey(String nodey) {
 		this.nodey = nodey;
 	}
-
 }
