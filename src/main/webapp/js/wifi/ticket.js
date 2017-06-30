@@ -5,7 +5,8 @@ $(function () {
     var digitalData = new Vue({
         el: "#ticket-data",
         data: {
-            ticketList:[]
+            ticketList:[],
+            test: 0
         },
         methods: {
 

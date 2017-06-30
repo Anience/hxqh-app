@@ -22,7 +22,7 @@
 				<h3>Nasional</h3>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="mob87">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-2">
 				<ul>
@@ -37,10 +37,15 @@
 					<li><a href="javascript:void(0);">TREG-7:</a></li>
 				</ul>
 			</div>
-			<div class="col-sm-9"></div>
+			<div class="col-sm-9">
+				<div id="echart1" style="height: 300px;width: 100%;">
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob87.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>
