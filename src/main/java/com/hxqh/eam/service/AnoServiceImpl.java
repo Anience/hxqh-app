@@ -1,6 +1,7 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.dto.IndiHomeDto;
 import com.hxqh.eam.model.dto.MapDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class AnoServiceImpl implements AnoService {
     private VMapNeighbourDao mapNeighbourDao;
     @Autowired
     private VMapStreetmapDao mapStreetmapDao;
+    @Autowired
+    private VHomeImpactDao homeImpactDao;
+    @Autowired
+    private VHomeRegularDao homeRegularDao;
+    @Autowired
+    private VHomeTotalDao homeTotalDao;
 
 
     @Override
@@ -41,7 +48,17 @@ public class AnoServiceImpl implements AnoService {
         List<VMapMapline> mapMapline = mapMaplineDao.findAll();
         List<VMapNeighbour> mapNeighbour = mapNeighbourDao.findAll();
         List<VMapStreetmap> mapStreetmap = mapStreetmapDao.findAll();
-        MapDto mapDto = new MapDto(mapMapline,mapNeighbour,mapStreetmap);
+        MapDto mapDto = new MapDto(mapMapline, mapNeighbour, mapStreetmap);
         return mapDto;
+    }
+
+    @Override
+    public IndiHomeDto getIndiHomeData() {
+        List<VHomeImpact> homeImpact = homeImpactDao.findAll();
+        List<VHomeRegular> homeRegular = homeRegularDao.findAll();
+        List<VHomeTotal> homeTotal = homeTotalDao.findAll();
+
+        IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact,homeRegular,homeTotal);
+        return indiHomeDto;
     }
 }

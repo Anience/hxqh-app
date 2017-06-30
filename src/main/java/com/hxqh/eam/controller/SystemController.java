@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -85,13 +86,14 @@ public class SystemController {
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
         session.removeAttribute("sessionInfo");
         session.invalidate();
+        //使用权限管理工具进行用户的退出，跳出登录，给出提示信息
+        //SecurityUtils.getSubject().logout();
+        redirectAttributes.addFlashAttribute("message", "您已安全退出!");
         return "redirect:/login.jsp";
     }
-
-
 
 
 }
