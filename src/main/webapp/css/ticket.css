@@ -79,9 +79,6 @@ table.MTTR thead tr td{
     font-size: 20px;
     font-weight: normal;
 }
-table.MTTR tbody tr td:nth-last-child(1){
-    background: #009900;
-}
 table.num tr td{
     font-size: 20px;
 }
@@ -139,4 +136,13 @@ span.bule-star{
     background-size: 22px 22px;
     padding-left: 3px;
     padding-right: 3px;
+}
+table.MTTR tbody tr td.bg-red{
+    background: #ff0000;
+}
+table.MTTR tbody tr td.bg-yellow{
+    background: #ffff00;
+}
+table.MTTR tbody tr td.bg-blue{
+    background: #009900;
 }

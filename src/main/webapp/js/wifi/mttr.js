@@ -18,17 +18,8 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    var ListData = data.mttrListList;
-                    self.mttrLeft = data.mttrListList;
-                    for(var i=0;i<ListData.length;i++){
-                        if(i<3){
-                            self.mttrLeft.push(ListData[i]) ;
-                            cosole.log(ListData[i]);
-                        }else{
-                            self.mttrRight.push(ListData[i]);
-                        }
-                    }
-                    initEchart();
+                    self.mttrLeft = data.leftList;
+                    self.mttrRight = data.rightList;
                 },
                 error: function () {
 

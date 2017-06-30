@@ -15,24 +15,24 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
+<div class="ticket-layout" id="mttr-data">
 	<h4>MTTR Targets</h4>
 	<div class="col-sm-6" style="padding-left: 0px;">
 		<table class="MTTR">
 			<thead>
-			<tr>
-				<td rowspan="2">TREG</td>
-				<td rowspan="2">Kategori</td>
-				<td rowspan="2">Target(Jam)</td>
-				<td colspan="3">2017-06</td>
-			</tr>
-			<tr>
-				<td>Jumlah Gangguan CLOSE</td>
-				<td>Realisasi(Jam)</td>
-				<td>Pencapaian</td>
-			</tr>
+				<tr>
+					<td rowspan="2">TREG</td>
+					<td rowspan="2">Kategori</td>
+					<td rowspan="2">Target(Jam)</td>
+					<td colspan="3">2017-06</td>
+				</tr>
+				<tr>
+					<td>Jumlah Gangguan CLOSE</td>
+					<td>Realisasi(Jam)</td>
+					<td>Pencapaian</td>
+				</tr>
 			</thead>
-			<tbody id="mttr-data">
+			<tbody>
 				<template v-for="item in mttrLeft">
 					<tr>
 						<td rowspan="3">{{item[0].ioc1}}</td>
@@ -40,7 +40,7 @@
 						<td>{{item[0].ioc3}}</td>
 						<td>{{item[0].ioc4}}</td>
 						<td>{{item[0].ioc5}}</td>
-						<td>{{item[0].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[0].ioc6}}</td>
 					</tr>
 					<tr>
 						<td>{{item[1].ioc2}}</td>
@@ -76,28 +76,30 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td rowspan="3">NAS</td>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
-				<tr>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
-				<tr>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
+				<template v-for="item in mttrRight">
+					<tr>
+						<td rowspan="3">{{item[0].ioc1}}</td>
+						<td>{{item[0].ioc2}}</td>
+						<td>{{item[0].ioc3}}</td>
+						<td>{{item[0].ioc4}}</td>
+						<td>{{item[0].ioc5}}</td>
+						<td>{{item[0].ioc6}}</td>
+					</tr>
+					<tr>
+						<td>{{item[1].ioc2}}</td>
+						<td>{{item[1].ioc3}}</td>
+						<td>{{item[1].ioc4}}</td>
+						<td>{{item[1].ioc5}}</td>
+						<td>{{item[1].ioc6}}</td>
+					</tr>
+					<tr>
+						<td>{{item[2].ioc2}}</td>
+						<td>{{item[2].ioc3}}</td>
+						<td>{{item[2].ioc4}}</td>
+						<td>{{item[2].ioc5}}</td>
+						<td>{{item[2].ioc6}}</td>
+					</tr>
+				</template>
 			</tbody>
 		</table>
 	</div>
