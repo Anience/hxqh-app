@@ -24,7 +24,7 @@ public class GroupListUtil {
         }
         Iterator<D> iter = colls.iterator();
 
-        Map<T, List<D>> map = new HashMap<T,List<D>>();
+        Map<T, List<D>> map = new LinkedHashMap<>();
         while (iter.hasNext()) {
             D d = iter.next();
             T t = gb.groupby(d);

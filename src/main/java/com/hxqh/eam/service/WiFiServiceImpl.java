@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lh on 2017/4/14.
@@ -74,7 +71,23 @@ public class WiFiServiceImpl implements WiFiService {
                 return d.getIoc1();    // 分组依据为Ioc1
             }
         });
-        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, map);
+
+
+        Map<String, List<VWifiMttrList>> leftList = new LinkedHashMap<>() ;
+        Map<String, List<VWifiMttrList>> rightList = new LinkedHashMap<>();
+        //拆分Map
+        int i = 0;
+        for (Map.Entry m : map.entrySet()) {
+            if (map.size() / 2 > i) {
+                leftList.put((String)m.getKey(),(List<VWifiMttrList>)m.getValue());
+                i++;
+            } else {
+                rightList.put((String)m.getKey(),(List<VWifiMttrList>)m.getValue());
+                i++;
+            }
+        }
+
+        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, leftList,rightList);
         return mttrDto;
     }
 
