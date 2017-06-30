@@ -5,7 +5,6 @@ import com.hxqh.eam.model.dto.MapDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,19 +14,14 @@ import java.util.List;
 @Service("anoService")
 public class AnoServiceImpl implements AnoService {
 
-
     @Autowired
     private VAno81Dao vAno81Dao;
-
     @Autowired
     private VAno82Dao ano82Dao;
-
     @Autowired
     private VMapMaplineDao mapMaplineDao;
-
     @Autowired
     private VMapNeighbourDao mapNeighbourDao;
-
     @Autowired
     private VMapStreetmapDao mapStreetmapDao;
 

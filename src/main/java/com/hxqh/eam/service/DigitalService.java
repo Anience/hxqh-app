@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface DigitalService {
 
-
     List<VDig13> digital13Data();
 
     List<VDig14> vDig14Data();
@@ -23,6 +22,5 @@ public interface DigitalService {
     List<VDig18> vDig18Data();
 
     Dig13141718Dto vDig13141718Data();
-
 
 }

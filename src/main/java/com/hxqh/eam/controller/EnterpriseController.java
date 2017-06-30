@@ -38,9 +38,9 @@ public class EnterpriseController {
     }
 
 
-
     /**
-     *  bussiness 页面跳转
+     * bussiness 页面跳转
+     *
      * @return
      */
     @RequestMapping(value = "/enterpriseBussiness", method = RequestMethod.GET)
@@ -50,7 +50,8 @@ public class EnterpriseController {
 
 
     /**
-     *  bussiness 数据接口
+     * bussiness 数据接口
+     *
      * @return
      */
     @ResponseBody
@@ -61,7 +62,8 @@ public class EnterpriseController {
     }
 
     /**
-     *  government 数据接口
+     * government 数据接口
+     *
      * @return
      */
     @ResponseBody
@@ -73,7 +75,8 @@ public class EnterpriseController {
 
 
     /**
-     *  enterprise 数据接口
+     * enterprise 数据接口
+     *
      * @return
      */
     @ResponseBody
@@ -123,8 +126,6 @@ public class EnterpriseController {
     public String enterprise303132E4() {
         return "enterprise/enterprise303132E4";
     }
-
-
 
 
 }

@@ -1,14 +1,18 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.dto.Mob88Dto;
 import com.hxqh.eam.model.dto.Mob91Dto;
+import com.hxqh.eam.model.dto.VMob87Dto;
+import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lh on 2017/4/14.
@@ -17,17 +21,17 @@ import java.util.List;
 public class MobileServiceImpl implements MobileService {
 
 
+    private static final String[] RF = {"RADIO ACCESS", "FO ACCESS"};
+    private static final String[] RFS = {"RADIO ACCESS", "FO ACCESS", "SL_D"};
+
     @Autowired
     private VMob86Dao vMob86Dao;
-    @Autowired
-    private VMob87ClassDao vMob87ClassDao;
     @Autowired
     private VMob87Dao vMob87Dao;
     @Autowired
     private VMob91Dao vMob91Dao;
     @Autowired
     private VMob92Dao vMob92Dao;
-
     @Autowired
     private VMob88MttiDao mob88MttiDao;
     @Autowired
@@ -60,20 +64,26 @@ public class MobileServiceImpl implements MobileService {
         return vMob92Dao.findAll();
     }
 
-
-    @Override
-    public List<VMob87Class> vMob87ClassData() {
-        return vMob87ClassDao.findAll();
-    }
-
     @Override
     public List<VMob86> vMob86Data() {
         return vMob86Dao.findAll();
     }
 
     @Override
-    public List<VMob87> vMob87Data() {
-        return vMob87Dao.findAll();
+    public VMob87Dto vMob87Data() {
+        List<VMob87> mob87List = vMob87Dao.findAll();
+
+        // 进行分组
+        Map<String, List<VMob87>> map = GroupListUtil.group(mob87List, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VMob87 d = (VMob87) obj;
+                return d.getRegional();    // 分组依据为Regional
+            }
+        });
+
+        VMob87Dto vMob87Dto = new VMob87Dto(map);
+        return vMob87Dto;
     }
 
     @Override

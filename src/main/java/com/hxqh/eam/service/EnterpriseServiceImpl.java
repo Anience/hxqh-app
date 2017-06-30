@@ -32,41 +32,28 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     private VEntBusTopThreeDao entBusTopThreeDao;
     @Autowired
     private VEntBusTopTwoDao entBusTopTwoDao;
-
-
     @Autowired
     private VEntEntBottomOneDao entEntBottomOneDao;
-
     @Autowired
     private VEntEntBottomThreeDao entEntBottomThreeDao;
-
     @Autowired
     private VEntEntBottomTwoDao entEntBottomTwoDao;
-
     @Autowired
     private VEntEntTopOneDao entEntTopOneDao;
-
     @Autowired
     private VEntEntTopThreeDao entEntTopThreeDao;
-
     @Autowired
     private VEntEntTopTwoDao entEntTopTwoDao;
-
     @Autowired
     private VEntGovTopOneDao entGovTopOneDao;
-
     @Autowired
     private VEntGovTopTwoDao entGovTopTwoDao;
-
     @Autowired
     private VEntGovTopThreeDao entGovTopThreeDao;
-
     @Autowired
     private VEntGovBottomOneDao entGovBottomOneDao;
-
     @Autowired
     private VEntGovBottomTwoDao entGovBottomTwoDao;
-
     @Autowired
     private VEntGovBottomThreeDao entGovBottomThreeDao;
 

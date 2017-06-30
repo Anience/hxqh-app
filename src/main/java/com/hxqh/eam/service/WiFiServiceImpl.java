@@ -1,13 +1,19 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.DailyDto;
+import com.hxqh.eam.model.dto.TrafficTdo;
+import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lh on 2017/4/14.
@@ -15,19 +21,9 @@ import java.util.*;
 @Service("wiFiService")
 public class WiFiServiceImpl implements WiFiService {
 
-
-    private static final String[] TREG = {
-            "TREG 1",
-            "TREG 2",
-            "TREG 3",
-            "TREG 4",
-            "TREG 5",
-            "TREG 6",
-            "TREG 7"};
-
-    private static final String[] CONS = {"CONS", "DWS", "EBIS"};
-
     private static final String[] DAILY = {"DCS", "DES", "DGS"};
+
+    private static final int DAILYLENGTH = 4;
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -41,86 +37,13 @@ public class WiFiServiceImpl implements WiFiService {
     private VWifiNumberDao vWifiNumberDao;
     @Autowired
     private VWifiTicketDao vWifiTicketDao;
-
     @Autowired
     private VWifiTrafficBottomDao vWifiTrafficBottomDao;
     @Autowired
     private VWifiTrafficTopDao vWifiTrafficTopDao;
-
     @Autowired
     private VWifiMttrListDao vWifiMttrListDao;
 
-    @Override
-    public WifiTrafficTdo getTrafficData() {
-        List<String> nameTopList = new LinkedList<>();
-        List<String> nameBottomList = new LinkedList<>();
-        List<WifiTrafficTopTdo> strTop = new LinkedList<>();
-        List<WifiTrafficTopTdo> strBottom = new LinkedList<>();
-
-        StringBuilder stringBuilderTop = new StringBuilder(2048);
-        StringBuilder stringBuilderBottom = new StringBuilder(2048);
-
-        //先取出全部数据
-        List<VWifiTrafficTop> trafficTopList = vWifiTrafficTopDao.findAll();
-        List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
-
-        topJson(trafficTopList, nameTopList, strTop, stringBuilderTop);
-        topBottom(trafficBottomList, nameBottomList, strBottom, stringBuilderBottom);
-
-        WifiTrafficTdo trafficTdo = new WifiTrafficTdo();
-        trafficTdo.setNameList(nameTopList);
-        trafficTdo.setStrTop(strTop);
-        trafficTdo.setNameBottomList(nameBottomList);
-        trafficTdo.setStrBottom(strBottom);
-        return trafficTdo;
-    }
-
-    private void topBottom(List<VWifiTrafficBottom> trafficBottomList, List<String> nameBottomList, List<WifiTrafficTopTdo> strBottom, StringBuilder stringBuilderBottom) {
-        int i = 1, j = 0;
-        for (int x = 0; x < trafficBottomList.size(); x++) {
-            stringBuilderBottom.append(trafficBottomList.get(x).getCount()).append(",");
-            if (i % 26 == 0) {
-                String str = stringBuilderBottom.toString();
-                str = dealJson(str);
-                WifiTrafficTopTdo topTdo = new WifiTrafficTopTdo(CONS[j], str);
-                strBottom.add(topTdo);
-                stringBuilderBottom = new StringBuilder(2048);
-                j++;
-            }
-            i++;
-        }
-
-        for (int x = 0; x < 26; x++) {
-            nameBottomList.add(trafficBottomList.get(x).getName());
-        }
-
-    }
-
-    private void topJson(List<VWifiTrafficTop> trafficTopList, List<String> nameList, List<WifiTrafficTopTdo> strTop, StringBuilder stringBuilder) {
-        int i = 1, j = 0;
-        for (int x = 0; x < trafficTopList.size(); x++) {
-            stringBuilder.append(trafficTopList.get(x).getCount()).append(",");
-
-            if (i % 26 == 0) {
-                String str = stringBuilder.toString();
-                str = dealJson(str);
-                WifiTrafficTopTdo topTdo = new WifiTrafficTopTdo(TREG[j], str);
-                strTop.add(topTdo);
-                stringBuilder = new StringBuilder(2048);
-                j++;
-            }
-            i++;
-        }
-
-        for (int x = 0; x < 26; x++) {
-            nameList.add(trafficTopList.get(x).getName());
-        }
-    }
-
-    private String dealJson(String str) {
-        String substring = str.substring(0, str.length() - 1);
-        return substring;
-    }
 
     @Override
     public List<VWifiNumber> vWifiNumberData() {
@@ -142,7 +65,16 @@ public class WiFiServiceImpl implements WiFiService {
     public WifiMttrDto vWifiMttrData() {
         List<VWifiMttr> wifiMttrList = vWifiMttrDao.findAll();
         List<VWifiMttrList> mttrListList = vWifiMttrListDao.findAll();
-        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, mttrListList);
+
+        // 进行分组
+        Map<String, List<VWifiMttrList>> map = GroupListUtil.group(mttrListList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VWifiMttrList d = (VWifiMttrList) obj;
+                return d.getIoc1();    // 分组依据为Ioc1
+            }
+        });
+        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, map);
         return mttrDto;
     }
 
@@ -156,7 +88,7 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiDaily> dailyList = vWifiDailyDao.findAll();
 
         List<String> list = new LinkedList<>();
-        for (int x = 0; x < 4; x++) {
+        for (int x = 0; x < DAILYLENGTH; x++) {
             list.add(dailyList.get(x).getName());
         }
 
@@ -170,14 +102,12 @@ public class WiFiServiceImpl implements WiFiService {
 
         //补零
         List<BigDecimal> des = skuIdMap.get(DAILY[2]);
-        if(des.size()<4)
-        {
-            int i = 4-des.size();
-            for (int j=0;j<i;j++)
-            {
+        if (des.size() < DAILYLENGTH) {
+            int i = DAILYLENGTH - des.size();
+            for (int j = 0; j < i; j++) {
                 des.add(new BigDecimal(0));
             }
-            skuIdMap.put(DAILY[2],des);
+            skuIdMap.put(DAILY[2], des);
         }
 
         DailyDto dailyDto = new DailyDto(skuIdMap, list);

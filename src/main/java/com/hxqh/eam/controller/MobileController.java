@@ -6,7 +6,10 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.dto.Mob88Dto;
 import com.hxqh.eam.model.dto.Mob91Dto;
-import com.hxqh.eam.model.view.*;
+import com.hxqh.eam.model.dto.VMob87Dto;
+import com.hxqh.eam.model.view.VMob86;
+import com.hxqh.eam.model.view.VMob87;
+import com.hxqh.eam.model.view.VMob92;
 import com.hxqh.eam.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +28,8 @@ public class MobileController {
 
 
     /**
-     *  mobile87 页面跳转接口
+     * mobile87 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mobile87", method = RequestMethod.GET)
@@ -34,32 +38,22 @@ public class MobileController {
     }
 
     /**
-     *  vMob87Data 数据接口
-     *  Access 2017-6-26 11:19:23
+     * vMob87Data 数据接口
+     * Access 2017-6-26 11:19:23
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vMob87Data", method = RequestMethod.GET)
-    public List<VMob87> vMob87Data() {
-        List<VMob87> dig13List = mobileService.vMob87Data();
-        return dig13List;
-    }
-
-    /**
-     *  vMob87ClassData 数据接口
-     *  Access 2017-6-26 11:19:29
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/vMob87ClassData", method = RequestMethod.GET)
-    public List<VMob87Class> vMob87ClassData() {
-        List<VMob87Class> dig13List = mobileService.vMob87ClassData();
+    public VMob87Dto vMob87Data() {
+        VMob87Dto dig13List = mobileService.vMob87Data();
         return dig13List;
     }
 
 
     /**
-     *  mobile86 页面跳转接口
+     * mobile86 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mobile86", method = RequestMethod.GET)
@@ -68,8 +62,9 @@ public class MobileController {
     }
 
     /**
-     *  vMob86Data 数据接口
-     *  Access 2017-6-26 11:19:42
+     * vMob86Data 数据接口
+     * Access 2017-6-26 11:19:42
+     *
      * @return
      */
     @ResponseBody
@@ -80,7 +75,8 @@ public class MobileController {
     }
 
     /**
-     *  mobile88 页面跳转接口
+     * mobile88 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mobile88", method = RequestMethod.GET)
@@ -89,8 +85,9 @@ public class MobileController {
     }
 
     /**
-     *  vMob88Data 数据接口
-     *  Access 2017-6-26 11:19:56
+     * vMob88Data 数据接口
+     * Access 2017-6-26 11:19:56
+     *
      * @return
      */
     @ResponseBody
@@ -102,7 +99,8 @@ public class MobileController {
 
 
     /**
-     *  mobile91 页面跳转接口
+     * mobile91 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mobile91", method = RequestMethod.GET)
@@ -111,8 +109,9 @@ public class MobileController {
     }
 
     /**
-     *  vMob91Data 数据接口
-     *  Access  2017-6-26 11:20:24
+     * vMob91Data 数据接口
+     * Access  2017-6-26 11:20:24
+     *
      * @return
      */
     @ResponseBody
@@ -123,7 +122,8 @@ public class MobileController {
     }
 
     /**
-     *  mobile91 页面跳转接口
+     * mobile91 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mobile92", method = RequestMethod.GET)
@@ -132,8 +132,9 @@ public class MobileController {
     }
 
     /**
-     *  vMob92Data 数据接口
-     *  Access  2017-6-26 11:20:48
+     * vMob92Data 数据接口
+     * Access  2017-6-26 11:20:48
+     *
      * @return
      */
     @ResponseBody

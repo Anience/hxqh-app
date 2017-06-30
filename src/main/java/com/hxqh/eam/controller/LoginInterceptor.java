@@ -33,8 +33,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 break;
             }
         }
-        if(url.contains(LOGOUT_URL))
-        {
+        if (url.contains(LOGOUT_URL)) {
             HttpSession session = request.getSession();
             session.removeAttribute("sessionInfo");
             session.invalidate();

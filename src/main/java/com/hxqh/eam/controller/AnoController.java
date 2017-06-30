@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/ano")
@@ -25,7 +24,8 @@ public class AnoController {
     private AnoService anoService;
 
     /**
-     *  ano81 页面跳转接口
+     * ano81 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/ano81", method = RequestMethod.GET)
@@ -37,6 +37,7 @@ public class AnoController {
     /**
      * ano81 数据接口
      * Access 2017-6-26 09:40:21
+     *
      * @return
      */
     @ResponseBody
@@ -48,7 +49,8 @@ public class AnoController {
 
 
     /**
-     *  ano82 页面跳转接口
+     * ano82 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/ano82", method = RequestMethod.GET)
@@ -59,6 +61,7 @@ public class AnoController {
     /**
      * ano82 数据接口
      * Access 2017-6-26 09:40:29
+     *
      * @return
      */
     @ResponseBody
@@ -70,7 +73,8 @@ public class AnoController {
 
 
     /**
-     *  map 页面跳转接口
+     * map 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/map", method = RequestMethod.GET)
@@ -81,6 +85,7 @@ public class AnoController {
     /**
      * ano82 数据接口
      * Access 2017-6-26 09:40:29
+     *
      * @return
      */
     @ResponseBody
