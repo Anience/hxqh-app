@@ -107,3 +107,36 @@ table.distribution thead tr:nth-child(2){
 table.distribution thead tr:nth-child(2){
     height:60px;
 }
+span.bule-star{
+    background: url("../imgs/colourful.png") -510px 0px no-repeat;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.ticket-layout table tr td.text-red{
+    color: #dd5a43;
+}
+.ticket-layout table tr td.text-blue{
+    color: #69aa46;
+}
+.ticket-layout table tr td.text-fff{
+    color: #fff;
+}
+.red-radius{
+    background: url("../imgs/disc-red.png") no-repeat center;
+    background-size: 22px 22px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.yellow-radius{
+    background: url("../imgs/disc-yellow.png") no-repeat center;
+    background-size: 22px 22px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.green-radius{
+    background: url("../imgs/disc-green.png") no-repeat center;
+    background-size: 22px 22px;
+    padding-left: 3px;
+    padding-right: 3px;
+}

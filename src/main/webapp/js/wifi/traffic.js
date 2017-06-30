@@ -28,21 +28,21 @@ $(function(){
         for(var i=0,len=echartSData.length;i<len;i++){
             var tmpObj = {};
             tmpObj.type = 'line';
-            tmpObj.stack = '总量';
             tmpObj.name = echartSData[i].da;
             tmpObj.data = echartSData[i].str.split(",");
+            tmpObj.smooth = true;
             seriesData.push(tmpObj)
         }
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
                 text: "Daily Traffic Distribution By Regions-Jun 2017",
-                x: "left",
-                backgroundColor:'#161C2F',
-                textStyle:{
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Arial, Verdana, sans-serif'
+                backgroundColor:"#161C2F",
+                x:30,
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                    color: '#666c7f'
                 }
             },
             tooltip : {
@@ -54,45 +54,77 @@ $(function(){
                 y:'top',
                 textStyle:{
                     fontSize: 12,
-                    color: '#666C7F',
+                    color:'#8D93A8'
                 },
                 data:legendData
             },
-            calculable : true,
-            xAxis : [
+            calculable: false,
+            grid:{
+                borderWidth:0,//外围边框线
+                borderColor:'#666c7f'
+            },
+            xAxis: [
                 {
-                    type : 'category',
+                    type: 'category',
+                    name:'Day',
                     boundaryGap : false,
-                    splitLine: {
-                        show: false,
+                    axisLine : {    // 轴线
+                        show: true
                     },
-                    axisLabel:{
-                                show: true,
-                                textStyle: {
-                                    color: '#666C7F',   //x轴字体颜色
+                    axisLabel : {//轴文本
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字
+                        rotate: 45,    //旋转度数
+                        margin:5,
+                        splitNumber: 18,
+                        textStyle:{
+                            color: '#666C7F',
+                            fontSize:15
                         }
                     },
-                    data : xAxisData
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value',
-                    splitLine: {
-                        show: true,
+
+                    lineStyle: {
+                        color: 'green',
+                        type: 'solid',
+                        width: 2
+                    },
+                    splitLine : { //网格分隔线
+                        show:false,
                         lineStyle: {
+                            color: '#483d8b',
                             type: 'dashed',
+                            width: 1
                         }
                     },
-                    axisLabel:{
-                        show: true,
-                        textStyle: {
-                            color: '#666C7F',   //y轴字体颜色
-                        }
-                    },
+                    splitArea : {show : false},//网格区域
+                    data:xAxisData
                 }
             ],
-            series :  seriesData
+            yAxis: [
+                {
+                    type: 'value',
+                    name:'GigaByte',
+                    axisLabel : {
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        margin:5,
+                        splitNumber: 100,
+                        textStyle:{
+                            color: '#666C7F',
+                            fontSize:15
+                        }
+                    },
+                    splitLine : { //分隔线
+                        show:true,
+                        lineStyle: {
+                            color: '#666C7F',
+                            type: 'dashed',
+                            width: 1
+                        }
+                    }
+                }
+            ],
+            series: seriesData
         };
         myChart.setOption(option);
     }
