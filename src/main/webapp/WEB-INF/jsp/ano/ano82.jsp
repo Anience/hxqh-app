@@ -36,7 +36,7 @@
 				<td>{{item.ioc4}}</td>
 				<td>{{item.ioc5}}</td>
 				<td>{{item.ioc6}}</td>
-				<td>{{item.ioc7}}</td>
+				<td>-</td>
 			</tr>
 		</tbody>
 	</table>

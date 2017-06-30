@@ -43,3 +43,9 @@ table tbody tr td{
 table tbody tr:nth-child(even){
     background: #112B3A;
 }
+table tbody tr td.mob-bg-blue{
+    background: #59ce04;
+}
+table tbody tr td.mob-bg-red{
+    background: #ec0100;
+}

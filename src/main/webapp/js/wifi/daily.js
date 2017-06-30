@@ -121,68 +121,7 @@ $(function(){
                 }
             ],
             series: serisDatas
-
         };
-       /* option = {
-            title: {
-                text: "Daily Ticket Distribution",
-                x: "left",
-                backgroundColor:'#161C2F',
-                textStyle:{
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Arial, Verdana, sans-serif'
-                }
-            },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                orient:'vertical',
-                x:'right',
-                y:'top',
-                textStyle:{
-                    fontSize: 12,
-                    color: '#666C7F',
-                },
-                data:lendName
-            },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    splitLine: {
-                        show: false,
-                    },
-                    axisLabel:{
-                        show: true,
-                        textStyle: {
-                            color: '#666C7F',   //x轴字体颜色
-                        }
-                    },
-                    data : yName
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value',
-                    splitLine: {
-                        show: true,
-                        lineStyle: {
-                            type: 'dashed',
-                        }
-                    },
-                    axisLabel:{
-                        show: true,
-                        textStyle: {
-                            color: '#666C7F',   //y轴字体颜色
-                        }
-                    },
-                }
-            ],
-            series :  serisDatas
-        };*/
         myChart.setOption(option);
     }
     initData();

@@ -18,7 +18,7 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.anoList = data;
-                    initEchart("echart1");
+                    initEchart("echart1",data.map['TREG-1']);
                 },
                 error: function () {
 
@@ -26,11 +26,22 @@ $(function () {
             });
         }
     });
-    function initEchart(idDom){
+    function initEchart(idDom,echartData){
+        var lendData = [];
+        var serisData = [];
+        for(var i=0,len=echartData.length;i<len;i++){
+            var tmpObj = {};
+            tmpObj.value = echartData[i].value;
+            tmpObj.name = echartData[i].name;
+            tmpObj.other = echartData[i].otherfull;
+            lendData.push(echartData[i].name);
+            serisData.push(tmpObj);
+        }
+        console.log(serisData);
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title :{
-                text: '某站点用户访问来源',
+                text: 'TICKET',
                 subtext: '',
                 x:'left',
                 textStyle:{
@@ -52,22 +63,41 @@ $(function () {
                     fontWeight: 'bolder',
                     color: '#fff'
                 },
-                data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                data:lendData
             },
             calculable : false,
             series : [
                 {
-                    name:'访问来源',
+                    name:"87Screen",
                     type:'pie',
-                    radius : '55%',
-                    center: ['50%', '60%'],
-                    data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
-                    ]
+                    radius : '70%',
+                    center: ['60%', '50%'],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show: true,
+                                textStyle: {
+                                    fontSize: '18',
+                                    fontWeight: 'normal'
+                                },
+                                formatter: function(params) {
+                                    var res="";
+                                    var datas = params.series.data;
+
+                                    for(var i=0;i<datas.length;i++){
+                                        res+=params.value+"("+params.other+")";
+                                        break;
+                                    }
+                                    return res;
+                                }
+                            }
+
+                        },
+                        labelLine :{
+                            show: true
+                        }
+                    },
+                    data:serisData
                 }
             ]
         };
