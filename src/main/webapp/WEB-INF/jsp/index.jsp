@@ -44,7 +44,7 @@
 		<li class="menu-list">
 			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>CENTER MAP<i class="first-a-down"></i></a>
 			<ul>
-				<li class="menu-list"> <a  href="${ctx}/query/showRegionMap" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>OpenStreetMap<span class="sz"></span></a></li>
+				<li class="menu-list"> <a  href="${ctx}/wifi/daily" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>OpenStreetMap<span class="sz"></span></a></li>
 			</ul>
 		</li>
 
@@ -74,32 +74,32 @@
                 <li><a href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive</a></li>
                 <li><a href="https://dashboard.telkom.co.id/idwifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Map</a></li>
 				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WAG & Controller</a></li>
-				<li><a href="${ctx}/wifi/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>EVENT BUMN LABUHAN BAJO</a></li>
-				<li><a href="${ctx}/wifi/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WIFI_99</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>EVENT BUMN LABUHAN BAJO</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WIFI_99</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DashBoard<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="https://rafi.upoint.co.id/login" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>testurl</a></li>
-				<li><a href="${ctx}/query/authorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>shangchuan</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>upload</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ENTERPRISE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-1</a></li>
-				<li><a href="${ctx}/query/authorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Bussiness</a></li>
-				<li><a href="${ctx}/query/webProductStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Government</a></li>
-				<li><a href="${ctx}/query/showWebAuthorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-2</a></li>
-				<li><a href="${ctx}/query/showAuthorWebStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-4</a></li>
-				<li><a href="${ctx}/query/showWebsiteList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Enterprise</a></li>
-				<li><a href="${ctx}/query/surveyList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-1</a></li>
-				<li><a href="${ctx}/query/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-2</a></li>
-				<li><a href="${ctx}/query/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-4</a></li>
-				<li><a href="${ctx}/query/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-1</a></li>
-				<li><a href="${ctx}/query/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-2</a></li>
-				<li><a href="${ctx}/query/getWebsitestatisticList" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-4</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-1</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Bussiness</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Government</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-2</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-4</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Enterprise</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-1</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-2</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-4</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-1</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-2</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-4</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
@@ -108,13 +108,13 @@
 				<li><a href="https://app.brandfibres.com/login" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Summary</a></li>
 				<li><a href="https://app.brandfibres.com/dashboards/59192ea188c9ffdd1fd3a676" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Indihome</a></li>
 				<li><a href="https://app.brandfibres.com/dashboards/591965d788c9ffdd1fd3a6a3" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi ID</a></li>
-				<li><a href="${ctx}/query/showWebAuthorStatistic" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Telkom Solution</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Telkom Solution</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/mobile/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-85</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-85</a></li>
 				<li><a href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-87</a></li>
 				<li><a href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-86</a></li>
 				<li><a href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-88</a></li>
@@ -147,7 +147,7 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE INT'L<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/query/list" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WHO-34,35,36-OLO-1</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WHO-34,35,36-OLO-1</a></li>
 			</ul>
 		</li>
 	</ul>
