@@ -50,9 +50,9 @@
 						</thead>
 						<tbody>
 							<tr v-for="item in mobList">
-								<td class="bg-red">{{item.ioc2}}</td>
-								<td class="bg-red">{{item.ioc3}}</td>
-								<td class="bg-blue">{{item.ioc4}}</td>
+								<td v-bind:class="{'bg-red':item.ioc2<95,'bg-blue':item.ioc2>=95}">{{item.ioc2}}</td>
+								<td v-bind:class="{'bg-red':item.ioc3<95,'bg-blue':item.ioc3>=95}">{{item.ioc3}}</td>
+								<td v-bind:class="{'bg-red':item.ioc4<0,'bg-blue':item.ioc4>=0}">{{item.ioc4}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -69,9 +69,9 @@
 						</thead>
 						<tbody>
 							<tr v-for="item in mobList">
-								<td class="bg-red">{{item.ioc5}}</td>
-								<td class="bg-red">{{item.ioc6}}</td>
-								<td class="bg-blue">{{item.ioc7}}</td>
+								<td v-bind:class="{'bg-red':item.ioc5<95,'bg-blue':item.ioc5>=95}">{{item.ioc5}}</td>
+								<td v-bind:class="{'bg-red':item.ioc6<95,'bg-blue':item.ioc6>=95}">{{item.ioc6}}</td>
+								<td v-bind:class="{'bg-red':item.ioc7<0,'bg-blue':item.ioc7>=0}">{{item.ioc7}}</td>
 							</tr>
 						</tbody>
 					</table>

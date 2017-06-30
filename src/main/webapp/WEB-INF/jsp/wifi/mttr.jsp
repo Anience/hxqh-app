@@ -33,30 +33,30 @@
 			</tr>
 			</thead>
 			<tbody id="mttr-data">
-				<tr>
-					<td rowspan="3">NAS</td>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
-				<tr>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
-				<tr>
-					<td>Platinum</td>
-					<td>12</td>
-					<td>5339</td>
-					<td>8</td>
-					<td>145%</td>
-				</tr>
-
-
+				<template v-for="item in mttrLeft">
+					<tr>
+						<td rowspan="3">{{item[0].ioc1}}</td>
+						<td>{{item[0].ioc2}}</td>
+						<td>{{item[0].ioc3}}</td>
+						<td>{{item[0].ioc4}}</td>
+						<td>{{item[0].ioc5}}</td>
+						<td>{{item[0].ioc6}}</td>
+					</tr>
+					<tr>
+						<td>{{item[1].ioc2}}</td>
+						<td>{{item[1].ioc3}}</td>
+						<td>{{item[1].ioc4}}</td>
+						<td>{{item[1].ioc5}}</td>
+						<td>{{item[1].ioc6}}</td>
+					</tr>
+					<tr>
+						<td>{{item[2].ioc2}}</td>
+						<td>{{item[2].ioc3}}</td>
+						<td>{{item[2].ioc4}}</td>
+						<td>{{item[2].ioc5}}</td>
+						<td>{{item[2].ioc6}}</td>
+					</tr>
+				</template>
 			</tbody>
 		</table>
 	</div>
