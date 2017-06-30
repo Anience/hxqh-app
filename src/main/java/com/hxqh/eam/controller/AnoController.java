@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.IndiHomeDto;
 import com.hxqh.eam.model.dto.MapDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
@@ -83,8 +84,7 @@ public class AnoController {
     }
 
     /**
-     * ano82 数据接口
-     * Access 2017-6-26 09:40:29
+     * map 数据接口
      *
      * @return
      */
@@ -92,8 +92,30 @@ public class AnoController {
     @RequestMapping(value = "/mapData", method = RequestMethod.GET)
     public MapDto mapData() {
         MapDto mapData = anoService.getMapData();
-        return null;
+        return mapData;
     }
 
+    /**
+     * indiHome 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/indiHome", method = RequestMethod.GET)
+    public String indiHome() {
+        return "indiHome/indiHome";
+    }
+
+
+    /**
+     * indiHome 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/indiHomeData", method = RequestMethod.GET)
+    public IndiHomeDto indiHomeData() {
+        IndiHomeDto indiHomeDto = anoService.getIndiHomeData();
+        return indiHomeDto;
+    }
 
 }
