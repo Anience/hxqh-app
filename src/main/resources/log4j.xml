@@ -65,6 +65,15 @@
         <level value="WARN"/>
     </logger>
 
+
+    <logger name="org.hibernate.hql.internal.ast">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="org.hibernate.type.descriptor">
+        <level value="DEBUG"/>
+    </logger>
+
+
     <root>
         <priority value="DEBUG"/>
         <!--<priority value="DEBUG"/> &lt;!&ndash;调试模式，显示SQL语句&ndash;&gt; ERROR -->

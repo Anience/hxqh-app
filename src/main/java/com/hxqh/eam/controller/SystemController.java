@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,8 @@ public class SystemController {
     private SystemService systemService;
 
     /**
-     *  digital13 页面跳转接口
+     * digital13 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/first", method = RequestMethod.GET)
@@ -38,12 +38,13 @@ public class SystemController {
 
     /**
      * 登录Function
-     * @param loginDto  登录dto
-     * @param map 前台返回信息
+     *
+     * @param loginDto 登录dto
+     * @param map      前台返回信息
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginDto loginDto,Map<String, Object> map) {
+    public String login(LoginDto loginDto, Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);
     }
@@ -53,7 +54,7 @@ public class SystemController {
         if (loginUserList.size() > 0) {
             String password = null;
             try {
-                password= Account.encrypt(loginDto.getPassword());
+                password = Account.encrypt(loginDto.getPassword());
                 if (loginUserList.get(0).getPassword().toUpperCase().equals(password)) {
                     //加入Session中
                     SfOrganizationAccount login = loginUserList.get(0);
@@ -88,11 +89,6 @@ public class SystemController {
 //        session.invalidate();
 //        return "redirect:/login.jsp";
 //    }
-
-
-
-
-
 
 
 }

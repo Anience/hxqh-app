@@ -16,7 +16,6 @@ import java.util.List;
 @Service("mobileService")
 public class MobileServiceImpl implements MobileService {
 
-
     @Autowired
     private VMob86Dao vMob86Dao;
     @Autowired
@@ -27,7 +26,6 @@ public class MobileServiceImpl implements MobileService {
     private VMob91Dao vMob91Dao;
     @Autowired
     private VMob92Dao vMob92Dao;
-
     @Autowired
     private VMob88MttiDao mob88MttiDao;
     @Autowired

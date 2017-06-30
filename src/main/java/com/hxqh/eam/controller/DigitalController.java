@@ -6,7 +6,10 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.base.Status;
 import com.hxqh.eam.model.dto.*;
-import com.hxqh.eam.model.view.*;
+import com.hxqh.eam.model.view.VDig13;
+import com.hxqh.eam.model.view.VDig14;
+import com.hxqh.eam.model.view.VDig17;
+import com.hxqh.eam.model.view.VDig18;
 import com.hxqh.eam.service.DigitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,7 @@ public class DigitalController {
     public ModelAndView digital(@PathVariable String page) {
         Map<String, Object> result = new HashMap<>();
         result.put("page", page);
-        return new ModelAndView("digital/digital",result);
+        return new ModelAndView("digital/digital", result);
     }
 
     /**

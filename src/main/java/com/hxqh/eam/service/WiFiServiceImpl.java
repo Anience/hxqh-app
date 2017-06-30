@@ -2,13 +2,18 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.DailyDto;
+import com.hxqh.eam.model.dto.TrafficTdo;
+import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lh on 2017/4/14.
@@ -32,12 +37,10 @@ public class WiFiServiceImpl implements WiFiService {
     private VWifiNumberDao vWifiNumberDao;
     @Autowired
     private VWifiTicketDao vWifiTicketDao;
-
     @Autowired
     private VWifiTrafficBottomDao vWifiTrafficBottomDao;
     @Autowired
     private VWifiTrafficTopDao vWifiTrafficTopDao;
-
     @Autowired
     private VWifiMttrListDao vWifiMttrListDao;
 
