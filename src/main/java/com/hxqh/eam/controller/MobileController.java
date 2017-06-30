@@ -6,9 +6,9 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.dto.Mob88Dto;
 import com.hxqh.eam.model.dto.Mob91Dto;
+import com.hxqh.eam.model.dto.VMob87Dto;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.model.view.VMob87;
-import com.hxqh.eam.model.view.VMob87Class;
 import com.hxqh.eam.model.view.VMob92;
 import com.hxqh.eam.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,21 +45,8 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/vMob87Data", method = RequestMethod.GET)
-    public List<VMob87> vMob87Data() {
-        List<VMob87> dig13List = mobileService.vMob87Data();
-        return dig13List;
-    }
-
-    /**
-     * vMob87ClassData 数据接口
-     * Access 2017-6-26 11:19:29
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/vMob87ClassData", method = RequestMethod.GET)
-    public List<VMob87Class> vMob87ClassData() {
-        List<VMob87Class> dig13List = mobileService.vMob87ClassData();
+    public VMob87Dto vMob87Data() {
+        VMob87Dto dig13List = mobileService.vMob87Data();
         return dig13List;
     }
 

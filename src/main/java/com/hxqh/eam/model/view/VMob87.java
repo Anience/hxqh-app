@@ -7,55 +7,64 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_MOB_87 database table.
- * 
  */
 @Entity
-@Table(name="V_MOB_87")
+@Table(name = "V_MOB_87")
 public class VMob87 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
-	private String name;
+    private static final long serialVersionUID = 1L;
+    @Id
+    private Integer rn;
 
-	private String otherfull;
+    private String name;
 
-	private String regional;
+    private String otherfull;
 
-	@Column(name="\"VALUE\"")
-	private BigDecimal value;
+    private String regional;
 
-	public VMob87() {
-	}
+    @Column(name = "\"VALUE\"")
+    private BigDecimal value;
 
-	public String getName() {
-		return this.name;
-	}
+    public VMob87() {
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getRn() {
+        return rn;
+    }
 
-	public String getOtherfull() {
-		return this.otherfull;
-	}
+    public void setRn(Integer rn) {
+        this.rn = rn;
+    }
 
-	public void setOtherfull(String otherfull) {
-		this.otherfull = otherfull;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public String getRegional() {
-		return this.regional;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setRegional(String regional) {
-		this.regional = regional;
-	}
+    public String getOtherfull() {
+        return this.otherfull;
+    }
 
-	public BigDecimal getValue() {
-		return this.value;
-	}
+    public void setOtherfull(String otherfull) {
+        this.otherfull = otherfull;
+    }
 
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	}
+    public String getRegional() {
+        return this.regional;
+    }
+
+    public void setRegional(String regional) {
+        this.regional = regional;
+    }
+
+    public BigDecimal getValue() {
+        return this.value;
+    }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
 
 }

@@ -64,7 +64,7 @@ public class ViewTest {
             subject.login(token);
             // 6.判断是否成功登录
             Assert.assertEquals(true, subject.isAuthenticated());
-            System.out.println("登录成功！！");
+            //System.out.println("登录成功！！");
             // 7.注销用户
             subject.logout();
         } catch (IncorrectCredentialsException e) {

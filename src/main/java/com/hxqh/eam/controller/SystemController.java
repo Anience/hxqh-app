@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,12 +84,14 @@ public class SystemController {
      *
      * @return
      */
-//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-//    public String logout(HttpSession session) {
-//        session.removeAttribute("sessionInfo");
-//        session.invalidate();
-//        return "redirect:/login.jsp";
-//    }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.removeAttribute("sessionInfo");
+        session.invalidate();
+        return "redirect:/login.jsp";
+    }
+
+
 
 
 }
