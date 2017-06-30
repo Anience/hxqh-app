@@ -47,14 +47,14 @@
 						<td>{{item[1].ioc3}}</td>
 						<td>{{item[1].ioc4}}</td>
 						<td>{{item[1].ioc5}}</td>
-						<td>{{item[1].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[1].ioc6}}</td>
 					</tr>
 					<tr>
 						<td>{{item[2].ioc2}}</td>
 						<td>{{item[2].ioc3}}</td>
 						<td>{{item[2].ioc4}}</td>
 						<td>{{item[2].ioc5}}</td>
-						<td>{{item[2].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[2].ioc6}}</td>
 					</tr>
 				</template>
 			</tbody>
@@ -83,21 +83,21 @@
 						<td>{{item[0].ioc3}}</td>
 						<td>{{item[0].ioc4}}</td>
 						<td>{{item[0].ioc5}}</td>
-						<td>{{item[0].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[0].ioc6}}</td>
 					</tr>
 					<tr>
 						<td>{{item[1].ioc2}}</td>
 						<td>{{item[1].ioc3}}</td>
 						<td>{{item[1].ioc4}}</td>
 						<td>{{item[1].ioc5}}</td>
-						<td>{{item[1].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[1].ioc6}}</td>
 					</tr>
 					<tr>
 						<td>{{item[2].ioc2}}</td>
 						<td>{{item[2].ioc3}}</td>
 						<td>{{item[2].ioc4}}</td>
 						<td>{{item[2].ioc5}}</td>
-						<td>{{item[2].ioc6}}</td>
+						<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[2].ioc6}}</td>
 					</tr>
 				</template>
 			</tbody>

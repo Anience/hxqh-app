@@ -5,7 +5,9 @@ $(function () {
     var digitalData = new Vue({
         el: "#mob87",
         data: {
-            anoList:[]
+            anoList:[],
+            isShow: 0,
+            nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7']
         },
         methods: {
 
@@ -18,7 +20,16 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.anoList = data;
-                    initEchart("echart1",data.map['TREG-1']);
+                    initEchart("echart1",self.anoList.map['TREG-1']);
+                    var i=1;
+                    setInterval(function(){
+                        i++;
+                        if(i>7){
+                            i=0;
+                        }
+                        self.isShow=i;
+                        initEchart("echart1",self.anoList.map[self.nameList[i]]);
+                    },300000)
                 },
                 error: function () {
 
@@ -65,7 +76,6 @@ $(function () {
                 },
                 data:lendData
             },
-            calculable : false,
             series : [
                 {
                     name:"87Screen",
@@ -83,9 +93,9 @@ $(function () {
                                 formatter: function(params) {
                                     var res="";
                                     var datas = params.series.data;
-
+                                    var text= ['1','2']
                                     for(var i=0;i<datas.length;i++){
-                                        res+=params.value+"("+params.other+")";
+                                        res+=params.value+"("+params.name+")";
                                         break;
                                     }
                                     return res;

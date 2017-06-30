@@ -29,7 +29,7 @@
 			</li>
 			<div class="line"></div>
 			<li>
-				<a href="">
+				<a href="${ctx}/system/logout">
 					<i class="icon-logout icon-user"></i>
 					LogOut
 				</a>
@@ -65,13 +65,13 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WIFI<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Traffic</a></li>
-				<li><a href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Number of Access Point</a></li>
-				<li><a href="${ctx}/wifi/ticket" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Ticket Monitoring</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Daily Ticket Distribution</a></li>
-				<li><a href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Distribution Status Report</a></li>
-				<li><a href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MTTR Targets</a></li>
-                <li><a href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive</a></li>
+				<li><a id ="ioc95" href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Traffic</a></li>
+				<li><a id ="list102" href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Number of Access Point</a></li>
+				<li><a id ="list103" href="${ctx}/wifi/ticket" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Ticket Monitoring</a></li>
+				<li><a id ="ioc104" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Daily Ticket Distribution</a></li>
+				<li><a id="list98" href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Distribution Status Report</a></li>
+				<li><a id="list96" href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MTTR Targets</a></li>
+                <li><a id="list100" href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Monitoring MTTR Proactive</a></li>
                 <li><a href="https://dashboard.telkom.co.id/idwifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Wifi Map</a></li>
 				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WAG & Controller</a></li>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>EVENT BUMN LABUHAN BAJO</a></li>
@@ -114,34 +114,34 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-85</a></li>
-				<li><a href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-87</a></li>
-				<li><a href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-86</a></li>
-				<li><a href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-88</a></li>
-				<li><a href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-91</a></li>
-				<li><a href="http://pm.telkom.co.id:8181/pc/desktop/page" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-90</a></li>
-				<li><a href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-92</a></li>
-				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-89</a></li>
+				<li><a id="85" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-85</a></li>
+				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-87</a></li>
+				<li><a id="list86" href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-86</a></li>
+				<li><a id="list88" href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-88</a></li>
+				<li><a id="list91" href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-91</a></li>
+				<li><a id="list90" href="http://pm.telkom.co.id:8181/pc/desktop/page" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-90</a></li>
+				<li><a id="list92" href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-92</a></li>
+				<li><a id="list" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>MOB-89</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DIGITAL<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/digital/13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
-				<li><a href="${ctx}/digital/14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
-				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-15</a></li>
-				<li><a href="${ctx}/digital/17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>
-				<li><a href="${ctx}/digital/18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>
-				<li><a href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
-				<li><a href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13,14,17,18</a></li>
-				<li><a href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-16,20</a></li>
+				<li><a id="list13" href="${ctx}/digital/13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>
+				<li><a id="list14" href="${ctx}/digital/14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>
+				<li><a id="DIG-15" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-15</a></li>
+				<li><a id="list17" href="${ctx}/digital/17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>
+				<li><a id="lsit18" href="${ctx}/digital/18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>
+				<li><a id="DIG-19" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
+				<li><a id="list13,14,17,18" href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13,14,17,18</a></li>
+				<li><a id="DIG-16,20" href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-16,20</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ANO<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-81</a></li>
-				<li><a href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-82</a></li>
+				<li><a id="list81" href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-81</a></li>
+				<li><a id="list82" href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-82</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
@@ -155,9 +155,16 @@
 <!--菜单右边的iframe页面-->
 <div id="right-content" class="right-content">
 	<div class="content">
+		<div class="right-header">
+			<a href="#"><i class="home-icon"></i>My portal</a>
+			<span></span>
+		</div>
+		<div class="router">
+			<span>My portal</span>
+		</div>
 		<div id="page_content">
 			<iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
-					width="100%" height="100%" src="logins.html"></iframe>
+					width="100%" height="100%" src="${ctx}/wifi/daily"></iframe>
 		</div>
 	</div>
 </div>

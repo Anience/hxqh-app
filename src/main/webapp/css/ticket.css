@@ -146,3 +146,9 @@ table.MTTR tbody tr td.bg-yellow{
 table.MTTR tbody tr td.bg-blue{
     background: #009900;
 }
+#mttr-data{
+    min-width: 1300px;
+}
+#mttr-data .col-sm-6{
+    min-width: 600px;
+}

@@ -37,6 +37,17 @@ $(function(){
 		$(this).find("a",this).addClass("specialclass");
 		
 	})*/
+	$(".admin").click(function(){
+	    $(".admin-down-ul").toggle();
+    });
+    $("a").click(function(){
+        var listName = $(this).text();
+        var routerName = $(this).attr("id");
+        $(".right-header span").show()
+                               .text(listName);
+        $(".router span").text(routerName);
+
+    });
 })
 	
 $(function(){
