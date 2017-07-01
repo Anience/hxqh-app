@@ -15,13 +15,18 @@ $(function(){
             }
         })
     }
-    function initEchart(domId,echartData) {
-        var legendData = [];
-        var xAxisData = ['周一','周二','周三','周四','周五','周六','周日'];
-        var seriesData = [];
-        /*for(var i=0,len=echartData.length;i<len;i++){
-         legendData = echartData[i].name;
-         }*/
+    function initEchart(domId,echartData){
+        var legendData = ["No Data","Bad","Good"];
+        var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
+        var colorData = ["#707B8E","#ECD201","#5ACF05"];
+        var greenData = [];
+        var redData = [];
+        var orangeData = [];
+        for(var i=0,len=echartData.length;i<len;i++){
+            greenData.push(echartData[i].greennum);
+            redData.push(echartData[i].rednum);
+            orangeData.push(echartData[i].orangenum);
+        }
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             tooltip : {
@@ -30,75 +35,175 @@ $(function(){
                     type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                 }
             },
-            legend: {
-                data:['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎'],
-                x:'right'
+
+            title: {
+                text: 'Quality CNOP',
+                x:'left',
+                textStyle: {
+                    fontSize: 26,
+                    fontWeight: 'bolder',
+                    color: '#FFFFFF'          // 主标题文字颜色
+                },
             },
-            calculable : true,
+            legend: {
+                x:'right',
+                data:legendData,
+                color:'#FFFFFF',
+                textStyle:{    //图例文字的样式
+                    color:'#FFFFFF',
+                    fontSize: 26,
+                }
+            },
+
             xAxis : [
                 {
                     type : 'value',
-                    splitLine: {
-                        show: false,
-                    },
-                    axisLabel:{
-                        show: true,
-                        textStyle: {
-                            color: '#fff',   //x轴字体颜色
+                    axisLine:{show:false},
+                    axisLabel : {//轴数据风格
+                        show:false,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        //rotate: 30,
+                        margin:5,
+                        splitNumber: 100,
+                        textStyle:{
+                            color: '#FFFFFF'
                         }
                     },
+                    splitLine : { //网格分隔线
+                        show:false,
+
+                        lineStyle: {
+                            fontSize: 26,
+                            color: '#FFFFFF',
+                            type: 'dashed',
+                            width: 1
+                        }
+                    }
                 }
             ],
             yAxis : [
                 {
                     type : 'category',
-                    splitLine: {
-                        show: false,
-                    },
-                    axisLabel:{
-                        show: true,
-                        textStyle: {
-                            color: '#fff',   //x轴字体颜色
+                    data : xAxisData,
+                    axisLine:{show:false},
+                    splitLine : { //网格分隔线
+                        show:false,
+
+                        lineStyle: {
+                            fontSize: 26,
+                            color: 'RGB( 255, 255, 255)',
+                            type: 'dashed',
+                            width: 1
                         }
                     },
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
+                    axisLabel : {//轴数据风格
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        margin:5,
+                        splitNumber: 100,
+                        textStyle:{
+                            fontSize: 20,
+                            color: '#FFFFFF'
+                        }
+                    }
                 }
             ],
+            color:colorData,
+            grid:{
+
+                borderWidth:0,//外围边框线
+                borderColor:'#e3b'
+            },
             series : [
                 {
-                    name:'直接访问',
+                    name:'No Data',
                     type:'bar',
-                    stack: '总量',
-                    itemStyle : { normal: {color: 'red',barBorderRadius: 0,label : {show: true, position: 'insideRight'}}},
-                    data:[320, 302, 301, 334, 390, 330, 320]
+                    stack: 'percentage',
+                    itemStyle : {
+                        fontSize: 26,
+                        normal: {
+                            label : {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'normal'
+                                },
+                                /*formatter:function(obj){
+                                    var c="";
+                                    var xaixsData=xAxisData;
+                                    var redData=redData;
+                                    for(var i=0;i<xaixsData.length;i++){
+                                        if(obj.name==xaixsData[i]){
+                                            c+=redData[i];
+                                        }
+                                    }
+                                    return c;
+                                },*/
+                                position: 'insideRight'
+                            }
+                        }
+                    },
+                    data:redData
                 },
                 {
-                    name:'邮件营销',
+                    name:'Bad',
                     type:'bar',
-                    stack: '总量',
-                    itemStyle : { normal: {barBorderRadius: 0,label : {show: true, position: 'insideRight'}}},
-                    data:[120, 132, 101, 134, 90, 230, 210]
+                    stack: 'percentage',
+                    itemStyle : {
+                        fontSize: 26,
+                        normal: {
+                            label : {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'normal'
+                                },
+                               /* formatter:function(obj){
+                                    var c="";
+                                    var xaixsData=xAxisData;
+                                    var orangeData=orangeData;
+                                    for(var i=0;i<xaixsData.length;i++){
+                                        if(obj.name==xaixsData[i]){
+                                            c+=orangeData[i];
+                                        }
+                                    }
+                                    return c;
+                                },*/
+                                position: 'insideRight'
+                            }
+                        }
+                    },
+                    data:orangeData
                 },
                 {
-                    name:'联盟广告',
+                    name:'Good',
                     type:'bar',
-                    stack: '总量',
-                    itemStyle : { normal: {barBorderRadius: 0,label : {show: true, position: 'insideRight'}}},
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'视频广告',
-                    type:'bar',
-                    stack: '总量',
-                    itemStyle : { normal: {barBorderRadius: 0,label : {show: true, position: 'insideRight'}}},
-                    data:[150, 212, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'搜索引擎',
-                    type:'bar',
-                    stack: '总量',
-                    itemStyle : { normal: {barBorderRadius: 0,label : {show: true, position: 'insideRight'}}},
-                    data:[820, 832, 901, 934, 1290, 1330, 1320]
+                    stack: 'percentage',
+                    itemStyle : {
+                        fontSize: 26,
+                        normal: {
+                            label : {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'normal'
+                                },
+                                /*formatter:function(obj){
+                                    var c="";
+                                    var xaixsData=xAxisData;
+                                    var greenData=greenData;
+                                    for(var i=0;i<xaixsData.length;i++){
+                                        if(obj.name==xaixsData[i]){
+                                            c+=greenData[i];
+                                        }
+                                    }
+                                    return c;
+                                },*/
+                                position: 'insideRight'
+                            }
+                        }
+                    },
+                    data:greenData
                 }
             ]
         };

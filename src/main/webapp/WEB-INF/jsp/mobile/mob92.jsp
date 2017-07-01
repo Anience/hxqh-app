@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div id="mob91">
-		<div id="echart1" style="width: 100%;height: 100%;"></div>
+		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;"></div>
 	</div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob92.js"></script>
