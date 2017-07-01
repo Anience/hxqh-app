@@ -17,7 +17,7 @@ $(function(){
     }
     function initEchart(domId,yData,serisData) {
         var yName = yData;
-        var lendName = ["DCS","DES","DGS"];
+        var lendName = ["CONS","DES","DGS"];
         var serisDatas = [];
         for(var name in serisData){
             var tmpObj = {};

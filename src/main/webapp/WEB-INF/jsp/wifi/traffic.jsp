@@ -22,8 +22,8 @@
 </head>
 <body>
 	<div class="traffic-layout">
-		<div class="row" style="height: 50%;width:100%;" id="echart1"></div>
-		<div class="row" style="height: 50%;width:100%;" id="echart2"></div>
+		<div class="row" style="height: 45%;width:100%;" id="echart1"></div>
+		<div class="row" style="height: 45%;width:100%;" id="echart2"></div>
 	</div>
 </body>
 <script type="text/javascript" src="${ctx}/js/wifi/traffic.js"></script>

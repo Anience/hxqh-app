@@ -73,13 +73,14 @@
 				</table>
 			</div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-7">
-				<div class="row echart1" style="background: red;"></div>
-				<div class="row echart2" style="background: #000;"></div>
+			<div class="col-sm-7" style="padding-top: 80px;">
+				<div id="echart1" class="row" style="height:300px;"></div>
+				<div id="echart2" class="row" style="height:300px;"></div>
 			</div>
 		</div>
 	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob88.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

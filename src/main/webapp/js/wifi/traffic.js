@@ -8,8 +8,8 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.strTop,data.nameList);
-                initEchart("echart2",data.strBottom,data.nameBottomList);
+                initEchart("echart1",data.topMap,data.nameList);
+                initEchart("echart2",data.bottomMap,data.nameList);
             },
             error: function(){
 
@@ -25,14 +25,15 @@ $(function(){
         }else{
             legendData = ['CONS','DWS','EBIS'];
         }
-        for(var i=0,len=echartSData.length;i<len;i++){
+        for(var name in echartSData){
             var tmpObj = {};
             tmpObj.type = 'line';
-            tmpObj.name = echartSData[i].da;
-            tmpObj.data = echartSData[i].str.split(",");
             tmpObj.smooth = true;
+            tmpObj.name = name;
+            tmpObj.data = echartSData[name];
             seriesData.push(tmpObj)
         }
+        console.log(seriesData);
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
