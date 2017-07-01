@@ -15,7 +15,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
     <context:component-scan base-package="com.hxqh.eam.controller"/>
 
     <!-- 配置直接转发页面 跳过handler -->
-    <mvc:view-controller path="/information" view-name="information/webContent"/>
+    <!--<mvc:view-controller path="/information" view-name="information/webContent"/>-->
 
     <mvc:default-servlet-handler/>
 
@@ -66,20 +66,22 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
         <property name="order" value="100"></property>
     </bean>
 
-    <!-- 拦截器 Session 判断 -->
-    <!--<mvc:interceptors>-->
-    <!--<mvc:interceptor>-->
-    <!--<mvc:mapping path="/**"/>-->
-    <!--<mvc:exclude-mapping path="/indexFirst.jsp"/>-->
-    <!--<mvc:exclude-mapping path="/*/*.css"/>-->
-    <!--<mvc:exclude-mapping path="/*/*.js"/>-->
-    <!--<mvc:exclude-mapping path="/*/*.gif"/>-->
-    <!--<mvc:exclude-mapping path="/*/*/*.gif"/>-->
-    <!--<mvc:exclude-mapping path="/*/*/*.jpg"/>-->
-    <!--<mvc:exclude-mapping path="/index/loginWebChat"/>-->
-    <!--<bean id="loginInterceptor" class="com.hxqh.eam.controller.LoginInterceptor"/>-->
-    <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <!--   拦截器 Session 判断-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/indexFirst.jsp"/>
+            <mvc:exclude-mapping path="/*/*.css"/>
+            <mvc:exclude-mapping path="/*/*.png"/>
+            <mvc:exclude-mapping path="/*/*.js"/>
+            <mvc:exclude-mapping path="/*/*/*.js"/>
+            <mvc:exclude-mapping path="/*/*.gif"/>
+            <mvc:exclude-mapping path="/*/*/*.gif"/>
+            <mvc:exclude-mapping path="/*/*/*.jpg"/>
+            <mvc:exclude-mapping path="/index/loginWebChat"/>
+            <bean id="loginInterceptor" class="com.hxqh.eam.controller.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 异常处理解析器 -->
     <!-- 	<bean id="exceptionResolver"

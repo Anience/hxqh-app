@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
 @SessionAttributes(value = "sessionInfo")
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
-    private static final String[] IGNORE_URI = {"/index/first", "/indexFirst.jsp", "index/login", "scripts/", "css/", "favicon.ico"};
-    private static final String LOGOUT_URL = "index/logout";
+    private static final String[] IGNORE_URI = {"/system/first", "/indexFirst.jsp", "system/login", "scripts/", "css/", "favicon.ico"};
+    private static final String LOGOUT_URL = "system/logout";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
