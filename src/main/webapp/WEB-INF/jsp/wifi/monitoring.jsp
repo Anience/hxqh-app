@@ -14,7 +14,7 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
+<div class="ticket-layout" style="padding-bottom: 120px;">
 	<h4>Monitoring MTTR Proactive 2017-06-27</h4>
 	<table class="monitoring-table" cellpadding="2">
 		<thead>

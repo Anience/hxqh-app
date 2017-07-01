@@ -13,7 +13,7 @@
 		var _ctx = "${ctx}";
 	</script>
 </head>
-<div id="mob91" >
+<div id="mob91" style="padding-bottom: 120px;">
 	<h3>SQUAT</h3>
 	<div class="row" id="mob91-data">
 		<div class="col-sm-6">

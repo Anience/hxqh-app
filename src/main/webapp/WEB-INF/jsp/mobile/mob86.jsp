@@ -14,7 +14,7 @@
 	</script>
 </head>
 <body>
-<div id="mob86">
+<div id="mob86" style="padding-bottom: 120px;">
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">

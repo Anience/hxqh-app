@@ -10,7 +10,21 @@ $(function () {
             nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7']
         },
         methods: {
-
+            updataEchart:function(startI){
+                var i = startI;
+                window.clearInterval(timer);
+                var timer=setInterval(function(){
+                    i++;
+                    if(i>7){
+                        i=0;
+                    }
+                    self.isShow=i;
+                    initEchart("echart1",self.anoList.map[self.nameList[i]]);
+                },300000);
+            },
+            updata:function(j){
+                updataEchart(j);
+            }
         },
         created: function () {
             var self = this;
@@ -21,15 +35,7 @@ $(function () {
                 success: function (data) {
                     self.anoList = data;
                     initEchart("echart1",self.anoList.map['TREG-1']);
-                    var i=1;
-                    setInterval(function(){
-                        i++;
-                        if(i>7){
-                            i=0;
-                        }
-                        self.isShow=i;
-                        initEchart("echart1",self.anoList.map[self.nameList[i]]);
-                    },300000)
+                    self.updataEchart(1);
                 },
                 error: function () {
 

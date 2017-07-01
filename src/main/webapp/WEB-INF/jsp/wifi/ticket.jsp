@@ -15,7 +15,7 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
+<div class="ticket-layout" style="padding-bottom: 120px;">
 	<h4>WIFI TICKET MONITORING</h4>
 	<table class="ticket">
 		<thead>

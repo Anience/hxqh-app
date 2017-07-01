@@ -15,7 +15,7 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
+<div class="ticket-layout" style="padding-bottom: 100px;">
 	<h4>Distribution Status Report</h4>
 	<table class="distribution">
 		<thead>

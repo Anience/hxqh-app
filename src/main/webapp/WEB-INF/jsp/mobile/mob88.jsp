@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="mob88">
-	<div class="mob-layout">
+	<div class="mob-layout" style="padding-bottom: 120px;">
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-3">

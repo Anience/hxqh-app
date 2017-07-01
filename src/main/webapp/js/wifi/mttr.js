@@ -20,6 +20,7 @@ $(function () {
                 success: function (data) {
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
+                    initEchart("echart1",data.vWifiMttrList);
                 },
                 error: function () {
 
@@ -27,34 +28,16 @@ $(function () {
             });
         }
     });
-    function initEchart() {
+    function initEchart(domId,echartData) {
         var myChart = echarts.init(document.getElementById(domId));
+        var xData = ["NAS","TREG-1","TREG-2","TREG-3","TREG-4","TREG-5","TREG-6","TREG-7"];
+        var seriesData = [];
         option = {
-            title: {
-                text: jsonstring.charttitle,
-                x:jsonstring.charttitlex,
-                y:jsonstring.charttitley,
-                //padding:'15',
-                textStyle: {
-                    fontSize: jsonstring.charttitlesize,
-                    fontWeight: 'bolder',
-                    color: jsonstring.charttitlecolor          // 主标题文字颜色
-                }
-                //subtext: subtitle
-            },
-            grid:{
-                x:jsonstring.chartgridx,//左角李左边的宽度
-                y:jsonstring.chartgridy,//左角李上面的高度
-                x2:jsonstring.chartgridx2, //右角李左边的宽度
-                y2:jsonstring.chartgridy2, //右角李上面的高度
-                borderWidth:jsonstring.chartgridborderwidth,//外围边框线
-                borderColor:jsonstring.chartgridbordercolor
-            },
+            backgroundColor: '#0c0e26',//背景色
             tooltip: {
                 trigger: 'axis',
-                // backgroundColor: 'rgba(255,255,255,0.7)',
                 axisPointer: {
-                    type: jsonstring.charttooltipaxispointertype
+                    type: 'none'
                 },
                 formatter: function(params) {
                     var color = '#87cefa';
@@ -67,86 +50,82 @@ $(function () {
                     return res;
                 }
             },
-            legend: {
-                show:jsonstring.chartlegendshow,
-                orient:jsonstring.chartlegendorient,//horizontal 水平   vertical 竖直
-                x: jsonstring.chartlegendx, //'center' | 'left' | 'right'
-                y:jsonstring.chartlegendy,
-                textStyle:{    //图例文字的样式
-                    color:jsonstring.chartlegendcolor,
-                    // fontSize:12
-                },
-                data:dateJson//['2010','2011','2012','2013']
-            },
+            color:['#009900','#FFFF00','#FF0000'],
             calculable: false,
-            color:jsonstring["color"],
             xAxis: [
                 {
                     type: 'category',
-                    boundaryGap : jsonstring.chartxaixboundaryGap,
-                    show:true,
-                    name:jsonstring.chartxaixsname,
-                    axisLabel : {//轴文本
-                        show:jsonstring.chartxaixlabelshow,
-                        interval:jsonstring.chartxaixlabelinterval,    // {number}刻度的长短，可设为数字
-                        rotate: jsonstring.chartxaixlabelrotate,    //旋转度数
+                    name:'Region',
+                    axisTick:{
+                        interval:0
+                    },
+                    lineStyle: {
+                        color: '#FFFFFF',
+                        type: 'solid',
+                        width: 2
+                    },
+                    axisLabel : {//轴数据风格
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        //rotate: 30,
                         margin:5,
-                        splitNumber: 18,
+                        splitNumber: 100,
                         textStyle:{
-                            color: jsonstring.chartxaixlabelcolor,
-                            fontSize:jsonstring.chartxaixlabelsize
+                            color: '#FFFFFF'
                         }
                     },
-                    axisLine : {
-                        show: false
-                    },
-                    splitLine : { //网格分隔线
-                        show: true,
+                    splitLine : {
+                        show:false,
                         lineStyle: {
-                            color: '#666C7F',
+                            color: '#FFFFFF',
                             type: 'dashed',
                             width: 1
                         }
                     },
-                    splitArea : {
-                        show : false
-                    },
-                    data:kindJson
+                    data:xData
                 }
             ],
             yAxis: [
                 {
-                    type: /*'value'*/jsonstring.chartyaixstype,
-                    show:jsonstring.chartyaixsshow,
-                    name:jsonstring.chartyaixsname,
-                    axisLabel : {//轴文本
-                        show:jsonstring.chartyaixlabelshow,
-                        interval:jsonstring.chartyaixlabelinterval,    // {number}刻度的长短，可设为数字
-                        rotate: jsonstring.chartyaixlabelrotate,    //旋转度数
+                    type: 'value',
+                    name:'value',
+                    axisLabel : {//轴数据风格
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        //rotate: 30,
                         margin:5,
-                        splitNumber: 18,
+                        splitNumber: 100,
                         textStyle:{
-                            color: jsonstring.chartyaixlabelcolor,
-                            fontSize:jsonstring.chartyaixlabelsize
+                            color: '#FFFFFF'
                         }
                     },
-                    axisLine : {    // 轴线
-                        show: jsonstring.chartyaixlineshow
-                    },
-                    splitLine : { //网格分隔线
-                        show:jsonstring.chartyaixsplitlineshow,
+                    splitLine : { //分隔线
+                        show:true,
                         lineStyle: {
-                            color: '#666C7F',
+                            color: '#FFFFFF',
                             type: 'dashed',
                             width: 1
                         }
-                    },
-                    splitArea : {
-                        show : jsonstring.chartyaixsplitareashow
                     }
                 }
             ],
-            series: objectJson
+            series : [
+                {
+                    name:'>=90:',
+                    type:'bar',
+                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2,],
+                },
+                {
+                    name:'75~90:',
+                    type:'bar',
+                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2]
+                },
+                {
+                    name:'<75:',
+                    type:'bar',
+                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2]
+                }
+            ]
         };
         myChart.setOption(option);
     }
