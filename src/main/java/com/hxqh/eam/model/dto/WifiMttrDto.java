@@ -1,8 +1,8 @@
 package com.hxqh.eam.model.dto;
 
-import com.hxqh.eam.model.view.VWifiMttr;
 import com.hxqh.eam.model.view.VWifiMttrList;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -11,25 +11,25 @@ import java.util.Map;
  */
 public class WifiMttrDto {
 
-    private List<VWifiMttr> vWifiMttrList;
+    Map<String, List<BigDecimal>> mttrM;
     private Map<String ,List<VWifiMttrList>> leftList;
     private Map<String ,List<VWifiMttrList>> rightList;
 
     public WifiMttrDto() {
     }
 
-    public WifiMttrDto(List<VWifiMttr> vWifiMttrList, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList) {
-        this.vWifiMttrList = vWifiMttrList;
+    public WifiMttrDto(Map<String, List<BigDecimal>> mttrM, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList) {
+        this.mttrM = mttrM;
         this.leftList = leftList;
         this.rightList = rightList;
     }
 
-    public List<VWifiMttr> getvWifiMttrList() {
-        return vWifiMttrList;
+    public Map<String, List<BigDecimal>> getMttrM() {
+        return mttrM;
     }
 
-    public void setvWifiMttrList(List<VWifiMttr> vWifiMttrList) {
-        this.vWifiMttrList = vWifiMttrList;
+    public void setMttrM(Map<String, List<BigDecimal>> mttrM) {
+        this.mttrM = mttrM;
     }
 
     public Map<String, List<VWifiMttrList>> getLeftList() {
