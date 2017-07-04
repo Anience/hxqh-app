@@ -4,21 +4,20 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.common.IConstants;
 import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
+import com.hxqh.eam.model.SfOrganizationDepartment;
+import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
-import com.hxqh.eam.model.base.Status;
-import com.hxqh.eam.model.dto.Dig13Dto;
+import com.hxqh.eam.model.dto.AccountDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
-import com.hxqh.eam.model.view.VDig13;
 import com.hxqh.eam.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -103,12 +102,30 @@ public class SystemController {
     }
 
 
-    /****************************Security Management**********************/
+    /****************************Security Menu Configure**********************/
 
-
+    /**
+     * menu List页面接口
+     *
+     * @return
+     */
     @RequestMapping(value = "/menuList", method = RequestMethod.GET)
     public String menuList() {
         return "security/menuList";
+    }
+
+
+    /**
+     * menu 新增与修改公用页面
+     *
+     * @param operate 前台传入操作标识符
+     * @return
+     */
+    @RequestMapping(value = "/menuDetail", method = RequestMethod.GET)
+    public ModelAndView menuDetail(@RequestParam("operate") String operate) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("operate", operate);
+        return new ModelAndView("security/menuDetail", result);
     }
 
     /**
@@ -120,10 +137,193 @@ public class SystemController {
     @RequestMapping(value = "/menuListData", method = RequestMethod.GET)
     public List<Menu> menuListData() {
         List<Menu> menuList = systemService.getMenuListData();
-        return null;
+        return menuList;
     }
 
 
-    /****************************Security Management**********************/
+    /**
+     * editMenu 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/editMenu", method = RequestMethod.GET)
+    public Message editMenu(Menu menu) {
+        Message message = null;
+        try {
+            systemService.editMenu(menu);
+            message = new Message(IConstants.SUCCESS, IConstants.EDITSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.EDITSUCCESS);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+
+    /**
+     * addMenu 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addMenu", method = RequestMethod.GET)
+    public Message addMenu(Menu menu) {
+        Message message = null;
+        try {
+            systemService.addMenu(menu);
+            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * delMenu 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delMenu", method = RequestMethod.GET)
+    public Message delMenu(@RequestParam("menuid") String menuid) {
+        Message message = null;
+        try {
+            systemService.delMenu(menuid);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /****************************User Configure**********************/
+
+    /**
+     * User management List页面接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    public String userList() {
+        return "user/userList";
+    }
+
+
+    /**
+     * User management OnlineList页面接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/onlineUserList", method = RequestMethod.GET)
+    public List<SfOrganizationAccount> onlineUserList() {
+        List<SfOrganizationAccount> onlineUserList = systemService.findOnlineUserList();
+        return onlineUserList;
+    }
+
+    /**
+     * User 新增与修改公用页面
+     *
+     * @param operate 前台传入操作标识符
+     * @return
+     */
+    @RequestMapping(value = "/userDetail", method = RequestMethod.GET)
+    public ModelAndView userDetail(@RequestParam("operate") String operate) {
+        Map<String, Object> result = new HashMap<>();
+        if (operate.equals(IConstants.EDIT) || operate.equals(IConstants.ADD)) {
+            List<SfOrganizationDepartment> departmentList = systemService.getDepartmentList();
+            result.put("departmentList", departmentList);
+        }
+        result.put("operate", operate);
+        return new ModelAndView("user/userDetail", result);
+    }
+
+    /**
+     * userListData 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/userListData", method = RequestMethod.GET)
+    public AccountDto userListData() {
+        AccountDto AccountDto = systemService.getUserListData();
+        return AccountDto;
+    }
+
+    /**
+     * editUser 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
+    public Message editUser(SfOrganizationAccount account) {
+        Message message = null;
+        try {
+            systemService.editUser(account);
+            message = new Message(IConstants.SUCCESS, IConstants.EDITSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.EDITSUCCESS);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * addUser 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+    public Message addUser(SfOrganizationAccount account) {
+        Message message = null;
+        try {
+            systemService.addUser(account);
+            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * delUser 业务接口
+     *
+     * @param id 前台传入需要删除id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delUser", method = RequestMethod.GET)
+    public Message delUser(@RequestParam("id") String id) {
+        Message message = null;
+        try {
+            systemService.delUser(id);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /****************************User Configure**********************/
+
+
+    /****************************Role Configure**********************/
+
+
+    /****************************Role Configure**********************/
+
 
 }
