@@ -2,7 +2,8 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.dto.IndiHomeDto;
-import com.hxqh.eam.model.dto.MapDto;
+import com.hxqh.eam.model.dto.OpenMapLinesDto;
+import com.hxqh.eam.model.dto.OpenMapTableDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,18 +21,21 @@ public class AnoServiceImpl implements AnoService {
     @Autowired
     private VAno82Dao ano82Dao;
     @Autowired
-    private VMapMaplineDao mapMaplineDao;
-    @Autowired
-    private VMapNeighbourDao mapNeighbourDao;
-    @Autowired
-    private VMapStreetmapDao mapStreetmapDao;
-    @Autowired
     private VHomeImpactDao homeImpactDao;
     @Autowired
     private VHomeRegularDao homeRegularDao;
     @Autowired
     private VHomeTotalDao homeTotalDao;
-
+    @Autowired
+    private VMapOpenmaplineDao mapOpenmaplineDao;
+    @Autowired
+    private VMapOpenmaplinesLinecolorDao mapOpenmaplinesLinecolorDao;
+    @Autowired
+    private VMapOpenmappointDao mapOpenmappointDao;
+    @Autowired
+    private VMapOpenmaptableDao mapOpenmaptableDao;
+    @Autowired
+    private VMapOpenmaptableRighttableDao mapOpenmaptableRighttableDao;
 
     @Override
     public List<VAno81> getAno81Data() {
@@ -43,14 +47,6 @@ public class AnoServiceImpl implements AnoService {
         return ano82Dao.findAll();
     }
 
-    @Override
-    public MapDto getMapData() {
-        List<VMapMapline> mapMapline = mapMaplineDao.findAll();
-        List<VMapNeighbour> mapNeighbour = mapNeighbourDao.findAll();
-        List<VMapStreetmap> mapStreetmap = mapStreetmapDao.findAll();
-        MapDto mapDto = new MapDto(mapMapline, mapNeighbour, mapStreetmap);
-        return mapDto;
-    }
 
     @Override
     public IndiHomeDto getIndiHomeData() {
@@ -58,7 +54,29 @@ public class AnoServiceImpl implements AnoService {
         List<VHomeRegular> homeRegular = homeRegularDao.findAll();
         List<VHomeTotal> homeTotal = homeTotalDao.findAll();
 
-        IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact,homeRegular,homeTotal);
+        IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact, homeRegular, homeTotal);
         return indiHomeDto;
     }
+
+    @Override
+    public List<VMapOpenmappoint> getOpenMapPointsList() {
+        return mapOpenmappointDao.findAll();
+    }
+
+    @Override
+    public OpenMapLinesDto getOpenMapLinesData() {
+        List<VMapOpenmapline> mapOpenmapline = mapOpenmaplineDao.findAll();
+        List<VMapOpenmaplinesLinecolor> mapOpenmaplinesLinecolor = mapOpenmaplinesLinecolorDao.findAll();
+        OpenMapLinesDto mapLinesDto = new OpenMapLinesDto(mapOpenmapline, mapOpenmaplinesLinecolor);
+        return mapLinesDto;
+    }
+
+    @Override
+    public OpenMapTableDto getOpenMapTableData() {
+        List<VMapOpenmaptable> mapOpenmaptable = mapOpenmaptableDao.findAll();
+        List<VMapOpenmaptableRighttable> mapOpenmaptableRighttable = mapOpenmaptableRighttableDao.findAll();
+        OpenMapTableDto openMapTableDto = new OpenMapTableDto(mapOpenmaptable, mapOpenmaptableRighttable);
+        return openMapTableDto;
+    }
+
 }

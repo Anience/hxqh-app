@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.dto.action.LoginDto;
 
@@ -13,4 +14,5 @@ public interface SystemService {
     List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto);
 
 
+    List<Menu> getMenuListData();
 }

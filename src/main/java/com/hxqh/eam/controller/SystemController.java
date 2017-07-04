@@ -5,14 +5,19 @@ package com.hxqh.eam.controller;
  */
 
 import com.hxqh.eam.common.hxqh.Account;
+import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.base.SessionInfo;
+import com.hxqh.eam.model.base.Status;
+import com.hxqh.eam.model.dto.Dig13Dto;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import com.hxqh.eam.model.view.VDig13;
 import com.hxqh.eam.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -97,5 +102,28 @@ public class SystemController {
         return "redirect:/login.jsp";
     }
 
+
+    /****************************Security Management**********************/
+
+
+    @RequestMapping(value = "/menuList", method = RequestMethod.GET)
+    public String menuList() {
+        return "security/menuList";
+    }
+
+    /**
+     * menuListData 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/menuListData", method = RequestMethod.GET)
+    public List<Menu> menuListData() {
+        List<Menu> menuList = systemService.getMenuListData();
+        return null;
+    }
+
+
+    /****************************Security Management**********************/
 
 }

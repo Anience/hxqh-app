@@ -1,9 +1,11 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.dto.IndiHomeDto;
-import com.hxqh.eam.model.dto.MapDto;
+import com.hxqh.eam.model.dto.OpenMapLinesDto;
+import com.hxqh.eam.model.dto.OpenMapTableDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
+import com.hxqh.eam.model.view.VMapOpenmappoint;
 
 import java.util.List;
 
@@ -16,7 +18,11 @@ public interface AnoService {
 
     List<VAno82> getAno82Data();
 
-    MapDto getMapData();
-
     IndiHomeDto getIndiHomeData();
+
+    List<VMapOpenmappoint> getOpenMapPointsList();
+
+    OpenMapLinesDto getOpenMapLinesData();
+
+    OpenMapTableDto getOpenMapTableData();
 }

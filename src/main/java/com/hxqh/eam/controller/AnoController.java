@@ -5,9 +5,11 @@ package com.hxqh.eam.controller;
  */
 
 import com.hxqh.eam.model.dto.IndiHomeDto;
-import com.hxqh.eam.model.dto.MapDto;
+import com.hxqh.eam.model.dto.OpenMapLinesDto;
+import com.hxqh.eam.model.dto.OpenMapTableDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
+import com.hxqh.eam.model.view.VMapOpenmappoint;
 import com.hxqh.eam.service.AnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,16 +88,43 @@ public class AnoController {
     }
 
     /**
-     * map 数据接口
+     * openMapPoints 数据接口
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/mapData", method = RequestMethod.GET)
-    public MapDto mapData() {
-        MapDto mapData = anoService.getMapData();
-        return mapData;
+    @RequestMapping(value = "/openMapPoints", method = RequestMethod.GET)
+    public List<VMapOpenmappoint> openMapPoints() {
+        List<VMapOpenmappoint> openmappointList =anoService.getOpenMapPointsList();
+        return openmappointList;
     }
+
+
+
+    /**
+     * openMapLines 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/openMapLines", method = RequestMethod.GET)
+    public OpenMapLinesDto openMapLines() {
+        OpenMapLinesDto mapLinesDto =anoService.getOpenMapLinesData();
+        return mapLinesDto;
+    }
+
+    /**
+     * openMapTable 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/openMapTable", method = RequestMethod.GET)
+    public OpenMapTableDto openMapTable() {
+        OpenMapTableDto mapTableDto =anoService.getOpenMapTableData();
+        return mapTableDto;
+    }
+
 
     /**
      * indiHome 页面跳转接口
