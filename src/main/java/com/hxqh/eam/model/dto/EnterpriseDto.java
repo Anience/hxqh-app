@@ -1,83 +1,62 @@
 package com.hxqh.eam.model.dto;
 
-import com.hxqh.eam.model.view.*;
+import com.hxqh.eam.model.view.VEntProactive;
+import com.hxqh.eam.model.view.VEntReactive;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by Ocean Lin on 2017/6/27.
+ * Created by Ocean lin on 2017/7/5.
  */
 public class EnterpriseDto {
-    private List<VEntEntBottomOne> entEntBottomOneList;
 
-    private List<VEntEntBottomThree> entEntBottomThreeList;
+    private List<VEntProactive> entProactiveList;
 
-    private List<VEntEntBottomTwo> entEntBottomTwoList;
+    private List<VEntReactive> entReactiveList;
 
-    private List<VEntEntTopOne> entEntTopOneList;
+    private Map<String, List<BigDecimal>> entReactivetktM;
 
-    private List<VEntEntTopThree> entEntTopThreeList;
-
-    private List<VEntEntTopTwo> entEntTopTwoList;
+    private Map<String, List<BigDecimal>> entProactivetktM;
 
 
-    public EnterpriseDto() {
+    public EnterpriseDto(List<VEntProactive> entProactiveList, List<VEntReactive> entReactiveList, Map<String, List<BigDecimal>> entReactivetktM, Map<String, List<BigDecimal>> entProactivetktM) {
+        this.entProactiveList = entProactiveList;
+        this.entReactiveList = entReactiveList;
+        this.entReactivetktM = entReactivetktM;
+        this.entProactivetktM = entProactivetktM;
     }
 
-    public EnterpriseDto(List<VEntEntBottomOne> entEntBottomOneList, List<VEntEntBottomThree> entEntBottomThreeList, List<VEntEntBottomTwo> entEntBottomTwoList, List<VEntEntTopOne> entEntTopOneList, List<VEntEntTopThree> entEntTopThreeList, List<VEntEntTopTwo> entEntTopTwoList) {
-        this.entEntBottomOneList = entEntBottomOneList;
-        this.entEntBottomThreeList = entEntBottomThreeList;
-        this.entEntBottomTwoList = entEntBottomTwoList;
-        this.entEntTopOneList = entEntTopOneList;
-        this.entEntTopThreeList = entEntTopThreeList;
-        this.entEntTopTwoList = entEntTopTwoList;
+    public List<VEntProactive> getEntProactiveList() {
+        return entProactiveList;
     }
 
-    public List<VEntEntBottomOne> getEntEntBottomOneList() {
-        return entEntBottomOneList;
+    public void setEntProactiveList(List<VEntProactive> entProactiveList) {
+        this.entProactiveList = entProactiveList;
     }
 
-    public void setEntEntBottomOneList(List<VEntEntBottomOne> entEntBottomOneList) {
-        this.entEntBottomOneList = entEntBottomOneList;
+    public List<VEntReactive> getEntReactiveList() {
+        return entReactiveList;
     }
 
-    public List<VEntEntBottomThree> getEntEntBottomThreeList() {
-        return entEntBottomThreeList;
+    public void setEntReactiveList(List<VEntReactive> entReactiveList) {
+        this.entReactiveList = entReactiveList;
     }
 
-    public void setEntEntBottomThreeList(List<VEntEntBottomThree> entEntBottomThreeList) {
-        this.entEntBottomThreeList = entEntBottomThreeList;
+    public Map<String, List<BigDecimal>> getEntReactivetktM() {
+        return entReactivetktM;
     }
 
-    public List<VEntEntBottomTwo> getEntEntBottomTwoList() {
-        return entEntBottomTwoList;
+    public void setEntReactivetktM(Map<String, List<BigDecimal>> entReactivetktM) {
+        this.entReactivetktM = entReactivetktM;
     }
 
-    public void setEntEntBottomTwoList(List<VEntEntBottomTwo> entEntBottomTwoList) {
-        this.entEntBottomTwoList = entEntBottomTwoList;
+    public Map<String, List<BigDecimal>> getEntProactivetktM() {
+        return entProactivetktM;
     }
 
-    public List<VEntEntTopOne> getEntEntTopOneList() {
-        return entEntTopOneList;
-    }
-
-    public void setEntEntTopOneList(List<VEntEntTopOne> entEntTopOneList) {
-        this.entEntTopOneList = entEntTopOneList;
-    }
-
-    public List<VEntEntTopThree> getEntEntTopThreeList() {
-        return entEntTopThreeList;
-    }
-
-    public void setEntEntTopThreeList(List<VEntEntTopThree> entEntTopThreeList) {
-        this.entEntTopThreeList = entEntTopThreeList;
-    }
-
-    public List<VEntEntTopTwo> getEntEntTopTwoList() {
-        return entEntTopTwoList;
-    }
-
-    public void setEntEntTopTwoList(List<VEntEntTopTwo> entEntTopTwoList) {
-        this.entEntTopTwoList = entEntTopTwoList;
+    public void setEntProactivetktM(Map<String, List<BigDecimal>> entProactivetktM) {
+        this.entProactivetktM = entProactivetktM;
     }
 }

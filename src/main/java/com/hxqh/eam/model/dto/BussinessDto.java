@@ -1,81 +1,62 @@
 package com.hxqh.eam.model.dto;
 
-import com.hxqh.eam.model.view.VEntBusBottomOne;
-import com.hxqh.eam.model.view.VEntBusBottomThree;
-import com.hxqh.eam.model.view.VEntBusBottomTwo;
-import com.hxqh.eam.model.view.VEntBusTopOne;
-import com.hxqh.eam.model.view.VEntBusTopThree;
-import com.hxqh.eam.model.view.VEntBusTopTwo;
 
+import com.hxqh.eam.model.view.VBusProactive;
+import com.hxqh.eam.model.view.VBusReactive;
+
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by Ocean Lin on 2017/6/27.
+ * Created by Ocean lin on 2017/7/5.
  */
 public class BussinessDto {
 
-    private List<VEntBusBottomOne> vEntBusBottomOne;
-    private List<VEntBusBottomThree> vEntBusBottomThree;
-    private List<VEntBusBottomTwo> vEntBusBottomTwo;
+    private List<VBusProactive> busProactiveList;
 
-    private List<VEntBusTopOne> vEntBusTopOne;
-    private List<VEntBusTopThree> vEntBusTopThree;
-    private List<VEntBusTopTwo> vEntBusTopTwo;
+    private List<VBusReactive> busReactiveList;
 
-    public BussinessDto(List<VEntBusBottomOne> vEntBusBottomOne, List<VEntBusBottomThree> vEntBusBottomThree, List<VEntBusBottomTwo> vEntBusBottomTwo, List<VEntBusTopOne> vEntBusTopOne, List<VEntBusTopThree> vEntBusTopThree, List<VEntBusTopTwo> vEntBusTopTwo) {
-        this.vEntBusBottomOne = vEntBusBottomOne;
-        this.vEntBusBottomThree = vEntBusBottomThree;
-        this.vEntBusBottomTwo = vEntBusBottomTwo;
-        this.vEntBusTopOne = vEntBusTopOne;
-        this.vEntBusTopThree = vEntBusTopThree;
-        this.vEntBusTopTwo = vEntBusTopTwo;
+    private Map<String, List<BigDecimal>> busProactivetktM;
+
+    private Map<String, List<BigDecimal>> busReactivetktM;
+
+    public BussinessDto(List<VBusProactive> busProactiveList, List<VBusReactive> busReactiveList, Map<String, List<BigDecimal>> busProactivetktM, Map<String, List<BigDecimal>> busReactivetktM) {
+        this.busProactiveList = busProactiveList;
+        this.busReactiveList = busReactiveList;
+        this.busProactivetktM = busProactivetktM;
+        this.busReactivetktM = busReactivetktM;
     }
 
-    public List<VEntBusBottomOne> getvEntBusBottomOne() {
-        return vEntBusBottomOne;
+    public List<VBusProactive> getBusProactiveList() {
+        return busProactiveList;
     }
 
-    public void setvEntBusBottomOne(List<VEntBusBottomOne> vEntBusBottomOne) {
-        this.vEntBusBottomOne = vEntBusBottomOne;
+    public void setBusProactiveList(List<VBusProactive> busProactiveList) {
+        this.busProactiveList = busProactiveList;
     }
 
-    public List<VEntBusBottomThree> getvEntBusBottomThree() {
-        return vEntBusBottomThree;
+    public List<VBusReactive> getBusReactiveList() {
+        return busReactiveList;
     }
 
-    public void setvEntBusBottomThree(List<VEntBusBottomThree> vEntBusBottomThree) {
-        this.vEntBusBottomThree = vEntBusBottomThree;
+    public void setBusReactiveList(List<VBusReactive> busReactiveList) {
+        this.busReactiveList = busReactiveList;
     }
 
-    public List<VEntBusBottomTwo> getvEntBusBottomTwo() {
-        return vEntBusBottomTwo;
+    public Map<String, List<BigDecimal>> getBusProactivetktM() {
+        return busProactivetktM;
     }
 
-    public void setvEntBusBottomTwo(List<VEntBusBottomTwo> vEntBusBottomTwo) {
-        this.vEntBusBottomTwo = vEntBusBottomTwo;
+    public void setBusProactivetktM(Map<String, List<BigDecimal>> busProactivetktM) {
+        this.busProactivetktM = busProactivetktM;
     }
 
-    public List<VEntBusTopOne> getvEntBusTopOne() {
-        return vEntBusTopOne;
+    public Map<String, List<BigDecimal>> getBusReactivetktM() {
+        return busReactivetktM;
     }
 
-    public void setvEntBusTopOne(List<VEntBusTopOne> vEntBusTopOne) {
-        this.vEntBusTopOne = vEntBusTopOne;
-    }
-
-    public List<VEntBusTopThree> getvEntBusTopThree() {
-        return vEntBusTopThree;
-    }
-
-    public void setvEntBusTopThree(List<VEntBusTopThree> vEntBusTopThree) {
-        this.vEntBusTopThree = vEntBusTopThree;
-    }
-
-    public List<VEntBusTopTwo> getvEntBusTopTwo() {
-        return vEntBusTopTwo;
-    }
-
-    public void setvEntBusTopTwo(List<VEntBusTopTwo> vEntBusTopTwo) {
-        this.vEntBusTopTwo = vEntBusTopTwo;
+    public void setBusReactivetktM(Map<String, List<BigDecimal>> busReactivetktM) {
+        this.busReactivetktM = busReactivetktM;
     }
 }

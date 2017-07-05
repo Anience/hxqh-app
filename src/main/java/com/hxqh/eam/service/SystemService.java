@@ -4,6 +4,7 @@ import com.hxqh.eam.model.dto.AccountDto;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.SfOrganizationDepartment;
+import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 
 import java.util.List;
@@ -34,4 +35,6 @@ public interface SystemService {
     List<SfOrganizationDepartment> getDepartmentList();
 
     AccountDto getUserListData();
+
+    RoleDto getRoleListData();
 }
