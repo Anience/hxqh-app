@@ -35,7 +35,7 @@ $(function () {
                 success: function (data) {
                     self.anoList = data;
                     initEchart("echart1",self.anoList.map['TREG-1']);
-                    self.updataEchart(1);
+                    /*self.updataEchart(1);*/
                 },
                 error: function () {
 

@@ -27,14 +27,14 @@
 			<div class="col-sm-2">
 				<ul>
 					<li><a href="" style="background: #005E8A;">View:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">NAS:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-1:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-2:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-3:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-4:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-5:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-6:</a></li>
-					<li><a href="javascript:void(0);" v-on:click="update">TREG-7:</a></li>
+					<li><a href="javascript:void(0);">NAS:</a></li>
+					<li><a href="javascript:void(0);">TREG-1:</a></li>
+					<li><a href="javascript:void(0);">TREG-2:</a></li>
+					<li><a href="javascript:void(0);">TREG-3:</a></li>
+					<li><a href="javascript:void(0);">TREG-4:</a></li>
+					<li><a href="javascript:void(0);">TREG-5:</a></li>
+					<li><a href="javascript:void(0);">TREG-6:</a></li>
+					<li><a href="javascript:void(0);">TREG-7:</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">

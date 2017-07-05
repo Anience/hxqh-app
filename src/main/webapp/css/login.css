@@ -27,6 +27,8 @@
 	background: url("../imgs/logincbg.gif");
 	font-size: 14px;
     font-family: 'microsoft yahei';
+	position: relative;
+	z-index:10;
 }
 .login-form h4{
 	padding-top: 20px;
@@ -49,6 +51,7 @@
     font-family: 'microsoft yahei';
     display: inline-block;
     width: 95px;
+	color: #666;
 }
 .login-item input{
 	width: 160px;
@@ -104,4 +107,124 @@
 	background-color: #fff;
 	border: 1px solid #d5d5d5;
 	padding: 3px 4px;
+}
+.fan_clouds{
+	animation: whiteClouds 2s linear infinite alternate;
+	background:url(../imgs/yun_01.png);
+	width:107px;
+	height:71px;
+	position:absolute;
+	left:107px;
+	top:125px;
+	-webkit-animation:whiteClouds 30s infinite linear ;
+	-moz-animation:whiteClouds 30s linear infinite;
+	animation:whiteClouds 30s linear infinite;
+	-ms-animation:whiteClouds2 30s infinite linear ;
+}
+
+.fan_clouds2{
+	background:url(../imgs/yun_02.png);
+	width:138px;
+	height:86px;
+	position:absolute;
+	right:138px;
+	top:100px;
+	-webkit-animation:whiteClouds2 30s infinite linear ;
+	-ms-animation:whiteClouds2 30s infinite linear ;
+	-moz-animation:whiteClouds2 30s linear infinite;
+	animation:whiteClouds2 30s linear infinite;
+}
+
+/*白云动画*/
+@keyframes whiteClouds/* IE10+ */{
+	0%{left:0%;}
+	10%{left:25%; }
+	20%{left:50%; }
+	30%{left:75%; }
+	40%{left:100%; }
+	50%{left:75%; }
+	60%{left:50%; }
+	75%{left:25%;}
+	100%{left:0%;}
+}
+@-moz-keyframes whiteClouds/* Firefox */{
+	0%{left:0%;}
+	10%{left:25%; }
+	20%{left:50%; }
+	30%{left:75%; }
+	40%{left:100%; }
+	50%{left:75%; }
+	60%{left:50%; }
+	75%{left:25%;}
+	100%{left:0%;}
+}
+@-webkit-keyframes whiteClouds/* Safari 和 Chrome */{
+	0%{left:0%;}
+	10%{left:25%; }
+	20%{left:50%; }
+	30%{left:75%; }
+	40%{left:100%; }
+	50%{left:75%; }
+	60%{left:50%; }
+	75%{left:25%;}
+	100%{left:0%;}
+}
+@-o-keyframes whiteClouds/* Opera */{
+	0%{left:0%;}
+	10%{left:25%; }
+	20%{left:50%; }
+	30%{left:75%; }
+	40%{left:100%; }
+	50%{left:75%; }
+	60%{left:50%; }
+	75%{left:25%;}
+	100%{left:0%;}
+}
+
+
+
+@keyframes whiteClouds2/* IE10+ */{
+	0%{right:0%; }
+	10%{right:25%;}
+	20%{right:50%; }
+	30%{right:75%; }
+	40%{right:100%; }
+	50%{right:75%; }
+	60%{right:50%; }
+	75%{right:25%;}
+	100%{right:0%;}
+}
+@-moz-keyframes whiteClouds2/* Firefox */{
+	0%{right:0%; }
+	10%{right:25%;}
+	20%{right:50%; }
+	30%{right:75%; }
+	40%{right:100%; }
+	50%{right:75%; }
+	60%{right:50%; }
+	75%{right:25%;}
+	100%{right:0%;}
+}
+@-webkit-keyframes whiteClouds2/* Safari 和 Chrome */{
+	0%{right:0%; }
+	10%{right:25%;}
+	20%{right:50%; }
+	30%{right:75%; }
+	40%{right:100%; }
+	50%{right:75%; }
+	60%{right:50%; }
+	75%{right:25%;}
+	100%{right:0%;}
+}
+
+@-o-keyframes whiteClouds2/* Opera */{
+	0%{right:0%; }
+	10%{right:25%;}
+	20%{right:50%; }
+	30%{right:75%; }
+	40%{right:100%; }
+	50%{right:75%; }
+	60%{right:50%; }
+	75%{right:25%;}
+	100%{right:0%;}
 }
