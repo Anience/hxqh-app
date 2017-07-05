@@ -52,12 +52,12 @@ public class SystemController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginDto loginDto, Map<String, Object> map) {
+    public ModelAndView login(LoginDto loginDto, Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);
     }
 
-    private String webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
+    private ModelAndView webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
         Map<String, Object> result = new HashMap<>();
         if (loginUserList.size() > 0) {
             String password = null;
@@ -69,20 +69,20 @@ public class SystemController {
                     SessionInfo sessionInfo = new SessionInfo();
                     sessionInfo.setName(login.getName());
                     map.put("sessionInfo", sessionInfo);
-                    return "index";
+                    return new ModelAndView("index",result);
                 } else {
                     result.put("message", "Password authentication error!");
-                    return "login";
+                    return new ModelAndView("login",result);
                 }
             } catch (Exception e) {
                 result.put("message", "System exception, please contact the administrator！");
                 e.printStackTrace();
-                return "login";
+                return new ModelAndView("login",result);
             }
         } else {
             //用户名不存在
             result.put("message", "The account does not exist!");
-            return "login";
+            return new ModelAndView("login",result);
         }
     }
 
@@ -321,6 +321,15 @@ public class SystemController {
 
 
     /****************************Role Configure**********************/
+    /**
+     * Role management List页面接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/roleList", method = RequestMethod.GET)
+    public String roleList() {
+        return "role/roleList";
+    }
 
 
     /****************************Role Configure**********************/
