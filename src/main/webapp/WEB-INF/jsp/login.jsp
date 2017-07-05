@@ -18,6 +18,10 @@
 <div class="login-layout">
 	<div class="login-div">
 		<div class="login-left-bg"></div>
+		<div style="position:relative; width:100%; margin:0px auto;">
+			<div class="fan_clouds clouds_animate "></div>
+			<div class="fan_clouds2 clouds_animate "></div>
+		</div>
 		<div class="login-form">
 			<div class="form-layout">
 				<h4>TelKom Dashboard</h4>
@@ -39,7 +43,7 @@
 							<option value="zh_CN">CH</option>
 						</select>
 					</div>
-					<div>
+					<div style="padding-top: 20px;">
 						<input type="checkbox" name=""/>Remember
 						<a href="" class="forgot">Forgot Password</a>
 					</div>

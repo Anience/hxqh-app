@@ -47,7 +47,7 @@ public class EnterpriseController {
      */
     @RequestMapping(value = "/enterpriseBussiness", method = RequestMethod.GET)
     public String enterpriseBussiness() {
-        return "enterprise/enterpriseBussiness";
+        return "enterprise/entBussiness";
     }
 
 
@@ -91,12 +91,12 @@ public class EnterpriseController {
 
     @RequestMapping(value = "/enterpriseGovernment", method = RequestMethod.GET)
     public String enterpriseGovernment() {
-        return "enterprise/enterpriseGovernment";
+        return "enterprise/entGover";
     }
 
     @RequestMapping(value = "/enterpriseEnterprise", method = RequestMethod.GET)
     public String enterpriseEnterprise() {
-        return "enterprise/enterpriseEnterprise";
+        return "enterprise/enterprise";
     }
 
     @RequestMapping(value = "/enterprise262728G1", method = RequestMethod.GET)

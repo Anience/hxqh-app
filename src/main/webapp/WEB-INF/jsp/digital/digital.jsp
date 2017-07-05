@@ -149,7 +149,6 @@
 					<td>{{item.ioc14}}</td>
 				</tr>
 			</tbody>
-
 		</table>
 	</div>
 </div>
