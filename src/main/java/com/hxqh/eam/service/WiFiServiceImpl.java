@@ -63,7 +63,7 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiMttr> wifiMttrList = vWifiMttrDao.findAll();
         List<VWifiMttrList> mttrListList = vWifiMttrListDao.findAll();
 
-        // 进行分组
+        // mttrListList进行分组
         Map<String, List<VWifiMttrList>> map = GroupListUtil.group(mttrListList, new GroupListUtil.GroupBy<String>() {
             @Override
             public String groupby(Object obj) {
@@ -71,7 +71,6 @@ public class WiFiServiceImpl implements WiFiService {
                 return d.getIoc1();    // 分组依据为Ioc1
             }
         });
-
 
         Map<String, List<VWifiMttrList>> leftList = new LinkedHashMap<>() ;
         Map<String, List<VWifiMttrList>> rightList = new LinkedHashMap<>();
@@ -87,7 +86,28 @@ public class WiFiServiceImpl implements WiFiService {
             }
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(wifiMttrList, leftList,rightList);
+        // wifiMttrList进行分组
+        Map<String, List<VWifiMttr>> mttrMap = GroupListUtil.group(wifiMttrList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VWifiMttr d = (VWifiMttr) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+
+
+        Map<String, List<BigDecimal>> mttrM = new LinkedHashMap<>();
+        for(Map.Entry<String, List<VWifiMttr>> m:mttrMap.entrySet())
+        {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for(VWifiMttr l:m.getValue())
+            {
+                mttrs.add(l.getCount());
+            }
+            mttrM.put(m.getKey(),mttrs);
+        }
+
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList,rightList);
         return mttrDto;
     }
 

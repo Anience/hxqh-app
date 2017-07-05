@@ -18,8 +18,11 @@ public class VWifiMttr implements Serializable {
 	private BigDecimal count;
 
 	private String da;
-	@Id
+
 	private String name;
+
+	@Id
+	private Integer rn;
 
 	public VWifiMttr() {
 	}
@@ -48,4 +51,11 @@ public class VWifiMttr implements Serializable {
 		this.name = name;
 	}
 
+	public Integer getRn() {
+		return rn;
+	}
+
+	public void setRn(Integer rn) {
+		this.rn = rn;
+	}
 }

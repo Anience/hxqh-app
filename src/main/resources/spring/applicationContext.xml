@@ -52,13 +52,6 @@
     <!--<property name="jobDetail" ref="jobDetail"/>-->
     <!--<property name="cronExpression" value="00 00 00 * * ? "/>-->
     <!--</bean>-->
-    <!-- XML 手动注解方式（注：注意set方法需要手动写明） <bean name="weixinMsgController" id="weixinMsgController"
-            class="hxqh.eam.abb.istc.controller.weixin.WeixinMsgController"> <property
-            name="queryService"> <ref bean="queryService"></ref> </property> </bean>
-            <bean name="queryService" id="queryService" class="hxqh.eam.abb.istc.service.mobile.QueryServiceImpl">
-            <property name="productDao"> <ref bean="productDao"></ref> </property> </bean>
-            <bean name="productDao" id="productDao" class="hxqh.eam.abb.istc.dao.ProductDaoImpl">
-            </bean> -->
 
 
     <!-- XML 手动注解方式（注：注意set方法需要手动写明） <bean name="weixinMsgController" id="weixinMsgController"
@@ -137,14 +130,4 @@
     <context:component-scan base-package="com.hxqh.eam.**.service"/>
 
 
-    <!--&lt;!&ndash;配置com.spring.service包下所有类或接口的所有方法 &ndash;&gt;-->
-    <!--<aop:config>-->
-    <!--<aop:aspect id="actionAspectId" ref="actionAspect">-->
-    <!--<aop:pointcut id="webServiceMethods"-->
-    <!--expression="execution(* cn.edu.ncut.webservice.*WebService.*(..)) " />-->
-    <!--<aop:around pointcut-ref="webServiceMethods" method="doAround" />-->
-    <!--</aop:aspect>-->
-    <!--</aop:config>-->
-
-    <!--<import resource="classpath:spring/spring-dubbo-provider.xml" />-->
 </beans>

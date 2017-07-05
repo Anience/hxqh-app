@@ -1,6 +1,7 @@
 package com.hxqh.eam.test;
 
 import com.hxqh.eam.common.hxqh.Account;
+import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.SystemService;
@@ -36,6 +37,8 @@ public class ViewTest {
 //        Assert.assertTrue(all.size() > 0);
 //        List<VEntBusBottomOne> busBottomOnes = entBusBottomOneDao.findAll();
 //        Assert.assertTrue(busBottomOnes.size() > 0);
+        List<Menu> listData = systemService.getMenuListData();
+        Assert.assertTrue(listData.size()>0);
     }
 
     @Test
