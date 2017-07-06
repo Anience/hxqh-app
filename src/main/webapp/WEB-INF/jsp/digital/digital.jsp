@@ -51,11 +51,11 @@
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{tit}}</td>
 				</tr>
-				<tr v-for="item of digList">
+				<tr v-for="(item,index) of digList">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td>{{item.ioc4}}</td>
+					<td :id="item.id"></td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
@@ -72,11 +72,11 @@
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{dig13Dto.name}}</td>
 				</tr>
-				<tr v-for="item of dig13Dto.vDig13List">
+				<tr v-for="(item,index) of dig13Dto.vDig13List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td>{{item.ioc4}}</td>
+					<td :id="item.id"></td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
@@ -92,11 +92,11 @@
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{dig14Dto.name}}</td>
 				</tr>
-				<tr v-for="item of dig14Dto.dig14List">
+				<tr v-for="(item,index) of dig14Dto.dig14List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td>{{item.ioc4}}</td>
+					<td :id="item.id"></td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
@@ -112,11 +112,11 @@
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{dig17Dto.name}}</td>
 				</tr>
-				<tr v-for="item of dig17Dto.dig17List">
+				<tr v-for="(item,index) of dig17Dto.dig17List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td>{{item.ioc4}}</td>
+					<td :id="item.id"></td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
@@ -132,11 +132,11 @@
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
 					<td colspan="14">{{dig18Dto.name}}</td>
 				</tr>
-				<tr v-for="item of dig18Dto.dig18List">
+				<tr v-for="(item,index) of dig18Dto.dig18List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td>{{item.ioc4}}</td>
+					<td :id="item.id"></td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
@@ -153,4 +153,5 @@
 	</div>
 </div>
 </body>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

@@ -15,9 +15,9 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout" id="mttr-data" style="overflow-x: scroll;">
+<div class="ticket-layout" id="mttr-data">
 	<h4>MTTR Targets</h4>
-	<div class="row">
+	<div class="row" style="background: #0C0E26;">
 		<div class="col-sm-6">
 			<table class="MTTR">
 				<thead>
@@ -61,7 +61,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-sm-6" style="padding-right: 0px;">
+		<div class="col-sm-6" style="padding-right: 0px;background: #0C0E26;">
 			<table class="MTTR">
 				<thead>
 					<tr>

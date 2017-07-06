@@ -1,6 +1,7 @@
 .login-layout{
 	height: 100%;
 	width: 100%;
+	min-width: 1100px;
 	background: #fff;
 	overflow-x: hidden;
 	overflow-y: hidden;

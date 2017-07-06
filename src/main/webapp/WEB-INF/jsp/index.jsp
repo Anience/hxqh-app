@@ -164,9 +164,18 @@
 		</div>
 		<div id="page_content">
 			<iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
-					width="100%" height="100%" src="${ctx}/wifi/daily"></iframe>
+					width="100%" height="100%"  src="${ctx}/wifi/daily"></iframe>
 		</div>
 	</div>
 </div>
 </body>
+<script>
+	$(function(){
+		var contentH = document.body.clientHeight-$(".header").height();
+		var iframeH = document.body.clientHeight-$(".header").height()-$(".right-header").height()-$(".router").height();
+		$(".right-content").height(contentH);
+		$(".content").height(contentH);
+        $("#page_content").height(iframeH);
+	});
+</script>
 </html>

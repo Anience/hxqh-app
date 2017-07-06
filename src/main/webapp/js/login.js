@@ -10,7 +10,7 @@ $(function(){
         }else{
             $.ajax({
                 url: _ctx+"/system/login",
-                method: "get",
+                method: "post",
                 data: {
                     name : username,
                     password  : pwd

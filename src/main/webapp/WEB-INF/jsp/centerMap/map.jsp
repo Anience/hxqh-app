@@ -8,89 +8,11 @@
 	<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
 	<meta content=always name=referrer>
 	<title>OpenLayers 3地图示例</title>
-	<link href="${ctx}/css/ol.css" rel="stylesheet" type="text/css" />
 	<script src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-	<script type="text/javascript" src="${ctx}/script/ol-debug.js" charset="utf-8"></script>
 </head>
 <body>
-<div id="OpenStreetMap">
-	<div id="" style="width:100%;" class="tabbable tabs-hxqh">
-		<div class="widget-header header-color-blue">
-			<ul class="nav nav-tabs padding-12 pull-left">
-				<li class="active"><a data-toggle="tab">
-					<p>
-						Map details
-					</p> </a>
-				</li>
-			</ul>
-		</div>
-		<div class="tab-content" style="height:100%;" id="anonymous_element_1">
-			<div id="anonymous_element_1_0">
-				<div align="center">
-					<div id="resized_body" style="margin-top:-10px;">
-						<div class="apptool_bar" style="position:fixed; top:102px;">
-						</div>
-						<div class="child">
-							<div class="CenterMap">
-								<div class="MapTitle">
-									<h7>Network Surveillance</h7>
-								</div>
-							</div>
-							<table style="width: 100%; height: 100%;" cellpadding="0"
-								   cellspacing="0" class="fixed_table">
-								<tbody>
-								<tr>
-									<td style="border-bottom:#ddd solid 5px;border-top:#ddd solid 5px;border-right:#ddd solid 5px;border-left:#ddd solid 5px;vertical-align:top;text-align:left;">
-										<div>
-											<div id="Map" style="height:3200px;"></div>
-										</div>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-							<div style="top:1500px;left:10px;position:absolute;height:300px;width:33.33%;z-index: 99999999999;">
-								<div style="width:2%;""></div>
-							<table style="width: 100%; height: 100%;text-align:center;color:black" border="0" cellpadding="2" cellspacing="0" class="fixed_table">
-								<thead class="Maptthead">
-								<tr style="height : 60px">
-									<td></td>
-									<td><span style="font-size:20pt;">TREG-1</span></td>
-									<td><span style="font-size:20pt;">TREG-2</span></td>
-									<td><span style="font-size:20pt;">TREG-3</span></td>
-									<td><span style="font-size:20pt;">TREG-4</span></td>
-									<td><span style="font-size:20pt;">TREG-5</span></td>
-									<td><span style="font-size:20pt;">TREG-6</span></td>
-									<td><span style="font-size:20pt;">TREG-7</span></td>
-									<td><span style="font-size:20pt;">Total</span></td>
-								</tr>
-								</thead>
-								<tbody id="pointtab">
-								</tbody>
-							</table>
-						</div>
-						<div style="top:10px;right:10px;position:absolute;overflow-y:auto; width:16.66%;z-index: 99999999999;">
-							<table style="width: 100%; height: 100%;text-align:center;color:black" border="0" cellpadding="2" cellspacing="0" class="fixed_table">
-								<thead class="Maptthead">
-								<tr style="height : 60px">
-									<td><span style="font-size:20pt;">No</span></td>
-									<td><span style="font-size:20pt;">Date</span></td>
-									<td><span style="font-size:20pt;">Ruas</span></td>
-									<td><span style="font-size:20pt;">Node ID</span></td>
-									<td><span style="font-size:20pt;">Interface</span></td>
-								</tr>
-								</thead>
-								<tbody id="pointtabs" >
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+<div id="Map" style="height: 3200px;"></div>
 <div id="toolbar"></div>
 <script>
 	$(function(){
@@ -102,17 +24,12 @@
 		map.addLayer(mapnik);
 		map.setCenter(new OpenLayers.LonLat(106.827183, -6.1753942)
 				.transform(fromProjection, toProjection), 8);
-
-		//initLines(map,fromProjection,toProjection);
 		initPoints(map, fromProjection, toProjection);
 
 		window.setInterval(function() {
 			initPoints(map, fromProjection, toProjection);
 		}, 604800000);
 		function initPoints(map, fromProjection, toProjection) {
-			var pathName = window.document.location.pathname;
-			var projectName = pathName.substring(0,
-					pathName.substr(1).indexOf('/') + 1);
 			var size = new OpenLayers.Size(21, 25);
 			var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
 			var lineLayers = map.getLayersByName(new RegExp("Markers", ""));
@@ -121,9 +38,21 @@
 			}
 			var markers = new OpenLayers.Layer.Markers("Markers");
 			$.ajax({
-						type : "POST",
-						url : projectName + "/openMapPoints",
-						data : {},
+				url: ${ctx}+"/ano/openMapPoints",
+				method: "get",
+				dataType: "json",
+				success: function(data){
+					alert(data);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					alert(XMLHttpRequest.status);
+					alert(XMLHttpRequest.readyState);
+					alert(textStatus);
+				}
+			})
+			/*$.ajax({
+				        url : ${ctx} + "http://localhost:8080/ano/openMapPoints",
+				        method : "get",
 						dataType : "json",
 						success : function(data) {
 							var points = data["data"];
@@ -133,13 +62,13 @@
 								var name = point["name"];
 								var x = point["x"];
 								var y = point["y"];
-								var icon = new OpenLayers.Icon(projectName+'/$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/WIFIAP.png', size, offset);
+								var icon = new OpenLayers.Icon(${ctx}+'/imgs/WIFIAP.png', size, offset);
 								if(type==="1"){
-									icon = new OpenLayers.Icon(projectName+'/$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/Metro-E.png', size, offset);
+									icon = new OpenLayers.Icon(${ctx}+'/imgs/Metro-E.png', size, offset);
 								}else if(type==="2"){
-									icon = new OpenLayers.Icon(projectName+'/$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/PE.png', size, offset);
+									icon = new OpenLayers.Icon(${ctx}+'/imgs/PE.png', size, offset);
 								}else if(type==="3"){
-									icon = new OpenLayers.Icon(projectName+'/$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/Tera.png', size, offset);
+									icon = new OpenLayers.Icon(${ctx}+'/imgs/Tera.png', size, offset);
 								}
 								//console.log(name);
 								eval("var position"
@@ -168,15 +97,18 @@
 							}
 							initLines(map, markers, fromProjection, toProjection);
 							//map.addLayer(markers);
+						},
+						error:function(){
+
 						}
-					});
+
+					});*/
 		}
 
 		function initLines(map, markers, fromProjection, toProjection) {
 			$.ajax({
-						type : "POST",
-						url : projectName + "/openMapLines",
-						data : {},
+						method : "get",
+						url : ${ctx} + "http://localhost:8080//ano/openMapLines",
 						dataType : "json",
 						success : function(data) {
 							var lines = data["data"];
@@ -243,7 +175,10 @@
 							}
 							map.addLayer(markers);
 							initTable();
-						}
+						},
+				       error:function(){
+
+					   }
 					});
 		}
 		function initTable() {
@@ -251,9 +186,8 @@
 			$("#pointtabs").empty();
 			//jQuery("#pointtab").append("<tr><td>Metro</td><td>2</td><td>3</td><td>1</td><td>2</td><td>3</td><td>1</td><td>2</td></tr>");
 			$.ajax({
-				type : "POST",
-				url : projectName + "/openMapTable",
-				data : {},
+				method : "get",
+				url : ${ctx} + "/ano/openMapTable",
 				dataType : "json",
 				success : function(data) {
 					var metro = data["metro"];
