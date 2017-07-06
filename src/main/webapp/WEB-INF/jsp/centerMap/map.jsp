@@ -205,7 +205,7 @@
 					peStr = peStr+"</tr>";
 					teraStr = teraStr+"</tr>";
 					var tablehtml = metroStr+peStr+teraStr;
-					jQuery("#pointtab").append(tablehtml);
+					$("#pointtab").append(tablehtml);
 
 					var arrlist = data["list"];
 					var tablebody = "";

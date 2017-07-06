@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
-		var _ctx = "${ctx}";
+		var _ctx = "${ctx}";s
 	</script>
 </head>
 <body>
