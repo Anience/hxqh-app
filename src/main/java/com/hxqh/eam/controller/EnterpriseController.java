@@ -51,6 +51,7 @@ public class EnterpriseController {
     }
 
 
+    //TODO 数据有问题  确定横轴长度与空余值补0
     /**
      * bussiness 数据接口
      *
@@ -62,6 +63,8 @@ public class EnterpriseController {
         BussinessDto bussinessDto = enterpriseService.getbussinessData();
         return bussinessDto;
     }
+
+    //TODO 数据有问题 确定横轴长度与空余值补0
 
     /**
      * government 数据接口
@@ -75,7 +78,7 @@ public class EnterpriseController {
         return governmentDto;
     }
 
-
+    //TODO 数据有问题 确定横轴长度与空余值补0
     /**
      * enterprise 数据接口
      *

@@ -7,6 +7,7 @@ import com.hxqh.eam.dao.SfOrganizationDepartmentDao;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.SfOrganizationDepartment;
+import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,6 +76,11 @@ public class SystemServiceImpl implements SystemService {
 
         AccountDto accountDto = new AccountDto(accountList, allUser, normal, onlineUser);
         return accountDto;
+    }
+
+    @Override
+    public RoleDto getRoleListData() {
+        return null;
     }
 
     @Override

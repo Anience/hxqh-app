@@ -12,11 +12,11 @@ public class GroupListUtil {
     }
 
     public static final <T extends Comparable<T>, D> Map<T, List<D>> group(Collection<D> colls, GroupBy<T> gb) {
-
+        Map<T, List<D>> map = new LinkedHashMap<>();
         if (colls == null || colls.isEmpty()) {
 
             System.out.println("分组集合不能为空!");
-            return null;
+            return map;
         }
         if (gb == null) {
             System.out.println("分组依赖不能为空!");
@@ -24,7 +24,6 @@ public class GroupListUtil {
         }
         Iterator<D> iter = colls.iterator();
 
-        Map<T, List<D>> map = new LinkedHashMap<>();
         while (iter.hasNext()) {
             D d = iter.next();
             T t = gb.groupby(d);

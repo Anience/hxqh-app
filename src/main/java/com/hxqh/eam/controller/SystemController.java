@@ -12,6 +12,7 @@ import com.hxqh.eam.model.SfOrganizationDepartment;
 import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
 import com.hxqh.eam.model.dto.AccountDto;
+import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -330,6 +331,19 @@ public class SystemController {
     public String roleList() {
         return "role/roleList";
     }
+
+    /**
+     * roleListData 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/roleListData", method = RequestMethod.GET)
+    public RoleDto roleListData() {
+        RoleDto roleDto = systemService.getRoleListData();
+        return roleDto;
+    }
+
 
 
     /****************************Role Configure**********************/

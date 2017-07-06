@@ -1,85 +1,60 @@
 package com.hxqh.eam.model.dto;
 
-import com.hxqh.eam.model.view.*;
+import com.hxqh.eam.model.view.VGovProactive;
+import com.hxqh.eam.model.view.VGovReactive;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by Ocean Lin on 2017/6/27.
+ * Created by Ocean lin on 2017/7/5.
  */
 public class GovernmentDto {
+    private List<VGovProactive> govProactiveList;
 
+    private List<VGovReactive> govReactiveList;
 
-    private List<VEntGovTopOne> entGovTopOneList;
+    private Map<String, List<BigDecimal>> govProactivetktM;
 
-    private List<VEntGovTopTwo> entGovTopTwoList;
+    private Map<String, List<BigDecimal>> govReactivetktM;
 
-    private List<VEntGovTopThree> entGovTopThreeList;
-
-    private List<VEntGovBottomOne> entGovBottomOneList;
-
-    private List<VEntGovBottomTwo> entGovBottomTwoList;
-
-    private List<VEntGovBottomThree> entGovBottomThreeList;
-
-
-    public GovernmentDto() {
+    public GovernmentDto(List<VGovProactive> govProactiveList, List<VGovReactive> govReactiveList, Map<String, List<BigDecimal>> govProactivetktM, Map<String, List<BigDecimal>> govReactivetktM) {
+        this.govProactiveList = govProactiveList;
+        this.govReactiveList = govReactiveList;
+        this.govProactivetktM = govProactivetktM;
+        this.govReactivetktM = govReactivetktM;
     }
 
-    public GovernmentDto(List<VEntGovTopOne> entGovTopOneList, List<VEntGovTopTwo> entGovTopTwoList, List<VEntGovTopThree> entGovTopThreeList, List<VEntGovBottomOne> entGovBottomOneList, List<VEntGovBottomTwo> entGovBottomTwoList, List<VEntGovBottomThree> entGovBottomThreeList) {
-        this.entGovTopOneList = entGovTopOneList;
-        this.entGovTopTwoList = entGovTopTwoList;
-        this.entGovTopThreeList = entGovTopThreeList;
-        this.entGovBottomOneList = entGovBottomOneList;
-        this.entGovBottomTwoList = entGovBottomTwoList;
-        this.entGovBottomThreeList = entGovBottomThreeList;
+    public List<VGovProactive> getGovProactiveList() {
+        return govProactiveList;
     }
 
-    public List<VEntGovTopOne> getEntGovTopOneList() {
-        return entGovTopOneList;
+    public void setGovProactiveList(List<VGovProactive> govProactiveList) {
+        this.govProactiveList = govProactiveList;
     }
 
-    public void setEntGovTopOneList(List<VEntGovTopOne> entGovTopOneList) {
-        this.entGovTopOneList = entGovTopOneList;
+    public List<VGovReactive> getGovReactiveList() {
+        return govReactiveList;
     }
 
-    public List<VEntGovTopTwo> getEntGovTopTwoList() {
-        return entGovTopTwoList;
+    public void setGovReactiveList(List<VGovReactive> govReactiveList) {
+        this.govReactiveList = govReactiveList;
     }
 
-    public void setEntGovTopTwoList(List<VEntGovTopTwo> entGovTopTwoList) {
-        this.entGovTopTwoList = entGovTopTwoList;
+    public Map<String, List<BigDecimal>> getGovProactivetktM() {
+        return govProactivetktM;
     }
 
-    public List<VEntGovTopThree> getEntGovTopThreeList() {
-        return entGovTopThreeList;
+    public void setGovProactivetktM(Map<String, List<BigDecimal>> govProactivetktM) {
+        this.govProactivetktM = govProactivetktM;
     }
 
-    public void setEntGovTopThreeList(List<VEntGovTopThree> entGovTopThreeList) {
-        this.entGovTopThreeList = entGovTopThreeList;
+    public Map<String, List<BigDecimal>> getGovReactivetktM() {
+        return govReactivetktM;
     }
 
-    public List<VEntGovBottomOne> getEntGovBottomOneList() {
-        return entGovBottomOneList;
-    }
-
-    public void setEntGovBottomOneList(List<VEntGovBottomOne> entGovBottomOneList) {
-        this.entGovBottomOneList = entGovBottomOneList;
-    }
-
-    public List<VEntGovBottomTwo> getEntGovBottomTwoList() {
-        return entGovBottomTwoList;
-    }
-
-    public void setEntGovBottomTwoList(List<VEntGovBottomTwo> entGovBottomTwoList) {
-        this.entGovBottomTwoList = entGovBottomTwoList;
-    }
-
-    public List<VEntGovBottomThree> getEntGovBottomThreeList() {
-        return entGovBottomThreeList;
-    }
-
-    public void setEntGovBottomThreeList(List<VEntGovBottomThree> entGovBottomThreeList) {
-        this.entGovBottomThreeList = entGovBottomThreeList;
+    public void setGovReactivetktM(Map<String, List<BigDecimal>> govReactivetktM) {
+        this.govReactivetktM = govReactivetktM;
     }
 }

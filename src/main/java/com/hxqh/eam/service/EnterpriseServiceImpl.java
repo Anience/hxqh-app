@@ -1,6 +1,7 @@
 package com.hxqh.eam.service;
 
 
+import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.dto.BussinessDto;
 import com.hxqh.eam.model.dto.EnterpriseDto;
@@ -10,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
 
 
 /**
@@ -20,86 +22,183 @@ import java.util.List;
 @Service("enterpriseService")
 public class EnterpriseServiceImpl implements EnterpriseService {
 
+
     @Autowired
-    private VEntBusBottomOneDao entBusBottomOneDao;
+    private VEntProactiveDao entProactiveDao;
+
     @Autowired
-    private VEntBusBottomThreeDao entBusBottomThreeDao;
+    private VEntProactivetktDao entProactivetktDao;
+
     @Autowired
-    private VEntBusBottomTwoDao entBusBottomTwoDao;
+    private VEntReactiveDao entReactiveDao;
+
     @Autowired
-    private VEntBusTopOneDao entBusTopOneDao;
+    private VEntReactivetktDao entReactivetktDao;
+
     @Autowired
-    private VEntBusTopThreeDao entBusTopThreeDao;
+    private VGovProactiveDao govProactiveDao;
+
     @Autowired
-    private VEntBusTopTwoDao entBusTopTwoDao;
+    private VGovProactivetktDao govProactivetktDao;
+
     @Autowired
-    private VEntEntBottomOneDao entEntBottomOneDao;
+    private VGovReactiveDao govReactiveDao;
+
     @Autowired
-    private VEntEntBottomThreeDao entEntBottomThreeDao;
+    private VGovReactivetktDao govReactivetktDao;
+
     @Autowired
-    private VEntEntBottomTwoDao entEntBottomTwoDao;
+    private VBusProactiveDao busProactiveDao;
+
     @Autowired
-    private VEntEntTopOneDao entEntTopOneDao;
+    private VBusProactivetktDao busProactivetktDao;
+
     @Autowired
-    private VEntEntTopThreeDao entEntTopThreeDao;
+    private VBusReactiveDao busReactiveDao;
+
     @Autowired
-    private VEntEntTopTwoDao entEntTopTwoDao;
-    @Autowired
-    private VEntGovTopOneDao entGovTopOneDao;
-    @Autowired
-    private VEntGovTopTwoDao entGovTopTwoDao;
-    @Autowired
-    private VEntGovTopThreeDao entGovTopThreeDao;
-    @Autowired
-    private VEntGovBottomOneDao entGovBottomOneDao;
-    @Autowired
-    private VEntGovBottomTwoDao entGovBottomTwoDao;
-    @Autowired
-    private VEntGovBottomThreeDao entGovBottomThreeDao;
+    private VBusReactivetktDao busReactivetktDao;
 
 
     @Override
     public BussinessDto getbussinessData() {
-        List<VEntBusTopOne> entBusTopOnes = entBusTopOneDao.findAll();
-        List<VEntBusTopTwo> entBusTopTwos = entBusTopTwoDao.findAll();
-        List<VEntBusTopThree> busTopThrees = entBusTopThreeDao.findAll();
+        List<VBusProactive> busProactive = busProactiveDao.findAll();
+        List<VBusReactive> busReactive = busReactiveDao.findAll();
 
-        List<VEntBusBottomOne> busBottomOneList = entBusBottomOneDao.findAll();
-        List<VEntBusBottomTwo> busBottomTwoList = entBusBottomTwoDao.findAll();
-        List<VEntBusBottomThree> busBottomThreeList = entBusBottomThreeDao.findAll();
-        BussinessDto bussinessDto = new BussinessDto(busBottomOneList, busBottomThreeList, busBottomTwoList,
-                entBusTopOnes, busTopThrees, entBusTopTwos);
+        List<VBusProactivetkt> busProactivetkt = busProactivetktDao.findAll();
+        List<VBusReactivetkt> busReactivetkt = busReactivetktDao.findAll();
+
+        // busProactivetkt
+        Map<String, List<VBusProactivetkt>> busProactivetktMap = GroupListUtil.group(busProactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VBusProactivetkt d = (VBusProactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+        // busReactivetkt
+        Map<String, List<VBusReactivetkt>> busReactivetktMap = GroupListUtil.group(busReactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VBusReactivetkt d = (VBusReactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+
+        Map<String, List<BigDecimal>> busProactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VBusProactivetkt>> m : busProactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VBusProactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            busProactivetktM.put(m.getKey(), mttrs);
+        }
+
+        Map<String, List<BigDecimal>> busReactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VBusReactivetkt>> m : busReactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VBusReactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            busReactivetktM.put(m.getKey(), mttrs);
+        }
+
+        BussinessDto bussinessDto = new BussinessDto(busProactive, busReactive, busProactivetktM, busReactivetktM);
         return bussinessDto;
     }
 
     @Override
     public GovernmentDto getgovernmentData() {
-        List<VEntGovTopOne> entGovTopOne = entGovTopOneDao.findAll();
-        List<VEntGovTopTwo> entGovTopTwo = entGovTopTwoDao.findAll();
-        List<VEntGovTopThree> entGovTopThree = entGovTopThreeDao.findAll();
-        List<VEntGovBottomOne> entGovBottomOne = entGovBottomOneDao.findAll();
-        List<VEntGovBottomTwo> entGovBottomTwo = entGovBottomTwoDao.findAll();
-        List<VEntGovBottomThree> entGovBottomThree = entGovBottomThreeDao.findAll();
-        GovernmentDto governmentDto = new GovernmentDto(entGovTopOne, entGovTopTwo, entGovTopThree, entGovBottomOne, entGovBottomTwo, entGovBottomThree);
+        List<VGovProactive> govProactive = govProactiveDao.findAll();
+        List<VGovReactive> govReactive = govReactiveDao.findAll();
 
+        List<VGovProactivetkt> govProactivetkt =govProactivetktDao.findAll();
+        List<VGovReactivetkt> govReactivetkt = govReactivetktDao.findAll();
+
+        // govProactivetkt
+        Map<String, List<VGovProactivetkt>> govProactivetktMap = GroupListUtil.group(govProactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VGovProactivetkt d = (VGovProactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+
+        // govReactivetkt
+        Map<String, List<VGovReactivetkt>> govReactivetktMap = GroupListUtil.group(govReactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VGovReactivetkt d = (VGovReactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+
+        Map<String, List<BigDecimal>> govProactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VGovProactivetkt>> m : govProactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VGovProactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            govProactivetktM.put(m.getKey(), mttrs);
+        }
+
+        Map<String, List<BigDecimal>> govReactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VGovReactivetkt>> m : govReactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VGovReactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            govReactivetktM.put(m.getKey(), mttrs);
+        }
+        GovernmentDto governmentDto = new GovernmentDto(govProactive, govReactive, govProactivetktM, govReactivetktM);
         return governmentDto;
     }
 
     @Override
     public EnterpriseDto getenterpriseData() {
-        List<VEntEntBottomOne> entEntBottomOne = entEntBottomOneDao.findAll();
+        List<VEntProactive> entProactive = entProactiveDao.findAll();
+        List<VEntReactive> entReactive = entReactiveDao.findAll();
 
-        List<VEntEntBottomThree> entEntBottomThree = entEntBottomThreeDao.findAll();
+        List<VEntProactivetkt> entProactivetkt = entProactivetktDao.findAll();
+        List<VEntReactivetkt> entReactivetkt = entReactivetktDao.findAll();
 
-        List<VEntEntBottomTwo> entEntBottomTwo = entEntBottomTwoDao.findAll();
+        // entProactivetkt
+        Map<String, List<VEntProactivetkt>> entProactivetktMap = GroupListUtil.group(entProactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VEntProactivetkt d = (VEntProactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
+        // entReactivetkt
+        Map<String, List<VEntReactivetkt>> entReactivetktMap = GroupListUtil.group(entReactivetkt, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VEntReactivetkt d = (VEntReactivetkt) obj;
+                return d.getDa();    // 分组依据为Ioc1
+            }
+        });
 
-        List<VEntEntTopOne> entEntTopOne = entEntTopOneDao.findAll();
 
-        List<VEntEntTopThree> entEntTopThree = entEntTopThreeDao.findAll();
+        Map<String, List<BigDecimal>> entProactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VEntProactivetkt>> m : entProactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VEntProactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            entProactivetktM.put(m.getKey(), mttrs);
+        }
 
-        List<VEntEntTopTwo> entEntTopTwo = entEntTopTwoDao.findAll();
-        EnterpriseDto enterpriseDt = new EnterpriseDto(entEntBottomOne, entEntBottomThree, entEntBottomTwo,
-                entEntTopOne, entEntTopThree, entEntTopTwo);
-        return enterpriseDt;
+        Map<String, List<BigDecimal>> entReactivetktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VEntReactivetkt>> m : entReactivetktMap.entrySet()) {
+            List<BigDecimal> mttrs = new LinkedList<>();
+            for (VEntReactivetkt l : m.getValue()) {
+                mttrs.add(l.getCount());
+            }
+            entReactivetktM.put(m.getKey(), mttrs);
+        }
+
+        EnterpriseDto enterpriseDto = new EnterpriseDto(entProactive, entReactive, entProactivetktM, entReactivetktM);
+        return enterpriseDto;
     }
 }
