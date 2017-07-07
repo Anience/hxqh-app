@@ -14,7 +14,7 @@
 	</script>
 </head>
 <body>
-<div class="ent-layout">
+<div class="ent-layout" style="padding-bottom:50px;">
 	<div class="ent-header">
 		<h4>Business</h4>
 		<div class="span-layout">
@@ -28,7 +28,7 @@
 		<div class="left" id="echart1"></div>
 		<div class="right" id="echart2"></div>
 	</div>
-	<div class="item" style="padding-bottom:50px;">
+	<div class="item">
 		<div class="left" id="echart3"></div>
 		<div class="right" id="echart4"></div>
 	</div>

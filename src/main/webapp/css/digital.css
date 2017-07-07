@@ -1,12 +1,15 @@
 .digital{
 	background: #03081C;
 	width: 100%;
+	min-height: 100%;
+	padding-bottom: 20px;
 }
 table.dig-13{
 	cellpadding: 2;
 	cellspacing: 0;
 	width: 100%;
 	color: #fff;
+	background: #03081C;
 }
 table.dig-13 td{
 	border:1px solid #000000;

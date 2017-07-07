@@ -21,6 +21,10 @@ $(function () {
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
                     initEchart("echart1",data.vWifiMttrList);
+                    var pageW = $("table.mttr").width()*2+40;
+                    $("#mttr-data").width(pageW);
+                    $("#mttr-data").css("paddingBottom","20");
+                    $("#mttr-data  h4").width(pageW);
                 },
                 error: function () {
 

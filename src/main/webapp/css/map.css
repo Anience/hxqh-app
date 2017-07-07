@@ -1,0 +1,13 @@
+p{
+    width: 22%;
+    text-align: center;
+    background-color: /* #C8032A */#ed3237;
+    color: #fff;
+    line-height: 100px;
+    height: 200px;
+    z-index: 9999;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 78px;
+}

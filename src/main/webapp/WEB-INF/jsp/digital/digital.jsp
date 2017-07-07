@@ -61,7 +61,7 @@
 					<td>{{item.ioc7}}</td>
 					<td>{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td>{{item.ioc10}}</td>
+					<td :id="item.id1"></td>
 					<td>{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td>{{item.ioc13}}</td>
@@ -76,13 +76,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id">{{item.id}}</td>
 					<td>{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td>{{item.ioc7}}</td>
 					<td>{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td>{{item.ioc10}}</td>
+					<td :id="item.id1"></td>
 					<td>{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td>{{item.ioc13}}</td>
@@ -102,7 +102,7 @@
 					<td>{{item.ioc7}}</td>
 					<td>{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td>{{item.ioc10}}</td>
+					<td :id="item.id1"></td>
 					<td>{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td>{{item.ioc13}}</td>
@@ -122,7 +122,7 @@
 					<td>{{item.ioc7}}</td>
 					<td>{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td>{{item.ioc10}}</td>
+					<td :id="item.id1"></td>
 					<td>{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td>{{item.ioc13}}</td>
@@ -142,7 +142,7 @@
 					<td>{{item.ioc7}}</td>
 					<td>{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td>{{item.ioc10}}</td>
+					<td :id="item.id1"></td>
 					<td>{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td>{{item.ioc13}}</td>

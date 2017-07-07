@@ -22,6 +22,9 @@ $(function(){
         var greenData = [];
         var redData = [];
         var orangeData = [];
+        var cad = ['20','30','40','50','60'];
+        var cao = ['20','30','40','50','20'];
+        var car = ['60','40','20','0','20'];
         for(var i=0,len=echartData.length;i<len;i++){
             greenData.push(echartData[i].greennum);
             redData.push(echartData[i].rednum);
@@ -143,7 +146,7 @@ $(function(){
                             }
                         }
                     },
-                    data:redData
+                    data:car
                 },
                 {
                     name:'Bad',
@@ -173,7 +176,7 @@ $(function(){
                             }
                         }
                     },
-                    data:orangeData
+                    data:cao
                 },
                 {
                     name:'Good',
@@ -203,7 +206,7 @@ $(function(){
                             }
                         }
                     },
-                    data:greenData
+                    data:cad
                 }
             ]
         };

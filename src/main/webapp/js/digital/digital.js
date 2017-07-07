@@ -14,13 +14,19 @@ $(function () {
             isShow: false
         },
         methods: {
-           initEchartData:function(domName,data){
+           initEchartData:function(domName1,data,domName2){
                for(var n=0;n<data.length;n++){
-                   var real = data.ioc4;
-                   var target = data.ioc3;
+                   var real = parseFloat(data[n]["ioc4"]);
+                   var target = parseFloat(data[n]["ioc3"]);
+                   var real1 = parseFloat(data[n]["ioc10"]);
+                   var target1 = parseFloat(data[n]["ioc9"]);
                    var data1 = real/target;
                    var data2 = (target-real)/target;
-                   initEchart(domName+n,data1,data2);
+                   var data3 = real1/target1;
+                   var data4 = (target1-real1)/target1;
+                   console.log(domName1,data1,data2,data3,data4);
+                   initEchart(domName1+n,data1,data2);
+                   initEchart(domName2+n,data3,data4);
                }
            }
         },
@@ -56,47 +62,52 @@ $(function () {
                             self.dig18Dto = data.dig18Dto;
                             self.isShow = true;
                     }
-                    if(self.digList.length>=1){
+                    if(self.digList&&self.digList.length>=1){
                         for(var i=0,len=self.digList.length;i<len;i++){
                             self.digList[i].id="dig"+i;
+                            self.digList[i].id1="dig-"+i;
                         }
                     }
-                    if(self.dig13Dto.dig13List.length>=1){
-                        for(var j=0,lens=self.dig13Dto.dig13List.length;i<lens;j++){
-                            self.dig13Dto[j].id="dig13"+j;
+                    if(self.dig13Dto.vDig13List&&self.dig13Dto.vDig13List.length>0){
+                        for(var j=0,lens=self.dig13Dto.vDig13List.length;j<lens;j++){
+                            self.dig13Dto.vDig13List[j].id="dig13"+j;
+                            self.dig13Dto.vDig13List[j].id1="dig13-"+j;
                         }
                     }
-                    if(self.dig14Dto.dig14List.length>=1){
-                        for(var k=0,lenss=self.dig14Dto.dig14List.length;i<lenss;k++){
+                    if(self.dig14Dto.dig14List&&self.dig14Dto.dig14List.length>0){
+                        for(var k=0,lenss=self.dig14Dto.dig14List.length;k<lenss;k++){
                             self.dig14Dto.dig14List[k].id="dig14"+k;
+                            self.dig14Dto.dig14List[k].id1="dig14-"+k;
                         }
                     }
-                    if(self.dig17Dto.dig17List.length>=1){
-                        for(var m=0,l=self.dig17Dto.dig17List.length;i<l;m++){
+                    if(self.dig17Dto.dig17List&&self.dig17Dto.dig17List.length>01){
+                        for(var m=0,l=self.dig17Dto.dig17List.length;m<l;m++){
                             self.dig17Dto.dig17List[m].id="dig17"+m;
+                            self.dig17Dto.dig17List[m].id1="dig17-"+m;
                         }
                     }
-                    if(self.dig18Dto.dig18List.length>=1){
-                        for(var i=0,len=self.dig18Dto.dig18List.length;i<len;i++){
-                            self.dig18Dto.dig18List[i].id="dig18"+i;
+                    if(self.dig18Dto.dig18List&&self.dig18Dto.dig18List.length>0){
+                        for(var n=0,len=self.dig18Dto.dig18List.length;n<len;n++){
+                            self.dig18Dto.dig18List[n].id="dig18"+n;
+                            self.dig18Dto.dig18List[n].id1="dig18-"+n;
                         }
                     }
 
                     setTimeout(function(){
-                        if(self.digList.length>=1){
-                            self.initEchartData("dig",self.digList);
+                        if(self.digList&&self.digList.length>0){
+                            self.initEchartData("dig",self.digList,"dig-");
                         }
-                        if(self.dig13Dto.dig13List.length>=1){
-                            self.initEchartData("dig13",self.dig13Dto.dig13List);
+                        if(self.dig13Dto.vDig13List&&self.dig13Dto.vDig13List.length>0){
+                            self.initEchartData("dig13",self.dig13Dto.vDig13List,"dig13-");
                         }
-                        if(self.dig14Dto.dig14List.length>=1){
-                            self.initEchartData("dig14",self.dig14Dto.dig14List);
+                        if(self.dig14Dto.dig14List&&self.dig14Dto.dig14List.length>0){
+                            self.initEchartData("dig14",self.dig14Dto.dig14List,"dig14-");
                         }
-                        if(self.dig17Dto.dig17List.length>=1){
-                            self.initEchartData("dig17",self.dig17Dto.dig17List);
+                        if(self.dig17Dto.dig17List&&self.dig17Dto.dig17List.length>0){
+                            self.initEchartData("dig17",self.dig17Dto.dig17List,"dig17-");
                         }
-                        if(self.dig18Dto.dig18List.length>=1){
-                            self.initEchartData("dig18",self.dig18Dto.dig18List);
+                        if(self.dig18Dto.dig18List&&self.dig18Dto.dig18List.length>0){
+                            self.initEchartData("dig18",self.dig18Dto.dig18List,"dig18-");
                         }
                     },200);
                 },
@@ -125,8 +136,8 @@ $(function () {
                         }
                     },
                     data:[
-                        {value:123},
-                        {value:123}
+                        {value:data1},
+                        {value:data2}
                     ]
                 }
             ]

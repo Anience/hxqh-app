@@ -1,6 +1,6 @@
 #mob91{
 	width: 100%;
-    overflow: hidden;
+    min-height: 100%;
     background: #03081C;
     font-family: Arial;
 }
@@ -10,6 +10,7 @@
     height: 55px;
     line-height: 55px;
     color: #fff;
+    margin-top: 0px;
 }
 #mob91 table{
     width: 100%;
