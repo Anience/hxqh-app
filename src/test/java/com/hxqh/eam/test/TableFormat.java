@@ -4,6 +4,7 @@ import com.hxqh.eam.common.FileUtil;
 import org.junit.Test;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 /**
  * Created by Ocean Lin on 2017/6/8.
@@ -24,6 +25,17 @@ public class TableFormat {
         }
     }
 
+
+    @Test
+    public void testDouble() {
+        double number = 12;
+
+//        System.out.println(number);                         //12.0
+//        System.out.println(Double.toString(number));        //12.0
+
+        DecimalFormat decimalFormat = new DecimalFormat("###################.###########");
+//        System.out.println(decimalFormat.format(number));   //12
+    }
 
     @Test
     public void testMbo() {

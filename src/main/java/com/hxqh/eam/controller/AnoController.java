@@ -84,7 +84,6 @@ public class AnoController {
      */
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String map() {
-        System.out.println("map ==============");
         return "centerMap/map";
     }
 

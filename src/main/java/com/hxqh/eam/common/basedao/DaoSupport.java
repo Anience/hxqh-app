@@ -1,5 +1,11 @@
 package com.hxqh.eam.common.basedao;
 
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -8,11 +14,6 @@ import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Resource;
-import javax.persistence.Id;
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
