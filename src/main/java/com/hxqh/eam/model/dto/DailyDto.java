@@ -11,19 +11,11 @@ public class DailyDto {
 
     private Map<String, List<BigDecimal>> skuIdMap;
 
-    private List<String> list;
+    private  String[] dailyticket;
 
-    public DailyDto(Map<String, List<BigDecimal>> skuIdMap, List<String> list) {
+    public DailyDto(Map<String, List<BigDecimal>> skuIdMap, String[] dailyticket) {
         this.skuIdMap = skuIdMap;
-        this.list = list;
-    }
-
-    public List<String> getList() {
-        return list;
-    }
-
-    public void setList(List<String> list) {
-        this.list = list;
+        this.dailyticket = dailyticket;
     }
 
     public Map<String, List<BigDecimal>> getSkuIdMap() {
@@ -32,5 +24,13 @@ public class DailyDto {
 
     public void setSkuIdMap(Map<String, List<BigDecimal>> skuIdMap) {
         this.skuIdMap = skuIdMap;
+    }
+
+    public String[] getDailyticket() {
+        return dailyticket;
+    }
+
+    public void setDailyticket(String[] dailyticket) {
+        this.dailyticket = dailyticket;
     }
 }

@@ -22,7 +22,7 @@ public class WiFiServiceImpl implements WiFiService {
 
     private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
-    private static final int DAILYLENGTH = 4;
+    private static final String[] DAILYTICKET = {"Sunday","Sunday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -106,7 +106,7 @@ public class WiFiServiceImpl implements WiFiService {
             mttrM.put(m.getKey(), mttrs);
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList,AXISIDATA);
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
         return mttrDto;
     }
 
@@ -119,30 +119,25 @@ public class WiFiServiceImpl implements WiFiService {
     public DailyDto wifiDailyData() {
         List<VWifiDaily> dailyList = vWifiDailyDao.findAll();
 
-        List<String> list = new LinkedList<>();
-        for (int x = 0; x < DAILYLENGTH; x++) {
-            list.add(dailyList.get(x).getName());
-        }
-
-        /* 分组算法**/
-        Map<String, List<BigDecimal>> skuIdMap = new HashMap<>();
-        for (VWifiDaily skuVo : dailyList) {
-            List<BigDecimal> tempList = skuIdMap.get(skuVo.getDa());
-            /*如果取不到数据,那么直接new一个空的ArrayList**/
-            groupList(skuIdMap, tempList, skuVo.getCount(), skuVo.getDa());
-        }
-
-        //补零
-        List<BigDecimal> des = skuIdMap.get(DAILY[2]);
-        if (des.size() < DAILYLENGTH) {
-            int i = DAILYLENGTH - des.size();
-            for (int j = 0; j < i; j++) {
-                des.add(new BigDecimal(0));
+        // 进行分组
+        Map<String, List<VWifiDaily>> map = GroupListUtil.group(dailyList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VWifiDaily d = (VWifiDaily) obj;
+                return d.getDa();    // 分组依据为Regional
             }
-            skuIdMap.put(DAILY[2], des);
+        });
+
+        Map<String, List<BigDecimal>> dailyktM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<VWifiDaily>> m : map.entrySet()) {
+            List<BigDecimal> daily = new LinkedList<>();
+            for (VWifiDaily l : m.getValue()) {
+                daily.add(l.getCount());
+            }
+            dailyktM.put(m.getKey(), daily);
         }
 
-        DailyDto dailyDto = new DailyDto(skuIdMap, list);
+        DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET);
         return dailyDto;
     }
 

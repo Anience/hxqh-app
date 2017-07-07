@@ -8,7 +8,7 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.list,data.skuIdMap);
+                initEchart("echart1",data.dailyticket,data.skuIdMap);
             },
             error: function(){
 
@@ -17,7 +17,7 @@ $(function(){
     }
     function initEchart(domId,yData,serisData) {
         var yName = yData;
-        var lendName = ["CONS","DES","DGS"];
+        var lendName = ["DBS","DGS","CONS","DES"];
         var serisDatas = [];
         for(var name in serisData){
             var tmpObj = {};
