@@ -6,6 +6,7 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.dto.Mob88Dto;
 import com.hxqh.eam.model.dto.Mob91Dto;
+import com.hxqh.eam.model.dto.Mob92Dto;
 import com.hxqh.eam.model.dto.VMob87Dto;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.model.view.VMob92;
@@ -140,8 +141,8 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/vMob92Data", method = RequestMethod.GET)
-    public List<VMob92> vMob92Data() {
-        List<VMob92> dig13List = mobileService.vMob92Data();
+    public Mob92Dto vMob92Data() {
+        Mob92Dto dig13List = mobileService.vMob92Data();
         return dig13List;
     }
 

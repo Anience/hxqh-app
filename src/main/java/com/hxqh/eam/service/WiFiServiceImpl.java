@@ -20,6 +20,8 @@ public class WiFiServiceImpl implements WiFiService {
 
     private static final String[] DAILY = {"DCS", "DES", "DGS"};
 
+    private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
+
     private static final int DAILYLENGTH = 4;
 
     @Autowired
@@ -62,7 +64,6 @@ public class WiFiServiceImpl implements WiFiService {
     public WifiMttrDto vWifiMttrData() {
         List<VWifiMttr> wifiMttrList = vWifiMttrDao.findAll();
         List<VWifiMttrList> mttrListList = vWifiMttrListDao.findAll();
-
         // mttrListList进行分组
         Map<String, List<VWifiMttrList>> map = GroupListUtil.group(mttrListList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -72,16 +73,16 @@ public class WiFiServiceImpl implements WiFiService {
             }
         });
 
-        Map<String, List<VWifiMttrList>> leftList = new LinkedHashMap<>() ;
+        Map<String, List<VWifiMttrList>> leftList = new LinkedHashMap<>();
         Map<String, List<VWifiMttrList>> rightList = new LinkedHashMap<>();
         //拆分Map
         int i = 0;
         for (Map.Entry m : map.entrySet()) {
             if (map.size() / 2 > i) {
-                leftList.put((String)m.getKey(),(List<VWifiMttrList>)m.getValue());
+                leftList.put((String) m.getKey(), (List<VWifiMttrList>) m.getValue());
                 i++;
             } else {
-                rightList.put((String)m.getKey(),(List<VWifiMttrList>)m.getValue());
+                rightList.put((String) m.getKey(), (List<VWifiMttrList>) m.getValue());
                 i++;
             }
         }
@@ -97,17 +98,15 @@ public class WiFiServiceImpl implements WiFiService {
 
 
         Map<String, List<BigDecimal>> mttrM = new LinkedHashMap<>();
-        for(Map.Entry<String, List<VWifiMttr>> m:mttrMap.entrySet())
-        {
+        for (Map.Entry<String, List<VWifiMttr>> m : mttrMap.entrySet()) {
             List<BigDecimal> mttrs = new LinkedList<>();
-            for(VWifiMttr l:m.getValue())
-            {
+            for (VWifiMttr l : m.getValue()) {
                 mttrs.add(l.getCount());
             }
-            mttrM.put(m.getKey(),mttrs);
+            mttrM.put(m.getKey(), mttrs);
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList,rightList);
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList,AXISIDATA);
         return mttrDto;
     }
 
@@ -153,10 +152,25 @@ public class WiFiServiceImpl implements WiFiService {
         List<VWifiTrafficTop> trafficTopList = vWifiTrafficTopDao.findAll();
         List<VWifiTrafficBottom> trafficBottomList = vWifiTrafficBottomDao.findAll();
 
+        // 分别计算top 和 bottom 的nameList
+        HashMap<String, String> tempTopMap = new LinkedHashMap<>();
+        for (VWifiTrafficTop top : trafficTopList) {
+            String name = top.getName();
+            tempTopMap.put(name, name);
+        }
+        List<String> topNameList = new LinkedList<>();
+        for (String key : tempTopMap.keySet()) {
+            topNameList.add(tempTopMap.get(key));
+        }
 
-        List<String> nameList = new LinkedList<>();
-        for (int x = 0; x < 26; x++) {
-            nameList.add(trafficTopList.get(x).getName());
+        HashMap<String, String> tempBottomMap = new LinkedHashMap<>();
+        for (VWifiTrafficBottom bottom : trafficBottomList) {
+            String name = bottom.getName();
+            tempBottomMap.put(name, name);
+        }
+        List<String> bottomNameList = new LinkedList<>();
+        for (String key : tempBottomMap.keySet()) {
+            bottomNameList.add(tempBottomMap.get(key));
         }
 
          /* 分组算法**/
@@ -173,7 +187,7 @@ public class WiFiServiceImpl implements WiFiService {
             /*如果取不到数据,那么直接new一个空的ArrayList**/
             groupList(bottomMap, tempList, skuVo.getCount(), skuVo.getDa());
         }
-        TrafficTdo trafficTdo = new TrafficTdo(nameList, topMap, bottomMap);
+        TrafficTdo trafficTdo = new TrafficTdo(topNameList, bottomNameList, topMap, bottomMap);
         return trafficTdo;
     }
 

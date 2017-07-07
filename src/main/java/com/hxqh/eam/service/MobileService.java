@@ -2,6 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.dto.Mob88Dto;
 import com.hxqh.eam.model.dto.Mob91Dto;
+import com.hxqh.eam.model.dto.Mob92Dto;
 import com.hxqh.eam.model.dto.VMob87Dto;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.model.view.VMob87;
@@ -17,7 +18,7 @@ public interface MobileService {
 
     Mob91Dto vMob91Data();
 
-    List<VMob92> vMob92Data();
+    Mob92Dto vMob92Data();
 
     List<VMob86> vMob86Data();
 

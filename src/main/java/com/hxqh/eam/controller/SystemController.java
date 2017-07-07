@@ -68,6 +68,7 @@ public class SystemController {
                     //加入Session中
                     SfOrganizationAccount login = loginUserList.get(0);
                     SessionInfo sessionInfo = new SessionInfo();
+
                     sessionInfo.setName(login.getName());
                     map.put("sessionInfo", sessionInfo);
                     return new ModelAndView("index",result);

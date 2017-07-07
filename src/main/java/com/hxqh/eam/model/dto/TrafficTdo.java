@@ -8,7 +8,8 @@ import java.util.Map;
  * Created by lenovo on 2017/6/29.
  */
 public class TrafficTdo {
-    private List<String> nameList;
+    private List<String> topNameList;
+    private List<String> bottomNameList;
 
     private Map<String, List<BigDecimal>> topMap;
 
@@ -17,18 +18,27 @@ public class TrafficTdo {
     public TrafficTdo() {
     }
 
-    public TrafficTdo(List<String> nameList, Map<String, List<BigDecimal>> topMap, Map<String, List<BigDecimal>> bottomMap) {
-        this.nameList = nameList;
+    public TrafficTdo(List<String> topNameList, List<String> bottomNameList, Map<String, List<BigDecimal>> topMap, Map<String, List<BigDecimal>> bottomMap) {
+        this.topNameList = topNameList;
+        this.bottomNameList = bottomNameList;
         this.topMap = topMap;
         this.bottomMap = bottomMap;
     }
 
-    public List<String> getNameList() {
-        return nameList;
+    public List<String> getTopNameList() {
+        return topNameList;
     }
 
-    public void setNameList(List<String> nameList) {
-        this.nameList = nameList;
+    public void setTopNameList(List<String> topNameList) {
+        this.topNameList = topNameList;
+    }
+
+    public List<String> getBottomNameList() {
+        return bottomNameList;
+    }
+
+    public void setBottomNameList(List<String> bottomNameList) {
+        this.bottomNameList = bottomNameList;
     }
 
     public Map<String, List<BigDecimal>> getTopMap() {

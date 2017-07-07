@@ -15,13 +15,24 @@ public class WifiMttrDto {
     private Map<String ,List<VWifiMttrList>> leftList;
     private Map<String ,List<VWifiMttrList>> rightList;
 
+    private String[] axisiData;
+
     public WifiMttrDto() {
     }
 
-    public WifiMttrDto(Map<String, List<BigDecimal>> mttrM, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList) {
+    public WifiMttrDto(Map<String, List<BigDecimal>> mttrM, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList, String[] axisiData) {
         this.mttrM = mttrM;
         this.leftList = leftList;
         this.rightList = rightList;
+        this.axisiData = axisiData;
+    }
+
+    public String[] getAxisiData() {
+        return axisiData;
+    }
+
+    public void setAxisiData(String[] axisiData) {
+        this.axisiData = axisiData;
     }
 
     public Map<String, List<BigDecimal>> getMttrM() {
