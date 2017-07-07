@@ -8,8 +8,8 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.topMap,data.nameList);
-                initEchart("echart2",data.bottomMap,data.nameList);
+                initEchart("echart1",data.topMap,data.topNameList);
+                initEchart("echart2",data.bottomMap,data.bottomNameList);
             },
             error: function(){
 

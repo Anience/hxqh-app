@@ -81,47 +81,18 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                Console.log(data);
-               /* var metro = data["metro"];
-                var pe = data["pe"];
-                var tera = data["tera"];
-                var To = data["To"];
-                var metroStr = "<tr class=\"Mapttbodyodd\"><td><img src=\"../$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/Metro-E.png\" class=\"MapIocnSize\">Metro-E</td>";
-                var peStr = "<tr class=\"Mapttbodyeven\"><td><img src=\"../$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/PE.png\" class=\"MapIocnSize\">PE&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-                var teraStr = "<tr class=\"Mapttbodyodd\"><td><img src=\"../$resource/com.bjhxqh.module.app.handles.yinni/css/images/centermap/Tera.png\" class=\"MapIocnSize\">Tera&nbsp;</td>";
-                var ToStr = "<tr class=\"Mapttbodyeven\"><td>Total</td>";
-                for(var i=0;i<8;i++){
-                    metroStr = metroStr+"<td style='font-size:32px'>"+metro[i]+"</td>";
-                    peStr = peStr+"<td style='font-size:32px'>"+pe[i]+"</td>";
-                    teraStr = teraStr+"<td style='font-size:32px'>"+tera[i]+"</td>";
-                    ToStr = ToStr+"<td style='font-size:32px'>"+To[i]+"</td>";
-                }
-                metroStr = metroStr+"</tr>";
-                peStr = peStr+"</tr>";
-                teraStr = teraStr+"</tr>";
-                ToStr = ToStr+"</tr>";
-                var tablehtml = metroStr+peStr+teraStr+ToStr;
-                $("#pointtab").append(tablehtml);
-
-                var arrlist = data["list"];
-                var tablebody = "";
+                var arrlist = data["mapOpenmaptableRighttableList"];
                 for(var i=0;i<arrlist.length;i++){
-                    var columnlist = arrlist[i];
-                    if(i%2!=0){
-                        var columnStr="<tr class=\"Mapttbodyodd\">";
-                    }
-                    /!* var columnStr=">"; *!/
-                    else{
-                        var columnStr="<tr class=\"Mapttbodyeven\">";
-                    }
-                    for(var j=0;j<columnlist.length;j++){
-                        var num=columnlist[j];
-                        columnStr=columnStr+"<td>"+num+"</td>";
-                    }
-                    columnStr=columnStr+"</tr>";
-                    tablebody = tablebody+columnStr;
+                    var index = i+1;
+                    var tmpHtml = '<tr style="height : 60px"><td>'+index
+                        +'</td><td>'+arrlist[i].dates
+                        +'</td><td>'+arrlist[i].ruas
+                        +'</td><td>'+arrlist[i].nodeId
+                        +'</td><td>'+arrlist[i].interface_
+                        +'<tr>';
+                    $("#top-table").append(tmpHtml);
                 }
-                $("#pointtabs").append(tablebody);*/
+
             },
             error: function(){
 

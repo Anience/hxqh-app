@@ -19,18 +19,16 @@ $(function(){
         var legendData = ["No Data","Bad","Good"];
         var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
         var colorData = ["#707B8E","#ECD201","#5ACF05"];
-        var greenData = [];
-        var redData = [];
-        var orangeData = [];
-        var cad = ['20','30','40','50','60'];
-        var cao = ['20','30','40','50','20'];
-        var car = ['60','40','20','0','20'];
-        for(var i=0,len=echartData.length;i<len;i++){
-            greenData.push(echartData[i].greennum);
-            redData.push(echartData[i].rednum);
-            orangeData.push(echartData[i].orangenum);
-        }
+        var greenData = echartData.green;
+        var redData = echartData.red;
+        var orangeData = echartData.orange;
+        var greenPercent = echartData.greenPercent;
+        var redPercent = echartData.redPercent;
+        var orangePercent = echartData.orangePercent;
         var myChart = echarts.init(document.getElementById(domId));
+        for(var i=0;i<5;i++){
+            console.log(redData[i]);
+        }
         option = {
             tooltip : {
                 trigger: 'axis',
@@ -131,22 +129,22 @@ $(function(){
                                     fontSize: '30',
                                     fontWeight: 'normal'
                                 },
-                                /*formatter:function(obj){
+                                formatter:function(obj){
                                     var c="";
                                     var xaixsData=xAxisData;
-                                    var redData=redData;
-                                    for(var i=0;i<xaixsData.length;i++){
+                                    var redDatas=redData;
+                                    for(var i=0;i<4;i++){
                                         if(obj.name==xaixsData[i]){
-                                            c+=redData[i];
+                                            c+=redDatas[i];
                                         }
                                     }
                                     return c;
-                                },*/
+                                },
                                 position: 'insideRight'
                             }
                         }
                     },
-                    data:car
+                    data:redPercent
                 },
                 {
                     name:'Bad',
@@ -161,22 +159,22 @@ $(function(){
                                     fontSize: '30',
                                     fontWeight: 'normal'
                                 },
-                               /* formatter:function(obj){
+                                formatter:function(obj){
                                     var c="";
                                     var xaixsData=xAxisData;
-                                    var orangeData=orangeData;
-                                    for(var i=0;i<xaixsData.length;i++){
+                                    var orangeDatas=orangeData;
+                                    for(var i=0;i<4;i++){
                                         if(obj.name==xaixsData[i]){
-                                            c+=orangeData[i];
+                                            c+=orangeDatas[i];
                                         }
                                     }
                                     return c;
-                                },*/
+                                },
                                 position: 'insideRight'
                             }
                         }
                     },
-                    data:cao
+                    data:orangePercent
                 },
                 {
                     name:'Good',
@@ -191,22 +189,22 @@ $(function(){
                                     fontSize: '30',
                                     fontWeight: 'normal'
                                 },
-                                /*formatter:function(obj){
+                                formatter:function(obj){
                                     var c="";
                                     var xaixsData=xAxisData;
-                                    var greenData=greenData;
-                                    for(var i=0;i<xaixsData.length;i++){
+                                    var greenDatas=greenData;
+                                    for(var i=0;i<4;i++){
                                         if(obj.name==xaixsData[i]){
-                                            c+=greenData[i];
+                                            c+=greenDatas[i];
                                         }
                                     }
                                     return c;
-                                },*/
+                                },
                                 position: 'insideRight'
                             }
                         }
                     },
-                    data:cad
+                    data:greenPercent
                 }
             ]
         };

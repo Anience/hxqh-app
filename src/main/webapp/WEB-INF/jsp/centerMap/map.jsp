@@ -6,7 +6,7 @@
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/map.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 	<script>
@@ -14,21 +14,26 @@
 	</script>
 </head>
 <body>
-   <p style="">NetWork Surveillance</p>
-   <table style="width: 100%; height: 100%;text-align:center;color:black" border="0" cellpadding="2" cellspacing="0" class="fixed_table">
-	   <thead class="Maptthead">
-		   <tr style="height : 60px">
-			   <td><span style="font-size:20pt;">No</span></td>
-			   <td><span style="font-size:20pt;">Date</span></td>
-			   <td><span style="font-size:20pt;">Ruas</span></td>
-			   <td><span style="font-size:20pt;">Node ID</span></td>
-			   <td><span style="font-size:20pt;">Interface</span></td>
-		   </tr>
-	   </thead>
-	   <tbody id="pointtabs" >
-	   </tbody>
-   </table>
-   <table style="width: 100%; height: 100%;text-align:center;color:black" border="0" cellpadding="2" cellspacing="0" class="fixed_table">
+   <div class="tit">
+	   <p style="">NetWork Surveillance</p>
+   </div>
+   <div class="top-table-div">
+	   <table class="top-table" style="width: 100%; height: 100%;text-align:center;" border="0" cellpadding="2" cellspacing="0">
+		   <thead class="Maptthead">
+			   <tr style="height : 60px">
+				   <td>No</td>
+				   <td>Date</td>
+				   <td>Ruas</td>
+				   <td>Node ID</td>
+				   <td>Interface</td>
+			   </tr>
+		   </thead>
+		   <tbody id="top-table" style="overflow: auto;">
+		   </tbody>
+	   </table>
+   </div>
+
+  <%-- <table class="top-table" style="width: 300px; height: 100%; text-align:center;color:black" border="0" cellpadding="2" cellspacing="0">
 	   <thead class="Maptthead">
 		   <tr style="height : 60px">
 			   <td></td>
@@ -42,7 +47,7 @@
 			   <td><span style="font-size:20pt;">Total</span></td>
 		   </tr>
 	   </thead>
-	   <tbody id="pointtab">
+	   <tbody id="top-table">--%>
 	   </tbody>
    </table>
    <div id="Map" style="width: 100%; height: 100%;"></div>

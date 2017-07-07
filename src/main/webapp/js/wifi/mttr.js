@@ -20,7 +20,7 @@ $(function () {
                 success: function (data) {
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
-                    initEchart("echart1",data.vWifiMttrList);
+                    initEchart("echart1",data.mttrM,data.axisiData);
                     var pageW = $("table.mttr").width()*2+40;
                     $("#mttr-data").width(pageW);
                     $("#mttr-data").css("paddingBottom","20");
@@ -32,10 +32,19 @@ $(function () {
             });
         }
     });
-    function initEchart(domId,echartData) {
+    function initEchart(domId,echartData,axisiData) {
         var myChart = echarts.init(document.getElementById(domId));
-        var xData = ["NAS","TREG-1","TREG-2","TREG-3","TREG-4","TREG-5","TREG-6","TREG-7"];
+        var xData = axisiData;
         var seriesData = [];
+        for(var name in echartData){
+            var tmpObj = {};
+            tmpObj.type = 'bar';
+            tmpObj.name = name;
+            tmpObj.data = echartData[name];
+            seriesData.push(tmpObj);
+        }
+        console.log(seriesData);
+        console.log(xData);
         option = {
             backgroundColor: '#0c0e26',//背景色
             tooltip: {
@@ -113,23 +122,7 @@ $(function () {
                     }
                 }
             ],
-            series : [
-                {
-                    name:'>=90:',
-                    type:'bar',
-                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2,],
-                },
-                {
-                    name:'75~90:',
-                    type:'bar',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2]
-                },
-                {
-                    name:'<75:',
-                    type:'bar',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2]
-                }
-            ]
+            series : seriesData
         };
         myChart.setOption(option);
     }
