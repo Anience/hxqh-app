@@ -35,22 +35,22 @@
     <!-- 总管理类，如果lazy-init='false',则容器启动时就会执行调度程序-->
     <!-- 如果lazy-init="true",则需要实例化该bean才能执行调度程序         -->
     <!--<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">-->
-    <!--<property name="triggers">-->
-    <!--<list>-->
-    <!--<ref bean="cronTrigger"/>-->
-    <!--</list>-->
-    <!--</property>-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+                <!--<ref bean="cronTrigger"/>-->
+            <!--</list>-->
+        <!--</property>-->
     <!--</bean>-->
     <!--<bean id="jobDetail"-->
-    <!--class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
-    <!--<property name="targetObject" ref="userService"/>-->
-    <!--<property name="targetMethod" value="springResendCallbackMsg"/>-->
-    <!--&lt;!&ndash;<property name="concurrent" value="false" />&ndash;&gt;-->
+          <!--class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+        <!--<property name="targetObject" ref="userService"/>-->
+        <!--<property name="targetMethod" value="springResendCallbackMsg"/>-->
+        <!--&lt;!&ndash;<property name="concurrent" value="false" />&ndash;&gt;-->
     <!--</bean>-->
     <!--<bean id="cronTrigger"-->
-    <!--class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
-    <!--<property name="jobDetail" ref="jobDetail"/>-->
-    <!--<property name="cronExpression" value="00 00 00 * * ? "/>-->
+          <!--class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="jobDetail"/>-->
+        <!--<property name="cronExpression" value="00 00 00 * * ? "/>-->
     <!--</bean>-->
 
 

@@ -108,7 +108,7 @@ public class AnoController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/openMapLines", method = RequestMethod.GET)
+        @RequestMapping(value = "/openMapLines", method = RequestMethod.GET)
     public OpenMapLinesDto openMapLines() {
         OpenMapLinesDto mapLinesDto =anoService.getOpenMapLinesData();
         return mapLinesDto;
@@ -122,7 +122,7 @@ public class AnoController {
     @ResponseBody
     @RequestMapping(value = "/openMapTable", method = RequestMethod.GET)
     public OpenMapTableDto openMapTable() {
-        OpenMapTableDto mapTableDto =anoService.getOpenMapTableData();
+            OpenMapTableDto mapTableDto =anoService.getOpenMapTableData();
         return mapTableDto;
     }
 

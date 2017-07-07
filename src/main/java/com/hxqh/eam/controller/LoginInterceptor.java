@@ -40,11 +40,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         }
         if (!flag) {
             HttpSession session = request.getSession();
+            //session.setMaxInactiveInterval(1*60);
             SessionInfo sessionInfo = (SessionInfo) session.getAttribute("sessionInfo");
             if (sessionInfo != null)
+            {
                 flag = true;
+            }
             else
-                response.sendRedirect("first");
+            {
+                response.sendRedirect("/system/first");
+                return flag;
+            }
         }
         return flag;
     }

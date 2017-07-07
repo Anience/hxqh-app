@@ -25,6 +25,13 @@ public class VMob92 implements Serializable {
 	public VMob92() {
 	}
 
+	public VMob92(BigDecimal greennum, String id, BigDecimal orangenum, BigDecimal rednum) {
+		this.greennum = greennum;
+		this.id = id;
+		this.orangenum = orangenum;
+		this.rednum = rednum;
+	}
+
 	public BigDecimal getGreennum() {
 		return this.greennum;
 	}
