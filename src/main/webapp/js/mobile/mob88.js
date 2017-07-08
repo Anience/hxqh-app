@@ -106,5 +106,11 @@ $(function () {
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
 });

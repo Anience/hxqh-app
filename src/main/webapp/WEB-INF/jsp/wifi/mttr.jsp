@@ -17,8 +17,8 @@
 <body>
 <div class="ticket-layout" id="mttr-data">
 	<h4>MTTR Targets</h4>
-	<div class="row" style="background: #0C0E26;">
-		<div class="col-sm-6">
+	<div  style="background: #0C0E26;">
+		<div class="item-layout" style="padding-right: 0px;">
 			<table class="MTTR">
 				<thead>
 					<tr>
@@ -61,7 +61,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-sm-6" style="padding-right: 0px;background: #0C0E26;">
+		<div class="item-layout" style="padding-left: 0px;padding-right: 0px;background: #0C0E26;">
 			<table class="MTTR">
 				<thead>
 					<tr>

@@ -13,6 +13,9 @@ import java.util.Date;
 @Entity
 @Table(name="SF_ORGANIZATION_ACCOUNT")
 public class SfOrganizationAccount implements Serializable {
+
+
+
 	private static final long serialVersionUID = 1L;
 
 	private BigDecimal accountmark;
@@ -56,6 +59,11 @@ public class SfOrganizationAccount implements Serializable {
 	private String useinitialpass;
 
 	public SfOrganizationAccount() {
+	}
+
+	public SfOrganizationAccount(String name, String password) {
+		this.name = name;
+		this.password = password;
 	}
 
 	public BigDecimal getAccountmark() {

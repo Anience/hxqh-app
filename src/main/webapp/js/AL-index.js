@@ -43,9 +43,11 @@ $(function(){
     $("a").click(function(){
         var listName = $(this).text();
         var routerName = $(this).attr("id");
-        $(".right-header span").show()
+        $(".right-header span.header-router").show()
                                .text(listName);
-        $(".router span").text(routerName);
+        $(".router span.router-txt").text(routerName);
+        var tmpUrl = $(this).href;
+        localStorage.setItem("url",tmpUrl)
 
     });
 })
@@ -62,6 +64,28 @@ $(function(){
     });
     $("#ad_setting_ul li").mouseleave(function(){
         $(this).find("a").attr("class","");
+    });
+    var beforeH;
+    $("#all").click(function(){
+        $(".header").hide();
+        $(".right-header").hide();
+        $(".router").hide();
+        beforeH = $("#right-content").height();
+        $("#right-content").css("marginLeft","0");
+        $("#right-content").height("100%");
+        $("#page_content").height("100%");
+        // window.href=localStorage.getItem("url");
+        $("#small").show();
+
+    });
+    $("#small").click(function(){
+        $(".header").show();
+        $(".right-header").show();
+        $(".router").show();
+        $("#right-content").css("marginLeft","230");
+        $("#right-content").height(beforeH);
+        $("#page_content").height(beforeH);
+        $("#small").hide();
     });
 });
 

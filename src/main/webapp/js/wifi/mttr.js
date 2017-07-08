@@ -21,10 +21,6 @@ $(function () {
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
                     initEchart("echart1",data.mttrM,data.axisiData);
-                    var pageW = $("table.mttr").width()*2+40;
-                    $("#mttr-data").width(pageW);
-                    $("#mttr-data").css("paddingBottom","20");
-                    $("#mttr-data  h4").width(pageW);
                 },
                 error: function () {
 
@@ -125,5 +121,11 @@ $(function () {
             series : seriesData
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
 });

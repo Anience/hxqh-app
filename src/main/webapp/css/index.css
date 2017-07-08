@@ -162,7 +162,7 @@
 .right-header span{
     display: none;
 }
-.right-header span:before{
+.right-header span.header-router:before{
     font-size: 14px;
     font-family: "SimSun", Times, serif;
     content: ">";
@@ -195,4 +195,28 @@
     background-color: #F5F5F5;
     border-radius: 10px;
 }
-
+span#all{
+    float:right;
+    display:block;
+    font-size: 20px;
+    height: 100%;
+    width: 50px;
+    background: #f5f5f5;
+}
+span#small{
+    position:fixed;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 20px;
+    z-index: 2000000;
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+span#small:hover{
+    background: url("../imgs/mini.png") center no-repeat;
+}
+span#all:hover{
+    background: url("../imgs/maxi.png") center no-repeat;
+}

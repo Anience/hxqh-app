@@ -151,6 +151,11 @@ table.MTTR tbody tr td.bg-blue{
 }
 #mttr-data{
     min-width: 1300px;
+    width:100%;
+}
+#mttr-data h4{
+    min-width: 1300px;
+    width:100%;
 }
 #mttr-data .col-sm-6{
     min-width: 600px;
