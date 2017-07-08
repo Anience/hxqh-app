@@ -7,24 +7,13 @@ $(function () {
         data: {
             anoList:[],
             isShow: 0,
-            nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7']
+            nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'],
+            i: 1
         },
         methods: {
-            updataEchart:function(startI){
-                var i = startI;
-                window.clearInterval(timer);
-                var timer=setInterval(function(){
-                    i++;
-                    if(i>7){
-                        i=0;
-                    }
-                    self.isShow=i;
-                    initEchart("echart1",self.anoList.map[self.nameList[i]]);
-                },300000);
+            updataEchart:function(){
+                self.i = 0;
             },
-            updata:function(j){
-                updataEchart(j);
-            }
         },
         created: function () {
             var self = this;
@@ -34,8 +23,24 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.anoList = data;
-                    initEchart("echart1",self.anoList.map['TREG-1']);
-                    /*self.updataEchart(1);*/
+                    $("#mob87 ul").find("li").eq(1)
+                        .css("background","#f5f5f5");
+                    initEchart("echart1",self.anoList.map['NAS']);
+                    setInterval(function(){
+                        var initName = "";
+                        self.i++;
+                        if(self.i<=7){
+                            initName = self.nameList[self.i];
+                        }else{
+                            self.i = 0;
+                            initName = self.nameList[self.i];
+                        }
+                        initEchart("echart1",self.anoList.map[initName]);
+                        $("#mob87 ul").find("li")
+                            .css("background","#000");
+                        $("#mob87 ul").find("li").eq(self.i+1)
+                            .css("background","#f5f5f5");
+                    },3000);
                 },
                 error: function () {
 

@@ -1,6 +1,6 @@
 .mob{
 	width: 100%;
-    height: 618px;
+    height:100%;
     overflow: hidden;
     background: #03081C;
 }
@@ -22,7 +22,6 @@
     font-size: 20pt;
     text-align: center;
     font-family: 'ABBNeueHelvetica-Light';
-    background: #000;
 }
 .mob-layout ul li a.bg-brey{
     background: #03081C;
