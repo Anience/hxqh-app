@@ -1,16 +1,11 @@
 package com.hxqh.eam.common.basedao;
 
-import java.io.ByteArrayOutputStream;
+import org.apache.log4j.Logger;
+import org.dom4j.Element;
+
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
-import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
-import com.hxqh.eam.common.ZIP;
 
 public class QueryResult<T> {
 	
