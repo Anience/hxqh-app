@@ -29,7 +29,7 @@ public class AnoController {
     private AnoService anoService;
 
     /**
-     * ano81 页面跳转接口
+     * 1. AWAS 页面跳转接口
      *
      * @return
      */
@@ -40,7 +40,7 @@ public class AnoController {
 
 
     /**
-     * ano81 数据接口
+     * 1. AWAS 数据接口
      * Access 2017-6-26 09:40:21
      *
      * @return
@@ -54,7 +54,7 @@ public class AnoController {
 
 
     /**
-     * ano82 页面跳转接口
+     * 2. Gamas 页面跳转接口
      *
      * @return
      */
@@ -64,7 +64,7 @@ public class AnoController {
     }
 
     /**
-     * ano82 数据接口
+     * 2. Gamas 数据接口
      * Access 2017-6-26 09:40:29
      *
      * @return
