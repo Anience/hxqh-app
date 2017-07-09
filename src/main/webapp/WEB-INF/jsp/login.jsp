@@ -29,13 +29,13 @@
 					<div class="login-item">
 						<label>UserName:</label>
 						<input type="text" id="userName" name="name"/>
-						<p class="msg-user"></p>
 					</div>
+					<p class="msg-user"></p>
 					<div class="login-item">
 						<label>Passsword:</label>
 						<input type="password" id="pwd" name="password"/>
-						<p class="msg-pwd"></p>
 					</div>
+					<p class="msg-pwd"></p>
 					<div class="login-item">
 						<label>Language:</label>
 						<select name="_Language">
@@ -54,8 +54,9 @@
 				</form>
 			</div>
 		</div>
+		<div class="login-footer">© Copyright CCSI Corp. 2017. All rights reserved. Please refer to the product license for details</div>
 	</div>
-	<div class="login-footer">© Copyright CCSI Corp. 2017. All rights reserved. Please refer to the product license for details</div>
+
 </div>
 </body>
 </html>

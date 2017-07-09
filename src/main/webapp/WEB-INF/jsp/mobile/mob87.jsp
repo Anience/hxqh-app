@@ -26,15 +26,15 @@
 			<div class="col-sm-1"></div>
 			<div class="col-sm-2">
 				<ul>
-					<li><a href="" style="background: #005E8A;">View:</a></li>
-					<li><a href="javascript:void(0);">NAS:</a></li>
-					<li><a href="javascript:void(0);">TREG-1:</a></li>
-					<li><a href="javascript:void(0);">TREG-2:</a></li>
-					<li><a href="javascript:void(0);">TREG-3:</a></li>
-					<li><a href="javascript:void(0);">TREG-4:</a></li>
-					<li><a href="javascript:void(0);">TREG-5:</a></li>
-					<li><a href="javascript:void(0);">TREG-6:</a></li>
-					<li><a href="javascript:void(0);">TREG-7:</a></li>
+					<li><a href="javascript:void(0);"  style="background: #005E8A;">View:</a></li>
+					<li  style="background: #8D93A8;"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS:</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('1')">TREG-1</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('2')">TREG-2</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('3')">TREG-3</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('4')">TREG-4</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('5')">TREG-5</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('6')">TREG-6</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('7')">TREG-7</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">

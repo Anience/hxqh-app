@@ -8,12 +8,19 @@ $(function () {
             anoList:[],
             isShow: 0,
             nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'],
-            i: 1
+            i: 0
         },
         methods: {
-            updataEchart:function(){
-                self.i = 0;
-            },
+            navClick: function(n){
+                var m = parseInt(n);
+                $("#mob87 ul").find("li")
+                    .css("background","#000");
+                $("#mob87 ul").find("li").eq(m+1)
+                    .css("background","#8D93A8");
+                var thisName = this.nameList[m];
+                initEchart("echart1",this.anoList.map[thisName]);
+                this.i = m;
+            }
         },
         created: function () {
             var self = this;
@@ -24,7 +31,7 @@ $(function () {
                 success: function (data) {
                     self.anoList = data;
                     $("#mob87 ul").find("li").eq(1)
-                        .css("background","#f5f5f5");
+                        .css("background","#8D93A8");
                     initEchart("echart1",self.anoList.map['NAS']);
                     setInterval(function(){
                         var initName = "";
@@ -39,7 +46,7 @@ $(function () {
                         $("#mob87 ul").find("li")
                             .css("background","#000");
                         $("#mob87 ul").find("li").eq(self.i+1)
-                            .css("background","#f5f5f5");
+                            .css("background","#8D93A8");
                     },3000);
                 },
                 error: function () {

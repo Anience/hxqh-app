@@ -18,7 +18,7 @@
 <div class="ticket-layout" id="mttr-data">
 	<h4>MTTR Targets</h4>
 	<div  style="background: #0C0E26;">
-		<div class="item-layout" style="padding-right: 0px;">
+		<div class="item-layout">
 			<table class="MTTR">
 				<thead>
 					<tr>
@@ -48,20 +48,20 @@
 							<td>{{item[1].ioc3}}</td>
 							<td>{{item[1].ioc4}}</td>
 							<td>{{item[1].ioc5}}</td>
-							<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[1].ioc6}}</td>
+							<td v-bind:class="{'bg-red':parseFloat(item[1].ioc6)<75,'bg-yellow':parseFloat(item[1].ioc6)>=75&&parseFloat(item[1].ioc6)<=90,'bg-blue':parseFloat(item[1].ioc6)>90}">{{item[1].ioc6}}</td>
 						</tr>
 						<tr>
 							<td>{{item[2].ioc2}}</td>
 							<td>{{item[2].ioc3}}</td>
 							<td>{{item[2].ioc4}}</td>
 							<td>{{item[2].ioc5}}</td>
-							<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[2].ioc6}}</td>
+							<td v-bind:class="{'bg-red':parseFloat(item[2].ioc6)<75,'bg-yellow':parseFloat(item[2].ioc6)>=75&&parseFloat(item[2].ioc6)<=90,'bg-blue':parseFloat(item[2].ioc6)>90}">{{item[2].ioc6}}</td>
 						</tr>
 					</template>
 				</tbody>
 			</table>
 		</div>
-		<div class="item-layout" style="padding-left: 0px;padding-right: 0px;background: #0C0E26;">
+		<div class="item-layout" style="background: #0C0E26;">
 			<table class="MTTR">
 				<thead>
 					<tr>
@@ -91,21 +91,21 @@
 							<td>{{item[1].ioc3}}</td>
 							<td>{{item[1].ioc4}}</td>
 							<td>{{item[1].ioc5}}</td>
-							<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[1].ioc6}}</td>
+							<td v-bind:class="{'bg-red':parseFloat(item[1].ioc6)<75,'bg-yellow':parseFloat(item[1].ioc6)>=75&&parseFloat(item[1].ioc6)<=90,'bg-blue':parseFloat(item[1].ioc6)>90}">{{item[1].ioc6}}</td>
 						</tr>
 						<tr>
 							<td>{{item[2].ioc2}}</td>
 							<td>{{item[2].ioc3}}</td>
 							<td>{{item[2].ioc4}}</td>
 							<td>{{item[2].ioc5}}</td>
-							<td v-bind:class="{'bg-red':parseFloat(item[0].ioc6)<75,'bg-yellow':parseFloat(item[0].ioc6)>=75&&parseFloat(item[0].ioc6)<=90,'bg-blue':parseFloat(item[0].ioc6)>90}">{{item[2].ioc6}}</td>
+							<td v-bind:class="{'bg-red':parseFloat(item[2].ioc6)<75,'bg-yellow':parseFloat(item[2].ioc6)>=75&&parseFloat(item[2].ioc6)<=90,'bg-blue':parseFloat(item[2].ioc6)>90}">{{item[2].ioc6}}</td>
 						</tr>
 					</template>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div class="row" id="echart1" style="height: 400px;padding-bottom: 100px;"></div>
+	<div  id="echart1" style="background: #0C0E26;height: 400px;padding-bottom: 100px;"></div>
 </div>
 </body>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>

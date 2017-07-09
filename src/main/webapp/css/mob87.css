@@ -22,7 +22,9 @@
     font-size: 20pt;
     text-align: center;
     font-family: 'ABBNeueHelvetica-Light';
+    text-decoration: none;
 }
-.mob-layout ul li a.bg-brey{
-    background: #03081C;
+.mob-layout ul li a:hover{
+    text-decoration: none;
+    color: rgb(0, 94, 138);
 }

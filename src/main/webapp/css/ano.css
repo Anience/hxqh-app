@@ -39,6 +39,7 @@ table.ano82 tbody tr td{
     line-height: 21px;
     font-size: 18px;
     font-family: 'Arial';
+    color: #000
 }
 table.ano81 tbody tr:nth-child(even){
     background: #112B3A;

@@ -18,7 +18,7 @@ table.top-table thead{
 }
 table.top-table thead tr td{
     color: #fff;
-    font-size: 27px;
+    font-size: 20px;
     font-weight: bold;
     font-family: Arial;
 }
@@ -40,5 +40,16 @@ table.top-table tbody tr:nth-child(even){
 }
 table.top-table tbody tr:nth-child(odd){
     background: rgba(112, 181, 213, 0.5);
+}
+.bottom-table-div{
+    width: 2%;
+    position: fixed;
+    bottom: 100px;
+    left: 60px;
+    z-index: 9999;
+}
+table.bottom-table thead tr td{
+    background: rgba(1, 94, 138, 0.5);
+    color: #fff;
 }
 

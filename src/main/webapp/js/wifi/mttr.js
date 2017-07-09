@@ -31,6 +31,7 @@ $(function () {
     function initEchart(domId,echartData,axisiData) {
         var myChart = echarts.init(document.getElementById(domId));
         var xData = axisiData;
+        var legendData = [];
         var seriesData = [];
         for(var name in echartData){
             var tmpObj = {};
@@ -38,10 +39,32 @@ $(function () {
             tmpObj.name = name;
             tmpObj.data = echartData[name];
             seriesData.push(tmpObj);
+            legendData.push(name);
         }
         console.log(seriesData);
         console.log(xData);
         option = {
+            title: {
+                text: "Distribusi Pencapaian MTTR",
+                backgroundColor:"#161C2F",
+                x:'center',
+                y: 'top',
+                textStyle: {
+                    fontSize: 26,
+                    fontWeight: 'bolder',
+                    color: '#fff'
+                }
+            },
+            legend: {
+                orient:'horizontal',
+                x:'center',
+                y:'bottom',
+                textStyle:{
+                    fontSize: 12,
+                    color:'#fff'
+                },
+                data:legendData
+            },
             backgroundColor: '#0c0e26',//背景色
             tooltip: {
                 trigger: 'axis',

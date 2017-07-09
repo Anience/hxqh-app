@@ -32,24 +32,24 @@
 		   </tbody>
 	   </table>
    </div>
-
-  <%-- <table class="top-table" style="width: 300px; height: 100%; text-align:center;color:black" border="0" cellpadding="2" cellspacing="0">
-	   <thead class="Maptthead">
-		   <tr style="height : 60px">
-			   <td></td>
-			   <td><span style="font-size:20pt;">TREG-1</span></td>
-			   <td><span style="font-size:20pt;">TREG-2</span></td>
-			   <td><span style="font-size:20pt;">TREG-3</span></td>
-			   <td><span style="font-size:20pt;">TREG-4</span></td>
-			   <td><span style="font-size:20pt;">TREG-5</span></td>
-			   <td><span style="font-size:20pt;">TREG-6</span></td>
-			   <td><span style="font-size:20pt;">TREG-7</span></td>
-			   <td><span style="font-size:20pt;">Total</span></td>
-		   </tr>
-	   </thead>
-	   <tbody id="top-table">--%>
-	   </tbody>
-   </table>
+    <div class="bottom-table-div">
+        <table class="bottom-table" style="width: 2%; height: 100%; text-align:center;color:black" border="0" cellpadding="2" cellspacing="0">
+            <thead class="Maptthead">
+                <tr style="height : 60px">
+                    <td></td>
+                    <td><span style="font-size:20px;">TREG-1</span></td>
+                    <td><span style="font-size:20px;">TREG-2</span></td>
+                    <td><span style="font-size:20px;">TREG-3</span></td>
+                    <td><span style="font-size:20px;">TREG-4</span></td>
+                    <td><span style="font-size:20px;">TREG-5</span></td>
+                    <td><span style="font-size:20px;">TREG-6</span></td>
+                    <td><span style="font-size:20px;">TREG-7</span></td>
+                    <td><span style="font-size:20px;">Total</span></td>
+                </tr>
+            </thead>
+            <tbody id="bottom-table"></tbody>
+        </table>
+    </div>
    <div id="Map" style="width: 100%; height: 100%;"></div>
    <div id="toolip"></div>
 </body>

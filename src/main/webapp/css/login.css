@@ -22,7 +22,6 @@
 }
 .login-form{
 	width: 528px;
-    height: 320px;
 	float: right;
 	margin-right: 200px;
 	background: url("../imgs/logincbg.gif");
@@ -60,6 +59,12 @@
 	background: #F5F5F5;
 	border: 1px solid #d5d5d5;
 	border-radius: 3px;
+}
+.login-form p{
+	height:15px;
+	color: red;
+	display: none;
+	text-align: center;
 }
 .forgot{
     color: #F06;
@@ -100,6 +105,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	margin-top: 30px;
+	clear: both;
 }
 .login-item select{
 	height: 30px;

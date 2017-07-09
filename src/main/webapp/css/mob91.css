@@ -50,3 +50,40 @@ table tbody tr td.mob-bg-blue{
 table tbody tr td.mob-bg-red{
     background: #ec0100;
 }
+.table-legend{
+     height:50px;
+     width:100%;
+    clear: both;
+ }
+.table-legend .legend-layout{
+    width: 50%;
+    float: left;
+    padding-left: 15px;
+}
+.legend-item{
+    display: block;
+    clear: both;
+}
+.legend-item span{
+    display: block;
+    float: left;
+    height:50px;
+}
+.legend-item span.txt{
+    height:50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+}
+.legend-item span.bg{
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+}
+.legend-item span.bg-red{
+    background: red;
+}
+.legend-item span.bg-green{
+    background: #59ce04;
+}
+
