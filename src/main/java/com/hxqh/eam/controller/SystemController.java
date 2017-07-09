@@ -53,12 +53,15 @@ public class SystemController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(LoginDto loginDto, Map<String, Object> map) {
+    public Message login(LoginDto loginDto, Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);
     }
 
-    private ModelAndView webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
+    private Message webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
+        Message message = new Message(0, "");
+        Message success = new Message(1, "LoginSuccess");
+
         Map<String, Object> result = new HashMap<>();
         if (loginUserList.size() > 0) {
             String password = null;
@@ -71,20 +74,20 @@ public class SystemController {
 
                     sessionInfo.setName(login.getName());
                     map.put("sessionInfo", sessionInfo);
-                    return new ModelAndView("index",result);
+                    return success;
                 } else {
-                    result.put("message", "Password authentication error!");
-                    return new ModelAndView("login",result);
+                    message.setMessage("Password authentication error!");
+                    return message;
                 }
             } catch (Exception e) {
-                result.put("message", "System exception, please contact the administrator！");
+                message.setMessage("System exception, please contact the administrator！");
                 e.printStackTrace();
-                return new ModelAndView("login",result);
+                return message;
             }
         } else {
             //用户名不存在
-            result.put("message", "The account does not exist!");
-            return new ModelAndView("login",result);
+            message.setMessage("The account does not exist!");
+            return message;
         }
     }
 
