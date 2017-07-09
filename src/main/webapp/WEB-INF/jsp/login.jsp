@@ -25,7 +25,7 @@
 		<div class="login-form">
 			<div class="form-layout">
 				<h4>TelKom Dashboard</h4>
-				<form action="${ctx}/system/login" method="post" onsubmit="return checkLogin();">
+				<form>
 					<div class="login-item">
 						<label>UserName:</label>
 						<input type="text" id="userName" name="name"/>
@@ -48,8 +48,8 @@
 						<a href="" class="forgot">Forgot Password</a>
 					</div>
 					<div class="login-btn">
-						<button type="submit" name="submit">Sign in</button>
-						<%--<a href="javasript:void(0);" id="login">Sign in</a>--%>
+						<%--button type="submit" name="submit">Sign in</button>--%>
+						<a href="javasript:void(0);" id="login">Sign in</a>
 					</div>
 				</form>
 			</div>

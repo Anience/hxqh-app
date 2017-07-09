@@ -35,15 +35,25 @@ public class SystemController {
     private SystemService systemService;
 
     /**
-     * digital13 页面跳转接口
+     * first 页面跳转接口
      *
      * @return
      */
     @RequestMapping(value = "/first", method = RequestMethod.GET)
-    public String digital13() {
+    public String first() {
         return "login";
     }
 
+
+    /**
+     * index 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
 
     /**
      * 登录Function
@@ -52,6 +62,7 @@ public class SystemController {
      * @param map      前台返回信息
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Message login(LoginDto loginDto, Map<String, Object> map) {
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
