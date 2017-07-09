@@ -48,8 +48,10 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    // 设置为0，-1 表示永不超时
     <session-config>
-        <session-timeout>15</session-timeout>
+        <session-timeout>-1</session-timeout>
     </session-config>
 
     <!-- 不兼容Tomcat 8.033 Release 页面回显异常 -->
