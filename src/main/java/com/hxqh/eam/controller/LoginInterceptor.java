@@ -45,6 +45,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             if (sessionInfo != null)
             {
                 flag = true;
+                return flag;
             }
             else
             {

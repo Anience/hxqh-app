@@ -106,7 +106,13 @@ public class WiFiServiceImpl implements WiFiService {
             mttrM.put(m.getKey(), mttrs);
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
+        Map<String, List<BigDecimal>> dealM = new LinkedHashMap<>();
+
+        dealM.put("Pencapaian>=90%",mttrM.get(">=90"));
+        dealM.put("75%<=Pencapaian<90%",mttrM.get("75~90"));
+        dealM.put("Pencapaian<=75%",mttrM.get("<75"));
+
+        WifiMttrDto mttrDto = new WifiMttrDto(dealM, leftList, rightList, AXISIDATA);
         return mttrDto;
     }
 
