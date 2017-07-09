@@ -74,25 +74,64 @@ $(function(){
         })
     }
     function initTable(){
-        $("#pointtab").empty();
-        $("#pointtabs").empty();
+        $("#top-table").empty();
+        $("#bottom-table").empty();
         $.ajax({
             url: _ctx+"/ano/openMapTable",
             method: "get",
             dataType: "json",
             success: function(data){
+                //初始化top-table
                 var arrlist = data["mapOpenmaptableRighttableList"];
                 for(var i=0;i<arrlist.length;i++){
                     var index = i+1;
-                    var tmpHtml = '<tr style="height : 60px"><td>'+index
+                    var tmpHtml = '<tr style="height: 60px"><td>'+index
                         +'</td><td>'+arrlist[i].dates
                         +'</td><td>'+arrlist[i].ruas
                         +'</td><td>'+arrlist[i].nodeId
                         +'</td><td>'+arrlist[i].interface_
-                        +'<tr>';
+                        +'</tr>';
                     $("#top-table").append(tmpHtml);
                 }
-
+                //初始化bottom-table
+                var bottomObj = data["mttrM"];
+                var metroStr = "<tr><td><img src="+_ctx+"'/imgs/Metro-E.png'>Metro-E</td>";
+                var peStr = "<tr><td><img src="+_ctx+"'/imgs/PE.png'>PE</td>";
+                var teraStr = "<tr><td><img src="+_ctx+"'/imgs/Tera.png'>Tera</td>";
+                var ToStr = "<tr><td>Total</td>";
+                for(var name in bottomObj){
+                    switch(name){
+                        case "1":
+                            var tableData1 = bottomObj[name];
+                            for(var i=0;i<tableData1.length;i++){
+                                metroStr+="<td>"+tableData1[i]+"</td>"
+                            }
+                            break;
+                        case "2":
+                            var tableData2 = bottomObj[name];
+                            for(var i=0;i<tableData2.length;i++){
+                                peStr+="<td>"+tableData2[i]+"</td>"
+                            }
+                            break;
+                        case "3":
+                            var tableData3 = bottomObj[name];
+                            for(var i=0;i<tableData3.length;i++){
+                                teraStr+="<td>"+tableData3[i]+"</td>"
+                            }
+                            break;
+                        default:
+                            var tableData4 = bottomObj[name];
+                            for(var i=0;i<tableData4.length;i++){
+                                ToStr+="<td>"+tableData4[i]+"</td>"
+                            }
+                    }
+                }
+                metroStr+="</tr>";
+                peStr+="</tr>";
+                teraStr+="</tr>";
+                ToStr+="</tr>";
+                var allHtml = metroStr+peStr+teraStr+ToStr;
+                $("#bottom-table").append(allHtml);
             },
             error: function(){
 
@@ -100,4 +139,7 @@ $(function(){
         })
     }
     initMap();
+    setInterval(function(){
+        window.location.href=_ctx+"/ano/map";
+    },300000);
 }());

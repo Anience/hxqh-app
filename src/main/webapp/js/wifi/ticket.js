@@ -19,7 +19,9 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.ticketList = data;
-
+                    setInterval(function(){
+                        window.location.href=_ctx+"/wifi/ticket";
+                    },300000);
                 },
                 error: function () {
 

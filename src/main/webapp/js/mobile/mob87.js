@@ -47,7 +47,10 @@ $(function () {
                             .css("background","#000");
                         $("#mob87 ul").find("li").eq(self.i+1)
                             .css("background","#8D93A8");
-                    },3000);
+                    },30000);
+                    setInterval(function(){
+                        window.location.href=_ctx+"/mobile/mobile87";
+                    },300000);
                 },
                 error: function () {
 

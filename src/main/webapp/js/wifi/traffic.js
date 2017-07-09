@@ -10,6 +10,9 @@ $(function(){
             success: function(data){
                 initEchart("echart1",data.topMap,data.topNameList);
                 initEchart("echart2",data.bottomMap,data.bottomNameList);
+                setInterval(function(){
+                    window.location.href=_ctx+"/wifi/wifi";
+                },300000);
             },
             error: function(){
 

@@ -9,6 +9,9 @@ $(function(){
             dataType: "json",
             success: function(data){
                 initEchart("echart1",data.dailyticket,data.skuIdMap);
+                setInterval(function(){
+                    window.location.href=_ctx+"/wifi/daily";
+                },300000);
             },
             error: function(){
 

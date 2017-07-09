@@ -18,6 +18,9 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.mobList = data;
+                    setInterval(function(){
+                        window.location.href=_ctx+"/mobile/mobile86";
+                    },300000);
 
                 },
                 error: function () {

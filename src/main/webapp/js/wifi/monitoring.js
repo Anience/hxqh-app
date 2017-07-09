@@ -18,7 +18,9 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.moniList = data;
-
+                    setInterval(function(){
+                        window.location.href=_ctx+"/wifi/monitoring";
+                    },300000);
                 },
                 error: function () {
 

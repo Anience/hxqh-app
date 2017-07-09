@@ -20,6 +20,9 @@ $(function () {
                     self.mobList = data;
                     initEchart('echart1',data.mob88MttrList);
                     initEchart('echart2',data.mob88MttiList);
+                    setInterval(function(){
+                        window.location.href=_ctx+"/mobile/mobile88";
+                    },300000);
                 },
                 error: function () {
 

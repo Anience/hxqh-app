@@ -35,10 +35,10 @@ table.top-table tbody tr td{
     overflow: auto;
     z-index: 100000;
 }
-table.top-table tbody tr:nth-child(even){
+#bottom-table tr:nth-child(even),table.top-table tbody tr:nth-child(even){
     background: rgba(146, 194, 217, 0.5);
 }
-table.top-table tbody tr:nth-child(odd){
+#bottom-table tr:nth-child(odd),table.top-table tbody tr:nth-child(odd){
     background: rgba(112, 181, 213, 0.5);
 }
 .bottom-table-div{
@@ -52,4 +52,14 @@ table.bottom-table thead tr td{
     background: rgba(1, 94, 138, 0.5);
     color: #fff;
 }
+#bottom-table img{
+    width:15px;
+    height: 15px;
+}
+#bottom-table tr td{
+    border: 1px solid rgba(66, 153, 195, 0.51);
+}
+
+
+
 

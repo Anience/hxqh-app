@@ -26,7 +26,9 @@ $(function () {
         created: function () {
             var self = this;
             self.initData();
-            setInterval(self.initData(),3000);
+            setInterval(function(){
+                window.location.href=_ctx+"/ano/ano82";
+            },300000);
         }
     });
 });

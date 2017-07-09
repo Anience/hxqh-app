@@ -9,6 +9,9 @@ $(function(){
             dataType: "json",
             success: function(data){
                 initEchart("echart1",data);
+                setInterval(function(){
+                    window.location.href=_ctx+"/mobile/mobile92";
+                },300000);
             },
             error: function(){
 
