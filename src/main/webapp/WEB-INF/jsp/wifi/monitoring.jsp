@@ -82,14 +82,14 @@
 				<td v-bind:class="{'text-red':parseInt(item.ioc15)>48,'text-blue':parseInt(item.ioc15)>0&&parseInt(item.ioc15)<48}">{{item.ioc15}}</td>
 				<td v-bind:class="{'text-red':parseInt(item.ioc16)>48,'text-blue':parseInt(item.ioc16)>0&&parseInt(item.ioc16)<48}">{{item.ioc16}}</td>
 				<td v-bind:class="{'text-red':parseInt(item.ioc17)>48,'text-blue':parseInt(item.ioc17)>0&&parseInt(item.ioc17)<48}">{{item.ioc17}}</td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc18)<0.0,'yellow-radius' : parseFloat(item.ioc18)==0.0,'green-radius' : parseFloat(item.ioc18)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc19)<0.0,'yellow-radius' : parseFloat(item.ioc19)==0.0,'green-radius' : parseFloat(item.ioc19)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc20)<0.0,'yellow-radius' : parseFloat(item.ioc20)==0.0,'green-radius' : parseFloat(item.ioc20)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc21)<0.0,'yellow-radius' : parseFloat(item.ioc21)==0.0,'green-radius' : parseFloat(item.ioc21)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc22)<0.0,'yellow-radius' : parseFloat(item.ioc22)==0.0,'green-radius' : parseFloat(item.ioc22)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc23)<0.0,'yellow-radius' : parseFloat(item.ioc23)==0.0,'green-radius' : parseFloat(item.ioc23)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc24)<0.0,'yellow-radius' : parseFloat(item.ioc24)==0.0,'green-radius' : parseFloat(item.ioc24)>0.0}"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc25)<0.0,'yellow-radius' : parseFloat(item.ioc25)==0.0,'green-radius' : parseFloat(item.ioc25)>0.0}"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc18)<0.0,'yellow-radius' : parseFloat(item.ioc18)==0.0,'green-radius' : parseFloat(item.ioc18)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc19)<0.0,'yellow-radius' : parseFloat(item.ioc19)==0.0,'green-radius' : parseFloat(item.ioc19)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc20)<0.0,'yellow-radius' : parseFloat(item.ioc20)==0.0,'green-radius' : parseFloat(item.ioc20)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc21)<0.0,'yellow-radius' : parseFloat(item.ioc21)==0.0,'green-radius' : parseFloat(item.ioc21)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc22)<0.0,'yellow-radius' : parseFloat(item.ioc22)==0.0,'green-radius' : parseFloat(item.ioc22)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc23)<0.0,'yellow-radius' : parseFloat(item.ioc23)==0.0,'green-radius' : parseFloat(item.ioc23)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc24)<0.0,'yellow-radius' : parseFloat(item.ioc24)==0.0,'green-radius' : parseFloat(item.ioc24)>0.0}" :title="item.ioc18"></td>
+				<td v-bind:class="{'red-radius' : parseFloat(item.ioc25)<0.0,'yellow-radius' : parseFloat(item.ioc25)==0.0,'green-radius' : parseFloat(item.ioc25)>0.0}" :title="item.ioc18"></td>
 
 			</tr>
 		</tbody>
