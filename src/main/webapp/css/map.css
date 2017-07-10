@@ -42,7 +42,7 @@ table.top-table tbody tr td{
     background: rgba(112, 181, 213, 0.5);
 }
 .bottom-table-div{
-    width: 2%;
+    width: 33.3%;
     position: fixed;
     bottom: 100px;
     left: 60px;
@@ -58,6 +58,8 @@ table.bottom-table thead tr td{
 }
 #bottom-table tr td{
     border: 1px solid rgba(66, 153, 195, 0.51);
+    height: 60px;
+    line-height: 60px;
 }
 
 

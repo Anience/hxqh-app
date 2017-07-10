@@ -33,7 +33,7 @@
 	   </table>
    </div>
     <div class="bottom-table-div">
-        <table class="bottom-table" style="width: 2%; height: 100%; text-align:center;color:black" border="0" cellpadding="2" cellspacing="0">
+        <table class="bottom-table" style="width: 100%; height: 100%; text-align:center;color:black" border="0" cellpadding="2" cellspacing="0">
             <thead class="Maptthead">
                 <tr style="height : 60px">
                     <td></td>
