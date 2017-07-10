@@ -124,7 +124,7 @@ public class MobileController {
     }
 
     /**
-     * mobile91 页面跳转接口
+     * 8. Quality CNOP 页面跳转接口
      *
      * @return
      */
@@ -135,7 +135,7 @@ public class MobileController {
 
     //TODO 无数据补零暂缺
     /**
-     * vMob92Data 数据接口
+     * 8. Quality CNOP 数据接口
      * Access  2017-6-26 11:20:48
      *
      * @return
