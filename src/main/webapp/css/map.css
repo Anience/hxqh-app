@@ -3,7 +3,7 @@
     height: 230px;
     background-color: /* #C8032A */#ed3237;
     position: absolute;
-    left: 460px;
+    left: 50%;
     top: 10px;
     z-index: 9999;
 }
