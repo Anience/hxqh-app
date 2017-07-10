@@ -1,8 +1,9 @@
 .ano-layout{
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background: #03081C;
     padding-top: 20px;
+    overflow: auto;
 }
 .ano-layout h4{
     color: #FFFFFF;
@@ -46,4 +47,17 @@ table.ano81 tbody tr:nth-child(even){
 }
 table.ano82 tbody tr{
     background: #00B0F0;
+}
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #327979), color-stop(0.72, #26c1c1), color-stop(0.86, #3b7373));
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
 }
