@@ -64,8 +64,15 @@ public class MobileServiceImpl implements MobileService {
         List<Mob92PercentDto> percentMob92List = new LinkedList<>();
         for (VMob92 mob92 : mob92List) {
             Double sum = mob92.getGreennum().doubleValue()+ mob92.getOrangenum().doubleValue()+mob92.getRednum().doubleValue();
-            Mob92PercentDto vMob92 = new Mob92PercentDto(mob92.getGreennum().doubleValue()/sum*1000, mob92.getId(),
-                     mob92.getOrangenum().doubleValue()/sum*1000,mob92.getRednum().doubleValue()/sum*1000);
+            //如果sum不等于0
+            Mob92PercentDto vMob92 = null;
+            if(sum!=0)
+            {
+                vMob92 = new Mob92PercentDto(mob92.getGreennum().doubleValue()/sum*1000, mob92.getId(),
+                        mob92.getOrangenum().doubleValue()/sum*1000,mob92.getRednum().doubleValue()/sum*1000);
+            }else {
+                vMob92 = new Mob92PercentDto(new Double(0),mob92.getId(),new Double(0),new Double(1000));
+            }
             percentMob92List.add(vMob92);
         }
 
