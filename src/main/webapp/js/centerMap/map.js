@@ -35,11 +35,11 @@ $(function(){
                     var y = point["y"];
                     var icon = new OpenLayers.Icon(_ctx+'/imgs/WIFIAP.png', size, offset);
                     if(type==="1"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/Metro-E.png', size, offset);
+                        icon = new OpenLayers.Icon(_ctx+'/imgs/b-64.png', size, offset);
                     }else if(type==="2"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/PE.png', size, offset);
+                        icon = new OpenLayers.Icon(_ctx+'/imgs/g-64.png', size, offset);
                     }else if(type==="3"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/Tera.png', size, offset);
+                        icon = new OpenLayers.Icon(_ctx+'/imgs/y-64.png', size, offset);
                     }
                     eval("var position"
                         + i
@@ -95,9 +95,9 @@ $(function(){
                 }
                 //初始化bottom-table
                 var bottomObj = data["mttrM"];
-                var metroStr = "<tr><td><img src="+_ctx+"'/imgs/b-64.png'>Metro-E</td>";
-                var peStr = "<tr><td><img src="+_ctx+"'/imgs/g-64.png'>PE</td>";
-                var teraStr = "<tr><td><img src="+_ctx+"'/imgs/y-64.png'>Tera</td>";
+                var metroStr = "<tr><td><img src="+_ctx+"/imgs/b-64.png>Metro-E</td>";
+                var peStr = "<tr><td><img src="+_ctx+"/imgs/g-64.png>PE</td>";
+                var teraStr = "<tr><td><img src="+_ctx+"/imgs/y-64.png>Tera</td>";
                 var ToStr = "<tr><td>Total</td>";
                 for(var name in bottomObj){
                     switch(name){
