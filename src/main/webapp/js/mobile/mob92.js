@@ -29,9 +29,6 @@ $(function(){
         var redPercent = echartData.redPercent;
         var orangePercent = echartData.orangePercent;
         var myChart = echarts.init(document.getElementById(domId));
-        for(var i=0;i<5;i++){
-            console.log(redData[i]);
-        }
         option = {
             tooltip : {
                 trigger: 'axis',

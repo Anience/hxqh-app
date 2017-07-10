@@ -95,9 +95,9 @@ $(function(){
                 }
                 //初始化bottom-table
                 var bottomObj = data["mttrM"];
-                var metroStr = "<tr><td><img src="+_ctx+"'/imgs/Metro-E.png'>Metro-E</td>";
-                var peStr = "<tr><td><img src="+_ctx+"'/imgs/PE.png'>PE</td>";
-                var teraStr = "<tr><td><img src="+_ctx+"'/imgs/Tera.png'>Tera</td>";
+                var metroStr = "<tr><td><img src="+_ctx+"'/imgs/b-64.png'>Metro-E</td>";
+                var peStr = "<tr><td><img src="+_ctx+"'/imgs/g-64.png'>PE</td>";
+                var teraStr = "<tr><td><img src="+_ctx+"'/imgs/y-64.png'>Tera</td>";
                 var ToStr = "<tr><td>Total</td>";
                 for(var name in bottomObj){
                     switch(name){
