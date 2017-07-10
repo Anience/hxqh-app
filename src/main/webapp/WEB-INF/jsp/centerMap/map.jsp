@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="${ctx}/css/map.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
-	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<%--<script src="http://www.openlayers.org/api/OpenLayers.js"></script>--%>
+	<script src="${ctx}/script/openStreetMap.js"></script>
 	<script>
 		var _ctx = "${ctx}";
 	</script>

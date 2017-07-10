@@ -44,8 +44,8 @@ table.top-table tbody tr td{
 .bottom-table-div{
     width: 33.3%;
     position: fixed;
-    bottom: 100px;
-    left: 60px;
+    bottom: 40%;
+    left: 0px;
     z-index: 9999;
 }
 table.bottom-table thead tr td{
@@ -59,7 +59,6 @@ table.bottom-table thead tr td{
 #bottom-table tr td{
     border: 1px solid rgba(66, 153, 195, 0.51);
     height: 60px;
-    line-height: 60px;
 }
 
 
