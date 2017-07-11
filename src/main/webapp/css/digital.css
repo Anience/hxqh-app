@@ -48,3 +48,9 @@ table.dig-13 tbody tr:nth-child(odd){
 table.dig-13 tbody tr:nth-child(even){
 	background: #112B3A;
 }
+table.dig-13 tbody tr td.text-red{
+	color: #dd5a43;
+}
+table.dig-13 tbody tr td.text-blue{
+	color: #69aa46;
+}
