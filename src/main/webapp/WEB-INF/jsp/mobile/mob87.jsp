@@ -38,14 +38,12 @@
 				</ul>
 			</div>
 			<div class="col-sm-9">
-				<div id="echart1" style="height: 300px;width: 100%;">
-
-				</div>
+				<div id="echart1" style="height: 300px;width: 100%;"></div>
 			</div>
 		</div>
 	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob87.js"></script>
-<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script src="${ctx}/script/echarts-all.js"></script>
 </html>

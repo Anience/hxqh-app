@@ -9,37 +9,13 @@ $(function(){
             dataType: "json",
             success: function(data){
                 var i = 1;
+                //initEchart1折线图，initEchart2圆形图
                 initEchart2("echart1");
                 initEchart1("echart2");
-                initEchart2("echart3");
-                initEchart1("echart4");
-                setInterval(function(){
-                    i++;
-                    if(i>=3){
-                        i=0;
-                    }
-                    switch(i){
-                        case 1:
-                            $(".first-page").show();
-                            $(".sec-page").hide();
-                            $(".third-page").hide();
-                            break;
-                        case 2:
-                            $(".first-page").hide();
-                            $(".sec-page").show();
-                            $(".third-page").hide();
-                            initEchart3("echart5");
-                            break;
-                        default:
-                            $(".first-page").hide();
-                            $(".sec-page").hide();
-                            $(".third-page").show();
-                            initEchart3("echart6");
-                            break;
-                    }
-
-
-                },200000);
+                initEchart1("echart3");
+                initEchart2("echart4");
+                initEchart1("echart5");
+                initEchart1("echart6");
             },
             error: function(){
 
@@ -53,7 +29,8 @@ $(function(){
         option = {
             title: {
                 text: "Reactive TKT(30 DAYS)",
-                x:30,
+                x:'center',
+                y: 'bottom',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -122,6 +99,7 @@ $(function(){
                         show:true,
                         interval:0,    // {number}刻度的长短，可设为数字 间隔
                         margin:5,
+                        splitNumber: 18,
                         textStyle:{
                             color: '#fff',
                             fontSize:15
@@ -182,8 +160,8 @@ $(function(){
         option = {
             title : {
                 text: 'Reactive',
-                x:'left',
-                y:'top',
+                x:'center',
+                y: 'bottom',
                 textStyle: {
                     fontSize: '18',
                     fontWeight: 'bolder',
@@ -236,58 +214,6 @@ $(function(){
                         {value:135, name:'视频广告'},
                         {value:1548, name:'搜索引擎'}
                     ]
-                }
-            ]
-        };
-        myChart.setOption(option);
-    }
-    function initEchart3(idDom){
-        var myChart = echarts.init(document.getElementById(idDom));
-        option = {
-            title : {
-                text: '某楼盘销售情况',
-                subtext: '纯属虚构'
-            },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                data:['意向','预购','成交']
-            },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : [
-                {
-                    name:'成交',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[10, 12, 21, 54, 260, 830, 710]
-                },
-                {
-                    name:'预购',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[30, 182, 434, 791, 390, 30, 10]
-                },
-                {
-                    name:'意向',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[1320, 1132, 601, 234, 120, 90, 20]
                 }
             ]
         };

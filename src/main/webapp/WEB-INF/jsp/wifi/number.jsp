@@ -67,5 +67,4 @@
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/wifi/num.js"></script>
-<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </html>

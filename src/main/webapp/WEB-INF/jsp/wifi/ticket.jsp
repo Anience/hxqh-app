@@ -15,8 +15,10 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout" style="padding-bottom: 120px;">
-	<h4>WIFI TICKET MONITORING</h4>
+<div class="ticket-layout" style="padding-bottom: 120px;"  id="ticket-data">
+	<h4><span class="ticket-tit">WIFI TICKET MONITORING</span>
+		<span class="ticket-time">{{time}}</span>
+	</h4>
 	<table class="ticket">
 		<thead>
 		<tr>
@@ -48,7 +50,7 @@
 			<td>AP</td>
 		</tr>
 		</thead>
-		<tbody id="ticket-data">
+		<tbody>
 			<tr v-for="item of ticketList">
 				<td>{{item.ioc1}}</td>
 				<td>{{item.ioc2}}</td>
