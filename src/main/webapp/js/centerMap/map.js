@@ -15,6 +15,7 @@ $(function(){
     }
     function initPoints(map, fromProjection, toProjection){
         var size = new OpenLayers.Size(21, 25);
+
         var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
         var lineLayers = map.getLayersByName(new RegExp("Markers", ""));
         for ( var t = 0; t < lineLayers.length; t++) {

@@ -33,10 +33,10 @@
 				<td>Others</td>
 				<td>AUTELAN</td>
 				<td>CISCO</td>
-				<td>AP</td>
 				<td>HUAWEI</td>
 				<td>TP_LINK</td>
-				<td>Up Down</td>
+				<td>Up</td>
+				<td>Down</td>
 				<td>Under Verify</td>
 				<td>No status </td>
 				<td>Basic</td>
