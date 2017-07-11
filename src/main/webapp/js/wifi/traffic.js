@@ -28,7 +28,6 @@ $(function(){
         }else{
             legendData = ['CONS','DWS','EBIS'];
         }
-        console.log(echartSData);
         for(var name in echartSData){
             var tmpObj = {};
             tmpObj.type = 'line';
