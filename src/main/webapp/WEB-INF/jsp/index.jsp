@@ -100,16 +100,15 @@
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Business</a></li>
 				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
 				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Government</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-2</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-4</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Enterprise</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-1</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-26,27,28-G-2</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon iTOPcon-chevron-right1"></i>ENT-26,27,28-G-4</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-1</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-2</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-30,31,32-E-4</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DBS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. DBS TOP1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DGS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. DGS TOP1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DES&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>10. DES TOP1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DBS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. DBS_TOP2&TOP3</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DGS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. DGS TOP2&TOP3</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DES&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>11. DES TOP2&TOP3</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DBS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. DBS TOP4-7</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DGS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. DGS TOP4-7</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DES&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>12. DES TOP4-7</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
