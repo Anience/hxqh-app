@@ -65,7 +65,9 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public List<VMapOpenmappoint> getOpenMapPointsList() {
-        return mapOpenmappointDao.findAll();
+        LinkedHashMap<String ,String> linkedHashMap=new LinkedHashMap();
+        linkedHashMap.put("type","asc");
+        return mapOpenmappointDao.findAll(null,null,linkedHashMap);
     }
 
     @Override
