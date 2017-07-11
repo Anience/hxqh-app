@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/commons/meta.jsp" %>
 <html>
 <head>
-	<title></title>
+	<title>TelKom Dashboard</title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/main.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/index.css" type="text/css" media="screen" />
@@ -71,7 +71,7 @@
 				<li><a id ="ioc95" href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Wifi Traffic</a></li>
 				<li><a id ="list102" href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Number of Access Point</a></li>
 				<li><a id ="list103" href="${ctx}/wifi/ticket" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Wifi Ticket Monitoring</a></li>
-				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. FWAG & Controller</a></li>
+				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. AWG & Controller</a></li>
 
 				<li><a id ="ioc104" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Daily Ticket Distribution</a></li>
 				<li><a id="list98" href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Distribution Status Report</a></li>

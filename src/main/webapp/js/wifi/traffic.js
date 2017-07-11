@@ -28,14 +28,14 @@ $(function(){
         }else{
             legendData = ['CONS','DWS','EBIS'];
         }
-        for(var name in echartSData){
+        legendData.forEach(function(el){
             var tmpObj = {};
             tmpObj.type = 'line';
             tmpObj.smooth = true;
-            tmpObj.name = name;
-            tmpObj.data = echartSData[name];
+            tmpObj.name = el;
+            tmpObj.data = echartSData[el];
             seriesData.push(tmpObj)
-        }
+        });
         console.log(seriesData);
         var myChart = echarts.init(document.getElementById(domId));
         option = {
@@ -50,7 +50,14 @@ $(function(){
                 }
             },
             tooltip : {
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter: function(params) {
+                    var res="<div><p>Day："+params[0].name+"</p></div>";
+                    for(var i=0;i<params.length;i++){
+                        res+='<p>'+params[i].seriesName+':'+params[i].data+'</p>';
+                    }
+                    return res;
+                }
             },
             legend: {
                 orient:'vertical',
