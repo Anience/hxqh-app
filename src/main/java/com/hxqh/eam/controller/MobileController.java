@@ -9,7 +9,6 @@ import com.hxqh.eam.model.dto.Mob91Dto;
 import com.hxqh.eam.model.dto.Mob92Dto;
 import com.hxqh.eam.model.dto.VMob87Dto;
 import com.hxqh.eam.model.view.VMob86;
-import com.hxqh.eam.model.view.VMob92;
 import com.hxqh.eam.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,11 +72,16 @@ public class MobileController {
     @RequestMapping(value = "/vMob86Data", method = RequestMethod.GET)
     public List<VMob86> vMob86Data() {
         List<VMob86> dig13List = mobileService.vMob86Data();
+        //求平均值
+
+
+
+
         return dig13List;
     }
 
     /**
-     * mobile88 页面跳转接口
+     * 4. MTTR & MTTI页面跳转接口
      *
      * @return
      */
@@ -87,7 +91,7 @@ public class MobileController {
     }
 
     /**
-     * vMob88Data 数据接口
+     * 4. MTTR & MTTI 数据接口
      * Access 2017-6-26 11:19:56
      *
      * @return

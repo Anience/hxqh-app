@@ -7,84 +7,82 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_MOB_86 database table.
- * 
  */
 @Entity
-@Table(name="V_MOB_86")
+@Table(name = "V_MOB_86")
 public class VMob86 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
-	private String ioc1;
+    private static final long serialVersionUID = 1L;
+    @Id
+    private String ioc1;
 
-	private BigDecimal ioc2;
+    private Double ioc2;
 
-	private BigDecimal ioc3;
+    private Double ioc3;
 
-	private BigDecimal ioc4;
+    private Double ioc4;
 
-	private BigDecimal ioc5;
+    private Double ioc5;
 
-	private BigDecimal ioc6;
+    private Double ioc6;
 
-	private BigDecimal ioc7;
+    private Double ioc7;
 
-	public VMob86() {
-	}
+    public VMob86() {
+    }
 
-	public String getIoc1() {
-		return this.ioc1;
-	}
+    public String getIoc1() {
+        return ioc1;
+    }
 
-	public void setIoc1(String ioc1) {
-		this.ioc1 = ioc1;
-	}
+    public void setIoc1(String ioc1) {
+        this.ioc1 = ioc1;
+    }
 
-	public BigDecimal getIoc2() {
-		return this.ioc2;
-	}
+    public Double getIoc2() {
+        return ioc2;
+    }
 
-	public void setIoc2(BigDecimal ioc2) {
-		this.ioc2 = ioc2;
-	}
+    public void setIoc2(Double ioc2) {
+        this.ioc2 = ioc2;
+    }
 
-	public BigDecimal getIoc3() {
-		return this.ioc3;
-	}
+    public Double getIoc3() {
+        return ioc3;
+    }
 
-	public void setIoc3(BigDecimal ioc3) {
-		this.ioc3 = ioc3;
-	}
+    public void setIoc3(Double ioc3) {
+        this.ioc3 = ioc3;
+    }
 
-	public BigDecimal getIoc4() {
-		return this.ioc4;
-	}
+    public Double getIoc4() {
+        return ioc4;
+    }
 
-	public void setIoc4(BigDecimal ioc4) {
-		this.ioc4 = ioc4;
-	}
+    public void setIoc4(Double ioc4) {
+        this.ioc4 = ioc4;
+    }
 
-	public BigDecimal getIoc5() {
-		return this.ioc5;
-	}
+    public Double getIoc5() {
+        return ioc5;
+    }
 
-	public void setIoc5(BigDecimal ioc5) {
-		this.ioc5 = ioc5;
-	}
+    public void setIoc5(Double ioc5) {
+        this.ioc5 = ioc5;
+    }
 
-	public BigDecimal getIoc6() {
-		return this.ioc6;
-	}
+    public Double getIoc6() {
+        return ioc6;
+    }
 
-	public void setIoc6(BigDecimal ioc6) {
-		this.ioc6 = ioc6;
-	}
+    public void setIoc6(Double ioc6) {
+        this.ioc6 = ioc6;
+    }
 
-	public BigDecimal getIoc7() {
-		return this.ioc7;
-	}
+    public Double getIoc7() {
+        return ioc7;
+    }
 
-	public void setIoc7(BigDecimal ioc7) {
-		this.ioc7 = ioc7;
-	}
-
+    public void setIoc7(Double ioc7) {
+        this.ioc7 = ioc7;
+    }
 }
