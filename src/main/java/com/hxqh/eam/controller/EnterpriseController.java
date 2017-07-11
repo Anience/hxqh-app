@@ -10,10 +10,7 @@ import com.hxqh.eam.model.dto.GovernmentDto;
 import com.hxqh.eam.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/enterprise")
@@ -39,6 +36,69 @@ public class EnterpriseController {
         return "enterprise/enterprise222324B4";
     }
 
+    /**
+     * enterprise  government business Top1页面跳转
+     *
+     * @return
+     */
+    @RequestMapping(value = "/top1", method = RequestMethod.GET)
+    public String top1(@RequestParam("show") String show) {
+        return "enterprise/top1";
+    }
+
+
+    /**
+     * enterprise  government business Top1Data 数据接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/top1Data", method = RequestMethod.GET)
+    public String top1Data(@RequestParam("show") String show) {
+        return "enterprise/top1";
+    }
+
+    /**
+     * enterprise  government business Top2&3页面跳转
+     *
+     * @return
+     */
+    @RequestMapping(value = "/top2", method = RequestMethod.GET)
+    public String top2(@RequestParam("show") String show) {
+        return "enterprise/top2";
+    }
+
+    /**
+     * enterprise  government business Top2Data 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/top2Data", method = RequestMethod.GET)
+    public String top2Data(@RequestParam("show") String show) {
+        return "enterprise/top1";
+    }
+
+    /**
+     * enterprise  government business Top4-7页面跳转
+     *
+     * @return
+     */
+    @RequestMapping(value = "/top4", method = RequestMethod.GET)
+    public String top4(@RequestParam("show") String show) {
+        return "enterprise/top4";
+    }
+
+    /**
+     * enterprise  government business Top1Data 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/top4Data", method = RequestMethod.GET)
+    public String top4Data(@RequestParam("show") String show) {
+        return "enterprise/top1";
+    }
+
 
     /**
      * bussiness 页面跳转
@@ -52,6 +112,7 @@ public class EnterpriseController {
 
 
     //TODO 数据有问题  确定横轴长度与空余值补0
+
     /**
      * bussiness 数据接口
      *
@@ -79,6 +140,7 @@ public class EnterpriseController {
     }
 
     //TODO 数据有问题 确定横轴长度与空余值补0
+
     /**
      * enterprise 数据接口
      *
