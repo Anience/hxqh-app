@@ -4,9 +4,11 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.common.util.StaticUtils;
 import com.hxqh.eam.model.dto.DailyDto;
 import com.hxqh.eam.model.dto.TrafficTdo;
 import com.hxqh.eam.model.dto.WifiMttrDto;
+import com.hxqh.eam.model.dto.WifiTicketDataDto;
 import com.hxqh.eam.model.view.VWifiDistribution;
 import com.hxqh.eam.model.view.VWifiMonitoring;
 import com.hxqh.eam.model.view.VWifiNumber;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -75,7 +78,7 @@ public class WiFiController {
     }
 
     /**
-     *  ticket   页面跳转接口
+     *  1. Wifi Ticket Monitoring 页面跳转接口
      * @return
      */
     @RequestMapping(value = "/ticket", method = RequestMethod.GET)
@@ -84,15 +87,17 @@ public class WiFiController {
     }
 
     /**
-     * vWifiTicketData 数据接口
+     *  1. Wifi Ticket Monitoring 数据接口
      *  Access 2017-6-26 11:23:07
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vWifiTicketData", method = RequestMethod.GET)
-    public List<VWifiTicket> vWifiTicketData() {
-        List<VWifiTicket> dig13List = wiFiService.vWifiTicketData();
-        return dig13List;
+    public WifiTicketDataDto vWifiTicketData() {
+        List<VWifiTicket> vWifiTicketList = wiFiService.vWifiTicketData();
+        String nowTime = StaticUtils.getDateTimeFormat(new Date());
+        WifiTicketDataDto wifiTicketDataDto = new WifiTicketDataDto(vWifiTicketList,nowTime);
+        return wifiTicketDataDto;
     }
 
 

@@ -38,7 +38,7 @@
 				<td>{{item.ioc5}}</td>
 				<td>{{item.ioc6}}</td>
 				<td>{{item.ioc7}}</td>
-				<td>{{item.ioc8}}</td>
+				<td>{{item.downunit}}</td>
 			</tr>
 		</tbody>
 	</table>

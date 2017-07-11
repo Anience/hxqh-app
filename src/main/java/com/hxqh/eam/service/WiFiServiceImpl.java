@@ -22,7 +22,7 @@ public class WiFiServiceImpl implements WiFiService {
 
     private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
-    private static final String[] DAILYTICKET = {"Sunday","Sunday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    private static final String[] DAILYTICKET = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -106,13 +106,13 @@ public class WiFiServiceImpl implements WiFiService {
             mttrM.put(m.getKey(), mttrs);
         }
 
-        Map<String, List<BigDecimal>> dealM = new LinkedHashMap<>();
+//        Map<String, List<BigDecimal>> dealM = new LinkedHashMap<>();
+//        List<BigDecimal> listgt90 = mttrM.get(">=90");
+//        dealM.put("Pencapaian>=90%",listgt90 );
+//        dealM.put("75%<=Pencapaian<90%",mttrM.get("75~90"));
+//        dealM.put("Pencapaian<=75%",mttrM.get("<75"));
 
-        dealM.put("Pencapaian>=90%",mttrM.get(">=90"));
-        dealM.put("75%<=Pencapaian<90%",mttrM.get("75~90"));
-        dealM.put("Pencapaian<=75%",mttrM.get("<75"));
-
-        WifiMttrDto mttrDto = new WifiMttrDto(dealM, leftList, rightList, AXISIDATA);
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
         return mttrDto;
     }
 

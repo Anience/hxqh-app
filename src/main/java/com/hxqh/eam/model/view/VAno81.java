@@ -30,6 +30,10 @@ public class VAno81 implements Serializable {
 
 	private String ioc7;
 
+	private String downunit;
+
+
+
 	public VAno81() {
 	}
 
@@ -97,4 +101,11 @@ public class VAno81 implements Serializable {
 		this.ioc7 = ioc7;
 	}
 
+	public String getDownunit() {
+		return downunit;
+	}
+
+	public void setDownunit(String downunit) {
+		this.downunit = downunit;
+	}
 }
