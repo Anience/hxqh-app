@@ -97,9 +97,9 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ENTERPRISE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-1</a></li>
-				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Business</a></li>
-				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>TOP</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Business</a></li>
+				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
+				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-Government</a></li>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-2</a></li>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENT-22,23,24-B-4</a></li>
