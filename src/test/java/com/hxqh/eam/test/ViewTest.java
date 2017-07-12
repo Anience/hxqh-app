@@ -3,7 +3,9 @@ package com.hxqh.eam.test;
 import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
+import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import com.hxqh.eam.service.EnterpriseService;
 import com.hxqh.eam.service.SystemService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -30,13 +32,18 @@ public class ViewTest {
 
     @Autowired
     private SystemService systemService;
+    @Autowired
+    private EnterpriseService enterpriseService;
+    
+    @Test
+    public void testCreateSQLQuery() {
+        EnterpriseTopDto dbs = enterpriseService.getTopData(1, "DBS");
+
+    }
+
 
     @Test
     public void testGetViewData() {
-//        List<VAno81> all = vAno81Dao.findAll();
-//        Assert.assertTrue(all.size() > 0);
-//        List<VEntBusBottomOne> busBottomOnes = entBusBottomOneDao.findAll();
-//        Assert.assertTrue(busBottomOnes.size() > 0);
         List<Menu> listData = systemService.getMenuListData();
         Assert.assertTrue(listData.size()>0);
     }

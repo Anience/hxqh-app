@@ -2,18 +2,21 @@ package com.hxqh.eam.service;
 
 
 import com.hxqh.eam.common.util.GroupListUtil;
-import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.dto.BussinessDto;
-import com.hxqh.eam.model.dto.EnterpriseDto;
+import com.hxqh.eam.common.util.StaticUtils;
+import com.hxqh.eam.dao.VEnterpriseTicketDao;
+import com.hxqh.eam.dao.VEnterpriseTicketTktDao;
 import com.hxqh.eam.model.dto.EnterpriseTopDto;
-import com.hxqh.eam.model.dto.GovernmentDto;
-import com.hxqh.eam.model.view.*;
+import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
+import com.hxqh.eam.model.view.VEnterpriseTicket;
+import com.hxqh.eam.model.view.VEnterpriseTicketTkt;
+import com.hxqh.eam.model.view.VMob87;
+import com.hxqh.eam.model.view.VWifiTrafficTop;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.math.BigDecimal;
+import javax.annotation.Resource;
 import java.util.*;
 
 
@@ -24,190 +27,20 @@ import java.util.*;
 @Service("enterpriseService")
 public class EnterpriseServiceImpl implements EnterpriseService {
 
+    private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
-    @Autowired
-    private VEntProactiveDao entProactiveDao;
-
-    @Autowired
-    private VEntProactivetktDao entProactivetktDao;
-
-    @Autowired
-    private VEntReactiveDao entReactiveDao;
-
-    @Autowired
-    private VEntReactivetktDao entReactivetktDao;
-
-    @Autowired
-    private VGovProactiveDao govProactiveDao;
-
-    @Autowired
-    private VGovProactivetktDao govProactivetktDao;
-
-    @Autowired
-    private VGovReactiveDao govReactiveDao;
-
-    @Autowired
-    private VGovReactivetktDao govReactivetktDao;
-
-    @Autowired
-    private VBusProactiveDao busProactiveDao;
-
-    @Autowired
-    private VBusProactivetktDao busProactivetktDao;
-
-    @Autowired
-    private VBusReactiveDao busReactiveDao;
-
-    @Autowired
-    private VBusReactivetktDao busReactivetktDao;
+    @Resource
+    protected SessionFactory sessionFactory;
 
     @Autowired
     private VEnterpriseTicketDao vEnterpriseTicketDao;
+    @Autowired
+    private VEnterpriseTicketTktDao vEnterpriseTicketTktDao;
 
     @Override
-    public BussinessDto getbussinessData() {
-        List<VBusProactive> busProactive = busProactiveDao.findAll();
-        List<VBusReactive> busReactive = busReactiveDao.findAll();
+    public EnterpriseTopDto getTopData(Integer show, String type) {
 
-        List<VBusProactivetkt> busProactivetkt = busProactivetktDao.findAll();
-        List<VBusReactivetkt> busReactivetkt = busReactivetktDao.findAll();
-
-        // busProactivetkt
-        Map<String, List<VBusProactivetkt>> busProactivetktMap = GroupListUtil.group(busProactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VBusProactivetkt d = (VBusProactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-        // busReactivetkt
-        Map<String, List<VBusReactivetkt>> busReactivetktMap = GroupListUtil.group(busReactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VBusReactivetkt d = (VBusReactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-
-        Map<String, List<BigDecimal>> busProactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VBusProactivetkt>> m : busProactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VBusProactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            busProactivetktM.put(m.getKey(), mttrs);
-        }
-
-        Map<String, List<BigDecimal>> busReactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VBusReactivetkt>> m : busReactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VBusReactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            busReactivetktM.put(m.getKey(), mttrs);
-        }
-
-        BussinessDto bussinessDto = new BussinessDto(busProactive, busReactive, busProactivetktM, busReactivetktM);
-        return bussinessDto;
-    }
-
-    @Override
-    public GovernmentDto getgovernmentData() {
-        List<VGovProactive> govProactive = govProactiveDao.findAll();
-        List<VGovReactive> govReactive = govReactiveDao.findAll();
-
-        List<VGovProactivetkt> govProactivetkt = govProactivetktDao.findAll();
-        List<VGovReactivetkt> govReactivetkt = govReactivetktDao.findAll();
-
-        // govProactivetkt
-        Map<String, List<VGovProactivetkt>> govProactivetktMap = GroupListUtil.group(govProactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VGovProactivetkt d = (VGovProactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-
-        // govReactivetkt
-        Map<String, List<VGovReactivetkt>> govReactivetktMap = GroupListUtil.group(govReactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VGovReactivetkt d = (VGovReactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-
-        Map<String, List<BigDecimal>> govProactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VGovProactivetkt>> m : govProactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VGovProactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            govProactivetktM.put(m.getKey(), mttrs);
-        }
-
-        Map<String, List<BigDecimal>> govReactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VGovReactivetkt>> m : govReactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VGovReactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            govReactivetktM.put(m.getKey(), mttrs);
-        }
-        GovernmentDto governmentDto = new GovernmentDto(govProactive, govReactive, govProactivetktM, govReactivetktM);
-        return governmentDto;
-    }
-
-    @Override
-    public EnterpriseDto getenterpriseData() {
-        List<VEntProactive> entProactive = entProactiveDao.findAll();
-        List<VEntReactive> entReactive = entReactiveDao.findAll();
-
-        List<VEntProactivetkt> entProactivetkt = entProactivetktDao.findAll();
-        List<VEntReactivetkt> entReactivetkt = entReactivetktDao.findAll();
-
-        // entProactivetkt
-        Map<String, List<VEntProactivetkt>> entProactivetktMap = GroupListUtil.group(entProactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VEntProactivetkt d = (VEntProactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-        // entReactivetkt
-        Map<String, List<VEntReactivetkt>> entReactivetktMap = GroupListUtil.group(entReactivetkt, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                VEntReactivetkt d = (VEntReactivetkt) obj;
-                return d.getDa();    // 分组依据为Ioc1
-            }
-        });
-
-
-        Map<String, List<BigDecimal>> entProactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VEntProactivetkt>> m : entProactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VEntProactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            entProactivetktM.put(m.getKey(), mttrs);
-        }
-
-        Map<String, List<BigDecimal>> entReactivetktM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<VEntReactivetkt>> m : entReactivetktMap.entrySet()) {
-            List<BigDecimal> mttrs = new LinkedList<>();
-            for (VEntReactivetkt l : m.getValue()) {
-                mttrs.add(l.getCount());
-            }
-            entReactivetktM.put(m.getKey(), mttrs);
-        }
-
-        EnterpriseDto enterpriseDto = new EnterpriseDto(entProactive, entReactive, entProactivetktM, entReactivetktM);
-        return enterpriseDto;
-    }
-
-    @Override
-    public EnterpriseTopDto getTopData(String show, String type) {
+        //查询左侧RIGHTNOW PROACTIVE
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("rightnow", "RIGHTNOW");
         params.put("roactive", "PROACTIVE");
@@ -240,7 +73,73 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
         List<VEnterpriseTicket> proactiveList = vEnterpriseTicketDao.findAll(roactiveWhere, params, null);
-        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowList, proactiveList);
+
+        // 1.查询KTK
+//        List<VEnterpriseTicketTkt> rightnowTicketTktList = vEnterpriseTicketTktDao.findAll(rightnowWhere, params, null);
+//        List<VEnterpriseTicketTkt> proactiveTicketTktList1 = vEnterpriseTicketTktDao.findAll(roactiveWhere, params, null);
+        String sqlrightnowSql = "select tbe.echars_id as rn, tbe.echars_lable as mon, tbe.echars_legend as regional,nvl(countval,0) as countval from tb_ioc_config_echars tbe left join \n" +
+                "(select tkt.* from  tb_ioc_data_bgew_ticket_tkt tkt where tkt.customer_segment = :CUSTOMERSEGMENT and  tkt.sourcetype=:SOURCETYPE and tkt.custrank =:custrank) rs\n" +
+                "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional order by tbe.echars_id";
+        List<EnterpriseKTK> rightnowTicketTktList = sessionFactory.getCurrentSession().createSQLQuery(sqlrightnowSql).addEntity(EnterpriseKTK.class).
+                setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "RIGHTNOW").setString("custrank", String.valueOf(show)).list();
+
+
+        String sqlproactiveSql = "select tbe.echars_id as rn, tbe.echars_lable as mon, tbe.echars_legend as regional,nvl(countval,0) as countval from tb_ioc_config_echars tbe left join \n" +
+                "(select tkt.* from  tb_ioc_data_bgew_ticket_tkt tkt where tkt.customer_segment = :CUSTOMERSEGMENT and  tkt.sourcetype=:SOURCETYPE and tkt.custrank =:custrank) rs\n" +
+                "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional order by tbe.echars_id";
+        List<EnterpriseKTK> proactiveTicketTktList1 = sessionFactory.getCurrentSession().createSQLQuery(sqlproactiveSql).addEntity(EnterpriseKTK.class).
+                setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
+
+
+        // 2.rightnow 和 proactive 的nameList
+        HashMap<String, String> rightnowNameMap = new LinkedHashMap<>();
+        for (EnterpriseKTK top : rightnowTicketTktList) {
+            String name = top.getMon();
+            rightnowNameMap.put(name, name);
+        }
+        List<String> rightnowNameList = new LinkedList<>();
+        for (String key : rightnowNameMap.keySet()) {
+            rightnowNameList.add(rightnowNameMap.get(key));
+        }
+
+        HashMap<String, String> proactiveNameMap = new LinkedHashMap<>();
+        for (EnterpriseKTK top : proactiveTicketTktList1) {
+            String name = top.getMon();
+            proactiveNameMap.put(name, name);
+        }
+        List<String> proactiveNameList = new LinkedList<>();
+        for (String key : proactiveNameMap.keySet()) {
+            proactiveNameList.add(proactiveNameMap.get(key));
+        }
+
+        // 4.对rightnowTicketTktList分组
+        Map<String, List<EnterpriseKTK>> rightnowTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                EnterpriseKTK d = (EnterpriseKTK) obj;
+                return d.getRegional();    // 分组依据为Regional
+            }
+        });
+
+        //对proactiveTicketTktList1分组
+        Map<String, List<EnterpriseKTK>> proactiveTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                EnterpriseKTK d = (EnterpriseKTK) obj;
+                return d.getRegional();    // 分组依据为Regional
+            }
+        });
+
+        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
         return enterpriseTopDto;
     }
+
+
+    //查询分组结果
+    //开始获取条形图数据   RIGHTNOW  PROACTIVE_TICKET
+//    String sqlrightnow = " select u.*,rownum rn  from (select t.MON, t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t " +
+//            "where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.SOURCETYPE=:SOURCETYPE group by t.MON, t.REGIONAL) u";
+//   List<EnterpriseKTK> list = sessionFactory.getCurrentSession().createSQLQuery(sqlrightnow).
+//            addEntity(EnterpriseKTK.class).setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE","RIGHTNOW").list();
+
 }

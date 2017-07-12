@@ -12,6 +12,8 @@ import java.util.Map;
 public class StaticUtils {
 
 
+
+
     // 默认时间格式
     public static final String DATETIME_DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
