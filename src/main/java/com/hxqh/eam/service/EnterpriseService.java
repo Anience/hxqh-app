@@ -2,7 +2,7 @@
 package com.hxqh.eam.service;
 
 
-import com.hxqh.eam.model.dto.EnterpriseTopDto;
+import com.hxqh.eam.model.dto.EnterpriseDto;
 
 /**
  * Created by lh on 2017-6-27 .
@@ -10,5 +10,5 @@ import com.hxqh.eam.model.dto.EnterpriseTopDto;
 public interface EnterpriseService {
 
 
-    EnterpriseTopDto getTopData(Integer show,String type);
+    EnterpriseDto getTopData(Integer show, String type);
 }

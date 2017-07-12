@@ -20,7 +20,7 @@ public class StaticUtils {
     // 时间格式化
     private static DateFormat dateTimeFormat = null;
 
-    static Map<String, String> map = new HashMap();
+    static Map<String, String> map = new HashMap<>();
 
     static {
         dateTimeFormat = new SimpleDateFormat(DATETIME_DEFAULT_FORMAT);

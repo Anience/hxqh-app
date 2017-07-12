@@ -2,15 +2,11 @@ package com.hxqh.eam.service;
 
 
 import com.hxqh.eam.common.util.GroupListUtil;
-import com.hxqh.eam.common.util.StaticUtils;
 import com.hxqh.eam.dao.VEnterpriseTicketDao;
-import com.hxqh.eam.dao.VEnterpriseTicketTktDao;
+import com.hxqh.eam.model.dto.EnterpriseDto;
 import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
-import com.hxqh.eam.model.view.VEnterpriseTicketTkt;
-import com.hxqh.eam.model.view.VMob87;
-import com.hxqh.eam.model.view.VWifiTrafficTop;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +23,6 @@ import java.util.*;
 @Service("enterpriseService")
 public class EnterpriseServiceImpl implements EnterpriseService {
 
-    private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
-
     @Resource
     protected SessionFactory sessionFactory;
 
@@ -36,7 +30,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     private VEnterpriseTicketDao vEnterpriseTicketDao;
 
     @Override
-    public EnterpriseTopDto getTopData(Integer show, String type) {
+    public EnterpriseDto getTopData(Integer show, String type) {
 
         //查询左侧RIGHTNOW PROACTIVE
         Map<String, Object> params = new HashMap<String, Object>();
@@ -49,16 +43,27 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         String rightnowWhere, roactiveWhere;
         Integer integer = Integer.valueOf(show);
+
+        //实现方法返回一个list，其中有2个或者多个对象EnterpriseTopDto
         if (integer == 1) {
             params.put("custrank", 1);
             rightnowWhere = where1 + "and custrank=:custrank";
             roactiveWhere = where2 + "and custrank=:custrank";
+            //处理一个Dto
+
+            EnterpriseTopDto enterpriseTopDto = generateEnterpriseDto(show, type, params, rightnowWhere, roactiveWhere);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto);
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            return enterpriseDto;
         } else if (integer == 2) {
+            //处理两个Dto
             String rank2 = "and (custrank=:custrank2 or custrank=:custrank3)";
             params.put("custrank2", 2);
             params.put("custrank3", 3);
             rightnowWhere = where1 + rank2;
             roactiveWhere = where2 + rank2;
+            return null;
         } else {
             params.put("custrank4", 4);
             params.put("custrank5", 5);
@@ -67,8 +72,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             String rank4 = "and (custrank=:custrank4 or custrank=:custrank5 or custrank=:custrank6 or custrank=:custrank7)";
             rightnowWhere = where1 + rank4;
             roactiveWhere = where2 + rank4;
+            return null;
         }
+    }
 
+    private EnterpriseTopDto generateEnterpriseDto(Integer show, String type, Map<String, Object> params, String rightnowWhere, String roactiveWhere) {
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
         List<VEnterpriseTicket> proactiveList = vEnterpriseTicketDao.findAll(roactiveWhere, params, null);
 
@@ -125,8 +133,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             }
         });
 
-        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowList,proactiveList,rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
-        return enterpriseTopDto;
+        return new EnterpriseTopDto(rightnowList, proactiveList, rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
     }
 
 

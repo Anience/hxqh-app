@@ -37,7 +37,7 @@ public class ViewTest {
     
     @Test
     public void testCreateSQLQuery() {
-        EnterpriseTopDto dbs = enterpriseService.getTopData(1, "DBS");
+//        EnterpriseTopDto dbs = enterpriseService.getTopData(1, "DBS");
 
     }
 

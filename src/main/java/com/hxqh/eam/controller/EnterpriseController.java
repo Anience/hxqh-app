@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.dto.EnterpriseDto;
 import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +53,10 @@ public class EnterpriseController {
      */
     @ResponseBody
     @RequestMapping(value = "/top1Data", method = RequestMethod.GET)
-    public EnterpriseTopDto top1Data(@RequestParam("show") Integer show,
-                                     @RequestParam("type") String type) {
-        EnterpriseTopDto enterpriseTopDto = enterpriseService.getTopData(show, type);
-        return enterpriseTopDto;
+    public EnterpriseDto top1Data(@RequestParam("show") Integer show,
+                                  @RequestParam("type") String type) {
+        EnterpriseDto enterpriseTDto = enterpriseService.getTopData(show, type);
+        return enterpriseTDto;
     }
 
 
