@@ -108,5 +108,5 @@
 	<div  id="echart1" style="background: #0C0E26;height: 400px;padding-bottom: 100px;"></div>
 </div>
 </body>
-<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script src="${ctx}/script/echarts-all.js"></script>
 </html>

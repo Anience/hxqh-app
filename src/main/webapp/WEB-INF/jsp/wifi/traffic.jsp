@@ -27,5 +27,5 @@
 	</div>
 </body>
 <script type="text/javascript" src="${ctx}/js/wifi/traffic.js"></script>
-<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script src="${ctx}/script/echarts-all.js"></script>
 </html>

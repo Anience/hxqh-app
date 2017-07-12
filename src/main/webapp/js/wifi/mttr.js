@@ -41,6 +41,13 @@ $(function () {
             tmpObj.type = 'bar';
             tmpObj.name = name;
             tmpObj.data = echartData[name];
+            tmpObj.itemStyle = {
+                normal: {
+                    label: {
+                        show: true, position: 'top'
+                    }
+                }
+            };
             seriesData.push(tmpObj);
             legendData.push(name);
         }

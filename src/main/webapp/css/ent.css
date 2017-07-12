@@ -1,7 +1,7 @@
 .ent-layout{
     width: 100%;
     height: 100%;
-    background: #1F4E79 ;
+    background: #03081C;
 }
 .ent-header{
     height: 90px;
@@ -47,19 +47,4 @@
 .span-layout{
     float: right;
     padding-top: 35px;
-}
-.item{
-    width: 100%;
-    height: 40%;
-}
-.left{
-    float: left;
-    width: 35%;
-    height: 100%;
-    padding-left: 40px;
-}
-.right{
-    float: right;
-    width: 50%;
-    height: 100%;
 }

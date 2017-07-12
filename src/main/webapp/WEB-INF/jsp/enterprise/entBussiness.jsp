@@ -5,6 +5,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/ent.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/bussiness.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
@@ -24,16 +25,24 @@
 			<span class="lable-span green">31</span>
 		</div>
 	</div>
-	<div class="item">
-		<div class="left" id="echart1"></div>
-		<div class="right" id="echart2"></div>
+	<div class="first-page">
+		<div class="item">
+			<div class="left" id="echart1"></div>
+			<div class="right" id="echart2"></div>
+		</div>
+		<div class="item">
+			<div class="left" id="echart3"></div>
+			<div class="right" id="echart4"></div>
+		</div>
 	</div>
-	<div class="item">
-		<div class="left" id="echart3"></div>
-		<div class="right" id="echart4"></div>
+	<div class="sec-page">
+         <div id="echart5"></div>
+	</div>
+	<div class="third-page">
+		<div id="echart6"></div>
 	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/ent/business.js"></script>
-<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script src="${ctx}/script/echarts-all.js"></script>
 </html>

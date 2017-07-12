@@ -6,7 +6,8 @@ $(function () {
         el: "#ticket-data",
         data: {
             ticketList:[],
-            test: 0
+            test: 0,
+            time: "",
         },
         methods: {
 
@@ -18,7 +19,8 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.ticketList = data;
+                    self.ticketList = data.vWifiTickets;
+                    self.time = data.nowTime;
                     setInterval(function(){
                         window.location.href=_ctx+"/wifi/ticket";
                     },300000);

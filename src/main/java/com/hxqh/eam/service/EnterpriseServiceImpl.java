@@ -5,11 +5,13 @@ import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.dto.BussinessDto;
 import com.hxqh.eam.model.dto.EnterpriseDto;
+import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.GovernmentDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -59,6 +61,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Autowired
     private VBusReactivetktDao busReactivetktDao;
 
+    @Autowired
+    private VEnterpriseTicketDao vEnterpriseTicketDao;
 
     @Override
     public BussinessDto getbussinessData() {
@@ -112,7 +116,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         List<VGovProactive> govProactive = govProactiveDao.findAll();
         List<VGovReactive> govReactive = govReactiveDao.findAll();
 
-        List<VGovProactivetkt> govProactivetkt =govProactivetktDao.findAll();
+        List<VGovProactivetkt> govProactivetkt = govProactivetktDao.findAll();
         List<VGovReactivetkt> govReactivetkt = govReactivetktDao.findAll();
 
         // govProactivetkt
@@ -200,5 +204,43 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         EnterpriseDto enterpriseDto = new EnterpriseDto(entProactive, entReactive, entProactivetktM, entReactivetktM);
         return enterpriseDto;
+    }
+
+    @Override
+    public EnterpriseTopDto getTopData(String show, String type) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("rightnow", "RIGHTNOW");
+        params.put("roactive", "PROACTIVE");
+        params.put("type", type);
+
+        String where1 = " source_type=:rightnow and customer_segment=:type ";
+        String where2 = " source_type=:roactive and customer_segment=:type ";
+
+        String rightnowWhere, roactiveWhere;
+        Integer integer = Integer.valueOf(show);
+        if (integer == 1) {
+            params.put("custrank", 1);
+            rightnowWhere = where1 + "and custrank=:custrank";
+            roactiveWhere = where2 + "and custrank=:custrank";
+        } else if (integer == 2) {
+            String rank2 = "and (custrank=:custrank2 or custrank=:custrank3)";
+            params.put("custrank2", 2);
+            params.put("custrank3", 3);
+            rightnowWhere = where1 + rank2;
+            roactiveWhere = where2 + rank2;
+        } else {
+            params.put("custrank4", 4);
+            params.put("custrank5", 5);
+            params.put("custrank6", 6);
+            params.put("custrank7", 7);
+            String rank4 = "and (custrank=:custrank4 or custrank=:custrank5 or custrank=:custrank6 or custrank=:custrank7)";
+            rightnowWhere = where1 + rank4;
+            roactiveWhere = where2 + rank4;
+        }
+
+        List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
+        List<VEnterpriseTicket> proactiveList = vEnterpriseTicketDao.findAll(roactiveWhere, params, null);
+        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowList, proactiveList);
+        return enterpriseTopDto;
     }
 }

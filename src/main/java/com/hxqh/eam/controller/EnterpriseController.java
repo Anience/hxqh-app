@@ -6,19 +6,23 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.dto.BussinessDto;
 import com.hxqh.eam.model.dto.EnterpriseDto;
+import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.GovernmentDto;
 import com.hxqh.eam.service.EnterpriseService;
+import org.hibernate.event.service.internal.EventListenerServiceInitiator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/enterprise")
 @SessionAttributes(value = "sessionInfo")
 public class EnterpriseController {
+
 
     @Autowired
     private EnterpriseService enterpriseService;
@@ -39,6 +43,41 @@ public class EnterpriseController {
         return "enterprise/enterprise222324B4";
     }
 
+    /**
+     * enterprise  government business Top的所有页面跳转
+     * 根据show的值控制跳转页面，type回传
+     *
+     * @return
+     */
+    @RequestMapping(value = "/top", method = RequestMethod.GET)
+    public ModelAndView top1(@RequestParam("show") String show,
+                             @RequestParam("type") String type) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", type);
+        Integer integer = Integer.valueOf(show);
+        if (integer == 1) {
+            return new ModelAndView("enterprise/top1", result);
+        } else if (integer == 2) {
+            return new ModelAndView("enterprise/top2", result);
+        } else {
+            return new ModelAndView("enterprise/top4", result);
+        }
+    }
+
+
+    /**
+     * enterprise  government business Top1Data 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/top1Data", method = RequestMethod.GET)
+    public EnterpriseTopDto top1Data(@RequestParam("show") String show,
+                                     @RequestParam("type") String type) {
+        EnterpriseTopDto enterpriseTopDto = enterpriseService.getTopData(show,type);
+        return enterpriseTopDto;
+    }
+
 
     /**
      * bussiness 页面跳转
@@ -52,6 +91,7 @@ public class EnterpriseController {
 
 
     //TODO 数据有问题  确定横轴长度与空余值补0
+
     /**
      * bussiness 数据接口
      *
@@ -79,6 +119,7 @@ public class EnterpriseController {
     }
 
     //TODO 数据有问题 确定横轴长度与空余值补0
+
     /**
      * enterprise 数据接口
      *

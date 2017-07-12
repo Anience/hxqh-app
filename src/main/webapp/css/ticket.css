@@ -213,3 +213,12 @@ table.MTTR tbody tr td.bg-blue{
     width: 50%;
     float: left;
 }
+.ticket-layout h4 span.ticket-time{
+    color: #fff;
+    font-size: 18px;
+    height:50px;
+    line-height:50px;
+    display: block;
+    float: right;
+    padding-right: 30px;
+}
