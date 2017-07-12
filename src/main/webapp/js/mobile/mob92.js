@@ -133,7 +133,7 @@ $(function(){
                                     var c="";
                                     var xaixsData=xAxisData;
                                     var redDatas=redData;
-                                    for(var i=0;i<4;i++){
+                                    for(var i=0;i<7;i++){
                                         if(obj.name==xaixsData[i]){
                                             c+=redDatas[i];
                                         }
@@ -163,7 +163,7 @@ $(function(){
                                     var c="";
                                     var xaixsData=xAxisData;
                                     var orangeDatas=orangeData;
-                                    for(var i=0;i<4;i++){
+                                    for(var i=0;i<7;i++){
                                         if(obj.name==xaixsData[i]){
                                             c+=orangeDatas[i];
                                         }
@@ -193,7 +193,7 @@ $(function(){
                                     var c="";
                                     var xaixsData=xAxisData;
                                     var greenDatas=greenData;
-                                    for(var i=0;i<4;i++){
+                                    for(var i=0;i<7;i++){
                                         if(obj.name==xaixsData[i]){
                                             c+=greenDatas[i];
                                         }

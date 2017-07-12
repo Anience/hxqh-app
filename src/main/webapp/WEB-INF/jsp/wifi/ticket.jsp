@@ -65,8 +65,8 @@
 				<td>{{item.ioc11}}</td>
 				<td>{{item.ioc12}}</td>
 				<td>{{item.ioc13}}</td>
-				<td v-if="item.ioc12" style="color: #eb0300;">kalah</td>
-				<td v-if="!item.ioc12"><span class="bule-star"></span></td>
+				<td v-if="parseInt(item.ioc12)!=0" style="color: #eb0300;">kalah</td>
+				<td v-if="parseInt(item.ioc12)==0"><span class="bule-star"></span></td>
 			</tr>
 		</tbody>
 	</table>

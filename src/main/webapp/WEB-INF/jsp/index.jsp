@@ -50,21 +50,6 @@
 				<li><a id="list81" href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. AWAS</a></li>
 			</ul>
 		</li>
-
-		<%--<li class="menu-list">--%>
-			<%--<a target="menuFrame" class="firsta" ><i  class="glyph-icon jggl"></i>Security<span class="sz"></span></a>--%>
-			<%--<ul>--%>
-				<%--<li><a href="${ctx}/author/list" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right2"></i>Regular Tasks<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>User Role<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Athorization Mgt<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Menu Configure<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Customer ranking<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Function Button<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Appllication Designer<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Cron Task<span class="sz"></span></a></li>--%>
-				<%--<li><a href="${ctx}/organization/list" target="menuFrame" class="firsta" ><i  class="glyph-icon icon-chevron-right2"></i>Sqlmary<span class="sz"></span></a></li>s--%>
-			<%--</ul>--%>
-		<%--</li>--%>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WIFI<i class="first-a-down"></i></a>
 			<ul>
@@ -77,7 +62,7 @@
 				<li><a id="list98" href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Distribution Status Report</a></li>
 				<li><a id="list96" href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. MTTR Targets</a></li>
                 <li><a id="list100" href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Monitoring MTTR Proactive</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Akses Point DES </a></li>
+				<li><a href=" https://dashboard.telkom.co.id/idwifi/prabagen/index/page/390" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Akses Point DES </a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
@@ -114,21 +99,21 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC CUSTOMER FB<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="https://app.brandfibres.com/login" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Summary</a></li>
+				<li><a href="https://app.brandfibres.com/dashboards/59192e5fd3b0408e1a5a6f55" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Summary</a></li>
 				<li><a href="https://app.brandfibres.com/dashboards/59192ea188c9ffdd1fd3a676" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Indihome</a></li>
 				<li><a href="https://app.brandfibres.com/dashboards/591965d788c9ffdd1fd3a6a3" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Wifi ID</a></li>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Telkom Solution</a></li>
+				<li><a href="https://app.brandfibres.com/dashboards/591a6e383dde83723869e4cf" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Telkom Solution</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a id="85" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Backhaul TTC Tsel National</a></li>
+				<li><a id="85" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Backhaul TTC Tsel National</a></li>
 				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Ticket</a></li>
 				<li><a id="list86" href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. IPPM KPI</a></li>
 				<li><a id="list88" href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. MTTR & MTTI</a></li>
 				<li><a id="list91" href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. SQUAT</a></li>
-				<li><a id="list90" href="http://pm.telkom.co.id:8181/pc/desktop/page" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
+				<li><a id="list90" href="http://pm.telkom.co.id:8181" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
 				<li><a id="list92" href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Quality CNOP</a></li>
 				<li><a id="list" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Backbone Tsel</a></li>
 			</ul>
@@ -136,24 +121,13 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DIGITAL<i class="first-a-down"></i></a>
 			<ul>
-				<%--<li><a id="list13" href="${ctx}/digital/13" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-13</a></li>--%>
-				<%--<li><a id="list14" href="${ctx}/digital/14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-14</a></li>--%>
-				<li><a id="DIG-15" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Upoint Rafi</a></li>
-				<%--<li><a id="list17" href="${ctx}/digital/17" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-17</a></li>--%>
-				<%--<li><a id="lsit18" href="${ctx}/digital/18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-18</a></li>--%>
+				<li><a id="DIG-15" href="https://rafi.upoint.co.id/overview" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Upoint Rafi</a></li>
 				<li><a id="DIG-19" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
 				<li><a id="list13,14,17,18" href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Digital Operational</a></li>
 				<li><a  href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>0. ImageUpload</a></li>
 				<li><a id="DIG-16,20" href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Melon</a></li>
 			</ul>
 		</li>
-		<%--<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ANO<i class="first-a-down"></i></a>
-			<ul>
-				<li><a id="list81" href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-81</a></li>
-				<li><a id="list82" href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ANO-82</a></li>
-			</ul>
-		</li>--%>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE INT'L<i class="first-a-down"></i></a>
 			<ul>

@@ -32,11 +32,11 @@
 				<td rowspan="2">RUSAK</td>
 				<td rowspan="2">HILANG</td>
 				<td rowspan="2">TEMPORER</td>
-				<td rowspan="2" class="dis-td">DISPEND ORDER</td>
+				<td rowspan="2" class="dis-td">DISPEND<br>ORDER</td>
 			</tr>
 			<tr>
-				<td class="dis-td">REAL DOWN</td>
-				<td class="dis-td">DOWN SITE OWNER</td>
+				<td class="dis-td">REAL<br>DOWN</td>
+				<td class="dis-td">DOWN SITE<br>OWNER</td>
 			</tr>
 		</thead>
 		<tbody id="distribution-data">

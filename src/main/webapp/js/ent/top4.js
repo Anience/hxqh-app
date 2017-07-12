@@ -6,16 +6,42 @@ $(function(){
         $.ajax({
             url: _ctx+"/mobile/vMob92Data",
             method: "get",
+            data:{
+                type: type,
+                show: '1'
+            },
             dataType: "json",
             success: function(data){
-                var i = 1;
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart1");
-                initEchart1("echart2");
-                initEchart1("echart3");
-                initEchart2("echart4");
-                initEchart1("echart5");
-                initEchart1("echart6");
+                //一个用户
+                initEchart2("echart11");
+                initEchart1("echart12");
+                initEchart1("echart13");
+                initEchart2("echart14");
+                initEchart1("echart15");
+                initEchart1("echart16");
+                //两个用户
+                initEchart2("echart21");
+                initEchart1("echart22");
+                initEchart1("echart23");
+                initEchart2("echart24");
+                initEchart1("echart25");
+                initEchart1("echart26");
+
+                initEchart2("echart31");
+                initEchart1("echart32");
+                initEchart1("echart33");
+                initEchart2("echart34");
+                initEchart1("echart35");
+                initEchart1("echart36");
+
+                initEchart2("echart41");
+                initEchart1("echart42");
+                initEchart1("echart43");
+                initEchart2("echart44");
+                initEchart1("echart45");
+                initEchart1("echart46");
+
             },
             error: function(){
 

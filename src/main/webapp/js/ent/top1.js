@@ -4,13 +4,18 @@
 $(function(){
     function initData(){
         $.ajax({
-            url: _ctx+"/mobile/vMob92Data",
+            url: _ctx+"/enterprise/top1Data",
             method: "get",
+            data:{
+                type: type,
+                show: '1'
+            },
             dataType: "json",
             success: function(data){
+                var rightTop = data.rightnowList[0];
                 var i = 1;
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart1");
+                initEchart2("echart1",rightTop.closenums,rightTop.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
                 initEchart1("echart2");
                 initEchart1("echart3");
                 initEchart2("echart4");
@@ -154,27 +159,34 @@ $(function(){
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
-    function initEchart2(idDom){
+    function initEchart2(idDom,data1,data2,titName){
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title : {
-                text: 'Reactive',
+                text: titName,
                 x:'center',
                 y: 'bottom',
                 textStyle: {
-                    fontSize: '18',
-                    fontWeight: 'bolder',
-                    color: '#fff'
+                    fontSize: '12',
+                    fontWeight: 'bold',
+                    color: '#BDBEC3'
                 }
             },
+            color:['#BDBEC3'],
             tooltip : {
                 trigger: 'item',
-                formatter: "{b} : {c} ({d}%)"
+                formatter: "{b} : {c}"
             },
             legend: {
                 show:false,
-                data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                data:['close','open']
             },
             calculable : false,
             series : [
@@ -186,7 +198,7 @@ $(function(){
                         normal : {
                             //不显示中间的字，而显示成饼图的那种label
                             label : {
-                                show: true,
+                                show: false,
                                 position : 'inner',
                                 // formatter: '{b} : {c} ({d}%)'
                                 formatter: "{d}%"
@@ -208,16 +220,19 @@ $(function(){
                         }
                     },
                     data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
+                        {value:data1, name:'close'},
+                        {value:data2, name:'open'}
                     ]
                 }
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
     initData();
 }());

@@ -124,7 +124,7 @@ $(function () {
                 {
                     type:'pie',
                     radius : '70%',
-                    center: ['60%', '50%'],
+                    center: ['50%', '50%'],
                     itemStyle:{
                         normal:{
                             label:{
