@@ -4,6 +4,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.dto.BussinessDto;
 import com.hxqh.eam.model.dto.EnterpriseDto;
+import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.GovernmentDto;
 
 /**
@@ -16,4 +17,6 @@ public interface EnterpriseService {
     GovernmentDto getgovernmentData();
 
     EnterpriseDto getenterpriseData();
+
+    EnterpriseTopDto getTopData(String show,String type);
 }
