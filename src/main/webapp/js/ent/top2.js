@@ -6,16 +6,28 @@ $(function(){
         $.ajax({
             url: _ctx+"/mobile/vMob92Data",
             method: "get",
+            data:{
+                type: type,
+                show: '1'
+            },
             dataType: "json",
             success: function(data){
                 var i = 1;
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart1");
-                initEchart1("echart2");
-                initEchart1("echart3");
-                initEchart2("echart4");
-                initEchart1("echart5");
-                initEchart1("echart6");
+                //一个用户
+                initEchart2("echart11");
+                initEchart1("echart12");
+                initEchart1("echart13");
+                initEchart2("echart14");
+                initEchart1("echart15");
+                initEchart1("echart16");
+                //两个用户
+                initEchart2("echart21");
+                initEchart1("echart22");
+                initEchart1("echart23");
+                initEchart2("echart24");
+                initEchart1("echart25");
+                initEchart1("echart26");
             },
             error: function(){
 
@@ -39,16 +51,6 @@ $(function(){
             },
             tooltip : {
                 trigger: 'axis'
-            },
-            legend: {
-                orient:'vertical',
-                x:'right',
-                y:'top',
-                textStyle:{
-                    fontSize: 12,
-                    color:'#fff'
-                },
-                data:legendData
             },
             calculable: false,
             grid:{
@@ -154,6 +156,12 @@ $(function(){
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
     function initEchart2(idDom){
         var myChart = echarts.init(document.getElementById(idDom));
@@ -218,6 +226,12 @@ $(function(){
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
     initData();
 }());

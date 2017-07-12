@@ -1,11 +1,12 @@
 .tit{
-    width: 443.5px;
+    width: 444px;
     height: 230px;
     background-color: /* #C8032A */#ed3237;
     position: absolute;
     left: 50%;
     top: 10px;
     z-index: 9999;
+    margin-left: -222px;
 }
 p{
     text-align: center;

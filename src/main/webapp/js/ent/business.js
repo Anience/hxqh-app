@@ -39,7 +39,7 @@ $(function(){
                     }
 
 
-                },200000);
+                },2000);
             },
             error: function(){
 

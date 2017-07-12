@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
 		var _ctx = "${ctx}";
+		var type = "${page}";
 	</script>
 </head>
 <body>
@@ -65,6 +66,6 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/ent/top.js"></script>
+<script type="text/javascript" src="${ctx}/js/ent/top1.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
 </html>

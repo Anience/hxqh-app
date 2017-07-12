@@ -55,13 +55,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100,'text-blue':parseInt(item.ioc5)>=100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc8)<100,'text-blue':parseInt(item.ioc8)>=100}">{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td :id="item.id1"></td>
+					<td :id="item.id1" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc11)<100,'text-blue':parseInt(item.ioc11)>=100}">{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc13)<100,'text-blue':parseInt(item.ioc13)>=100}">{{item.ioc13}}</td>
@@ -76,13 +76,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100,'text-blue':parseInt(item.ioc5)>=100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc8)<100,'text-blue':parseInt(item.ioc8)>=100}">{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td :id="item.id1"></td>
+					<td :id="item.id1" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc11)<100,'text-blue':parseInt(item.ioc11)>=100}">{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc13)<100,'text-blue':parseInt(item.ioc13)>=100}">{{item.ioc13}}</td>
@@ -96,13 +96,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100,'text-blue':parseInt(item.ioc5)>=100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc8)<100,'text-blue':parseInt(item.ioc8)>=100}">{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td :id="item.id1"></td>
+					<td :id="item.id1" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc11)<100,'text-blue':parseInt(item.ioc11)>=100}">{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc13)<100,'text-blue':parseInt(item.ioc13)>=100}">{{item.ioc13}}</td>
@@ -116,13 +116,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100,'text-blue':parseInt(item.ioc5)>=100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc8)<100,'text-blue':parseInt(item.ioc8)>=100}">{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td :id="item.id1"></td>
+					<td :id="item.id1" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc11)<100,'text-blue':parseInt(item.ioc11)>=100}">{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc13)<100,'text-blue':parseInt(item.ioc13)>=100}">{{item.ioc13}}</td>
@@ -136,13 +136,13 @@
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id"></td>
+					<td :id="item.id" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100,'text-blue':parseInt(item.ioc5)>=100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc8)<100,'text-blue':parseInt(item.ioc8)>=100}">{{item.ioc8}}</td>
 					<td>{{item.ioc9}}</td>
-					<td :id="item.id1"></td>
+					<td :id="item.id1" style="width: 150px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc11)<100,'text-blue':parseInt(item.ioc11)>=100}">{{item.ioc11}}</td>
 					<td>{{item.ioc12}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc13)<100,'text-blue':parseInt(item.ioc13)>=100}">{{item.ioc13}}</td>

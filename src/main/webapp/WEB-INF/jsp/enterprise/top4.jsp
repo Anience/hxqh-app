@@ -27,12 +27,12 @@
 			</div>
 		</div>
 		<div>
-			<div class="item1" id="echart1-1"></div>
-			<div class="item2" id="echart1-2"></div>
-			<div class="item2" id="echart1-3"></div>
-			<div class="item1" id="echart1-4"></div>
-			<div class="item2" id="echart1-5"></div>
-			<div class="item2" id="echart1-6"></div>
+			<div class="item1" id="echart11"></div>
+			<div class="item2" id="echart12"></div>
+			<div class="item2" id="echart13"></div>
+			<div class="item1" id="echart14"></div>
+			<div class="item2" id="echart15"></div>
+			<div class="item2" id="echart16"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
 				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
@@ -76,12 +76,12 @@
 			</div>
 		</div>
 		<div>
-			<div class="item1" id="echart2-1"></div>
-			<div class="item2" id="echart2-2"></div>
-			<div class="item2" id="echart2-3"></div>
-			<div class="item1" id="echart2-4"></div>
-			<div class="item2" id="echart2-5"></div>
-			<div class="item2" id="echart2-6"></div>
+			<div class="item1" id="echart21"></div>
+			<div class="item2" id="echart22"></div>
+			<div class="item2" id="echart23"></div>
+			<div class="item1" id="echart24"></div>
+			<div class="item2" id="echart25"></div>
+			<div class="item2" id="echart26"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
 				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
@@ -127,12 +127,12 @@
 			</div>
 		</div>
 		<div>
-			<div class="item1" id="echart3-1"></div>
-			<div class="item2" id="echart3-2"></div>
-			<div class="item2" id="echart3-3"></div>
-			<div class="item1" id="echart3-4"></div>
-			<div class="item2" id="echart3-5"></div>
-			<div class="item2" id="echart3-6"></div>
+			<div class="item1" id="echart31"></div>
+			<div class="item2" id="echart32"></div>
+			<div class="item2" id="echart33"></div>
+			<div class="item1" id="echart34"></div>
+			<div class="item2" id="echart35"></div>
+			<div class="item2" id="echart36"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
 				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
@@ -176,12 +176,12 @@
 			</div>
 		</div>
 		<div>
-			<div class="item1" id="echart4-1"></div>
-			<div class="item2" id="echart4-2"></div>
-			<div class="item2" id="echart4-3"></div>
-			<div class="item1" id="echart4-4"></div>
-			<div class="item2" id="echart4-5"></div>
-			<div class="item2" id="echart4-6"></div>
+			<div class="item1" id="echart41"></div>
+			<div class="item2" id="echart42"></div>
+			<div class="item2" id="echart43"></div>
+			<div class="item1" id="echart44"></div>
+			<div class="item2" id="echart45"></div>
+			<div class="item2" id="echart46"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
 				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
@@ -216,6 +216,6 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/ent/top.js"></script>
+<script type="text/javascript" src="${ctx}/js/ent/top4.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
 </html>

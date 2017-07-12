@@ -61,15 +61,25 @@ $(function () {
     function initEchart(idDom,echartData){
         var lendData = [];
         var serisData = [];
-        for(var i=0,len=echartData.length;i<len;i++){
+        var echartDatas = echartData|| tmpData;
+        var echartLabel ={
+            'OTHERS':'',
+            'FO ACCESS':'',
+            'RADIO ACCESS':'',
+            'SL_D':''
+        };
+        for(var i=0,len=echartDatas.length;i<len;i++){
             var tmpObj = {};
-            tmpObj.value = echartData[i].value;
-            tmpObj.name = echartData[i].name;
-            tmpObj.other = echartData[i].otherfull;
-            lendData.push(echartData[i].name);
+            tmpObj.value = echartDatas[i].value;
+            tmpObj.name = echartDatas[i].name;
+            lendData.push(echartDatas[i].name);
             serisData.push(tmpObj);
+            for(var name in echartLabel){
+                if(name==echartDatas[i].name){
+                    echartLabel[name] = echartDatas[i].otherfull;
+                }
+            }
         }
-        console.log(serisData);
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title :{
@@ -115,7 +125,7 @@ $(function () {
                                     var res="";
                                     var datas = params.series.data;
                                     for(var i=0;i<datas.length;i++){
-                                        res+=params.value+"("+echartData[i].otherfull+")";
+                                        res+=params.value+"("+echartLabel[params.name]+")";
                                         break;
                                     }
                                     return res;

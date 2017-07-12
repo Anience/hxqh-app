@@ -18,10 +18,10 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<h3 style="color: #03091A;">KPI</h3>
+			<h3>KPI</h3>
 			<div class="row">
 				<div class="col-md-2">
-					<h4>Packet</h4>
+					<h4 style="color: #03091A;">Packet</h4>
 					<table class="table table-bordered">
 						<thead>
 							<tr><td style="font-size: 30px;color: #03091A;background: #03091A;">NAS</td></tr>
