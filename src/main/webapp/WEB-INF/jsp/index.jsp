@@ -46,23 +46,25 @@
 			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>Network Surveillance<i class="first-a-down"></i></a>
 			<ul>
 				<li class="menu-list"> <a  href="${ctx}/ano/map" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Center Map<span class="sz"></span></a></li>
-				<li><a id="list82" href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Gamas</a></li>
 				<li><a id="list81" href="${ctx}/ano/ano81" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. AWAS</a></li>
+				<li><a id="list82" href="${ctx}/ano/ano82" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Gamas</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WIFI<i class="first-a-down"></i></a>
 			<ul>
-				<li><a id ="ioc95" href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Wifi Traffic</a></li>
-				<li><a id ="list102" href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Number of Access Point</a></li>
 				<li><a id ="list103" href="${ctx}/wifi/ticket" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Wifi Ticket Monitoring</a></li>
-				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. AWG & Controller</a></li>
-
-				<li><a id ="ioc104" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Daily Ticket Distribution</a></li>
-				<li><a id="list98" href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Distribution Status Report</a></li>
+				<li><a id ="list102" href="${ctx}/wifi/number" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Number of Access Point</a></li>
+				<li><a href="https://dashboard.telkom.co.id/idwifi/prabagen/index/page/390" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Akses Point DES </a></li>
+				<li><a id ="ioc95" href="${ctx}/wifi/wifi" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Wifi Traffic</a></li>
 				<li><a id="list96" href="${ctx}/wifi/mttr" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. MTTR Targets</a></li>
-                <li><a id="list100" href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Monitoring MTTR Proactive</a></li>
-				<li><a href=" https://dashboard.telkom.co.id/idwifi/prabagen/index/page/390" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Akses Point DES </a></li>
+				<li><a id="list98" href="${ctx}/wifi/distribution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Distribution Status Report</a></li>
+				<li><a id="list100" href="${ctx}/wifi/monitoring" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Monitoring MTTR Proactive</a></li>
+				<li><a id ="ioc104" href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Daily Ticket Distribution</a></li>
+				<li><a href="http://10.37.4.240/cacti" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>10. Cacti WAC/WAG</a></li>
+				<li><a href="http://10.37.41.240/cacti/graph_view.php?action=tree&tree_id=2&leaf_id=8" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>11. Traffic WAG</a></li>
+				<li><a href="http://10.37.41.240/cacti/graph_view.php?action=tree&tree_id=3&leaf_id=36" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>12. Traffic WAC</a></li>
+				<li><a href="http://180.252.2.198/cacti/plugins/monitor/monitor.php?username=noc&password=moklet13254" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>13. AWG & Controller</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
@@ -83,17 +85,20 @@
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ENTERPRISE<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Business</a></li>
-				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
-				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. DBS TOP1</a></li>
-				<li><a href="${ctx}/enterprise/top?type=DGS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. DGS TOP1</a></li>
-				<li><a href="${ctx}/enterprise/top?type=DES&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>10. DES TOP1</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. DBS_TOP2&TOP3</a></li>
-				<li><a href="${ctx}/enterprise/top?type=DGS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. DGS TOP2&TOP3</a></li>
-				<li><a href="${ctx}/enterprise/top?type=DES&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>11. DES TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. DBS TOP4-7</a></li>
+				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DGS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. DGS TOP1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DGS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. DGS TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DGS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. DGS TOP4-7</a></li>
+				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DES&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>10. DES TOP1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DES&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>11. DES TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DES&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>12. DES TOP4-7</a></li>
+				<li><a href="http://10.40.9.78/noc/dash_bges.php" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENTERPRISE-business</a></li>
+				<li><a href="http://10.40.9.78/noc/monita/view/dashboard/dashboard.php" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Enterprise-government</a></li>
+				<li><a href="${ctx}/enterprise/url.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Enterprise-enterprise</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
@@ -109,22 +114,22 @@
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
 				<li><a id="85" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Backhaul TTC Tsel National</a></li>
-				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Ticket</a></li>
 				<li><a id="list86" href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. IPPM KPI</a></li>
+				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Ticket</a></li>
 				<li><a id="list88" href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. MTTR & MTTI</a></li>
-				<li><a id="list91" href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. SQUAT</a></li>
-				<li><a id="list90" href="http://pm.telkom.co.id:8181" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
-				<li><a id="list92" href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Quality CNOP</a></li>
 				<li><a id="list" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Backbone Tsel</a></li>
+				<li><a id="list90" href="http://pm.telkom.co.id:8181" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
+				<li><a id="list91" href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. SQUAT</a></li>
+				<li><a id="list92" href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Quality CNOP</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC DIGITAL<i class="first-a-down"></i></a>
 			<ul>
-				<li><a id="DIG-15" href="https://rafi.upoint.co.id/overview" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Upoint Rafi</a></li>
-				<li><a id="DIG-19" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>DIG-19</a></li>
-				<li><a id="list13,14,17,18" href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Digital Operational</a></li>
 				<li><a  href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>0. ImageUpload</a></li>
+				<li><a id="list13,14,17,18" href="${ctx}/digital/13141718" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Digital Operational</a></li>
+				<li><a id="DIG-15" href="https://rafi.upoint.co.id/overview" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. Upoint Rafi</a></li>
+				<li><a id="DIG-19" href="https://rafi.upoint.co.id/?username=cfuds&password=cfuds" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3.Upoint Rafi User</a></li>
 				<li><a id="DIG-16,20" href="http://dashboard.melon.co.id/home" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. Melon</a></li>
 			</ul>
 		</li>
@@ -132,6 +137,14 @@
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE INT'L<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WHO-34,35,36-OLO-1</a></li>
+			</ul>
+		</li>
+		<li class="menu-list">
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>Consumer<i class="first-a-down"></i></a>
+			<ul>
+				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=8c6693afbca73e29a252" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 107</a></li>
+				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=75853fd93fd314f0043c" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 111</a></li>
+				<li><a href="http://118.97.167.60:21180/aos-web/res/aos-common/login.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Iqas - 116</a></li>
 			</ul>
 		</li>
 	</ul>
