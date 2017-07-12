@@ -34,8 +34,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
     @Autowired
     private VEnterpriseTicketDao vEnterpriseTicketDao;
-    @Autowired
-    private VEnterpriseTicketTktDao vEnterpriseTicketTktDao;
 
     @Override
     public EnterpriseTopDto getTopData(Integer show, String type) {
@@ -75,8 +73,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         List<VEnterpriseTicket> proactiveList = vEnterpriseTicketDao.findAll(roactiveWhere, params, null);
 
         // 1.查询KTK
-//        List<VEnterpriseTicketTkt> rightnowTicketTktList = vEnterpriseTicketTktDao.findAll(rightnowWhere, params, null);
-//        List<VEnterpriseTicketTkt> proactiveTicketTktList1 = vEnterpriseTicketTktDao.findAll(roactiveWhere, params, null);
         String sqlrightnowSql = "select tbe.echars_id as rn, tbe.echars_lable as mon, tbe.echars_legend as regional,nvl(countval,0) as countval from tb_ioc_config_echars tbe left join \n" +
                 "(select tkt.* from  tb_ioc_data_bgew_ticket_tkt tkt where tkt.customer_segment = :CUSTOMERSEGMENT and  tkt.sourcetype=:SOURCETYPE and tkt.custrank =:custrank) rs\n" +
                 "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional order by tbe.echars_id";
@@ -89,7 +85,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional order by tbe.echars_id";
         List<EnterpriseKTK> proactiveTicketTktList1 = sessionFactory.getCurrentSession().createSQLQuery(sqlproactiveSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
-
 
         // 2.rightnow 和 proactive 的nameList
         HashMap<String, String> rightnowNameMap = new LinkedHashMap<>();
@@ -130,7 +125,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             }
         });
 
-        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
+        EnterpriseTopDto enterpriseTopDto = new EnterpriseTopDto(rightnowList,proactiveList,rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
         return enterpriseTopDto;
     }
 
