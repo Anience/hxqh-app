@@ -11,7 +11,9 @@ $(function () {
             dig14Dto: [],
             dig17Dto: [],
             dig18Dto: [],
-            isShow: false
+            isShow: false,
+            month: "",
+            year: ""
         },
         methods: {
            initEchartData:function(domName1,data,domName2){
@@ -20,11 +22,10 @@ $(function () {
                    var target = parseFloat(data[n]["ioc3"]);
                    var real1 = parseFloat(data[n]["ioc10"]);
                    var target1 = parseFloat(data[n]["ioc9"]);
-                   var data1 = real/target;
-                   var data2 = (target-real)/target;
-                   var data3 = real1/target1;
-                   var data4 = (target1-real1)/target1;
-                   console.log(domName1,data1,data2,data3,data4);
+                   var data1 = real/(target+real);
+                   var data2 = target/(target+real);
+                   var data3 = real1/(target1+real1);
+                   var data4 = target1/(target1+real1);
                    initEchart(domName1+n,data1,data2);
                    initEchart(domName2+n,data3,data4);
                }
@@ -61,6 +62,10 @@ $(function () {
                             self.dig17Dto = data.dig17Dto;
                             self.dig18Dto = data.dig18Dto;
                             self.isShow = true;
+                            var myDate = new Date();
+                            var dataEnglish = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                            self.month= dataEnglish[myDate.getMonth()];
+                            self.year = myDate.getFullYear();
                     }
                     if(self.digList&&self.digList.length>=1){
                         for(var i=0,len=self.digList.length;i<len;i++){
