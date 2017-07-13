@@ -6,12 +6,14 @@ import com.hxqh.eam.dao.VEnterpriseTicketDao;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
+import com.hxqh.eam.model.view.VWifiMttr;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -32,7 +34,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     public EnterpriseDto getTopData(Integer show, String type) {
 
         //查询左侧RIGHTNOW PROACTIVE
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("rightnow", "RIGHTNOW");
         params.put("roactive", "PROACTIVE");
         params.put("type", type);
@@ -238,12 +240,82 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         }
     }
 
+    @Override
+    public EntDto getEntData(String type) {
+        //获取左侧饼状图   RIGHTNOW     PROACTIVE_TICKET
+        String pieRightnowSQL = "select w.*,rownum rn from (select t.CUSTOMER_SEGMENT as ctype,sum(t.OPENNUMS) as OPENNUMS,sum(t.CLOSENUMS) as CLOSENUMS  " +
+                "from V_ENTERPRISE_TICKET t where t.CUSTOMER_SEGMENT = :CUSTOMERSEGMENT  and t.SOURCE_TYPE = :SOURCETYPE  group by t.CUSTOMER_SEGMENT) w";
 
-    //查询分组结果
-    //开始获取条形图数据   RIGHTNOW  PROACTIVE_TICKET
-//    String sqlrightnow = " select u.*,rownum rn  from (select t.MON, t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t " +
-//            "where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.SOURCETYPE=:SOURCETYPE group by t.MON, t.REGIONAL) u";
-//   List<EnterpriseKTK> list = sessionFactory.getCurrentSession().createSQLQuery(sqlrightnow).
-//            addEntity(EnterpriseKTK.class).setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE","RIGHTNOW").list();
+        String pieProactiveSQL = "select w.*,rownum rn from (select t.CUSTOMER_SEGMENT as ctype,sum(t.OPENNUMS) as OPENNUMS,sum(t.CLOSENUMS) as CLOSENUMS  " +
+                "from V_ENTERPRISE_TICKET t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.SOURCE_TYPE =:SOURCETYPE  group by t.CUSTOMER_SEGMENT) w";
+
+        List<EnterprisePieDto> pieRightnowList = sessionFactory.getCurrentSession().createSQLQuery(pieRightnowSQL).addEntity(EnterprisePieDto.class).
+                setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "RIGHTNOW").list();
+
+        List<EnterprisePieDto> pieProactiveList = sessionFactory.getCurrentSession().createSQLQuery(pieProactiveSQL).addEntity(EnterprisePieDto.class).
+                setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE_TICKET").list();
+
+        /*******************************************KTK数据***************************************************/
+        String ktkRightnowSQL = "select  w.*,rownum rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
+                "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'RIGHTNOW' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
+        List<EnterpriseKtkDto> ktkRightnowList = sessionFactory.getCurrentSession().createSQLQuery(ktkRightnowSQL).addEntity(EnterpriseKtkDto.class).
+                setString("CUSTOMERSEGMENT", type).list();
+
+
+        String ktkProactiveSQL = "select  w.*,rownum rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
+                "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'PROACTIVE_TICKET' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
+        List<EnterpriseKtkDto> ktkProactiveList = sessionFactory.getCurrentSession().createSQLQuery(ktkProactiveSQL).addEntity(EnterpriseKtkDto.class).
+                setString("CUSTOMERSEGMENT", type).list();
+
+        //对pktkRightnowSQL分组
+        Map<String, List<EnterpriseKtkDto>> rightnowTicketMap = GroupListUtil.group(ktkRightnowList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                EnterpriseKtkDto d = (EnterpriseKtkDto) obj;
+                return d.getEtype();    // 分组依据为Regional
+            }
+        });
+        Map<String, List<EnterpriseKtkDto>> proactiveTicketMap = GroupListUtil.group(ktkProactiveList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                EnterpriseKtkDto d = (EnterpriseKtkDto) obj;
+                return d.getEtype();    // 分组依据为Regional
+            }
+        });
+
+        Map<String, List<Integer>> rightnowTicketM = new LinkedHashMap<>();
+        extractTicketNumberList(rightnowTicketMap, rightnowTicketM);
+        Map<String, List<Integer>> proactiveTicketM = new LinkedHashMap<>();
+        extractTicketNumberList(proactiveTicketMap, proactiveTicketM);
+        /*******************************************KTK数据***************************************************/
+
+        /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
+        String ent6SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.time_data as timedata,sum(t.sum_persion_in) as personsum from Tb_Ioc_Ent_Bge_Region t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.time_data) w";
+        List<Enterprise67Dto> ent6List= sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
+                setString("CUSTOMERSEGMENT", type).list();
+
+        /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
+
+        /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
+        String ent7SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.data_times as timedata,sum(t.sum_in) as personsum from TB_IOC_ENT_BGE_PRODUCT t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.data_times) w";
+        List<Enterprise67Dto> ent7List= sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
+                setString("CUSTOMERSEGMENT", type).list();
+
+        /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
+
+        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,ent6List,ent7List);
+        return entDto;
+    }
+
+    private void extractTicketNumberList(Map<String, List<EnterpriseKtkDto>> rightnowTicketMap, Map<String, List<Integer>> proactiveTicketM) {
+        for (Map.Entry<String, List<EnterpriseKtkDto>> m : rightnowTicketMap.entrySet()) {
+            List<Integer> mttrs = new LinkedList<>();
+            for (EnterpriseKtkDto l : m.getValue()) {
+                mttrs.add(l.getEnternum());
+            }
+            proactiveTicketM.put(m.getKey(), mttrs);
+        }
+    }
+
 
 }
