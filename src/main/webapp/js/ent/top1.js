@@ -12,6 +12,22 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                //页面用户名展示
+                $(".ent-header h4").text(data.enterpriseMap["1"].name);
+                //图标展示
+                var logoList = data.enterpriseMap["1"].iconList;
+                for(var i=0,len=logoList.length;i<len;i++){
+                    var className = '.'+logoList[i].lay;
+                    var imgUrl = '';
+                    if(logoList[i].status=='0'){
+                        imgUrl = _ctx+'/imgs/red/'+logoList[i].lay+'.png';
+                    }else{
+                        imgUrl = _ctx+'/imgs/blue/'+logoList[i].lay+'.png';
+                    }
+                    $(className).show();
+                    $(className).attr('src',imgUrl);
+                }
+
                 var leftTop;
                 var leftBottom;
                 //处理后台传回的数据为空的状态

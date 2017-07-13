@@ -35,10 +35,10 @@
 		 <div class="item2" id="echart6"></div>
 		 <div class="top1-log">
 			 <p>Subscribed Service</p>
-			 <img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-			 <img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-			 <img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-			 <img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+			 <img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="">
+			 <img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
+			 <img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
+			 <img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 		 </div>
 		 <div class="top1-event">
 			 <table>
