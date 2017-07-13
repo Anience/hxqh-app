@@ -7,12 +7,14 @@ import com.hxqh.eam.model.dto.EnterpriseDto;
 import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
+import com.hxqh.eam.model.view.VWifiMttr;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -58,21 +60,56 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             return enterpriseDto;
         } else if (integer == 2) {
             //处理两个Dto
-            String rank2 = "and (custrank=:custrank2 or custrank=:custrank3)";
+            String rank2 = "and (custrank=:custrank2)";
+            String rank3 = "and (custrank=:custrank3)";
             params.put("custrank2", 2);
             params.put("custrank3", 3);
-            rightnowWhere = where1 + rank2;
-            roactiveWhere = where2 + rank2;
-            return null;
+
+            String rightnowWhere2,roactiveWhere2,rightnowWhere3,roactiveWhere3;
+            rightnowWhere2 = where1 + rank2;
+            roactiveWhere2 = where2 + rank2;
+            rightnowWhere3 = where1 + rank3;
+            roactiveWhere3 = where2 + rank3;
+
+            EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
+            EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show, type, params, rightnowWhere3, roactiveWhere3);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
+            enterpriseMap.put(String.valueOf(integer+1), enterpriseTopDto3);
+
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            return enterpriseDto;
         } else {
+            String rank4 = "and (custrank=:custrank4)";
+            String rank5 = "and (custrank=:custrank5)";
+            String rank6 = "and (custrank=:custrank6)";
+            String rank7 = "and (custrank=:custrank7)";
             params.put("custrank4", 4);
             params.put("custrank5", 5);
             params.put("custrank6", 6);
             params.put("custrank7", 7);
-            String rank4 = "and (custrank=:custrank4 or custrank=:custrank5 or custrank=:custrank6 or custrank=:custrank7)";
-            rightnowWhere = where1 + rank4;
-            roactiveWhere = where2 + rank4;
-            return null;
+
+            String rightnowWhere4,roactiveWhere4,rightnowWhere5,roactiveWhere5,rightnowWhere6,roactiveWhere6,rightnowWhere7,roactiveWhere7;
+            rightnowWhere4 = where1 + rank4;
+            roactiveWhere4 = where2 + rank4;
+            rightnowWhere5 = where1 + rank5;
+            roactiveWhere5 = where2 + rank5;
+            rightnowWhere6 = where1 + rank6;
+            roactiveWhere6 = where2 + rank6;
+            rightnowWhere7 = where1 + rank7;
+            roactiveWhere7 = where2 + rank7;
+            EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+            EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show, type, params, rightnowWhere5, roactiveWhere5);
+            EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show, type, params, rightnowWhere6, roactiveWhere6);
+            EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show, type, params, rightnowWhere7, roactiveWhere7);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+            enterpriseMap.put(String.valueOf(integer+1), enterpriseTopDto5);
+            enterpriseMap.put(String.valueOf(integer+2), enterpriseTopDto6);
+            enterpriseMap.put(String.valueOf(integer+3), enterpriseTopDto7);
+
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            return enterpriseDto;
         }
     }
 
@@ -133,7 +170,24 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             }
         });
 
-        return new EnterpriseTopDto(rightnowList, proactiveList, rightnowNameList, proactiveNameList, rightnowTicketMap, proactiveTicketMap);
+        Map<String, List<Integer>> rightnowTicketM = new LinkedHashMap<>();
+        extractNumberList(rightnowTicketMap, rightnowTicketM);
+
+        Map<String, List<Integer>> proactiveTicketM = new LinkedHashMap<>();
+        extractNumberList(proactiveTicketMap, proactiveTicketM);
+
+
+        return new EnterpriseTopDto(rightnowList, proactiveList, rightnowNameList, proactiveNameList, rightnowTicketM, proactiveTicketM);
+    }
+
+    private void extractNumberList(Map<String, List<EnterpriseKTK>> proactiveTicketMap, Map<String, List<Integer>> proactiveTicketM) {
+        for (Map.Entry<String, List<EnterpriseKTK>> m : proactiveTicketMap.entrySet()) {
+            List<Integer> mttrs = new LinkedList<>();
+            for (EnterpriseKTK l : m.getValue()) {
+                mttrs.add(l.getCountval());
+            }
+            proactiveTicketM.put(m.getKey(), mttrs);
+        }
     }
 
 

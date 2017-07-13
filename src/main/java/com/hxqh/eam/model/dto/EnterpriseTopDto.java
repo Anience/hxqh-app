@@ -1,6 +1,5 @@
 package com.hxqh.eam.model.dto;
 
-import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
 
 import java.util.List;
@@ -17,19 +16,20 @@ public class EnterpriseTopDto {
     private List<String> rightnowNameList;
     private List<String> proactiveNameList;
 
-    private Map<String, List<EnterpriseKTK>> rightnowTicketMap;
-    private Map<String, List<EnterpriseKTK>> proactiveTicketMap;
+    private Map<String, List<Integer>> rightnowTicketM;
+    private Map<String, List<Integer>> proactiveTicketM;
+
 
     public EnterpriseTopDto() {
     }
 
-    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> rightnowNameList, List<String> proactiveNameList, Map<String, List<EnterpriseKTK>> rightnowTicketMap, Map<String, List<EnterpriseKTK>> proactiveTicketMap) {
+    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> rightnowNameList, List<String> proactiveNameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM) {
         this.rightnowList = rightnowList;
         this.proactiveList = proactiveList;
         this.rightnowNameList = rightnowNameList;
         this.proactiveNameList = proactiveNameList;
-        this.rightnowTicketMap = rightnowTicketMap;
-        this.proactiveTicketMap = proactiveTicketMap;
+        this.rightnowTicketM = rightnowTicketM;
+        this.proactiveTicketM = proactiveTicketM;
     }
 
     public List<VEnterpriseTicket> getRightnowList() {
@@ -64,19 +64,19 @@ public class EnterpriseTopDto {
         this.proactiveNameList = proactiveNameList;
     }
 
-    public Map<String, List<EnterpriseKTK>> getRightnowTicketMap() {
-        return rightnowTicketMap;
+    public Map<String, List<Integer>> getRightnowTicketM() {
+        return rightnowTicketM;
     }
 
-    public void setRightnowTicketMap(Map<String, List<EnterpriseKTK>> rightnowTicketMap) {
-        this.rightnowTicketMap = rightnowTicketMap;
+    public void setRightnowTicketM(Map<String, List<Integer>> rightnowTicketM) {
+        this.rightnowTicketM = rightnowTicketM;
     }
 
-    public Map<String, List<EnterpriseKTK>> getProactiveTicketMap() {
-        return proactiveTicketMap;
+    public Map<String, List<Integer>> getProactiveTicketM() {
+        return proactiveTicketM;
     }
 
-    public void setProactiveTicketMap(Map<String, List<EnterpriseKTK>> proactiveTicketMap) {
-        this.proactiveTicketMap = proactiveTicketMap;
+    public void setProactiveTicketM(Map<String, List<Integer>> proactiveTicketM) {
+        this.proactiveTicketM = proactiveTicketM;
     }
 }
