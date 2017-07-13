@@ -18,16 +18,21 @@
 }
 .top1-log{
     width: 60%;
-    height:20%;
+    height:10%;
     clear: both;
     float: left;
-    padding-left: 10%;
+    padding-top: 3%;
+    padding-left: 5%;
 }
 .top1-log p{
-    width:100%;
+    width:180px;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 0px;
+    float: left;
+    height: 50px;
+    line-height: 50px;
 }
 .top1-log img{
     display: block;

@@ -4,53 +4,121 @@
 $(function(){
     function initData(){
         $.ajax({
-            url: _ctx+"/mobile/vMob92Data",
+            url: _ctx+"/enterprise/top1Data",
             method: "get",
             data:{
                 type: type,
-                show: '1'
+                show: '2'
             },
             dataType: "json",
             success: function(data){
-                var i = 1;
+                var leftTop1;
+                var leftBottom1;
+                //处理后台传回的数据为空的状态
+                if(data.enterpriseMap["2"].rightnowList.length==0){
+                    leftTop1 = {
+                        closenums: undefined,
+                        opennums: undefined
+                    };
+                }else{
+                    var leftTop1 = data.enterpriseMap["2"].rightnowList[0];
+                };
+                if(data.enterpriseMap["2"].proactiveList.length==0){
+                    leftBottom1 = {
+                        closenums: undefined,
+                        opennums: undefined
+                    };
+                }else{
+                    leftBottom1 = data.enterpriseMap["2"].proactiveList[0];
+                }
+                var middleTop1 = data.enterpriseMap["2"].rightnowTicketM;
+                var middleTopName1 = data.enterpriseMap["2"].rightnowNameList;
+                var middleBottom1 = data.enterpriseMap["2"].proactiveTicketM;
+                var middleBottomName1 = data.enterpriseMap["2"].proactiveNameList;
+
+
+                var leftTop2;
+                var leftBottom2;
+                //处理后台传回的数据为空的状态
+                if(data.enterpriseMap["3"].rightnowList.length==0){
+                    leftTop2 = {
+                        closenums: undefined,
+                        opennums: undefined
+                    };
+                }else{
+                    var leftTop2 = data.enterpriseMap["3"].rightnowList[0];
+                };
+                if(data.enterpriseMap["3"].proactiveList.length==0){
+                    leftBottom2 = {
+                        closenums: undefined,
+                        opennums: undefined
+                    };
+                }else{
+                    leftBottom2 = data.enterpriseMap["3"].proactiveList[0];
+                }
+                var middleTop2 = data.enterpriseMap["3"].rightnowTicketM;
+                var middleTopName2 = data.enterpriseMap["3"].rightnowNameList;
+                var middleBottom2 = data.enterpriseMap["3"].proactiveTicketM;
+                var middleBottomName2 = data.enterpriseMap["3"].proactiveNameList;
                 //initEchart1折线图，initEchart2圆形图
-                //一个用户
-                initEchart2("echart11");
-                initEchart1("echart12");
-                initEchart1("echart13");
-                initEchart2("echart14");
-                initEchart1("echart15");
-                initEchart1("echart16");
+                initEchart2("echart11",leftTop1.closenums,leftTop1.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart12",middleTop1,middleTopName1,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart13",middleTop1,middleTopName1,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart14",leftBottom1.closenums,leftBottom1.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart15",middleBottom1,middleBottomName1,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart16",middleBottom1,middleBottomName1,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                //initEchart1折线图，initEchart2圆形图
                 //两个用户
-                initEchart2("echart21");
-                initEchart1("echart22");
-                initEchart1("echart23");
-                initEchart2("echart24");
-                initEchart1("echart25");
-                initEchart1("echart26");
+                initEchart2("echart21",leftTop2.closenums,leftTop2.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart22",middleTop2,middleTopName2,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart23",middleTop2,middleTopName2,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart24",leftBottom2.closenums,leftBottom2.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart25",middleBottom2,middleBottomName2,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart26",middleBottom2,middleBottomName2,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
             },
             error: function(){
 
             }
         })
     }
-    function initEchart1(domId) {
-        var xAxisData =  ['周一','周二','周三','周四','周五','周六','周日'];
-        var legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
+    function initEchart1(domId,echartData,xData,tit) {
+        var xAxisData =  xData;
+        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        var seriesData = [];
+        legendData.forEach(function(el){
+            var tmpObj = {};
+            tmpObj.type = 'line';
+            tmpObj.smooth = true;
+            tmpObj.name = el;
+            tmpObj.data = echartData[el];
+            tmpObj.symbol = 'none';
+            seriesData.push(tmpObj)
+        });
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
-                text: "Reactive TKT(30 DAYS)",
+                text: tit,
                 x:'center',
                 y: 'bottom',
                 textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    color: '#FFF'
+                    fontSize: '12',
+                    fontWeight: 'bold',
+                    color: '#BDBEC3'
                 }
             },
             tooltip : {
                 trigger: 'axis'
+            },
+            legend: {
+                show:false,
+                orient:'vertical',
+                x:'right',
+                y:'top',
+                textStyle:{
+                    fontSize: 12,
+                    color:'#fff'
+                },
+                data:legendData
             },
             calculable: false,
             grid:{
@@ -117,43 +185,7 @@ $(function(){
                     }
                 }
             ],
-            series:  [
-                {
-                    name:'TREG 1',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'TREG 2',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'TREG 3',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'TREG 4',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'TREG 5',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                },
-                {
-                    name:'TREG 6',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                },
-                {
-                    name:'TREG 7',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
+            series:  seriesData
         };
         myChart.setOption(option);
         $("#all",window.parent.document).click(function(){
@@ -163,38 +195,55 @@ $(function(){
             myChart.resize();
         });
     }
-    function initEchart2(idDom){
+    function initEchart2(idDom,data1,data2,titName){
+        var initData;
+        var bgcolor = [];
+        if(typeof(data1)=="undefined"&&typeof(data2)=="undefined"){
+            initData=[
+                {
+                    value:1,name:'nodata'
+                }
+            ];
+            bgcolor = ['#BDBEC3'];
+        }else{
+            initData=[
+                {value:data1, name:'close'},
+                {value:data2, name:'open'}
+            ]
+            bgcolor = ["#ff7f50", "#87cefa"];
+        };
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title : {
-                text: 'Reactive',
+                text: titName,
                 x:'center',
                 y: 'bottom',
                 textStyle: {
-                    fontSize: '18',
-                    fontWeight: 'bolder',
-                    color: '#fff'
+                    fontSize: '12',
+                    fontWeight: 'bold',
+                    color: '#BDBEC3'
                 }
             },
+            color:bgcolor,
             tooltip : {
                 trigger: 'item',
-                formatter: "{b} : {c} ({d}%)"
+                formatter: "{b} : {c}"
             },
             legend: {
                 show:false,
-                data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                data:['close','open']
             },
             calculable : false,
             series : [
                 {
-                    name:'访问来源',
+                    name:'',
                     type:'pie',
                     radius : ['40%', '70%'],
                     itemStyle : {
                         normal : {
                             //不显示中间的字，而显示成饼图的那种label
                             label : {
-                                show: true,
+                                show: false,
                                 position : 'inner',
                                 // formatter: '{b} : {c} ({d}%)'
                                 formatter: "{d}%"
@@ -215,13 +264,7 @@ $(function(){
                             }
                         }
                     },
-                    data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
-                    ]
+                    data:initData
                 }
             ]
         };

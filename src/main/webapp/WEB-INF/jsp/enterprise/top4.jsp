@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
 		var _ctx = "${ctx}";
+		var type = "${page}";
 	</script>
 </head>
 <body style="min-height: 600px;background: #03081C;height: 100%;">
@@ -44,20 +45,16 @@
 				<table>
 					<thead>
 						<tr>
-							<td width="30%"></td>
-							<td width="70%">Event</td>
+							<td>Event</td>
 						</tr>
 					<tbody>
 						<tr>
-							<td class="bg-red"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-yellow"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-green"></td>
 							<td>Event</td>
 						</tr>
 					</tbody>
@@ -93,20 +90,16 @@
 				<table>
 					<thead>
 						<tr>
-							<td width="30%"></td>
-							<td width="70%">Event</td>
+							<td>Event</td>
 						</tr>
 					<tbody>
 						<tr>
-							<td class="bg-red"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-yellow"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-green"></td>
 							<td>Event</td>
 						</tr>
 					</tbody>
@@ -144,20 +137,16 @@
 				<table>
 					<thead>
 						<tr>
-							<td width="30%"></td>
-							<td width="70%">Event</td>
+							<td>Event</td>
 						</tr>
 					<tbody>
 						<tr>
-							<td class="bg-red"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-yellow"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-green"></td>
 							<td>Event</td>
 						</tr>
 					</tbody>
@@ -193,20 +182,16 @@
 				<table>
 					<thead>
 						<tr>
-							<td width="30%"></td>
-							<td width="70%">Event</td>
+							<td>Event</td>
 						</tr>
 					<tbody>
 						<tr>
-							<td class="bg-red"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-yellow"></td>
 							<td>Event</td>
 						</tr>
 						<tr>
-							<td class="bg-green"></td>
 							<td>Event</td>
 						</tr>
 					</tbody>
