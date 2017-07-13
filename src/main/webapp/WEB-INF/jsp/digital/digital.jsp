@@ -17,9 +17,9 @@
 	</script>
 </head>
 <body>
-<div class="digital" style="position: relative;">
-	<div class="dig-layout">
-		<table class="dig-13" id="digital-data" style="position: absolute;top: 50%;left: 0;margin-top: -16%;">
+<div class="digital">
+	<div class="dig-layout" style="padding-top: 40px;">
+		<table class="dig-13" id="digital-data">
 			<thead>
 				<tr>
 					<td rowspan="3">OPERATIONAL</td>

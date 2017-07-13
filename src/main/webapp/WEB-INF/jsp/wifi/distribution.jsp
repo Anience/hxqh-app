@@ -20,14 +20,14 @@
 	<table class="distribution">
 		<thead>
 			<tr>
-				<td rowspan="3">TREG</td>
+				<td rowspan="3" width="8%">TREG</td>
 				<td colspan="10">STATUS UP</td>
 			</tr>
 			<tr>
-				<td rowspan="2">UP</td>
+				<td rowspan="2" width="6%">UP</td>
 				<td rowspan="2">AVAILABILITY</td>
 				<td colspan="2">DOWN</td>
-				<td rowspan="2">UV</td>
+				<td rowspan="2" width="6%">UV</td>
 				<td rowspan="2">DISMANTLE</td>
 				<td rowspan="2">RUSAK</td>
 				<td rowspan="2">HILANG</td>

@@ -14,10 +14,11 @@
 	</script>
 </head>
 <body>
-<div class="ano-layout">
-	<h4>Gamas Node Metro & Access</h4>
-	<table class="ano82" cellpadding="2" id="ano82-data">
-		<thead>
+<div class="ano-layout" style="position: relative;">
+	<div class="vimid">
+		<h4>Gamas Node Metro & Access</h4>
+		<table class="ano82" cellpadding="2" id="ano82-data">
+			<thead>
 			<tr style="height: 50px;">
 				<td>Priority</td>
 				<td>Incident</td>
@@ -27,8 +28,8 @@
 				<td>Symptom</td>
 				<td>Solution</td>
 			</tr>
-		</thead>
-		<tbody>
+			</thead>
+			<tbody>
 			<tr v-for="item in anoList">
 				<td>{{item.ioc1}}</td>
 				<td>{{item.ioc2}}</td>
@@ -38,8 +39,9 @@
 				<td>{{item.ioc6}}</td>
 				<td>-</td>
 			</tr>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/ano/ano82.js"></script>

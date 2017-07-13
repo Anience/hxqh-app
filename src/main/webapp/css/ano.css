@@ -62,3 +62,8 @@ table.ano82 tbody tr{
     background-color: #F5F5F5;
     border-radius: 10px;
 }
+.vimid{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}

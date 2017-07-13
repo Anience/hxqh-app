@@ -20,7 +20,7 @@
     text-align: center;
 }
 .ticket-layout table thead tr{
-    background: #005E8A;
+    background: #015e8a;
     color: #fff;
     font-size: 20pt;
 }
@@ -33,7 +33,7 @@
     line-height: 70px;
 }
 .ticket-layout table tr td{
-    border: 2px solid #0C0E26;
+    border: 2px solid #242e49;
     color: #fff;
 }
 .ticket-layout table.ticket thead tr:nth-child(3) td{
@@ -49,7 +49,7 @@
     background: #112B3A;
 }
 .ticket-layout table tbody tr:nth-child(odd){
-    background: #03081C;
+    background: #0c0e25;
 }
 .dis-td{
     line-height: 30px;
@@ -96,7 +96,7 @@ table.distribution thead tr td{
 }
 table.distribution tbody tr td{
     font-size: 18px;
-    height:60px;
+    height:70px;
 }
 table.distribution thead tr:nth-child(1){
     height:50px;

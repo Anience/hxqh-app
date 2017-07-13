@@ -34,7 +34,7 @@ $(function(){
         option = {
             backgroundColor: '#03071D',//背景色
             title: {
-                text: "Daily Ticket Distribution",
+                text: "Daily Ticket Distribution(2017-07-09 To 2017-07-15)",
                 x:10,
                 y:10,
                 backgroundColor:"#161C2F",

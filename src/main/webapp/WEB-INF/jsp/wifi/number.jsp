@@ -19,7 +19,7 @@
 	<table class="num">
 		<thead>
 			<tr>
-				<td rowspan="2">TREG</td>
+				<td rowspan="2" style="width: 6%;">TREG</td>
 				<td colspan="4">Kategori</td>
 				<td colspan="4">Vendor</td>
 				<td colspan="4">Status</td>
