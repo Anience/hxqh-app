@@ -12,13 +12,15 @@ import java.util.Map;
 public class StaticUtils {
 
 
+
+
     // 默认时间格式
     public static final String DATETIME_DEFAULT_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     // 时间格式化
     private static DateFormat dateTimeFormat = null;
 
-    static Map<String, String> map = new HashMap();
+    static Map<String, String> map = new HashMap<>();
 
     static {
         dateTimeFormat = new SimpleDateFormat(DATETIME_DEFAULT_FORMAT);
