@@ -1,15 +1,28 @@
 package com.hxqh.eam.test;
 
 import com.hxqh.eam.common.FileUtil;
+import com.hxqh.eam.common.util.StaticUtils;
 import org.junit.Test;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 /**
  * Created by Ocean Lin on 2017/6/8.
  */
 public class TableFormat {
+
+
+    @Test
+    public void testDate() {
+//        String monthFormat = StaticUtils.getYearMonthFormat(new Date());
+//        String monthddFormat = StaticUtils.getYearMonthDayFormat(new Date());
+        String yearMonthFormat = StaticUtils.getYearMonthFormat(new Date());
+        System.out.println(yearMonthFormat);
+
+    }
+
 
     @Test
     public void test() {
@@ -20,7 +33,7 @@ public class TableFormat {
         for (int i = 1; i < split.length; i++) {
             String[] rows = split[i].split("导出了");
             String[] split1 = rows[0].split("表");
-            System.out.println(split1[1].trim());
+//            System.out.println(split1[1].trim());
             //System.out.println(rows[1]);
         }
     }

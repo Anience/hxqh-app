@@ -1,9 +1,11 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
+import com.hxqh.eam.common.util.StaticUtils;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.dto.DailyDto;
 import com.hxqh.eam.model.dto.TrafficTdo;
+import com.hxqh.eam.model.dto.WifiMonitoringDto;
 import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +98,6 @@ public class WiFiServiceImpl implements WiFiService {
             }
         });
 
-
         Map<String, List<BigDecimal>> mttrM = new LinkedHashMap<>();
         for (Map.Entry<String, List<VWifiMttr>> m : mttrMap.entrySet()) {
             List<BigDecimal> mttrs = new LinkedList<>();
@@ -107,12 +108,18 @@ public class WiFiServiceImpl implements WiFiService {
         }
 
         WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
+        //示例：2017-07
+        mttrDto.setNowtime(StaticUtils.getYearMonthFormat(new Date()));
         return mttrDto;
     }
 
     @Override
-    public List<VWifiMonitoring> vWifiMonitoringData() {
-        return vWifiMonitoringDao.findAll();
+    public WifiMonitoringDto  vWifiMonitoringData() {
+        List<VWifiMonitoring> monitoringList = vWifiMonitoringDao.findAll();
+        //示例：Monitoring MTTR Proactive 2017-07-13
+        String title = "Monitoring MTTR Proactive "+StaticUtils.getYearMonthDayFormat(new Date());
+        WifiMonitoringDto monitoringDto = new WifiMonitoringDto(monitoringList,title);
+        return monitoringDto;
     }
 
     @Override
@@ -138,6 +145,11 @@ public class WiFiServiceImpl implements WiFiService {
         }
 
         DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET);
+        //示例：Daily Ticket Distribution(2017-07-09 To 2017-07-15)
+        StringBuilder builder = new StringBuilder(50);
+        builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));
+        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getEndDayOfWeek())).append(")");
+        dailyDto.setNowtime(builder.toString());
         return dailyDto;
     }
 
