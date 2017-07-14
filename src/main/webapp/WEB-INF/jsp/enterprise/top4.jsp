@@ -16,7 +16,7 @@
 	</script>
 </head>
 <body style="min-height: 600px;background: #03081C;height: 100%;">
-<div class="ent-layout" style="height: 45%;padding-bottom: 100px;">
+<div class="ent-layout" style="height: 45%;padding-bottom: 100px;" id="top45">
 	<div class="top2-layout-left">
 		<div class="ent-header">
 			<h4>JAK INTER TRADE</h4>
@@ -36,10 +36,10 @@
 			<div class="item2" id="echart16"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
 			<div class="top1-event">
 				<table>
@@ -47,17 +47,7 @@
 						<tr>
 							<td>Event</td>
 						</tr>
-					<tbody>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>
@@ -81,10 +71,10 @@
 			<div class="item2" id="echart26"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
 			<div class="top1-event">
 				<table>
@@ -92,23 +82,13 @@
 						<tr>
 							<td>Event</td>
 						</tr>
-					<tbody>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="ent-layout" style="height: 45%;padding-bottom: 100px;">
+<div class="ent-layout" style="height: 45%;padding-bottom: 100px;" id="top67">
 	<div class="top2-layout-left">
 		<div class="ent-header">
 			<h4>JAK INTER TRADE</h4>
@@ -128,10 +108,10 @@
 			<div class="item2" id="echart36"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
 			<div class="top1-event">
 				<table>
@@ -139,17 +119,7 @@
 						<tr>
 							<td>Event</td>
 						</tr>
-					<tbody>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>
@@ -173,10 +143,10 @@
 			<div class="item2" id="echart46"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
 			<div class="top1-event">
 				<table>
@@ -184,17 +154,7 @@
 						<tr>
 							<td>Event</td>
 						</tr>
-					<tbody>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-						<tr>
-							<td>Event</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>

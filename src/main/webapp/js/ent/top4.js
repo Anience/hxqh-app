@@ -12,6 +12,14 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                //页面用户名展示
+                $("#top45 .top2-layout-left .ent-header h4").text(data.enterpriseMap["4"].name);
+                //sla数据展示
+                ShowSla(data.enterpriseMap["4"].threeColor,"#top45 .top2-layout-left");
+                //event
+                showEvent(data.enterpriseMap["4"].eventList,"#top45 .top2-layout-left");
+                //图标展示
+                showLogo(data.enterpriseMap["4"].iconList,"#top45 .top2-layout-left");
                 var leftTop1;
                 var leftBottom1;
                 //处理后台传回的数据为空的状态
@@ -32,10 +40,18 @@ $(function(){
                     leftBottom1 = data.enterpriseMap["4"].proactiveList[0];
                 }
                 var middleTop1 = data.enterpriseMap["4"].rightnowTicketM;
-                var middleTopName1 = data.enterpriseMap["4"].rightnowNameList;
+                var middleTopName1 = data.enterpriseMap["4"].nameList;
                 var middleBottom1 = data.enterpriseMap["4"].proactiveTicketM;
-                var middleBottomName1 = data.enterpriseMap["4"].proactiveNameList;
+                var middleBottomName1 = data.enterpriseMap["4"].nameList;
 
+                //页面用户名展示
+                $("#top45 .top2-layout-right .ent-header h4").text(data.enterpriseMap["5"].name);
+                //sla数据展示
+                ShowSla(data.enterpriseMap["5"].threeColor,"#top45 .top2-layout-right");
+                //event
+                showEvent(data.enterpriseMap["5"].eventList,"#top45 .top2-layout-right");
+                //图标展示
+                showLogo(data.enterpriseMap["5"].iconList,"#top45 .top2-layout-right");
                 var leftTop2;
                 var leftBottom2;
                 //处理后台传回的数据为空的状态
@@ -56,11 +72,19 @@ $(function(){
                     leftBottom2 = data.enterpriseMap["5"].proactiveList[0];
                 }
                 var middleTop2 = data.enterpriseMap["5"].rightnowTicketM;
-                var middleTopName2 = data.enterpriseMap["5"].rightnowNameList;
+                var middleTopName2 = data.enterpriseMap["5"].nameList;
                 var middleBottom2 = data.enterpriseMap["5"].proactiveTicketM;
-                var middleBottomName2 = data.enterpriseMap["5"].proactiveNameList;
+                var middleBottomName2 = data.enterpriseMap["5"].nameList;
 
 
+                //页面用户名展示
+                $("#top67 .top2-layout-left .ent-header h4").text(data.enterpriseMap["6"].name);
+                //sla数据展示
+                ShowSla(data.enterpriseMap["6"].threeColor,"#top67 .top2-layout-left");
+                //event
+                showEvent(data.enterpriseMap["6"].eventList,"#top67 .top2-layout-left");
+                //图标展示
+                showLogo(data.enterpriseMap["6"].iconList,"#top67 .top2-layout-left");
                 var leftTop3;
                 var leftBottom3;
                 //处理后台传回的数据为空的状态
@@ -81,10 +105,18 @@ $(function(){
                     leftBottom3 = data.enterpriseMap["6"].proactiveList[0];
                 }
                 var middleTop3 = data.enterpriseMap["6"].rightnowTicketM;
-                var middleTopName3 = data.enterpriseMap["6"].rightnowNameList;
+                var middleTopName3 = data.enterpriseMap["6"].nameList;
                 var middleBottom3 = data.enterpriseMap["6"].proactiveTicketM;
-                var middleBottomName3 = data.enterpriseMap["6"].proactiveNameList;
+                var middleBottomName3 = data.enterpriseMap["6"].nameList;
 
+                //页面用户名展示
+                $("#top67 .top2-layout-right .ent-header h4").text(data.enterpriseMap["7"].name);
+                //sla数据展示
+                ShowSla(data.enterpriseMap["7"].threeColor,"#top67 .top2-layout-right");
+                //event
+                showEvent(data.enterpriseMap["7"].eventList,"#top67 .top2-layout-right");
+                //图标展示
+                showLogo(data.enterpriseMap["7"].iconList,"#top67 .top2-layout-right");
                 var leftTop4;
                 var leftBottom4;
                 //处理后台传回的数据为空的状态
@@ -105,9 +137,9 @@ $(function(){
                     leftBottom4 = data.enterpriseMap["7"].proactiveList[0];
                 }
                 var middleTop4 = data.enterpriseMap["7"].rightnowTicketM;
-                var middleTopName4 = data.enterpriseMap["7"].rightnowNameList;
+                var middleTopName4 = data.enterpriseMap["7"].nameList;
                 var middleBottom4 = data.enterpriseMap["7"].proactiveTicketM;
-                var middleBottomName4 = data.enterpriseMap["7"].proactiveNameList;
+                var middleBottomName4 = data.enterpriseMap["7"].nameList;
                 //initEchart1折线图，initEchart2圆形图
                 //一个用户
                 initEchart2("echart11",leftTop1.closenums,leftTop1.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
@@ -186,15 +218,25 @@ $(function(){
         var xAxisData =  xData;
         var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
         var seriesData = [];
-        legendData.forEach(function(el){
-            var tmpObj = {};
-            tmpObj.type = 'line';
-            tmpObj.smooth = true;
-            tmpObj.name = el;
-            tmpObj.data = echartData[el];
-            tmpObj.symbol = 'none';
-            seriesData.push(tmpObj)
-        });
+        if(echartData.length==0){
+            serisData = [{
+                name:'nodata',
+                type:'line',
+                smooth:true,
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                data:[0]
+            }];
+        }else{
+            legendData.forEach(function(el){
+                var tmpObj = {};
+                tmpObj.type = 'line';
+                tmpObj.smooth = true;
+                tmpObj.name = el;
+                tmpObj.data = echartData[el];
+                tmpObj.symbol = 'none';
+                seriesData.push(tmpObj)
+            });
+        }
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
