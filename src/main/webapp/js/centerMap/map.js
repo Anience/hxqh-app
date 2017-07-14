@@ -102,19 +102,19 @@ $(function(){
                 var ToStr = "<tr><td>Total</td>";
                 for(var name in bottomObj){
                     switch(name){
-                        case "1":
+                        case "METRO":
                             var tableData1 = bottomObj[name];
                             for(var i=0;i<tableData1.length;i++){
                                 metroStr+="<td>"+tableData1[i]+"</td>"
                             }
                             break;
-                        case "2":
+                        case "PE":
                             var tableData2 = bottomObj[name];
                             for(var i=0;i<tableData2.length;i++){
                                 peStr+="<td>"+tableData2[i]+"</td>"
                             }
                             break;
-                        case "3":
+                        case "TERA":
                             var tableData3 = bottomObj[name];
                             for(var i=0;i<tableData3.length;i++){
                                 teraStr+="<td>"+tableData3[i]+"</td>"

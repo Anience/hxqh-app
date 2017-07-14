@@ -40,11 +40,18 @@ $(function(){
                     leftBottom1 = data.enterpriseMap["2"].proactiveList[0];
                 }
                 var middleTop1 = data.enterpriseMap["2"].rightnowTicketM;
-                var middleTopName1 = data.enterpriseMap["2"].rightnowNameList;
+                var middleTopName1 = data.enterpriseMap["2"].nameList;
                 var middleBottom1 = data.enterpriseMap["2"].proactiveTicketM;
-                var middleBottomName1 = data.enterpriseMap["2"].proactiveNameList;
+                var middleBottomName1 = data.enterpriseMap["2"].nameList;
 
-
+                //页面用户名展示
+                $(".top2-layout-right .ent-header h4").text(data.enterpriseMap["3"].name);
+                //sla数据展示
+                ShowSla(data.enterpriseMap["3"].threeColor,".top2-layout-right");
+                //event
+                showEvent(data.enterpriseMap["3"].eventList,".top2-layout-right");
+                //图标展示
+                showLogo(data.enterpriseMap["3"].iconList,".top2-layout-right");
                 var leftTop2;
                 var leftBottom2;
                 //处理后台传回的数据为空的状态
@@ -65,9 +72,9 @@ $(function(){
                     leftBottom2 = data.enterpriseMap["3"].proactiveList[0];
                 }
                 var middleTop2 = data.enterpriseMap["3"].rightnowTicketM;
-                var middleTopName2 = data.enterpriseMap["3"].rightnowNameList;
+                var middleTopName2 = data.enterpriseMap["3"].nameList;
                 var middleBottom2 = data.enterpriseMap["3"].proactiveTicketM;
-                var middleBottomName2 = data.enterpriseMap["3"].proactiveNameList;
+                var middleBottomName2 = data.enterpriseMap["3"].nameList;
                 //initEchart1折线图，initEchart2圆形图
                 initEchart2("echart11",leftTop1.closenums,leftTop1.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
                 initEchart1("echart12",middleTop1,middleTopName1,"REACTIVE TICKETS(30 DAYS)");

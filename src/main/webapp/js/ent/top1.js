@@ -69,9 +69,9 @@ $(function(){
                     leftBottom = data.enterpriseMap["1"].proactiveList[0];
                 }
                 var middleTop = data.enterpriseMap["1"].rightnowTicketM;
-                var middleTopName = data.enterpriseMap["1"].rightnowNameList;
+                var middleTopName = data.enterpriseMap["1"].nameList;
                 var middleBottom = data.enterpriseMap["1"].proactiveTicketM;
-                var middleBottomName = data.enterpriseMap["1"].proactiveNameList;
+                var middleBottomName = data.enterpriseMap["1"].nameList;
                 //initEchart1折线图，initEchart2圆形图
                 initEchart2("echart1",leftTop.closenums,leftTop.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
                 initEchart1("echart2",middleTop,middleTopName,"REACTIVE TICKETS(30 DAYS)");

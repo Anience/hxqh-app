@@ -21,10 +21,10 @@
 		<div class="ent-header">
 			<h4>JAK INTER TRADE</h4>
 			<div class="span-layout">
-				<span class="lable-span sla">SLA</span>
-				<span class="lable-span red">105</span>
-				<span class="lable-span yellow">5</span>
-				<span class="lable-span green">31</span>
+				<span class="lable-span sla"></span>
+				<span class="lable-span red"></span>
+				<span class="lable-span yellow"></span>
+				<span class="lable-span green"></span>
 			</div>
 		</div>
 		<div>
@@ -36,10 +36,10 @@
 			<div class="item2" id="echart16"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="ASTINET">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="IPTRANSIT">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="TRANSIT">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="VPNIP">
 			</div>
 			<div class="top1-event" style="display: none;">
 				<table>
@@ -57,10 +57,10 @@
 		<div class="ent-header">
 			<h4>JAK INTER TRADE</h4>
 			<div class="span-layout">
-				<span class="lable-span sla">SLA</span>
-				<span class="lable-span red">105</span>
-				<span class="lable-span yellow">5</span>
-				<span class="lable-span green">31</span>
+				<span class="lable-span sla"></span>
+				<span class="lable-span red"></span>
+				<span class="lable-span yellow"></span>
+				<span class="lable-span green"></span>
 			</div>
 		</div>
 		<div>
@@ -72,10 +72,10 @@
 			<div class="item2" id="echart26"></div>
 			<div class="top1-log">
 				<p>Subscribed Service</p>
-				<img src="${ctx}/imgs/blue/ASTINET.png" alt="">
-				<img src="${ctx}/imgs/blue/IPTRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
-				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
+				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="ASTINET">
+				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="IPTRANSIT">
+				<img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="TRANSIT">
+				<img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="VPNIP">
 			</div>
 			<div class="top1-event" style="display: none;">
 				<table>

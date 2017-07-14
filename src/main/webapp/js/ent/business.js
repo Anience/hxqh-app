@@ -11,10 +11,25 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                var pageTit = '';
+                switch(_type){
+                    case 'DES':
+                        pageTit = "Enterprise";
+                        break;
+                    case 'DGS':
+                        pageTit = "Government";
+                        break;
+                    default:
+                        pageTit = "Business";
+                        break;
+
+                }
+                $(".pageTit").text(pageTit);
                 var pieTop = data.pieProactiveList;
                 var pieBottom = data.pieRightnowList;
                 var lineTop = data.rightnowTicketM;
                 var lineBottom = data.proactiveTicketM;
+                var nameList = data.nameList;
                 var secPage = data.dto6List;
                 var thirdPage =  data.dto7List;
 
@@ -37,9 +52,9 @@ $(function(){
 
                 var i = 1;
                 initEchartPie("echart1",pieTop.closenums,pieTop.opennums,"Reactive");
-                initEchartLine("echart2",lineTop,"Reactive TKT(30 DAYS)");
+                initEchartLine("echart2",lineTop,nameList,"Reactive TKT(30 DAYS)");
                 initEchartPie("echart3",pieBottom.closenums,pieBottom.opennums,"Proactive");
-                initEchartLine("echart4",lineBottom,"Proactive TKT(30 DAYS)");
+                initEchartLine("echart4",lineBottom,nameList,"Proactive TKT(30 DAYS)");
                 setInterval(function(){
                     i++;
                     if(i>=3){
@@ -55,13 +70,13 @@ $(function(){
                             $(".first-page").hide();
                             $(".sec-page").show();
                             $(".third-page").hide();
-                            initEchartScale("echart5",secPage);
+                            initEchartScale("echart5",[],nameList,"TRAFFIC BY REGION (2 DAYS PER 6 HOURS)");
                             break;
                         default:
                             $(".first-page").hide();
                             $(".sec-page").hide();
                             $(".third-page").show();
-                            initEchartScale("echart6",thirdPage);
+                            initEchartScale("echart6",[],nameList,"TRAFFIC BY PRODUCT (2 DAYS PER 6 HOURS)");
                             break;
                     }
 
@@ -73,12 +88,10 @@ $(function(){
             }
         })
     }
-    function initEchartLine(domId,echartData,tit) {
+    function initEchartLine(domId,echartData,xAxis,tit) {
         var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
         var seriesData = [];
-        var xAxisData =  ['1','2','3','4','5','6','7','8','9','10',
-            '11','12','13','14','15','16','17','18','19','20',
-            '21','22','23','24','25','26','27','28','29','30'];
+        var xAxisData =  xAxis;
         legendData.forEach(function(el){
             var tmpObj = {};
             tmpObj.type = 'line';
@@ -92,12 +105,12 @@ $(function(){
         option = {
             title: {
                 text: tit,
-                x:'center',
-                y: 'bottom',
+                x:'left',
+                y: 'top',
                 textStyle: {
-                    fontSize: '12',
+                    fontSize: '16',
                     fontWeight: 'bold',
-                    color: '#BDBEC3'
+                    color: '#fff'
                 }
             },
             tooltip : {
@@ -235,16 +248,20 @@ $(function(){
                     itemStyle : {
                         normal : {
                             //不显示中间的字，而显示成饼图的那种label
-                            label : {
-                                show: false,
-                                position : 'inner',
-                                // formatter: '{b} : {c} ({d}%)'
-                                formatter: "{d}%"
-                                //formatter: '{b} : {c} ({d}%)'
+                            itemStyle:{
+                                normal:{
+                                    label:{
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '18',
+                                            fontWeight: 'normal'
+                                        }
+                                    }
+                                },
+                                labelLine :{
+                                    show: true
+                                }
                             },
-                            labelLine : {
-                                show : false
-                            }
                         },
                         emphasis : {
                             label : {
@@ -269,9 +286,10 @@ $(function(){
             myChart.resize();
         });
     }
-    function initEchartScale(idDom,data){
-        var myChart = echarts.init(document.getElementById(idDom));
+    function initEchartScale(idDom,data,xAxis,tit){
+        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
         var serisData = [];
+        var xAxisData =  xAxis;
         if(data.length==0){
             serisData = [{
                 name:'nodata',
@@ -281,31 +299,97 @@ $(function(){
                 data:[0]
             }];
         }
+        var myChart = echarts.init(document.getElementById(idDom));
         option = {
-            title : {
-                text: '某楼盘销售情况',
-                subtext: '纯属虚构'
+            title: {
+                text: tit,
+                x:'center',
+                y: 'top',
+                textStyle: {
+                    fontSize: '16',
+                    fontWeight: 'bold',
+                    color: '#fff'
+                }
             },
             tooltip : {
                 trigger: 'axis'
             },
             legend: {
-                data:['意向','预购','成交']
+                orient:'vertical',
+                x:'right',
+                y:'top',
+                textStyle:{
+                    fontSize: 12,
+                    color:'#fff'
+                },
+                data:legendData
             },
-            calculable : true,
-            xAxis : [
+            calculable: false,
+            grid:{
+                borderWidth:0,//外围边框线
+                borderColor:'#666c7f'
+            },
+            xAxis: [
                 {
-                    type : 'category',
+                    type: 'category',
+                    name:'Day',
                     boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
+                    axisLine : {    // 轴线
+                        show: true
+                    },
+                    axisLabel : {//轴文本
+                        show:false,
+                        interval:0,    // {number}刻度的长短，可设为数字
+                        rotate: 45,    //旋转度数
+                        margin:5,
+                        splitNumber: 18,
+                        textStyle:{
+                            color: '#666C7F',
+                            fontSize:15
+                        }
+                    },
+
+                    lineStyle: {
+                        color: 'green',
+                        type: 'solid',
+                        width: 2
+                    },
+                    splitLine : { //网格分隔线
+                        show:false,
+                        lineStyle: {
+                            color: '#483d8b',
+                            type: 'dashed',
+                            width: 1
+                        }
+                    },
+                    splitArea : {show : false},//网格区域
+                    data:xAxisData
                 }
             ],
-            yAxis : [
+            yAxis: [
                 {
-                    type : 'value'
+                    type: 'value',
+                    axisLabel : {
+                        show:true,
+                        interval:0,    // {number}刻度的长短，可设为数字 间隔
+                        margin:5,
+                        splitNumber: 18,
+                        textStyle:{
+                            color: '#fff',
+                            fontSize:15
+                        }
+                    },
+                    splitLine : { //分隔线
+                        show:true,
+                        lineStyle: {
+                            color: '#666C7F',
+                            type: 'dashed',
+                            width: 1
+                        }
+                    }
                 }
             ],
-            series : serisData
+            series:  serisData
         };
         myChart.setOption(option);
     }

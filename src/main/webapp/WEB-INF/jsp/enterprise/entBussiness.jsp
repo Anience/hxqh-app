@@ -18,7 +18,7 @@
 <body>
 <div class="ent-layout" style="padding-bottom:50px;">
 	<div class="ent-header">
-		<h4>Business</h4>
+		<h4 class="pageTit"></h4>
 		<div class="span-layout">
 			<span class="lable-span sla">SLA</span>
 			<span class="lable-span red">105</span>
