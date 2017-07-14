@@ -35,11 +35,11 @@ $(function(){
                     var x = point["x"];
                     var y = point["y"];
                     var icon = new OpenLayers.Icon(_ctx+'/imgs/WIFIAP.png', size, offset);
-                    if(type==="1"){
+                    if(type==="METRO"){
                         icon = new OpenLayers.Icon(_ctx+'/imgs/b-64.png', size, offset);
-                    }else if(type==="2"){
+                    }else if(type==="PE"){
                         icon = new OpenLayers.Icon(_ctx+'/imgs/g-64.png', size, offset);
-                    }else if(type==="3"){
+                    }else if(type==="TERA"){
                         icon = new OpenLayers.Icon(_ctx+'/imgs/y-64.png', size, offset);
                     }
                     eval("var position"
