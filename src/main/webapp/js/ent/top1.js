@@ -14,6 +14,27 @@ $(function(){
             success: function(data){
                 //页面用户名展示
                 $(".ent-header h4").text(data.enterpriseMap["1"].name);
+                //sla数据展示
+                var colorData = data.enterpriseMap["1"].threeColor;
+                var cust = colorData.cust ==null?'':colorData.cust;
+                var eq = colorData.eq ==null?'0':colorData.eq;
+                var gt = colorData.gt ==null?'0':colorData.gt;
+                var lt = colorData.lt ==null?'0':colorData.lt;
+                $(".span-layout .sla").text(cust);
+                $(".span-layout .red").text(eq);
+                $(".span-layout .yellow").text(gt);
+                $(".span-layout .green").text(lt);
+                //event
+                var events = data.enterpriseMap["1"].eventList;
+                var trHtml ="";
+                for(var i =0,len=events.length;i<len;i++){
+                    var event = events[i].affevent;
+                    var time = event.split(" ")[0];
+                    var other = event.split("/")[3];
+                    trHtml+="<tr><td>"+time+"/"+other+"</td></tr>";
+                    $(".top1-event table").show();
+                }
+                $(".top1-event table tbody").html(trHtml);
                 //图标展示
                 var logoList = data.enterpriseMap["1"].iconList;
                 for(var i=0,len=logoList.length;i<len;i++){
@@ -37,7 +58,7 @@ $(function(){
                         opennums: undefined
                     };
                 }else{
-                    var leftTop = data.enterpriseMap["1"].rightnowList[0];
+                     leftTop = data.enterpriseMap["1"].rightnowList[0];
                 };
                 if(data.enterpriseMap["1"].proactiveList.length==0){
                     leftBottom = {

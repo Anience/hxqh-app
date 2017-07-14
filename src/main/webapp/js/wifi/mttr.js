@@ -6,7 +6,8 @@ $(function () {
         el: "#mttr-data",
         data: {
             mttrLeft: [],
-            mttrRight: []
+            mttrRight: [],
+            nowTime: ''
         },
         methods: {
 
@@ -18,6 +19,7 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
+                    self.nowTime = data.nowtime;
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
                     initEchart("echart1",data.mttrM,data.axisiData);

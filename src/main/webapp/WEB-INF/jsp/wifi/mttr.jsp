@@ -25,7 +25,7 @@
 						<td rowspan="2">TREG</td>
 						<td rowspan="2">Kategori</td>
 						<td rowspan="2">Target(Jam)</td>
-						<td colspan="3">2017-06</td>
+						<td colspan="3">{{nowTime}}</td>
 					</tr>
 					<tr>
 						<td>Jumlah Gangguan CLOSE</td>
@@ -68,7 +68,7 @@
 						<td rowspan="2">TREG</td>
 						<td rowspan="2">Kategori</td>
 						<td rowspan="2">Target(Jam)</td>
-						<td colspan="3">2017-06</td>
+						<td colspan="3">{{nowTime}}</td>
 					</tr>
 					<tr>
 						<td>Jumlah Gangguan CLOSE</td>
