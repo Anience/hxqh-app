@@ -41,7 +41,7 @@
 				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
 				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
-			<div class="top1-event">
+			<div class="top1-event" style="display: none;">
 				<table>
 					<thead>
 						<tr>
@@ -77,7 +77,7 @@
 				<img src="${ctx}/imgs/blue/TRANSIT.png" alt="">
 				<img src="${ctx}/imgs/blue/VPNIP.png" alt="">
 			</div>
-			<div class="top1-event">
+			<div class="top1-event" style="display: none;">
 				<table>
 					<thead>
 						<tr>
