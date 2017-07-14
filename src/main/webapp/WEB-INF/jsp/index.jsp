@@ -174,6 +174,7 @@
 		$(".right-content").height(contentH);
 		$(".content").height(contentH);
         $("#page_content").height(iframeH);
+        $(".left-menu").height(contentH);
 	});
 </script>
 </html>

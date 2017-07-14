@@ -14,10 +14,10 @@ public class EnterpriseTopDto {
     private List<VEnterpriseTicket> rightnowList;
     private List<VEnterpriseTicket> proactiveList;
 
-    private List<String> rightnowNameList;
-    private List<String> proactiveNameList;
+    private List<EnterpriseNameDto> nameList;
 
     private Map<String, List<Integer>> rightnowTicketM;
+
     private Map<String, List<Integer>> proactiveTicketM;
 
     private EnterpriseThreeColor threeColor;
@@ -36,11 +36,10 @@ public class EnterpriseTopDto {
     public EnterpriseTopDto() {
     }
 
-    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> rightnowNameList, List<String> proactiveNameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, List<Enterprise67Dto> dto6List, List<Enterprise67Dto> dto7List) {
+    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<EnterpriseNameDto> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, List<Enterprise67Dto> dto6List, List<Enterprise67Dto> dto7List) {
         this.rightnowList = rightnowList;
         this.proactiveList = proactiveList;
-        this.rightnowNameList = rightnowNameList;
-        this.proactiveNameList = proactiveNameList;
+        this.nameList = nameList;
         this.rightnowTicketM = rightnowTicketM;
         this.proactiveTicketM = proactiveTicketM;
         this.threeColor = threeColor;
@@ -75,21 +74,6 @@ public class EnterpriseTopDto {
         this.proactiveList = proactiveList;
     }
 
-    public List<String> getRightnowNameList() {
-        return rightnowNameList;
-    }
-
-    public void setRightnowNameList(List<String> rightnowNameList) {
-        this.rightnowNameList = rightnowNameList;
-    }
-
-    public List<String> getProactiveNameList() {
-        return proactiveNameList;
-    }
-
-    public void setProactiveNameList(List<String> proactiveNameList) {
-        this.proactiveNameList = proactiveNameList;
-    }
 
     public Map<String, List<Integer>> getRightnowTicketM() {
         return rightnowTicketM;
@@ -145,5 +129,13 @@ public class EnterpriseTopDto {
 
     public void setDto7List(List<Enterprise67Dto> dto7List) {
         this.dto7List = dto7List;
+    }
+
+    public List<EnterpriseNameDto> getNameList() {
+        return nameList;
+    }
+
+    public void setNameList(List<EnterpriseNameDto> nameList) {
+        this.nameList = nameList;
     }
 }

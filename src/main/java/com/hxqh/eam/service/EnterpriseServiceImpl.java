@@ -132,26 +132,10 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         List<EnterpriseKTK> proactiveTicketTktList1 = sessionFactory.getCurrentSession().createSQLQuery(sqlproactiveSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
 
-        // 2.rightnow 和 proactive 的nameList
-        HashMap<String, String> rightnowNameMap = new LinkedHashMap<>();
-        for (EnterpriseKTK top : rightnowTicketTktList) {
-            String name = top.getMon();
-            rightnowNameMap.put(name, name);
-        }
-        List<String> rightnowNameList = new LinkedList<>();
-        for (String key : rightnowNameMap.keySet()) {
-            rightnowNameList.add(rightnowNameMap.get(key));
-        }
+        //nameList
+        String nameListSQL="select t.echars_lable as name  from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
+        List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
 
-        HashMap<String, String> proactiveNameMap = new LinkedHashMap<>();
-        for (EnterpriseKTK top : proactiveTicketTktList1) {
-            String name = top.getMon();
-            proactiveNameMap.put(name, name);
-        }
-        List<String> proactiveNameList = new LinkedList<>();
-        for (String key : proactiveNameMap.keySet()) {
-            proactiveNameList.add(proactiveNameMap.get(key));
-        }
 
         // 4.对rightnowTicketTktList分组
         Map<String, List<EnterpriseKTK>> rightnowTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
@@ -191,11 +175,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
         String nameSql = "select t.custname as cname from tb_ioc_cust_top7 t where  t.custtype =:CUSTOMERSEGMENT and t.custrank =:custrank";
-        List<NameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameSql).addEntity(NameDto.class).
+        List<NameDto> cusNameList = sessionFactory.getCurrentSession().createSQLQuery(nameSql).addEntity(NameDto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
         String name = new String();
-        if (nameList.size() > 0) {
-            name = nameList.get(0).getCname();
+        if (cusNameList.size() > 0) {
+            name = cusNameList.get(0).getCname();
         }
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
@@ -227,7 +211,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
 
-        return new EnterpriseTopDto(rightnowList, proactiveList, rightnowNameList, proactiveNameList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, dto6List, dto7List);
+        return new EnterpriseTopDto(rightnowList, proactiveList, nameList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, dto6List, dto7List);
     }
 
     private void extractNumberList(Map<String, List<EnterpriseKTK>> proactiveTicketMap, Map<String, List<Integer>> proactiveTicketM) {
@@ -266,6 +250,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'PROACTIVE_TICKET' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
         List<EnterpriseKtkDto> ktkProactiveList = sessionFactory.getCurrentSession().createSQLQuery(ktkProactiveSQL).addEntity(EnterpriseKtkDto.class).
                 setString("CUSTOMERSEGMENT", type).list();
+        //nameList
+        String nameListSQL="select t.echars_lable as name from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
+        List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
 
         //对pktkRightnowSQL分组
         Map<String, List<EnterpriseKtkDto>> rightnowTicketMap = GroupListUtil.group(ktkRightnowList, new GroupListUtil.GroupBy<String>() {
@@ -303,7 +290,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
 
-        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,ent6List,ent7List);
+        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,nameList,ent6List,ent7List);
         return entDto;
     }
 
