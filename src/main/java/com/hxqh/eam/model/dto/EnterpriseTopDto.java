@@ -14,7 +14,7 @@ public class EnterpriseTopDto {
     private List<VEnterpriseTicket> rightnowList;
     private List<VEnterpriseTicket> proactiveList;
 
-    private List<EnterpriseNameDto> nameList;
+    private List<String>  nameList;
 
     private Map<String, List<Integer>> rightnowTicketM;
 
@@ -36,7 +36,7 @@ public class EnterpriseTopDto {
     public EnterpriseTopDto() {
     }
 
-    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<EnterpriseNameDto> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, List<Enterprise67Dto> dto6List, List<Enterprise67Dto> dto7List) {
+    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, List<Enterprise67Dto> dto6List, List<Enterprise67Dto> dto7List) {
         this.rightnowList = rightnowList;
         this.proactiveList = proactiveList;
         this.nameList = nameList;
@@ -131,11 +131,11 @@ public class EnterpriseTopDto {
         this.dto7List = dto7List;
     }
 
-    public List<EnterpriseNameDto> getNameList() {
+    public List<String> getNameList() {
         return nameList;
     }
 
-    public void setNameList(List<EnterpriseNameDto> nameList) {
+    public void setNameList(List<String> nameList) {
         this.nameList = nameList;
     }
 }

@@ -133,9 +133,12 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
 
         //nameList
-        String nameListSQL="select t.echars_lable as name  from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
+        String nameListSQL = "select t.echars_lable as name  from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
         List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
-
+        List<String> nList = new LinkedList<>();
+        for (EnterpriseNameDto nameDto : nameList) {
+            nList.add(nameDto.getName());
+        }
 
         // 4.对rightnowTicketTktList分组
         Map<String, List<EnterpriseKTK>> rightnowTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
@@ -211,7 +214,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
 
-        return new EnterpriseTopDto(rightnowList, proactiveList, nameList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, dto6List, dto7List);
+        return new EnterpriseTopDto(rightnowList, proactiveList, nList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, dto6List, dto7List);
     }
 
     private void extractNumberList(Map<String, List<EnterpriseKTK>> proactiveTicketMap, Map<String, List<Integer>> proactiveTicketM) {
@@ -224,6 +227,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         }
     }
 
+    //Enterprise Government Business 数据接口
     @Override
     public EntDto getEntData(String type) {
         //获取左侧饼状图   RIGHTNOW     PROACTIVE_TICKET
@@ -251,8 +255,13 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         List<EnterpriseKtkDto> ktkProactiveList = sessionFactory.getCurrentSession().createSQLQuery(ktkProactiveSQL).addEntity(EnterpriseKtkDto.class).
                 setString("CUSTOMERSEGMENT", type).list();
         //nameList
-        String nameListSQL="select t.echars_lable as name from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
+        String nameListSQL = "select t.echars_lable as name from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
         List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
+        List<String> nList = new LinkedList<>();
+        for (EnterpriseNameDto nameDto : nameList) {
+            nList.add(nameDto.getName());
+        }
+
 
         //对pktkRightnowSQL分组
         Map<String, List<EnterpriseKtkDto>> rightnowTicketMap = GroupListUtil.group(ktkRightnowList, new GroupListUtil.GroupBy<String>() {
@@ -278,19 +287,19 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
         String ent6SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.time_data as timedata,sum(t.sum_persion_in) as personsum from Tb_Ioc_Ent_Bge_Region t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.time_data) w";
-        List<Enterprise67Dto> ent6List= sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
+        List<Enterprise67Dto> ent6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
         String ent7SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.data_times as timedata,sum(t.sum_in) as personsum from TB_IOC_ENT_BGE_PRODUCT t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.data_times) w";
-        List<Enterprise67Dto> ent7List= sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
+        List<Enterprise67Dto> ent7List = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
 
-        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,nameList,ent6List,ent7List);
+        EntDto entDto = new EntDto(pieRightnowList, pieProactiveList, rightnowTicketM, proactiveTicketM, nList, ent6List, ent7List);
         return entDto;
     }
 
