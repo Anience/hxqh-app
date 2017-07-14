@@ -17,6 +17,8 @@ public class WifiMttrDto {
 
     private String[] axisiData;
 
+    private String nowtime;
+
     public WifiMttrDto() {
     }
 
@@ -57,5 +59,13 @@ public class WifiMttrDto {
 
     public void setRightList(Map<String, List<VWifiMttrList>> rightList) {
         this.rightList = rightList;
+    }
+
+    public String getNowtime() {
+        return nowtime;
+    }
+
+    public void setNowtime(String nowtime) {
+        this.nowtime = nowtime;
     }
 }

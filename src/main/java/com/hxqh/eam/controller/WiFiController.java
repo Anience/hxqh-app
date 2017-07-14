@@ -5,10 +5,7 @@ package com.hxqh.eam.controller;
  */
 
 import com.hxqh.eam.common.util.StaticUtils;
-import com.hxqh.eam.model.dto.DailyDto;
-import com.hxqh.eam.model.dto.TrafficTdo;
-import com.hxqh.eam.model.dto.WifiMttrDto;
-import com.hxqh.eam.model.dto.WifiTicketDataDto;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VWifiDistribution;
 import com.hxqh.eam.model.view.VWifiMonitoring;
 import com.hxqh.eam.model.view.VWifiNumber;
@@ -34,7 +31,8 @@ public class WiFiController {
 
 
     /**
-     *  wifi Traffic 页面跳转接口
+     * wifi Traffic 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/wifi", method = RequestMethod.GET)
@@ -46,10 +44,11 @@ public class WiFiController {
     /**
      * vWifiTrafficData 数据接口
      * Access 2017-6-26 11:21:26
+     *
      * @return
      */
     @ResponseBody
-        @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
+    @RequestMapping(value = "/vWifiTrafficData", method = RequestMethod.GET)
     public TrafficTdo vWifiTrafficData() {
         TrafficTdo wifiTrafficTdo = wiFiService.getWifiTrafficData();
         return wifiTrafficTdo;
@@ -57,7 +56,8 @@ public class WiFiController {
 
 
     /**
-     *  number   页面跳转接口
+     * number   页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/number", method = RequestMethod.GET)
@@ -68,6 +68,7 @@ public class WiFiController {
     /**
      * vWifiNumberData 数据接口
      * Access 2017-6-26 11:21:40
+     *
      * @return
      */
     @ResponseBody
@@ -78,7 +79,8 @@ public class WiFiController {
     }
 
     /**
-     *  1. Wifi Ticket Monitoring 页面跳转接口
+     * 1. Wifi Ticket Monitoring 页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/ticket", method = RequestMethod.GET)
@@ -87,8 +89,9 @@ public class WiFiController {
     }
 
     /**
-     *  1. Wifi Ticket Monitoring 数据接口
-     *  Access 2017-6-26 11:23:07
+     * 1. Wifi Ticket Monitoring 数据接口
+     * Access 2017-6-26 11:23:07
+     *
      * @return
      */
     @ResponseBody
@@ -96,13 +99,14 @@ public class WiFiController {
     public WifiTicketDataDto vWifiTicketData() {
         List<VWifiTicket> vWifiTicketList = wiFiService.vWifiTicketData();
         String nowTime = StaticUtils.getDateTimeFormat(new Date());
-        WifiTicketDataDto wifiTicketDataDto = new WifiTicketDataDto(vWifiTicketList,nowTime);
+        WifiTicketDataDto wifiTicketDataDto = new WifiTicketDataDto(vWifiTicketList, nowTime);
         return wifiTicketDataDto;
     }
 
 
     /**
-     *  daily   页面跳转接口
+     * 9. Daily Ticket Distribution  页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/daily", method = RequestMethod.GET)
@@ -112,7 +116,7 @@ public class WiFiController {
 
 
     /**
-     * wifiDailyData 数据接口
+     * 9. Daily Ticket Distribution 数据接口
      *
      * @return
      */
@@ -126,7 +130,8 @@ public class WiFiController {
 
 
     /**
-     *  distribution   页面跳转接口
+     * distribution   页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/distribution", method = RequestMethod.GET)
@@ -138,6 +143,7 @@ public class WiFiController {
     /**
      * vWifiDistributionData 数据接口
      * Access 2017-6-26 11:23:29
+     *
      * @return
      */
     @ResponseBody
@@ -148,7 +154,8 @@ public class WiFiController {
     }
 
     /**
-     *  mttr   页面跳转接口
+     * 5. MTTR Targets   页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/mttr", method = RequestMethod.GET)
@@ -157,8 +164,9 @@ public class WiFiController {
     }
 
     /**
-     * vWifiMttrData 数据接口
+     * 5. MTTR Targets 数据接口
      * Access 2017-6-26 11:23:51
+     *
      * @return
      */
     @ResponseBody
@@ -169,7 +177,8 @@ public class WiFiController {
     }
 
     /**
-     *  monitoring   页面跳转接口
+     * 8. Monitoring MTTR Proactive   页面跳转接口
+     *
      * @return
      */
     @RequestMapping(value = "/monitoring", method = RequestMethod.GET)
@@ -178,15 +187,16 @@ public class WiFiController {
     }
 
     /**
-     * vWifiMonitoringData 数据接口
+     * 8. Monitoring MTTR Proactive 数据接口
      * Access 2017-6-26 11:24:01
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vWifiMonitoringData", method = RequestMethod.GET)
-    public List<VWifiMonitoring> vWifiMonitoringData() {
-        List<VWifiMonitoring> dig13List = wiFiService.vWifiMonitoringData();
-        return dig13List;
+    public WifiMonitoringDto vWifiMonitoringData() {
+        WifiMonitoringDto monitoringDto = wiFiService.vWifiMonitoringData();
+        return monitoringDto;
     }
 
 }

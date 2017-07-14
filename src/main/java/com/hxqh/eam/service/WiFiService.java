@@ -2,6 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.dto.DailyDto;
 import com.hxqh.eam.model.dto.TrafficTdo;
+import com.hxqh.eam.model.dto.WifiMonitoringDto;
 import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.VWifiDistribution;
 import com.hxqh.eam.model.view.VWifiMonitoring;
@@ -24,7 +25,7 @@ public interface WiFiService {
 
     WifiMttrDto vWifiMttrData();
 
-    List<VWifiMonitoring> vWifiMonitoringData();
+    WifiMonitoringDto vWifiMonitoringData();
 
     DailyDto wifiDailyData();
 
