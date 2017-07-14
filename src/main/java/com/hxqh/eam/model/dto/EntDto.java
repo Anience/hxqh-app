@@ -14,13 +14,13 @@ public class EntDto {
     private Map<String, List<Integer>> rightnowTicketM;
     private Map<String, List<Integer>> proactiveTicketM;
 
-    private List<EnterpriseNameDto> nameList;
+    private List<String> nameList;
 
 
     private List<Enterprise67Dto> ent6List;
     private List<Enterprise67Dto> ent7List;
 
-    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<EnterpriseNameDto> nameList, List<Enterprise67Dto> ent6List, List<Enterprise67Dto> ent7List) {
+    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, List<Enterprise67Dto> ent6List, List<Enterprise67Dto> ent7List) {
         this.pieRightnowList = pieRightnowList;
         this.pieProactiveList = pieProactiveList;
         this.rightnowTicketM = rightnowTicketM;
@@ -78,11 +78,11 @@ public class EntDto {
         this.ent7List = ent7List;
     }
 
-    public List<EnterpriseNameDto> getNameList() {
+    public List<String> getNameList() {
         return nameList;
     }
 
-    public void setNameList(List<EnterpriseNameDto> nameList) {
+    public void setNameList(List<String> nameList) {
         this.nameList = nameList;
     }
 }
