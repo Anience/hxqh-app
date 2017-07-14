@@ -44,20 +44,11 @@
 			<div class="top1-event">
 				<table>
 					<thead>
-					<tr>
-						<td width="70%">Event</td>
-					</tr>
-					<tbody>
-					<tr>
-						<td>Event</td>
-					</tr>
-					<tr>
-						<td>Event</td>
-					</tr>
-					<tr>
-						<td>Event</td>
-					</tr>
-					</tbody>
+						<tr>
+							<td>Event</td>
+						</tr>
+					</thead>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>
@@ -89,20 +80,11 @@
 			<div class="top1-event">
 				<table>
 					<thead>
-					<tr>
-						<td width="70%">Event</td>
-					</tr>
-					<tbody>
-					<tr>
-						<td>Event</td>
-					</tr>
-					<tr>
-						<td>Event</td>
-					</tr>
-					<tr>
-						<td>Event</td>
-					</tr>
-					</tbody>
+						<tr>
+							<td>Event</td>
+						</tr>
+					</thead>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>

@@ -4,15 +4,42 @@
 $(function(){
     function initData(){
         $.ajax({
-            url: _ctx+"/mobile/vMob92Data",
+            url: _ctx+"/enterprise/entData",
             method: "get",
+            data:{
+                type: _type
+            },
             dataType: "json",
             success: function(data){
+                var pieTop = data.pieProactiveList;
+                var pieBottom = data.pieRightnowList;
+                var lineTop = data.rightnowTicketM;
+                var lineBottom = data.proactiveTicketM;
+                var secPage = data.dto6List;
+                var thirdPage =  data.dto7List;
+
+                if(pieTop.length==0){
+                    pieTop={
+                        closenums: undefined,
+                        opennums: undefined
+                    }
+                }else{
+                    pieTop = data.pieProactiveList[0];
+                }
+                if(pieBottom.length==0){
+                    pieBottom={
+                        closenums: undefined,
+                        opennums: undefined
+                    }
+                }else{
+                    pieBottom = data.pieRightnowList[0];
+                }
+
                 var i = 1;
-                initEchart2("echart1");
-                initEchart1("echart2");
-                initEchart2("echart3");
-                initEchart1("echart4");
+                initEchartPie("echart1",pieTop.closenums,pieTop.opennums,"Reactive");
+                initEchartLine("echart2",lineTop,"Reactive TKT(30 DAYS)");
+                initEchartPie("echart3",pieBottom.closenums,pieBottom.opennums,"Proactive");
+                initEchartLine("echart4",lineBottom,"Proactive TKT(30 DAYS)");
                 setInterval(function(){
                     i++;
                     if(i>=3){
@@ -28,13 +55,13 @@ $(function(){
                             $(".first-page").hide();
                             $(".sec-page").show();
                             $(".third-page").hide();
-                            initEchart3("echart5");
+                            initEchartScale("echart5",secPage);
                             break;
                         default:
                             $(".first-page").hide();
                             $(".sec-page").hide();
                             $(".third-page").show();
-                            initEchart3("echart6");
+                            initEchartScale("echart6",thirdPage);
                             break;
                     }
 
@@ -46,18 +73,31 @@ $(function(){
             }
         })
     }
-    function initEchart1(domId) {
-        var xAxisData =  ['周一','周二','周三','周四','周五','周六','周日'];
-        var legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
+    function initEchartLine(domId,echartData,tit) {
+        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        var seriesData = [];
+        var xAxisData =  ['1','2','3','4','5','6','7','8','9','10',
+            '11','12','13','14','15','16','17','18','19','20',
+            '21','22','23','24','25','26','27','28','29','30'];
+        legendData.forEach(function(el){
+            var tmpObj = {};
+            tmpObj.type = 'line';
+            tmpObj.smooth = true;
+            tmpObj.name = el;
+            tmpObj.data = echartData[el];
+            tmpObj.symbol = 'none';
+            seriesData.push(tmpObj)
+        });
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
-                text: "Reactive TKT(30 DAYS)",
-                x:30,
+                text: tit,
+                x:'center',
+                y: 'bottom',
                 textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    color: '#FFF'
+                    fontSize: '12',
+                    fontWeight: 'bold',
+                    color: '#BDBEC3'
                 }
             },
             tooltip : {
@@ -122,6 +162,7 @@ $(function(){
                         show:true,
                         interval:0,    // {number}刻度的长短，可设为数字 间隔
                         margin:5,
+                        splitNumber: 18,
                         textStyle:{
                             color: '#fff',
                             fontSize:15
@@ -137,78 +178,65 @@ $(function(){
                     }
                 }
             ],
-            series:  [
-                {
-                    name:'TREG 1',
-                    type:'line',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'TREG 2',
-                    type:'line',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'TREG 3',
-                    type:'line',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'TREG 4',
-                    type:'line',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'TREG 5',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                },
-                {
-                    name:'TREG 6',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                },
-                {
-                    name:'TREG 7',
-                    type:'line',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
+            series:  seriesData
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
-    function initEchart2(idDom){
+    function initEchartPie(idDom,data1,data2,titName){
+        var initData;
+        var bgcolor = [];
+        if(typeof(data1)=="undefined"&&typeof(data2)=="undefined"){
+            initData=[
+                {
+                    value:1,name:'nodata'
+                }
+            ];
+            bgcolor = ['#BDBEC3'];
+        }else{
+            initData=[
+                {value:data1, name:'close'},
+                {value:data2, name:'open'}
+            ]
+            bgcolor = ["#ff7f50", "#87cefa"];
+        };
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title : {
-                text: 'Reactive',
+                text: titName,
                 x:'left',
-                y:'top',
+                y: 'top',
                 textStyle: {
-                    fontSize: '18',
-                    fontWeight: 'bolder',
+                    fontSize: '16',
+                    fontWeight: 'bold',
                     color: '#fff'
                 }
             },
+            color:bgcolor,
             tooltip : {
                 trigger: 'item',
-                formatter: "{b} : {c} ({d}%)"
+                formatter: "{b} : {c}"
             },
             legend: {
                 show:false,
-                data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                data:['close','open']
             },
             calculable : false,
             series : [
                 {
-                    name:'访问来源',
+                    name:'',
                     type:'pie',
                     radius : ['40%', '70%'],
                     itemStyle : {
                         normal : {
                             //不显示中间的字，而显示成饼图的那种label
                             label : {
-                                show: true,
+                                show: false,
                                 position : 'inner',
                                 // formatter: '{b} : {c} ({d}%)'
                                 formatter: "{d}%"
@@ -229,20 +257,30 @@ $(function(){
                             }
                         }
                     },
-                    data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
-                    ]
+                    data:initData
                 }
             ]
         };
         myChart.setOption(option);
+        $("#all",window.parent.document).click(function(){
+            myChart.resize();
+        });
+        $("#small",window.parent.document).click(function(){
+            myChart.resize();
+        });
     }
-    function initEchart3(idDom){
+    function initEchartScale(idDom,data){
         var myChart = echarts.init(document.getElementById(idDom));
+        var serisData = [];
+        if(data.length==0){
+            serisData = [{
+                name:'nodata',
+                type:'line',
+                smooth:true,
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                data:[0]
+            }];
+        }
         option = {
             title : {
                 text: '某楼盘销售情况',
@@ -267,29 +305,7 @@ $(function(){
                     type : 'value'
                 }
             ],
-            series : [
-                {
-                    name:'成交',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[10, 12, 21, 54, 260, 830, 710]
-                },
-                {
-                    name:'预购',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[30, 182, 434, 791, 390, 30, 10]
-                },
-                {
-                    name:'意向',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[1320, 1132, 601, 234, 120, 90, 20]
-                }
-            ]
+            series : serisData
         };
         myChart.setOption(option);
     }

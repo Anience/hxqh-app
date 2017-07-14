@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
 		var _ctx = "${ctx}";
+		var _type = "${type}";
 	</script>
 </head>
 <body>

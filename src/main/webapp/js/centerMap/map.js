@@ -9,8 +9,8 @@ $(function(){
         map = new OpenLayers.Map("Map");
         var mapnik = new OpenLayers.Layer.OSM();
         map.addLayer(mapnik);
-        map.setCenter(new OpenLayers.LonLat(106.827183, -6.1753942)
-            .transform(fromProjection, toProjection), 7);
+        map.setCenter(new OpenLayers.LonLat(115.269, -0.286)
+            .transform(fromProjection, toProjection), 5);
         initPoints(map, fromProjection, toProjection);
     }
     function initPoints(map, fromProjection, toProjection){

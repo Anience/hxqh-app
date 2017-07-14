@@ -84,15 +84,15 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC ENTERPRISE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Business</a></li>
+				<li><a href="${ctx}/enterprise/ebg?type=DBS" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Business</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. DBS TOP1</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. DBS_TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DBS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. DBS TOP4-7</a></li>
-				<li><a href="${ctx}/enterprise/enterpriseBussiness" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
+				<li><a href="${ctx}/enterprise/ebg?type=DGS" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Government</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DGS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. DGS TOP1</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DGS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. DGS TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DGS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. DGS TOP4-7</a></li>
-				<li><a href="${ctx}/enterprise/enterprisetop" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
+				<li><a href="${ctx}/enterprise/ebg?type=DES" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>9. Enterprise</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DES&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>10. DES TOP1</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DES&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>11. DES TOP2&TOP3</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DES&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>12. DES TOP4-7</a></li>
@@ -174,6 +174,7 @@
 		$(".right-content").height(contentH);
 		$(".content").height(contentH);
         $("#page_content").height(iframeH);
+        $(".left-menu").height(contentH);
 	});
 </script>
 </html>
