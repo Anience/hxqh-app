@@ -12,6 +12,42 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+               /* //页面用户名展示
+                $(".top2-layout-left .ent-header h4").text(data.enterpriseMap["2"].name);
+                //sla数据展示
+                var colorData1 = data.enterpriseMap["2"].threeColor;
+                var cust1 = colorData1.cust ==null?'':colorData1.cust;
+                var eq1 = colorData1.eq ==null?'0':colorData1.eq;
+                var gt1 = colorData1.gt ==null?'0':colorData1.gt;
+                var lt1 = colorData1.lt ==null?'0':colorData1.lt;
+                $(".top2-layout-left .span-layout .sla").text(cust1);
+                $(".top2-layout-left .span-layout .red").text(eq1);
+                $(".top2-layout-left .span-layout .yellow").text(gt1);
+                $(".top2-layout-left .span-layout .green").text(lt1);
+                //event
+                var events1 = data.enterpriseMap["2"].eventList;
+                var trHtml1 ="";
+                for(var i =0,len=events1.length;i<len;i++){
+                    var event1 = events1[i].affevent;
+                    var time1 = event1.split(" ")[0];
+                    var other1 = event1.split("/")[3];
+                    trHtml1+="<tr><td>"+time1+"/"+other1+"</td></tr>";
+                    $(".top2-layout-left .top1-event table").show();
+                }
+                $(".top2-layout-left .top1-event table tbody").html(trHtml);
+                //图标展示
+                var logoList1 = data.enterpriseMap["2"].iconList;
+                for(var i=0,len=logoList1.length;i<len;i++){
+                    var className1 = '.top2-layout-left'+' '+'.'+logoList[i].lay;
+                    var imgUrl1 = '';
+                    if(logoList1[i].status=='0'){
+                        imgUrl1 = _ctx+'/imgs/red/'+logoList1[i].lay+'.png';
+                    }else{
+                        imgUrl1 = _ctx+'/imgs/blue/'+logoList1[i].lay+'.png';
+                    }
+                    $(className).show();
+                    $(className).attr('src',imgUrl1);
+                }*/
                 var leftTop1;
                 var leftBottom1;
                 //处理后台传回的数据为空的状态

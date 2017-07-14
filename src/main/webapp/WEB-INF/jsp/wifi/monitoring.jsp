@@ -14,8 +14,8 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout" style="padding-bottom: 120px;">
-	<h4>Monitoring MTTR Proactive 2017-07-14</h4>
+<div class="ticket-layout" style="padding-bottom: 120px;" id="moni-data">
+	<h4>{{titTime}}</h4>
 	<table class="monitoring-table" cellpadding="2">
 		<thead>
 		<tr>
@@ -63,7 +63,7 @@
 			<td>T</td>
 		</tr>
 		</thead>
-		<tbody id="moni-data">
+		<tbody>
 			<tr v-for="item of moniList">
 				<td>{{item.ioc1}}</td>
 				<td v-bind:class="{'text-fff':parseInt(item.ioc2)==0,'text-red':parseInt(item.ioc2)>12,'text-blue':parseInt(item.ioc2)<=12}">{{item.ioc2}}</td>

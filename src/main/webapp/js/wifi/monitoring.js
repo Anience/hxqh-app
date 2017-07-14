@@ -5,7 +5,8 @@ $(function () {
     var digitalData = new Vue({
         el: "#moni-data",
         data: {
-            moniList:[]
+            moniList:[],
+            titTime: ''
         },
         methods: {
 
@@ -17,7 +18,8 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.moniList = data;
+                    self.moniList = data.monitoringList;
+                    self.titTime = data.nowtime;
                     setInterval(function(){
                         window.location.href=_ctx+"/wifi/monitoring";
                     },300000);

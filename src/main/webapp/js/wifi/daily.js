@@ -8,7 +8,7 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.dailyticket,data.skuIdMap);
+                initEchart("echart1",data.dailyticket,data.skuIdMap,data.nowtime);
                 setInterval(function(){
                     window.location.href=_ctx+"/wifi/daily";
                 },300000);
@@ -18,7 +18,7 @@ $(function(){
             }
         })
     }
-    function initEchart(domId,yData,serisData) {
+    function initEchart(domId,yData,serisData,tit) {
         var yName = yData;
         var lendName = ["DBS","DGS","CONS","DES"];
         var serisDatas = [];
@@ -34,7 +34,7 @@ $(function(){
         option = {
             backgroundColor: '#03071D',//背景色
             title: {
-                text: "Daily Ticket Distribution(2017-07-09 To 2017-07-15)",
+                text: tit,
                 x:10,
                 y:10,
                 backgroundColor:"#161C2F",

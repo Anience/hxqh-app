@@ -20,10 +20,10 @@
 	<div class="ent-header">
 		<h4>JAK INTER TRADE</h4>
 		<div class="span-layout">
-			<span class="lable-span sla">SLA</span>
-			<span class="lable-span red">105</span>
-			<span class="lable-span yellow">5</span>
-			<span class="lable-span green">31</span>
+			<span class="lable-span sla"></span>
+			<span class="lable-span red"></span>
+			<span class="lable-span yellow"></span>
+			<span class="lable-span green"></span>
 		</div>
 	</div>
 	<div class="top1">
@@ -40,23 +40,11 @@
 			 <img class="TRANSIT" src="${ctx}/imgs/blue/TRANSIT.png" alt="">
 			 <img class="VPNIP" src="${ctx}/imgs/blue/VPNIP.png" alt="">
 		 </div>
-		 <div class="top1-event">
+		 <div class="top1-event" style="display: none;">
 			 <table>
-                 <thead>
-				    <tr>
-						<td>Event</td>
-					</tr>
-				 <tbody>
-					 <tr>
-						 <td>Event</td>
-					 </tr>
-					 <tr>
-						 <td>Event</td>
-					 </tr>
-					 <tr>
-						 <td>Event</td>
-					 </tr>
-				 </tbody>
+				 <thead>
+				     <tr><td>Event</td></tr>
+				 </thead>
 			 </table>
 		 </div>
 	</div>
