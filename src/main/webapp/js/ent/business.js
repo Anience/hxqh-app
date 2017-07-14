@@ -81,7 +81,7 @@ $(function(){
                     }
 
 
-                },2000);
+                },10000);
             },
             error: function(){
 
