@@ -266,6 +266,28 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'PROACTIVE_TICKET' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
         List<EnterpriseKtkDto> ktkProactiveList = sessionFactory.getCurrentSession().createSQLQuery(ktkProactiveSQL).addEntity(EnterpriseKtkDto.class).
                 setString("CUSTOMERSEGMENT", type).list();
+        //nameList
+        HashMap<String, String> rightnowNameMap = new LinkedHashMap<>();
+        for (EnterpriseKtkDto top : ktkRightnowList) {
+            String name = top.getMon();
+            rightnowNameMap.put(name, name);
+        }
+        List<String> ktkRightnowNameList = new LinkedList<>();
+        for (String key : rightnowNameMap.keySet()) {
+            ktkRightnowNameList.add(rightnowNameMap.get(key));
+        }
+
+        //nameList
+        HashMap<String, String> ktkProactiveMap = new LinkedHashMap<>();
+        for (EnterpriseKtkDto top : ktkProactiveList) {
+            String name = top.getMon();
+            ktkProactiveMap.put(name, name);
+        }
+        List<String> ktkProactiveNameList = new LinkedList<>();
+        for (String key : ktkProactiveMap.keySet()) {
+            ktkProactiveNameList.add(ktkProactiveMap.get(key));
+        }
+
 
         //对pktkRightnowSQL分组
         Map<String, List<EnterpriseKtkDto>> rightnowTicketMap = GroupListUtil.group(ktkRightnowList, new GroupListUtil.GroupBy<String>() {
@@ -303,7 +325,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
 
-        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,ent6List,ent7List);
+        EntDto entDto = new EntDto(pieRightnowList,pieProactiveList,rightnowTicketM,proactiveTicketM,ktkRightnowNameList,ktkProactiveNameList,ent6List,ent7List);
         return entDto;
     }
 

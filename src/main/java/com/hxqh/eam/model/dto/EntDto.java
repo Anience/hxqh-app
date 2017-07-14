@@ -14,14 +14,20 @@ public class EntDto {
     private Map<String, List<Integer>> rightnowTicketM;
     private Map<String, List<Integer>> proactiveTicketM;
 
+    private List<String> ktkRightnowNameList;
+    private List<String> ktkProactiveNameList;
+
+
     private List<Enterprise67Dto> ent6List;
     private List<Enterprise67Dto> ent7List;
 
-    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<Enterprise67Dto> ent6List, List<Enterprise67Dto> ent7List) {
+    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> ktkRightnowNameList, List<String> ktkProactiveNameList, List<Enterprise67Dto> ent6List, List<Enterprise67Dto> ent7List) {
         this.pieRightnowList = pieRightnowList;
         this.pieProactiveList = pieProactiveList;
         this.rightnowTicketM = rightnowTicketM;
         this.proactiveTicketM = proactiveTicketM;
+        this.ktkRightnowNameList = ktkRightnowNameList;
+        this.ktkProactiveNameList = ktkProactiveNameList;
         this.ent6List = ent6List;
         this.ent7List = ent7List;
     }
@@ -72,5 +78,21 @@ public class EntDto {
 
     public void setEnt7List(List<Enterprise67Dto> ent7List) {
         this.ent7List = ent7List;
+    }
+
+    public List<String> getKtkRightnowNameList() {
+        return ktkRightnowNameList;
+    }
+
+    public void setKtkRightnowNameList(List<String> ktkRightnowNameList) {
+        this.ktkRightnowNameList = ktkRightnowNameList;
+    }
+
+    public List<String> getKtkProactiveNameList() {
+        return ktkProactiveNameList;
+    }
+
+    public void setKtkProactiveNameList(List<String> ktkProactiveNameList) {
+        this.ktkProactiveNameList = ktkProactiveNameList;
     }
 }
