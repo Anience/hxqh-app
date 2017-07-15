@@ -6,14 +6,12 @@ import com.hxqh.eam.dao.VEnterpriseTicketDao;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
-import com.hxqh.eam.model.view.VWifiMttr;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -200,21 +198,65 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*************************************event*****************************/
 
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
-        String enter6SQL = "select u.*,rownum rn  from (select t.treg ,t.time_data as timedata,sum(t.sum_persion_in) as personsum from Tb_Ioc_Ent_Bge_Region t " +
-                "where t.cust_type = :CUSTOMERSEGMENT and t.custrank = :custrank  group by t.treg,t.time_data order by t.time_data asc) u";
+        //TODO
+        String enter6SQL = "";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(enter6SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
+
+
+        // 4.对rightnowTicketTktList分组
+        Map<String, List<Enterprise67Dto>> enterprise6Map = GroupListUtil.group(dto6List, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                Enterprise67Dto d = (Enterprise67Dto) obj;
+                return d.getTreg();    // 分组依据为Regional
+            }
+        });
+
+        //分组并存入List<Integer>
+        Map<String, List<Integer>> enterprise6M = new LinkedHashMap<>();
+        extractRegionProductList(enterprise6Map, enterprise6M);
+
+
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
 
 
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
-        String enter7SQL = "select u.*,rownum rn  from (select t.cust_type as treg,t.data_times as timedata,sum(t.sum_in) as personsum  from TB_IOC_ENT_BGE_PRODUCT t " +
-                "where t.cust_type = :CUSTOMERSEGMENT and t.custrank = :custrank  group by t.cust_type,t.data_times order by t.data_times asc) u";
+        String enter7SQL = "";
         List<Enterprise67Dto> dto7List = sessionFactory.getCurrentSession().createSQLQuery(enter7SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
+
+        Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(dto7List, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                Enterprise67Dto d = (Enterprise67Dto) obj;
+                return d.getTreg();    // 分组依据为Regional
+            }
+        });
+        Map<String, List<Integer>> enterprise7M = new LinkedHashMap<>();
+        extractRegionProductList(enterprise7Map, enterprise7M);
+
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
 
-        return new EnterpriseTopDto(rightnowList, proactiveList, nList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, dto6List, dto7List);
+        //获取regionProductNamelist数据
+        String regionProductSQL = "";
+        List<EnterpriseNameDto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(regionProductSQL).addEntity(EnterpriseNameDto.class).list();
+        List<String> nRegionProductList = new LinkedList<>();
+        for (EnterpriseNameDto nameDto : regionProductList) {
+            nRegionProductList.add(nameDto.getName());
+        }
+
+        return new EnterpriseTopDto(rightnowList, proactiveList, nList, rightnowTicketM, proactiveTicketM, threeColor, name, iconList, eventList, enterprise6M, enterprise7M, nRegionProductList);
+    }
+
+    private void extractRegionProductList(Map<String, List<Enterprise67Dto>> enterprise7Map, Map<String, List<Integer>> enterprise7M) {
+        for (Map.Entry<String, List<Enterprise67Dto>> m : enterprise7Map.entrySet()) {
+            List<Integer> mttrs = new LinkedList<>();
+            for (Enterprise67Dto l : m.getValue()) {
+                mttrs.add(l.getPersonsum());
+            }
+            enterprise7M.put(m.getKey(), mttrs);
+        }
     }
 
     private void extractNumberList(Map<String, List<EnterpriseKTK>> proactiveTicketMap, Map<String, List<Integer>> proactiveTicketM) {
@@ -262,7 +304,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             nList.add(nameDto.getName());
         }
 
-
         //对pktkRightnowSQL分组
         Map<String, List<EnterpriseKtkDto>> rightnowTicketMap = GroupListUtil.group(ktkRightnowList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -286,20 +327,50 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*******************************************KTK数据***************************************************/
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
-        String ent6SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.time_data as timedata,sum(t.sum_persion_in) as personsum from Tb_Ioc_Ent_Bge_Region t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.time_data) w";
-        List<Enterprise67Dto> ent6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
-                setString("CUSTOMERSEGMENT", type).list();
+//        String ent6SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.time_data as timedata,sum(t.sum_persion_in) as personsum from Tb_Ioc_Ent_Bge_Region t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.time_data) w";
 
+        String ent6SQl = "";
+        List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
+                setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(1)).list();
+
+        // 4.dto6List分组
+        Map<String, List<Enterprise67Dto>> enterprise6Map = GroupListUtil.group(dto6List, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                Enterprise67Dto d = (Enterprise67Dto) obj;
+                return d.getTreg();    // 分组依据为Regional
+            }
+        });
+        Map<String, List<Integer>> enterprise6M = new LinkedHashMap<>();
+        extractRegionProductList(enterprise6Map, enterprise6M);
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
-        String ent7SQl = "select  w.*,rownum rn from (select  t.cust_type as treg,t.data_times as timedata,sum(t.sum_in) as personsum from TB_IOC_ENT_BGE_PRODUCT t where t.cust_type =:CUSTOMERSEGMENT group by t.cust_type,t.data_times) w";
-        List<Enterprise67Dto> ent7List = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
-                setString("CUSTOMERSEGMENT", type).list();
+        String ent7SQl = "";
+        List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).list();
+
+        Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(regionProductList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                Enterprise67Dto d = (Enterprise67Dto) obj;
+                return d.getTreg();    // 分组依据为Regional
+            }
+        });
+        Map<String, List<Integer>> enterprise7M = new LinkedHashMap<>();
+        extractRegionProductList(enterprise7Map, enterprise7M);
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
+        //nameList
+        //获取regionProductNamelist数据
+        String regionProductSQL = "";
+        List<EnterpriseNameDto> regionProductNameList = sessionFactory.getCurrentSession().createSQLQuery(regionProductSQL).addEntity(EnterpriseNameDto.class).list();
+        List<String> nRegionProductList = new LinkedList<>();
+        for (EnterpriseNameDto nameDto : regionProductNameList) {
+            nRegionProductList.add(nameDto.getName());
+        }
+        //TODO
 
-        EntDto entDto = new EntDto(pieRightnowList, pieProactiveList, rightnowTicketM, proactiveTicketM, nList, ent6List, ent7List);
+        EntDto entDto = new EntDto(pieRightnowList, pieProactiveList, rightnowTicketM, proactiveTicketM, nList, enterprise6M, enterprise7M, nRegionProductList);
         return entDto;
     }
 

@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 public class Enterprise67Dto {
 
+    //TODO  modify
     private String treg;
 
     private Date timedata;

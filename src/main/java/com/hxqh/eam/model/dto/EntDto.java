@@ -16,18 +16,20 @@ public class EntDto {
 
     private List<String> nameList;
 
+    private Map<String, List<Integer>> enterprise6Map;
+    private Map<String, List<Integer>> enterprise7Map;
+    private List<String> nRegionProductList;
 
-    private List<Enterprise67Dto> ent6List;
-    private List<Enterprise67Dto> ent7List;
 
-    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, List<Enterprise67Dto> ent6List, List<Enterprise67Dto> ent7List) {
+    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, Map<String, List<Integer>> enterprise6Map, Map<String, List<Integer>> enterprise7Map, List<String> nRegionProductList) {
         this.pieRightnowList = pieRightnowList;
         this.pieProactiveList = pieProactiveList;
         this.rightnowTicketM = rightnowTicketM;
         this.proactiveTicketM = proactiveTicketM;
         this.nameList = nameList;
-        this.ent6List = ent6List;
-        this.ent7List = ent7List;
+        this.enterprise6Map = enterprise6Map;
+        this.enterprise7Map = enterprise7Map;
+        this.nRegionProductList = nRegionProductList;
     }
 
     public List<EnterprisePieDto> getPieRightnowList() {
@@ -62,20 +64,28 @@ public class EntDto {
         this.proactiveTicketM = proactiveTicketM;
     }
 
-    public List<Enterprise67Dto> getEnt6List() {
-        return ent6List;
+    public Map<String, List<Integer>> getEnterprise6Map() {
+        return enterprise6Map;
     }
 
-    public void setEnt6List(List<Enterprise67Dto> ent6List) {
-        this.ent6List = ent6List;
+    public void setEnterprise6Map(Map<String, List<Integer>> enterprise6Map) {
+        this.enterprise6Map = enterprise6Map;
     }
 
-    public List<Enterprise67Dto> getEnt7List() {
-        return ent7List;
+    public Map<String, List<Integer>> getEnterprise7Map() {
+        return enterprise7Map;
     }
 
-    public void setEnt7List(List<Enterprise67Dto> ent7List) {
-        this.ent7List = ent7List;
+    public void setEnterprise7Map(Map<String, List<Integer>> enterprise7Map) {
+        this.enterprise7Map = enterprise7Map;
+    }
+
+    public List<String> getnRegionProductList() {
+        return nRegionProductList;
+    }
+
+    public void setnRegionProductList(List<String> nRegionProductList) {
+        this.nRegionProductList = nRegionProductList;
     }
 
     public List<String> getNameList() {
