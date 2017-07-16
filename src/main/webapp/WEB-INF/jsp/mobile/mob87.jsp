@@ -14,7 +14,7 @@
 	</script>
 </head>
 <body>
-<div class="mob">
+<div class="mob" style="padding-top:60px;">
 	<div class="mob-layout">
 		<div class="row">
 			<div class="col-sm-1"></div>

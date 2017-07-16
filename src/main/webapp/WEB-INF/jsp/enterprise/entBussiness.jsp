@@ -21,9 +21,9 @@
 		<h4 class="pageTit"></h4>
 		<div class="span-layout">
 			<span class="lable-span sla">SLA</span>
-			<span class="lable-span red">105</span>
-			<span class="lable-span yellow">5</span>
-			<span class="lable-span green">31</span>
+			<span class="lable-span red"></span>
+			<span class="lable-span yellow"></span>
+			<span class="lable-span green"></span>
 		</div>
 	</div>
 	<div class="first-page">

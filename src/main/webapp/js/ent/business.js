@@ -25,13 +25,16 @@ $(function(){
 
                 }
                 $(".pageTit").text(pageTit);
+                var tool = new entUtil();
+                tool.ShowSla();
+
                 var pieTop = data.pieProactiveList;
                 var pieBottom = data.pieRightnowList;
                 var lineTop = data.rightnowTicketM;
                 var lineBottom = data.proactiveTicketM;
                 var nameList = data.nameList;
-                var secPage = data.dto6List;
-                var thirdPage =  data.dto7List;
+                var secPage = data.enterpriseProductMap;
+                var thirdPage =  data.enterpriseRegionMap;
 
                 if(pieTop.length==0){
                     pieTop={
@@ -70,18 +73,18 @@ $(function(){
                             $(".first-page").hide();
                             $(".sec-page").show();
                             $(".third-page").hide();
-                            initEchartScale("echart5",[],nameList,"TRAFFIC BY REGION (2 DAYS PER 6 HOURS)");
+                            initEchartScale("echart5",secPage,data.productNameList,"TRAFFIC BY REGION (2 DAYS PER 6 HOURS)");
                             break;
                         default:
                             $(".first-page").hide();
                             $(".sec-page").hide();
                             $(".third-page").show();
-                            initEchartScale("echart6",[],nameList,"TRAFFIC BY PRODUCT (2 DAYS PER 6 HOURS)");
+                            initEchartScale("echart6",thirdPage,data.regionNameList,"TRAFFIC BY PRODUCT (2 DAYS PER 6 HOURS)");
                             break;
                     }
 
 
-                },10000);
+                },5000);
             },
             error: function(){
 
@@ -140,7 +143,7 @@ $(function(){
                         show: true
                     },
                     axisLabel : {//轴文本
-                        show:false,
+                        show:true,
                         interval:0,    // {number}刻度的长短，可设为数字
                         rotate: 45,    //旋转度数
                         margin:5,
@@ -287,7 +290,12 @@ $(function(){
         });
     }
     function initEchartScale(idDom,data,xAxis,tit){
-        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        var legendData = [];
+        if(idDom=='echart5'){
+            legendData = ['ASTINET','IPTRANSIT','VPNIP'];
+        }else{
+            legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        }
         var serisData = [];
         var xAxisData =  xAxis;
         if(data.length==0){
@@ -298,7 +306,18 @@ $(function(){
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 data:[0]
             }];
-        }
+        }else{
+            legendData.forEach(function(el){
+                var tmpObj = {};
+                tmpObj.type = 'line';
+                tmpObj.smooth = true;
+                tmpObj.name = el;
+                tmpObj.data = data[el];
+                tmpObj.symbol = 'none';
+                tmpObj.itemStyle =  {normal: {areaStyle: {type: 'default'}}};
+                serisData.push(tmpObj)
+            });
+        };
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title: {

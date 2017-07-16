@@ -15,40 +15,12 @@ $(function(){
                 //页面用户名展示
                 $(".ent-header h4").text(data.enterpriseMap["1"].name);
                 //sla数据展示
-                var colorData = data.enterpriseMap["1"].threeColor;
-                var cust = colorData.cust ==null?'':colorData.cust;
-                var eq = colorData.eq ==null?'0':colorData.eq;
-                var gt = colorData.gt ==null?'0':colorData.gt;
-                var lt = colorData.lt ==null?'0':colorData.lt;
-                $(".span-layout .sla").text(cust);
-                $(".span-layout .red").text(eq);
-                $(".span-layout .yellow").text(gt);
-                $(".span-layout .green").text(lt);
+                var tool = new entUtil();
+                tool.ShowSla(data.enterpriseMap["1"].threeColor,"");
                 //event
-                var events = data.enterpriseMap["1"].eventList;
-                var trHtml ="";
-                for(var i =0,len=events.length;i<len;i++){
-                    var event = events[i].affevent;
-                    var time = event.split(" ")[0];
-                    var other = event.split("/")[3];
-                    trHtml+="<tr><td>"+time+"/"+other+"</td></tr>";
-                    $(".top1-event table").show();
-                }
-                $(".top1-event table tbody").html(trHtml);
+                tool.showEvent(data.enterpriseMap["1"].eventList,"")
                 //图标展示
-                var logoList = data.enterpriseMap["1"].iconList;
-                for(var i=0,len=logoList.length;i<len;i++){
-                    var className = '.'+logoList[i].lay;
-                    var imgUrl = '';
-                    if(logoList[i].status=='0'){
-                        imgUrl = _ctx+'/imgs/red/'+logoList[i].lay+'.png';
-                    }else{
-                        imgUrl = _ctx+'/imgs/blue/'+logoList[i].lay+'.png';
-                    }
-                    $(className).show();
-                    $(className).attr('src',imgUrl);
-                }
-
+                tool.showLogo(data.enterpriseMap["1"].iconList,"")
                 var leftTop;
                 var leftBottom;
                 //处理后台传回的数据为空的状态
