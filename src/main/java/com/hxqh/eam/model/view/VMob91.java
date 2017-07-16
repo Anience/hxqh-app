@@ -2,6 +2,7 @@ package com.hxqh.eam.model.view;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 
 
@@ -14,6 +15,8 @@ import java.math.BigDecimal;
 public class VMob91 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	private Integer rn;
+
 	private String ioc1;
 
 	private BigDecimal ioc2;
@@ -29,6 +32,14 @@ public class VMob91 implements Serializable {
 	private String ioc7;
 
 	public VMob91() {
+	}
+
+	public Integer getRn() {
+		return rn;
+	}
+
+	public void setRn(Integer rn) {
+		this.rn = rn;
 	}
 
 	public String getIoc1() {

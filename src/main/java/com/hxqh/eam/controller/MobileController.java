@@ -4,10 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
-import com.hxqh.eam.model.dto.Mob88Dto;
-import com.hxqh.eam.model.dto.Mob91Dto;
-import com.hxqh.eam.model.dto.Mob92Dto;
-import com.hxqh.eam.model.dto.VMob87Dto;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +50,7 @@ public class MobileController {
 
 
     /**
-     * mobile86 页面跳转接口
+     * 2. IPPM KPI页面跳转接口
      *
      * @return
      */
@@ -63,21 +60,17 @@ public class MobileController {
     }
 
     /**
-     * vMob86Data 数据接口
+     * 2. IPPM KPI 数据接口
      * Access 2017-6-26 11:19:42
      *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/vMob86Data", method = RequestMethod.GET)
-    public List<VMob86> vMob86Data() {
-        List<VMob86> dig13List = mobileService.vMob86Data();
-        //求平均值
+    public Mob86Dto vMob86Data() {
+        Mob86Dto mob86Dto = mobileService.vMob86Data();
 
-
-
-
-        return dig13List;
+        return mob86Dto;
     }
 
     /**
@@ -105,7 +98,7 @@ public class MobileController {
 
 
     /**
-     * mobile91 页面跳转接口
+     * 7. SQUAT页面跳转接口
      *
      * @return
      */
@@ -115,7 +108,7 @@ public class MobileController {
     }
 
     /**
-     * vMob91Data 数据接口
+     * 7. SQUAT 数据接口
      * Access  2017-6-26 11:20:24
      *
      * @return
@@ -146,9 +139,9 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/vMob92Data", method = RequestMethod.GET)
-    public Mob92Dto vMob92Data() {
-        Mob92Dto dig13List = mobileService.vMob92Data();
-        return dig13List;
+    public Moblie92 vMob92Data() {
+        Moblie92 moblie92 = mobileService.vMob92Data();
+        return moblie92;
     }
 
 }

@@ -3,6 +3,7 @@ package com.hxqh.eam.model.view;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 /**
@@ -30,6 +31,11 @@ public class VMapOpenmapline implements Serializable {
 
 	@Column(name="TO_Y")
 	private String toY;
+
+	private Date adddate;
+
+	//TODO  等老司机
+	//private String status;
 
 	public VMapOpenmapline() {
 	}
@@ -82,4 +88,11 @@ public class VMapOpenmapline implements Serializable {
 		this.toY = toY;
 	}
 
+	public Date getAdddate() {
+		return adddate;
+	}
+
+	public void setAdddate(Date adddate) {
+		this.adddate = adddate;
+	}
 }

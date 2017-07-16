@@ -27,6 +27,13 @@ public class VMob86 implements Serializable {
 
     private Double ioc7;
 
+    private Double total_site;
+
+    private String week1;
+
+    private String week2;
+
+
     public VMob86() {
     }
 
@@ -84,5 +91,29 @@ public class VMob86 implements Serializable {
 
     public void setIoc7(Double ioc7) {
         this.ioc7 = ioc7;
+    }
+
+    public Double getTotal_site() {
+        return total_site;
+    }
+
+    public void setTotal_site(Double total_site) {
+        this.total_site = total_site;
+    }
+
+    public String getWeek1() {
+        return week1;
+    }
+
+    public void setWeek1(String week1) {
+        this.week1 = week1;
+    }
+
+    public String getWeek2() {
+        return week2;
+    }
+
+    public void setWeek2(String week2) {
+        this.week2 = week2;
     }
 }

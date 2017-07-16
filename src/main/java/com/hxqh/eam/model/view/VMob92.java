@@ -7,61 +7,81 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_MOB_92 database table.
- * 
  */
 @Entity
-@Table(name="V_MOB_92")
+@Table(name = "V_MOB_92")
 public class VMob92 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
-	private BigDecimal greennum;
+    private static final long serialVersionUID = 1L;
+    @Id
+    private Integer rn;
 
-	private String id;
+    private BigDecimal greennum;
 
-	private BigDecimal orangenum;
+    private String id;
 
-	private BigDecimal rednum;
+    private BigDecimal orangenum;
 
-	public VMob92() {
-	}
+    private BigDecimal rednum;
 
-	public VMob92(BigDecimal greennum, String id, BigDecimal orangenum, BigDecimal rednum) {
-		this.greennum = greennum;
-		this.id = id;
-		this.orangenum = orangenum;
-		this.rednum = rednum;
-	}
+    private String kpitype;
 
-	public BigDecimal getGreennum() {
-		return this.greennum;
-	}
+    public VMob92() {
+    }
 
-	public void setGreennum(BigDecimal greennum) {
-		this.greennum = greennum;
-	}
+    public VMob92(Integer rn, BigDecimal greennum, String id, BigDecimal orangenum, BigDecimal rednum, String kpitype) {
+        this.rn = rn;
+        this.greennum = greennum;
+        this.id = id;
+        this.orangenum = orangenum;
+        this.rednum = rednum;
+        this.kpitype = kpitype;
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public Integer getRn() {
+        return rn;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setRn(Integer rn) {
+        this.rn = rn;
+    }
 
-	public BigDecimal getOrangenum() {
-		return this.orangenum;
-	}
+    public BigDecimal getGreennum() {
+        return this.greennum;
+    }
 
-	public void setOrangenum(BigDecimal orangenum) {
-		this.orangenum = orangenum;
-	}
+    public void setGreennum(BigDecimal greennum) {
+        this.greennum = greennum;
+    }
 
-	public BigDecimal getRednum() {
-		return this.rednum;
-	}
+    public String getId() {
+        return this.id;
+    }
 
-	public void setRednum(BigDecimal rednum) {
-		this.rednum = rednum;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public BigDecimal getOrangenum() {
+        return this.orangenum;
+    }
+
+    public void setOrangenum(BigDecimal orangenum) {
+        this.orangenum = orangenum;
+    }
+
+    public BigDecimal getRednum() {
+        return this.rednum;
+    }
+
+    public void setRednum(BigDecimal rednum) {
+        this.rednum = rednum;
+    }
+
+    public String getKpitype() {
+        return kpitype;
+    }
+
+    public void setKpitype(String kpitype) {
+        this.kpitype = kpitype;
+    }
 }
