@@ -10,22 +10,21 @@ import java.util.Date;
 @Entity
 public class Enterprise67Dto {
 
-    //TODO  modify
     private String treg;
 
-    private Date timedata;
+    private String dh;
 
     private Integer personsum;
 
     @Id
-    private Integer rn ;
+    private Integer rn;
 
     public Enterprise67Dto() {
     }
 
-    public Enterprise67Dto(String treg, Date timedata, Integer personsum, Integer rn) {
+    public Enterprise67Dto(String treg, String dh, Integer personsum, Integer rn) {
         this.treg = treg;
-        this.timedata = timedata;
+        this.dh = dh;
         this.personsum = personsum;
         this.rn = rn;
     }
@@ -46,12 +45,12 @@ public class Enterprise67Dto {
         this.treg = treg;
     }
 
-    public Date getTimedata() {
-        return timedata;
+    public String getDh() {
+        return dh;
     }
 
-    public void setTimedata(Date timedata) {
-        this.timedata = timedata;
+    public void setDh(String dh) {
+        this.dh = dh;
     }
 
     public Integer getPersonsum() {

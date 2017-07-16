@@ -28,16 +28,19 @@ public class EnterpriseTopDto {
 
     private List<EnterpriseEventDto> eventList;
 
-    private Map<String, List<Integer>> enterprise6M;
+    private Map<String, List<Integer>> enterpriseRegionMap;
 
-    private Map<String, List<Integer>> enterprise7M;
+    private List<String> regionNameList;
 
-    private List<String> nRegionProductList;
+    private Map<String, List<Integer>> enterpriseProductMap;
+
+
+    private List<String> productNameList;
 
     public EnterpriseTopDto() {
     }
 
-    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, Map<String, List<Integer>> enterprise6M, Map<String, List<Integer>> enterprise7M, List<String> nRegionProductList) {
+    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, Map<String, List<Integer>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Integer>> enterpriseProductMap, List<String> productNameList) {
         this.rightnowList = rightnowList;
         this.proactiveList = proactiveList;
         this.nameList = nameList;
@@ -47,9 +50,26 @@ public class EnterpriseTopDto {
         this.name = name;
         this.iconList = iconList;
         this.eventList = eventList;
-        this.enterprise6M = enterprise6M;
-        this.enterprise7M = enterprise7M;
-        this.nRegionProductList = nRegionProductList;
+        this.enterpriseRegionMap = enterpriseRegionMap;
+        this.regionNameList = regionNameList;
+        this.enterpriseProductMap = enterpriseProductMap;
+        this.productNameList = productNameList;
+    }
+
+    public List<String> getRegionNameList() {
+        return regionNameList;
+    }
+
+    public void setRegionNameList(List<String> regionNameList) {
+        this.regionNameList = regionNameList;
+    }
+
+    public List<String> getProductNameList() {
+        return productNameList;
+    }
+
+    public void setProductNameList(List<String> productNameList) {
+        this.productNameList = productNameList;
     }
 
     public String getName() {
@@ -125,27 +145,19 @@ public class EnterpriseTopDto {
         this.nameList = nameList;
     }
 
-    public Map<String, List<Integer>> getEnterprise6M() {
-        return enterprise6M;
+    public Map<String, List<Integer>> getEnterpriseRegionMap() {
+        return enterpriseRegionMap;
     }
 
-    public void setEnterprise6M(Map<String, List<Integer>> enterprise6M) {
-        this.enterprise6M = enterprise6M;
+    public void setEnterpriseRegionMap(Map<String, List<Integer>> enterpriseRegionMap) {
+        this.enterpriseRegionMap = enterpriseRegionMap;
     }
 
-    public Map<String, List<Integer>> getEnterprise7M() {
-        return enterprise7M;
+    public Map<String, List<Integer>> getEnterpriseProductMap() {
+        return enterpriseProductMap;
     }
 
-    public void setEnterprise7M(Map<String, List<Integer>> enterprise7M) {
-        this.enterprise7M = enterprise7M;
-    }
-
-    public List<String> getnRegionProductList() {
-        return nRegionProductList;
-    }
-
-    public void setnRegionProductList(List<String> nRegionProductList) {
-        this.nRegionProductList = nRegionProductList;
+    public void setEnterpriseProductMap(Map<String, List<Integer>> enterpriseProductMap) {
+        this.enterpriseProductMap = enterpriseProductMap;
     }
 }
