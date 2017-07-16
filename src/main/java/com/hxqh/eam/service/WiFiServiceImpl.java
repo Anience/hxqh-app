@@ -20,8 +20,6 @@ import java.util.*;
 @Service("wiFiService")
 public class WiFiServiceImpl implements WiFiService {
 
-    private static final String[] DAILY = {"DCS", "DES", "DGS"};
-
     private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
     private static final String[] DAILYTICKET = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};

@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lh on 2017/4/14.
@@ -58,8 +55,27 @@ public class MobileServiceImpl implements MobileService {
     }
 
     @Override
-    public Mob92Dto vMob92Data() {
+    public Moblie92 vMob92Data() {
         List<VMob92> mob92List = vMob92Dao.findAll();
+        // mob92List进行分组
+        Map<String, List<VMob92>> map = GroupListUtil.group(mob92List, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VMob92 d = (VMob92) obj;
+                return d.getKpitype();  // 分组依据为Kpitype
+            }
+        });
+
+        Map<String, Mob92Dto> dtoMap = new HashMap<>();
+        for (Map.Entry<String, List<VMob92>> entry : map.entrySet()) {
+            Mob92Dto mob92Dto = getMob92Dto(mob92List);
+            dtoMap.put(entry.getKey(), mob92Dto);
+        }
+        Moblie92 moblie92 = new Moblie92(dtoMap);
+        return moblie92;
+    }
+
+    private Mob92Dto getMob92Dto(List<VMob92> mob92List) {
         // 百分比
         List<Mob92PercentDto> percentMob92List = new LinkedList<>();
         for (VMob92 mob92 : mob92List) {
@@ -93,13 +109,15 @@ public class MobileServiceImpl implements MobileService {
             orangePercent.add(mob92.getOrangenum());
             redPercent.add(mob92.getRednum());
         }
-        Mob92Dto mob92Dto = new Mob92Dto(green, orange, red, greenPercent, orangePercent, redPercent);
-        return mob92Dto;
+        return new Mob92Dto(green, orange, red, greenPercent, orangePercent, redPercent);
     }
 
     @Override
-    public List<VMob86> vMob86Data() {
-        return vMob86Dao.findAll();
+    public Mob86Dto vMob86Data() {
+        List<VMob86> vMob86List = vMob86Dao.findAll();
+        List<VMob86> mob86List = vMob86Dao.findAll("ioc1='TREG-1'", null, null);
+        Mob86Dto mob86Dto = new Mob86Dto(vMob86List, mob86List.get(0).getWeek1(), mob86List.get(0).getWeek2());
+        return mob86Dto;
     }
 
     @Override
