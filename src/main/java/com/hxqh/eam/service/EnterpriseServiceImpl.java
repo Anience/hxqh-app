@@ -82,6 +82,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             return enterpriseDto;
         } else {
 
+
             String rank4 = "and (custrank=:custrank4)";
             String rank5 = "and (custrank=:custrank5)";
             String rank6 = "and (custrank=:custrank6)";

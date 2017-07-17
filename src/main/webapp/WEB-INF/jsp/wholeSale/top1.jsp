@@ -7,9 +7,8 @@
 	<link rel="stylesheet" href="${ctx}/css/ent.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/top.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
+	<script type="text/javascript" src="${ctx}/js/ent/entUtil.js"></script>
 	<script>
 		var _ctx = "${ctx}";
 		var type = "${page}";
@@ -20,7 +19,7 @@
 	<div class="ent-header">
 		<h4>JAK INTER TRADE</h4>
 		<div class="span-layout">
-			<span class="lable-span sla"></span>
+			<span class="lable-span sla">SLA</span>
 			<span class="lable-span red"></span>
 			<span class="lable-span yellow"></span>
 			<span class="lable-span green"></span>
@@ -50,6 +49,6 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/ent/top1.js"></script>
+<script type="text/javascript" src="${ctx}/js/wholeSale/top1.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
 </html>

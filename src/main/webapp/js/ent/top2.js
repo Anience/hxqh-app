@@ -13,92 +13,25 @@ $(function(){
             dataType: "json",
             success: function(data){
                 var tool = new entUtil();
-                //页面用户名展示
-/*                $(".top2-layout-left .ent-header h4").text(data.enterpriseMap["2"].name);*/
-                //sla数据展示
-                tool.ShowSla(data.enterpriseMap["2"].threeColor,".top2-layout-left");
-                //event
-                tool.showEvent(data.enterpriseMap["2"].eventList,".top2-layout-left");
-                //图标展示
-                tool.showLogo(data.enterpriseMap["2"].iconList,".top2-layout-left");
-                var leftTop1;
-                var leftBottom1;
-                //处理后台传回的数据为空的状态
-                if(data.enterpriseMap["2"].rightnowList.length==0){
-                    leftTop1 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftTop1 = data.enterpriseMap["2"].rightnowList[0];
-                };
-                if(data.enterpriseMap["2"].proactiveList.length==0){
-                    leftBottom1 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftBottom1 = data.enterpriseMap["2"].proactiveList[0];
-                }
-                var middleTop1 = data.enterpriseMap["2"].rightnowTicketM;
-                var middleTopName1 = data.enterpriseMap["2"].nameList;
-                var middleBottom1 = data.enterpriseMap["2"].proactiveTicketM;
-                var middleBottomName1 = data.enterpriseMap["2"].nameList;
-                var rightTop1 = data.enterpriseMap["2"].enterpriseProductMap;
-                var rightTopName1 = data.enterpriseMap["2"].productNameList;
-                var rightBottom1 = data.enterpriseMap["2"].enterpriseRegionMap;
-                var rightBName1 = data.enterpriseMap["2"].regionNameList;
-
-                //页面用户名展示
-                // $(".top2-layout-right .ent-header h4").text(data.enterpriseMap["3"].name);
-                //sla数据展示
-                tool.ShowSla(data.enterpriseMap["3"].threeColor,".top2-layout-right");
-                //event
-                tool.showEvent(data.enterpriseMap["3"].eventList,".top2-layout-right");
-                //图标展示
-                tool.showLogo(data.enterpriseMap["3"].iconList,".top2-layout-right");
-                var leftTop2;
-                var leftBottom2;
-                //处理后台传回的数据为空的状态
-                if(data.enterpriseMap["3"].rightnowList.length==0){
-                    leftTop2 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    var leftTop2 = data.enterpriseMap["3"].rightnowList[0];
-                };
-                if(data.enterpriseMap["3"].proactiveList.length==0){
-                    leftBottom2 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftBottom2 = data.enterpriseMap["3"].proactiveList[0];
-                }
-                var middleTop2 = data.enterpriseMap["3"].rightnowTicketM;
-                var middleTopName2 = data.enterpriseMap["3"].nameList;
-                var middleBottom2 = data.enterpriseMap["3"].proactiveTicketM;
-                var middleBottomName2 = data.enterpriseMap["3"].nameList;
-                var rightTop2 = data.enterpriseMap["3"].enterpriseProductMap;
-                var rightTopName2 = data.enterpriseMap["3"].productNameList;
-                var rightBottom2 = data.enterpriseMap["3"].enterpriseRegionMap;
-                var rightBName2 = data.enterpriseMap["3"].regionNameList;
+                tool.headerInit(data.enterpriseMap["2"],".top2-layout-left");
+                var data1 = tool.dealData(data.enterpriseMap["2"]);
+                tool.headerInit(data.enterpriseMap["3"],".top2-layout-right");
+                var data2 = tool.dealData(data.enterpriseMap["3"]);
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart11",leftTop1.closenums,leftTop1.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart12",middleTop1,middleTopName1,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart13",rightTop1,rightTopName1,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart14",leftBottom1.closenums,leftBottom1.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart15",middleBottom1,middleBottomName1,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart16",rightBottom1,rightBName1,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                initEchart2("echart11",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
+                initEchart1("echart12",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart13",data1.rightTop,data1.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart14",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
+                initEchart1("echart15",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart16",data1.rightBottom,data1.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
                 //initEchart1折线图，initEchart2圆形图
                 //两个用户
-                initEchart2("echart21",leftTop2.closenums,leftTop2.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart22",middleTop2,middleTopName2,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart23",rightTop2,rightTopName2,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart24",leftBottom2.closenums,leftBottom2.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart25",middleBottom2,middleBottomName2,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart26",rightBottom2,rightBName2,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                initEchart2("echart21",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
+                initEchart1("echart22",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart23",data2.rightTop,data2.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart24",data2.leftBottom.closenums,data2.leftBottom.opennums,"PROACTIVE");
+                initEchart1("echart25",data2.middleBottom,data2.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart26",data2.rightBottom,data2.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
             },
             error: function(){
 
@@ -160,7 +93,11 @@ $(function(){
             },
             calculable: false,
             grid:{
-                width: '100%',
+                x:30,
+                y:50,
+                x2:100,
+                y2:100,
+                width: '75%',
                 height: '60%',
                 borderWidth:0,//外围边框线
                 borderColor:'#666c7f'

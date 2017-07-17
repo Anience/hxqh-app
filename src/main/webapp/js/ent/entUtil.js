@@ -3,6 +3,46 @@ var  entUtil = function(){
 };
 entUtil.prototype={
     constructor: entUtil,
+    dealData:  function(data){
+        var dealedData = {};
+        //处理后台传回的数据为空的状态
+        if(data.rightnowList.length==0){
+            dealedData.leftTop = {
+                closenums: undefined,
+                opennums: undefined
+            };
+        }else{
+            dealedData.leftTop = data.rightnowList[0];
+        };
+        if(data.proactiveList.length==0){
+            dealedData.leftBottom = {
+                closenums: undefined,
+                opennums: undefined
+            };
+        }else{
+            dealedData.leftBottom = data.proactiveList[0];
+        }
+        dealedData.middleTop = data.rightnowTicketM;
+        dealedData.middleTopName = data.nameList;
+        dealedData. middleBottom = data.proactiveTicketM;
+        dealedData.middleBottomName = data.nameList;
+        dealedData.rightTop = data.enterpriseProductMap;
+        dealedData.rightTopName = data.productNameList;
+        dealedData.rightBottom = data.enterpriseRegionMap;
+        dealedData.rightBName = data.regionNameList;
+        return dealedData;
+    },
+    headerInit:function(data,domName){
+        var self = this;
+        //页面用户名展示
+        $(".ent-header h4").text(data.name);
+        //sla数据展示
+        self.ShowSla(data.threeColor,domName);
+        //event
+        self.showEvent(data.eventList,domName);
+        //图标展示
+        self.showLogo(data.iconList,domName);
+    },
     ShowSla: function (data,domName){
         var colorData1 = data;
         var eq = colorData1.eq ==null?'0':colorData1.eq;
