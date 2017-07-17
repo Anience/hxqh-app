@@ -7,21 +7,123 @@ $(function(){
             url: _ctx+"/enterprise/top1Data",
             method: "get",
             data:{
-                type: type,
-                show: '1'
+                type: _type,
+                show: _show
             },
             dataType: "json",
             success: function(data){
                 var tool = new entUtil();
-                tool.headerInit(data.enterpriseMap["1"],"");
-                var data1 = tool.dealData(data.enterpriseMap["1"]);
-                //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart1",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
-                initEchart1("echart2",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart3",data1.middleTop,data1.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart4",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
-                initEchart1("echart5",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart6",data1.middleBottom,data1.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                if(_type == "DWS"){
+                    var j = parseInt(_show);
+                    //wholesale
+                    if(_show == '18'){
+                        var data1 = tool.dealData(data.enterpriseMap[j-3]);
+                        var data2 = tool.dealData(data.enterpriseMap[j-2]);
+                        var data3 = tool.dealData(data.enterpriseMap[j-1]);
+                        var data4 = tool.dealData(data.enterpriseMap[j]);
+                        tool.headerInit(data.enterpriseMap[j],"");
+                        initEchart2("echart1",data4.leftTop.closenums,data4.leftTop.opennums,"REACTIVE");
+                        initEchart1("echart2",data4.middleTop,data4.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                        initEchart1("echart3",data4.middleTop,data4.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                        initEchart2("echart4",data4.leftBottom.closenums,data4.leftBottom.opennums,"PROACTIVE");
+                        initEchart1("echart5",data4.middleBottom,data4.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                        initEchart1("echart6",data4.middleBottom,data4.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                        var i = 0;
+                        setInterval(function(){
+                            i++;
+                            if(i>=4){
+                                i=0;
+                            }
+                            switch(i){
+                                case 1:
+                                    tool.headerInit(data.enterpriseMap[j-3],"");
+                                    initEchart2("echart1",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data1.middleTop,data1.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data1.middleBottom,data1.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                    break;
+                                case 2:
+                                    tool.headerInit(data.enterpriseMap[j-2],"");
+                                    initEchart2("echart1",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data2.middleTop,data2.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data2.leftBottom.closenums,data2.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data2.middleBottom,data2.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data2.middleBottom,data2.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                case 3:
+                                    tool.headerInit(data.enterpriseMap[j-1],"");
+                                    initEchart2("echart1",data3.leftTop.closenums,data3.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data3.middleTop,data3.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data3.middleTop,data3.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data3.leftBottom.closenums,data3.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data3.middleBottom,data3.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data3.middleBottom,data3.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                default:
+                                    tool.headerInit(data.enterpriseMap[j],"");
+                                    initEchart2("echart1",data4.leftTop.closenums,data4.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data4.middleTop,data4.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data4.middleTop,data4.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data4.leftBottom.closenums,data4.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data4.middleBottom,data4.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data4.middleBottom,data4.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                    break;
+                            }
+                        },20000);
+
+                    }else{
+                        var data1 = tool.dealData(data.enterpriseMap[j-1]);
+                        var data2 = tool.dealData(data.enterpriseMap[j]);
+                        //initEchart1折线图，initEchart2圆形图
+                        tool.headerInit(data.enterpriseMap[j],"");
+                        initEchart2("echart1",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
+                        initEchart1("echart2",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                        initEchart1("echart3",data2.middleTop,data2.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                        initEchart2("echart4",data2.leftBottom.closenums,data2.leftBottom.opennums,"PROACTIVE");
+                        initEchart1("echart5",data2.middleBottom,data2.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                        initEchart1("echart6",data2.middleBottom,data2.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+
+                        var i = 0;
+                        setInterval(function(){
+                            i++;
+                            if(i>=2){
+                                i=0;
+                            }
+                            switch(i){
+                                case 1:
+                                    tool.headerInit(data.enterpriseMap[j-1],"");
+                                    initEchart2("echart1",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data1.middleTop,data1.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data1.middleBottom,data1.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                    break;
+                                default:
+                                    tool.headerInit(data.enterpriseMap[j],"");
+                                    initEchart2("echart1",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
+                                    initEchart1("echart2",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart3",data2.middleTop,data2.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                                    initEchart2("echart4",data2.leftBottom.closenums,data2.leftBottom.opennums,"PROACTIVE");
+                                    initEchart1("echart5",data2.middleBottom,data2.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                                    initEchart1("echart6",data2.middleBottom,data2.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                                    break;
+                            }
+                        },20000);
+                    }
+                }else{
+                    //enterprise
+                    tool.headerInit(data.enterpriseMap["1"],"");
+                    var data1 = tool.dealData(data.enterpriseMap["1"]);
+                    //initEchart1折线图，initEchart2圆形图
+                    initEchart2("echart1",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
+                    initEchart1("echart2",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                    initEchart1("echart3",data1.middleTop,data1.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                    initEchart2("echart4",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
+                    initEchart1("echart5",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                    initEchart1("echart6",data1.middleBottom,data1.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                }
             },
             error: function(){
 

@@ -11,7 +11,8 @@
 	<script type="text/javascript" src="${ctx}/js/ent/entUtil.js"></script>
 	<script>
 		var _ctx = "${ctx}";
-		var type = "${page}";
+		var _type = "${page}";
+		var _show = "${show}";
 	</script>
 </head>
 <body>

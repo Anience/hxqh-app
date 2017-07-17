@@ -19,14 +19,16 @@ $(function(){
                     case 'DGS':
                         pageTit = "Government";
                         break;
-                    default:
+                    case 'DBS':
                         pageTit = "Business";
                         break;
-
+                    default:
+                        pageTit = "Wholesale";
+                        break;
                 }
                 $(".pageTit").text(pageTit);
                 var tool = new entUtil();
-                tool.ShowSla(data,"");
+                tool.ShowSla(data.threeColor,"");
 
                 var pieTop = data.pieProactiveList;
                 var pieBottom = data.pieRightnowList;
@@ -84,7 +86,7 @@ $(function(){
                     }
 
 
-                },500000);
+                },5000);
             },
             error: function(){
 

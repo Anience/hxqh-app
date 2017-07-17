@@ -40,10 +40,8 @@ public class EnterpriseController {
         if (!type.equals("DWS")) {
             if (integer == 1) {
                 return new ModelAndView("enterprise/top1", result);
-            } else if (integer == 2) {
+            } else{
                 return new ModelAndView("enterprise/top2", result);
-            } else {
-                return new ModelAndView("enterprise/top4", result);
             }
         } else {
             return new ModelAndView("enterprise/top1", result);
