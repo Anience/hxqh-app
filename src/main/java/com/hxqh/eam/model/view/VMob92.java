@@ -1,7 +1,9 @@
 package com.hxqh.eam.model.view;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 

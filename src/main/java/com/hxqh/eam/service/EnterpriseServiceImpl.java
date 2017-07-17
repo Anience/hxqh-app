@@ -44,100 +44,84 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         String rightnowWhere, roactiveWhere;
         Integer integer = Integer.valueOf(show);
-        if (DAILY.contains(DAILY)) {
-            //实现方法返回一个list，其中有2个或者多个对象EnterpriseTopDto
-            if (integer == 1) {
-                params.put("custrank", 1);
-                rightnowWhere = where1 + "and custrank=:custrank";
-                roactiveWhere = where2 + "and custrank=:custrank";
-                //处理一个Dto
+        //实现方法返回一个list，其中有2个或者多个对象EnterpriseTopDto
 
-                EnterpriseTopDto enterpriseTopDto = generateEnterpriseDto(show, type, params, rightnowWhere, roactiveWhere);
-                Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto);
+        if (integer == 1 && DAILY.contains(type)) {
+            params.put("custrank", 1);
+            rightnowWhere = where1 + "and custrank=:custrank";
+            roactiveWhere = where2 + "and custrank=:custrank";
+            //处理一个Dto
 
-                EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            EnterpriseTopDto enterpriseTopDto = generateEnterpriseDto(show, type, params, rightnowWhere, roactiveWhere);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto);
 
-                return enterpriseDto;
-            } else if (integer == 2) {
-                //处理两个Dto
-                String rank2 = "and (custrank=:custrank2)";
-                String rank3 = "and (custrank=:custrank3)";
-                params.put("custrank2", 2);
-                params.put("custrank3", 3);
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
 
-                String rightnowWhere2, roactiveWhere2, rightnowWhere3, roactiveWhere3;
-                rightnowWhere2 = where1 + rank2;
-                roactiveWhere2 = where2 + rank2;
-                rightnowWhere3 = where1 + rank3;
-                roactiveWhere3 = where2 + rank3;
+            return enterpriseDto;
+        } else if ((integer == 2 && DAILY.contains(type)) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
+            //处理两个Dto
+            String rank2 = "and (custrank=:custrank2)";
+            String rank3 = "and (custrank=:custrank3)";
+            params.put("custrank2", integer);
+            params.put("custrank3", integer + 1);
 
-                EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
-                EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show, type, params, rightnowWhere3, roactiveWhere3);
-                Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
-                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto3);
+            String rightnowWhere2, roactiveWhere2, rightnowWhere3, roactiveWhere3;
+            rightnowWhere2 = where1 + rank2;
+            roactiveWhere2 = where2 + rank2;
+            rightnowWhere3 = where1 + rank3;
+            roactiveWhere3 = where2 + rank3;
 
-                EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
-                return enterpriseDto;
-            } else {
-                String rank4 = "and (custrank=:custrank4)";
-                String rank5 = "and (custrank=:custrank5)";
-                String rank6 = "and (custrank=:custrank6)";
-                String rank7 = "and (custrank=:custrank7)";
-                params.put("custrank4", 4);
-                params.put("custrank5", 5);
-                params.put("custrank6", 6);
-                params.put("custrank7", 7);
+            EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
+            EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show, type, params, rightnowWhere3, roactiveWhere3);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
+            enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto3);
 
-                String rightnowWhere4, roactiveWhere4, rightnowWhere5, roactiveWhere5, rightnowWhere6, roactiveWhere6, rightnowWhere7, roactiveWhere7;
-                rightnowWhere4 = where1 + rank4;
-                roactiveWhere4 = where2 + rank4;
-                rightnowWhere5 = where1 + rank5;
-                roactiveWhere5 = where2 + rank5;
-                rightnowWhere6 = where1 + rank6;
-                roactiveWhere6 = where2 + rank6;
-                rightnowWhere7 = where1 + rank7;
-                roactiveWhere7 = where2 + rank7;
-                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show, type, params, rightnowWhere5, roactiveWhere5);
-                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show, type, params, rightnowWhere6, roactiveWhere6);
-                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show, type, params, rightnowWhere7, roactiveWhere7);
-                Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
-                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
-                enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
-                enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            return enterpriseDto;
+        } else {
 
-                EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
-                return enterpriseDto;
+            String rank4 = "and (custrank=:custrank4)";
+            String rank5 = "and (custrank=:custrank5)";
+            String rank6 = "and (custrank=:custrank6)";
+            String rank7 = "and (custrank=:custrank7)";
+
+            if (integer == 4 && DAILY.contains(type)) {
+                params.put("custrank4", integer);
+                params.put("custrank5", integer + 1);
+                params.put("custrank6", integer + 2);
+                params.put("custrank7", integer + 3);
+            } else {//(type.equals("DWS") && integer == 18)
+                params.put("custrank4", integer - 3);
+                params.put("custrank5", integer - 2);
+                params.put("custrank6", integer - 1);
+                params.put("custrank7", integer);
             }
-        }
-        //IOC WHOLESALE INT'L
-        else {
-            //TODO
-            //先写右上角
-            //三色 tb_ioc_data_bgew_sla
+            String rightnowWhere4, roactiveWhere4, rightnowWhere5, roactiveWhere5, rightnowWhere6, roactiveWhere6, rightnowWhere7, roactiveWhere7;
+            rightnowWhere4 = where1 + rank4;
+            roactiveWhere4 = where2 + rank4;
+            rightnowWhere5 = where1 + rank5;
+            roactiveWhere5 = where2 + rank5;
+            rightnowWhere6 = where1 + rank6;
+            roactiveWhere6 = where2 + rank6;
+            rightnowWhere7 = where1 + rank7;
+            roactiveWhere7 = where2 + rank7;
+            EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+            EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show, type, params, rightnowWhere5, roactiveWhere5);
+            EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show, type, params, rightnowWhere6, roactiveWhere6);
+            EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show, type, params, rightnowWhere7, roactiveWhere7);
+            Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+            enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
+            enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
+            enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
 
-            //饼图 tb_ioc_data_bgew_ticket
-
-            //生成折线图 tb_ioc_data_bgew_ticket_tkt
-
-            //堆积图  tb_ioc_ent_bge_region
-
-
-            //堆积图  tb_ioc_ent_bge_product
-
-
-            //服务 tb_ioc_ent_cust_service
-
-            //event tb_ioc_ent_cust_event
-
-
-
-            return null;
+            EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+            return enterpriseDto;
         }
     }
+
 
     private EnterpriseTopDto generateEnterpriseDto(Integer show, String type, Map<String, Object> params, String rightnowWhere, String roactiveWhere) {
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
@@ -202,7 +186,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
-        String nameSql = "select t.custname as cname from tb_ioc_cust_top7 t where  t.custtype =:CUSTOMERSEGMENT and t.custrank =:custrank";
+        String nameSql = "select t.name as cname from tb_ioc_cust_top7 t where  t.custtype =:CUSTOMERSEGMENT and t.custrank =:custrank";
         List<NameDto> cusNameList = sessionFactory.getCurrentSession().createSQLQuery(nameSql).addEntity(NameDto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
         String name = new String();
