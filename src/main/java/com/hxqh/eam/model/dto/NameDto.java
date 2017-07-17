@@ -11,7 +11,13 @@ public class NameDto {
     @Id
     private String cname;
 
+    private String longname;
+
     public NameDto() {
+    }
+    public NameDto(String cname, String longname) {
+        this.cname = cname;
+        this.longname = longname;
     }
 
     public String getCname() {
@@ -20,5 +26,13 @@ public class NameDto {
 
     public void setCname(String cname) {
         this.cname = cname;
+    }
+
+    public String getLongname() {
+        return longname;
+    }
+
+    public void setLongname(String longname) {
+        this.longname = longname;
     }
 }

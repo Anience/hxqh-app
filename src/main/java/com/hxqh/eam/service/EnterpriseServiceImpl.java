@@ -2,7 +2,9 @@ package com.hxqh.eam.service;
 
 
 import com.hxqh.eam.common.util.GroupListUtil;
+import com.hxqh.eam.dao.TbIocCustTop7Dao;
 import com.hxqh.eam.dao.VEnterpriseTicketDao;
+import com.hxqh.eam.model.TbIocCustTop7;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
@@ -22,13 +24,16 @@ import java.util.*;
 @Service("enterpriseService")
 public class EnterpriseServiceImpl implements EnterpriseService {
 
-    private static final List<String> DAILY = Arrays.asList("DCS", "DES", "DGS");
+    private static final List<String> DAILY = Arrays.asList("DBS", "DES", "DGS");
 
     @Resource
     protected SessionFactory sessionFactory;
 
     @Autowired
     private VEnterpriseTicketDao vEnterpriseTicketDao;
+    @Autowired
+    private TbIocCustTop7Dao tbIocCustTop7Dao;
+
 
     @Override
     public EnterpriseDto getTopData(Integer show, String type) {
@@ -63,8 +68,13 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             //处理两个Dto
             String rank2 = "and (custrank=:custrank2)";
             String rank3 = "and (custrank=:custrank3)";
-            params.put("custrank2", integer);
-            params.put("custrank3", integer + 1);
+            if (!type.equals("DWS")) {
+                params.put("custrank2", integer);
+                params.put("custrank3", integer + 1);
+            } else {
+                params.put("custrank2", integer);
+                params.put("custrank3", integer - 1);
+            }
 
             String rightnowWhere2, roactiveWhere2, rightnowWhere3, roactiveWhere3;
             rightnowWhere2 = where1 + rank2;
@@ -75,8 +85,13 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
             EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show, type, params, rightnowWhere3, roactiveWhere3);
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
-            enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto3);
+            if (!type.equals("DWS")) {
+                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
+                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto3);
+            } else {
+                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
+                enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto3);
+            }
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
             return enterpriseDto;
@@ -112,10 +127,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show, type, params, rightnowWhere6, roactiveWhere6);
             EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show, type, params, rightnowWhere7, roactiveWhere7);
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
-            enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
-            enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
-            enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
+            if (integer == 4 && DAILY.contains(type)) {
+                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
+                enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
+                enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
+            } else {//(type.equals("DWS") && integer == 18)
+                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+                enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
+                enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
+                enterpriseMap.put(String.valueOf(integer - 3), enterpriseTopDto7);
+            }
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
             return enterpriseDto;
@@ -186,12 +208,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
-        String nameSql = "select t.name as cname from tb_ioc_cust_top7 t where  t.custtype =:CUSTOMERSEGMENT and t.custrank =:custrank";
-        List<NameDto> cusNameList = sessionFactory.getCurrentSession().createSQLQuery(nameSql).addEntity(NameDto.class).
-                setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
+        Map<String, Object> nameparams = new HashMap<>();
+        nameparams.put("type", type);
+        nameparams.put("show", String.valueOf(show));
+
+        String nameWhere = " custtype =:type and custrank =:show";
+
+        List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(nameWhere, nameparams, null);
+
         String name = new String();
-        if (cusNameList.size() > 0) {
-            name = cusNameList.get(0).getCname();
+        if (iocCustTop7s != null && iocCustTop7s.size() > 0) {
+            name = (null == iocCustTop7s.get(0).getName()) ? iocCustTop7s.get(0).getName() : iocCustTop7s.get(0).getCustname();
         }
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
@@ -345,9 +372,21 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         extractTicketNumberList(proactiveTicketMap, proactiveTicketM);
         /*******************************************KTK数据***************************************************/
 
+        /*************************************右上角 TB_IOC_DATA_BGEW_SLA   三色*****************************/
+
+        String scolorSql = "select t.customer_sement as cust,sum(t.gt) as gt,sum(t.eq) as eq,sum(t.lt) as lt from TB_IOC_DATA_BGEW_SLA t where t.customer_sement =:CUSTOMERSEGMENT group by t.customer_sement";
+        List<EnterpriseThreeColor> colorList = sessionFactory.getCurrentSession().createSQLQuery(scolorSql).addEntity(EnterpriseThreeColor.class).
+                setString("CUSTOMERSEGMENT", type).list();
+        EnterpriseThreeColor threeColor = new EnterpriseThreeColor();
+        if (colorList.size() > 0) {
+            threeColor = colorList.get(0);
+        }
+        /*************************************右上角 TB_IOC_DATA_BGEW_SLA   三色*****************************/
+
+
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
         String ent6SQl = "select  w.*,rownum rn  from (select r.treg ,r.dh as dh, nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
-                "                    left join (select  d.treg,d.time_data,sum(d.sum_persion_in) as sum_persion_in from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT group by d.treg,d.time_data ) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
+                "left join (select  d.treg,d.time_data,sum(d.sum_persion_in) as sum_persion_in from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT group by d.treg,d.time_data ) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
@@ -389,7 +428,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
 
-        EntDto entDto = new EntDto(pieRightnowList, pieProactiveList, rightnowTicketM, proactiveTicketM, nList, enterpriseRegionMap, regionNameList, enterpriseProductMap, productNameList);
+        EntDto entDto = new EntDto(pieRightnowList, pieProactiveList, rightnowTicketM, proactiveTicketM, nList, enterpriseRegionMap, regionNameList, enterpriseProductMap, productNameList, threeColor);
         return entDto;
     }
 
