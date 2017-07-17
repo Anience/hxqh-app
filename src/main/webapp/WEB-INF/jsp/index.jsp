@@ -140,6 +140,15 @@
 			</ul>
 		</li>
 		<li class="menu-list">
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>Customer<i class="first-a-down"></i></a>
+			<ul>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Telkom Summary</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Indihome</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WIFIID</a></li>
+				<li><a href="${ctx}/wifi/daily" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Telkom Solution</a></li>
+			</ul>
+		</li>
+		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>Consumer<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=8c6693afbca73e29a252" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 107</a></li>

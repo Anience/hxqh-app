@@ -8,97 +8,77 @@ $(function(){
             method: "get",
             data:{
                 type: type,
-                show: '2'
+                show: '1'
             },
             dataType: "json",
             success: function(data){
-                var tool = new entUtil();
                 //页面用户名展示
-/*                $(".top2-layout-left .ent-header h4").text(data.enterpriseMap["2"].name);*/
+                $(".ent-header h4").text(data.enterpriseMap["1"].name);
                 //sla数据展示
-                tool.ShowSla(data.enterpriseMap["2"].threeColor,".top2-layout-left");
+                var colorData = data.enterpriseMap["1"].threeColor;
+                var cust = colorData.cust ==null?'':colorData.cust;
+                var eq = colorData.eq ==null?'0':colorData.eq;
+                var gt = colorData.gt ==null?'0':colorData.gt;
+                var lt = colorData.lt ==null?'0':colorData.lt;
+                $(".span-layout .sla").text(cust);
+                $(".span-layout .red").text(eq);
+                $(".span-layout .yellow").text(gt);
+                $(".span-layout .green").text(lt);
                 //event
-                tool.showEvent(data.enterpriseMap["2"].eventList,".top2-layout-left");
-                //图标展示
-                tool.showLogo(data.enterpriseMap["2"].iconList,".top2-layout-left");
-                var leftTop1;
-                var leftBottom1;
-                //处理后台传回的数据为空的状态
-                if(data.enterpriseMap["2"].rightnowList.length==0){
-                    leftTop1 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftTop1 = data.enterpriseMap["2"].rightnowList[0];
-                };
-                if(data.enterpriseMap["2"].proactiveList.length==0){
-                    leftBottom1 = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftBottom1 = data.enterpriseMap["2"].proactiveList[0];
+                var events = data.enterpriseMap["1"].eventList;
+                var trHtml ="";
+                for(var i =0,len=events.length;i<len;i++){
+                    var event = events[i].affevent;
+                    var time = event.split(" ")[0];
+                    var other = event.split("/")[3];
+                    trHtml+="<tr><td>"+time+"/"+other+"</td></tr>";
+                    $(".top1-event table").show();
                 }
-                var middleTop1 = data.enterpriseMap["2"].rightnowTicketM;
-                var middleTopName1 = data.enterpriseMap["2"].nameList;
-                var middleBottom1 = data.enterpriseMap["2"].proactiveTicketM;
-                var middleBottomName1 = data.enterpriseMap["2"].nameList;
-                var rightTop1 = data.enterpriseMap["2"].enterpriseProductMap;
-                var rightTopName1 = data.enterpriseMap["2"].productNameList;
-                var rightBottom1 = data.enterpriseMap["2"].enterpriseRegionMap;
-                var rightBName1 = data.enterpriseMap["2"].regionNameList;
+                $(".top1-event table tbody").html(trHtml);
+                //图标展示
+                var logoList = data.enterpriseMap["1"].iconList;
+                for(var i=0,len=logoList.length;i<len;i++){
+                    var className = '.'+logoList[i].lay;
+                    var imgUrl = '';
+                    if(logoList[i].status=='0'){
+                        imgUrl = _ctx+'/imgs/red/'+logoList[i].lay+'.png';
+                    }else{
+                        imgUrl = _ctx+'/imgs/blue/'+logoList[i].lay+'.png';
+                    }
+                    $(className).show();
+                    $(className).attr('src',imgUrl);
+                }
 
-                //页面用户名展示
-                // $(".top2-layout-right .ent-header h4").text(data.enterpriseMap["3"].name);
-                //sla数据展示
-                tool.ShowSla(data.enterpriseMap["3"].threeColor,".top2-layout-right");
-                //event
-                tool.showEvent(data.enterpriseMap["3"].eventList,".top2-layout-right");
-                //图标展示
-                tool.showLogo(data.enterpriseMap["3"].iconList,".top2-layout-right");
-                var leftTop2;
-                var leftBottom2;
+                var leftTop;
+                var leftBottom;
                 //处理后台传回的数据为空的状态
-                if(data.enterpriseMap["3"].rightnowList.length==0){
-                    leftTop2 = {
+                if(data.enterpriseMap["1"].rightnowList.length==0){
+                    leftTop = {
                         closenums: undefined,
                         opennums: undefined
                     };
                 }else{
-                    var leftTop2 = data.enterpriseMap["3"].rightnowList[0];
+                     leftTop = data.enterpriseMap["1"].rightnowList[0];
                 };
-                if(data.enterpriseMap["3"].proactiveList.length==0){
-                    leftBottom2 = {
+                if(data.enterpriseMap["1"].proactiveList.length==0){
+                    leftBottom = {
                         closenums: undefined,
                         opennums: undefined
                     };
                 }else{
-                    leftBottom2 = data.enterpriseMap["3"].proactiveList[0];
+                    leftBottom = data.enterpriseMap["1"].proactiveList[0];
                 }
-                var middleTop2 = data.enterpriseMap["3"].rightnowTicketM;
-                var middleTopName2 = data.enterpriseMap["3"].nameList;
-                var middleBottom2 = data.enterpriseMap["3"].proactiveTicketM;
-                var middleBottomName2 = data.enterpriseMap["3"].nameList;
-                var rightTop2 = data.enterpriseMap["3"].enterpriseProductMap;
-                var rightTopName2 = data.enterpriseMap["3"].productNameList;
-                var rightBottom2 = data.enterpriseMap["3"].enterpriseRegionMap;
-                var rightBName2 = data.enterpriseMap["3"].regionNameList;
+                var middleTop = data.enterpriseMap["1"].rightnowTicketM;
+                var middleTopName = data.enterpriseMap["1"].nameList;
+                var middleBottom = data.enterpriseMap["1"].proactiveTicketM;
+                var middleBottomName = data.enterpriseMap["1"].nameList;
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart11",leftTop1.closenums,leftTop1.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart12",middleTop1,middleTopName1,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart13",rightTop1,rightTopName1,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart14",leftBottom1.closenums,leftBottom1.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart15",middleBottom1,middleBottomName1,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart16",rightBottom1,rightBName1,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
-                //initEchart1折线图，initEchart2圆形图
-                //两个用户
-                initEchart2("echart21",leftTop2.closenums,leftTop2.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart22",middleTop2,middleTopName2,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart23",rightTop2,rightTopName2,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart24",leftBottom2.closenums,leftBottom2.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart25",middleBottom2,middleBottomName2,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart26",rightBottom2,rightBName2,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                initEchart2("echart1",leftTop.closenums,leftTop.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart2",middleTop,middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart3",middleTop,middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart4",leftBottom.closenums,leftBottom.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart5",middleBottom,middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart6",middleBottom,middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
             },
             error: function(){
 
@@ -107,31 +87,17 @@ $(function(){
     }
     function initEchart1(domId,echartData,xData,tit) {
         var xAxisData =  xData;
-        var legendData;
+        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
         var seriesData = [];
-        if(domId=='echart13'||domId=='echart23'){
-            legendData = ['ASTINET','IPTRANSIT','VPNIP'];
-        }else{
-            legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
-        }
-        if(echartData.length==0){
-            seriesData = [{
-                name:'nodata',
-                type:'line',
-                smooth:true,
-                data:[0]
-            }];
-        }else{
-            legendData.forEach(function(el){
-                var tmpObj = {};
-                tmpObj.type = 'line';
-                tmpObj.smooth = true;
-                tmpObj.name = el;
-                tmpObj.data = echartData[el];
-                tmpObj.symbol = 'none';
-                seriesData.push(tmpObj)
-            });
-        }
+        legendData.forEach(function(el){
+            var tmpObj = {};
+            tmpObj.type = 'line';
+            tmpObj.smooth = true;
+            tmpObj.name = el;
+            tmpObj.data = echartData[el];
+            tmpObj.symbol = 'none';
+            seriesData.push(tmpObj)
+        });
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
@@ -148,7 +114,6 @@ $(function(){
                 trigger: 'axis'
             },
             legend: {
-                show:false,
                 orient:'vertical',
                 x:'right',
                 y:'top',
@@ -160,8 +125,6 @@ $(function(){
             },
             calculable: false,
             grid:{
-                width: '100%',
-                height: '60%',
                 borderWidth:0,//外围边框线
                 borderColor:'#666c7f'
             },

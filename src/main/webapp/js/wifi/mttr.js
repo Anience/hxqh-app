@@ -24,7 +24,7 @@ $(function () {
                     self.mttrRight = data.rightList;
                     initEchart("echart1",data.mttrM,data.axisiData);
                     setInterval(function(){
-                        window.location.href=_ctx+"/wifi/monitoring";
+                        window.location.href=_ctx+"/wifi/mttr";
                     },300000);
                 },
                 error: function () {
