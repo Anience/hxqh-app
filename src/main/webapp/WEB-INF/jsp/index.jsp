@@ -134,9 +134,18 @@
 			</ul>
 		</li>
 		<li class="menu-list">
-			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE INT'L<i class="first-a-down"></i></a>
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC WHOLESALE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a href="${ctx}/enterprise/top?type=DBS&show=1" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>WHO-34,35,36-OLO-1</a></li>
+				<li><a href="${ctx}/enterprise/ebg?type=DWS" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>wholesale</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_1</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_2</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=6" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_3</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=8" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_4</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=10" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_5</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=12" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_6</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_7</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_8-4</a></li>
+				<li><a href="${ctx}/enterprise/top?type=DWS&show=20" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_9</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">

@@ -7,9 +7,7 @@
 	<link rel="stylesheet" href="${ctx}/css/ent.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/bussiness.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script type="text/javascript" src="${ctx}/js/ent/entUtil.js"></script>
 	<script>
 		var _ctx = "${ctx}";
@@ -17,7 +15,7 @@
 	</script>
 </head>
 <body>
-<div class="ent-layout" style="padding-bottom:50px;">
+<div class="ent-layout" style="padding-bottom:120px;">
 	<div class="ent-header">
 		<h4 class="pageTit"></h4>
 		<div class="span-layout">

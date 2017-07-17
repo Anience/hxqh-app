@@ -26,7 +26,7 @@ $(function(){
                 }
                 $(".pageTit").text(pageTit);
                 var tool = new entUtil();
-                tool.ShowSla();
+                tool.ShowSla(data,"");
 
                 var pieTop = data.pieProactiveList;
                 var pieBottom = data.pieRightnowList;
@@ -84,7 +84,7 @@ $(function(){
                     }
 
 
-                },5000);
+                },500000);
             },
             error: function(){
 
@@ -131,6 +131,8 @@ $(function(){
             },
             calculable: false,
             grid:{
+                x: 30,
+                y: 50,
                 borderWidth:0,//外围边框线
                 borderColor:'#666c7f'
             },
