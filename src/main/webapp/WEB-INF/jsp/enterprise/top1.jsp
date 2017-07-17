@@ -15,7 +15,7 @@
 	</script>
 </head>
 <body>
-<div class="ent-layout" style="padding-bottom:50px;">
+<div class="ent-layout" style="padding-bottom:100px;">
 	<div class="ent-header">
 		<h4>JAK INTER TRADE</h4>
 		<div class="span-layout">

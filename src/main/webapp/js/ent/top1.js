@@ -12,45 +12,16 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
-                //页面用户名展示
-                $(".ent-header h4").text(data.enterpriseMap["1"].name);
-                //sla数据展示
                 var tool = new entUtil();
-                tool.ShowSla(data.enterpriseMap["1"].threeColor,"");
-                //event
-                tool.showEvent(data.enterpriseMap["1"].eventList,"")
-                //图标展示
-                tool.showLogo(data.enterpriseMap["1"].iconList,"")
-                var leftTop;
-                var leftBottom;
-                //处理后台传回的数据为空的状态
-                if(data.enterpriseMap["1"].rightnowList.length==0){
-                    leftTop = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                     leftTop = data.enterpriseMap["1"].rightnowList[0];
-                };
-                if(data.enterpriseMap["1"].proactiveList.length==0){
-                    leftBottom = {
-                        closenums: undefined,
-                        opennums: undefined
-                    };
-                }else{
-                    leftBottom = data.enterpriseMap["1"].proactiveList[0];
-                }
-                var middleTop = data.enterpriseMap["1"].rightnowTicketM;
-                var middleTopName = data.enterpriseMap["1"].nameList;
-                var middleBottom = data.enterpriseMap["1"].proactiveTicketM;
-                var middleBottomName = data.enterpriseMap["1"].nameList;
+                tool.headerInit(data.enterpriseMap["1"],"");
+                var data1 = tool.dealData(data.enterpriseMap["1"]);
                 //initEchart1折线图，initEchart2圆形图
-                initEchart2("echart1",leftTop.closenums,leftTop.opennums,"PERCENTAGE REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart2",middleTop,middleTopName,"REACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart3",middleTop,middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
-                initEchart2("echart4",leftBottom.closenums,leftBottom.opennums,"ERCENTAGE PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart5",middleBottom,middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
-                initEchart1("echart6",middleBottom,middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
+                initEchart2("echart1",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
+                initEchart1("echart2",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart3",data1.middleTop,data1.middleTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                initEchart2("echart4",data1.leftBottom.closenums,data1.leftBottom.opennums,"PROACTIVE");
+                initEchart1("echart5",data1.middleBottom,data1.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
+                initEchart1("echart6",data1.middleBottom,data1.middleBottomName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
             },
             error: function(){
 
