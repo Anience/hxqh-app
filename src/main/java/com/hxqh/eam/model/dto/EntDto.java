@@ -24,7 +24,10 @@ public class EntDto {
 
     private List<String> productNameList;
 
-    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, Map<String, List<Integer>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Integer>> enterpriseProductMap, List<String> productNameList) {
+    private EnterpriseThreeColor threeColor;
+
+
+    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, Map<String, List<Integer>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Integer>> enterpriseProductMap, List<String> productNameList, EnterpriseThreeColor threeColor) {
         this.pieRightnowList = pieRightnowList;
         this.pieProactiveList = pieProactiveList;
         this.rightnowTicketM = rightnowTicketM;
@@ -34,6 +37,7 @@ public class EntDto {
         this.regionNameList = regionNameList;
         this.enterpriseProductMap = enterpriseProductMap;
         this.productNameList = productNameList;
+        this.threeColor = threeColor;
     }
 
     public List<EnterprisePieDto> getPieRightnowList() {
@@ -106,5 +110,13 @@ public class EntDto {
 
     public void setNameList(List<String> nameList) {
         this.nameList = nameList;
+    }
+
+    public EnterpriseThreeColor getThreeColor() {
+        return threeColor;
+    }
+
+    public void setThreeColor(EnterpriseThreeColor threeColor) {
+        this.threeColor = threeColor;
     }
 }
