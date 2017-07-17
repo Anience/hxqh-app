@@ -35,13 +35,18 @@ public class EnterpriseController {
                              @RequestParam("type") String type) {
         Map<String, Object> result = new HashMap<>();
         result.put("page", type);
+        result.put("show", show);
         Integer integer = Integer.valueOf(show);
-        if (integer == 1) {
-            return new ModelAndView("enterprise/top1", result);
-        } else if (integer == 2) {
-            return new ModelAndView("enterprise/top2", result);
+        if (!type.equals("DWS")) {
+            if (integer == 1) {
+                return new ModelAndView("enterprise/top1", result);
+            } else if (integer == 2) {
+                return new ModelAndView("enterprise/top2", result);
+            } else {
+                return new ModelAndView("enterprise/top4", result);
+            }
         } else {
-            return new ModelAndView("enterprise/top4", result);
+            return new ModelAndView("enterprise/top1", result);
         }
     }
 
@@ -70,13 +75,7 @@ public class EnterpriseController {
     public ModelAndView top1(@RequestParam("type") String type) {
         Map<String, Object> result = new HashMap<>();
         result.put("type", type);
-        if (type.equals("e")) {
-            return new ModelAndView("enterprise/entBussiness", result);
-        } else if (type.equals("b")) {
-            return new ModelAndView("enterprise/entBussiness", result);
-        } else {
-            return new ModelAndView("enterprise/entBussiness", result);
-        }
+        return new ModelAndView("enterprise/entBussiness", result);
     }
 
 
