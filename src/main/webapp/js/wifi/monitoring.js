@@ -20,9 +20,6 @@ $(function () {
                 success: function (data) {
                     self.moniList = data.monitoringList;
                     self.titTime = data.nowtime;
-                    setInterval(function(){
-                        window.location.href=_ctx+"/wifi/monitoring";
-                    },300000);
                 },
                 error: function () {
 

@@ -18,9 +18,6 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.disList = data;
-                    setInterval(function(){
-                        window.location.href=_ctx+"/wifi/distribution";
-                    },300000);
                 },
                 error: function () {
 

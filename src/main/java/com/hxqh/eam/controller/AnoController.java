@@ -133,7 +133,7 @@ public class AnoController {
      */
     @RequestMapping(value = "/indiHome", method = RequestMethod.GET)
     public String indiHome() {
-        return "indiHome/indiHome";
+        return "customer/ind";
     }
 
 

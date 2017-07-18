@@ -70,9 +70,9 @@ entUtil.prototype={
             var className = domName+' '+'.'+logoList[i].lay;
             var imgUrl = '';
             if(logoList[i].status=='0'){
-                imgUrl = _ctx+'/imgs/red/'+logoList[i].lay+'.png';
-            }else{
                 imgUrl = _ctx+'/imgs/blue/'+logoList[i].lay+'.png';
+            }else{
+                imgUrl = _ctx+'/imgs/red/'+logoList[i].lay+'.png';
             }
             $(className).show();
             $(className).attr('src',imgUrl);

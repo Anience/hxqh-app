@@ -3,20 +3,23 @@
  */
 $(function () {
     var digitalData = new Vue({
-        el: "#ano81-data",
+        el: "#ind-data",
         data: {
-            anoList:[]
+            impactList: [],
+            regularList: [],
+            totalList: []
         },
         methods: {
            initData:function(){
                var self = this;
                $.ajax({
-                   url: _ctx+"/ano/ano81Data",
+                   url: _ctx+"/ano/indiHomeData",
                    method: "get",
                    dataType: "json",
                    success: function (data) {
-                       self.anoList = data;
-
+                       self.impactList = data.homeImpactList;
+                       self.regularList = data.homeRegularList;
+                       self.totalList = data.homeTotalList;
                    },
                    error: function () {
 
@@ -27,6 +30,9 @@ $(function () {
         created: function () {
             var self = this;
             self.initData();
+           /* setInterval(function(){
+                window.location.href=_ctx+"/ano/indiHomeData";
+            },300000);*/
         }
     });
 });

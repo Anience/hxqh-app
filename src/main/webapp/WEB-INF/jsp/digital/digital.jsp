@@ -5,6 +5,7 @@
 <head>
 	<meta charset='utf-8'>
 	<title>登录页面</title>
+	<meta http-equiv="refresh" content="300">
 	<meta name="keywords" content="">
 	<link rel="stylesheet" href="${ctx}/css/reset.css">
 	<link rel="stylesheet" href="${ctx}/css/digital.css">

@@ -18,9 +18,6 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     self.numList = data;
-                    setInterval(function(){
-                        window.location.href=_ctx+"/wifi/number";
-                    },300000);
                 },
                 error: function () {
 

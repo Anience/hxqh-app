@@ -21,9 +21,6 @@ $(function () {
                 success: function (data) {
                     self.ticketList = data.vWifiTickets;
                     self.time = data.nowTime;
-                    setInterval(function(){
-                        window.location.href=_ctx+"/wifi/ticket";
-                    },300000);
                 },
                 error: function () {
 

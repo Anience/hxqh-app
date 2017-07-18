@@ -78,16 +78,21 @@ table tbody tr:nth-child(odd) td{
     border-right: 2px solid  #03091B;
     border-top: 2px solid #03091B;
 }
-.first-bg{
+tbody tr:nth-child(3) td,tbody tr:nth-child(4) td,
+tbody tr:nth-child(7) td,tbody tr:nth-child(8) td,
+tbody tr:nth-child(11) td,tbody tr:nth-child(12) td,
+tbody tr:nth-child(15) td,tbody tr:nth-child(16) td{
     background: #1E2036;
 }
-.sec-bg{
+tbody tr:nth-child(5) td,tbody tr:nth-child(6) td,
+tbody tr:nth-child(9) td,tbody tr:nth-child(10) td,
+tbody tr:nth-child(13) td,tbody tr:nth-child(14) td{
     background: #292F4A;
 }
-.zero-bg{
+tbody tr:nth-child(1) td,tbody tr:nth-child(2) td{
     background: #1F3E50;
 }
-.red-bg{
+tbody tr td.txt-red{
     background: #EC0000;
 }
 .green-bg{

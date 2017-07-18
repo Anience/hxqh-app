@@ -8,10 +8,23 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data);
+                initEchart("echart1",data.dtoMap.JITTER_KPI);
+                var i = 0;
                 setInterval(function(){
-                    window.location.href=_ctx+"/mobile/mobile92";
-                },300000);
+                    i++;
+                    if(i>=4){
+                        switch(i){
+                            case '1':
+                                initEchart("echart1",data.dtoMap.LATENCY_KPI);
+                            case '2':
+                                initEchart("echart1",data.dtoMap.LOSS_KPI);
+                            case '3':
+                                initEchart("echart1",data.dtoMap.MOS_KPI);
+                            default:
+                                initEchart("echart1",data.dtoMap.JITTER_KPI);
+                        }
+                    }
+                },20000);
             },
             error: function(){
 

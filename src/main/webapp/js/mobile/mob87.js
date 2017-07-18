@@ -48,9 +48,6 @@ $(function () {
                         $("#mob87 ul").find("li").eq(self.i+1)
                             .css("background","#8D93A8");
                     },20000);
-                    setInterval(function(){
-                        window.location.href=_ctx+"/mobile/mobile87";
-                    },300000);
                 },
                 error: function () {
 
@@ -61,25 +58,36 @@ $(function () {
     function initEchart(idDom,echartData){
         var lendData = [];
         var serisData = [];
-        var echartDatas = echartData|| tmpData;
+        var echartDatas;
+        if(echartData){
+            echartDatas = echartData;
+            for(var i=0,len=echartDatas.length;i<len;i++){
+                var tmpObj = {};
+                tmpObj.value = echartDatas[i].value;
+                tmpObj.name = echartDatas[i].name;
+                lendData.push(echartDatas[i].name);
+                serisData.push(tmpObj);
+                for(var name in echartLabel){
+                    if(name==echartDatas[i].name){
+                        echartLabel[name] = echartDatas[i].otherfull;
+                    }
+                }
+            }
+        }else{
+            serisData = [
+                {
+                    value:1,name:'nodata'
+                }
+            ];;
+        }
+
         var echartLabel ={
             'OTHERS':'',
             'FO ACCESS':'',
             'RADIO ACCESS':'',
             'SL_D':''
         };
-        for(var i=0,len=echartDatas.length;i<len;i++){
-            var tmpObj = {};
-            tmpObj.value = echartDatas[i].value;
-            tmpObj.name = echartDatas[i].name;
-            lendData.push(echartDatas[i].name);
-            serisData.push(tmpObj);
-            for(var name in echartLabel){
-                if(name==echartDatas[i].name){
-                    echartLabel[name] = echartDatas[i].otherfull;
-                }
-            }
-        }
+
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title :{

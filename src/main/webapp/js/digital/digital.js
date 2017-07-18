@@ -155,7 +155,4 @@ $(function () {
             myChart.resize();
         });
     }
-    setInterval(function(){
-        window.location.href=_ctx+"/digital/13141718";
-    },300000);
 });
