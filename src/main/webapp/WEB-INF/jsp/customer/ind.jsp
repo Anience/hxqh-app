@@ -40,21 +40,7 @@
 				</tr>
 			</thead>
 			//背景色zero-bg,first-bg,sec-bg,red-bg,green-bg
-			<tbody>
-				<template v-for="item in totalList">
-					<tr>
-						<td rowspan="2">{{item.regional}}</td>
-						<td>{{item.toSh}}</td>
-						<td>{{item.toOp}}</td>
-						<td>{{item.toDev}}</td>
-					</tr>
-					<tr>
-						<td>{{item.toSh1}}</td>
-						<td>{{item.toCl}}</td>
-						<td>kalah</td>
-					</tr>
-				</template>
-			</tbody>
+			<tbody id="total-table"></tbody>
 		</table>
 
 		<!--中间table-->
@@ -77,21 +63,7 @@
 					<td width="7%"><span>Status</span></td>
 				</tr>
 			</thead>
-			<tbody>
-				<template v-for="item in regularList">
-					<tr>
-						<td rowspan="2">{{item.regional}}</td>
-						<td>{{item.reSh}}</td>
-						<td>{{item.reOp}}</td>
-						<td>{{item.redev}}</td>
-					</tr>
-					<tr>
-						<td>{{item.reSh1}}</td>
-						<td>{{item.reCl}}</td>
-						<td>kalah</td>
-					</tr>
-				</template>
-			</tbody>
+			<tbody id="regular-table"></tbody>
 		</table>
 
 		<!--右table-->
@@ -114,21 +86,7 @@
 					<td width="7%"><span>Status</span></td>
 				</tr>
 			</thead>
-			<tbody>
-					<tr v-for="item in impactList">
-						<td rowspan="2">{{item.regional}}</td>
-						<td>{{item.imSh}}</td>
-						<td>{{item.imOp}}</td>
-						<td v-bind:class="{'txt-red':parseFloat(item.imdev<=0)">{{item.imdev}}</td>
-					</tr>
-					<tr>
-						<td>{{item.imSh1}}</td>
-						<td>{{item.imCl}}</td>
-						<td v-if="parseInt(item.imdev)>0">kalah</td>
-						<td v-if="parseInt(item.imdev)==0" style="color: #eb0300;">menany</td>
-						<td v-if="parseInt(item.imdev)<0" style="color: #eb0300;">seri</td>
-					</tr>
-			</tbody>
+			<tbody id="impact-table"></tbody>
 		</table>
 		<div class="clearfix"></div>
 	</div>
