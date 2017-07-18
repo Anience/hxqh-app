@@ -147,32 +147,54 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
     private EnterpriseTopDto generateEnterpriseDto(Integer show, String type, Map<String, Object> params, String rightnowWhere, String roactiveWhere) {
+        /*************************************饼图************************************************/
+
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
         List<VEnterpriseTicket> proactiveList = vEnterpriseTicketDao.findAll(roactiveWhere, params, null);
+        /*************************************饼图************************************************/
 
-        // 1.查询KTK
-        String sqlrightnowSql = "select tbe.echars_id as rn, tbe.echars_lable as mon, tbe.echars_legend as regional,nvl(countval,0) as countval from tb_ioc_config_echars tbe left join \n" +
-                "(select mon,regional,sum(countval) as countval from  tb_ioc_data_bgew_ticket_tkt tkt where tkt.customer_segment = :CUSTOMERSEGMENT and  tkt.sourcetype=:SOURCETYPE and tkt.custrank =:custrank group by mon,regional) rs\n" +
-                "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional and  tbe.ECHARS_TYPE = 'BEFORE30DAYS' order by tbe.echars_id";
+
+        /*************************************KTK折线图************************************************/
+        String sqlrightnowSql = "select f.*, rownum + 2000 rn\n" +
+                "  from (select tbe.echars_id as eid,\n" +
+                "       tbe.echars_lable as mon,\n" +
+                "       tbe.echars_legend as regional,\n" +
+                "       nvl(countval, 0) as countval\n" +
+                "  from tb_ioc_config_echars tbe\n" +
+                "  left join (select mon, regional, sum(countval) as countval\n" +
+                "               from tb_ioc_data_bgew_ticket_tkt tkt\n" +
+                "              where tkt.customer_segment =:CUSTOMERSEGMENT \n" +
+                "                and tkt.sourcetype = :SOURCETYPE \n" +
+                "                and tkt.custrank = :custrank \n" +
+                "              group by mon, regional) rs\n" +
+                "    on tbe.echars_lable = rs.mon\n" +
+                "   and tbe.echars_legend = rs.regional\n" +
+                "   and tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
+                " order by tbe.echars_id) f";
         List<EnterpriseKTK> rightnowTicketTktList = sessionFactory.getCurrentSession().createSQLQuery(sqlrightnowSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "RIGHTNOW").setString("custrank", String.valueOf(show)).list();
 
 
-        String sqlproactiveSql = "select tbe.echars_id as rn, tbe.echars_lable as mon, tbe.echars_legend as regional,nvl(countval,0) as countval from tb_ioc_config_echars tbe left join \n" +
-                "(select mon,regional,sum(countval) as countval from  tb_ioc_data_bgew_ticket_tkt tkt where tkt.customer_segment = :CUSTOMERSEGMENT and  tkt.sourcetype=:SOURCETYPE and tkt.custrank =:custrank group by mon,regional) rs\n" +
-                "on tbe.echars_lable = rs.mon and tbe.echars_legend = rs.regional and  tbe.ECHARS_TYPE = 'BEFORE30DAYS' order by tbe.echars_id";
+        String sqlproactiveSql = "select f.*, rownum + 3000 rn\n" +
+                "  from (select tbe.echars_id as eid,\n" +
+                "               tbe.echars_lable as mon,\n" +
+                "               tbe.echars_legend as regional,\n" +
+                "               nvl(countval, 0) as countval\n" +
+                "          from tb_ioc_config_echars tbe\n" +
+                "          left join (select mon, regional, sum(countval) as countval\n" +
+                "                      from tb_ioc_data_bgew_ticket_tkt tkt\n" +
+                "                     where tkt.customer_segment = :CUSTOMERSEGMENT\n" +
+                "                       and tkt.sourcetype = :SOURCETYPE\n" +
+                "                       and tkt.custrank = :custrank\n" +
+                "                     group by mon, regional) rs\n" +
+                "            on tbe.echars_lable = rs.mon\n" +
+                "           and tbe.echars_legend = rs.regional\n" +
+                "           and tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
+                "         order by tbe.echars_id) f\n";
         List<EnterpriseKTK> proactiveTicketTktList1 = sessionFactory.getCurrentSession().createSQLQuery(sqlproactiveSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
 
-        //nameList
-        String nameListSQL = "select t.echars_lable as name  from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
-        List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
-        List<String> nList = new LinkedList<>();
-        for (EnterpriseNameDto nameDto : nameList) {
-            nList.add(nameDto.getName());
-        }
-
-        // 4.对rightnowTicketTktList分组
+        // 对rightnowTicketTktList分组
         Map<String, List<EnterpriseKTK>> rightnowTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
             @Override
             public String groupby(Object obj) {
@@ -182,7 +204,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         });
 
         //对proactiveTicketTktList1分组
-        Map<String, List<EnterpriseKTK>> proactiveTicketMap = GroupListUtil.group(rightnowTicketTktList, new GroupListUtil.GroupBy<String>() {
+        Map<String, List<EnterpriseKTK>> proactiveTicketMap = GroupListUtil.group(proactiveTicketTktList1, new GroupListUtil.GroupBy<String>() {
             @Override
             public String groupby(Object obj) {
                 EnterpriseKTK d = (EnterpriseKTK) obj;
@@ -195,6 +217,18 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         Map<String, List<Integer>> proactiveTicketM = new LinkedHashMap<>();
         extractNumberList(proactiveTicketMap, proactiveTicketM);
+
+
+        //KTK nameList
+        String nameListSQL = "select t.echars_lable as name  from TB_IOC_CONFIG_ECHARS t where t.echars_legend = 'NAS' and t.echars_type ='BEFORE30DAYS' order by t.echars_id";
+        List<EnterpriseNameDto> nameList = sessionFactory.getCurrentSession().createSQLQuery(nameListSQL).addEntity(EnterpriseNameDto.class).list();
+        List<String> nList = new LinkedList<>();
+        for (EnterpriseNameDto nameDto : nameList) {
+            nList.add(nameDto.getName());
+        }
+
+        /*************************************KTK折线图************************************************/
+
 
         /*************************************右上角 TB_IOC_DATA_BGEW_SLA   三色*****************************/
         String scolorSql = "select t.customer_sement as cust,sum(t.gt) as gt,sum(t.eq) as eq,sum(t.lt) as lt from TB_IOC_DATA_BGEW_SLA t " +
@@ -237,8 +271,15 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*************************************event*****************************/
 
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
-        String enter6SQL = "select  w.*,rownum rn  from (select r.treg ,r.dh as dh,nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
-                "          left join (select * from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT and d.custrank = :custrank) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
+        String enter6SQL = "select w.*, rownum+10000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_persion_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
+                "          left join (select *\n" +
+                "                      from TB_IOC_ENT_BGE_REGION d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                       and d.custrank = :custrank) t\n" +
+                "            on to_char(t.time_data, 'yyyy-MM-dd hh24:mi:ss') = r.dtime\n" +
+                "         order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(enter6SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
@@ -263,8 +304,15 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
-        String enter7SQL = "select  w.*,rownum+900 rn  from (select r.treg,r.dh as dh,nvl(t.sum_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =1  ) r  " +
-                "          left join (select * from TB_IOC_ENT_BGE_PRODUCT d where d.cust_type = :CUSTOMERSEGMENT and d.custrank = :custrank) t on to_char(t.data_times,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
+        String enter7SQL = "select w.*, rownum + 20000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
+                "          left join (select *\n" +
+                "                      from TB_IOC_ENT_BGE_PRODUCT d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                       and d.custrank = :custrank) t\n" +
+                "            on to_char(t.data_times, 'yyyy-MM-dd hh24:mi:ss') = r.dtime\n" +
+                "         order by r.configregionid) w\n";
         List<Enterprise67Dto> dto7List = sessionFactory.getCurrentSession().createSQLQuery(enter7SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 

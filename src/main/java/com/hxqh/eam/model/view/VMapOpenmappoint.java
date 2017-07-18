@@ -7,66 +7,74 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_MAP_OPENMAPPOINTS database table.
- * 
  */
 @Entity
-@Table(name="V_MAP_OPENMAPPOINTS")
+@Table(name = "V_MAP_OPENMAPPOINTS")
 public class VMapOpenmappoint implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private String name;
+    private String name;
 
-	@Id
-	private BigDecimal rn;
+    @Id
+    private BigDecimal rn;
 
-	@Column(name="\"TYPE\"")
-	private String type;
+    @Column(name = "\"TYPE\"")
+    private String type;
 
-	private String x;
+    private String x;
 
-	private String y;
+    private String y;
 
-	public VMapOpenmappoint() {
-	}
+    private String status;
 
-	public String getName() {
-		return this.name;
-	}
+    public VMapOpenmappoint() {
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public BigDecimal getRn() {
-		return this.rn;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setRn(BigDecimal rn) {
-		this.rn = rn;
-	}
+    public BigDecimal getRn() {
+        return this.rn;
+    }
 
-	public String getType() {
-		return this.type;
-	}
+    public void setRn(BigDecimal rn) {
+        this.rn = rn;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getType() {
+        return this.type;
+    }
 
-	public String getX() {
-		return this.x;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setX(String x) {
-		this.x = x;
-	}
+    public String getX() {
+        return this.x;
+    }
 
-	public String getY() {
-		return this.y;
-	}
+    public void setX(String x) {
+        this.x = x;
+    }
 
-	public void setY(String y) {
-		this.y = y;
-	}
+    public String getY() {
+        return this.y;
+    }
 
+    public void setY(String y) {
+        this.y = y;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
