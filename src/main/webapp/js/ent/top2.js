@@ -114,7 +114,7 @@ $(function(){
         var xAxisData =  xData;
         var legendData;
         var seriesData = [];
-        if(domId=='echart13'||domId=='echart23'){
+        if(domId=='echart26'||domId=='echart16'){
             legendData = ['ASTINET','IPTRANSIT','VPNIP'];
         }else{
             legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];

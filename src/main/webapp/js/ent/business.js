@@ -75,7 +75,7 @@ $(function(){
                             $(".first-page").hide();
                             $(".sec-page").show();
                             $(".third-page").hide();
-                            initEchartScale("echart5",secPage,data.productNameList,"TRAFFIC BY REGION (2 DAYS PER 6 HOURS)");
+                            initEchartScale("echart5",secPage,data.productNameList,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
                             break;
                         default:
                             $(".first-page").hide();

@@ -26,10 +26,10 @@ entUtil.prototype={
         dealedData.middleTopName = data.nameList;
         dealedData. middleBottom = data.proactiveTicketM;
         dealedData.middleBottomName = data.nameList;
-        dealedData.rightTop = data.enterpriseProductMap;
-        dealedData.rightTopName = data.productNameList;
-        dealedData.rightBottom = data.enterpriseRegionMap;
-        dealedData.rightBName = data.regionNameList;
+        dealedData.rightTop = data.enterpriseRegionMap;
+        dealedData.rightTopName = data.regionNameList;
+        dealedData.rightBottom = data.enterpriseProductMap;
+        dealedData.rightBName = data.productNameList;
         return dealedData;
     },
     headerInit:function(data,domName){

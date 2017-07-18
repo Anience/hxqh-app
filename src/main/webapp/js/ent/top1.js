@@ -94,17 +94,31 @@ $(function(){
     }
     function initEchart1(domId,echartData,xData,tit) {
         var xAxisData =  xData;
-        var legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        var legendData = [];
         var seriesData = [];
-        legendData.forEach(function(el){
-            var tmpObj = {};
-            tmpObj.type = 'line';
-            tmpObj.smooth = true;
-            tmpObj.name = el;
-            tmpObj.data = echartData[el];
-            tmpObj.symbol = 'none';
-            seriesData.push(tmpObj)
-        });
+        if(domId == 'echart6'){
+            legendData = ['ASTINET','IPTRANSIT','VPNIP'];
+        }else{
+            legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+        }
+        if(echartData.length==0){
+            seriesData = [{
+                name:'nodata',
+                type:'line',
+                smooth:true,
+                data:[0]
+            }];
+        }else{
+            legendData.forEach(function(el){
+                var tmpObj = {};
+                tmpObj.type = 'line';
+                tmpObj.smooth = true;
+                tmpObj.name = el;
+                tmpObj.data = echartData[el];
+                tmpObj.symbol = 'none';
+                seriesData.push(tmpObj)
+            });
+        };
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
