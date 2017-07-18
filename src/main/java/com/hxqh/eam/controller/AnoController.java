@@ -7,6 +7,7 @@ package com.hxqh.eam.controller;
 import com.hxqh.eam.model.dto.IndiHomeDto;
 import com.hxqh.eam.model.dto.OpenMapLinesDto;
 import com.hxqh.eam.model.dto.OpenMapTableDto;
+import com.hxqh.eam.model.dto.VoiceDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -146,6 +147,29 @@ public class AnoController {
     public IndiHomeDto indiHomeData() {
         IndiHomeDto indiHomeDto = anoService.getIndiHomeData();
         return indiHomeDto;
+    }
+
+    /**
+     * voice traffic performance 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/voice", method = RequestMethod.GET)
+    public String voicetraffic() {
+        return "customer/voicetraffic";
+    }
+
+
+    /**
+     * indiHome 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/voiceData", method = RequestMethod.GET)
+    public VoiceDto getVoiceTrafficData() {
+        VoiceDto voiceDto = anoService.getVoiceTrafficData();
+        return voiceDto;
     }
 
 }
