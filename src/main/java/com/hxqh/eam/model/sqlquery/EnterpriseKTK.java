@@ -15,6 +15,8 @@ public class EnterpriseKTK implements Serializable {
     private String regional;
     private Integer countval;
 
+    private Integer eid;
+
     public EnterpriseKTK() {
     }
 
@@ -24,6 +26,14 @@ public class EnterpriseKTK implements Serializable {
         this.mon = mon;
         this.regional = regional;
         this.countval = countval;
+    }
+
+    public Integer getEid() {
+        return eid;
+    }
+
+    public void setEid(Integer eid) {
+        this.eid = eid;
     }
 
     public Integer getRn() {

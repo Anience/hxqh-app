@@ -13,13 +13,15 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "V_MOB_92")
 public class VMob92 implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     private Integer rn;
 
     private BigDecimal greennum;
 
-    private String id;
+    private String treg;
 
     private BigDecimal orangenum;
 
@@ -30,13 +32,17 @@ public class VMob92 implements Serializable {
     public VMob92() {
     }
 
-    public VMob92(Integer rn, BigDecimal greennum, String id, BigDecimal orangenum, BigDecimal rednum, String kpitype) {
+    public VMob92(Integer rn, BigDecimal greennum, String treg, BigDecimal orangenum, BigDecimal rednum, String kpitype) {
         this.rn = rn;
         this.greennum = greennum;
-        this.id = id;
+        this.treg = treg;
         this.orangenum = orangenum;
         this.rednum = rednum;
         this.kpitype = kpitype;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Integer getRn() {
@@ -48,23 +54,23 @@ public class VMob92 implements Serializable {
     }
 
     public BigDecimal getGreennum() {
-        return this.greennum;
+        return greennum;
     }
 
     public void setGreennum(BigDecimal greennum) {
         this.greennum = greennum;
     }
 
-    public String getId() {
-        return this.id;
+    public String getTreg() {
+        return treg;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTreg(String treg) {
+        this.treg = treg;
     }
 
     public BigDecimal getOrangenum() {
-        return this.orangenum;
+        return orangenum;
     }
 
     public void setOrangenum(BigDecimal orangenum) {
@@ -72,7 +78,7 @@ public class VMob92 implements Serializable {
     }
 
     public BigDecimal getRednum() {
-        return this.rednum;
+        return rednum;
     }
 
     public void setRednum(BigDecimal rednum) {

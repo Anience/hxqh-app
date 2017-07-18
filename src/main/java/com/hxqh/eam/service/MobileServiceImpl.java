@@ -70,7 +70,7 @@ public class MobileServiceImpl implements MobileService {
 
         Map<String, Mob92Dto> dtoMap = new HashMap<>();
         for (Map.Entry<String, List<VMob92>> entry : map.entrySet()) {
-            Mob92Dto mob92Dto = getMob92Dto(mob92List);
+            Mob92Dto mob92Dto = getMob92Dto(entry.getValue());
             dtoMap.put(entry.getKey(), mob92Dto);
         }
         Moblie92 moblie92 = new Moblie92(dtoMap);
@@ -85,10 +85,10 @@ public class MobileServiceImpl implements MobileService {
             //如果sum不等于0
             Mob92PercentDto vMob92 = null;
             if (sum != 0) {
-                vMob92 = new Mob92PercentDto(mob92.getGreennum().doubleValue() / sum * 1000, mob92.getId(),
+                vMob92 = new Mob92PercentDto(mob92.getGreennum().doubleValue() / sum * 1000, mob92.getTreg(),
                         mob92.getOrangenum().doubleValue() / sum * 1000, mob92.getRednum().doubleValue() / sum * 1000);
             } else {
-                vMob92 = new Mob92PercentDto(new Double(0), mob92.getId(), new Double(0), new Double(1000));
+                vMob92 = new Mob92PercentDto(new Double(0), mob92.getTreg(), new Double(0), new Double(1000));
             }
             percentMob92List.add(vMob92);
         }

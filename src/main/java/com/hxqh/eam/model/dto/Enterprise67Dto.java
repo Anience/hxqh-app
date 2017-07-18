@@ -17,24 +17,18 @@ public class Enterprise67Dto {
     private Integer personsum;
 
     @Id
-    private Integer rn;
+    private Integer regionrn;
 
     public Enterprise67Dto() {
     }
 
-    public Enterprise67Dto(String treg, String dh, Integer personsum, Integer rn) {
-        this.treg = treg;
-        this.dh = dh;
-        this.personsum = personsum;
-        this.rn = rn;
+
+    public Integer getRegionrn() {
+        return regionrn;
     }
 
-    public Integer getRn() {
-        return rn;
-    }
-
-    public void setRn(Integer rn) {
-        this.rn = rn;
+    public void setRegionrn(Integer regionrn) {
+        this.regionrn = regionrn;
     }
 
     public String getTreg() {

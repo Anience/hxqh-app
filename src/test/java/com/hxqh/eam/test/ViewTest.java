@@ -34,7 +34,7 @@ public class ViewTest {
     private SystemService systemService;
     @Autowired
     private EnterpriseService enterpriseService;
-    
+
     @Test
     public void testCreateSQLQuery() {
 //        EnterpriseTopDto dbs = enterpriseService.getTopData(1, "DBS");
@@ -45,18 +45,18 @@ public class ViewTest {
     @Test
     public void testGetViewData() {
         List<Menu> listData = systemService.getMenuListData();
-        Assert.assertTrue(listData.size()>0);
+        Assert.assertTrue(listData.size() > 0);
     }
 
     @Test
     public void testLogin() {
-        LoginDto loginDto = new LoginDto("admin","123456");
+        LoginDto loginDto = new LoginDto("admin", "123456");
         List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         SfOrganizationAccount account = loginUserList.get(0);
         Assert.assertTrue(account.getPassword().equals(Account.encrypt(loginDto.getPassword())));
     }
 
-    @Test
+    //    @Test
     public void testLoginShiro() {
 
         // 1.获取SecurityManager工厂，此处使用ini配置文件初始化SecurityManager
@@ -91,7 +91,6 @@ public class ViewTest {
             System.out.println("帐号不存在. There is no user with username of " + token.getPrincipal());
         }
     }
-
 
 
 }
