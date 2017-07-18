@@ -434,7 +434,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
-        String ent6SQl = "select  w.*,rownum rn  from (select r.treg ,r.dh as dh, nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
+        String ent6SQl = "select  w.*,rownum+5000 regionrn  from (select r.treg ,r.dh as dh, nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
                 "left join (select  d.treg,d.time_data,sum(d.sum_persion_in) as sum_persion_in from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT group by d.treg,d.time_data ) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
@@ -457,7 +457,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
-        String ent7SQl = "select  w.*,rownum+900 rn  from (select r.treg,r.dh as dh,nvl(t.sum_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =1  ) r " +
+        String ent7SQl = "select  w.*,rownum+6000 regionrn  from (select r.treg,r.dh as dh,nvl(t.sum_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =1  ) r " +
                 " left join (select d.lay,d.data_times,sum(d.sum_in) as sum_in from TB_IOC_ENT_BGE_PRODUCT d where d.cust_type = :CUSTOMERSEGMENT group by d.lay,d.data_times) t on to_char(t.data_times,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
         List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).setString("CUSTOMERSEGMENT", type).list();
 

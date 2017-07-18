@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="TB_FFM_ACHIEVEMENT")
+@Table(name="TB_IOC_PRO_TICKET_FFM")
 public class TbFfmAchievement implements Serializable {
 	private static final long serialVersionUID = 1L;
 
