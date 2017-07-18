@@ -24,17 +24,11 @@
     <logger name="org.springframework.data.mongodb.core.convert.CustomConversions">
         <level value="ERROR"/>
     </logger>
-    <logger name="org.hibernate.type.descriptor.sql.BasicBinder">
-        <level value="TRACE"/>
-    </logger>
     <logger name="org.springframework">
         <level value="ERROR"/>
     </logger>
     <logger name="org.hibernate">
         <level value="WARN"/>
-    </logger>
-    <logger name="org.hibernate.hql.internal.ast">
-        <level value="DEBUG"/>
     </logger>
     <logger name="org.apache.cxf">
         <level value="WARN"/>
@@ -67,14 +61,12 @@
         <level value="WARN"/>
     </logger>
 
-
-    <logger name="org.hibernate.hql.internal.ast">
-        <level value="DEBUG"/>
-    </logger>
-    <logger name="org.hibernate.type.descriptor">
-        <level value="DEBUG"/>
-    </logger>
-
+    <!--<logger name="org.hibernate.hql.internal.ast">-->
+        <!--<level value="ERROR"/>-->
+    <!--</logger>-->
+    <!--<logger name="org.hibernate.type.descriptor.sql">-->
+        <!--<level value="ERROR"/>-->
+    <!--</logger>-->
 
     <root>
         <priority value="ERROR"/>

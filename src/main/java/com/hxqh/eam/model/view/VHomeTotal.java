@@ -7,81 +7,78 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_HOME_TOTAL database table.
- * 
  */
 @Entity
-@Table(name="V_HOME_TOTAL")
+@Table(name = "V_HOME_TOTAL")
 public class VHomeTotal implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	private String regional;
+    @Id
+    private String regional;
 
+    @Column(name = "TO_CL")
+    private BigDecimal cl;
 
-	@Column(name="TO_CL")
-	private BigDecimal toCl;
+    @Column(name = "TO_DEV")
+    private BigDecimal dev;
 
-	@Column(name="TO_DEV")
-	private BigDecimal toDev;
+    @Column(name = "TO_OP")
+    private BigDecimal op;
 
-	@Column(name="TO_OP")
-	private BigDecimal toOp;
+    @Column(name = "TO_SH")
+    private BigDecimal sh;
 
-	@Column(name="TO_SH")
-	private BigDecimal toSh;
+    @Column(name = "TO_SH_1")
+    private BigDecimal sh1;
 
-	@Column(name="TO_SH_1")
-	private BigDecimal toSh1;
+    public VHomeTotal() {
+    }
 
-	public VHomeTotal() {
-	}
+    public String getRegional() {
+        return this.regional;
+    }
 
-	public String getRegional() {
-		return this.regional;
-	}
+    public void setRegional(String regional) {
+        this.regional = regional;
+    }
 
-	public void setRegional(String regional) {
-		this.regional = regional;
-	}
+    public BigDecimal getCl() {
+        return cl;
+    }
 
-	public BigDecimal getToCl() {
-		return this.toCl;
-	}
+    public void setCl(BigDecimal cl) {
+        this.cl = cl;
+    }
 
-	public void setToCl(BigDecimal toCl) {
-		this.toCl = toCl;
-	}
+    public BigDecimal getDev() {
+        return dev;
+    }
 
-	public BigDecimal getToDev() {
-		return this.toDev;
-	}
+    public void setDev(BigDecimal dev) {
+        this.dev = dev;
+    }
 
-	public void setToDev(BigDecimal toDev) {
-		this.toDev = toDev;
-	}
+    public BigDecimal getOp() {
+        return op;
+    }
 
-	public BigDecimal getToOp() {
-		return this.toOp;
-	}
+    public void setOp(BigDecimal op) {
+        this.op = op;
+    }
 
-	public void setToOp(BigDecimal toOp) {
-		this.toOp = toOp;
-	}
+    public BigDecimal getSh() {
+        return sh;
+    }
 
-	public BigDecimal getToSh() {
-		return this.toSh;
-	}
+    public void setSh(BigDecimal sh) {
+        this.sh = sh;
+    }
 
-	public void setToSh(BigDecimal toSh) {
-		this.toSh = toSh;
-	}
+    public BigDecimal getSh1() {
+        return sh1;
+    }
 
-	public BigDecimal getToSh1() {
-		return this.toSh1;
-	}
-
-	public void setToSh1(BigDecimal toSh1) {
-		this.toSh1 = toSh1;
-	}
-
+    public void setSh1(BigDecimal sh1) {
+        this.sh1 = sh1;
+    }
 }
