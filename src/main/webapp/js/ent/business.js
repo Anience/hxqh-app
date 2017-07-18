@@ -30,13 +30,13 @@ $(function(){
                 var tool = new entUtil();
                 tool.ShowSla(data.threeColor,"");
 
-                var pieTop = data.pieProactiveList;
-                var pieBottom = data.pieRightnowList;
+                var pieTop = data.pieRightnowList;
+                var pieBottom = data.pieProactiveList;
                 var lineTop = data.rightnowTicketM;
                 var lineBottom = data.proactiveTicketM;
                 var nameList = data.nameList;
-                var secPage = data.enterpriseProductMap;
-                var thirdPage =  data.enterpriseRegionMap;
+                var secPage = data.enterpriseRegionMap;
+                var thirdPage =  data.enterpriseProductMap;
 
                 if(pieTop.length==0){
                     pieTop={
@@ -44,7 +44,7 @@ $(function(){
                         opennums: undefined
                     }
                 }else{
-                    pieTop = data.pieProactiveList[0];
+                    pieTop = data.pieRightnowList[0];
                 }
                 if(pieBottom.length==0){
                     pieBottom={
@@ -52,7 +52,7 @@ $(function(){
                         opennums: undefined
                     }
                 }else{
-                    pieBottom = data.pieRightnowList[0];
+                    pieBottom = data.pieProactiveList[0];
                 }
 
                 var i = 1;
@@ -295,7 +295,7 @@ $(function(){
     }
     function initEchartScale(idDom,data,xAxis,tit){
         var legendData = [];
-        if(idDom=='echart5'){
+        if(idDom=='echart6'){
             legendData = ['ASTINET','IPTRANSIT','VPNIP'];
         }else{
             legendData = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
