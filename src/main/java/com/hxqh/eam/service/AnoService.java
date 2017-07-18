@@ -3,6 +3,7 @@ package com.hxqh.eam.service;
 import com.hxqh.eam.model.dto.IndiHomeDto;
 import com.hxqh.eam.model.dto.OpenMapLinesDto;
 import com.hxqh.eam.model.dto.OpenMapTableDto;
+import com.hxqh.eam.model.dto.VoiceDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -25,4 +26,6 @@ public interface AnoService {
     OpenMapLinesDto getOpenMapLinesData();
 
     OpenMapTableDto getOpenMapTableData();
+
+    VoiceDto getVoiceTrafficData();
 }
