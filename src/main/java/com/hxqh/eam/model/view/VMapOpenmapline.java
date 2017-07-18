@@ -32,10 +32,9 @@ public class VMapOpenmapline implements Serializable {
 	@Column(name="TO_Y")
 	private String toY;
 
-	private Date adddate;
+//	private Date adddate;
 
-	//TODO  等老司机
-	//private String status;
+
 
 	public VMapOpenmapline() {
 	}
@@ -88,11 +87,4 @@ public class VMapOpenmapline implements Serializable {
 		this.toY = toY;
 	}
 
-	public Date getAdddate() {
-		return adddate;
-	}
-
-	public void setAdddate(Date adddate) {
-		this.adddate = adddate;
-	}
 }
