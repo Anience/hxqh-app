@@ -59,6 +59,12 @@ $(function () {
         var lendData = [];
         var serisData = [];
         var echartDatas;
+        var echartLabel ={
+            'OTHERS':'',
+            'FO ACCESS':'',
+            'RADIO ACCESS':'',
+            'SL_D':''
+        };
         if(echartData){
             echartDatas = echartData;
             for(var i=0,len=echartDatas.length;i<len;i++){
@@ -80,14 +86,6 @@ $(function () {
                 }
             ];;
         }
-
-        var echartLabel ={
-            'OTHERS':'',
-            'FO ACCESS':'',
-            'RADIO ACCESS':'',
-            'SL_D':''
-        };
-
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
             title :{

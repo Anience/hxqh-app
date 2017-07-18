@@ -21,25 +21,24 @@
 		<div class="col-md-10">
 			<h3>KPI</h3>
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-4 md2">
 					<h4 style="color: #03091A;">Packet</h4>
 					<table class="table table-bordered">
 						<thead>
-							<tr><td style="font-size: 30px;color: #03091A;background: #03091A;">NAS</td></tr>
+							<tr>
+								<td style="font-size: 30px;color: #03091A;background: #03091A;">NAS</td>
+								<td style="background: #015E8A;">Total Sites</td>
+							</tr>
 						</thead>
-						<tbody>
-							<tr><td>NAS</td></tr>
-							<tr><td>TREG-1</td></tr>
-							<tr><td>TREG-2</td></tr>
-							<tr><td>TREG-3</td></tr>
-							<tr><td>TREG-4</td></tr>
-							<tr><td>TREG-5</td></tr>
-							<tr><td>TREG-6</td></tr>
-							<tr><td>TREG-7</td></tr>
+						<tbody v-for="item in mobList">
+							<tr>
+								<td>{{item.ioc1}}</td>
+								<td>{{item.total_site}}</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-4 md5">
 					<h4>Packet Loss</h4>
 					<table class="table table-bordered">
 						<thead>
@@ -58,7 +57,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-4 md5">
 					<h4>Latency</h4>
 					<table class="table table-bordered">
 						<thead>
