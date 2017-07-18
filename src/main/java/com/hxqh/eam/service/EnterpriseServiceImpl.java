@@ -82,21 +82,22 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             rightnowWhere3 = where1 + rank3;
             roactiveWhere3 = where2 + rank3;
 
-            EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
-            EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show, type, params, rightnowWhere3, roactiveWhere3);
+
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
             if (!type.equals("DWS")) {
+                EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
+                EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show + 1, type, params, rightnowWhere3, roactiveWhere3);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
                 enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto3);
             } else {
+                EnterpriseTopDto enterpriseTopDto2 = generateEnterpriseDto(show, type, params, rightnowWhere2, roactiveWhere2);
+                EnterpriseTopDto enterpriseTopDto3 = generateEnterpriseDto(show - 1, type, params, rightnowWhere3, roactiveWhere3);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto2);
                 enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto3);
             }
-
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
             return enterpriseDto;
         } else {
-
 
             String rank4 = "and (custrank=:custrank4)";
             String rank5 = "and (custrank=:custrank5)";
@@ -123,17 +124,22 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             roactiveWhere6 = where2 + rank6;
             rightnowWhere7 = where1 + rank7;
             roactiveWhere7 = where2 + rank7;
-            EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-            EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show, type, params, rightnowWhere5, roactiveWhere5);
-            EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show, type, params, rightnowWhere6, roactiveWhere6);
-            EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show, type, params, rightnowWhere7, roactiveWhere7);
+
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
             if (integer == 4 && DAILY.contains(type)) {
+                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show+1, type, params, rightnowWhere5, roactiveWhere5);
+                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show+2, type, params, rightnowWhere6, roactiveWhere6);
+                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show+3, type, params, rightnowWhere7, roactiveWhere7);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
                 enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
                 enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
                 enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
             } else {//(type.equals("DWS") && integer == 18)
+                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show-1, type, params, rightnowWhere5, roactiveWhere5);
+                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show-2, type, params, rightnowWhere6, roactiveWhere6);
+                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show-3, type, params, rightnowWhere7, roactiveWhere7);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
                 enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
                 enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
@@ -147,6 +153,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
     private EnterpriseTopDto generateEnterpriseDto(Integer show, String type, Map<String, Object> params, String rightnowWhere, String roactiveWhere) {
+
+        Integer rownumkey1 = show * 10000;
+        Integer rownumkey2 = show * 20000;
         /*************************************饼图************************************************/
 
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);
@@ -155,7 +164,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************KTK折线图************************************************/
-        String sqlrightnowSql = "select f.*, rownum + 2000 rn\n" +
+        String sqlrightnowSql = "select f.*, rownum + " + rownumkey1 + " rn\n" +
                 "  from (select tbe.echars_id as eid,\n" +
                 "       tbe.echars_lable as mon,\n" +
                 "       tbe.echars_legend as regional,\n" +
@@ -175,7 +184,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "RIGHTNOW").setString("custrank", String.valueOf(show)).list();
 
 
-        String sqlproactiveSql = "select f.*, rownum + 3000 rn\n" +
+        String sqlproactiveSql = "select f.*, rownum + " + rownumkey2 + " rn\n" +
                 "  from (select tbe.echars_id as eid,\n" +
                 "               tbe.echars_lable as mon,\n" +
                 "               tbe.echars_legend as regional,\n" +
@@ -271,7 +280,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*************************************event*****************************/
 
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
-        String enter6SQL = "select w.*, rownum+10000 regionrn\n" +
+        String enter6SQL = "select w.*, rownum+" + rownumkey1 + " regionrn\n" +
                 "  from (select r.treg, r.dh as dh, nvl(t.sum_persion_in, 0) as personsum\n" +
                 "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
                 "          left join (select *\n" +
@@ -304,7 +313,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
-        String enter7SQL = "select w.*, rownum + 20000 regionrn\n" +
+        String enter7SQL = "select w.*, rownum + " + rownumkey2 + " regionrn\n" +
                 "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
                 "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
                 "          left join (select *\n" +
@@ -381,13 +390,13 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE_TICKET").list();
 
         /*******************************************KTK数据***************************************************/
-        String ktkRightnowSQL = "select  w.*,rownum rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
+        String ktkRightnowSQL = "select  w.*,rownum+20000 rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
                 "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'RIGHTNOW' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
         List<EnterpriseKtkDto> ktkRightnowList = sessionFactory.getCurrentSession().createSQLQuery(ktkRightnowSQL).addEntity(EnterpriseKtkDto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
 
-        String ktkProactiveSQL = "select  w.*,rownum rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
+        String ktkProactiveSQL = "select  w.*,rownum+3000 rn from ( select  u1.echars_lable as mon ,u1.echars_legend as etype ,nvl(u2.countval,0) as enternum from (select * from tb_ioc_config_echars e where e.echars_type = 'BEFORE30DAYS' order by e.echars_id) u1 left join" +
                 "(select t.mon,t.REGIONAL, sum(t.COUNTVAL) as COUNTVAL from V_ENTERPRISE_TICKET_TKT t where t.CUSTOMER_SEGMENT =:CUSTOMERSEGMENT and t.source_type = 'PROACTIVE_TICKET' group by t.mon,t.REGIONAL) u2 on u1.echars_lable = u2.mon  and u1.echars_legend = u2.REGIONAL) w";
         List<EnterpriseKtkDto> ktkProactiveList = sessionFactory.getCurrentSession().createSQLQuery(ktkProactiveSQL).addEntity(EnterpriseKtkDto.class).
                 setString("CUSTOMERSEGMENT", type).list();

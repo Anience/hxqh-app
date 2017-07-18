@@ -16,62 +16,63 @@ public class VHomeRegular implements Serializable {
 
 
 	@Column(name="RE_CL")
-	private BigDecimal reCl;
+	private BigDecimal cl;
 
 	@Column(name="RE_OP")
-	private BigDecimal reOp;
+	private BigDecimal op;
 
 	@Column(name="RE_SH")
-	private BigDecimal reSh;
+	private BigDecimal sh;
 
 	@Column(name="RE_SH_1")
-	private BigDecimal reSh1;
+	private BigDecimal sh1;
 
-	private BigDecimal redev;
+	@Column(name = "REDEV")
+	private BigDecimal dev;
 	@Id
 	private String regional;
 
 	public VHomeRegular() {
 	}
 
-	public BigDecimal getReCl() {
-		return this.reCl;
+	public BigDecimal getCl() {
+		return cl;
 	}
 
-	public void setReCl(BigDecimal reCl) {
-		this.reCl = reCl;
+	public void setCl(BigDecimal cl) {
+		this.cl = cl;
 	}
 
-	public BigDecimal getReOp() {
-		return this.reOp;
+	public BigDecimal getOp() {
+		return op;
 	}
 
-	public void setReOp(BigDecimal reOp) {
-		this.reOp = reOp;
+	public void setOp(BigDecimal op) {
+		this.op = op;
 	}
 
-	public BigDecimal getReSh() {
-		return this.reSh;
+	public BigDecimal getSh() {
+		return sh;
 	}
 
-	public void setReSh(BigDecimal reSh) {
-		this.reSh = reSh;
+	public void setSh(BigDecimal sh) {
+		this.sh = sh;
 	}
 
-	public BigDecimal getReSh1() {
-		return this.reSh1;
+	public BigDecimal getSh1() {
+		return sh1;
 	}
 
-	public void setReSh1(BigDecimal reSh1) {
-		this.reSh1 = reSh1;
+	public void setSh1(BigDecimal sh1) {
+		this.sh1 = sh1;
 	}
 
-	public BigDecimal getRedev() {
-		return this.redev;
+	public BigDecimal getDev() {
+		return dev;
 	}
 
-	public void setRedev(BigDecimal redev) {
-		this.redev = redev;
+	public void setDev(BigDecimal dev) {
+		this.dev = dev;
 	}
 
 	public String getRegional() {

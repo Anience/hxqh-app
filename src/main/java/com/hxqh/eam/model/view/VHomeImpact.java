@@ -7,79 +7,79 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the V_HOME_IMPACT database table.
- * 
  */
 @Entity
-@Table(name="V_HOME_IMPACT")
+@Table(name = "V_HOME_IMPACT")
 public class VHomeImpact implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="IM_CL")
-	private BigDecimal imCl;
+    @Column(name = "IM_CL")
+    private BigDecimal cl;
 
-	@Column(name="IM_OP")
-	private BigDecimal imOp;
+    @Column(name = "IM_OP")
+    private BigDecimal op;
 
-	@Column(name="IM_SH")
-	private BigDecimal imSh;
+    @Column(name = "IM_SH")
+    private BigDecimal sh;
 
-	@Column(name="IM_SH_1")
-	private BigDecimal imSh1;
+    @Column(name = "IM_SH_1")
+    private BigDecimal sh1;
 
-	private BigDecimal imdev;
+    @Column(name = "IMDEV")
+    private BigDecimal dev;
 
-	@Id
-	private String regional;
+    @Id
+    private String regional;
 
-	public VHomeImpact() {
-	}
+    public VHomeImpact() {
+    }
 
-	public BigDecimal getImCl() {
-		return this.imCl;
-	}
+    public BigDecimal getCl() {
+        return cl;
+    }
 
-	public void setImCl(BigDecimal imCl) {
-		this.imCl = imCl;
-	}
+    public void setCl(BigDecimal cl) {
+        this.cl = cl;
+    }
 
-	public BigDecimal getImOp() {
-		return this.imOp;
-	}
+    public BigDecimal getOp() {
+        return op;
+    }
 
-	public void setImOp(BigDecimal imOp) {
-		this.imOp = imOp;
-	}
+    public void setOp(BigDecimal op) {
+        this.op = op;
+    }
 
-	public BigDecimal getImSh() {
-		return this.imSh;
-	}
+    public BigDecimal getSh() {
+        return sh;
+    }
 
-	public void setImSh(BigDecimal imSh) {
-		this.imSh = imSh;
-	}
+    public void setSh(BigDecimal sh) {
+        this.sh = sh;
+    }
 
-	public BigDecimal getImSh1() {
-		return this.imSh1;
-	}
+    public BigDecimal getSh1() {
+        return sh1;
+    }
 
-	public void setImSh1(BigDecimal imSh1) {
-		this.imSh1 = imSh1;
-	}
+    public void setSh1(BigDecimal sh1) {
+        this.sh1 = sh1;
+    }
 
-	public BigDecimal getImdev() {
-		return this.imdev;
-	}
+    public BigDecimal getDev() {
+        return dev;
+    }
 
-	public void setImdev(BigDecimal imdev) {
-		this.imdev = imdev;
-	}
+    public void setDev(BigDecimal dev) {
+        this.dev = dev;
+    }
 
-	public String getRegional() {
-		return this.regional;
-	}
+    public String getRegional() {
+        return this.regional;
+    }
 
-	public void setRegional(String regional) {
-		this.regional = regional;
-	}
+    public void setRegional(String regional) {
+        this.regional = regional;
+    }
 
 }
