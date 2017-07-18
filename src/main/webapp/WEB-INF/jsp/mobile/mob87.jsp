@@ -38,8 +38,29 @@
 					<li><a href="javascript:void(0);" v-on:click="navClick('7')">TREG-7</a></li>
 				</ul>
 			</div>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<div id="echart1" style="height: 300px;width: 100%;"></div>
+			</div>
+			<div class="col-sm-3">
+				<table>
+					<tr>
+						<td>FO Access</td>
+						<td class="FOAccess"></td>
+					</tr>
+					<tr>
+						<td>RADIO Access</td>
+						<td class="RadioAccess"></td>
+					</tr>
+					<tr>
+						<td>SL_D</td>
+						<td class="SL_D"></td>
+					</tr>
+					<tr>
+						<td>OTHERS</td>
+						<td class="OTHERS"></td>
+					</tr>
+				</table>
+				<p>*Jumlah Active with Severity(<span class="txt-first">Critical,</span><span class="txt-sec">Major,</span><span class="txt-third">Minor</span>)</p>
 			</div>
 		</div>
 	</div>

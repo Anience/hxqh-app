@@ -115,8 +115,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<template v-for="item in impactList">
-					<tr>
+					<tr v-for="item in impactList">
 						<td rowspan="2">{{item.regional}}</td>
 						<td>{{item.imSh}}</td>
 						<td>{{item.imOp}}</td>
@@ -124,12 +123,11 @@
 					</tr>
 					<tr>
 						<td>{{item.imSh1}}</td>
-						<td>{{item.imCl}}</td><%--
+						<td>{{item.imCl}}</td>
 						<td v-if="parseInt(item.imdev)>0">kalah</td>
 						<td v-if="parseInt(item.imdev)==0" style="color: #eb0300;">menany</td>
-						<td v-if="parseInt(item.imdev)<0" style="color: #eb0300;">seri</td>--%>
+						<td v-if="parseInt(item.imdev)<0" style="color: #eb0300;">seri</td>
 					</tr>
-				</template>
 			</tbody>
 		</table>
 		<div class="clearfix"></div>

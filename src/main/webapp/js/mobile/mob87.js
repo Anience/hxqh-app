@@ -8,6 +8,12 @@ $(function () {
             anoList:[],
             isShow: 0,
             nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'],
+            illustruation:{
+                FOAccess: '(0,0,0)',
+                RadioAccess: '(0,0,0)',
+                OTHERS: '(0,0,0)',
+                SL_D: '(0,0,0)'
+            },
             i: 0
         },
         methods: {
@@ -18,6 +24,7 @@ $(function () {
                 $("#mob87 ul").find("li").eq(m+1)
                     .css("background","#8D93A8");
                 var thisName = this.nameList[m];
+                initIn(this.anoList.map[thisName],this.illustruation);
                 initEchart("echart1",this.anoList.map[thisName]);
                 this.i = m;
             }
@@ -33,6 +40,7 @@ $(function () {
                     $("#mob87 ul").find("li").eq(1)
                         .css("background","#8D93A8");
                     initEchart("echart1",self.anoList.map['NAS']);
+                    initIn(self.anoList.map['NAS'],self.illustruation);
                     setInterval(function(){
                         var initName = "";
                         self.i++;
@@ -43,11 +51,12 @@ $(function () {
                             initName = self.nameList[self.i];
                         }
                         initEchart("echart1",self.anoList.map[initName]);
+                        initIn(self.anoList.map[initName],self.illustruation);
                         $("#mob87 ul").find("li")
                             .css("background","#000");
                         $("#mob87 ul").find("li").eq(self.i+1)
                             .css("background","#8D93A8");
-                    },20000);
+                    },5000);
                 },
                 error: function () {
 
@@ -55,6 +64,29 @@ $(function () {
             });
         }
     });
+    function initIn(data,illustruation){
+        illustruation = {
+            FOAccess: '(0,0,0)',
+            RadioAccess: '(0,0,0)',
+            OTHERS: '(0,0,0)',
+            SL_D: '(0,0,0)'
+        };
+        var tmpAdd = data;
+        if(tmpAdd.length>0){
+            for(var i=0;i<tmpAdd.length;i++){
+                var tmpName = tmpAdd[i].name.replace(" ","");
+                illustruation[tmpName] = tmpAdd[i].otherfull;
+            }
+        }
+        for(var name in illustruation){
+            var tmp = illustruation[name].toString().replace("(","").replace(")","").split(",");
+            var htmlStr = "(<span style='color:#F50001;'>"+tmp[0]+",</span>"
+                +"<span style='color:#E19713;'>"+tmp[1]+",</span>"
+                +"<span style='color:#FFE302;'>"+tmp[2]+"</span>)";
+            var domName  = name.replace(" ","");
+            $("."+domName).html(htmlStr);
+        }
+    }
     function initEchart(idDom,echartData){
         var lendData = [];
         var serisData = [];

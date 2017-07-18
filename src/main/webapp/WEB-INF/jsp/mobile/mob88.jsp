@@ -16,17 +16,17 @@
 </head>
 <body>
 <div id="mob88">
-	<div class="mob-layout" style="padding-bottom: 120px;">
+	<div class="mob-layout">
 		<div class="row">
 			<div class="col-sm-1"></div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<h4>Performance</h4>
 				<table class="table table-bordered" id="mob88-data">
 					<thead>
 						<tr>
-							<td></td>
-							<td>SCR:</td>
-							<td>PDP-SR:</td>
+							<td width="200px;"></td>
+							<td width="100px;">SCR:</td>
+							<td width="100px;">PDP-SR:</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -73,7 +73,6 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="col-sm-1"></div>
 			<div class="col-sm-7" style="padding-top: 80px;">
 				<div id="echart1" class="row" style="height:300px;"></div>
 				<div id="echart2" class="row" style="height:300px;"></div>

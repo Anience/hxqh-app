@@ -88,29 +88,29 @@
 		<div class="table-legend">
 			<div class="legend-layout">
 				<div class="legend-item">
-					<span class="txt" style="width:100px;">TargetPicup:</span>
+					<span class="txt" style="width:120px;">Target Picup:</span>
 					<span class="bg bg-red"></span>
-					<span class="txt">>=99%></span>
+					<span class="txt"><=99%<</span>
 					<span class="bg bg-green"></span>
 				</div>
 				<div class="legend-item">
-					<span class="txt" style="width:100px;">TargetComply:</span>
+					<span class="txt" style="width:120px;">Target Comply:</span>
 					<span class="bg bg-red"></span>
-					<span class="txt">>=85%></span>
+					<span class="txt"><=85%<</span>
 					<span class="bg bg-green"></span>
 				</div>
 			</div>
 			<div class="legend-layout">
 				<div class="legend-item">
-					<span class="txt" style="width:100px;">TargetPicup:</span>
+					<span class="txt" style="width:120px;">Target Picup:</span>
 					<span class="bg bg-red"></span>
-					<span class="txt">>=99%></span>
+					<span class="txt"><=99%<</span>
 					<span class="bg bg-green"></span>
 				</div>
 				<div class="legend-item">
-					<span class="txt" style="width:100px;">TargetComply:</span>
+					<span class="txt" style="width:120px;">Target Comply:</span>
 					<span class="bg bg-red"></span>
-					<span class="txt">>=85%></span>
+					<span class="txt"><=85%<</span>
 					<span class="bg bg-green"></span>
 				</div>
 			</div>

@@ -81,21 +81,21 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                var lines = data["data"];
-                var colors = data["color"];
+                var lines = data.mapOpenmaplineList;
+                var colors = data.mapOpenmaplinesLinecolorList;
                 var layerobj = {};
                 for ( var i = 0; i < colors.length; i++) {
                     layerobj[colors[i]] = "";
                 }
                 for ( var j = 0; j < lines.length; j++) {
                     var line = lines[j];
-                    var color = typeof (line["color"]) == "undefined"
+                    var color = typeof (line.color) == "undefined"
                     || line["color"] === "" ? "#9c83a5"
                         : line["color"];
-                    var from_x = line["from_x"];
-                    var from_y = line["from_y"];
-                    var to_x = line["to_x"];
-                    var to_y = line["to_y"];
+                    var from_x = line.fromX;
+                    var from_y = line.fromY;
+                    var to_x = line.toX;
+                    var to_y = line.toY;
                     var from_point = new OpenLayers.LonLat(from_x,
                         from_y).transform(fromProjection,
                         toProjection);
@@ -137,7 +137,6 @@ $(function(){
                                     + layerobj[color] + ")")) ];
 
                         newLayer.addFeatures(features);
-                        map.addLayer(newLayer);
                     }
                 }
                 map.addLayer(markers);
