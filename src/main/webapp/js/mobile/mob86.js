@@ -17,7 +17,7 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.mobList = data;
+                    self.mobList = data.vMob86List;
                 },
                 error: function () {
 

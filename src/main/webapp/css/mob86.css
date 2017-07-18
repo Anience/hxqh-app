@@ -6,7 +6,7 @@
     font-family: "Arial";
     color: #fff;
 }
-.col-md-2 table tr td{
+.md2 table tr td{
     font-size: 24px;
     color: #fff;
     text-align: center;
@@ -19,14 +19,14 @@
     text-align: center;
     line-height: 70px;
 }
-.col-md-5 table thead{
+.md5 table thead{
     background: #015E8A;
     color: #fff;
     border: #0c0e26 0px solid;
     font-size: 30px;
     text-align: center;
 }
-.col-md-5 table tbody tr{
+.md5 table tbody tr{
     line-height: 65px;
     border: #0c0e26 0px solid;
     font-size: 24px;

@@ -68,6 +68,82 @@ $(function(){
                 }
                 map.addLayer(markers);
                 initTable();
+                initLines(map, markers, fromProjection, toProjection);
+            },
+            error: function(){
+
+            }
+        })
+    }
+    function initLines(map, markers, fromProjection, toProjection) {
+        $.ajax({
+            url: _ctx+"/ano/openMapLines",
+            method: "get",
+            dataType: "json",
+            success: function(data){
+                var lines = data["data"];
+                var colors = data["color"];
+                var layerobj = {};
+                for ( var i = 0; i < colors.length; i++) {
+                    layerobj[colors[i]] = "";
+                }
+                for ( var j = 0; j < lines.length; j++) {
+                    var line = lines[j];
+                    var color = typeof (line["color"]) == "undefined"
+                    || line["color"] === "" ? "#9c83a5"
+                        : line["color"];
+                    var from_x = line["from_x"];
+                    var from_y = line["from_y"];
+                    var to_x = line["to_x"];
+                    var to_y = line["to_y"];
+                    var from_point = new OpenLayers.LonLat(from_x,
+                        from_y).transform(fromProjection,
+                        toProjection);
+                    var to_point = new OpenLayers.LonLat(to_x, to_y)
+                        .transform(fromProjection, toProjection);
+                    var lineStr = layerobj[color];
+                    if (typeof (lineStr) != "undefined"
+                        && lineStr.length > 0) {
+                        lineStr = lineStr + ",";
+                    }
+                    lineStr = lineStr + from_point["lon"] + " "
+                        + from_point["lat"] + "," + to_point["lon"]
+                        + " " + to_point["lat"];
+                    layerobj[color] = lineStr;
+                }
+                var lineLayers = map.getLayersByName(new RegExp(
+                    "line$", ""));
+                for ( var t = 0; t < lineLayers.length; t++) {
+                    map.removeLayer(lineLayers[t]);
+                }
+                for ( var h = 0; h < colors.length; h++) {
+                    var color = colors[h];
+                    var newLayer = new OpenLayers.Layer.Vector(color
+                        + "line", {
+                        styleMap : new OpenLayers.StyleMap({
+                            strokeWidth : 2,
+                            strokeColor : color
+                        }),
+                        isBasicLayer : true,
+                        renderers : [ "Canvas" ],
+                        rendererOptions : {
+                            hitDetection : true
+                        }
+                    });
+                    if (layerobj[color].length > 0) {
+                        //eval("var Layer"+h+" = new OpenLayers.Layer.Vector('"+h+"line', {styleMap : new OpenLayers.StyleMap({strokeWidth : 2,strokeColor : '"+color+"'}), isBasicLayer : true, renderers : ['Canvas'], rendererOptions : {hitDetection : true} });");
+                        var features = [ new OpenLayers.Feature.Vector(
+                            OpenLayers.Geometry
+                                .fromWKT("LineString("
+                                    + layerobj[color] + ")")) ];
+                        //eval("var features"+h+" = [new OpenLayers.Feature.Vector(OpenLayers.Geometry.fromWKT(\"LineString(" + layerobj[color] + ")\"))];");
+                        newLayer.addFeatures(features);
+                        //eval("Layer"+h+".addFeatures(features"+h+");");
+                        map.addLayer(newLayer);
+                        //eval("map.addLayer(Layer"+h+");");
+                    }
+                }
+                map.addLayer(markers);
             },
             error: function(){
 
