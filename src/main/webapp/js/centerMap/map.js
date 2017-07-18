@@ -131,16 +131,13 @@ $(function(){
                         }
                     });
                     if (layerobj[color].length > 0) {
-                        //eval("var Layer"+h+" = new OpenLayers.Layer.Vector('"+h+"line', {styleMap : new OpenLayers.StyleMap({strokeWidth : 2,strokeColor : '"+color+"'}), isBasicLayer : true, renderers : ['Canvas'], rendererOptions : {hitDetection : true} });");
                         var features = [ new OpenLayers.Feature.Vector(
                             OpenLayers.Geometry
                                 .fromWKT("LineString("
                                     + layerobj[color] + ")")) ];
-                        //eval("var features"+h+" = [new OpenLayers.Feature.Vector(OpenLayers.Geometry.fromWKT(\"LineString(" + layerobj[color] + ")\"))];");
+
                         newLayer.addFeatures(features);
-                        //eval("Layer"+h+".addFeatures(features"+h+");");
                         map.addLayer(newLayer);
-                        //eval("map.addLayer(Layer"+h+");");
                     }
                 }
                 map.addLayer(markers);
