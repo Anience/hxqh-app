@@ -30,4 +30,6 @@ public interface AnoService {
     VoiceDto getVoiceTrafficData();
 
     List<VMapOpenmappoint> mapPointsList(String mtype, String treg);
+
+    List<VMapOpenmappoint> getRedPoint();
 }

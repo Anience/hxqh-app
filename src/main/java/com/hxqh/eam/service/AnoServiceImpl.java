@@ -73,6 +73,18 @@ public class AnoServiceImpl implements AnoService {
     }
 
     @Override
+    public List<VMapOpenmappoint> getRedPoint() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("type", "asc");
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("status", "Down");
+        String where = "status=:status";
+        return mapOpenmappointDao.findAll(where,params,orderby);
+    }
+
+
+    @Override
     public OpenMapLinesDto getOpenMapLinesData() {
         List<VMapOpenmapline> mapOpenmapline = mapOpenmaplineDao.findAll();
         List<VMapOpenmaplinesLinecolor> mapOpenmaplinesLinecolor = mapOpenmaplinesLinecolorDao.findAll();
@@ -210,5 +222,6 @@ public class AnoServiceImpl implements AnoService {
         }
 
     }
+
 
 }

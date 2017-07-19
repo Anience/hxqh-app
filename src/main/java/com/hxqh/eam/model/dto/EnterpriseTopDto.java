@@ -28,11 +28,11 @@ public class EnterpriseTopDto {
 
     private List<EnterpriseEventDto> eventList;
 
-    private Map<String, List<Integer>> enterpriseRegionMap;
+    private Map<String, List<Double>> enterpriseRegionMap;
 
     private List<String> regionNameList;
 
-    private Map<String, List<Integer>> enterpriseProductMap;
+    private Map<String, List<Double>> enterpriseProductMap;
 
 
     private List<String> productNameList;
@@ -40,7 +40,7 @@ public class EnterpriseTopDto {
     public EnterpriseTopDto() {
     }
 
-    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, Map<String, List<Integer>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Integer>> enterpriseProductMap, List<String> productNameList) {
+    public EnterpriseTopDto(List<VEnterpriseTicket> rightnowList, List<VEnterpriseTicket> proactiveList, List<String> nameList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, EnterpriseThreeColor threeColor, String name, List<EnterpriseIconDto> iconList, List<EnterpriseEventDto> eventList, Map<String, List<Double>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Double>> enterpriseProductMap, List<String> productNameList) {
         this.rightnowList = rightnowList;
         this.proactiveList = proactiveList;
         this.nameList = nameList;
@@ -145,19 +145,19 @@ public class EnterpriseTopDto {
         this.nameList = nameList;
     }
 
-    public Map<String, List<Integer>> getEnterpriseRegionMap() {
+    public Map<String, List<Double>> getEnterpriseRegionMap() {
         return enterpriseRegionMap;
     }
 
-    public void setEnterpriseRegionMap(Map<String, List<Integer>> enterpriseRegionMap) {
+    public void setEnterpriseRegionMap(Map<String, List<Double>> enterpriseRegionMap) {
         this.enterpriseRegionMap = enterpriseRegionMap;
     }
 
-    public Map<String, List<Integer>> getEnterpriseProductMap() {
+    public Map<String, List<Double>> getEnterpriseProductMap() {
         return enterpriseProductMap;
     }
 
-    public void setEnterpriseProductMap(Map<String, List<Integer>> enterpriseProductMap) {
+    public void setEnterpriseProductMap(Map<String, List<Double>> enterpriseProductMap) {
         this.enterpriseProductMap = enterpriseProductMap;
     }
 

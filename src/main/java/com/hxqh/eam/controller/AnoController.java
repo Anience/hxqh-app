@@ -126,6 +126,19 @@ public class AnoController {
         return mapLinesDto;
     }
 
+
+    /**
+     * 查询红色报警点 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+        @RequestMapping(value = "/redPoint", method = RequestMethod.GET)
+    public List<VMapOpenmappoint> redPoint() {
+        List<VMapOpenmappoint> redPoint = anoService.getRedPoint();
+        return redPoint;
+    }
+
     /**
      * openMapTable 数据接口
      *
@@ -174,7 +187,7 @@ public class AnoController {
 
 
     /**
-     * indiHome 数据接口
+     *  voice traffic performance  数据接口
      *
      * @return
      */

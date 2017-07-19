@@ -2,6 +2,7 @@ package com.hxqh.eam.model.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -14,20 +15,20 @@ public class Enterprise67Dto {
 
     private String dh;
 
-    private Integer personsum;
+    private Double personsum;
 
     @Id
-    private Integer regionrn;
+    private BigDecimal regionrn;
 
     public Enterprise67Dto() {
     }
 
 
-    public Integer getRegionrn() {
+    public BigDecimal getRegionrn() {
         return regionrn;
     }
 
-    public void setRegionrn(Integer regionrn) {
+    public void setRegionrn(BigDecimal regionrn) {
         this.regionrn = regionrn;
     }
 
@@ -47,11 +48,12 @@ public class Enterprise67Dto {
         this.dh = dh;
     }
 
-    public Integer getPersonsum() {
+
+    public Double getPersonsum() {
         return personsum;
     }
 
-    public void setPersonsum(Integer personsum) {
+    public void setPersonsum(Double personsum) {
         this.personsum = personsum;
     }
 }
