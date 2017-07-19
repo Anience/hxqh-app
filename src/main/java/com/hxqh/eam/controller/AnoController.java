@@ -14,10 +14,7 @@ import com.hxqh.eam.model.view.VMapOpenmappoint;
 import com.hxqh.eam.service.AnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -87,6 +84,22 @@ public class AnoController {
     public String map() {
         return "centerMap/map";
     }
+
+    /**
+     * mapPoint 数据接口
+     * mtype：TERA PE METRO TOTAL
+     * treg： 1 2 3 4 5 6 7 8
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/mapPoint", method = RequestMethod.GET)
+    public List<VMapOpenmappoint> mapPoint(@RequestParam("mtype") String mtype,
+                                           @RequestParam("treg") String treg) {
+        List<VMapOpenmappoint> openmappointList = anoService.mapPointsList(mtype,treg);
+        return openmappointList;
+    }
+
 
     /**
      * openMapPoints 数据接口
@@ -171,5 +184,6 @@ public class AnoController {
         VoiceDto voiceDto = anoService.getVoiceTrafficData();
         return voiceDto;
     }
+
 
 }
