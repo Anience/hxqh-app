@@ -20,4 +20,12 @@ public class EnterpriseDto {
     public void setEnterpriseMap(Map<String, EnterpriseTopDto> enterpriseMap) {
         this.enterpriseMap = enterpriseMap;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("EnterpriseDto{");
+        sb.append("enterpriseMap=").append(enterpriseMap);
+        sb.append('}');
+        return sb.toString();
+    }
 }

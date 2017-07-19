@@ -2,16 +2,15 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.TbIocMobileIpTransit;
 import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lh on 2017/4/14.
@@ -37,6 +36,8 @@ public class MobileServiceImpl implements MobileService {
     private VMob88MttrDao mob88MttrDao;
     @Autowired
     private VMob88PerformanceDao mob88PerformanceDao;
+    @Autowired
+    private TbIocMobileIpTransitDao tbIocMobileIpTransitDao;
 
 
     @Override
@@ -146,5 +147,54 @@ public class MobileServiceImpl implements MobileService {
         List<VMob88Performance> mob88Performance = mob88PerformanceDao.findAll();
         Mob88Dto mob88Dto = new Mob88Dto(mob88Mtti, mob88Mttr, mob88Performance);
         return mob88Dto;
+    }
+
+    @Override
+    public ThroughtputDto throughtputData() {
+        //第一部分数据用于2组折线图展示
+        List<TbIocMobileIpTransit> mobileIpTransits = tbIocMobileIpTransitDao.findAll();
+
+        // mobileIpTransits进行分组
+        Map<String, List<TbIocMobileIpTransit>> map = GroupListUtil.group(mobileIpTransits, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocMobileIpTransit d = (TbIocMobileIpTransit) obj;
+                return d.getAgte();    // 分组依据为Agte
+            }
+        });
+
+        Map<String, List<BigDecimal>> inM = new LinkedHashMap<>();
+        Map<String, List<BigDecimal>> outM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<TbIocMobileIpTransit>> m : map.entrySet()) {
+            List<BigDecimal> inList = new LinkedList<>();
+            List<BigDecimal> outList = new LinkedList<>();
+            for (TbIocMobileIpTransit l : m.getValue()) {
+                inList.add(l.getSumIn());
+                outList.add(l.getSumOut());
+            }
+            inM.put(m.getKey(), inList);
+            outM.put(m.getKey(), outList);
+        }
+
+        //第二部分   namelist
+        List<TbIocMobileIpTransit> opersList = new ArrayList<>();
+        List<TbIocMobileIpTransit> wrongList = new ArrayList<>();
+        List<String> namelist = new LinkedList<>();
+
+        for (int i = 0; i < mobileIpTransits.size(); i++) {
+            TbIocMobileIpTransit ipTransit = mobileIpTransits.get(i);
+            if (null != ipTransit.getOpers()) {
+                opersList.add(ipTransit);
+            } else if (null != ipTransit.getWrong()) {
+                wrongList.add(ipTransit);
+            }
+            if("MAKASAR".equals(ipTransit.getAgte()))
+            {
+                namelist.add(ipTransit.getDataTimes());
+            }
+        }
+
+        ThroughtputDto throughtputDto = new ThroughtputDto(inM, outM, opersList, wrongList,namelist);
+        return throughtputDto;
     }
 }

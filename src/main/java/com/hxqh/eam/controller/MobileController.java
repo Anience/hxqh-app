@@ -7,6 +7,7 @@ package com.hxqh.eam.controller;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.service.MobileService;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,7 +131,6 @@ public class MobileController {
         return "mobile/mob92";
     }
 
-    //TODO 无数据补零暂缺
     /**
      * 8. Quality CNOP 数据接口
      * Access  2017-6-26 11:20:48
@@ -142,6 +142,29 @@ public class MobileController {
     public Moblie92 vMob92Data() {
         Moblie92 moblie92 = mobileService.vMob92Data();
         return moblie92;
+    }
+
+    /**
+     * 6. Throughtput IP Transit  页面接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/throughtput", method = RequestMethod.GET)
+    public String throughtput() {
+        return "mobile/throughtput";
+    }
+
+
+    /**
+     * 6. Throughtput IP Transit  页面接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/throughtputData", method = RequestMethod.GET)
+    public ThroughtputDto throughtputData() {
+        ThroughtputDto throughtputDto = mobileService.throughtputData();
+        return throughtputDto;
     }
 
 }

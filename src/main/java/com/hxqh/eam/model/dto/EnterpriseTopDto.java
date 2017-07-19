@@ -160,4 +160,24 @@ public class EnterpriseTopDto {
     public void setEnterpriseProductMap(Map<String, List<Integer>> enterpriseProductMap) {
         this.enterpriseProductMap = enterpriseProductMap;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("EnterpriseTopDto{");
+        sb.append("rightnowList=").append(rightnowList);
+        sb.append(", proactiveList=").append(proactiveList);
+        sb.append(", nameList=").append(nameList);
+        sb.append(", rightnowTicketM=").append(rightnowTicketM);
+        sb.append(", proactiveTicketM=").append(proactiveTicketM);
+        sb.append(", threeColor=").append(threeColor);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", iconList=").append(iconList);
+        sb.append(", eventList=").append(eventList);
+        sb.append(", enterpriseRegionMap=").append(enterpriseRegionMap);
+        sb.append(", regionNameList=").append(regionNameList);
+        sb.append(", enterpriseProductMap=").append(enterpriseProductMap);
+        sb.append(", productNameList=").append(productNameList);
+        sb.append('}');
+        return sb.toString();
+    }
 }
