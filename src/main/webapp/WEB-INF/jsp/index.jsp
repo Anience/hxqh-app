@@ -168,6 +168,11 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>Consumer<i class="first-a-down"></i></a>
 			<ul>
+
+				<li><a href="${ctx}/ano/indiHome" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>consumer1</a></li>
+				<li><a href="${ctx}/ano/indiHome" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>consumer2</a></li>
+				<li><a href="${ctx}/ano/indiHome" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>consumer3</a></li>
+				<li><a href="${ctx}/ano/indiHome" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>consumer4</a></li>
 				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=8c6693afbca73e29a252" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 107</a></li>
 				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=75853fd93fd314f0043c" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 111</a></li>
 				<li><a href="http://118.97.167.60:21180/aos-web/res/aos-common/login.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Iqas - 116</a></li>

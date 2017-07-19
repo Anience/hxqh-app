@@ -39,7 +39,6 @@
 					<td width="7%"><span>Status</span></td>
 				</tr>
 			</thead>
-			//背景色zero-bg,first-bg,sec-bg,red-bg,green-bg
 			<tbody id="total-table"></tbody>
 		</table>
 

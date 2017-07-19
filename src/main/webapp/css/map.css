@@ -61,6 +61,7 @@ table.bottom-table thead tr td{
 #bottom-table tr td{
     border: 1px solid rgba(66, 153, 195, 0.51);
     height: 60px;
+    cursor: pointer;
 }
 ::-webkit-scrollbar{
     width: 5px;

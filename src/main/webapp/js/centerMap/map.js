@@ -11,135 +11,135 @@ $(function(){
         map.addLayer(mapnik);
         map.setCenter(new OpenLayers.LonLat(115.269, -0.286)
             .transform(fromProjection, toProjection), 6.5);
-        initPoints(map, fromProjection, toProjection);
-    }
-    function initPoints(map, fromProjection, toProjection){
-        var size = new OpenLayers.Size(21, 25);
+        initAllPoints(map, fromProjection, toProjection);
+        initTable();
+        initLines(map, fromProjection, toProjection);
+        //事件绑定
+        $("#bottom-table").on("click","td",function(){
+            $("#bottom-table tr td:not(:first)").css("color","#000");
+            $(this).css("color","blue");
+            var  params= $(this).attr("id").split("-");
+            $.ajax({
+                url: _ctx+"/ano/openMapLines",
+                method: "get",
+                data:{
+                    mtype: params[0],
+                    treg: params[1]
+                },
+                dataType: "json",
+                success: function(data){
+                    initPoints(data,map,fromProjection, toProjection);
+                },
+                error: function(){
 
+                }
+            })
+        });
+    }
+    function initAllPoints(map,fromProjection, toProjection){
+        $.ajax({
+            url: _ctx+"/ano/openMapPoints",
+            method: "get",
+            dataType: "json",
+            success: function(data){
+                initPoints(data,map,fromProjection, toProjection);
+            },
+            error: function(){
+
+            }
+        });
+    }
+    function initPoints(pointDatas,map, fromProjection, toProjection){
+        var size = new OpenLayers.Size(21, 25);
         var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
         var lineLayers = map.getLayersByName(new RegExp("Markers", ""));
         for ( var t = 0; t < lineLayers.length; t++) {
             map.removeLayer(lineLayers[t]);
         }
         var markers = new OpenLayers.Layer.Markers("Markers");
-        $.ajax({
-            url: _ctx+"/ano/openMapPoints",
-            method: "get",
-            dataType: "json",
-            success: function(data){
-                var points = data;
-                for ( var i = 0; i < points.length; i++) {
-                    var point = points[i];
-                    var type = point["type"];
-                    var name = point["name"];
-                    var x = point["x"];
-                    var y = point["y"];
-                    var icon = new OpenLayers.Icon(_ctx+'/imgs/WIFIAP.png', size, offset);
-                    if(type==="METRO"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/b-64.png', size, offset);
-                    }else if(type==="PE"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/g-64.png', size, offset);
-                    }else if(type==="TERA"){
-                        icon = new OpenLayers.Icon(_ctx+'/imgs/y-64.png', size, offset);
-                    }
-                    eval("var position"
-                        + i
-                        + " = new OpenLayers.LonLat("
-                        + x
-                        + ", "
-                        + y
-                        + ").transform(fromProjection, toProjection);");
-                    eval("var marker = new OpenLayers.Marker(position"
-                        + i + ",icon);");
-                    eval("marker.events.register('mouseover', marker, function (evt) {popup"
-                        + i
-                        + " = new OpenLayers.Popup('"
-                        + name
-                        + "', position"
-                        + i
-                        + ", new OpenLayers.Size(200, 50), '"
-                        + name
-                        + "', false);map.addPopup(popup"
-                        + i
-                        + ");});");
-                    eval("marker.events.register('mouseout', marker, function (evt) {popup"
-                        + i + ".hide();}); ");
-                    eval("markers.addMarker(marker);");
-                }
-                map.addLayer(markers);
-                initTable();
-                initLines(map, markers, fromProjection, toProjection);
-            },
-            error: function(){
-
+        var points = pointDatas;
+        for ( var i = 0; i < points.length; i++) {
+            var point = points[i];
+            var type = point["type"];
+            var name = point["name"];
+            var x = point["x"];
+            var y = point["y"];
+            var icon = new OpenLayers.Icon(_ctx+'/imgs/WIFIAP.png', size, offset);
+            if(type==="METRO"){
+                icon = new OpenLayers.Icon(_ctx+'/imgs/b-64.png', size, offset);
+            }else if(type==="PE"){
+                icon = new OpenLayers.Icon(_ctx+'/imgs/g-64.png', size, offset);
+            }else if(type==="TERA"){
+                icon = new OpenLayers.Icon(_ctx+'/imgs/y-64.png', size, offset);
             }
-        })
+            eval("var position"
+                + i
+                + " = new OpenLayers.LonLat("
+                + x
+                + ", "
+                + y
+                + ").transform(fromProjection, toProjection);");
+            eval("var marker = new OpenLayers.Marker(position"
+                + i + ",icon);");
+            eval("marker.events.register('mouseover', marker, function (evt) {popup"
+                + i
+                + " = new OpenLayers.Popup('"
+                + name
+                + "', position"
+                + i
+                + ", new OpenLayers.Size(200, 50), '"
+                + name
+                + "', false);map.addPopup(popup"
+                + i
+                + ");});");
+            eval("marker.events.register('mouseout', marker, function (evt) {popup"
+                + i + ".hide();}); ");
+            eval("markers.addMarker(marker);");
+        }
+        map.addLayer(markers);
     }
-    function initLines(map, markers, fromProjection, toProjection) {
+
+    function initLines(map, fromProjection, toProjection) {
         $.ajax({
             url: _ctx+"/ano/openMapLines",
             method: "get",
             dataType: "json",
             success: function(data){
-                var lines = data.mapOpenmaplineList;
-                var colors = data.mapOpenmaplinesLinecolorList;
-                var layerobj = {};
-                for ( var i = 0; i < colors.length; i++) {
-                    layerobj[colors[i]] = "";
-                }
-                for ( var j = 0; j < lines.length; j++) {
-                    var line = lines[j];
-                    var color = typeof (line.color) == "undefined"
-                    || line["color"] === "" ? "#9c83a5"
-                        : line["color"];
-                    var from_x = line.fromX;
-                    var from_y = line.fromY;
-                    var to_x = line.toX;
-                    var to_y = line.toY;
-                    var from_point = new OpenLayers.LonLat(from_x,
-                        from_y).transform(fromProjection,
+                var lineList = data.mapOpenmaplineList;
+                for(var i=0;i<lineList.length;i++){
+                    var line = lineList[i];
+                    var from_point = new OpenLayers.LonLat(line.fromX,
+                        line.fromY).transform(fromProjection,
                         toProjection);
-                    var to_point = new OpenLayers.LonLat(to_x, to_y)
-                        .transform(fromProjection, toProjection);
-                    var lineStr = layerobj[color];
-                    if (typeof (lineStr) != "undefined"
-                        && lineStr.length > 0) {
-                        lineStr = lineStr + ",";
-                    }
-                    lineStr = lineStr + from_point["lon"] + " "
-                        + from_point["lat"] + "," + to_point["lon"]
-                        + " " + to_point["lat"];
-                    layerobj[color] = lineStr;
+                    var to_point = new OpenLayers.LonLat(line.toX,
+                        line.toY).transform(fromProjection,
+                        toProjection);
+                    var vectors,lineFeature;//存放线路
+                    //线路样式
+                    var style_green = {
+                        strokeColor: "red",
+                        strokeWidth: 3,
+                        strokeDashstyle: "solid",
+                        pointRadius: 6,
+                        pointerEvents: "visiblePainted"
+                    };
+                    //画线图层设置
+                    var layer_style = OpenLayers.Util.extend({}, OpenLayers.Feature.Vector.style['default']);
+                    layer_style.fillOpacity = 0.2;
+                    layer_style.graphicOpacity = 1;
+                    //画线图层
+                    vectors = new OpenLayers.Layer.Vector("Simple Geometry", {style: layer_style});
+                    map.addLayer(vectors);
+                    //一下采用数组型式填充轨迹
+                    var pointList = [];
+                    var newPoint1 = new OpenLayers.Geometry.Point(from_point.lon,from_point.lat);
+                    pointList.push(newPoint1);
+                    var newPoint2 = new OpenLayers.Geometry.Point(to_point.lon,to_point.lat);
+                    pointList.push(newPoint2);
+                    lineFeature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString(pointList),null,style_green);
+                    vectors.addFeatures([lineFeature]);
+                    map.addLayer(vectors);
                 }
-                var lineLayers = map.getLayersByName(new RegExp(
-                    "line$", ""));
-                for ( var t = 0; t < lineLayers.length; t++) {
-                    map.removeLayer(lineLayers[t]);
-                }
-                for ( var h = 0; h < colors.length; h++) {
-                    var color = colors[h];
-                    var newLayer = new OpenLayers.Layer.Vector(color
-                        + "line", {
-                        styleMap : new OpenLayers.StyleMap({
-                            strokeWidth : 2,
-                            strokeColor : color
-                        }),
-                        isBasicLayer : true,
-                        renderers : [ "Canvas" ],
-                        rendererOptions : {
-                            hitDetection : true
-                        }
-                    });
-                    if (layerobj[color].length > 0) {
-                        var features = [ new OpenLayers.Feature.Vector(
-                            OpenLayers.Geometry
-                                .fromWKT("LineString("
-                                    + layerobj[color] + ")")) ];
-
-                        newLayer.addFeatures(features);
-                    }
-                }
-                map.addLayer(markers);
             },
             error: function(){
 
@@ -177,25 +177,29 @@ $(function(){
                         case "METRO":
                             var tableData1 = bottomObj[name];
                             for(var i=0;i<tableData1.length;i++){
-                                metroStr+="<td>"+tableData1[i]+"</td>"
+                                var index = i+1;
+                                metroStr+="<td id='METRO-"+index+"'>"+tableData1[i]+"</td>"
                             }
                             break;
                         case "PE":
                             var tableData2 = bottomObj[name];
                             for(var i=0;i<tableData2.length;i++){
-                                peStr+="<td>"+tableData2[i]+"</td>"
+                                var index = i+1;
+                                peStr+="<td id='PE-"+index+"'>"+tableData2[i]+"</td>"
                             }
                             break;
                         case "TERA":
                             var tableData3 = bottomObj[name];
                             for(var i=0;i<tableData3.length;i++){
-                                teraStr+="<td>"+tableData3[i]+"</td>"
+                                var index = i+1;
+                                teraStr+="<td id='TERA-"+index+"'>"+tableData3[i]+"</td>"
                             }
                             break;
                         default:
                             var tableData4 = bottomObj[name];
                             for(var i=0;i<tableData4.length;i++){
-                                ToStr+="<td>"+tableData4[i]+"</td>"
+                                var index = i+1;
+                                ToStr+="<td id='TOTAL-"+index+"'>"+tableData4[i]+"</td>"
                             }
                     }
                 }
@@ -211,8 +215,6 @@ $(function(){
             }
         })
     }
+
     initMap();
-   /* setInterval(function(){
-        window.location.href=_ctx+"/ano/map";
-    },300000);*/
 }());
