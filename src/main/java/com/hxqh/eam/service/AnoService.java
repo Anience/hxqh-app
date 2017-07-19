@@ -28,4 +28,6 @@ public interface AnoService {
     OpenMapTableDto getOpenMapTableData();
 
     VoiceDto getVoiceTrafficData();
+
+    List<VMapOpenmappoint> mapPointsList(String mtype, String treg);
 }

@@ -108,4 +108,20 @@ public class VEnterpriseTicket implements Serializable {
     public void setCustrank(Integer custrank) {
         this.custrank = custrank;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("VEnterpriseTicket{");
+        sb.append("allcount=").append(allcount);
+        sb.append(", closenums=").append(closenums);
+        sb.append(", custname='").append(custname).append('\'');
+        sb.append(", customerSegment='").append(customerSegment).append('\'');
+        sb.append(", opennums=").append(opennums);
+        sb.append(", sourceType='").append(sourceType).append('\'');
+        sb.append(", ticketid=").append(ticketid);
+        sb.append(", ts='").append(ts).append('\'');
+        sb.append(", custrank=").append(custrank);
+        sb.append('}');
+        return sb.toString();
+    }
 }

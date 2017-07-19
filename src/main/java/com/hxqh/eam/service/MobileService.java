@@ -22,4 +22,6 @@ public interface MobileService {
     VMob87Dto vMob87Data();
 
     Mob88Dto getMob88Data();
+
+    ThroughtputDto throughtputData();
 }

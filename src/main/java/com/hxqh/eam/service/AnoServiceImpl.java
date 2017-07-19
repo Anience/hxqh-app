@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lh on 2017/4/14.
@@ -70,7 +67,7 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public List<VMapOpenmappoint> getOpenMapPointsList() {
-        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap();
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
         linkedHashMap.put("type", "asc");
         return mapOpenmappointDao.findAll(null, null, linkedHashMap);
     }
@@ -190,6 +187,28 @@ public class AnoServiceImpl implements AnoService {
         }
         VoiceDto voiceDto = new VoiceDto(seizM, answM, nList);
         return voiceDto;
+    }
+
+    @Override
+    public List<VMapOpenmappoint> mapPointsList(String mtype, String treg) {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("type", "asc");
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("mtype", mtype);
+        params.put("treg", treg);
+
+        if ("TOTAL".equals(mtype)) {
+            String where = "treg=:treg ";
+            return mapOpenmappointDao.findAll(where, params, orderby);
+        } else if (treg.equals("8")) {
+            String where = "type=:mtype";
+            return mapOpenmappointDao.findAll(where, params, orderby);
+        } else {
+            String where = "type=:mtype and treg=:treg";
+            return mapOpenmappointDao.findAll(where, params, orderby);
+        }
+
     }
 
 }

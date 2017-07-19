@@ -11,7 +11,6 @@
     </appender>
 
     <appender name="rootFileAppender" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="../isbn/root.log"/>
         <param name="Append" value="true"/>
         <param name="MaxFileSize" value="10MB"/>
         <param name="MaxBackupIndex" value="20"/>
@@ -60,6 +59,14 @@
     <logger name="org.apache.shiro">
         <level value="WARN"/>
     </logger>
+
+    <!--<logger name="org.hibernate.hql.internal.ast">-->
+        <!--<level value="TRACE"/>-->
+    <!--</logger>-->
+    <!--<logger name="org.hibernate.type.descriptor.sql">-->
+        <!--<level value="TRACE"/>-->
+    <!--</logger>-->
+
 
     <!--<logger name="org.hibernate.hql.internal.ast">-->
         <!--<level value="ERROR"/>-->

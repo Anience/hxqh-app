@@ -27,6 +27,8 @@ public class VMapOpenmappoint implements Serializable {
 
     private String status;
 
+    private String treg;
+
     public VMapOpenmappoint() {
     }
 
@@ -76,5 +78,13 @@ public class VMapOpenmappoint implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTreg() {
+        return treg;
+    }
+
+    public void setTreg(String treg) {
+        this.treg = treg;
     }
 }

@@ -62,7 +62,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             enterpriseMap.put(String.valueOf(integer), enterpriseTopDto);
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
-
             return enterpriseDto;
         } else if ((integer == 2 && DAILY.contains(type)) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
             //处理两个Dto
@@ -128,18 +127,18 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
             if (integer == 4 && DAILY.contains(type)) {
                 EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show+1, type, params, rightnowWhere5, roactiveWhere5);
-                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show+2, type, params, rightnowWhere6, roactiveWhere6);
-                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show+3, type, params, rightnowWhere7, roactiveWhere7);
+                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show + 1, type, params, rightnowWhere5, roactiveWhere5);
+                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show + 2, type, params, rightnowWhere6, roactiveWhere6);
+                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show + 3, type, params, rightnowWhere7, roactiveWhere7);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
                 enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
                 enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
                 enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
             } else {//(type.equals("DWS") && integer == 18)
                 EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show-1, type, params, rightnowWhere5, roactiveWhere5);
-                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show-2, type, params, rightnowWhere6, roactiveWhere6);
-                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show-3, type, params, rightnowWhere7, roactiveWhere7);
+                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show - 1, type, params, rightnowWhere5, roactiveWhere5);
+                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show - 2, type, params, rightnowWhere6, roactiveWhere6);
+                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show - 3, type, params, rightnowWhere7, roactiveWhere7);
                 enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
                 enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
                 enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
@@ -147,6 +146,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             }
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
+
             return enterpriseDto;
         }
     }
@@ -178,7 +178,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 "              group by mon, regional) rs\n" +
                 "    on tbe.echars_lable = rs.mon\n" +
                 "   and tbe.echars_legend = rs.regional\n" +
-                "   and tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
+                "   where tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
                 " order by tbe.echars_id) f";
         List<EnterpriseKTK> rightnowTicketTktList = sessionFactory.getCurrentSession().createSQLQuery(sqlrightnowSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "RIGHTNOW").setString("custrank", String.valueOf(show)).list();
@@ -198,7 +198,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 "                     group by mon, regional) rs\n" +
                 "            on tbe.echars_lable = rs.mon\n" +
                 "           and tbe.echars_legend = rs.regional\n" +
-                "           and tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
+                "           where tbe.ECHARS_TYPE = 'BEFORE30DAYS'\n" +
                 "         order by tbe.echars_id) f\n";
         List<EnterpriseKTK> proactiveTicketTktList1 = sessionFactory.getCurrentSession().createSQLQuery(sqlproactiveSql).addEntity(EnterpriseKTK.class).
                 setString("CUSTOMERSEGMENT", type).setString("SOURCETYPE", "PROACTIVE").setString("custrank", String.valueOf(show)).list();
@@ -280,15 +280,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*************************************event*****************************/
 
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
-        String enter6SQL = "select w.*, rownum+" + rownumkey1 + " regionrn\n" +
-                "  from (select r.treg, r.dh as dh, nvl(t.sum_persion_in, 0) as personsum\n" +
-                "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
-                "          left join (select *\n" +
-                "                      from TB_IOC_ENT_BGE_REGION d\n" +
-                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
-                "                       and d.custrank = :custrank) t\n" +
-                "            on to_char(t.time_data, 'yyyy-MM-dd hh24:mi:ss') = r.dtime\n" +
-                "         order by r.configregionid) w";
+        String enter6SQL = "";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(enter6SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
@@ -313,15 +305,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
-        String enter7SQL = "select w.*, rownum + " + rownumkey2 + " regionrn\n" +
+        String enter7SQL = "select w.*, rownum +" + rownumkey2 + " regionrn\n" +
                 "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
-                "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
+                "          from tb_ioc_config_region_product r\n" +
                 "          left join (select *\n" +
                 "                      from TB_IOC_ENT_BGE_PRODUCT d\n" +
                 "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
                 "                       and d.custrank = :custrank) t\n" +
-                "            on to_char(t.data_times, 'yyyy-MM-dd hh24:mi:ss') = r.dtime\n" +
-                "         order by r.configregionid) w\n";
+                "            on data_times = to_date(r.dtime, 'yyyy/MM/dd hh24:mi:ss')\n" +
+                "         where r.cata = 1\n" +
+                "         order by r.configregionid) w";
+
         List<Enterprise67Dto> dto7List = sessionFactory.getCurrentSession().createSQLQuery(enter7SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
