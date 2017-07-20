@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="${ctx}/css/consumer/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/consumer/ind.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>

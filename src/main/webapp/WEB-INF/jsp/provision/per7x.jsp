@@ -5,7 +5,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${ctx}/css/pre/pre.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/pre/realTime.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
