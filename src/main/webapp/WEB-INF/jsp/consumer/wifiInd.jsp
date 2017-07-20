@@ -44,6 +44,6 @@
 	<div class="clearfix"></div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/consumer/wifiInd.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
+<script type="text/javascript" src="${ctx}/js/consumer/wifiId.js"></script>
 </html>

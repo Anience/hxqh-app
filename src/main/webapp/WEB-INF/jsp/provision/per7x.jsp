@@ -5,7 +5,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${ctx}/css/pre/realTime.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/pre/per7xs.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
@@ -120,5 +120,6 @@
 	</div>
 </div>
 </body>
+<script src="${ctx}/script/echarts-all.js"></script>
 <script type="text/javascript" src="${ctx}/js/pre/pre.js"></script>
 </html>

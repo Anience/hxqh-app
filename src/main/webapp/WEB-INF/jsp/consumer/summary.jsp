@@ -534,6 +534,6 @@
 	</table>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/consumer/summary.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
+<script type="text/javascript" src="${ctx}/js/consumer/summary.js"></script>
 </html>

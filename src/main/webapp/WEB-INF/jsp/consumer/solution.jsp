@@ -17,6 +17,6 @@
 	<div id="echart1" style="height:500px; "></div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/consumer/solution.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
+<script type="text/javascript" src="${ctx}/js/consumer/solution.js"></script>
 </html>
