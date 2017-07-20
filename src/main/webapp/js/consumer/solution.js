@@ -1,18 +1,44 @@
 $(function(){
-	initEchart("echart1",'Node:8');
+	init();
 	var i=0;
-	scroll(5);
+	var echartData = [];
+	var nameList = [];
+	function init(){
+		$.ajax({
+			url: _ctx+"/ano/voiceData",
+			method: "get",
+			dataType: "json",
+			success: function (data) {
+				var lengData = ['BD1S','BM1S','JK1S','JK2S','MD1S','MK1S','PG1S','SM1S'];
+				nameList = data.nList;
+				var dataLine = data.answM;  //折线
+				var dataBar = data.seizM;
+				for(var name in dataLine){
+					var tmpObj = {};
+					tmpObj.name = name;
+					tmpObj.tmpLine = dataLine[name];
+					tmpObj.tmpBar = dataBar[name];
+					echartData.push(tmpObj);
+				}
+				initEchart("echart1",'Node:8',nameList,echartData[0].tmpLine,echartData[0].tmpBar);
+				scroll(5);
+			},
+			error: function () {
+
+			}
+		});
+	}
 	function scroll(count){
 		setInterval(function(){
            i++;
            if(i>=count){
               i=0;
            }else{
-           	  initEchart("echart1",'Node:'+i); 
+           	  initEchart("echart1",'Node:'+i,nameList,echartData[i].tmpLine,echartData[i].tmpBar);
            }
 		},5000);
 	}
-	function initEchart(domId,tit) {
+	function initEchart(domId,tit,xData,lineData,barData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			   backgroundColor:'#0A0F25',
@@ -41,14 +67,14 @@ $(function(){
 			    xAxis : [
 			        {
 			            type : 'category',
-			             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-			           axisLabel:{
+						data: xData,
+			            axisLabel:{
 			               show: true,
 			               textStyle:{
 			                   color:'#9FA0A1',
 			               }
-			           },
-			          axisLine : {    // 轴线
+			            },
+			            axisLine : {    // 轴线
 			                        show: true,
 			                        lineStyle: {
 			                          color: '#494868',
@@ -97,14 +123,14 @@ $(function(){
 			        }
 			    ],
 			    series :[{
-			            name: '蒸发量',
+			            name: 'answM',
 			            type: 'line',
 			            smooth:true,
 			            symbol:'none',
-			            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+			            data: lineData
 			        },
 			        {
-			            name: '降水量',
+			            name: 'seizM',
 			            type: 'bar',
 			            barWidth:'20',
 			            itemStyle:{
@@ -115,7 +141,7 @@ $(function(){
 			                      barBorderRadius:0
 			                 }
 			            },
-			            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+			            data: barData
 			        }
 			    ]
 			};               

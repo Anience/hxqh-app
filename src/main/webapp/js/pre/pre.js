@@ -1,10 +1,24 @@
 $(function(){
+
 	initEPie("echart1");
 	initEPie("echart2");
 	initEPie("echart3");
 	initEPie("echart4");
 	scroll('5','treg14');
 	scroll('4','treg57');
+	/*function init(){
+		$.ajax({
+			url: _ctx+"/ano/vMob86Data",
+			method: "get",
+			dataType: "json",
+			success: function (data) {
+				self.mobList = data.vMob86List;
+			},
+			error: function () {
+
+			}
+		});
+	}*/
 	function scroll(count,domName){
 		var i = 0;
 		setInterval(function(){
