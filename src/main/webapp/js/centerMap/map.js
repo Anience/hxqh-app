@@ -19,8 +19,14 @@ $(function(){
             $("#bottom-table tr td:not(:first)").css("color","#000");
             $(this).css("color","blue");
             var  params= $(this).attr("id").split("-");
+            var  url;
+            if(params[0]=='TOTAL'&&params[1]=='8'){
+                url = _ctx+"/ano/openMapPoints";
+            }else{
+                url = _ctx+"/ano/mapPoint";
+            }
             $.ajax({
-                url: _ctx+"/ano/openMapLines",
+                url: url,
                 method: "get",
                 data:{
                     mtype: params[0],
