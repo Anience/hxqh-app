@@ -5,6 +5,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/summary.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script>
 		var _ctx = "${ctx}";
@@ -533,6 +534,6 @@
 	</table>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/wifi/daily.js"></script>
+<script type="text/javascript" src="${ctx}/js/consumer/summary.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
 </html>

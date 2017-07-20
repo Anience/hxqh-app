@@ -159,7 +159,7 @@ public class AnoController {
      */
     @RequestMapping(value = "/indiHome", method = RequestMethod.GET)
     public String indiHome() {
-        return "customer/ind";
+        return "consumer/ind";
     }
 
 
@@ -182,7 +182,7 @@ public class AnoController {
      */
     @RequestMapping(value = "/voice", method = RequestMethod.GET)
     public String voicetraffic() {
-        return "customer/voicetraffic";
+        return "consumer/voicetraffic";
     }
 
 

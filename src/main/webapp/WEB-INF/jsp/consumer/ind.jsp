@@ -4,8 +4,8 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${ctx}/css/ind.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/consumer/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/consumer/ind.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td width="7%"></td>
-					<td width="7%"><span>Saldo H-1</span></td>
+					<td width="7%"><span>SaldoH-1</span></td>
 					<td width="7%"><span>Close H</span></td>
 					<td width="7%"><span>Status</span></td>
 				</tr>
@@ -91,5 +91,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/customer/ind.js"></script>
+<script type="text/javascript" src="${ctx}/js/consumer/ind.js"></script>
 </html>
