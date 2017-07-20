@@ -96,7 +96,7 @@ public class AnoController {
     @RequestMapping(value = "/mapPoint", method = RequestMethod.GET)
     public List<VMapOpenmappoint> mapPoint(@RequestParam("mtype") String mtype,
                                            @RequestParam("treg") String treg) {
-        List<VMapOpenmappoint> openmappointList = anoService.mapPointsList(mtype,treg);
+        List<VMapOpenmappoint> openmappointList = anoService.mapPointsList(mtype, treg);
         return openmappointList;
     }
 
@@ -133,7 +133,7 @@ public class AnoController {
      * @return
      */
     @ResponseBody
-        @RequestMapping(value = "/redPoint", method = RequestMethod.GET)
+    @RequestMapping(value = "/redPoint", method = RequestMethod.GET)
     public List<VMapOpenmappoint> redPoint() {
         List<VMapOpenmappoint> redPoint = anoService.getRedPoint();
         return redPoint;
@@ -151,7 +151,7 @@ public class AnoController {
         return mapTableDto;
     }
 
-
+    /***********************************Consumer*******************************************/
     /**
      * indiHome 页面跳转接口
      *
@@ -182,12 +182,12 @@ public class AnoController {
      */
     @RequestMapping(value = "/voice", method = RequestMethod.GET)
     public String voicetraffic() {
-        return "consumer/voicetraffic";
+        return "consumer/summary";
     }
 
 
     /**
-     *  voice traffic performance  数据接口
+     * voice traffic performance  数据接口
      *
      * @return
      */
@@ -198,5 +198,73 @@ public class AnoController {
         return voiceDto;
     }
 
+
+    /**
+     * solution 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/solution", method = RequestMethod.GET)
+    public String solution() {
+        return "consumer/solution";
+    }
+
+    /**
+     * wifiInd 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/wifiInd", method = RequestMethod.GET)
+    public String wifiInd() {
+        return "consumer/wifiInd";
+    }
+
+    /***********************************Consumer*******************************************/
+    /***********************************provisioning***************************************/
+
+    /**
+     * Real Time Service Order Handling  页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/realtime", method = RequestMethod.GET)
+    public String realtime() {
+        return "provision/realTime";
+    }
+
+
+    /**
+     * Monthly MTTI Performance monitoring per 7 regions 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/monthly", method = RequestMethod.GET)
+    public String monthly() {
+        return "provision/monthly";
+    }
+
+
+    /**
+     * Per 7 x  regions INDIHOME Comply Order 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/per7x", method = RequestMethod.GET)
+    public String per7x() {
+        return "provision/per7x";
+    }
+
+    /**
+     * Complaint Following New Installation  页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/complaint", method = RequestMethod.GET)
+    public String complaint() {
+        return "provision/complaint";
+    }
+
+
+    /***********************************provisioning***************************************/
 
 }
