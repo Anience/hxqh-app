@@ -280,7 +280,19 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*************************************event*****************************/
 
         /*************************************6:Tb_Ioc_Ent_Bge_Region*****************************/
-        String enter6SQL = "";
+        String enter6SQL = "select w.*, rownum+" + rownumkey1 + " regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.personsum, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
+                "          left join (select d.link_times,\n" +
+                "                           d.treg,\n" +
+                "                           sum(d.sum_persion_in) as personsum\n" +
+                "                      from TB_IOC_ENT_BGE_region d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                       and d.custrank = :custrank\n" +
+                "                     group by d.link_times, d.treg) t\n" +
+                "            on t.link_times = r.dtime\n" +
+                "           and t.treg = r.treg\n" +
+                "         order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(enter6SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
@@ -294,7 +306,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         });
 
         //分组并存入List<Integer>
-        Map<String, List<Integer>> enterpriseRegionMap = new LinkedHashMap<>();
+        Map<String, List<Double>> enterpriseRegionMap = new LinkedHashMap<>();
         extractRegionProductList(enterprise6Map, enterpriseRegionMap);
 
         //获取regionNameList
@@ -305,19 +317,27 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************7:TB_IOC_ENT_BGE_PRODUCT*****************************/
-        String enter7SQL = "select w.*, rownum +" + rownumkey2 + " regionrn\n" +
-                "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
-                "          from tb_ioc_config_region_product r\n" +
-                "          left join (select *\n" +
-                "                      from TB_IOC_ENT_BGE_PRODUCT d\n" +
+        String enter7SQL = "select w.*, rownum+" + rownumkey2 + " regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.personsum, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
+                "          left join (select d.lay, d.link_times, sum(d.sum_in) as personsum\n" +
+                "                      from TB_IOC_ENT_BGE_product d\n" +
                 "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
-                "                       and d.custrank = :custrank) t\n" +
-                "            on data_times = to_date(r.dtime, 'yyyy/MM/dd hh24:mi:ss')\n" +
-                "         where r.cata = 1\n" +
+                "                       and d.custrank = :custrank\n" +
+                "                     group by d.lay, d.link_times) t\n" +
+                "            on t.link_times = r.dtime\n" +
+                "           and t.lay = r.treg\n" +
                 "         order by r.configregionid) w";
 
         List<Enterprise67Dto> dto7List = sessionFactory.getCurrentSession().createSQLQuery(enter7SQL).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
+
+
+        for(Enterprise67Dto enter:dto7List)
+        {
+            if(enter.getPersonsum()!=0)
+                System.out.println("==============================================");
+        }
 
         Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(dto7List, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -326,7 +346,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 return d.getTreg();    // 分组依据为Regional
             }
         });
-        Map<String, List<Integer>> enterpriseProductMap = new LinkedHashMap<>();
+        Map<String, List<Double>> enterpriseProductMap = new LinkedHashMap<>();
         extractRegionProductList(enterprise7Map, enterpriseProductMap);
 
         //获取ProductNameList
@@ -347,9 +367,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return nRegionProductList;
     }
 
-    private void extractRegionProductList(Map<String, List<Enterprise67Dto>> enterprise7Map, Map<String, List<Integer>> enterprise7M) {
+    private void extractRegionProductList(Map<String, List<Enterprise67Dto>> enterprise7Map, Map<String, List<Double>> enterprise7M) {
         for (Map.Entry<String, List<Enterprise67Dto>> m : enterprise7Map.entrySet()) {
-            List<Integer> mttrs = new LinkedList<>();
+            List<Double> mttrs = new LinkedList<>();
             for (Enterprise67Dto l : m.getValue()) {
                 mttrs.add(l.getPersonsum());
             }
@@ -437,8 +457,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
-        String ent6SQl = "select  w.*,rownum+5000 regionrn  from (select r.treg ,r.dh as dh, nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
-                "left join (select  d.treg,d.time_data,sum(d.sum_persion_in) as sum_persion_in from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT group by d.treg,d.time_data ) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
+        String ent6SQl = "select w.*, rownum + 5000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_persion_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
+                "          left join (   select d.link_times,d.treg,\n" +
+                "                           sum(d.sum_persion_in) as sum_persion_in\n" +
+                "                      from TB_IOC_ENT_BGE_REGION d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                     group by d.link_times,d.treg ) t\n" +
+                "            on t.link_times = r.dtime and t.treg=r.treg\n" +
+                "         order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
@@ -450,7 +478,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 return d.getTreg();    // 分组依据为Regional
             }
         });
-        Map<String, List<Integer>> enterpriseRegionMap = new LinkedHashMap<>();
+        Map<String, List<Double>> enterpriseRegionMap = new LinkedHashMap<>();
         extractRegionProductList(enterprise6Map, enterpriseRegionMap);
 
         //获取regionNameList
@@ -460,9 +488,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
-        String ent7SQl = "select  w.*,rownum+6000 regionrn  from (select r.treg,r.dh as dh,nvl(t.sum_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =1  ) r " +
-                " left join (select d.lay,d.data_times,sum(d.sum_in) as sum_in from TB_IOC_ENT_BGE_PRODUCT d where d.cust_type = :CUSTOMERSEGMENT group by d.lay,d.data_times) t on to_char(t.data_times,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
-        List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).setString("CUSTOMERSEGMENT", type).list();
+        String ent7SQl = "select w.*, rownum + 6000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
+                "          left join (select d.link_times,d.lay,sum(d.sum_in) as sum_in\n" +
+                "                      from TB_IOC_ENT_BGE_PRODUCT d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                     group by  d.link_times,d.lay) t\n" +
+                "            on t.link_times = r.dtime and t.lay=r.treg\n" +
+                "         order by r.configregionid) w";
+        List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
+                setString("CUSTOMERSEGMENT", type).list();
 
         Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(regionProductList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -471,7 +507,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 return d.getTreg();    // 分组依据为Regional
             }
         });
-        Map<String, List<Integer>> enterpriseProductMap = new LinkedHashMap<>();
+        Map<String, List<Double>> enterpriseProductMap = new LinkedHashMap<>();
         extractRegionProductList(enterprise7Map, enterpriseProductMap);
 
         //获取ProductNameList

@@ -16,18 +16,17 @@ public class EntDto {
 
     private List<String> nameList;
 
-    private Map<String, List<Integer>> enterpriseRegionMap;
+    private Map<String, List<Double>> enterpriseRegionMap;
 
     private List<String> regionNameList;
 
-    private Map<String, List<Integer>> enterpriseProductMap;
+    private Map<String, List<Double>> enterpriseProductMap;
 
     private List<String> productNameList;
 
     private EnterpriseThreeColor threeColor;
 
-
-    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, Map<String, List<Integer>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Integer>> enterpriseProductMap, List<String> productNameList, EnterpriseThreeColor threeColor) {
+    public EntDto(List<EnterprisePieDto> pieRightnowList, List<EnterprisePieDto> pieProactiveList, Map<String, List<Integer>> rightnowTicketM, Map<String, List<Integer>> proactiveTicketM, List<String> nameList, Map<String, List<Double>> enterpriseRegionMap, List<String> regionNameList, Map<String, List<Double>> enterpriseProductMap, List<String> productNameList, EnterpriseThreeColor threeColor) {
         this.pieRightnowList = pieRightnowList;
         this.pieProactiveList = pieProactiveList;
         this.rightnowTicketM = rightnowTicketM;
@@ -39,6 +38,7 @@ public class EntDto {
         this.productNameList = productNameList;
         this.threeColor = threeColor;
     }
+
 
     public List<EnterprisePieDto> getPieRightnowList() {
         return pieRightnowList;
@@ -72,20 +72,20 @@ public class EntDto {
         this.proactiveTicketM = proactiveTicketM;
     }
 
-    public Map<String, List<Integer>> getEnterpriseRegionMap() {
+    public List<String> getNameList() {
+        return nameList;
+    }
+
+    public void setNameList(List<String> nameList) {
+        this.nameList = nameList;
+    }
+
+    public Map<String, List<Double>> getEnterpriseRegionMap() {
         return enterpriseRegionMap;
     }
 
-    public void setEnterpriseRegionMap(Map<String, List<Integer>> enterpriseRegionMap) {
+    public void setEnterpriseRegionMap(Map<String, List<Double>> enterpriseRegionMap) {
         this.enterpriseRegionMap = enterpriseRegionMap;
-    }
-
-    public Map<String, List<Integer>> getEnterpriseProductMap() {
-        return enterpriseProductMap;
-    }
-
-    public void setEnterpriseProductMap(Map<String, List<Integer>> enterpriseProductMap) {
-        this.enterpriseProductMap = enterpriseProductMap;
     }
 
     public List<String> getRegionNameList() {
@@ -96,20 +96,20 @@ public class EntDto {
         this.regionNameList = regionNameList;
     }
 
+    public Map<String, List<Double>> getEnterpriseProductMap() {
+        return enterpriseProductMap;
+    }
+
+    public void setEnterpriseProductMap(Map<String, List<Double>> enterpriseProductMap) {
+        this.enterpriseProductMap = enterpriseProductMap;
+    }
+
     public List<String> getProductNameList() {
         return productNameList;
     }
 
     public void setProductNameList(List<String> productNameList) {
         this.productNameList = productNameList;
-    }
-
-    public List<String> getNameList() {
-        return nameList;
-    }
-
-    public void setNameList(List<String> nameList) {
-        this.nameList = nameList;
     }
 
     public EnterpriseThreeColor getThreeColor() {

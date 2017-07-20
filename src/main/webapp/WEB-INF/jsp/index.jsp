@@ -179,6 +179,14 @@
 				<li><a href="http://10.194.194.119/wallboard_dc/app/wallboard.php?lay=147&slide=2" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Reserved for Huawei</a></li>
 			</ul>
 		</li>
+		<li class="menu-list">
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>ITOC<i class="first-a-down"></i></a>
+			<ul>
+				<li><a href="http://10.62.13.18:9090" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Manage Engine</a></li>
+				<li><a href="http://me-admin.telkom.co.id:9090/MyPage.do?method=viewDashBoard" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Application Manager</a></li>
+				<li><a href="http://10.64.1.196/Orion/SummaryView.aspx?viewid=34" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Solarwinds</a></li>
+			</ul>
+		</li>
 	</ul>
 </div>
 <!--菜单右边的iframe页面-->

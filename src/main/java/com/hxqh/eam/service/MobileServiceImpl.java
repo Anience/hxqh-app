@@ -2,9 +2,9 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
 import com.hxqh.eam.model.TbIocMobileIpTransit;
 import com.hxqh.eam.model.dto.*;
-import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,8 @@ public class MobileServiceImpl implements MobileService {
     private VMob88PerformanceDao mob88PerformanceDao;
     @Autowired
     private TbIocMobileIpTransitDao tbIocMobileIpTransitDao;
-
+    @Autowired
+    private TbIocMobileBackhaulTtcDao mobileBackhaulTtcDao;
 
     @Override
     public Mob91Dto vMob91Data() {
@@ -188,13 +189,29 @@ public class MobileServiceImpl implements MobileService {
             } else if (null != ipTransit.getWrong()) {
                 wrongList.add(ipTransit);
             }
-            if("MAKASAR".equals(ipTransit.getAgte()))
-            {
+            if ("MAKASAR".equals(ipTransit.getAgte())) {
                 namelist.add(ipTransit.getDataTimes());
             }
         }
 
-        ThroughtputDto throughtputDto = new ThroughtputDto(inM, outM, opersList, wrongList,namelist);
+        ThroughtputDto throughtputDto = new ThroughtputDto(inM, outM, opersList, wrongList, namelist);
         return throughtputDto;
+    }
+
+    @Override
+    public TopologicalDto topologicalData() {
+        List<TbIocMobileBackhaulTtc> mobileBackhaulTtcs = mobileBackhaulTtcDao.findAll();
+        List<TbIocMobileBackhaulTtc> root7List = new ArrayList<>();
+        //先遍历获取顶级节点
+        for (int i = 0; i < mobileBackhaulTtcs.size(); i++) {
+//            if(null==mobileBackhaulTtcs.get(i).getParentId())
+//            {
+//                root7List.
+//            }
+        }
+
+        //
+
+        return null;
     }
 }
