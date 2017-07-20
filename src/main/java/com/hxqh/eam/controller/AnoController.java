@@ -4,10 +4,8 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
-import com.hxqh.eam.model.dto.IndiHomeDto;
-import com.hxqh.eam.model.dto.OpenMapLinesDto;
-import com.hxqh.eam.model.dto.OpenMapTableDto;
-import com.hxqh.eam.model.dto.VoiceDto;
+import com.hxqh.eam.model.ComplaintData;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -210,6 +208,19 @@ public class AnoController {
     }
 
     /**
+     * solution 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/solutionData", method = RequestMethod.GET)
+    public SolutionDto getSolutionData() {
+        SolutionDto solutionData = anoService.getSolutionData();
+        return solutionData;
+    }
+
+
+    /**
      * wifiInd 页面跳转接口
      *
      * @return
@@ -218,6 +229,19 @@ public class AnoController {
     public String wifiInd() {
         return "consumer/wifiInd";
     }
+
+    /**
+     * wifiInd 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/wifiIndData", method = RequestMethod.GET)
+    public WifiIndDto getWifiIndData() {
+        WifiIndDto solutionData = anoService.getWifiIndData();
+        return solutionData;
+    }
+
 
     /***********************************Consumer*******************************************/
     /***********************************provisioning***************************************/
@@ -232,6 +256,17 @@ public class AnoController {
         return "provision/realTime";
     }
 
+    /**
+     * Real Time Service Order Handling 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/realtimeData", method = RequestMethod.GET)
+    public RealtimeData realtimeData() {
+        RealtimeData realtimeData = anoService.realtimeData();
+        return realtimeData;
+    }
 
     /**
      * Monthly MTTI Performance monitoring per 7 regions 页面跳转接口
@@ -243,6 +278,17 @@ public class AnoController {
         return "provision/monthly";
     }
 
+    /**
+     * Monthly MTTI Performance monitoring per 7 regions 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/monthlyData", method = RequestMethod.GET)
+    public MonthlyData monthlyData() {
+        MonthlyData monthlyData = anoService.monthlyData();
+        return monthlyData;
+    }
 
     /**
      * Per 7 x  regions INDIHOME Comply Order 页面跳转接口
@@ -255,6 +301,19 @@ public class AnoController {
     }
 
     /**
+     * Per 7 x  regions INDIHOME Comply Order  数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/per7xData", method = RequestMethod.GET)
+    public Per7xData getPer7xData() {
+        Per7xData per7xData = anoService.getPer7xData();
+        return per7xData;
+    }
+
+
+    /**
      * Complaint Following New Installation  页面跳转接口
      *
      * @return
@@ -262,6 +321,18 @@ public class AnoController {
     @RequestMapping(value = "/complaint", method = RequestMethod.GET)
     public String complaint() {
         return "provision/complaint";
+    }
+
+    /**
+     * Complaint Following New Installation   数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/complaintData", method = RequestMethod.GET)
+    public ComplaintData getComplaintData() {
+        ComplaintData complaintData = anoService.getComplaintData();
+        return complaintData;
     }
 
 

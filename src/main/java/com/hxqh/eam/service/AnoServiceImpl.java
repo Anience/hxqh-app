@@ -2,7 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.TbIocConsumerVoiceTraffic;
+import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
 import org.hibernate.SessionFactory;
@@ -41,6 +41,13 @@ public class AnoServiceImpl implements AnoService {
     private VMapOpenmaptableRighttableDao mapOpenmaptableRighttableDao;
     @Autowired
     private TbIocConsumerVoiceTrafficDao tbIocConsumerVoiceTrafficDao;
+    @Autowired
+    private TbIocProTicketFfmResultDao tbIocProTicketFfmResultDao;
+    @Autowired
+    private TbIocProTicketResultDao tbIocProTicketResultDao;
+    @Autowired
+    private TbIocProIndihomeDao proIndihomeDao;
+
     @Resource
     protected SessionFactory sessionFactory;
 
@@ -53,7 +60,6 @@ public class AnoServiceImpl implements AnoService {
     public List<VAno82> getAno82Data() {
         return ano82Dao.findAll();
     }
-
 
     @Override
     public IndiHomeDto getIndiHomeData() {
@@ -80,9 +86,8 @@ public class AnoServiceImpl implements AnoService {
         Map<String, Object> params = new HashMap<>();
         params.put("status", "Down");
         String where = "status=:status";
-        return mapOpenmappointDao.findAll(where,params,orderby);
+        return mapOpenmappointDao.findAll(where, params, orderby);
     }
-
 
     @Override
     public OpenMapLinesDto getOpenMapLinesData() {
@@ -223,5 +228,95 @@ public class AnoServiceImpl implements AnoService {
 
     }
 
+
+    @Override
+    public SolutionDto getSolutionData() {
+        return null;
+    }
+
+    @Override
+    public WifiIndDto getWifiIndData() {
+        return null;
+    }
+
+    @Override
+    public RealtimeData realtimeData() {
+        //第三象限
+        List<TbIocProTicketFfmResult> ticketFfmResultDaoAll = tbIocProTicketFfmResultDao.findAll();
+
+        List<String> name3List = new ArrayList<>();
+        List<Integer> value3List = new ArrayList<>();
+        for (int i = 0; i < ticketFfmResultDaoAll.size(); i++) {
+            name3List.add(ticketFfmResultDaoAll.get(i).getTicketHourrs());
+            value3List.add(Integer.valueOf(ticketFfmResultDaoAll.get(i).getJumlah()));
+        }
+
+        List<TbIocProTicketResult> ticketResults = tbIocProTicketResultDao.findAll();
+        //对ticketResults分组
+        Map<String, List<TbIocProTicketResult>> proactiveTicketMap = GroupListUtil.group(ticketResults, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocProTicketResult d = (TbIocProTicketResult) obj;
+                return d.getChartType();    // 分组依据为ChartType
+            }
+        });
+        //获取PILLAR信息再分组
+        List<TbIocProTicketResult> pillartList = proactiveTicketMap.get("PILLAR");
+        //对pillartList分组
+        Map<String, List<TbIocProTicketResult>> pillartMap = GroupListUtil.group(pillartList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocProTicketResult d = (TbIocProTicketResult) obj;
+                return d.getTicketStatus();    // 分组依据为TicketStatus
+            }
+        });
+
+        Map<String, List<Integer>> pillartM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<TbIocProTicketResult>> m : pillartMap.entrySet()) {
+            List<Integer> mttrs = new LinkedList<>();
+            for (TbIocProTicketResult l : m.getValue()) {
+                mttrs.add(Integer.valueOf(l.getJumlah()));
+            }
+            pillartM.put(m.getKey(), mttrs);
+        }
+        //map移除PILLAR信息
+        pillartMap.remove("PILLAR");
+        //获取name2List
+        List<String> name2List = new LinkedList<>();
+
+        for (int i = 0; i < pillartList.size(); i++) {
+            if (pillartList.get(i).getTicketStatus().equals("OPEN")) {
+                name2List.add(pillartList.get(i).getXValue());
+            }
+        }
+
+        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartMap, pillartM, name2List);
+        return realtimeData;
+    }
+
+    @Override
+    public MonthlyData monthlyData() {
+        return null;
+    }
+
+    @Override
+    public Per7xData getPer7xData() {
+        List<TbIocProIndihome> indihomeList = proIndihomeDao.findAll();
+        //对proactiveTicketTktList1分组
+        Map<String, List<TbIocProIndihome>> proactiveTicketMap = GroupListUtil.group(indihomeList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocProIndihome d = (TbIocProIndihome) obj;
+                return d.getRegional();    // 分组依据为Regional
+            }
+        });
+        Per7xData per7xData = new Per7xData(proactiveTicketMap);
+        return per7xData;
+    }
+
+    @Override
+    public ComplaintData getComplaintData() {
+        return null;
+    }
 
 }
