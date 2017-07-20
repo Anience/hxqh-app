@@ -1,5 +1,6 @@
 package com.hxqh.eam.model.dto;
 
+import com.hxqh.eam.model.TbIocMobilePerfor;
 import com.hxqh.eam.model.view.VMob88Mtti;
 import com.hxqh.eam.model.view.VMob88Mttr;
 import com.hxqh.eam.model.view.VMob88Performance;
@@ -13,12 +14,13 @@ public class Mob88Dto {
 
     private List<VMob88Mtti> mob88MttiList;
     private List<VMob88Mttr> mob88MttrList;
-    private List<VMob88Performance> performanceList;
 
-    public Mob88Dto(List<VMob88Mtti> mob88MttiList, List<VMob88Mttr> mob88MttrList, List<VMob88Performance> performanceList) {
+    private List<TbIocMobilePerfor> perforList;
+
+    public Mob88Dto(List<VMob88Mtti> mob88MttiList, List<VMob88Mttr> mob88MttrList, List<TbIocMobilePerfor> perforList) {
         this.mob88MttiList = mob88MttiList;
         this.mob88MttrList = mob88MttrList;
-        this.performanceList = performanceList;
+        this.perforList = perforList;
     }
 
     public List<VMob88Mtti> getMob88MttiList() {
@@ -37,11 +39,12 @@ public class Mob88Dto {
         this.mob88MttrList = mob88MttrList;
     }
 
-    public List<VMob88Performance> getPerformanceList() {
-        return performanceList;
+
+    public List<TbIocMobilePerfor> getPerforList() {
+        return perforList;
     }
 
-    public void setPerformanceList(List<VMob88Performance> performanceList) {
-        this.performanceList = performanceList;
+    public void setPerforList(List<TbIocMobilePerfor> perforList) {
+        this.perforList = perforList;
     }
 }

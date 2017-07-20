@@ -4,6 +4,8 @@ import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
 import com.hxqh.eam.model.TbIocMobileIpTransit;
+import com.hxqh.eam.model.TbIocMobilePerfor;
+import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,10 @@ public class MobileServiceImpl implements MobileService {
     private TbIocMobileIpTransitDao tbIocMobileIpTransitDao;
     @Autowired
     private TbIocMobileBackhaulTtcDao mobileBackhaulTtcDao;
+    @Autowired
+    private TbIocMobilePerforDao tbIocMobilePerforDao;
+    @Autowired
+    private TbIocMobilePerforBadMsgDao tbIocMobilePerforBadMsgDao;
 
     @Override
     public Mob91Dto vMob91Data() {
@@ -145,8 +151,10 @@ public class MobileServiceImpl implements MobileService {
     public Mob88Dto getMob88Data() {
         List<VMob88Mtti> mob88Mtti = mob88MttiDao.findAll();
         List<VMob88Mttr> mob88Mttr = mob88MttrDao.findAll();
-        List<VMob88Performance> mob88Performance = mob88PerformanceDao.findAll();
-        Mob88Dto mob88Dto = new Mob88Dto(mob88Mtti, mob88Mttr, mob88Performance);
+//        List<VMob88Performance> mob88Performance = mob88PerformanceDao.findAll();
+        List<TbIocMobilePerfor> perforList = tbIocMobilePerforDao.findAll();
+
+        Mob88Dto mob88Dto = new Mob88Dto(mob88Mtti, mob88Mttr, perforList);
         return mob88Dto;
     }
 
@@ -210,8 +218,17 @@ public class MobileServiceImpl implements MobileService {
 //            }
         }
 
-        //TODO
+        //TODO  待确认拓扑图格式
 
         return null;
+    }
+
+    @Override
+    public List<TbIocMobilePerforBadMsg> badmsgData(String treg, String type) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("treg", treg);
+        params.put("type", type);
+        String where = "treg=:treg and perforType =:type ";
+        return tbIocMobilePerforBadMsgDao.findAll(where,params,null);
     }
 }

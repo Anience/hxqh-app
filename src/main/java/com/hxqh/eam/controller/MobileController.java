@@ -6,16 +6,14 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.common.basedao.Dao;
 import com.hxqh.eam.model.TbIocMobileIpTransit;
+import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.service.MobileService;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -98,6 +96,23 @@ public class MobileController {
         Mob88Dto mob88Dto = mobileService.getMob88Data();
         return mob88Dto;
     }
+
+
+    /**
+     *  4. MTTR & MTTI  悬停数据接口
+     *  treg: TREG-1~7
+     *  type: SR,PSR
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/badmsg", method = RequestMethod.GET)
+    public List<TbIocMobilePerforBadMsg> badmsgData(@RequestParam("treg") String treg,
+                               @RequestParam("type") String type) {
+        List<TbIocMobilePerforBadMsg> badmsgData= mobileService.badmsgData(treg,type);
+        return badmsgData;
+    }
+
+
 
 
     /**
