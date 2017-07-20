@@ -1,27 +1,43 @@
 $(function(){
-	var data1 = [{
-			            name: '蒸发量',
-			            type: 'bar',
-			            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-			        },
-			        {
-			            name: '降水量',
-			            type: 'bar',
-			            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-			        }
-			    ];
-    var legend1 = ['蒸发量', '降水量'];
-    var tit1 = "Today’s Status WO on FFM";
-    var data3 = [{
-			            name: '蒸发量',
-			            type: 'bar',
-			            data: [0, 0, 0, 0, 0, 0, 0, 0, 32.6, 20.0, 6.4, 3.3]
-			        }
-			    ];
-	var legend3 = ['蒸发量'];
-	var tit3 = "Accumulated Closed Order Volume ";
-	initELine("echart1",tit1,data1,legend1);
-	initELine("echart3",tit3,data3,legend3);
+	init();
+	function init(){
+		$.ajax({
+			url: _ctx+"/ano/realtimeData",
+			method: "get",
+			dataType: "json",
+			success: function (data) {
+				var data1 = [];
+				var legend1 = [];
+				var tit1 = "Today’s Status WO on FFM";
+				var xData1 = data.name2List;
+				var echartData1 = data.pillartM;
+				for(var name in echartData1){
+					legend1.push(name);
+					var tmpObj = {};
+					tmpObj.name = name;
+					tmpObj.type = 'bar';
+					tmpObj.data = echartData1[name];
+					data1.push(tmpObj);
+				}
+				initELine("echart1",tit1,data1,legend1,xData1);
+
+				var xData3 = data.name3List;
+				var data3 = [{
+					name: 'Closed Order',
+					type: 'bar',
+					data: data.value3List
+				}
+				];
+				var legend3 = ['Closed Order'];
+				var tit3 = "Accumulated Closed Order Volume ";
+				initELine("echart3",tit3,data3,legend3,xData3);
+			},
+			error: function () {
+
+			}
+		});
+	}
+
 	var tit21 = "RA";
 	var legend2=['直接访问','邮件营销'];
 	var data2 =[
@@ -33,7 +49,7 @@ $(function(){
 	initEPie("echart22",tit22,data2,legend2,'true');
 	var tit4 = "Time Achievement ofWO on FFM（weekly） ";
 	initE("echart4",tit4);
-	function initELine(domId,tit,data,legendData) {
+	function initELine(domId,tit,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			    backgroundColor: '#0A0F25',
@@ -46,9 +62,9 @@ $(function(){
 			            color: '#9F9FA1'
 			        }
 			    },
-			    tooltip: {
-			        trigger: 'axis'
-			    },
+			    // tooltip: {
+			    //     trigger: 'axis'
+			    // },
 			    legend: {
 			        data: legendData,
 			        x: 'right',
@@ -86,7 +102,7 @@ $(function(){
 			                color: '#212538',
 			            }
 			        },
-			        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+			        data: xData
 			    }],
 			    yAxis: [{
 			        type: 'value',

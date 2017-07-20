@@ -16,46 +16,46 @@
 <div class="pre-layout">
 	<h4>Provisioning-7 x  regions INDIHOME Comply Order</h4>
 	<div class="item">
-		<table>
+		<table class="treg14-table">
 			<thead>
-			<tr>
-				<td width="197px">TREG</td>
-				<td width="210px">STATUS_IN</td>
-				<td width="265px">APP</td>
-				<td width="175px">COMPLY PS_DONE</td>
-				<td width="228px">NOT COMPLY PS_DONE</td>
-				<td width="216px">GRAND TOTAL PS_DONE</td>
-				<td width="220px">MYINDIHOME</td>
-				<td width="210px">OTHERS</td>
-			</tr>
+				<tr>
+					<td width="197px">TREG</td>
+					<td width="210px">STATUS_IN</td>
+					<td width="265px">APP</td>
+					<td width="175px">COMPLY PS_DONE</td>
+					<td width="228px">NOT COMPLY PS_DONE</td>
+					<td width="216px">GRAND TOTAL PS_DONE</td>
+					<td width="220px">MYINDIHOME</td>
+					<td width="210px">OTHERS</td>
+				</tr>
 			</thead>
 			<tbody>
-			<tr>
-				<td rowspan="3">1</td>
-				<td rowspan="3">INIHOME</td>
-				<td>MYINDIHOME</td>
-				<td>222</td>
-				<td>41</td>
-				<td>263</td>
-				<td rowspan="3">
-					<span id="echart1" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
-				</td>
-				<td rowspan="3">
-					<span id="echart2" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
-				</td>
-			</tr>
-			<tr>
-				<td>OTHERS</td>
-				<td>32</td>
-				<td>455</td>
-				<td>423</td>
-			</tr>
-			<tr>
-				<td>TOTAL</td>
-				<td>32</td>
-				<td>455</td>
-				<td>423</td>
-			</tr>
+				<tr>
+					<td rowspan="3">1</td>
+					<td rowspan="3">INIHOME</td>
+					<td>MYINDIHOME</td>
+					<td class="my-cPsDown">222</td>
+					<td class="my-notPsDown">41</td>
+					<td class="my-totalPsDown">263</td>
+					<td rowspan="3">
+						<span id="echart1" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
+					</td>
+					<td rowspan="3">
+						<span id="echart2" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>OTHERS</td>
+					<td class="others-cPsDown">32</td>
+					<td class="others-notPsDown">455</td>
+					<td class="others-totalPsDown">423</td>
+				</tr>
+				<tr>
+					<td>TOTAL</td>
+					<td class="total-cPsDown">32</td>
+					<td class="total-notPsDown">455</td>
+					<td class="total-totalPsDown">423</td>
+				</tr>
 			</tbody>
 		</table>
 		<ul class="treg14">
@@ -68,46 +68,46 @@
 		</ul>
 	</div>
 	<div class="item">
-		<table>
+		<table class="treg57-table">
 			<thead>
-			<tr>
-				<td width="197px">TREG</td>
-				<td width="210px">STATUS_IN</td>
-				<td width="265px">APP</td>
-				<td width="175px">COMPLY PS_DONE</td>
-				<td width="228px">NOT COMPLY PS_DONE</td>
-				<td width="216px">GRAND TOTAL PS_DONE</td>
-				<td width="220px">MYINDIHOME</td>
-				<td width="210px">OTHERS</td>
-			</tr>
+				<tr>
+					<td width="197px">TREG</td>
+					<td width="210px">STATUS_IN</td>
+					<td width="265px">APP</td>
+					<td width="175px">COMPLY PS_DONE</td>
+					<td width="228px">NOT COMPLY PS_DONE</td>
+					<td width="216px">GRAND TOTAL PS_DONE</td>
+					<td width="220px">MYINDIHOME</td>
+					<td width="210px">OTHERS</td>
+				</tr>
 			</thead>
 			<tbody>
-			<tr>
-				<td rowspan="3">1</td>
-				<td rowspan="3">INIHOME</td>
-				<td>MYINDIHOME</td>
-				<td>222</td>
-				<td>41</td>
-				<td>263</td>
-				<td rowspan="3">
-					<span id="echart3" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
-				</td>
-				<td rowspan="3">
-					<span id="echart4" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
-				</td>
-			</tr>
-			<tr>
-				<td>OTHERS</td>
-				<td>32</td>
-				<td>455</td>
-				<td>423</td>
-			</tr>
-			<tr>
-				<td>TOTAL</td>
-				<td>32</td>
-				<td>455</td>
-				<td>423</td>
-			</tr>
+				<tr>
+					<td rowspan="3">1</td>
+					<td rowspan="3">INIHOME</td>
+					<td>MYINDIHOME</td>
+					<td class="my-cPsDown">222</td>
+					<td class="my-notPsDown">41</td>
+					<td class="my-totalPsDown">263</td>
+					<td rowspan="3">
+						<span id="echart3" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
+					</td>
+					<td rowspan="3">
+						<span id="echart4" style="display: block;width: 300px;height: 100%;margin:0 auto;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>OTHERS</td>
+					<td class="others-cPsDown">32</td>
+					<td class="others-notPsDown">455</td>
+					<td class="others-totalPsDown">423</td>
+				</tr>
+				<tr>
+					<td>TOTAL</td>
+					<td class="total-cPsDown">32</td>
+					<td class="total-notPsDown">455</td>
+					<td class="total-totalPsDown">423</td>
+				</tr>
 			</tbody>
 		</table>
 		<ul class="treg57" style="width: 750px;">
