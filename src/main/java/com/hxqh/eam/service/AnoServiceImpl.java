@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -63,11 +64,19 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public IndiHomeDto getIndiHomeData() {
-        List<VHomeImpact> homeImpact = homeImpactDao.findAll();
-        List<VHomeRegular> homeRegular = homeRegularDao.findAll();
-        List<VHomeTotal> homeTotal = homeTotalDao.findAll();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("sh", "asc");
 
-        IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact, homeRegular, homeTotal);
+
+        List<VHomeImpact> homeImpact = homeImpactDao.findAll(null, null, orderby);
+        List<VHomeRegular> homeRegular = homeRegularDao.findAll(null, null, orderby);
+        List<VHomeTotal> homeTotal = homeTotalDao.findAll(null, null, orderby);
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat ("MMM-dd-yyyy HH:mm:ss", Locale.UK);
+        String sDate = sdf.format(date);
+
+        IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact, homeRegular, homeTotal, sDate);
         return indiHomeDto;
     }
 
@@ -172,7 +181,7 @@ public class AnoServiceImpl implements AnoService {
     @Override
     public VoiceDto getVoiceTrafficData() {
         List<TbIocConsumerVoiceTraffic> consumerVoiceTrafficList = tbIocConsumerVoiceTrafficDao.findAll();
-        //对mapOpenmaptable分组
+        //对consumerVoiceTrafficList分组
         Map<String, List<TbIocConsumerVoiceTraffic>> listMap = GroupListUtil.group(consumerVoiceTrafficList, new GroupListUtil.GroupBy<String>() {
             @Override
             public String groupby(Object obj) {
@@ -241,16 +250,6 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public RealtimeData realtimeData() {
-        //第三象限
-        List<TbIocProTicketFfmResult> ticketFfmResultDaoAll = tbIocProTicketFfmResultDao.findAll();
-
-        List<String> name3List = new ArrayList<>();
-        List<Integer> value3List = new ArrayList<>();
-        for (int i = 0; i < ticketFfmResultDaoAll.size(); i++) {
-            name3List.add(ticketFfmResultDaoAll.get(i).getTicketHourrs());
-            value3List.add(Integer.valueOf(ticketFfmResultDaoAll.get(i).getJumlah()));
-        }
-
         List<TbIocProTicketResult> ticketResults = tbIocProTicketResultDao.findAll();
         //对ticketResults分组
         Map<String, List<TbIocProTicketResult>> proactiveTicketMap = GroupListUtil.group(ticketResults, new GroupListUtil.GroupBy<String>() {
@@ -260,6 +259,22 @@ public class AnoServiceImpl implements AnoService {
                 return d.getChartType();    // 分组依据为ChartType
             }
         });
+
+        /**************第一象限 完成**********************/
+        List<TbIocProTicketResult> pieList = proactiveTicketMap.get("PIE");
+        Map<String, List<TbIocProTicketResult>> pieMap = GroupListUtil.group(pieList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocProTicketResult d = (TbIocProTicketResult) obj;
+                return d.getChartType();    // 分组依据为ChartType
+            }
+        });
+
+
+        /**************第一象限 完成**********************/
+
+        /**************第二象限 完成**********************/
+
         //获取PILLAR信息再分组
         List<TbIocProTicketResult> pillartList = proactiveTicketMap.get("PILLAR");
         //对pillartList分组
@@ -279,8 +294,29 @@ public class AnoServiceImpl implements AnoService {
             }
             pillartM.put(m.getKey(), mttrs);
         }
-        //map移除PILLAR信息
-        pillartMap.remove("PILLAR");
+
+        //pillartM返回
+
+        /**************第二象限 完成**********************/
+
+        /**************第三象限 完成**********************/
+        List<TbIocProTicketFfmResult> ticketFfmResultDaoAll = tbIocProTicketFfmResultDao.findAll();
+
+        List<String> name3List = new ArrayList<>();
+        List<Integer> value3List = new ArrayList<>();
+        for (int i = 0; i < ticketFfmResultDaoAll.size(); i++) {
+            name3List.add(ticketFfmResultDaoAll.get(i).getTicketHourrs());
+            value3List.add(Integer.valueOf(ticketFfmResultDaoAll.get(i).getJumlah()));
+        }
+        /**************第三象限 完成**********************/
+
+        /**************第四象限 完成**********************/
+        //获取PILLAR信息
+        List<TbIocProTicketResult> arcList = proactiveTicketMap.get("ARC");
+
+
+        /**************第四象限 完成**********************/
+
         //获取name2List
         List<String> name2List = new LinkedList<>();
 
@@ -290,7 +326,7 @@ public class AnoServiceImpl implements AnoService {
             }
         }
 
-        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartMap, pillartM, name2List);
+        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List,pieMap,arcList);
         return realtimeData;
     }
 

@@ -6,7 +6,9 @@ import org.junit.Test;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Ocean Lin on 2017/6/8.
@@ -18,8 +20,15 @@ public class TableFormat {
     public void testDate() {
 //        String monthFormat = StaticUtils.getYearMonthFormat(new Date());
 //        String monthddFormat = StaticUtils.getYearMonthDayFormat(new Date());
-        String yearMonthFormat = StaticUtils.getYearMonthFormat(new Date());
-        System.out.println(yearMonthFormat);
+//        String yearMonthFormat = StaticUtils.getYearMonthFormat(new Date());
+//        System.out.println(yearMonthFormat);
+
+
+//        Date date = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat ("MMM-dd-yyyy HH:mm:ss", Locale.UK);
+//
+//        String sDate = sdf.format(date);
+//        System.out.println(sDate);
 
     }
 
