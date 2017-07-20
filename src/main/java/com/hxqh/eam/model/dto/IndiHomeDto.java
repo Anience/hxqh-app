@@ -10,16 +10,29 @@ import java.util.List;
  * Created by Ocean lin on 2017/6/30.
  */
 public class IndiHomeDto {
+
     private List<VHomeImpact> homeImpactList;
 
     private List<VHomeRegular> homeRegularList;
 
     private List<VHomeTotal> homeTotalList;
 
-    public IndiHomeDto(List<VHomeImpact> homeImpactList, List<VHomeRegular> homeRegularList, List<VHomeTotal> homeTotalList) {
+    private String clienttime;
+
+    public IndiHomeDto(List<VHomeImpact> homeImpactList, List<VHomeRegular> homeRegularList, List<VHomeTotal> homeTotalList, String clienttime) {
         this.homeImpactList = homeImpactList;
         this.homeRegularList = homeRegularList;
         this.homeTotalList = homeTotalList;
+        this.clienttime = clienttime;
+    }
+
+
+    public String getClienttime() {
+        return clienttime;
+    }
+
+    public void setClienttime(String clienttime) {
+        this.clienttime = clienttime;
     }
 
     public List<VHomeImpact> getHomeImpactList() {

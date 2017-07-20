@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.model.view.VMob87;
@@ -26,4 +27,6 @@ public interface MobileService {
     ThroughtputDto throughtputData();
 
     TopologicalDto topologicalData();
+
+    List<TbIocMobilePerforBadMsg> badmsgData(String treg, String type);
 }

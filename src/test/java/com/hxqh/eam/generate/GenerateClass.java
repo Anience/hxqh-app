@@ -13,9 +13,10 @@ import java.io.*;
 public class GenerateClass {
 
 
-    private static final String VIEWMODEL = "import com.hxqh.eam.model.view.";
+    private static final String VIEWMODEL = "import com.hxqh.eam.model.";
+//    private static final String VIEWMODEL = "import com.hxqh.eam.model.view.";
     private static final String MODEL = "import com.hxqh.eam.model.";
-    private static final String DATE = "2017-6-27 ";
+    private static final String DATE = "2017-7-20 ";
     private static final String DAO = "import com.hxqh.eam.dao.";
 
     public static void main(String[] args) throws IOException {

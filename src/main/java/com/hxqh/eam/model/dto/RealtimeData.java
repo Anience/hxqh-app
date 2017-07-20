@@ -13,17 +13,35 @@ public class RealtimeData {
     private List<String> name3List;
     private List<Integer> value3List;
 
-    private Map<String, List<TbIocProTicketResult>> pillartMap;
     private Map<String, List<Integer>> pillartM;
-
     private List<String> name2List;
 
-    public RealtimeData(List<String> name3List, List<Integer> value3List, Map<String, List<TbIocProTicketResult>> pillartMap, Map<String, List<Integer>> pillartM, List<String> name2List) {
+    private Map<String, List<TbIocProTicketResult>> pieMap;
+    private List<TbIocProTicketResult> arcList;
+
+    public RealtimeData(List<String> name3List, List<Integer> value3List, Map<String, List<Integer>> pillartM, List<String> name2List, Map<String, List<TbIocProTicketResult>> pieMap, List<TbIocProTicketResult> arcList) {
         this.name3List = name3List;
         this.value3List = value3List;
-        this.pillartMap = pillartMap;
         this.pillartM = pillartM;
         this.name2List = name2List;
+        this.pieMap = pieMap;
+        this.arcList = arcList;
+    }
+
+    public Map<String, List<TbIocProTicketResult>> getPieMap() {
+        return pieMap;
+    }
+
+    public void setPieMap(Map<String, List<TbIocProTicketResult>> pieMap) {
+        this.pieMap = pieMap;
+    }
+
+    public List<TbIocProTicketResult> getArcList() {
+        return arcList;
+    }
+
+    public void setArcList(List<TbIocProTicketResult> arcList) {
+        this.arcList = arcList;
     }
 
     public List<String> getName3List() {
@@ -40,14 +58,6 @@ public class RealtimeData {
 
     public void setValue3List(List<Integer> value3List) {
         this.value3List = value3List;
-    }
-
-    public Map<String, List<TbIocProTicketResult>> getPillartMap() {
-        return pillartMap;
-    }
-
-    public void setPillartMap(Map<String, List<TbIocProTicketResult>> pillartMap) {
-        this.pillartMap = pillartMap;
     }
 
     public Map<String, List<Integer>> getPillartM() {
