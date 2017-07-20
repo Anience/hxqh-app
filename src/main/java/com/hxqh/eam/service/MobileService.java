@@ -24,4 +24,6 @@ public interface MobileService {
     Mob88Dto getMob88Data();
 
     ThroughtputDto throughtputData();
+
+    TopologicalDto topologicalData();
 }

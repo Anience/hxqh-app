@@ -4,6 +4,8 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.common.basedao.Dao;
+import com.hxqh.eam.model.TbIocMobileIpTransit;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
 import com.hxqh.eam.service.MobileService;
@@ -156,7 +158,7 @@ public class MobileController {
 
 
     /**
-     * 6. Throughtput IP Transit  页面接口
+     * 6. Throughtput IP Transit  数据接口
      *
      * @return
      */
@@ -166,5 +168,28 @@ public class MobileController {
         ThroughtputDto throughtputDto = mobileService.throughtputData();
         return throughtputDto;
     }
+
+    /**
+     *  1. Backhaul TTC Tsel National  页面跳转接口（拓扑图）
+     *
+     * @return
+     */
+    @RequestMapping(value = "/topological", method = RequestMethod.GET)
+    public String topological() {
+        return "mobile/topological";
+    }
+
+    /**
+     * 1. Backhaul TTC Tsel National  数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/topologicalData", method = RequestMethod.GET)
+    public TopologicalDto topologicalData() {
+        TopologicalDto topologicalData = mobileService.topologicalData();
+        return topologicalData;
+    }
+
 
 }

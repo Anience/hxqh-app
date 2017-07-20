@@ -457,8 +457,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
-        String ent6SQl = "select  w.*,rownum+5000 regionrn  from (select r.treg ,r.dh as dh, nvl(t.sum_persion_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =0  ) r  " +
-                "left join (select  d.treg,d.time_data,sum(d.sum_persion_in) as sum_persion_in from TB_IOC_ENT_BGE_REGION d where d.cust_type = :CUSTOMERSEGMENT group by d.treg,d.time_data ) t on to_char(t.time_data,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
+        String ent6SQl = "select w.*, rownum + 5000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_persion_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 0) r\n" +
+                "          left join (   select d.link_times,d.treg,\n" +
+                "                           sum(d.sum_persion_in) as sum_persion_in\n" +
+                "                      from TB_IOC_ENT_BGE_REGION d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                     group by d.link_times,d.treg ) t\n" +
+                "            on t.link_times = r.dtime and t.treg=r.treg\n" +
+                "         order by r.configregionid) w";
         List<Enterprise67Dto> dto6List = sessionFactory.getCurrentSession().createSQLQuery(ent6SQl).addEntity(Enterprise67Dto.class).
                 setString("CUSTOMERSEGMENT", type).list();
 
@@ -480,9 +488,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         /*******************************************Tb_Ioc_Ent_Bge_Region*************************************/
 
         /*******************************************TB_IOC_ENT_BGE_PRODUCT************************************/
-        String ent7SQl = "select  w.*,rownum+6000 regionrn  from (select r.treg,r.dh as dh,nvl(t.sum_in,0) as personsum from (select * from tb_ioc_config_region_product x where x.cata =1  ) r " +
-                " left join (select d.lay,d.data_times,sum(d.sum_in) as sum_in from TB_IOC_ENT_BGE_PRODUCT d where d.cust_type = :CUSTOMERSEGMENT group by d.lay,d.data_times) t on to_char(t.data_times,'yyyy-MM-dd hh24:mi:ss') = r.dtime order by r.configregionid) w";
-        List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).setString("CUSTOMERSEGMENT", type).list();
+        String ent7SQl = "select w.*, rownum + 6000 regionrn\n" +
+                "  from (select r.treg, r.dh as dh, nvl(t.sum_in, 0) as personsum\n" +
+                "          from (select * from tb_ioc_config_region_product x where x.cata = 1) r\n" +
+                "          left join (select d.link_times,d.lay,sum(d.sum_in) as sum_in\n" +
+                "                      from TB_IOC_ENT_BGE_PRODUCT d\n" +
+                "                     where d.cust_type = :CUSTOMERSEGMENT\n" +
+                "                     group by  d.link_times,d.lay) t\n" +
+                "            on t.link_times = r.dtime and t.lay=r.treg\n" +
+                "         order by r.configregionid) w";
+        List<Enterprise67Dto> regionProductList = sessionFactory.getCurrentSession().createSQLQuery(ent7SQl).addEntity(Enterprise67Dto.class).
+                setString("CUSTOMERSEGMENT", type).list();
 
         Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(regionProductList, new GroupListUtil.GroupBy<String>() {
             @Override
