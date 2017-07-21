@@ -220,7 +220,7 @@ public class AnoServiceImpl implements AnoService {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("type", "asc");
 
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("mtype", mtype);
         params.put("treg", treg);
 

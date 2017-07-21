@@ -1,8 +1,10 @@
 package com.hxqh.eam.test;
 
 import com.hxqh.eam.common.hxqh.Account;
+import com.hxqh.eam.dao.TbIocMobileBackhaulTtcDao;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
+import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
 import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.EnterpriseService;
@@ -20,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by lh on 2017/5/5.
@@ -34,13 +36,49 @@ public class ViewTest {
     private SystemService systemService;
     @Autowired
     private EnterpriseService enterpriseService;
+    @Autowired
+    private TbIocMobileBackhaulTtcDao mobileBackhaulTtcDao;
 
     @Test
     public void testCreateSQLQuery() {
 //        EnterpriseTopDto dbs = enterpriseService.getTopData(1, "DBS");
 
+//        List<TbIocMobileBackhaulTtc> allNode = mobileBackhaulTtcDao.findAll();
+//        List<TbIocMobileBackhaulTtc> root7List = new LinkedList<>();
+//        //先遍历获取顶级节点
+//        for (int i = 0; i < allNode.size(); i++) {
+//            if (null == allNode.get(i).getParentId()) {
+//                root7List.add(allNode.get(i));
+//            }
+//        }
+//
+//        Map<String, List<TbIocMobileBackhaulTtc>> map = new HashMap<>();
+//        for (int i = 0; i < root7List.size(); i++) {
+//            List<TbIocMobileBackhaulTtc> backhaulTtcs2 = new LinkedList<>();
+//            backhaulTtcs2.add(root7List.get(i));
+//            backhaulTtcs2.addAll(treeMenuList(allNode, root7List.get(i)));
+//            map.put(root7List.get(i).getTitle(), backhaulTtcs2);
+//        }
+//
+//        //求节点间的连线
+//        allNode.removeAll(root7List);
+
     }
 
+
+    public static List<TbIocMobileBackhaulTtc> treeMenuList(List<TbIocMobileBackhaulTtc> menuList, TbIocMobileBackhaulTtc mobileBackhaulTtc) {
+        List<TbIocMobileBackhaulTtc> childMenu = new LinkedList<>();
+
+        for (TbIocMobileBackhaulTtc mu : menuList) {
+            //遍历出父id等于参数的id，add进子节点集合
+            if (mobileBackhaulTtc.getTtcId().equals(mu.getParentId())) {
+                //递归遍历下一级
+                treeMenuList(menuList, mu);
+                childMenu.add(mu);
+            }
+        }
+        return childMenu;
+    }
 
     @Test
     public void testGetViewData() {
