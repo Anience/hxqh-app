@@ -113,7 +113,7 @@
 		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>IOC MOBILE<i class="first-a-down"></i></a>
 			<ul>
-				<li><a id="85" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Backhaul TTC Tsel National</a></li>
+				<li><a id="85" href="${ctx}/mobile/topological" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>1. Backhaul TTC Tsel National</a></li>
 				<li><a id="list86" href="${ctx}/mobile/mobile86" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>2. IPPM KPI</a></li>
 				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Ticket</a></li>
 				<li><a id="list88" href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. MTTR & MTTI</a></li>
