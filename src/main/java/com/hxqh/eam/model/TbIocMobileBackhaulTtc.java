@@ -18,7 +18,7 @@ public class TbIocMobileBackhaulTtc implements Serializable {
     @SequenceGenerator(name = "TB_IOC_MOBILE_BACKHAUL_TTC_TTCID_GENERATOR", sequenceName = "SEQ_TB_IOC_MOBILE_BACKHAUL_TTC")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_IOC_MOBILE_BACKHAUL_TTC_TTCID_GENERATOR")
     @Column(name = "TTC_ID")
-    private long ttcId;
+    private BigDecimal ttcId;
 
     @Column(name = "COLOR_TYPE")
     private BigDecimal colorType;
@@ -32,14 +32,18 @@ public class TbIocMobileBackhaulTtc implements Serializable {
 
     private String ts;
 
+    private Integer catagory;
+
+    private Integer deptdepth;
+
     public TbIocMobileBackhaulTtc() {
     }
 
-    public long getTtcId() {
-        return this.ttcId;
+    public BigDecimal getTtcId() {
+        return ttcId;
     }
 
-    public void setTtcId(long ttcId) {
+    public void setTtcId(BigDecimal ttcId) {
         this.ttcId = ttcId;
     }
 
@@ -83,5 +87,19 @@ public class TbIocMobileBackhaulTtc implements Serializable {
         this.ts = ts;
     }
 
+    public Integer getCatagory() {
+        return catagory;
+    }
 
+    public void setCatagory(Integer catagory) {
+        this.catagory = catagory;
+    }
+
+    public Integer getDeptdepth() {
+        return deptdepth;
+    }
+
+    public void setDeptdepth(Integer deptdepth) {
+        this.deptdepth = deptdepth;
+    }
 }

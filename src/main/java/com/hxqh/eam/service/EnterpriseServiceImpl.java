@@ -155,7 +155,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     private EnterpriseTopDto generateEnterpriseDto(Integer show, String type, Map<String, Object> params, String rightnowWhere, String roactiveWhere) {
 
         Integer rownumkey1 = show * 10000;
-        Integer rownumkey2 = show * 20000;
+        Integer rownumkey2 = show * 90000;
         /*************************************饼图************************************************/
 
         List<VEnterpriseTicket> rightnowList = vEnterpriseTicketDao.findAll(rightnowWhere, params, null);

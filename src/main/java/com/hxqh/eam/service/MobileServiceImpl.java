@@ -208,19 +208,50 @@ public class MobileServiceImpl implements MobileService {
 
     @Override
     public TopologicalDto topologicalData() {
-        List<TbIocMobileBackhaulTtc> mobileBackhaulTtcs = mobileBackhaulTtcDao.findAll();
-        List<TbIocMobileBackhaulTtc> root7List = new ArrayList<>();
+
+        List<TbIocMobileBackhaulTtc> allNode = mobileBackhaulTtcDao.findAll();
+        List<TbIocMobileBackhaulTtc> root7List = new LinkedList<>();
         //先遍历获取顶级节点
-        for (int i = 0; i < mobileBackhaulTtcs.size(); i++) {
-//            if(null==mobileBackhaulTtcs.get(i).getParentId())
-//            {
-//                root7List.
-//            }
+        for (int i = 0; i < allNode.size(); i++) {
+            if (null == allNode.get(i).getParentId()) {
+                root7List.add(allNode.get(i));
+            }
         }
 
-        //TODO  待确认拓扑图格式
+        Map<String, List<TbIocMobileBackhaulTtc>> map = new LinkedHashMap<>();
+        for (int i = 0; i < root7List.size(); i++) {
+            List<TbIocMobileBackhaulTtc> backhaulTtcs2 = new LinkedList<>();
+            backhaulTtcs2.add(root7List.get(i));
+            backhaulTtcs2.addAll(treeMenuList(allNode, root7List.get(i)));
+            map.put(root7List.get(i).getTitle(), backhaulTtcs2);
+        }
 
-        return null;
+        //求节点间的连线
+        Map<String, List<TbIocMobileBackhaulTtc>> linkMap = new LinkedHashMap<>();
+        for(Map.Entry<String, List<TbIocMobileBackhaulTtc>> en:map.entrySet())
+        {
+            List<TbIocMobileBackhaulTtc> enValue = new LinkedList<>();
+            enValue.addAll(en.getValue());
+            enValue.remove(0);
+            linkMap.put(en.getKey(),enValue);
+        }
+        TopologicalDto dto = new TopologicalDto(linkMap,map);
+        return dto;
+    }
+
+
+    public static List<TbIocMobileBackhaulTtc> treeMenuList(List<TbIocMobileBackhaulTtc> menuList, TbIocMobileBackhaulTtc mobileBackhaulTtc) {
+        List<TbIocMobileBackhaulTtc> childMenu = new LinkedList<>();
+
+        for (TbIocMobileBackhaulTtc mu : menuList) {
+            //遍历出父id等于参数的id，add进子节点集合
+            if (mobileBackhaulTtc.getTtcId().equals(mu.getParentId())) {
+                //递归遍历下一级
+                treeMenuList(menuList, mu);
+                childMenu.add(mu);
+            }
+        }
+        return childMenu;
     }
 
     @Override
@@ -229,6 +260,6 @@ public class MobileServiceImpl implements MobileService {
         params.put("treg", treg);
         params.put("type", type);
         String where = "treg=:treg and perforType =:type ";
-        return tbIocMobilePerforBadMsgDao.findAll(where,params,null);
+        return tbIocMobilePerforBadMsgDao.findAll(where, params, null);
     }
 }
