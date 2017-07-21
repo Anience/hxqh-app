@@ -118,7 +118,7 @@
 				<li><a id="list87" href="${ctx}/mobile/mobile87" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>3. Ticket</a></li>
 				<li><a id="list88" href="${ctx}/mobile/mobile88" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>4. MTTR & MTTI</a></li>
 				<li><a id="list" href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=55a496385e87d5ad301e" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>5. Backbone Tsel</a></li>
-				<li><a id="list90" href="http://pm.telkom.co.id:8181" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
+				<li><a id="list90" href="${ctx}/mobile/throughtput" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>6. Throughtput IP Transit</a></li>
 				<li><a id="list91" href="${ctx}/mobile/mobile91" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>7. SQUAT</a></li>
 				<li><a id="list92" href="${ctx}/mobile/mobile92" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>8. Quality CNOP</a></li>
 			</ul>
