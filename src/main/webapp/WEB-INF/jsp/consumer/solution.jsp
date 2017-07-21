@@ -14,7 +14,7 @@
 <body>
 <div class="new3-layout">
 	<h4>Consumer- Voice Traffic</h4>
-	<div id="echart1" style="height:500px; "></div>
+	<div id="echart1" style="height:80%; "></div>
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>

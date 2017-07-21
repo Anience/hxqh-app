@@ -31,24 +31,26 @@ $(function(){
 				var legend3 = ['Closed Order'];
 				var tit3 = "Accumulated Closed Order Volume ";
 				initELine("echart3",tit3,data3,legend3,xData3);
+
+				var tit21 = "RA";
+				var legend2=['直接访问','邮件营销'];
+				var data2 =[
+					{ value: 335, name: '直接访问' },
+					{ value: 310, name: '邮件营销' },
+				];
+				var tit22 = "SA";
+				initEPie("echart21",tit21,data2,legend2,'false');
+				initEPie("echart22",tit22,data2,legend2,'true');
+
+				var tit4 = "Time Achievement ofWO on FFM（weekly）";
+				var echartData4 = data.arcList;
+				initE("echart4",tit4,echartData4[0].jumlah,echartData4[1].jumlah,echartData4[2].jumlah)
 			},
 			error: function () {
 
 			}
 		});
 	}
-
-	var tit21 = "RA";
-	var legend2=['直接访问','邮件营销'];
-	var data2 =[
-		             { value: 335, name: '直接访问' },
-		             { value: 310, name: '邮件营销' },
-		         ];
-	var tit22 = "SA";
-	initEPie("echart21",tit21,data2,legend2,'false');
-	initEPie("echart22",tit22,data2,legend2,'true');
-	var tit4 = "Time Achievement ofWO on FFM（weekly） ";
-	initE("echart4",tit4);
 	function initELine(domId,tit,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
@@ -163,7 +165,7 @@ $(function(){
 			};      
         myChart.setOption(option);
     }
-    function initE(domId,tit){
+    function initE(domId,tit,data1,data2,data3){
     	var myChart = echarts.init(document.getElementById(domId));
     	var dataStyle = {
 				    normal: {
@@ -211,7 +213,7 @@ $(function(){
 		            radius: [125, 150],
 		            itemStyle: dataStyle,
 		            data: [{
-		                    value: 68,
+		                    value: data1,
 		                    name: '68%的人表示过的不错'
 		                },
 		                {
@@ -228,7 +230,7 @@ $(function(){
 		            radius: [100, 125],
 		            itemStyle: dataStyle,
 		            data: [{
-		                    value: 29,
+		                    value: data2,
 		                    name: '29%的人表示生活压力很大'
 		                },
 		                {
@@ -245,7 +247,7 @@ $(function(){
 		            radius: [75, 100],
 		            itemStyle: dataStyle,
 		            data: [{
-		                    value: 3,
+		                    value: data3,
 		                    name: '3%的人表示“我姓曾”'
 		                },
 		                {

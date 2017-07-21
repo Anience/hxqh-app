@@ -14,14 +14,15 @@
 </head>
 <body>
 <div class="ind-layout" id="ind-data">
-	<div class="ind-header">
-		<img src="${ctx}/imgs/logo_01.png">
-		<span class="ind-time">16-Mar-2017 10:40:28</span>
-	</div>
-	<div class="table-layout">
-		<!--左table-->
-		<table class="new-table">
-			<thead>
+	<div class="ver-align">
+		<div class="ind-header">
+			<img src="${ctx}/imgs/logo_01.png">
+			<span class="ind-time"></span>
+		</div>
+		<div class="table-layout">
+			<!--左table-->
+			<table class="new-table">
+				<thead>
 				<tr>
 					<td></td>
 					<td colspan="3" class="regular">Total Tiket</td>
@@ -38,13 +39,13 @@
 					<td width="7%"><span>Close H</span></td>
 					<td width="7%"><span>Status</span></td>
 				</tr>
-			</thead>
-			<tbody id="total-table"></tbody>
-		</table>
+				</thead>
+				<tbody id="total-table"></tbody>
+			</table>
 
-		<!--中间table-->
-		<table class="new-table" style="margin-right: 50px;margin-left: 50px;">
-			<thead>
+			<!--中间table-->
+			<table class="new-table" style="margin-right: 50px;margin-left: 50px;">
+				<thead>
 				<tr>
 					<td></td>
 					<td colspan="3" class="regular">Regular</td>
@@ -61,13 +62,13 @@
 					<td width="7%"><span>Close H</span></td>
 					<td width="7%"><span>Status</span></td>
 				</tr>
-			</thead>
-			<tbody id="regular-table"></tbody>
-		</table>
+				</thead>
+				<tbody id="regular-table"></tbody>
+			</table>
 
-		<!--右table-->
-		<table class="new-table">
-			<thead>
+			<!--右table-->
+			<table class="new-table">
+				<thead>
 				<tr>
 					<td></td>
 					<td colspan="3" class="regular">Impact Gamas</td>
@@ -84,10 +85,11 @@
 					<td width="7%"><span>Close H</span></td>
 					<td width="7%"><span>Status</span></td>
 				</tr>
-			</thead>
-			<tbody id="impact-table"></tbody>
-		</table>
-		<div class="clearfix"></div>
+				</thead>
+				<tbody id="impact-table"></tbody>
+			</table>
+			<div class="clearfix"></div>
+		</div>
 	</div>
 </div>
 </body>

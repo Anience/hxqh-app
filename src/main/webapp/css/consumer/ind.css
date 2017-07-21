@@ -1,8 +1,14 @@
 .ind-layout{
-    width: 1900px;
+    width:100%;
+    min-width: 1900px;
     background: #03091B;
     padding-top: 40px;
     padding-bottom: 40px;
+    height:100%;
+}
+.ver-align{
+    width: 1900px;
+    margin: 0 auto;
 }
 .ind-header h4{
     height: 64px;

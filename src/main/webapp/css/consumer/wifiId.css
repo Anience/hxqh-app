@@ -31,9 +31,11 @@
 }
 ul.first-nav{
   margin-top: 10px;
+  clear: both;
 }
 ul.sec-nav{
   margin-top: 5px;
+  clear: both;
 }
 ul.first-nav li{
   float: left;
