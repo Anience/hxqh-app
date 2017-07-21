@@ -3,7 +3,7 @@ package com.hxqh.eam.service;
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
-import com.hxqh.eam.model.TbIocMobileIpTransit;
+import com.hxqh.eam.model.view.TbIocMobileIpTransit;
 import com.hxqh.eam.model.TbIocMobilePerfor;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
@@ -172,37 +172,32 @@ public class MobileServiceImpl implements MobileService {
             }
         });
 
-        Map<String, List<BigDecimal>> inM = new LinkedHashMap<>();
-        Map<String, List<BigDecimal>> outM = new LinkedHashMap<>();
+        Map<String, ThroughtputAgte> agteMap = new HashMap<>();
         for (Map.Entry<String, List<TbIocMobileIpTransit>> m : map.entrySet()) {
-            List<BigDecimal> inList = new LinkedList<>();
-            List<BigDecimal> outList = new LinkedList<>();
-            for (TbIocMobileIpTransit l : m.getValue()) {
-                inList.add(l.getSumIn());
-                outList.add(l.getSumOut());
+            List<TbIocMobileIpTransit> mValue = m.getValue();
+            List<BigDecimal> in = new ArrayList<>();
+            List<BigDecimal> out = new ArrayList<>();
+            List<BigDecimal> opers = new ArrayList<>();
+            List<BigDecimal> wrong = new ArrayList<>();
+            for (int i = 0; i < mValue.size(); i++) {
+                in.add(mValue.get(i).getSumIn());
+                out.add(mValue.get(i).getSumOut());
+                opers.add(mValue.get(i).getOpers());
+                wrong.add(mValue.get(i).getWrong());
             }
-            inM.put(m.getKey(), inList);
-            outM.put(m.getKey(), outList);
-        }
+            BigDecimal maxVal = (Collections.max(in).compareTo(Collections.max(out)) == -1 )? Collections.max(out) : Collections.max(in);
 
-        //第二部分   namelist
-        List<TbIocMobileIpTransit> opersList = new ArrayList<>();
-        List<TbIocMobileIpTransit> wrongList = new ArrayList<>();
+            ThroughtputAgte throughtputAgte = new ThroughtputAgte(in, out, opers, wrong,maxVal);
+            agteMap.put(m.getKey(), throughtputAgte);
+        }
         List<String> namelist = new LinkedList<>();
-
-        for (int i = 0; i < mobileIpTransits.size(); i++) {
-            TbIocMobileIpTransit ipTransit = mobileIpTransits.get(i);
-            if (null != ipTransit.getOpers()) {
-                opersList.add(ipTransit);
-            } else if (null != ipTransit.getWrong()) {
-                wrongList.add(ipTransit);
-            }
-            if ("MAKASAR".equals(ipTransit.getAgte())) {
-                namelist.add(ipTransit.getDataTimes());
-            }
+        for(int i = 0 ; i< map.get("JAKARTA").size();i++)
+        {
+            namelist.add(map.get("JAKARTA").get(i).getDataTimes());
         }
 
-        ThroughtputDto throughtputDto = new ThroughtputDto(inM, outM, opersList, wrongList, namelist);
+
+        ThroughtputDto throughtputDto = new ThroughtputDto(agteMap,namelist);
         return throughtputDto;
     }
 
@@ -228,14 +223,13 @@ public class MobileServiceImpl implements MobileService {
 
         //求节点间的连线
         Map<String, List<TbIocMobileBackhaulTtc>> linkMap = new LinkedHashMap<>();
-        for(Map.Entry<String, List<TbIocMobileBackhaulTtc>> en:map.entrySet())
-        {
+        for (Map.Entry<String, List<TbIocMobileBackhaulTtc>> en : map.entrySet()) {
             List<TbIocMobileBackhaulTtc> enValue = new LinkedList<>();
             enValue.addAll(en.getValue());
             enValue.remove(0);
-            linkMap.put(en.getKey(),enValue);
+            linkMap.put(en.getKey(), enValue);
         }
-        TopologicalDto dto = new TopologicalDto(linkMap,map);
+        TopologicalDto dto = new TopologicalDto(linkMap, map);
         return dto;
     }
 
