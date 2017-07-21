@@ -21,8 +21,11 @@ $(function(){
                 var totalHtml = initDom(totalList);
                 var imHtml = initDom(impactList);
                 var reHtml = initDom(regularList);
+                $("#total-table").html("");
                 $("#total-table").append(totalHtml);
+                $("#impact-table").html("");
                 $("#impact-table").append(imHtml);
+                $("#regular-table").html("");
                 $("#regular-table").append(reHtml);
             },
             error: function () {
