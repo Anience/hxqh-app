@@ -260,10 +260,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(nameWhere, nameparams, null);
 
-        String name = new String();
-        if (iocCustTop7s != null && iocCustTop7s.size() > 0) {
-            name = (null == iocCustTop7s.get(0).getName()) ? iocCustTop7s.get(0).getName() : iocCustTop7s.get(0).getCustname();
-        }
+        String name = iocCustTop7s.get(0).getName();
 
         /*************************************select * from tb_ioc_cust_top7 显示名称*****************************/
 
@@ -333,9 +330,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
 
-        for(Enterprise67Dto enter:dto7List)
-        {
-            if(enter.getPersonsum()!=0)
+        for (Enterprise67Dto enter : dto7List) {
+            if (enter.getPersonsum() != 0)
                 System.out.println("==============================================");
         }
 

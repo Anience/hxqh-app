@@ -1,4 +1,4 @@
-package com.hxqh.eam.model;
+package com.hxqh.eam.model.view;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -10,13 +10,11 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@Table(name="TB_IOC_MOBILE_IP_TRANSIT")
+@Table(name="V_IOC_MOBILE_IP_TRANSIT")
 public class TbIocMobileIpTransit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TB_IOC_MOBILE_IP_TRANSIT_TRANSITID_GENERATOR", sequenceName="SEQ_TB_IOC_MOBILE_IP_TRANSIT")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_IOC_MOBILE_IP_TRANSIT_TRANSITID_GENERATOR")
 	@Column(name="TRANSIT_ID")
 	private long transitId;
 
