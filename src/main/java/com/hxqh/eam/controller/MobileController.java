@@ -29,7 +29,7 @@ public class MobileController {
      */
     @RequestMapping(value = "/mobile87", method = RequestMethod.GET)
     public String mobile87() {
-        return "mobile/force";
+        return "mobile/mob87";
     }
 
     /**
@@ -187,7 +187,7 @@ public class MobileController {
      */
     @RequestMapping(value = "/topological", method = RequestMethod.GET)
     public String topological() {
-        return "mobile/topological";
+        return "mobile/backhaul";
     }
 
     /**
