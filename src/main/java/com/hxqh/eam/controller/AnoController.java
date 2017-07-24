@@ -13,8 +13,11 @@ import com.hxqh.eam.service.AnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/ano")
@@ -203,8 +206,10 @@ public class AnoController {
      * @return
      */
     @RequestMapping(value = "/solution", method = RequestMethod.GET)
-    public String solution() {
-        return "consumer/solution";
+    public ModelAndView solution(@RequestParam("type") String type) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", type);
+        return new ModelAndView("consumer/solution", result);
     }
 
     /**

@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script>
 		var _ctx = "${ctx}";
+		var _type = "${page}";
 	</script>
 </head>
 <body>
