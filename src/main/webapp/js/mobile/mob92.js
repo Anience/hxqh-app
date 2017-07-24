@@ -8,20 +8,24 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.dtoMap.JITTER_KPI);
+                initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
                 var i = 0;
                 setInterval(function(){
                     i++;
                     if(i>=4){
                         switch(i){
                             case '1':
-                                initEchart("echart1",data.dtoMap.LATENCY_KPI);
+                                initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
+                                $("p").text("BAD<20ms<=GOOD");
                             case '2':
-                                initEchart("echart1",data.dtoMap.LOSS_KPI);
+                                initEchart("echart1",data.dtoMap.LOSS_KPI,'Packet Loss');
+                                $("p").text("BAD<0.1%<=GOOD");
                             case '3':
-                                initEchart("echart1",data.dtoMap.MOS_KPI);
+                                initEchart("echart1",data.dtoMap.MOS_KPI,'MOS');
+                                $("p").text("BAD<3.5<=GOOD");
                             default:
-                                initEchart("echart1",data.dtoMap.JITTER_KPI);
+                                initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
+                                $("p").text("BAD<5ms<=GOOD");
                         }
                     }
                 },20000);
@@ -31,7 +35,7 @@ $(function(){
             }
         })
     }
-    function initEchart(domId,echartData){
+    function initEchart(domId,echartData,tit){
         var legendData = ["No Data","Bad","Good"];
         var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
         var colorData = ["#707B8E","#ECD201","#5ACF05"];
@@ -51,8 +55,8 @@ $(function(){
             },
 
             title: {
-                text: 'Quality CNOP',
-                x:'left',
+                text: tit,
+                x:'center',
                 textStyle: {
                     fontSize: 26,
                     fontWeight: 'bolder',

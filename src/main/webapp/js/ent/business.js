@@ -86,7 +86,7 @@ $(function(){
                     }
 
 
-                },5000);
+                },20000);
             },
             error: function(){
 

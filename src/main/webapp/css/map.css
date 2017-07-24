@@ -1,6 +1,7 @@
 .tit{
-    width: 444px;
-    height: 230px;
+    width: 800px;
+    height:110px;
+    line-height:110px;
     background-color: /* #C8032A */#ed3237;
     position: absolute;
     left: 50%;
