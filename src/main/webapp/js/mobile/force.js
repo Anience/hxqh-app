@@ -66,6 +66,7 @@ $(function () {
        var constMinRadius = 2;
        var myChart = echarts.init(document.getElementById(domId));
        option = {
+           backgroundColor:'#0A0F25',
            title : {
                text: 'Force',
                subtext: 'Force-directed tree',
@@ -78,7 +79,12 @@ $(function () {
            },
            legend: {
                x: 'left',
-               data:['叶子节点','非叶子节点', '根节点']
+               data:['叶子节点','非叶子节点', '根节点'],
+               textStyle: {
+                   fontSize: 16,
+                   fontFamily: "Arial",
+                   color: '#CECECE'
+               }
            },
            series : [
                {

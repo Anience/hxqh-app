@@ -1,6 +1,7 @@
 $(function(){
     initEchart('echart1','JAKARTA');
     function initEchart(domId,tit) {
+        var legendData=["GbitsPerSecondOut","GbitsPerSecondIn"]
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             backgroundColor:'#0A0F25',
@@ -13,6 +14,16 @@ $(function(){
                     fontSize: 24,
                     fontFamily: 'Arial',
                     color: '#E3E3DF'
+                }
+            },
+            legend: {
+                data: legendData,
+                x: 'center',
+                y: 'bottom',
+                textStyle: {
+                    fontSize: 16,
+                    fontFamily: "Arial",
+                    color: '#CECECE'
                 }
             },
             tooltip : {
@@ -85,14 +96,14 @@ $(function(){
                 }
             ],
             series :[{
-                name: '蒸发量',
+                name: 'GbitsPerSecondOut',
                 type: 'line',
                 smooth:true,
                 symbol:'none',
                 data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
             },
                 {
-                    name: '降水量',
+                    name: 'GbitsPerSecondIn',
                     type: 'bar',
                     barWidth:'2',
                     itemStyle:{
