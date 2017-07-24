@@ -20,6 +20,10 @@ import java.util.*;
 @Service("anoService")
 public class AnoServiceImpl implements AnoService {
 
+    private static final String[] PILLLIST = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"};
+    private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
+
+
     @Autowired
     private VAno81Dao vAno81Dao;
     @Autowired
@@ -48,6 +52,8 @@ public class AnoServiceImpl implements AnoService {
     private TbIocProTicketResultDao tbIocProTicketResultDao;
     @Autowired
     private TbIocProIndihomeDao proIndihomeDao;
+    @Autowired
+    private TbIocConsSrviewDao tbIocConsSrviewDao;
 
     @Resource
     protected SessionFactory sessionFactory;
@@ -73,7 +79,7 @@ public class AnoServiceImpl implements AnoService {
         List<VHomeTotal> homeTotal = homeTotalDao.findAll(null, null, orderby);
 
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat ("MMM-dd-yyyy HH:mm:ss", Locale.UK);
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy HH:mm:ss", Locale.UK);
         String sDate = sdf.format(date);
 
         IndiHomeDto indiHomeDto = new IndiHomeDto(homeImpact, homeRegular, homeTotal, sDate);
@@ -326,7 +332,7 @@ public class AnoServiceImpl implements AnoService {
             }
         }
 
-        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List,pieMap,arcList);
+        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List, pieMap, arcList);
         return realtimeData;
     }
 
@@ -353,6 +359,87 @@ public class AnoServiceImpl implements AnoService {
     @Override
     public ComplaintData getComplaintData() {
         return null;
+    }
+
+    @Override
+    public SrviewDto getSrviewData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("srviewId", "asc");
+
+        List<TbIocConsSrview> consSrviewList = tbIocConsSrviewDao.findAll(null, null, orderby);
+        Map<String, List<TbIocConsSrview>> stringListMap = GroupListUtil.group(consSrviewList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocConsSrview d = (TbIocConsSrview) obj;
+                return d.getCharsType();    // 分组依据为CharsType
+            }
+        });
+
+        //返回PILL
+        //namePilllist
+        Map<String, List<TbIocConsSrview>> pillMap = GroupListUtil.group(stringListMap.get("PILL"), new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocConsSrview d = (TbIocConsSrview) obj;
+                return d.getServiceType();    // 分组依据为ServiceType
+            }
+        });
+
+        Map<String, List<BigDecimal>> pillM = new LinkedHashMap<>();
+        for(Map.Entry<String, List<TbIocConsSrview>> m:pillMap.entrySet())
+        {
+            List<BigDecimal> numList = new LinkedList<>();
+            for(int i = 0 ;i<m.getValue().size();i++)
+            {
+                numList.add(m.getValue().get(i).getLevCount());
+            }
+            pillM.put(m.getKey(),numList);
+        }
+
+
+        //返回LINE
+
+        //nameLineList
+        //按照treg分组
+        Map<String, List<TbIocConsSrview>> lineMap = GroupListUtil.group(stringListMap.get("LINE"), new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocConsSrview d = (TbIocConsSrview) obj;
+                return d.getRegional();    // 分组依据为ServiceType
+            }
+        });
+
+        Map<String, Map<String, List<TbIocConsSrview>>> mapMap = new LinkedHashMap<>();
+        for(Map.Entry<String, List<TbIocConsSrview>> m:lineMap.entrySet()) {
+            Map<String, List<TbIocConsSrview>> tmp = GroupListUtil.group(m.getValue(), new GroupListUtil.GroupBy<String>() {
+                @Override
+                public String groupby(Object obj) {
+                    TbIocConsSrview d = (TbIocConsSrview) obj;
+                    return d.getServiceType();    // 分组依据为ServiceType
+                }
+            });
+            mapMap.put(m.getKey(),tmp);
+        }
+
+
+        Map<String,  Map<String, List<BigDecimal>>> lineM = new LinkedHashMap<>();
+        for(Map.Entry<String, Map<String, List<TbIocConsSrview>>> entry :mapMap.entrySet())
+        {
+            Map<String, List<BigDecimal>> tmp = new LinkedHashMap<>();
+            for(Map.Entry<String, List<TbIocConsSrview>> m :entry.getValue().entrySet())
+            {
+                List<BigDecimal> lineList = new LinkedList<>();
+                for(int i = 0 ;i<m.getValue().size();i++)
+                {
+                    lineList.add(m.getValue().get(i).getLevCount());
+                }
+                tmp.put(m.getKey(),lineList);
+            }
+            lineM.put(entry.getKey(),tmp);
+        }
+
+        SrviewDto srviewDto = new SrviewDto(PILLLIST,pillM,LINELIST,lineM);
+        return srviewDto;
     }
 
 }

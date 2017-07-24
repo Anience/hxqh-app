@@ -42,4 +42,6 @@ public interface AnoService {
     Per7xData getPer7xData();
 
     ComplaintData getComplaintData();
+
+    SrviewDto getSrviewData();
 }

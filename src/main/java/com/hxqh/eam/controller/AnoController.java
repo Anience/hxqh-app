@@ -242,6 +242,28 @@ public class AnoController {
         return solutionData;
     }
 
+    /**
+     * SR view 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/srview ", method = RequestMethod.GET)
+    public String srview() {
+        return "consumer/srview";
+    }
+
+    /**
+     * SR view 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/srviewData", method = RequestMethod.GET)
+    public SrviewDto srviewData() {
+        SrviewDto srviewDto = anoService.getSrviewData();
+        return srviewDto;
+    }
+
 
     /***********************************Consumer*******************************************/
     /***********************************provisioning***************************************/
