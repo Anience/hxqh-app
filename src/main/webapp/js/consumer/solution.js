@@ -20,21 +20,27 @@ $(function(){
 					tmpObj.tmpBar = dataBar[name];
 					echartData.push(tmpObj);
 				}
-				initEchart("echart1",'Node:8',nameList,echartData[0].tmpLine,echartData[0].tmpBar);
-				scroll(5);
+				if(_type == '4'){
+                    initEchart("echart1","Node:"+echartData[0].name,nameList,echartData[0].tmpLine,echartData[0].tmpBar);
+                    scroll(0,5);
+				}else{
+                    initEchart("echart1","Node:"+echartData[4].name,nameList,echartData[0].tmpLine,echartData[0].tmpBar);
+                    scroll(5,9);
+				}
+
 			},
 			error: function () {
 
 			}
 		});
 	}
-	function scroll(count){
+	function scroll(init,count){
 		setInterval(function(){
            i++;
            if(i>=count){
-              i=0;
+              i=init;
            }else{
-           	  initEchart("echart1",'Node:'+i,nameList,echartData[i].tmpLine,echartData[i].tmpBar);
+           	  initEchart("echart1","Node:"+echartData[i].name,nameList,echartData[i].tmpLine,echartData[i].tmpBar);
            }
 		},5000);
 	}

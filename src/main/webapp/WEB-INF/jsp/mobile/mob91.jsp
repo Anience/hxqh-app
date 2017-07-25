@@ -80,7 +80,7 @@
 						<td>{{item.ioc4}}</td>
 						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc5)>99,'mob-bg-red':parseFloat(item.ioc5)<=99}">{{item.ioc5}}</td>
 						<td>{{item.ioc6}}</td>
-						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc7)>85,'mob-bg-red':parseFloat(item.ioc7)<=85}">{{item.ioc7}}</td>
+						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc7)>40,'mob-bg-red':parseFloat(item.ioc7)<=40}">{{item.ioc7}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -88,7 +88,7 @@
 		<div class="table-legend">
 			<div class="legend-layout">
 				<div class="legend-item">
-					<span class="txt" style="width:120px;">Target Picup:</span>
+					<span class="txt" style="width:120px;">Target Pickup:</span>
 					<span class="bg bg-red"></span>
 					<span class="txt"><=99%<</span>
 					<span class="bg bg-green"></span>
@@ -102,7 +102,7 @@
 			</div>
 			<div class="legend-layout">
 				<div class="legend-item">
-					<span class="txt" style="width:120px;">Target Picup:</span>
+					<span class="txt" style="width:120px;">Target Pickup:</span>
 					<span class="bg bg-red"></span>
 					<span class="txt"><=99%<</span>
 					<span class="bg bg-green"></span>
@@ -110,7 +110,7 @@
 				<div class="legend-item">
 					<span class="txt" style="width:120px;">Target Comply:</span>
 					<span class="bg bg-red"></span>
-					<span class="txt"><=85%<</span>
+					<span class="txt"><=40%<</span>
 					<span class="bg bg-green"></span>
 				</div>
 			</div>

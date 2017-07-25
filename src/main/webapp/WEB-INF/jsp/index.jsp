@@ -171,7 +171,8 @@
 
 				<li><a href="${ctx}/ano/indiHome" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>indHome</a></li>
 				<li><a href="${ctx}/ano/voice" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>summary</a></li>
-				<li><a href="${ctx}/ano/solution" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Voice</a></li>
+				<li><a href="${ctx}/ano/solution?type=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Voice(1-4)</a></li>
+				<li><a href="${ctx}/ano/solution?type=8" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Voice(5-8)</a></li>
 				<li><a href="${ctx}/ano/wifiInd" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>wifiInd</a></li>
 				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=8c6693afbca73e29a252" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 107</a></li>
 				<li><a href="http://backbone.telkom.co.id/plugins/weathermap/weathermap-cacti-plugin.php?action=viewmap&id=75853fd93fd314f0043c" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet Traffic - 111</a></li>

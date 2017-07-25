@@ -6,6 +6,7 @@
     padding-left: 3%;
     padding-right: 3%;
     font-family: "Arial";
+    height: 100%;
 }
 .ind-layout table thead tr:nth-child(2) td,
 .ind-layout table thead tr:nth-child(3) td,
@@ -43,7 +44,7 @@ table tbody tr td{
     color: rgb(141, 147, 168);
     text-align: center;
     border: 1px solid #03091B;
-    height: 69px;
+    height: 108px;
 }
 table tbody tr:nth-child(odd) td{
     background: #0C0E26;

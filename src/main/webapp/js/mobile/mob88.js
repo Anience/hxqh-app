@@ -5,7 +5,8 @@ $(function () {
     var digitalData = new Vue({
         el: "#mob88-data",
         data: {
-            mobList:[]
+            mobList:[],
+            perforList:[]
         },
         methods: {
 
@@ -20,6 +21,16 @@ $(function () {
                     self.mobList = data;
                     initEchart('echart1',data.mob88MttrList);
                     initEchart('echart2',data.mob88MttiList);
+                    self.perforList = data.perforList;
+                    var insertHtml = "";
+                    for(var i=0;i<data.perforList.length;i++){
+                        var tmpData = data.perforList[i];
+                        insertHtml+="<tr><td>"+tmpData.treg
+                                  +"</td><td>"+tmpData.psr
+                                  +"</td><td>"+tmpData.sr
+                                  +"</td></tr>";
+                    }
+                    $("#mob88-data tbody").html(insertHtml);
                 },
                 error: function () {
 

@@ -15,8 +15,8 @@
 	</script>
 </head>
 <body>
-<div id="mob88">
-	<div class="mob-layout">
+<div>
+	<div class="mob-layout" id="mob88">
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-4">
@@ -29,48 +29,7 @@
 							<td width="100px;">PDP-SR:</td>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>NAS</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-1</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-2</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-3</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-4</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-5</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-6</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-						<tr>
-							<td>TREG-7</td>
-							<td>1/18</td>
-							<td>1/20</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 			<div class="col-sm-7" style="padding-top: 80px;">

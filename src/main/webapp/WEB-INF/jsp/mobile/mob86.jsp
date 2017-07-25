@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<h3>KPI</h3>
+			<h3>KPI COMPLIANCE</h3>
 			<div class="row">
 				<div class="col-md-4 md2">
 					<h4 style="color: #03091A;">Packet</h4>
@@ -43,7 +43,7 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<td width="40%">w-1</td>
+								<td width="40%">W-26</td>
 								<td width="20%">W</td>
 								<td width="40%">Gap</td>
 							</tr>
@@ -62,7 +62,7 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<td width="40%">w-1</td>
+								<td width="40%">W-27</td>
 								<td width="20%">W</td>
 								<td width="40%">Gap</td>
 							</tr>
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<div class="col-md-1"></div>
-	</div>ss
+	</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob86.js"></script>
