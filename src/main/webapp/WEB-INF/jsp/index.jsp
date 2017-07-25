@@ -184,6 +184,8 @@
 			<ul>
 				<li><a href="${ctx}/ano/realtime" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>realtime</a></li>
 				<li><a href="${ctx}/ano/per7x" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>per7x</a></li>
+				<li><a href="${ctx}/ano/monthly" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>monthly</a></li>
+				<li><a href="${ctx}/ano/complaint" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>complaint</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
