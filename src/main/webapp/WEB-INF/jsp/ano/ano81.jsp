@@ -30,18 +30,7 @@
 				<td>DOWN UNIT</td>
 			</tr>
 		</thead>
-		<tbody>
-			<tr v-for="item in anoList">
-				<td>{{item.ioc1}}</td>
-				<td>{{item.ioc2}}</td>
-				<td>{{item.ioc3}}</td>
-				<td>{{item.ioc4}}</td>
-				<td>{{item.ioc5}}</td>
-				<td>{{item.ioc6}}</td>
-				<td>{{item.ioc7}}</td>
-				<td>{{item.downunit}}</td>
-			</tr>
-		</tbody>
+		<tbody></tbody>
 	</table>
 </div>
 </body>

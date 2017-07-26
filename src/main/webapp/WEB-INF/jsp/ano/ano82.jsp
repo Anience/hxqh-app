@@ -20,27 +20,17 @@
 		<h4>Gamas Node Metro & Access</h4>
 		<table class="ano82" cellpadding="2" id="ano82-data">
 			<thead>
-			<tr style="height: 50px;">
-				<td>Priority</td>
-				<td>Incident</td>
-				<td>Date</td>
-				<td>Alarm Summary</td>
-				<td>Status</td>
-				<td>Symptom</td>
-				<td>Solution</td>
-			</tr>
+				<tr style="height: 50px;">
+					<td>Priority</td>
+					<td>Incident</td>
+					<td>Date</td>
+					<td>Alarm Summary</td>
+					<td>Status</td>
+					<td>Symptom</td>
+					<td>Solution</td>
+				</tr>
 			</thead>
-			<tbody>
-			<tr v-for="item in anoList">
-				<td>{{item.ioc1}}</td>
-				<td>{{item.ioc2}}</td>
-				<td>{{item.ioc3}}</td>
-				<td>{{item.ioc4}}</td>
-				<td>{{item.ioc5}}</td>
-				<td>{{item.ioc6}}</td>
-				<td>-</td>
-			</tr>
-			</tbody>
+			<tbody></tbody>
 		</table>
 	</div>
 </div>
