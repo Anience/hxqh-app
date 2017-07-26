@@ -75,3 +75,9 @@
     height: 100%;
     float: left;
 }
+#top2-left img,#top2-right img{
+    float: left;
+    height: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
+}

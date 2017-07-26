@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title></title>
-	<meta http-equiv="refresh" content="300">
 	<link rel="stylesheet" href="${ctx}/css/ent.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/top.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
@@ -35,7 +34,7 @@
 			<div class="item1" id="echart14"></div>
 			<div class="item2" id="echart15"></div>
 			<div class="item2" id="echart16"></div>
-			<div class="top1-log">
+			<div class="top1-log" id="top2-left">
 				<p>Subscribed Service</p>
 				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="ASTINET">
 				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="IPTRANSIT">
@@ -71,7 +70,7 @@
 			<div class="item1" id="echart24"></div>
 			<div class="item2" id="echart25"></div>
 			<div class="item2" id="echart26"></div>
-			<div class="top1-log">
+			<div class="top1-log" id="top2-right">
 				<p>Subscribed Service</p>
 				<img class="ASTINET" src="${ctx}/imgs/blue/ASTINET.png" alt="ASTINET">
 				<img class="IPTRANSIT" src="${ctx}/imgs/blue/IPTRANSIT.png" alt="IPTRANSIT">
