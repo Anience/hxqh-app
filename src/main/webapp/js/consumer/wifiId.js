@@ -1,4 +1,15 @@
 $(function(){
+	$.ajax({
+		url: _ctx+"/ano/wifiIndData",
+		method: "get",
+		dataType: "json",
+		success: function (data) {
+
+		},
+		error: function () {
+
+		}
+	});
 	initEchart("echart1");
 	initEScale("echart2",'PLATINUM');
 	initEScale("echart3",'TITANNIUM&GOLD');

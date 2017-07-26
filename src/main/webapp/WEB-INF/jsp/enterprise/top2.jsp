@@ -20,7 +20,7 @@
 <div class="ent-layout" style="padding-bottom:90px;">
 	<div class="top2-layout-left">
 		<div class="ent-header">
-			<h4>JAK INTER TRADE</h4>
+			<h4></h4>
 			<div class="span-layout">
 				<span class="lable-span sla">SLA</span>
 				<span class="lable-span red"></span>
@@ -56,7 +56,7 @@
 	</div>
 	<div class="top2-layout-right">
 		<div class="ent-header">
-			<h4>JAK INTER TRADE</h4>
+			<h4></h4>
 			<div class="span-layout">
 				<span class="lable-span sla">SLA</span>
 				<span class="lable-span red"></span>

@@ -1,6 +1,44 @@
 $(function(){
-    initEchart('echart1','JAKARTA');
-    function initEchart(domId,tit) {
+    var totalData;
+    var nameList;
+    var dataOder = ["JAKARTA","MAKASAR","PEKANBARU","SURABAYA"];
+    $.ajax({
+        url: _ctx+"/mobile/throughtputData",
+        method: "get",
+        dataType: "json",
+        success: function (data) {
+            totalData = data.agteMap;
+            nameList = data.namelist;
+            initEchart('echart1',nameList,totalData["JAKARTA"].in,totalData["JAKARTA"].out,totalData["JAKARTA"].opers,totalData["JAKARTA"].wrong,'JAKARTA');
+        },
+        error: function () {
+
+        }
+    });
+    var i = 0;
+    scroll(5,'first-nav','sec-nav');
+    function scroll(count,domName1,domName2){
+        setInterval(function(){
+            i++;
+            if(i>=count){
+                i=0;
+            }else{
+                var index= i;
+                var liNav = '.'+domName1+' li';
+                var thisLi = '.'+domName1+' li:nth-child('+index+')';
+                $(liNav).css("color","#727386");
+                $(thisLi).css("color","#fff");
+
+                var liNav2 = '.'+domName2+' li'+' span';
+                var thisLi2 = '.'+domName2+' li:nth-child('+index+')'+' span';
+                $(liNav2).css("backgroundColor","#0a0f25");
+                $(thisLi2).css("backgroundColor","#4a476a");
+                var objectName = dataOder[i];
+                initEchart('echart1',nameList,totalData[objectName].in,totalData[objectName].out,totalData[objectName].opers,totalData[objectName].wrong,objectName);
+            }
+        },5000);
+    }
+    function initEchart(domId,xData,lineData1,lineData2,barData1,barData2,tit) {
         var legendData=["GbitsPerSecondOut","GbitsPerSecondIn"]
         var myChart = echarts.init(document.getElementById(domId));
         option = {
@@ -40,7 +78,7 @@ $(function(){
             xAxis : [
                 {
                     type : 'category',
-                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    data: xData,
                     axisLabel:{
                         show: true,
                         textStyle:{
@@ -96,14 +134,20 @@ $(function(){
                 }
             ],
             series :[{
-                name: 'GbitsPerSecondOut',
+                name: 'GbitsPerSecondIn',
                 type: 'line',
                 smooth:true,
                 symbol:'none',
-                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-            },
+                data: lineData1
+                },
                 {
-                    name: 'GbitsPerSecondIn',
+                    name: 'GbitsPerSecondOut',
+                    type: 'line',
+                    smooth:true,
+                    symbol:'none',
+                    data: lineData2
+                },
+                {
                     type: 'bar',
                     barWidth:'2',
                     itemStyle:{
@@ -114,7 +158,20 @@ $(function(){
                             barBorderRadius:0
                         }
                     },
-                    data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                    data: barData1
+                },
+                {
+                    type: 'bar',
+                    barWidth:'2',
+                    itemStyle:{
+                        normal:{
+                            color: '#4B476A',
+                            barBorderColor: '#4B476A',
+                            barBorderWidth: 1,
+                            barBorderRadius:0
+                        }
+                    },
+                    data: barData2
                 }
             ]
         };

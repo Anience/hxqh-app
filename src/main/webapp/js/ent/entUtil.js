@@ -35,7 +35,7 @@ entUtil.prototype={
     headerInit:function(data,domName){
         var self = this;
         //页面用户名展示
-        $(".ent-header h4").text(data.name);
+        $(domName+" .ent-header h4").text(data.name);
         //sla数据展示
         self.ShowSla(data.threeColor,domName);
         //event
