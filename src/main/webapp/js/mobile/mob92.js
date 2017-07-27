@@ -8,9 +8,10 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
+                window.clearInterval(timer);
                 initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
                 var i = 0;
-                setInterval(function(){
+                var timer = setInterval(function(){
                     i++;
                     if(i>=4){
                         switch(i){
@@ -234,4 +235,7 @@ $(function(){
         });
     }
     initData();
+    setInterval(function(){
+        init();
+    },300000);
 }());
