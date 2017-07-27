@@ -280,27 +280,28 @@ public class AnoServiceImpl implements AnoService {
         /**************第一象限 完成**********************/
 
         /**************第二象限 完成**********************/
-
+        Map<String, List<Integer>> pillartM = new LinkedHashMap<>();
         //获取PILLAR信息再分组
         List<TbIocProTicketResult> pillartList = proactiveTicketMap.get("PILLAR");
-        //对pillartList分组
-        Map<String, List<TbIocProTicketResult>> pillartMap = GroupListUtil.group(pillartList, new GroupListUtil.GroupBy<String>() {
-            @Override
-            public String groupby(Object obj) {
-                TbIocProTicketResult d = (TbIocProTicketResult) obj;
-                return d.getTicketStatus();    // 分组依据为TicketStatus
-            }
-        });
+        if (null != pillartList) {
+            //对pillartList分组
+            Map<String, List<TbIocProTicketResult>> pillartMap = GroupListUtil.group(pillartList, new GroupListUtil.GroupBy<String>() {
+                @Override
+                public String groupby(Object obj) {
+                    TbIocProTicketResult d = (TbIocProTicketResult) obj;
+                    return d.getTicketStatus();    // 分组依据为TicketStatus
+                }
+            });
 
-        Map<String, List<Integer>> pillartM = new LinkedHashMap<>();
-        for (Map.Entry<String, List<TbIocProTicketResult>> m : pillartMap.entrySet()) {
-            List<Integer> mttrs = new LinkedList<>();
-            for (TbIocProTicketResult l : m.getValue()) {
-                mttrs.add(Integer.valueOf(l.getJumlah()));
+
+            for (Map.Entry<String, List<TbIocProTicketResult>> m : pillartMap.entrySet()) {
+                List<Integer> mttrs = new LinkedList<>();
+                for (TbIocProTicketResult l : m.getValue()) {
+                    mttrs.add(Integer.valueOf(l.getJumlah()));
+                }
+                pillartM.put(m.getKey(), mttrs);
             }
-            pillartM.put(m.getKey(), mttrs);
         }
-
         //pillartM返回
 
         /**************第二象限 完成**********************/
@@ -325,10 +326,11 @@ public class AnoServiceImpl implements AnoService {
 
         //获取name2List
         List<String> name2List = new LinkedList<>();
-
-        for (int i = 0; i < pillartList.size(); i++) {
-            if (pillartList.get(i).getTicketStatus().equals("OPEN")) {
-                name2List.add(pillartList.get(i).getXValue());
+        if (null != pillartList) {
+            for (int i = 0; i < pillartList.size(); i++) {
+                if (pillartList.get(i).getTicketStatus().equals("OPEN")) {
+                    name2List.add(pillartList.get(i).getXValue());
+                }
             }
         }
 
@@ -386,14 +388,12 @@ public class AnoServiceImpl implements AnoService {
         });
 
         Map<String, List<BigDecimal>> pillM = new LinkedHashMap<>();
-        for(Map.Entry<String, List<TbIocConsSrview>> m:pillMap.entrySet())
-        {
+        for (Map.Entry<String, List<TbIocConsSrview>> m : pillMap.entrySet()) {
             List<BigDecimal> numList = new LinkedList<>();
-            for(int i = 0 ;i<m.getValue().size();i++)
-            {
+            for (int i = 0; i < m.getValue().size(); i++) {
                 numList.add(m.getValue().get(i).getLevCount());
             }
-            pillM.put(m.getKey(),numList);
+            pillM.put(m.getKey(), numList);
         }
 
 
@@ -410,7 +410,7 @@ public class AnoServiceImpl implements AnoService {
         });
 
         Map<String, Map<String, List<TbIocConsSrview>>> mapMap = new LinkedHashMap<>();
-        for(Map.Entry<String, List<TbIocConsSrview>> m:lineMap.entrySet()) {
+        for (Map.Entry<String, List<TbIocConsSrview>> m : lineMap.entrySet()) {
             Map<String, List<TbIocConsSrview>> tmp = GroupListUtil.group(m.getValue(), new GroupListUtil.GroupBy<String>() {
                 @Override
                 public String groupby(Object obj) {
@@ -418,27 +418,24 @@ public class AnoServiceImpl implements AnoService {
                     return d.getServiceType();    // 分组依据为ServiceType
                 }
             });
-            mapMap.put(m.getKey(),tmp);
+            mapMap.put(m.getKey(), tmp);
         }
 
 
-        Map<String,  Map<String, List<BigDecimal>>> lineM = new LinkedHashMap<>();
-        for(Map.Entry<String, Map<String, List<TbIocConsSrview>>> entry :mapMap.entrySet())
-        {
+        Map<String, Map<String, List<BigDecimal>>> lineM = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<String, List<TbIocConsSrview>>> entry : mapMap.entrySet()) {
             Map<String, List<BigDecimal>> tmp = new LinkedHashMap<>();
-            for(Map.Entry<String, List<TbIocConsSrview>> m :entry.getValue().entrySet())
-            {
+            for (Map.Entry<String, List<TbIocConsSrview>> m : entry.getValue().entrySet()) {
                 List<BigDecimal> lineList = new LinkedList<>();
-                for(int i = 0 ;i<m.getValue().size();i++)
-                {
+                for (int i = 0; i < m.getValue().size(); i++) {
                     lineList.add(m.getValue().get(i).getLevCount());
                 }
-                tmp.put(m.getKey(),lineList);
+                tmp.put(m.getKey(), lineList);
             }
-            lineM.put(entry.getKey(),tmp);
+            lineM.put(entry.getKey(), tmp);
         }
 
-        SrviewDto srviewDto = new SrviewDto(PILLLIST,pillM,LINELIST,lineM);
+        SrviewDto srviewDto = new SrviewDto(PILLLIST, pillM, LINELIST, lineM);
         return srviewDto;
     }
 
