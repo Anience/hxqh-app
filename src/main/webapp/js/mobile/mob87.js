@@ -36,6 +36,12 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
+                    var illustruation={
+                        FOAccess: '(0,0,0)',
+                            RadioAccess: '(0,0,0)',
+                            OTHERS: '(0,0,0)',
+                            SL_D: '(0,0,0)'
+                    };
                     self.anoList = data;
                     $("#mob87 ul").find("li").eq(1)
                         .css("background","#8D93A8");
@@ -64,13 +70,50 @@ $(function () {
             });
         }
     });
+    function init(){
+        $.ajax({
+            url: _ctx+"/mobile/vMob87Data",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                window.clearInterval(timer);
+                var i = 0;
+                var isShow = 0;
+                var nameList = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+                var illustruation = {
+                    FOAccess: '(0,0,0)',
+                    RadioAccess: '(0,0,0)',
+                    OTHERS: '(0,0,0)',
+                    SL_D: '(0,0,0)'
+                };
+                var anoList = data;
+                $("#mob87 ul").find("li").eq(1)
+                    .css("background","#8D93A8");
+                initEchart("echart1",anoList.map['NAS']);
+                initIn(anoList.map['NAS'],illustruation);
+                var timer = setInterval(function(){
+                    var initName = "";
+                    i++;
+                    if(self.i<=7){
+                        initName = nameList[i];
+                    }else{
+                        self.i = 0;
+                        initName = nameList[i];
+                    }
+                    initEchart("echart1",anoList.map[initName]);
+                    initIn(anoList.map[initName],illustruation);
+                    $("#mob87 ul").find("li")
+                        .css("background","#000");
+                    $("#mob87 ul").find("li").eq(self.i+1)
+                        .css("background","#8D93A8");
+                },5000);
+            },
+            error: function () {
+
+            }
+        });
+    }
     function initIn(data,illustruation){
-        illustruation = {
-            FOAccess: '(0,0,0)',
-            RadioAccess: '(0,0,0)',
-            OTHERS: '(0,0,0)',
-            SL_D: '(0,0,0)'
-        };
         var tmpAdd = data;
         if(tmpAdd.length>0){
             for(var i=0;i<tmpAdd.length;i++){
@@ -187,4 +230,7 @@ $(function () {
             myChart.resize();
         });
     }
+    setInterval(function(){
+        init();
+    },300000)
 });

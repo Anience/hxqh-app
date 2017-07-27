@@ -18,7 +18,7 @@
 	<h3>SQUAT</h3>
 	<div class="row" id="mob91-data">
 		<div class="col-sm-6">
-			<table>
+			<table class="mobLeft">
 				<thead>
 					<tr>
 						<td colspan="7">ALPHA</td>
@@ -38,21 +38,11 @@
 						<td>%</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr v-for="item in mobLeft">
-						<td>{{item.ioc1}}</td>
-						<td>{{item.ioc2}}</td>
-						<td>{{item.ioc3}}</td>
-						<td>{{item.ioc4}}</td>
-						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc5)>99,'mob-bg-red':parseFloat(item.ioc5)<=99}">{{item.ioc5}}</td>
-						<td>{{item.ioc6}}</td>
-						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc7)>85,'mob-bg-red':parseFloat(item.ioc7)<=85}">{{item.ioc7}}</td>
-					</tr>
-				</tbody>
+				<tbody></tbody>
 			</table>
 		</div>
 		<div class="col-sm-6">
-			<table>
+			<table class="mobRight">
 				<thead>
 					<tr>
 						<td colspan="7">ROMEO</td>
@@ -72,17 +62,7 @@
 						<td>%</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr v-for="item in mobRight">
-						<td>{{item.ioc1}}</td>
-						<td>{{item.ioc2}}</td>
-						<td>{{item.ioc3}}</td>
-						<td>{{item.ioc4}}</td>
-						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc5)>99,'mob-bg-red':parseFloat(item.ioc5)<=99}">{{item.ioc5}}</td>
-						<td>{{item.ioc6}}</td>
-						<td v-bind:class="{'mob-bg-blue':parseFloat(item.ioc7)>40,'mob-bg-red':parseFloat(item.ioc7)<=40}">{{item.ioc7}}</td>
-					</tr>
-				</tbody>
+				<tbody></tbody>
 			</table>
 		</div>
 		<div class="table-legend">

@@ -2,7 +2,7 @@
  * Created by lenovo on 2017/6/26.
  */
 $(function () {
-    var digitalData = new Vue({
+   /* var digitalData = new Vue({
         el: "#mob88-data",
         data: {
             mobList:[],
@@ -37,7 +37,7 @@ $(function () {
                 }
             });
         }
-    });
+    });*/
     function initEchart(idDom,echartData){
         var lendData = [];
         var serisData = [];
@@ -124,4 +124,34 @@ $(function () {
             myChart.resize();
         });
     }
+    function init(){
+        $.ajax({
+            url: _ctx+"/mobile/vMob88Data",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                $("#mob88-data tbody").html("");
+                var mobList = data;
+                initEchart('echart1',data.mob88MttrList);
+                initEchart('echart2',data.mob88MttiList);
+                self.perforList = data.perforList;
+                var insertHtml = "";
+                for(var i=0;i<data.perforList.length;i++){
+                    var tmpData = data.perforList[i];
+                    insertHtml+="<tr><td>"+tmpData.treg
+                        +"</td><td>"+tmpData.psr
+                        +"</td><td>"+tmpData.sr
+                        +"</td></tr>";
+                }
+                $("#mob88-data tbody").html(insertHtml);
+            },
+            error: function () {
+
+            }
+        });
+    }
+    init();
+    setInterval(function(){
+        init();
+    },10000);
 });
