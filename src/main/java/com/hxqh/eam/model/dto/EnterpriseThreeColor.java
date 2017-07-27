@@ -10,6 +10,8 @@ import javax.persistence.Id;
 public class EnterpriseThreeColor {
 
     @Id
+    private Integer colorid;
+
     private String cust;
     private Integer gt;
     private Integer eq;
@@ -23,6 +25,14 @@ public class EnterpriseThreeColor {
         this.gt = gt;
         this.eq = eq;
         this.lt = lt;
+    }
+
+    public Integer getColorid() {
+        return colorid;
+    }
+
+    public void setColorid(Integer colorid) {
+        this.colorid = colorid;
     }
 
     public String getCust() {

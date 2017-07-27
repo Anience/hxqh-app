@@ -30,7 +30,7 @@
 			</li>
 			<div class="line"></div>
 			<li>
-				<a href="${ctx}/system/logout">
+				<a href="${ctx}/system/logoutnonesession">
 					<i class="icon-logout icon-user"></i>
 					LogOut
 				</a>

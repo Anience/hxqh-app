@@ -56,6 +56,17 @@ public class SystemController {
     }
 
     /**
+     * logoutnonesession 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/logoutnonesession", method = RequestMethod.GET)
+    public String logoutnonesession() {
+        return "login";
+    }
+
+
+    /**
      * 登录Function
      *
      * @param loginDto 登录dto
