@@ -420,4 +420,7 @@ $(function(){
         });
     }
     initData();
+    setInterval(function(){
+        initData();
+    },300000);
 }());

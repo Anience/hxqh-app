@@ -146,6 +146,7 @@
 				<li><a href="${ctx}/enterprise/top?type=DWS&show=14" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_7</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DWS&show=18" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_8-4</a></li>
 				<li><a href="${ctx}/enterprise/top?type=DWS&show=20" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>top20_9</a></li>
+				<li><a href="${ctx}/enterprise/urls" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>urls</a></li>
 				<li><a href="https://wholesale.telkom.co.id/" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>wholesale.telkom</a></li>
 				<li><a href="http://10.60.175.91:5056/auth/login" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Topology</a></li>
 			</ul>
