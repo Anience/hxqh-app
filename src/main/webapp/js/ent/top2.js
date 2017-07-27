@@ -12,6 +12,7 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                window.clearInterval(timer);
                 var tool = new entUtil();
                 if(_show == "2"){
                     tool.headerInit(data.enterpriseMap["2"],".top2-layout-left");
@@ -57,7 +58,7 @@ $(function(){
                     initEchart1("echart25",data2.middleBottom,data2.middleBottomName,"PROACTIVE TICKETS(30 DAYS)");
                     initEchart1("echart26",data2.rightBottom,data2.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
                     var i = 0;
-                    setInterval(function(){
+                    var timer = setInterval(function(){
                         i++;
                         if(i>=2){
                             i=0;
@@ -326,4 +327,7 @@ $(function(){
         });
     }
     initData();
+    setInterval(function(){
+        initData();
+    },300000);
 }());

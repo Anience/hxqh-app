@@ -88,6 +88,14 @@ public class EnterpriseController {
         EntDto entDto = enterpriseService.getEntData(type);
         return entDto;
     }
-
+    /**
+     * urls 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/urls", method = RequestMethod.GET)
+    public String wifiInd() {
+        return "enterprise/url";
+    }
 
 }

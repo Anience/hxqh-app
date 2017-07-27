@@ -12,6 +12,7 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                window.clearInterval(timer);
                 var tool = new entUtil();
                 if(_type == "DWS"){
                     var j = parseInt(_show);
@@ -54,7 +55,7 @@ $(function(){
                         tool.headerInit(data.enterpriseMap[j],"");
                         initPage(data2);
                         var i = 0;
-                        setInterval(function(){
+                        var timer = setInterval(function(){
                             i++;
                             if(i>=2){
                                 i=0;
@@ -301,4 +302,7 @@ $(function(){
         });
     }
     initData();
+    setInterval(function(){
+        initData();
+    },300000);
 }());

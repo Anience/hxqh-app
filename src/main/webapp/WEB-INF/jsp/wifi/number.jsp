@@ -43,26 +43,7 @@
 				<td>Manage Service</td>
 			</tr>
 		</thead>
-		<tbody id="num-data">
-			<tr v-for="item of numList">
-				<td>{{item.ioc1}}</td>
-				<td>{{item.ioc2}}</td>
-				<td>{{item.ioc3}}</td>
-				<td>{{item.ioc4}}</td>
-				<td>{{item.ioc5}}</td>
-				<td>{{item.ioc6}}</td>
-				<td>{{item.ioc7}}</td>
-				<td>{{item.ioc8}}</td>
-				<td>{{item.ioc9}}</td>
-				<td>{{item.ioc10}}</td>
-				<td>{{item.ioc11}}</td>
-				<td>{{item.ioc12}}</td>
-				<td>{{item.ioc13}}</td>
-				<td>{{item.ioc14}}</td>
-				<td>{{item.ioc15}}</td>
-				<td>{{item.ioc16}}</td>
-			</tr>
-		</tbody>
+		<tbody id="num-data"></tbody>
 	</table>
 </div>
 </body>

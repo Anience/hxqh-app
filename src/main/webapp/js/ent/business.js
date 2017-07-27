@@ -11,6 +11,10 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                window.clearInterval(timer);
+                $(".first-page").show();
+                $(".sec-page").hide();
+                $(".third-page").hide();
                 var pageTit = '';
                 switch(_type){
                     case 'DES':
@@ -60,7 +64,7 @@ $(function(){
                 initEchartLine("echart2",lineTop,nameList,"Reactive TKT(30 DAYS)");
                 initEchartPie("echart3",pieBottom.closenums,pieBottom.opennums,"Proactive");
                 initEchartLine("echart4",lineBottom,nameList,"Proactive TKT(30 DAYS)");
-                setInterval(function(){
+                var timer = setInterval(function(){
                     i++;
                     if(i>=3){
                         i=0;
@@ -417,4 +421,7 @@ $(function(){
         myChart.setOption(option);
     }
     initData();
+    setInterval(function(){
+        initData();
+    },300000);
 }());
