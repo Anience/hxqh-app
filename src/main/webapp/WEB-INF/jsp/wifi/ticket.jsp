@@ -18,58 +18,40 @@
 <body>
 <div class="ticket-layout" style="padding-bottom: 120px;"  id="ticket-data">
 	<h4><span class="ticket-tit">WIFI TICKET MONITORING</span>
-		<span class="ticket-time">Last Update: {{time}}</span>
+		<span class="ticket-time"></span>
 	</h4>
 	<table class="ticket">
 		<thead>
-		<tr>
-			<td rowspan="3">TREG</td>
-			<td colspan="6">Gangguan H-1</td>
-			<td colspan="7">Gangguan HI</td>
-		</tr>
-		<tr>
-			<td colspan="2">OPEN</td>
-			<td colspan="2">CLOSE</td>
-			<td colspan="2">OPEN H-1</td>
-			<td colspan="2">CREATED</td>
-			<td colspan="2">CLOSE</td>
-			<td colspan="2">OPEN</td>
-			<td rowspan="2">STATUS</td>
-		</tr>
-		<tr>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-			<td>Tiket</td>
-			<td>AP</td>
-		</tr>
-		</thead>
-		<tbody>
-			<tr v-for="item of ticketList">
-				<td>{{item.ioc1}}</td>
-				<td>{{item.ioc2}}</td>
-				<td>{{item.ioc3}}</td>
-				<td>{{item.ioc4}}</td>
-				<td>{{item.ioc5}}</td>
-				<td>{{item.ioc6}}</td>
-				<td>{{item.ioc7}}</td>
-				<td>{{item.ioc8}}</td>
-				<td>{{item.ioc9}}</td>
-				<td>{{item.ioc10}}</td>
-				<td>{{item.ioc11}}</td>
-				<td>{{item.ioc12}}</td>
-				<td>{{item.ioc13}}</td>
-				<td v-if="parseInt(item.ioc12)!=0" style="color: #eb0300;">kalah</td>
-				<td v-if="parseInt(item.ioc12)==0"><span class="bule-star"></span></td>
+			<tr>
+				<td rowspan="3">TREG</td>
+				<td colspan="6">Gangguan H-1</td>
+				<td colspan="7">Gangguan HI</td>
 			</tr>
-		</tbody>
+			<tr>
+				<td colspan="2">OPEN</td>
+				<td colspan="2">CLOSE</td>
+				<td colspan="2">OPEN H-1</td>
+				<td colspan="2">CREATED</td>
+				<td colspan="2">CLOSE</td>
+				<td colspan="2">OPEN</td>
+				<td rowspan="2">STATUS</td>
+			</tr>
+			<tr>
+				<td>Tiket</td>
+				<td>AP</td>
+				<td>Tiket</td>
+				<td>AP</td>
+				<td>Tiket</td>
+				<td>AP</td>
+				<td>Tiket</td>
+				<td>AP</td>
+				<td>Tiket</td>
+				<td>AP</td>
+				<td>Tiket</td>
+				<td>AP</td>
+			</tr>
+		</thead>
+		<tbody></tbody>
 	</table>
 </div>
 </body>

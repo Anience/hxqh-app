@@ -7,16 +7,14 @@
 	<meta http-equiv="refresh" content="300">
 	<link rel="stylesheet" href="${ctx}/css/ticket.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="${ctx}/script/vue.js"></script>
 	<script>
 		var _ctx = "${ctx}";
 	</script>
 </head>
 <body>
 <div class="ticket-layout" style="padding-bottom: 120px;" id="moni-data">
-	<h4>{{titTime}}</h4>
+	<h4 class="titTime"></h4>
 	<table class="monitoring-table" cellpadding="2">
 		<thead>
 		<tr>
@@ -64,36 +62,7 @@
 			<td>T</td>
 		</tr>
 		</thead>
-		<tbody>
-			<tr v-for="item of moniList">
-				<td>{{item.ioc1}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc2)==0,'text-red':parseInt(item.ioc2)>12,'text-blue':parseInt(item.ioc2)<=12}">{{item.ioc2}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc3)==0,'text-red':parseInt(item.ioc3)>48,'text-blue':parseInt(item.ioc3)<=48}">{{item.ioc3}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc4)==0,'text-red':parseInt(item.ioc4)>48,'text-blue':parseInt(item.ioc4)<=48}">{{item.ioc4}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc5)==0,'text-red':parseInt(item.ioc5)>48,'text-blue':parseInt(item.ioc5)<=48}">{{item.ioc5}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.io6)==0,'text-red':parseInt(item.ioc6)>12,'text-blue':parseInt(item.ioc6)<=12}">{{item.ioc6}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc7)==0,'text-red':parseInt(item.ioc7)>48,'text-blue':parseInt(item.ioc7)<=48}">{{item.ioc7}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc8)==0,'text-red':parseInt(item.ioc8)>48,'text-blue':parseInt(item.ioc8)<=48}">{{item.ioc8}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc9)==0,'text-red':parseInt(item.ioc9)>48,'text-blue':parseInt(item.ioc9)<=48}">{{item.ioc9}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc10)==0,'text-red':parseInt(item.ioc10)>12,'text-blue':parseInt(item.ioc10)<=12}">{{item.ioc10}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc11)==0,'text-red':parseInt(item.ioc11)>48,'text-blue':parseInt(item.ioc11)<=48}">{{item.ioc11}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc12)==0,'text-red':parseInt(item.ioc12)>48,'text-blue':parseInt(item.ioc12)<=48}">{{item.ioc12}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc13)==0,'text-red':parseInt(item.ioc13)>48,'text-blue':parseInt(item.ioc13)<=48}">{{item.ioc13}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc14)==0,'text-red':parseInt(item.ioc14)>12,'text-blue':parseInt(item.ioc14)<=12}">{{item.ioc14}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc15)==0,'text-red':parseInt(item.ioc15)>48,'text-blue':parseInt(item.ioc15)<=48}">{{item.ioc15}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc16)==0,'text-red':parseInt(item.ioc16)>48,'text-blue':parseInt(item.ioc16)<=48}">{{item.ioc16}}</td>
-				<td v-bind:class="{'text-fff':parseInt(item.ioc17)==0,'text-red':parseInt(item.ioc17)>48,'text-blue':parseInt(item.ioc17)<=48}">{{item.ioc17}}</td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc18)<0.0,'yellow-radius' : parseFloat(item.ioc18)==0.0,'green-radius' : parseFloat(item.ioc18)>0.0}" :title="item.ioc18"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc19)<0.0,'yellow-radius' : parseFloat(item.ioc19)==0.0,'green-radius' : parseFloat(item.ioc19)>0.0}" :title="item.ioc19"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc20)<0.0,'yellow-radius' : parseFloat(item.ioc20)==0.0,'green-radius' : parseFloat(item.ioc20)>0.0}" :title="item.ioc20"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc21)<0.0,'yellow-radius' : parseFloat(item.ioc21)==0.0,'green-radius' : parseFloat(item.ioc21)>0.0}" :title="item.ioc21"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc22)<0.0,'yellow-radius' : parseFloat(item.ioc22)==0.0,'green-radius' : parseFloat(item.ioc22)>0.0}" :title="item.ioc22"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc23)<0.0,'yellow-radius' : parseFloat(item.ioc23)==0.0,'green-radius' : parseFloat(item.ioc23)>0.0}" :title="item.ioc23"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc24)<0.0,'yellow-radius' : parseFloat(item.ioc24)==0.0,'green-radius' : parseFloat(item.ioc24)>0.0}" :title="item.ioc24"></td>
-				<td v-bind:class="{'red-radius' : parseFloat(item.ioc25)<0.0,'yellow-radius' : parseFloat(item.ioc25)==0.0,'green-radius' : parseFloat(item.ioc25)>0.0}" :title="item.ioc25"></td>
-
-			</tr>
-		</tbody>
+		<tbody></tbody>
 	</table>
 	<div class="table-legend">
          <div class="legend-item">
