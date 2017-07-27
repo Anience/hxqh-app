@@ -449,7 +449,14 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
         /*************************************右上角 TB_IOC_DATA_BGEW_SLA   三色*****************************/
 
-        String scolorSql = "select t.customer_sement as cust,sum(t.gt) as gt,sum(t.eq) as eq,sum(t.lt) as lt from TB_IOC_DATA_BGEW_SLA t where t.customer_sement =:CUSTOMERSEGMENT group by t.customer_sement";
+        String scolorSql = "select x.*,rownum colorid  from ( \n" +
+                "select t.customer_sement as cust,\n" +
+                "       sum(t.gt) as gt,\n" +
+                "       sum(t.eq) as eq,\n" +
+                "       sum(t.lt) as lt\n" +
+                "  from TB_IOC_DATA_BGEW_SLA t\n" +
+                " where t.customer_sement = :CUSTOMERSEGMENT\n" +
+                " group by t.customer_sement) x\n";
         List<EnterpriseThreeColor> colorList = sessionFactory.getCurrentSession().createSQLQuery(scolorSql).addEntity(EnterpriseThreeColor.class).
                 setString("CUSTOMERSEGMENT", type).list();
         EnterpriseThreeColor threeColor = new EnterpriseThreeColor();
