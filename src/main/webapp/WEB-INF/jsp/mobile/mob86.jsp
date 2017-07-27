@@ -23,57 +23,40 @@
 			<div class="row">
 				<div class="col-md-4 md2">
 					<h4 style="color: #03091A;">Packet</h4>
-					<table class="table table-bordered">
+					<table class="table table-bordered sites-table">
 						<thead>
 							<tr>
 								<td style="font-size: 30px;color: #03091A;background: #03091A;">NAS</td>
 								<td style="background: #015E8A;">Total Sites</td>
 							</tr>
 						</thead>
-						<tbody v-for="item in mobList">
-							<tr>
-								<td>{{item.ioc1}}</td>
-								<td>{{item.total_site}}</td>
-							</tr>
-						</tbody>
+						<tbody></tbody>
 					</table>
 				</div>
 				<div class="col-md-4 md5">
 					<h4>Packet Loss</h4>
-					<table class="table table-bordered">
+					<table class="table table-bordered week-table1">
 						<thead>
 							<tr>
-								<td width="40%">W-26</td>
-								<td width="20%">W</td>
-								<td width="40%">Gap</td>
+								<td width="33%" class="week1"></td>
+								<td width="33%" class="week2"></td>
+								<td width="33%">Gap</td>
 							</tr>
 						</thead>
-						<tbody>
-							<tr v-for="item in mobList">
-								<td v-bind:class="{'bg-red':item.ioc2<95,'bg-blue':item.ioc2>=95}">{{item.ioc2}}</td>
-								<td v-bind:class="{'bg-red':item.ioc3<95,'bg-blue':item.ioc3>=95}">{{item.ioc3}}</td>
-								<td v-bind:class="{'bg-red':item.ioc4<0,'bg-blue':item.ioc4>=0}">{{item.ioc4}}</td>
-							</tr>
-						</tbody>
+						<tbody></tbody>
 					</table>
 				</div>
 				<div class="col-md-4 md5">
 					<h4>Latency</h4>
-					<table class="table table-bordered">
+					<table class="table table-bordered week-table2">
 						<thead>
 							<tr>
-								<td width="40%">W-27</td>
-								<td width="20%">W</td>
-								<td width="40%">Gap</td>
+								<td width="33%" class="week1"></td>
+								<td width="33%" class="week2"></td>
+								<td width="33%">Gap</td>
 							</tr>
 						</thead>
-						<tbody>
-							<tr v-for="item in mobList">
-								<td v-bind:class="{'bg-red':item.ioc5<95,'bg-blue':item.ioc5>=95}">{{item.ioc5}}</td>
-								<td v-bind:class="{'bg-red':item.ioc6<95,'bg-blue':item.ioc6>=95}">{{item.ioc6}}</td>
-								<td v-bind:class="{'bg-red':item.ioc7<0,'bg-blue':item.ioc7>=0}">{{item.ioc7}}</td>
-							</tr>
-						</tbody>
+						<tbody></tbody>
 					</table>
 				</div>
 			</div>
