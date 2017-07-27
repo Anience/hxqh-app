@@ -223,4 +223,7 @@ $(function(){
     }
 
     initMap();
+    setInterval(function(){
+        initMap();
+    },300000)
 }());
