@@ -177,6 +177,9 @@ $(function () {
                 trigger: 'item',
                 formatter: "{b} : {c} ({d}%)"
             },
+            gid:{
+
+            },
             legend: {
                 orient : 'vertical',
                 x : 'left',
@@ -192,7 +195,7 @@ $(function () {
                 {
                     name:"87Screen",
                     type:'pie',
-                    radius : '70%',
+                    radius : '60%',
                     center: ['60%', '50%'],
                     itemStyle:{
                         normal:{

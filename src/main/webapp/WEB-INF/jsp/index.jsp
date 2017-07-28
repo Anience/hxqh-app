@@ -22,13 +22,13 @@
 			<img src="${ctx}/imgs/none_user.gif" class="admin-img" />
 		</a>
 		<ul class="admin-down-ul" style="display: none;">
-			<li>
+			<%--<li>
 				<a href="">
 				    <i class="icon-set icon-user"></i>
 					Settings
 				</a>
-			</li>
-			<div class="line"></div>
+			</li>--%>
+			<%--<div class="line"></div>--%>
 			<li>
 				<a href="${ctx}/system/logoutnonesession">
 					<i class="icon-logout icon-user"></i>
