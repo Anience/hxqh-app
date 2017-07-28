@@ -192,12 +192,27 @@ $(function(){
     }
     function initE(domId,tit,data1,data2,data3){
     	var myChart = echarts.init(document.getElementById(domId));
-    	var dataStyle = {
+    	var dataStyle1 = {
 				    normal: {
+				    	color:'green',
 				        label: { show: false },
 				        labelLine: { show: false }
 				    }
 				};
+		var dataStyle2 = {
+			normal: {
+				color:'yellow',
+				label: { show: false },
+				labelLine: { show: false }
+			}
+		};
+		var dataStyle3 = {
+			normal: {
+				color:'red',
+				label: { show: false },
+				labelLine: { show: false }
+			}
+		};
 		var placeHolderStyle = {
 		    normal: {
 		        color: 'rgba(0,0,0,0)',
@@ -221,12 +236,12 @@ $(function(){
 			   }
 		    },
 		    backgroundColor: '#0A0F25',
-		    color:['#484969','#f7aa62','#d46e87'],
 		    tooltip: {
 		        show: true,
 		        formatter: "{a} <br/>{b} : {c} ({d}%)"
 		    },
 		    legend: {
+		    	show: true,
 		        orient: 'vertical',
 		        x: 'top',
 		        y: 'right',
@@ -237,7 +252,7 @@ $(function(){
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [125, 150],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle1,
 		            data: [{
 		                    value: data1,
 		                    name: 'Less 12 hours'
@@ -254,7 +269,7 @@ $(function(){
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [100, 125],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle2,
 		            data: [{
 		                    value: data2,
 		                    name: '12 hours<yellow<24 hours'
@@ -271,7 +286,7 @@ $(function(){
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [75, 100],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle3,
 		            data: [{
 		                    value: data3,
 		                    name: 'Red>24 hours”'
