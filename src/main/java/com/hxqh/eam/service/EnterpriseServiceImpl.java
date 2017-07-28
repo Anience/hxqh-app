@@ -337,11 +337,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 setString("CUSTOMERSEGMENT", type).setString("custrank", String.valueOf(show)).list();
 
 
-        for (Enterprise67Dto enter : dto7List) {
-            if (enter.getPersonsum() != 0)
-                System.out.println("==============================================");
-        }
-
         Map<String, List<Enterprise67Dto>> enterprise7Map = GroupListUtil.group(dto7List, new GroupListUtil.GroupBy<String>() {
             @Override
             public String groupby(Object obj) {
