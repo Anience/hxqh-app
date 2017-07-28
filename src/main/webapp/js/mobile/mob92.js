@@ -14,22 +14,27 @@ $(function(){
                 var timer = setInterval(function(){
                     i++;
                     if(i>=4){
-                        switch(i){
-                            case '1':
-                                initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
-                                $("p").text("BAD<20ms<=GOOD");
-                            case '2':
-                                initEchart("echart1",data.dtoMap.LOSS_KPI,'Packet Loss');
-                                $("p").text("BAD<0.1%<=GOOD");
-                            case '3':
-                                initEchart("echart1",data.dtoMap.MOS_KPI,'MOS');
-                                $("p").text("BAD<3.5<=GOOD");
-                            default:
-                                initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
-                                $("p").text("BAD<5ms<=GOOD");
-                        }
+                        i=0;
                     }
-                },20000);
+                    switch(i){
+                        case 0:
+                            initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
+                            $("p").text("BAD<20ms<=GOOD");
+                            break;
+                        case 1:
+                            initEchart("echart1",data.dtoMap.LOSS_KPI,'Packet Loss');
+                            $("p").text("BAD<0.1%<=GOOD");
+                            break;
+                        case 2:
+                            initEchart("echart1",data.dtoMap.MOS_KPI,'MOS');
+                            $("p").text("BAD<3.5<=GOOD");
+                            break;
+                        default:
+                            initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
+                            $("p").text("BAD<5ms<=GOOD");
+                            break;
+                    }
+                },5000);
             },
             error: function(){
 
@@ -38,7 +43,7 @@ $(function(){
     }
     function initEchart(domId,echartData,tit){
         var legendData = ["No Data","Bad","Good"];
-        var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
+        var xAxisData = ["TREG1","TREG2","TREG3","TREG4","TREG5","TREG6","TREG7"];
         var colorData = ["#707B8E","#ECD201","#5ACF05"];
         var greenData = echartData.green;
         var redData = echartData.red;
@@ -236,6 +241,6 @@ $(function(){
     }
     initData();
     setInterval(function(){
-        init();
+        initData();
     },300000);
 }());
