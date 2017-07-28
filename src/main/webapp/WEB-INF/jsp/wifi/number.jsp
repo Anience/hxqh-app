@@ -14,7 +14,7 @@
 	</script>
 </head>
 <body>
-<div class="ticket-layout">
+<div class="ticket-layout" style="padding-top: 6%;">
 	<h4>Number of Access Point</h4>
 	<table class="num">
 		<thead>
