@@ -1,41 +1,51 @@
 $(function(){
-	$.ajax({
-		url: _ctx+"/ano/wifiIndData",
-		method: "get",
-		dataType: "json",
-		success: function (data) {
+	function init(){
+		$.ajax({
+			url: _ctx+"/ano/srviewData",
+			method: "get",
+			dataType: "json",
+			success: function (data) {
+				var dataOrder = ['TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+				var scale = data.lineM;
+				var scaleName = data.linelist;
+				var line = data.pillM;
+				var lineName = data.pilllist;
+				initEchart("echart1",line,lineName);
+				initEScale("echart2",scale['TREG-1'].Platinum,scaleName,'PLATINUM');
+				initEScale("echart3",scale['TREG-1'].Gold,scaleName,'TITANNIUM&GOLD');
+				initEScale("echart4",scale['TREG-1'].Silver,scaleName,'SILVER');
+				var i = 0;
+				var timer = setInterval(function(){
+					i++;
+					if(i>=9){
+						i=0;
+					}else{
+						var index= i;
+						var liNav = '.first-nav li';
+						var thisLi = '.first-nav li:nth-child('+index+')';
+						$(liNav).css("color","#727386");
+						$(thisLi).css("color","#fff");
 
-		},
-		error: function () {
+						var liNav2 = '.sec-nav li'+' span';
+						var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+						$(liNav2).css("backgroundColor","#0a0f25");
+						$(thisLi2).css("backgroundColor","#4a476a");
 
-		}
-	});
-	initEchart("echart1");
-	initEScale("echart2",'PLATINUM');
-	initEScale("echart3",'TITANNIUM&GOLD');
-	initEScale("echart4",'SILVER');
-	var i = 0;
-	scroll(9,'first-nav','sec-nav');
-	function scroll(count,domName1,domName2){
-		setInterval(function(){
-           i++;
-           if(i>=count){
-              i=0;
-           }else{
-           	  var index= i; 
-           	  var liNav = '.'+domName1+' li';
-           	  var thisLi = '.'+domName1+' li:nth-child('+index+')';
-              $(liNav).css("color","#727386");
-			  $(thisLi).css("color","#fff");
+						var indexName = dataOrder[i];
+						initEScale("echart2",scale[indexName].Platinum,scaleName,'PLATINUM');
+						initEScale("echart3",scale[indexName].Gold,scaleName,'TITANNIUM&GOLD');
+						initEScale("echart4",scale[indexName].Silver,scaleName,'SILVER');
 
-			  var liNav2 = '.'+domName2+' li'+' span';
-           	  var thisLi2 = '.'+domName2+' li:nth-child('+index+')'+' span';
-              $(liNav2).css("backgroundColor","#0a0f25");
-			  $(thisLi2).css("backgroundColor","#4a476a");
-           }
-		},5000);
+					}
+				},5000);
+			},
+			error: function () {
+
+			}
+		});
 	}
-	function initEchart(domId) {
+
+	function initEchart(domId,data,xdata) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			  backgroundColor:'#0A0F25',
@@ -46,7 +56,7 @@ $(function(){
 			        }
 			    },
 			    legend: {
-			        data:['邮件营销','联盟广告','视频广告'],
+			        data:['IPTV','Interent','Telle'],
 			        x: 'right',
 			        y: 'top',
 			        textStyle:{
@@ -61,7 +71,7 @@ $(function(){
 			    xAxis : [
 			        {
 			            type : 'category',
-			            data : ['周一','周二','周三','周四','周五','周六','周日'],
+			            data : xdata,
 			           axisLabel:{
 			               show: true,
 			               textStyle:{
@@ -118,7 +128,7 @@ $(function(){
 			    ],
 			    series : [
 			        {
-			            name:'邮件营销',
+			            name:'IPTV',
 			            type:'bar',
 			            barWidth:'30',
 			            itemStyle:{
@@ -139,10 +149,10 @@ $(function(){
 			                 }
 			            },
 			            stack: '广告',
-			            data:[120, 132, 101, 134, 90, 230, 210]
+			            data:data.IPTV
 			        },
 			        {
-			            name:'联盟广告',
+			            name:'Interent',
 			            type:'bar',
 			            stack: '广告',
 			            itemStyle:{
@@ -162,10 +172,10 @@ $(function(){
 			                      }
 			                 }
 			            },
-			            data:[220, 182, 191, 234, 290, 330, 310]
+			            data:data.Interent
 			        },
 			        {
-			            name:'视频广告',
+			            name:'Telle',
 			            type:'bar',
 			            stack: '广告',
 			            itemStyle:{
@@ -185,13 +195,19 @@ $(function(){
 			                      }
 			                 }
 			            },
-			            data:[150, 232, 201, 154, 190, 330, 410]
+			            data:data.Telle
 			        },
 			     ]
 			};               
         myChart.setOption(option);
+		$("#all",window.parent.document).click(function(){
+			myChart.resize();
+		});
+		$("#small",window.parent.document).click(function(){
+			myChart.resize();
+		});
     }
-    function initEScale(domId,tit){
+    function initEScale(domId,data,xdata,tit){
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			  backgroundColor:'#0A0F25',
@@ -221,7 +237,7 @@ $(function(){
 			    xAxis : [
 			        {
 			            type : 'category',
-			            data : ['周一','周二','周三','周四','周五','周六','周日'],
+			            data : xdata,
 			           axisLabel:{
 			               show: true,
 			               textStyle:{
@@ -293,10 +309,17 @@ $(function(){
 			            		}
 			            	}
 			            },
-			            data:[10, 12, 21, 54, 260, 830, 710]
+			            data:data
 			        }
 			     ]
 			};               
         myChart.setOption(option);
+		$("#all",window.parent.document).click(function(){
+			myChart.resize();
+		});
+		$("#small",window.parent.document).click(function(){
+			myChart.resize();
+		});
     }
+	init();
 });
