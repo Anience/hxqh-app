@@ -79,13 +79,13 @@ $(function(){
                             $(".first-page").hide();
                             $(".sec-page").show();
                             $(".third-page").hide();
-                            initEchartScale("echart5",secPage,data.productNameList,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
+                            initEchartScale("echart5",secPage,data.regionNameList,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
                             break;
                         default:
                             $(".first-page").hide();
                             $(".sec-page").hide();
                             $(".third-page").show();
-                            initEchartScale("echart6",thirdPage,data.regionNameList,"TRAFFIC BY PRODUCT (2 DAYS PER 6 HOURS)");
+                            initEchartScale("echart6",thirdPage,data.productNameList,"TRAFFIC BY PRODUCT (2 DAYS PER 6 HOURS)");
                             break;
                     }
 
