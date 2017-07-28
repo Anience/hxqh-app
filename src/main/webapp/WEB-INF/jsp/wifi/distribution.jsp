@@ -40,21 +40,7 @@
 				<td class="dis-td">DOWN SITE<br>OWNER</td>
 			</tr>
 		</thead>
-		<tbody id="distribution-data">
-			<tr v-for="item of disList">
-				<td>{{item.ioc1}}</td>
-				<td>{{item.ioc2}}</td>
-				<td>{{item.ioc3}}</td>
-				<td>{{item.ioc4}}</td>
-				<td>{{item.ioc5}}</td>
-				<td>{{item.ioc6}}</td>
-				<td>{{item.ioc7}}</td>
-				<td>{{item.ioc8}}</td>
-				<td>{{item.ioc9}}</td>
-				<td>{{item.ioc10}}</td>
-				<td>{{item.ioc11}}</td>
-			</tr>
-		</tbody>
+		<tbody id="distribution-data"></tbody>
 	</table>
 </div>
 </body>

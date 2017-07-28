@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title></title>
-	<meta http-equiv="refresh" content="300">
 	<link rel="stylesheet" href="${ctx}/css/ticket.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>

@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title></title>
-	<meta http-equiv="refresh" content="300">
 	<link rel="stylesheet" href="${ctx}/css/mob86.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/bootstrap.min.css">

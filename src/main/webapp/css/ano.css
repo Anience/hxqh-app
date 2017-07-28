@@ -3,6 +3,8 @@
     height: 100%;
     background: #03081C;
     padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     overflow: auto;
     font-family: 'Arial';
 }
