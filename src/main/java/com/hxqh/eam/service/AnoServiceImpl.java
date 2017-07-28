@@ -266,7 +266,7 @@ public class AnoServiceImpl implements AnoService {
             }
         });
 
-        /**************第一象限 完成**********************/
+        /**************右上 完成**********************/
         List<TbIocProTicketResult> pieList = proactiveTicketMap.get("PIE");
         Map<String, List<TbIocProTicketResult>> pieMap = GroupListUtil.group(pieList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -275,11 +275,10 @@ public class AnoServiceImpl implements AnoService {
                 return d.getChartType();    // 分组依据为ChartType
             }
         });
+        /**************右上 完成**********************/
 
 
-        /**************第一象限 完成**********************/
-
-        /**************第二象限 完成**********************/
+        /**************左上 完成**********************/
         Map<String, List<Integer>> pillartM = new LinkedHashMap<>();
         //获取PILLAR信息再分组
         List<TbIocProTicketResult> pillartList = proactiveTicketMap.get("PILLAR");
@@ -303,10 +302,10 @@ public class AnoServiceImpl implements AnoService {
             }
         }
         //pillartM返回
+        /**************左上 完成**********************/
 
-        /**************第二象限 完成**********************/
 
-        /**************第三象限 完成**********************/
+        /**************左下 完成**********************/
         List<TbIocProTicketFfmResult> ticketFfmResultDaoAll = tbIocProTicketFfmResultDao.findAll();
 
         List<String> name3List = new ArrayList<>();
@@ -315,14 +314,13 @@ public class AnoServiceImpl implements AnoService {
             name3List.add(ticketFfmResultDaoAll.get(i).getTicketHourrs());
             value3List.add(Integer.valueOf(ticketFfmResultDaoAll.get(i).getJumlah()));
         }
-        /**************第三象限 完成**********************/
+        /**************左下 完成**********************/
 
-        /**************第四象限 完成**********************/
+
+        /**************右下完成**********************/
         //获取PILLAR信息
         List<TbIocProTicketResult> arcList = proactiveTicketMap.get("ARC");
 
-
-        /**************第四象限 完成**********************/
 
         //获取name2List
         List<String> name2List = new LinkedList<>();
@@ -333,6 +331,7 @@ public class AnoServiceImpl implements AnoService {
                 }
             }
         }
+        /**************右下完成**********************/
 
         RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List, pieMap, arcList);
         return realtimeData;
