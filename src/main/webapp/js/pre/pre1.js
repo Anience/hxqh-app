@@ -32,15 +32,24 @@ $(function(){
 				var tit3 = "Accumulated Closed Order Volume ";
 				initELine("echart3",tit3,data3,legend3,xData3);
 
+				var pieMap = data.pieMap.PIE;
 				var tit21 = "RA";
-				var legend2=['直接访问','邮件营销'];
-				var data2 =[
-					{ value: 335, name: '直接访问' },
-					{ value: 310, name: '邮件营销' },
+				var legend2=['Open','Close'];
+				var data21 =[
+					{ value: 0, name: 'Close' },
+					{ value: 0, name: 'Open' },
 				];
+				var data22 =[
+					{ value: 0, name: 'Close' },
+					{ value: 0, name: 'Open' },
+				];
+				data21[0].value = pieMap[0].jumlah;
+				data21[1].value = pieMap[1].jumlah;
+				data22[0].value = pieMap[2].jumlah;
+				data22[1].value = pieMap[3].jumlah;
 				var tit22 = "SA";
-				initEPie("echart21",tit21,data2,legend2,'false');
-				initEPie("echart22",tit22,data2,legend2,'true');
+				initEPie("echart21",tit21,data21,legend2,false);
+				initEPie("echart22",tit22,data22,legend2,true);
 
 				var tit4 = "Time Achievement ofWO on FFM（weekly）";
 				var echartData4 = data.arcList;
@@ -160,6 +169,22 @@ $(function(){
 		         type: 'pie',
 		         radius: '55%',
 		         center: ['50%', '60%'],
+				 itemStyle:{
+		         	normal:{
+		         		label:{
+		         			show:true,
+							position:'inner',
+							formatter:"{b} : {d}%  {c}",
+							textStyle:{
+								color:'#fff',
+								fontSize:14
+							}
+						},
+						labelLine:{
+							show:false
+						}
+					}
+					 },
 		         data: data
 		     }]
 			};      
@@ -167,12 +192,27 @@ $(function(){
     }
     function initE(domId,tit,data1,data2,data3){
     	var myChart = echarts.init(document.getElementById(domId));
-    	var dataStyle = {
+    	var dataStyle1 = {
 				    normal: {
+				    	color:'green',
 				        label: { show: false },
 				        labelLine: { show: false }
 				    }
 				};
+		var dataStyle2 = {
+			normal: {
+				color:'yellow',
+				label: { show: false },
+				labelLine: { show: false }
+			}
+		};
+		var dataStyle3 = {
+			normal: {
+				color:'red',
+				label: { show: false },
+				labelLine: { show: false }
+			}
+		};
 		var placeHolderStyle = {
 		    normal: {
 		        color: 'rgba(0,0,0,0)',
@@ -184,6 +224,7 @@ $(function(){
 		    }
 		};
 		option = {
+			color:['green','yellow','red'],
 		    title: {
 		        text: tit,
 		        x: 'left',
@@ -195,26 +236,26 @@ $(function(){
 			   }
 		    },
 		    backgroundColor: '#0A0F25',
-		    color:['#484969','#f7aa62','#d46e87'],
 		    tooltip: {
 		        show: true,
 		        formatter: "{a} <br/>{b} : {c} ({d}%)"
 		    },
 		    legend: {
+		    	show: true,
 		        orient: 'vertical',
 		        x: 'top',
 		        y: 'right',
-		        data: ['68%的人表示过的不错', '29%的人表示生活压力很大', '3%的人表示“我姓曾”']
+		        data: ['Less 12 hours', '12 hours<yellow<24 hours', 'Red>24 hours']
 		    },
 		    series: [{
 		            name: '1',
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [125, 150],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle1,
 		            data: [{
 		                    value: data1,
-		                    name: '68%的人表示过的不错'
+		                    name: 'Less 12 hours'
 		                },
 		                {
 		                    value: 32,
@@ -228,10 +269,10 @@ $(function(){
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [100, 125],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle2,
 		            data: [{
 		                    value: data2,
-		                    name: '29%的人表示生活压力很大'
+		                    name: '12 hours<yellow<24 hours'
 		                },
 		                {
 		                    value: 71,
@@ -245,10 +286,10 @@ $(function(){
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [75, 100],
-		            itemStyle: dataStyle,
+		            itemStyle: dataStyle3,
 		            data: [{
 		                    value: data3,
-		                    name: '3%的人表示“我姓曾”'
+		                    name: 'Red>24 hours”'
 		                },
 		                {
 		                    value: 97,
