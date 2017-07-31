@@ -17,13 +17,11 @@
 <div class="mob" style="padding-top:60px;">
 	<div class="mob-layout">
 		<div class="row">
-			<div class="col-sm-1"></div>
-			<div class="col-sm-2">
+			<div class="col-sm-2" style="padding-left: 130px;">
 				<h3>Nasional</h3>
 			</div>
 		</div>
-		<div class="row" id="mob87">
-			<div class="col-sm-1"></div>
+		<div class="row" id="mob87" style="margin-left: 100px;">
 			<div class="col-sm-2">
 				<ul>
 					<li><a href="javascript:void(0);"  style="background: #005E8A;">View:</a></li>
@@ -40,7 +38,7 @@
 			<div class="col-sm-6">
 				<div id="echart1" style="height: 300px;width: 100%;"></div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3"  style="padding-right: 30px;">
 				<table>
 					<tr>
 						<td>FO Access</td>

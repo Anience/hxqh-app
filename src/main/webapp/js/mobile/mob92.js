@@ -75,7 +75,7 @@ $(function(){
                 color:'#FFFFFF',
                 textStyle:{    //图例文字的样式
                     color:'#FFFFFF',
-                    fontSize: 26,
+                    fontSize: 20,
                 }
             },
 
@@ -163,7 +163,7 @@ $(function(){
                                     }
                                     return c;
                                 },
-                                position: 'insideRight'
+                                position: 'inside'
                             }
                         }
                     },
@@ -193,7 +193,7 @@ $(function(){
                                     }
                                     return c;
                                 },
-                                position: 'insideRight'
+                                position: 'inside'
                             }
                         }
                     },
@@ -223,7 +223,7 @@ $(function(){
                                     }
                                     return c;
                                 },
-                                position: 'insideRight'
+                                position: 'inside'
                             }
                         }
                     },

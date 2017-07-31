@@ -28,8 +28,8 @@
 						<td colspan="3">{{nowTime}}</td>
 					</tr>
 					<tr>
-						<td>Jumlah Gangguan CLOSE</td>
-						<td>Realisasi(Jam)</td>
+						<td>Jumlah Gangguan <br> CLOSE</td>
+						<td>Realisasi<br>(Jam)</td>
 						<td>Pencapaian</td>
 					</tr>
 				</thead>
@@ -71,8 +71,8 @@
 						<td colspan="3">{{nowTime}}</td>
 					</tr>
 					<tr>
-						<td>Jumlah Gangguan CLOSE</td>
-						<td>Realisasi(Jam)</td>
+						<td>Jumlah Gangguan <br> CLOSE</td>
+						<td>Realisasi<br>(Jam)</td>
 						<td>Pencapaian</td>
 					</tr>
 				</thead>
