@@ -14,11 +14,12 @@
 	</script>
 </head>
 <body>
-<div class="ano-layout" style="position: relative;">
-	<div class="vimid">
-		<h4>Gamas Node Metro & Access</h4>
-		<table class="ano82" cellpadding="2" id="ano82-data">
-			<thead>
+<div class="ano-layout">
+	<%--<div class="padding-layout" style="width: 96%;padding-left: 2%;padding-right: 2%;">--%>
+		<div class="vimid">
+			<h4>Gamas Node Metro & Access</h4>
+			<table class="ano82" cellpadding="2" id="ano82-data">
+				<thead>
 				<tr style="height: 50px;">
 					<td>Priority</td>
 					<td>Incident</td>
@@ -28,10 +29,11 @@
 					<td>Symptom</td>
 					<td>Solution</td>
 				</tr>
-			</thead>
-			<tbody></tbody>
-		</table>
-	</div>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	<%--</div>--%>
 </div>
 </body>
 <script type="text/javascript" src="${ctx}/js/ano/ano82.js"></script>

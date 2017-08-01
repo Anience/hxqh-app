@@ -21,9 +21,9 @@ $(function(){
         var seriesData = [];
         var xAxisData = echartName;
         if(domId=="echart1"){
-            legendData = ['TREG 1','TREG 2','TREG 3','TREG 4','TREG 5','TREG 6','TREG 7'];
+            legendData = ['TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
         }else{
-            legendData = ['CONS','DWS','EBIS'];
+            legendData = ['CONS','DWS','EBIS','TESL'];
         }
         legendData.forEach(function(el){
             var tmpObj = {};

@@ -21,20 +21,21 @@
 			font-weight: bolder;
 			color: #fff;
 			margin: 0px;
-			padding-top: 30px;
+			padding-top: 60px;
+			padding-left: 30px;
 		}
 		p{
 			color: #fff;
 			font-size: 20px;
 			text-align: right;
-			padding-right: 80px;
+			padding-right: 30px;
 		}
 	</style>
 </head>
 <body>
 	<div id="mob91">
 		<h3>Quality CNOP</h3>
-		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;"></div>
+		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;padding-left: 30px;padding-right: 30px;"></div>
 		<p>BAD<5ms<=GOOD</p>
 	</div>
 </body>
