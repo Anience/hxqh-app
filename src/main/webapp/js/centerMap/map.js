@@ -13,7 +13,6 @@ $(function(){
             .transform(fromProjection, toProjection), 6.5);
         initAllPoints(map, fromProjection, toProjection);
         initTable();
-        initLines(map, fromProjection, toProjection);
         //事件绑定
         $("#bottom-table").on("click","td",function(){
             $("#bottom-table tr td:not(:first)").css("color","#000");
@@ -102,7 +101,8 @@ $(function(){
                 + i + ".hide();}); ");
             eval("markers.addMarker(marker);");
         }
-        map.addLayer(markers);
+        map.addLayer(markers,{zoomOffset:7});
+        initLines(map, fromProjection, toProjection);
     }
 
     function initLines(map, fromProjection, toProjection) {
@@ -135,7 +135,7 @@ $(function(){
                     layer_style.graphicOpacity = 1;
                     //画线图层
                     vectors = new OpenLayers.Layer.Vector("Simple Geometry", {style: layer_style});
-                    map.addLayer(vectors);
+                    map.addLayer(vectors,{zoomOffset:12});
                     //一下采用数组型式填充轨迹
                     var pointList = [];
                     var newPoint1 = new OpenLayers.Geometry.Point(from_point.lon,from_point.lat);
@@ -144,7 +144,7 @@ $(function(){
                     pointList.push(newPoint2);
                     lineFeature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString(pointList),null,style_green);
                     vectors.addFeatures([lineFeature]);
-                    map.addLayer(vectors);
+                    map.addLayer(vectors,{zoomOffset:12});
                 }
             },
             error: function(){
