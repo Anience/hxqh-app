@@ -1,11 +1,7 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.dao.MenuDao;
-import com.hxqh.eam.dao.SfOrganizationAccountDao;
-import com.hxqh.eam.dao.SfOrganizationDepartmentDao;
-import com.hxqh.eam.model.Menu;
-import com.hxqh.eam.model.SfOrganizationAccount;
-import com.hxqh.eam.model.SfOrganizationDepartment;
+import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.AccountDto;
 import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
@@ -13,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +26,10 @@ public class SystemServiceImpl implements SystemService {
     private MenuDao menuDao;
     @Autowired
     private SfOrganizationDepartmentDao sfOrganizationDepartmentDao;
+    @Autowired
+    private TbIocCustTop7Dao tbIocCustTop7Dao;
+    @Autowired
+    private TbIoccustomeruserDao ioccustomeruserDao;
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {
@@ -72,7 +73,7 @@ public class SystemServiceImpl implements SystemService {
         List<SfOrganizationAccount> accountList = organizationAccountDao.findAll();
         long allUser = organizationAccountDao.getCount();
         long normal = organizationAccountDao.getCount();
-        long onlineUser = organizationAccountDao.getCount("login=:login",params);
+        long onlineUser = organizationAccountDao.getCount("login=:login", params);
 
         AccountDto accountDto = new AccountDto(accountList, allUser, normal, onlineUser);
         return accountDto;
@@ -81,6 +82,48 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public RoleDto getRoleListData() {
         return null;
+    }
+
+    @Override
+    public List<TbIocCustTop7> custtop7ListData() {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("custtype", "DWS");
+        String where = "custtype<>:custtype";
+        return tbIocCustTop7Dao.findAll(where, params, null);
+    }
+
+    @Override
+    public List<TbIoccustomeruser> customeruserListData(String name,String div) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("div", div);
+        List<TbIoccustomeruser> ioccustomeruserList = new ArrayList<>();
+        if ("no" .equals(name)) {
+            String where = "div=:div";
+            ioccustomeruserList = ioccustomeruserDao.findAll(where,params,null);
+        } else {
+            params.put("custName", name.trim());
+            StringBuilder sb = new StringBuilder("");
+            sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" and div=:div ");
+            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
+        }
+        return ioccustomeruserList;
+    }
+
+    @Override
+    public void updateRank(Long ioccustomeruserid,String custid,String name) {
+        TbIocCustTop7 iocCustTop7 = tbIocCustTop7Dao.find(custid);
+        TbIoccustomeruser ioccustomeruser = ioccustomeruserDao.find(ioccustomeruserid);
+
+        iocCustTop7.setCustid(String.valueOf(ioccustomeruser.getIoccustomeruserid()));
+        iocCustTop7.setCustname(ioccustomeruser.getCustName());
+        iocCustTop7.setName(name);
+
+        tbIocCustTop7Dao.update(iocCustTop7);
+    }
+
+    @Override
+    public TbIocCustTop7 getrankDetail(String ioccustomerusertop7id) {
+        return tbIocCustTop7Dao.find(ioccustomerusertop7id);
     }
 
     @Override
