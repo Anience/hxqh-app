@@ -54,6 +54,8 @@ public class AnoServiceImpl implements AnoService {
     private TbIocProIndihomeDao proIndihomeDao;
     @Autowired
     private TbIocConsSrviewDao tbIocConsSrviewDao;
+    @Autowired
+    private TbIocProMonthlyDao iocProMonthlyDao;
 
     @Resource
     protected SessionFactory sessionFactory;
@@ -339,7 +341,9 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public MonthlyData monthlyData() {
-        return null;
+        List<TbIocProMonthly> iocProMonthlyList = iocProMonthlyDao.findAll();
+        MonthlyData monthlyData = new MonthlyData(iocProMonthlyList);
+        return monthlyData;
     }
 
     @Override

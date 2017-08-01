@@ -369,10 +369,23 @@ public class SystemController {
         RoleDto roleDto = systemService.getRoleListData();
         return roleDto;
     }
-
-
-
     /****************************Role Configure**********************/
+
+
+    /****************************** Rank ***************************/
+    @RequestMapping(value = "/rankList", method = RequestMethod.GET)
+    public String rankList() {
+        return "rank/rankList";
+    }
+
+
+
+
+    /****************************** Rank ***************************/
+
+
+
+
 
 
 }
