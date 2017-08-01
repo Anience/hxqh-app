@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * The persistent class for the V_MAP_OPENMAPPOINTS database table.
  */
 @Entity
-@Table(name = "V_MAP_OPENMAPPOINTS")
+@Table(name = "V_MAP")
 public class VMapOpenmappoint implements Serializable {
     private static final long serialVersionUID = 1L;
 

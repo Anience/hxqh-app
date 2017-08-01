@@ -60,20 +60,13 @@
         <level value="WARN"/>
     </logger>
 
+
+
     <logger name="org.hibernate.hql.internal.ast">
-        <level value="TRACE"/>
+        <level value="WARN"/>
     </logger>
-    <!--<logger name="org.hibernate.type.descriptor.sql">-->
-        <!--<level value="TRACE"/>-->
-    <!--</logger>-->
 
 
-    <!--<logger name="org.hibernate.hql.internal.ast">-->
-        <!--<level value="ERROR"/>-->
-    <!--</logger>-->
-    <!--<logger name="org.hibernate.type.descriptor.sql">-->
-        <!--<level value="ERROR"/>-->
-    <!--</logger>-->
 
     <root>
         <priority value="ERROR"/>
