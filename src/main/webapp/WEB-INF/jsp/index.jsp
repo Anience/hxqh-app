@@ -191,6 +191,15 @@
 			</ul>
 		</li>
 		<li class="menu-list">
+			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>SLA Performance <i class="first-a-down"></i></a>
+			<ul>
+				<li><a href="${ctx}/ano/realtime" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Internet</a></li>
+				<li><a href="${ctx}/ano/per7x" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Per service</a></li>
+				<li><a href="${ctx}/ano/monthly" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>various unit's</a></li>
+				<li><a href="${ctx}/ano/complaint" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>per region</a></li>
+			</ul>
+		</li>
+		<li class="menu-list">
 			<a  target="menuFrame" class="firsta"><i  class="first-a-icon"></i>ITOC<i class="first-a-down"></i></a>
 			<ul>
 				<li><a href="http://10.62.13.18:9090" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Manage Engine</a></li>

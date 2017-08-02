@@ -9,7 +9,12 @@ $(function(){
                 var tmpHtml  = '';
                 var datas = data.iocProMonthlyList;
                 for(var i = 0;i<datas.length;i++){
-                    var firstTd = "TREG-"+(i+1);
+                    var firstTd = '';
+                    if(i>=7){
+                        firstTd = 'BIGES';
+                    }else{
+                        firstTd = "TREG-"+(i+1);
+                    }
                     tmpHtml+='<tr><td width="20%">'+firstTd
                         +'</td><td width="20%">'+datas[i].mtt
                         +'</td><td width="20%">'+datas[i].mtti
