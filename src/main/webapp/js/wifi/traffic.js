@@ -8,15 +8,15 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.topMap,data.topNameList);
-                initEchart("echart2",data.bottomMap,data.bottomNameList);
+                initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-Jun 2017');
+                initEchart("echart2",data.bottomMap,data.bottomNameList,'Daily Traffic Distribution By CONS/DWS/EBIS/Tsel');
             },
             error: function(){
 
             }
         })
     }
-    function initEchart(domId,echartSData,echartName) {
+    function initEchart(domId,echartSData,echartName,tit) {
         var legendData = [];
         var seriesData = [];
         var xAxisData = echartName;
@@ -37,7 +37,7 @@ $(function(){
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {
-                text: "Daily Traffic Distribution By Regions-Jun 2017",
+                text: tit,
                 backgroundColor:"#161C2F",
                 x:30,
                 textStyle: {
