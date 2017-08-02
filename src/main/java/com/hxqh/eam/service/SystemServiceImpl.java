@@ -5,9 +5,11 @@ import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.AccountDto;
 import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +32,12 @@ public class SystemServiceImpl implements SystemService {
     private TbIocCustTop7Dao tbIocCustTop7Dao;
     @Autowired
     private TbIoccustomeruserDao ioccustomeruserDao;
+    @Resource
+    protected SessionFactory sessionFactory;
+    @Autowired
+    private TbIocSlaPerformanceDao tbIocSlaPerformanceDao;
+
+
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {
@@ -93,13 +101,13 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public List<TbIoccustomeruser> customeruserListData(String name,String div) {
+    public List<TbIoccustomeruser> customeruserListData(String name, String div) {
         Map<String, Object> params = new HashMap<>();
         params.put("div", div);
         List<TbIoccustomeruser> ioccustomeruserList = new ArrayList<>();
-        if ("no" .equals(name)) {
+        if ("no".equals(name)) {
             String where = "div=:div";
-            ioccustomeruserList = ioccustomeruserDao.findAll(where,params,null);
+            ioccustomeruserList = ioccustomeruserDao.findAll(where, params, null);
         } else {
             params.put("custName", name.trim());
             StringBuilder sb = new StringBuilder("");
@@ -110,7 +118,7 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void updateRank(Long ioccustomeruserid,String custid,String name) {
+    public void updateRank(Long ioccustomeruserid, String custid, String name) {
         TbIocCustTop7 iocCustTop7 = tbIocCustTop7Dao.find(custid);
         TbIoccustomeruser ioccustomeruser = ioccustomeruserDao.find(ioccustomeruserid);
 
@@ -119,6 +127,14 @@ public class SystemServiceImpl implements SystemService {
         iocCustTop7.setName(name);
 
         tbIocCustTop7Dao.update(iocCustTop7);
+        //TODO call procedure
+
+    }
+
+
+    @Override
+    public void callProcedure() {
+        sessionFactory.getCurrentSession().createSQLQuery("{call proc_stuInfo()}");
     }
 
     @Override
