@@ -101,7 +101,7 @@ $(function(){
                 + i + ".hide();}); ");
             eval("markers.addMarker(marker);");
         }
-        map.addLayer(markers,{zoomOffset:7});
+        map.addLayer(markers,{zoomOffset:12});
         initLines(map, fromProjection, toProjection);
     }
 
@@ -144,7 +144,7 @@ $(function(){
                     pointList.push(newPoint2);
                     lineFeature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString(pointList),null,style_green);
                     vectors.addFeatures([lineFeature]);
-                    map.addLayer(vectors,{zoomOffset:12});
+                    map.addLayer(vectors);
                 }
             },
             error: function(){

@@ -14,13 +14,14 @@
     <link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="${ctx}/css/pre/monthly.css" type="text/css" media="screen" />
     <script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/pre/monthly.js"></script>
     <script>
         var _ctx = "${ctx}";
     </script>
 </head>
 <body>
 <div class="mtd-layout">
-    <table>
+    <table class="monthly">
         <thead>
             <tr>
                 <td colspan="4" style="text-align: left;padding-left: 80px;"> Provisioning-MtD MTTI monitoring per 7 regions</td>
@@ -44,48 +45,6 @@
                 <td width="20%">111</td>
                 <td width="20%">111</td>
                 <td width="20%">111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>TREG-1</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
             </tr>
             <tr>
                 <td>TREG-1</td>
