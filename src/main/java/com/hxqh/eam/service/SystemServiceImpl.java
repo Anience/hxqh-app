@@ -34,9 +34,6 @@ public class SystemServiceImpl implements SystemService {
     private TbIoccustomeruserDao ioccustomeruserDao;
     @Resource
     protected SessionFactory sessionFactory;
-    @Autowired
-    private TbIocSlaPerformanceDao tbIocSlaPerformanceDao;
-
 
 
     @Override
