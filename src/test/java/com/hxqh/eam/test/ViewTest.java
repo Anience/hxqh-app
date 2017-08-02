@@ -5,7 +5,6 @@ import com.hxqh.eam.dao.TbIocMobileBackhaulTtcDao;
 import com.hxqh.eam.model.Menu;
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
-import com.hxqh.eam.model.dto.EnterpriseTopDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.EnterpriseService;
 import com.hxqh.eam.service.SystemService;
@@ -38,6 +37,12 @@ public class ViewTest {
     private EnterpriseService enterpriseService;
     @Autowired
     private TbIocMobileBackhaulTtcDao mobileBackhaulTtcDao;
+
+//    @Test
+    //TODO
+    public void callProcedure() {
+        systemService.callProcedure();
+    }
 
     @Test
     public void testCreateSQLQuery() {

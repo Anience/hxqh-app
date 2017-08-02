@@ -43,4 +43,6 @@ public interface SystemService {
     void updateRank(Long ioccustomeruserid,String custid,String name);
 
     TbIocCustTop7 getrankDetail(String ioccustomerusertop7id);
+
+    void callProcedure();
 }
