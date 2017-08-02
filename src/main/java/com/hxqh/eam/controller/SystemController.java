@@ -6,9 +6,7 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.common.IConstants;
 import com.hxqh.eam.common.hxqh.Account;
-import com.hxqh.eam.model.Menu;
-import com.hxqh.eam.model.SfOrganizationAccount;
-import com.hxqh.eam.model.SfOrganizationDepartment;
+import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
 import com.hxqh.eam.model.dto.AccountDto;
@@ -373,13 +371,85 @@ public class SystemController {
 
 
     /****************************** Rank ***************************/
+    /**
+     * Rank List页面接口
+     *
+     * @return
+     */
     @RequestMapping(value = "/rankList", method = RequestMethod.GET)
     public String rankList() {
         return "rank/rankList";
     }
 
+    /**
+     * custtop7ListData 数据接口
+     * ok
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/custtop7ListData", method = RequestMethod.GET)
+    public List<TbIocCustTop7> custtop7ListData() {
+        return systemService.custtop7ListData();
+    }
+
+    /**
+     * RankDetail页面接口
+     * @return
+     */
+    @RequestMapping(value = "/rankDetail", method = RequestMethod.GET)
+    public ModelAndView rankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("custid", ioccustomerusertop7id);
+        return new ModelAndView("rank/rankDetail",result);
+    }
 
 
+    /**
+     * Detail页面接口
+     *  OK
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getrankDetail", method = RequestMethod.GET)
+    public TbIocCustTop7 getrankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
+        return systemService.getrankDetail(ioccustomerusertop7id);
+    }
+
+    /**
+     * customeruserListData 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/customeruserListData", method = RequestMethod.GET)
+    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name,@RequestParam("div") String div) {
+        return systemService.customeruserListData(name,div);
+    }
+
+
+    /**
+     * 更新排名的业务接口
+     *
+     * @param ioccustomeruserid 需要更新的ioccustomeruserid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateRank", method = RequestMethod.GET)
+    public Message updateRank(
+            @RequestParam("ioccustomeruserid") Long ioccustomeruserid,
+            @RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id,
+            @RequestParam("name") String name) {
+        Message message = null;
+        try {
+            systemService.updateRank(ioccustomeruserid,ioccustomerusertop7id,name);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
 
     /****************************** Rank ***************************/
 

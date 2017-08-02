@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class TbIocCustTop7 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+
 	private String custid;
 
 	private String custname;
@@ -24,6 +24,7 @@ public class TbIocCustTop7 implements Serializable {
 
 	private String filename;
 
+	@Id
 	private String ioccustomerusertop7id;
 
 	private String loginpath;
