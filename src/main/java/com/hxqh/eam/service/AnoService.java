@@ -33,8 +33,6 @@ public interface AnoService {
 
     SolutionDto getSolutionData();
 
-    WifiIndDto getWifiIndData();
-
     RealtimeData realtimeData();
 
     MonthlyData monthlyData();

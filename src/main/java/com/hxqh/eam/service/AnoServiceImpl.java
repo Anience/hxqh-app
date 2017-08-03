@@ -23,7 +23,6 @@ public class AnoServiceImpl implements AnoService {
     private static final String[] PILLLIST = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"};
     private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
 
-
     @Autowired
     private VAno81Dao vAno81Dao;
     @Autowired
@@ -56,7 +55,8 @@ public class AnoServiceImpl implements AnoService {
     private TbIocConsSrviewDao tbIocConsSrviewDao;
     @Autowired
     private TbIocProMonthlyDao iocProMonthlyDao;
-
+    @Autowired
+    private TbIocConsSrMoningDao iocConsSrMoningDao;
     @Resource
     protected SessionFactory sessionFactory;
 
@@ -248,13 +248,26 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public SolutionDto getSolutionData() {
-        return null;
+        List<TbIocConsSrMoning> iocConsSrMoningList = iocConsSrMoningDao.findAll();
+        //对iocConsSrMoningList分组
+        Map<String, List<TbIocConsSrMoning>> listMap = GroupListUtil.group(iocConsSrMoningList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocConsSrMoning d = (TbIocConsSrMoning) obj;
+                return d.getTitleType();    // 分组依据为TitleType
+            }
+        });
+
+        String sql = "select t.regional,sum(t.ttl) as allttl from V_IOC_CONS_SR_MONING t group by t.REGIONAL order by  t.REGIONAL ";
+        List<SrMoningDto> moningDtoList = sessionFactory.getCurrentSession().createSQLQuery(sql).addEntity(SrMoningDto.class).list();
+
+        String sqlSr = "select distinct(t.regional) ,t.SMS_OPEN as smsopen,t.SMS_BACKEND as smsbackend,t.EMAIL_OPEN as emailopen,t.EMAIL_BACKEND as emailbackend,t.REOPEN as reopen from V_IOC_CONS_SR_MONING t order by t.REGIONAL";
+        List<SrDto> srDtoList = sessionFactory.getCurrentSession().createSQLQuery(sqlSr).addEntity(SrDto.class).list();
+
+        SolutionDto solutionDto = new SolutionDto(listMap, moningDtoList,srDtoList);
+        return solutionDto;
     }
 
-    @Override
-    public WifiIndDto getWifiIndData() {
-        return null;
-    }
 
     @Override
     public RealtimeData realtimeData() {

@@ -216,7 +216,7 @@ public class AnoController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/solutionData", method = RequestMethod.GET)
+        @RequestMapping(value = "/solutionData", method = RequestMethod.GET)
     public SolutionDto getSolutionData() {
         SolutionDto solutionData = anoService.getSolutionData();
         return solutionData;
