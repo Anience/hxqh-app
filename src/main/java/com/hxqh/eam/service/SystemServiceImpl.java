@@ -1,13 +1,14 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
-import com.hxqh.eam.model.dto.AccountDto;
-import com.hxqh.eam.model.dto.RoleDto;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -35,6 +36,8 @@ public class SystemServiceImpl implements SystemService {
     @Resource
     protected SessionFactory sessionFactory;
 
+    @Autowired
+    private TbIocSlaPerformanceDao iocSlaPerformanceDao;
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {
@@ -114,6 +117,7 @@ public class SystemServiceImpl implements SystemService {
         return ioccustomeruserList;
     }
 
+    @Transactional
     @Override
     public void updateRank(Long ioccustomeruserid, String custid, String name) {
         TbIocCustTop7 iocCustTop7 = tbIocCustTop7Dao.find(custid);
@@ -129,9 +133,15 @@ public class SystemServiceImpl implements SystemService {
     }
 
 
+    @Transactional
     @Override
     public void callProcedure() {
-        sessionFactory.getCurrentSession().createSQLQuery("{call proc_stuInfo()}");
+        sessionFactory.getCurrentSession().createSQLQuery("{call p_custom_rank.pro_custom_rank()}");
+    }
+
+    @Override
+    public TestDto testData() {
+        return new TestDto();
     }
 
     @Override
@@ -168,5 +178,8 @@ public class SystemServiceImpl implements SystemService {
     public List<SfOrganizationDepartment> getDepartmentList() {
         return sfOrganizationDepartmentDao.findAll();
     }
+
+
+
 
 }
