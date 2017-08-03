@@ -182,11 +182,11 @@ public class AnoController {
      * @return
      */
     @RequestMapping(value = "/voice", method = RequestMethod.GET)
-    public String voicetraffic() {
-        return "consumer/summary";
+    public ModelAndView voice(@RequestParam("type") String type) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", type);
+        return new ModelAndView("consumer/voice", result);
     }
-
-
     /**
      * voice traffic performance  数据接口
      *
@@ -201,19 +201,17 @@ public class AnoController {
 
 
     /**
-     * solution 页面跳转接口
+     * Reactive SR Monitoring 页面跳转接口
      *
      * @return
      */
     @RequestMapping(value = "/solution", method = RequestMethod.GET)
-    public ModelAndView solution(@RequestParam("type") String type) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("page", type);
-        return new ModelAndView("consumer/solution", result);
+    public String voicetraffic() {
+        return "consumer/summary";
     }
 
     /**
-     * solution 数据接口
+     * Reactive SR Monitoring 数据接口
      *
      * @return
      */
@@ -226,37 +224,14 @@ public class AnoController {
 
 
     /**
-     * wifiInd 页面跳转接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/wifiInd", method = RequestMethod.GET)
-    public String wifiInd() {
-        return "consumer/wifiInd";
-    }
-
-    /**
-     * wifiInd 数据接口
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/wifiIndData", method = RequestMethod.GET)
-    public WifiIndDto getWifiIndData() {
-        WifiIndDto solutionData = anoService.getWifiIndData();
-        return solutionData;
-    }
-
-    /**
      * SR view 页面跳转接口
      *
      * @return
      */
-    @RequestMapping(value = "/srview ", method = RequestMethod.GET)
-    public String srview() {
+    @RequestMapping(value = "/srview", method = RequestMethod.GET)
+    public String wifiInd() {
         return "consumer/srview";
     }
-
     /**
      * SR view 数据接口
      *
