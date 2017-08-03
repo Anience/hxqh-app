@@ -18,33 +18,238 @@
     <div class="dig-layout" style="padding-top: 40px;">
         <table class="dig-13" id="digital-data">
             <thead>
-            <tr>
-                <td rowspan="3">OPERATIONAL</td>
-                <td rowspan="3">UNIT</td>
-                <td colspan="5"></td>
-                <td rowspan="3">MOM</td>
-                <td colspan="5">YtD</td>
-                <td rowspan="3">YOY</td>
-            </tr>
-            <tr>
-                <td rowspan="2">TARGET</td>
-                <td colspan="2">MtD</td>
-                <td colspan="2">OUTLOOK</td>
-                <td rowspan="2">TARGET</td>
-                <td rowspan="2">REAL</td>
-                <td rowspan="2">ACH</td>
-                <td colspan="2">OUTLOOK</td>
-            </tr>
-            <tr>
-                <td>REAL</td>
-                <td>ACH</td>
-                <td>AMOUNT</td>
-                <td>ACH</td>
-                <td>REAL</td>
-                <td>ACH</td>
-            </tr>
+                <tr>
+                    <td rowspan="3">OPERATIONAL</td>
+                    <td rowspan="3">UNIT</td>
+                    <td colspan="5"></td>
+                    <td rowspan="3">MOM</td>
+                    <td colspan="5">YtD</td>
+                    <td rowspan="3">YOY</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">TARGET</td>
+                    <td colspan="2">MtD</td>
+                    <td colspan="2">OUTLOOK</td>
+                    <td rowspan="2">TARGET</td>
+                    <td rowspan="2">REAL</td>
+                    <td rowspan="2">ACH</td>
+                    <td colspan="2">OUTLOOK</td>
+                </tr>
+                <tr>
+                    <td>REAL</td>
+                    <td>ACH</td>
+                    <td>AMOUNT</td>
+                    <td>ACH</td>
+                    <td>REAL</td>
+                    <td>ACH</td>
+                </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <tr>
+                    <td colspan="14" class="td-tit">Quality&&Assurance</td>
+                </tr>
+                <tr>
+                    <td colspan="14" class="td-tit">Quality</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+
+                <tr>
+                    <td colspan="14" class="td-tit">Assurance</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="14" class="td-tit">Assurance</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+
+                <tr>
+                    <td colspan="14" class="td-tit">Digital Experience</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td colspan="14" class="td-tit">Internal Digital Touch Point</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td colspan="14" class="td-tit">Experience Digital Touch Point</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+                <tr>
+                    <td colspan="14" class="td-tit">Digital Experience  Bussiness  Point</td>
+                </tr>
+                <tr>
+                    <td>1.deliverry</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                    <td>222222</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
