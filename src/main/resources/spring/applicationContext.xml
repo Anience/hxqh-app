@@ -110,6 +110,7 @@
                 <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="javax.persistence.validation.mode">none</prop>
+                <prop key="current_session_context_class">thread</prop>
             </props>
         </property>
         <property name="packagesToScan" value="com.hxqh.**.model.**"/>

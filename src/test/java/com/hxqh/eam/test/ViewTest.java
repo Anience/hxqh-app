@@ -14,6 +14,7 @@ import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by lh on 2017/5/5.
@@ -37,12 +39,20 @@ public class ViewTest {
     private EnterpriseService enterpriseService;
     @Autowired
     private TbIocMobileBackhaulTtcDao mobileBackhaulTtcDao;
+    @Autowired
+    protected SessionFactory sessionFactory;
+
+
 
 //    @Test
-    //TODO
-    public void callProcedure() {
-        systemService.callProcedure();
-    }
+//    public void testSla() {
+//        systemService.testData();
+//    }
+
+//    @Test
+//    public void callProcedure() {
+//        systemService.callProcedure();
+//    }
 
     @Test
     public void testCreateSQLQuery() {
