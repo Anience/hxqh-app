@@ -15,7 +15,6 @@ trait SLAService {
 
   def variousunitData: VariousunitDto
 
-
   def viewperregionData: ViewperregionDto
 
   def perserviceData:PerserviceDto

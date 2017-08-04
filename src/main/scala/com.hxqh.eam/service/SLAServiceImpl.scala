@@ -3,8 +3,8 @@ package com.hxqh.eam.service
 import java.util
 
 import com.hxqh.eam.common.util.GroupListUtil
-import com.hxqh.eam.dao.TbIocSlaPerformanceDao
-import com.hxqh.eam.model.TbIocSlaPerformance
+import com.hxqh.eam.dao.{IocConsSrMoningDao, IocSlaPerServiceDao, IocSlaTregPerDao, TbIocSlaPerformanceDao}
+import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance}
 import com.hxqh.eam.model.dto._
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service
 @Service("sLAService") class SLAServiceImpl extends SLAService {
 
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
+  @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null
+  @Autowired private val iocConsSrMoningDao: IocConsSrMoningDao = null
+  @Autowired private val iocSlaTregPerDao: IocSlaTregPerDao = null
 
   override def variousunitData: VariousunitDto = {
     val performanceList = tbIocSlaPerformanceDao.findAll
@@ -49,7 +52,6 @@ import org.springframework.stereotype.Service
             pieDto.setPieObj(slaPerformance)
           else if (slaPerformance.getSlaType == "SUBPIE")
             l.add(slaPerformance)
-
       }
       dto.setRighttopList(list)
 
@@ -66,15 +68,31 @@ import org.springframework.stereotype.Service
     new VariousunitDto(finalMap)
   }
 
-
   override def viewperregionData: ViewperregionDto = {
+
+    iocConsSrMoningDao
+
     val x = null
     x
   }
 
-  override def perserviceData: PerserviceDto = ???
+  override def perserviceData: PerserviceDto = {
+    val perServiceList = iocSlaPerServiceDao.findAll()
+    val stringListMap = GroupListUtil.group(perServiceList, new GroupListUtil.GroupBy[String]() {
+      override def groupby(obj: Any): String = {
+        val d = obj.asInstanceOf[TbIocSlaPerService]
+        d.getPengguna// 分组依据为Pengguna
+      }
+    })
+    new PerserviceDto(stringListMap)
+  }
 
-  override def internalData: InternalDto = ???
+  override def internalData: InternalDto ={
+
+    val x = null
+    x
+  }
+
 }
 
 
