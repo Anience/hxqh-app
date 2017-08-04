@@ -1,11 +1,12 @@
 package com.hxqh.eam.service
 
 import java.util
+import java.util.LinkedHashMap
 
 import com.hxqh.eam.common.util.GroupListUtil
 import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, TbIocSlaPerformanceDao}
 import com.hxqh.eam.model.dto._
-import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance}
+import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance, TbIocSlaTregPer}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -68,10 +69,17 @@ import org.springframework.stereotype.Service
   }
 
   override def viewperregionData: ViewperregionDto = {
+    val orderby = new util.LinkedHashMap[String, String]
+    orderby.put("slaId", "asc")
 
-
-    val x = null
-    x
+    val iocSlaTregList= iocSlaTregPerDao.findAll(null,null,orderby);
+    val stringListMap = GroupListUtil.group(iocSlaTregList, new GroupListUtil.GroupBy[String]() {
+      override def groupby(obj: Any): String = {
+        val d = obj.asInstanceOf[TbIocSlaTregPer]
+        d.getAmonths // 分组依据为Amonths
+      }
+    })
+    new ViewperregionDto(stringListMap)
   }
 
   override def perserviceData: PerserviceDto = {
