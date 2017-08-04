@@ -51,7 +51,6 @@ public class PageModel {
 		this.totalCount = totalCount;
 	}
 	public PageModel(int pageNumber2, int pageSize2, int totalCount2) {
-		// TODO Auto-generated constructor stub
 	}
     
     /**

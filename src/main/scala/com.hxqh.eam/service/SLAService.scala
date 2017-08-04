@@ -9,17 +9,16 @@ import com.hxqh.eam.model.dto._
 
 trait SLAService {
 
-  //  def vWifiDistributionData: util.List[VWifiDistribution]
-  //
-  //  def vWifiMttrData: WifiMttrDto
-
   def variousunitData: VariousunitDto
 
   def viewperregionData: ViewperregionDto
 
-  def perserviceData:PerserviceDto
+  def perserviceData: PerserviceDto
 
-  def internalData:InternalDto
+  def internalData: InternalDto
+
+  def rosterData: RosterDto
+
 
 }
 

@@ -1,14 +1,16 @@
 package com.hxqh.eam.service
 
 import java.util
-import java.util.LinkedHashMap
 
 import com.hxqh.eam.common.util.GroupListUtil
-import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, TbIocSlaPerformanceDao}
+import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, IocTeamRosterDao, TbIocSlaPerformanceDao}
 import com.hxqh.eam.model.dto._
-import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance, TbIocSlaTregPer}
+import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance, TbIocSlaTregPer, TbIocTeamRoster}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+
+import scala.collection.JavaConversions._
+
 
 /**
   * Created by Ocean lin on 2017/8/2.
@@ -18,6 +20,8 @@ import org.springframework.stereotype.Service
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
   @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null
   @Autowired private val iocSlaTregPerDao: IocSlaTregPerDao = null
+
+  @Autowired private val iocTeamRosterDao: IocTeamRosterDao = null
 
   override def variousunitData: VariousunitDto = {
     val performanceList = tbIocSlaPerformanceDao.findAll
@@ -32,13 +36,11 @@ import org.springframework.stereotype.Service
     val finalMap = new util.HashMap[String, IocSlaPerformanceDto]
 
     //遍历Map取出数据
-    import scala.collection.JavaConversions._
     for (map <- stringListMap.entrySet) {
       val dto = new IocSlaPerformanceDto
       val pieDto = new IocSlaPieDto
       val list = new util.ArrayList[TbIocSlaPerformance]
       val l = new util.ArrayList[TbIocSlaPerformance]
-      import scala.collection.JavaConversions._
       for (slaPerformance <- map.getValue) { //左上数据准备
         //t.SEGMENT_TYPE = 'DES' and t.SLA_TYPE='MAIN';
         if (slaPerformance.getSegmentType == map.getKey && slaPerformance.getSlaType == "MAIN") dto.setLefttop(slaPerformance)
@@ -72,7 +74,7 @@ import org.springframework.stereotype.Service
     val orderby = new util.LinkedHashMap[String, String]
     orderby.put("slaId", "asc")
 
-    val iocSlaTregList= iocSlaTregPerDao.findAll(null,null,orderby);
+    val iocSlaTregList = iocSlaTregPerDao.findAll(null, null, orderby);
     val stringListMap = GroupListUtil.group(iocSlaTregList, new GroupListUtil.GroupBy[String]() {
       override def groupby(obj: Any): String = {
         val d = obj.asInstanceOf[TbIocSlaTregPer]
@@ -87,18 +89,32 @@ import org.springframework.stereotype.Service
     val stringListMap = GroupListUtil.group(perServiceList, new GroupListUtil.GroupBy[String]() {
       override def groupby(obj: Any): String = {
         val d = obj.asInstanceOf[TbIocSlaPerService]
-        d.getPengguna// 分组依据为Pengguna
+        d.getPengguna // 分组依据为Pengguna
       }
     })
     new PerserviceDto(stringListMap)
   }
 
-  override def internalData: InternalDto ={
 
+  override def internalData: InternalDto = {
+    //TODO 未完成
     val x = null
     x
   }
 
+  override def rosterData: RosterDto = {
+
+    val iocTeamList = iocTeamRosterDao.findAll()
+    val fMap = GroupListUtil.group(iocTeamList, new GroupListUtil.GroupBy[String]() {
+      override def groupby(obj: Any): String = {
+        val d = obj.asInstanceOf[TbIocTeamRoster]
+        d.getUnit // 分组依据为Unit
+      }
+    })
+
+    //TODO 排版表交互逻辑，已经按部门完成分组
+    new RosterDto
+  }
 }
 
 
