@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="digital">
-    <div class="dig-layout" style="padding-top: 40px;">
+    <div class="dig-layout">
         <table class="dig-13" id="digital-data">
             <thead>
                 <tr>
