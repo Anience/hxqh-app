@@ -85,7 +85,7 @@ class SLAController  @Autowired()(private val sLAService: SLAService) {
 
   /**
     *  8.Closed ticket performance view per region per area  数据接口
-    *
+    *  仅mttr有用有用，考虑其他字段可能有用，全部返回
     * @return
     */
   @ResponseBody
@@ -100,8 +100,15 @@ class SLAController  @Autowired()(private val sLAService: SLAService) {
     */
   @RequestMapping(value = Array("/roster"), method = Array(RequestMethod.GET)) def roster: ModelAndView = new ModelAndView("sla/roster")
 
-
-
+  /**
+    *  rosterData 页面跳转接口
+    *
+    * @return
+    */
+  @ResponseBody
+  @RequestMapping(value = Array("/rosterData"), method = Array(RequestMethod.GET)) def rosterData: RosterDto = {
+    sLAService.rosterData
+  }
 
 
 
