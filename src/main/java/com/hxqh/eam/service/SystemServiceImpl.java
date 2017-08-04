@@ -36,8 +36,8 @@ public class SystemServiceImpl implements SystemService {
     @Resource
     protected SessionFactory sessionFactory;
 
-    @Autowired
-    private TbIocSlaPerformanceDao iocSlaPerformanceDao;
+//    @Autowired
+//    private TbIocSlaPerformanceDao iocSlaPerformanceDao;
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {

@@ -3,9 +3,9 @@ package com.hxqh.eam.service
 import java.util
 
 import com.hxqh.eam.common.util.GroupListUtil
-import com.hxqh.eam.dao.{IocConsSrMoningDao, IocSlaPerServiceDao, IocSlaTregPerDao, TbIocSlaPerformanceDao}
-import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance}
+import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, TbIocSlaPerformanceDao}
 import com.hxqh.eam.model.dto._
+import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service
 
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
   @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null
-  @Autowired private val iocConsSrMoningDao: IocConsSrMoningDao = null
   @Autowired private val iocSlaTregPerDao: IocSlaTregPerDao = null
 
   override def variousunitData: VariousunitDto = {
@@ -70,7 +69,6 @@ import org.springframework.stereotype.Service
 
   override def viewperregionData: ViewperregionDto = {
 
-    iocConsSrMoningDao
 
     val x = null
     x
