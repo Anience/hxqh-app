@@ -93,4 +93,16 @@ class SLAController  @Autowired()(private val sLAService: SLAService) {
     sLAService.viewperregionData
   }
 
+  /**
+    *  roster 页面跳转接口
+    *
+    * @return
+    */
+  @RequestMapping(value = Array("/roster"), method = Array(RequestMethod.GET)) def roster: ModelAndView = new ModelAndView("sla/roster")
+
+
+
+
+
+
 }
