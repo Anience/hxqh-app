@@ -37,7 +37,7 @@
                 <td>ID</td>
                 <td>NAME</td>
                 <td>PLEA</td>
-                <td>DATE</td>
+                <td>DUTY TIME</td>
             </tr>
             </thead>
             <tbody>
@@ -169,7 +169,7 @@
                 <td>ID</td>
                 <td>NAME</td>
                 <td>PLEA</td>
-                <td>DATE</td>
+                <td>DUTY TIME</td>
             </tr>
             </thead>
             <tbody>
@@ -301,7 +301,7 @@
                 <td>ID</td>
                 <td>NAME</td>
                 <td>PLEA</td>
-                <td>DATE</td>
+                <td>DUTY TIME</td>
             </tr>
             </thead>
             <tbody>
