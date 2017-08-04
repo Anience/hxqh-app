@@ -1,9 +1,22 @@
 $(function(){
-	initEchart('echart1',true,true);
-	initEchart('echart2',false,false);
-	initEchart('echart3',false,false);
-	initEchart('echart4',false,false);
-	initPie('echart');
+	function init(){
+		$.ajax({
+			url: _ctx+"/sla/variousunitData",
+			method: "get",
+			dataType: "json",
+			success: function (data) {
+				initEchart('echart1',true,true);
+				initEchart('echart2',false,false);
+				initEchart('echart3',false,false);
+				initEchart('echart4',false,false);
+				initPie('echart');
+			},
+			error: function () {
+
+			}
+		});
+	}
+	init();
 	function initPie(domId){
 		var myChart = echarts.init(document.getElementById(domId));
 		option = {
@@ -91,4 +104,5 @@ $(function(){
 		};
 		myChart.setOption(option);
 	}
+
 });

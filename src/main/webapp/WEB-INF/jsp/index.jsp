@@ -197,6 +197,7 @@
 				<li><a href="${ctx}/sla/perservice" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Per service</a></li>
 				<li><a href="${ctx}/sla/variousunit" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>various unit's</a></li>
 				<li><a href="${ctx}/sla/viewperregion" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>per region</a></li>
+				<li><a href="${ctx}/sla/roster" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i> work roster</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
