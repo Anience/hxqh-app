@@ -10,17 +10,8 @@ import java.util.Map;
  */
 public class IocSlaPieDto {
 
-    private TbIocSlaPerformance pieObj;
-
-    private Map<String,List<TbIocSlaPerformance>> pieMap;
-
-    public TbIocSlaPerformance getPieObj() {
-        return pieObj;
-    }
-
-    public void setPieObj(TbIocSlaPerformance pieObj) {
-        this.pieObj = pieObj;
-    }
+    private Map<String, List<TbIocSlaPerformance>> pieMap;
+    private Map<String, List<TbIocSlaPerformance>> arcMap;
 
     public Map<String, List<TbIocSlaPerformance>> getPieMap() {
         return pieMap;
@@ -28,5 +19,13 @@ public class IocSlaPieDto {
 
     public void setPieMap(Map<String, List<TbIocSlaPerformance>> pieMap) {
         this.pieMap = pieMap;
+    }
+
+    public Map<String, List<TbIocSlaPerformance>> getArcMap() {
+        return arcMap;
+    }
+
+    public void setArcMap(Map<String, List<TbIocSlaPerformance>> arcMap) {
+        this.arcMap = arcMap;
     }
 }

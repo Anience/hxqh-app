@@ -45,6 +45,7 @@ import scala.collection.JavaConversions._
       val pieDto = new IocSlaPieDto
       val list = new util.ArrayList[TbIocSlaPerformance]
       val l = new util.ArrayList[TbIocSlaPerformance]
+      val na = new util.ArrayList[TbIocSlaPerformance]
       for (slaPerformance <- map.getValue) { //左上数据准备
         //t.SEGMENT_TYPE = 'DES' and t.SLA_TYPE='MAIN';
         if (slaPerformance.getSegmentType == map.getKey && slaPerformance.getSlaType == "MAIN") dto.setLefttop(slaPerformance)
@@ -54,8 +55,9 @@ import scala.collection.JavaConversions._
         //下侧三个饼图
         //t.SLA_TYPE='SUB' and t.CUST_TYPE='DES'
         if (slaPerformance.getCustType != null && slaPerformance.getCustType == map.getKey)
-          if (slaPerformance.getSlaType == "SUB")
-            pieDto.setPieObj(slaPerformance)
+          if (slaPerformance.getSlaType == "SUB") {
+            na.add(slaPerformance)
+          }
           else if (slaPerformance.getSlaType == "SUBPIE")
             l.add(slaPerformance)
       }
@@ -67,7 +69,16 @@ import scala.collection.JavaConversions._
           d.getSegmentType // 分组依据为SegmentType
         }
       })
+
+      val arcMap = GroupListUtil.group(na, new GroupListUtil.GroupBy[String]() {
+        override def groupby(obj: Any): String = {
+          val d = obj.asInstanceOf[TbIocSlaPerformance]
+          d.getSegmentType // 分组依据为SegmentType
+        }
+      })
+
       pieDto.setPieMap(pieMap)
+      pieDto.setArcMap(arcMap)
       dto.setPieDto(pieDto)
       finalMap.put(map.getKey, dto)
     }
