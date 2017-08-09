@@ -1,10 +1,12 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
-import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.AccountDto;
+import com.hxqh.eam.model.dto.RoleDto;
+import com.hxqh.eam.model.dto.TestDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ import java.util.Map;
  */
 @Service("systemService")
 public class SystemServiceImpl implements SystemService {
+
+    static Logger logger = Logger.getLogger(SystemServiceImpl.class);
 
     @Autowired
     private SfOrganizationAccountDao organizationAccountDao;

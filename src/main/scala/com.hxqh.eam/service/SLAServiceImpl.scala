@@ -6,6 +6,7 @@ import com.hxqh.eam.common.util.GroupListUtil
 import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, IocTeamRosterDao, TbIocSlaPerformanceDao}
 import com.hxqh.eam.model.dto._
 import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance, TbIocSlaTregPer, TbIocTeamRoster}
+import org.apache.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -16,6 +17,9 @@ import scala.collection.JavaConversions._
   * Created by Ocean lin on 2017/8/2.
   */
 @Service("sLAService") class SLAServiceImpl extends SLAService {
+
+  private[service] val logger = Logger.getLogger(classOf[SLAServiceImpl])
+
 
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
   @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null

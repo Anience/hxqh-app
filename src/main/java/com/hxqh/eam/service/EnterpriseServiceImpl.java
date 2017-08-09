@@ -8,6 +8,7 @@ import com.hxqh.eam.model.TbIocCustTop7;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.sqlquery.EnterpriseKTK;
 import com.hxqh.eam.model.view.VEnterpriseTicket;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ import java.util.*;
 @Transactional
 @Service("enterpriseService")
 public class EnterpriseServiceImpl implements EnterpriseService {
+
+    static Logger logger = Logger.getLogger(EnterpriseServiceImpl.class);
 
     private static final List<String> DAILY = Arrays.asList("DBS", "DES", "DGS");
 
@@ -240,7 +243,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
 
         /*************************************右上角 TB_IOC_DATA_BGEW_SLA   三色*****************************/
-        String scolorSql = "select m.*, rownum +"+rownumkey2+"  as colorid\n" +
+        String scolorSql = "select m.*, rownum +" + rownumkey2 + "  as colorid\n" +
                 "  from (select t.customer_sement as cust,\n" +
                 "               sum(t.gt) as gt,\n" +
                 "               sum(t.eq) as eq,\n" +

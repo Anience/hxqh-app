@@ -5,6 +5,7 @@ import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ import java.util.*;
  */
 @Service("anoService")
 public class AnoServiceImpl implements AnoService {
+
+    static Logger logger = Logger.getLogger(AnoServiceImpl.class);
+
 
     private static final String[] PILLLIST = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"};
     private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};

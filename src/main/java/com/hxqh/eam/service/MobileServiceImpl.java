@@ -8,6 +8,7 @@ import com.hxqh.eam.model.TbIocMobilePerfor;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ import java.util.*;
  */
 @Service("mobileService")
 public class MobileServiceImpl implements MobileService {
-
+    static Logger logger = Logger.getLogger(MobileServiceImpl.class);
 
     private static final String[] RF = {"RADIO ACCESS", "FO ACCESS"};
     private static final String[] RFS = {"RADIO ACCESS", "FO ACCESS", "SL_D"};
