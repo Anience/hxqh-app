@@ -42,8 +42,12 @@
         <label for="">Rank</label>
         <input type="text" :value="custrank" readonly>
     </p>
+    <p class="item">
+        <label>Short Name</label>
+        <input type="text"  v-model="shortName">
+    </p>
     <p class="btn-item">
-        <button class="update">update</button>
+        <button class="update" @click='update'>update</button>
     </p>
     <div class="box" style="background: #fff;">
         <i class="close"></i>
@@ -65,68 +69,7 @@
                     </td>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-                <tr>
-                    <td width="3%">1</td>
-                    <td width="12%">aym</td>
-                    <td width="12%">DES</td>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </div>
