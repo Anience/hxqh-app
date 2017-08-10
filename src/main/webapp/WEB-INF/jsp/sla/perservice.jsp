@@ -23,93 +23,26 @@
     <div class="box">
         <h4>Monthly SLA Report</h4>
         <div id="echart1"></div>
-        <table>
+        <table class="perservice">
             <thead>
-            <tr>
-                <td width="3%" class="no-bg"></td>
-                <td width="3%" class="no-bg"></td>
-                <td width="7%">JAN</td>
-                <td width="7%">FEB</td>
-                <td width="7%">MAR</td>
-                <td width="7%">APR</td>
-                <td width="7%">MAY</td>
-                <td width="7%">JUN</td>
-            </tr>
+                <tr>
+                    <td width="3%" class="no-bg"></td>
+                    <td width="3%" class="no-bg"></td>
+                    <td width="7%">Jan</td>
+                    <td width="7%">Feb</td>
+                    <td width="7%">Mar</td>
+                    <td width="7%">Apr</td>
+                    <td width="7%">May</td>
+                    <td width="7%">Jun</td>
+                    <td width="7%">Jul</td>
+                    <td width="7%">Aug</td>
+                    <td width="7%">Sept</td>
+                    <td width="7%">Oct</td>
+                    <td width="7%">Nov</td>
+                    <td width="7%">Dec</td>
+                </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>
-                    <span></span>
-                </td>
-                <td>DSO</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-                <td>11</td>
-            </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </div>

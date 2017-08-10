@@ -32,11 +32,9 @@
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
-                <li><span class="radius"></span></li>
             </ul>
             <ul class="first-nav">
-                <li style="margin-left: 60px;">NAS</li>
-                <li>TREG1</li>
+                <li style="margin-left: 60px;">TREG1</li>
                 <li>TREG2</li>
                 <li>TREG3</li>
                 <li>TREG4</li>
@@ -51,5 +49,5 @@
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
-<script type="text/javascript" src="${ctx}/js/pre/complaint.js"></script>
+<script type="text/javascript" src="${ctx}/js/peformance/perRegion.js"></script>
 </html>

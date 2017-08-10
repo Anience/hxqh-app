@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="${ctx}/css/reset.css">
     <link rel="stylesheet" href="${ctx}/css/digital.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
+    <script src="${ctx}/js/peformance/internal.js"></script>
     <script>
         var _ctx = "${ctx}";
     </script>

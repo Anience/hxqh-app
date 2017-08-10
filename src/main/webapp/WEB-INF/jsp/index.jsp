@@ -43,6 +43,12 @@
 <div class="left-menu">
 	<ul id="menu">
 		<li class="menu-list">
+			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>System<i class="first-a-down"></i></a>
+			<ul>
+				<li class="menu-list"> <a  href="${ctx}/system/rankList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>customer rank<span class="sz"></span></a></li>
+			</ul>
+		</li>
+		<li class="menu-list">
 			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>Network Surveillance<i class="first-a-down"></i></a>
 			<ul>
 				<li class="menu-list"> <a  href="${ctx}/ano/map" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Center Map<span class="sz"></span></a></li>

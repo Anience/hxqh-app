@@ -5,11 +5,19 @@ $(function(){
 			method: "get",
 			dataType: "json",
 			success: function (data) {
+				var leftTop  = data.fmap.DBS.lefttop;
+				var rightTop = data.fmap.DBS.righttopList;
+				//初始化左上的数据
+				$('.t_standard').text(leftTop.tStandard);
+				$('.t_closeYear').text(leftTop.closeYears);
+				$('.t_num').text(leftTop.ticketNums);
+				$('.r_mtt').text(leftTop.rMtt);
+				$('.class_name').text('DBS');
 				initEchart('echart1',true,true);
 				initEchart('echart2',false,false);
 				initEchart('echart3',false,false);
 				initEchart('echart4',false,false);
-				initPie('echart');
+				initPie('echart',leftTop.openMttrLeft,leftTop.colseMttrLeft);
 			},
 			error: function () {
 
@@ -17,7 +25,7 @@ $(function(){
 		});
 	}
 	init();
-	function initPie(domId){
+	function initPie(domId,data1,data2){
 		var myChart = echarts.init(document.getElementById(domId));
 		option = {
 			tooltip : {
@@ -26,7 +34,7 @@ $(function(){
 			},
 			series : [
 				{
-					name:'访问来源',
+					name:'mttr',
 					type:'pie',
 					radius : ['50%', '70%'],
 					itemStyle : {
@@ -43,15 +51,15 @@ $(function(){
 								show : true,
 								position : 'center',
 								textStyle : {
-									fontSize : '30',
+									fontSize : '12',
 									fontWeight : 'bold'
 								}
 							}
 						}
 					},
 					data:[
-						{value:335, name:'直接访问'},
-						{value:310, name:'邮件营销'}
+						{value:data1, name:'open'},
+						{value:data2, name:'close'}
 					]
 				}
 			]

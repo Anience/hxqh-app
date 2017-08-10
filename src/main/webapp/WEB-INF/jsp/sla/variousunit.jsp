@@ -23,18 +23,19 @@
     <div class="top-item">
         <div class="left">
             <p>
-                <span>111</span>
-                <span>222</span>
-                <span>333</span>
+                <span>MTTR-GGN</span>
+                <span class="t_standard"></span>
+                <span class="t_closeYear"></span>
             </p>
             <div class="show-pic">
                 <div class="radius" id="echart"></div>
-                <p>6411 tiket close</p>
+                <p class="t_num">6411 tiket close</p>
             </div>
             <ul>
-                <li>DES</li>
-                <li>T:3.5 jam</li>
-                <li class="tip-icon">R:2.09 jam</li>
+                <li class="class_name">DES</li>
+                <span></span>
+                <li>T:<span class="t_standard"></span>jam</li>
+                <li class="tip-icon">R:<span class="r_mtt"></span>jam</li>
             </ul>
             <div class="clearfix"></div>
         </div>

@@ -1,21 +1,62 @@
 
 $(function(){
-	var data = [{
-			            name: '蒸发量',
-			            type: 'bar',
-			            barWidth:'40',
-			            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7]
-			        },
-			        {
-			            name: '降水量',
-			            type: 'line',
-			            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7]
-			        }
-			    ];
-    var legend = ['蒸发量', '降水量'];
-    var tit = "Today’s Status WO on FFM";
-initELine('echart1',data,legend);
-function initELine(domId,data,legendData) {
+    function init(){
+        $.ajax({
+            url: _ctx+"/sla/perserviceData",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+            	//处理数据，数据顺序输出
+				var echartdata = [];
+               var dealedData = [];
+               var tableName = ['DSO','CONS','DES','DBS','DWS','DGS'];
+               var month = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','decp'];
+               tableName.forEach(function(el){
+                   var tmp = [];
+                   var tmpEchart = {};
+                   var tmpData = data['fmap'][el];
+               	   month.forEach(function(els){
+               	   	   tmp.push(tmpData[0][els]);
+				   })
+               	   if(el == 'DSO'){
+                       tmpEchart.name = el;
+                       tmpEchart.type = 'bar';
+                       tmpEchart.barWidth = '40';
+                       tmpEchart.data = tmp;
+				   }else{
+                       tmpEchart.name = el;
+                       tmpEchart.type = 'line';
+                       tmpEchart.data = tmp;
+				   }
+                   dealedData.push(tmp);
+                   echartdata.push(tmpEchart);
+			   });
+               //渲染数据
+               var htmls = '';
+               for(var i=0;i<dealedData.length;i++){
+               	   var tmpHtml = '<tr><td></td><td>'+tableName[i]+'</td>';
+               	   var data = dealedData[i];
+               	   for(var j=0;j<data.length;j++){
+                       tmpHtml+='<td>'+data[j]+'</td>';
+				   }
+				   tmpHtml+='</tr>';
+				   htmls+=tmpHtml;
+			   }
+               $('table.perservice tbody').html(htmls);
+
+                //echart渲染
+                var legend = tableName;
+                var xData = month;
+                initELine('echart1',echartdata,legend,xData);
+            },
+            error: function () {
+
+            }
+        });
+    }
+    init();
+
+function initELine(domId,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			    backgroundColor: '#0A0F25',
@@ -60,7 +101,7 @@ function initELine(domId,data,legendData) {
 			                color: '#212538',
 			            }
 			        },
-			        data: ['1月', '2月', '3月', '4月', '5月', '6月']
+			        data: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
 			    }],
 			    yAxis: [{
 			        type: 'value',

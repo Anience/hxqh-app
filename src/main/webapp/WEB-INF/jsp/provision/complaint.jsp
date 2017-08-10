@@ -25,8 +25,7 @@
     <div class="right">
         <div class="scoll-nav">
             <ul class="sec-nav">
-                <li><span class="radius"></span></li>
-                <li><span class="radius"></span></li>
+                <li style="margin-left: 60px;"><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
@@ -35,8 +34,7 @@
                 <li><span class="radius"></span></li>
             </ul>
             <ul class="first-nav">
-                <li>NAS</li>
-                <li>TREG1</li>
+                <li style="margin-left: 60px;">TREG1</li>
                 <li>TREG2</li>
                 <li>TREG3</li>
                 <li>TREG4</li>
