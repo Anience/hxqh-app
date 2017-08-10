@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -367,6 +368,27 @@ public class SystemController {
         RoleDto roleDto = systemService.getRoleListData();
         return roleDto;
     }
+
+
+    /**
+     * 设置User绑定Role，仅允许一个User一个Role
+     */
+    @ResponseBody
+    @RequestMapping(value = "/userRole", method = RequestMethod.GET)
+    public Message userRole(@RequestParam("id") String id,@RequestParam("roleid")BigDecimal roleid) {
+        Message message = null;
+        try {
+            systemService.userRole(id,roleid);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+
     /****************************Role Configure**********************/
 
 
@@ -452,6 +474,8 @@ public class SystemController {
     }
 
     /****************************** Rank ***************************/
+
+
 
 
 

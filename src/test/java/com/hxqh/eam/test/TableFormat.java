@@ -66,7 +66,7 @@ public class TableFormat {
 //        System.out.println(s);
         String[] split = s.split("\r\n");
         for (int i = 1; i < split.length; i++) {
-            System.out.println(split[i]);
+//            System.out.println(split[i]);
         }
     }
 

@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,11 +44,10 @@ public class ViewTest {
     protected SessionFactory sessionFactory;
 
 
-
-//    @Test
-//    public void testSla() {
-//        systemService.testData();
-//    }
+    @Test
+    public void testSla() {
+        systemService.userRole("111",new BigDecimal(22));
+    }
 
 //    @Test
 //    public void callProcedure() {

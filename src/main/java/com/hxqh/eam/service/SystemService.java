@@ -6,6 +6,7 @@ import com.hxqh.eam.model.dto.RoleDto;
 import com.hxqh.eam.model.dto.TestDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -49,5 +50,5 @@ public interface SystemService {
 
     TestDto testData();
 
-
+    void userRole(String id, BigDecimal roleid);
 }
