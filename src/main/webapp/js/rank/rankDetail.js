@@ -22,7 +22,7 @@ $(function () {
                         alert("Short Name is too long!");
                     }else{
                         $.ajax({
-                            url: _ctx+"/system/getrankDetail",
+                            url: _ctx+"/system/updateRank",
                             method: "get",
                             dataType: "json",
                             data:{
@@ -31,6 +31,12 @@ $(function () {
                                 name: self.shortName
                             },
                             success: function (data) {
+                                if(data.code==1){
+                                    alert('update success!');
+                                    window.location.href=_ctx+'/system/rankList';
+                                }else{
+                                    alert('update fail!');
+                                }
 
                             },
                             error: function () {
