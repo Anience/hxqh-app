@@ -1,10 +1,12 @@
 package com.hxqh.eam.service;
 
-import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
-import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.AccountDto;
+import com.hxqh.eam.model.dto.RoleDto;
+import com.hxqh.eam.model.dto.TestDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,8 @@ import java.util.Map;
 @Service("systemService")
 public class SystemServiceImpl implements SystemService {
 
+    static Logger logger = Logger.getLogger(SystemServiceImpl.class);
+
     @Autowired
     private SfOrganizationAccountDao organizationAccountDao;
     @Autowired
@@ -33,11 +37,19 @@ public class SystemServiceImpl implements SystemService {
     private TbIocCustTop7Dao tbIocCustTop7Dao;
     @Autowired
     private TbIoccustomeruserDao ioccustomeruserDao;
+
+    @Autowired
+    private TbModelDao modelDao;
+    @Autowired
+    private TbRoleDao roleDao;
+    @Autowired
+    private TbRolemodelDao rolemodelDao;
+    @Autowired
+    private TbUserroleDao userroleDao;
+
     @Resource
     protected SessionFactory sessionFactory;
 
-//    @Autowired
-//    private TbIocSlaPerformanceDao iocSlaPerformanceDao;
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {
@@ -89,7 +101,8 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public RoleDto getRoleListData() {
-        return null;
+        List<TbRole> roleList = roleDao.findAll();
+        return new RoleDto(roleList);
     }
 
     @Override
@@ -103,15 +116,25 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<TbIoccustomeruser> customeruserListData(String name, String div) {
         Map<String, Object> params = new HashMap<>();
-        params.put("div", div);
+
         List<TbIoccustomeruser> ioccustomeruserList = new ArrayList<>();
-        if ("no".equals(name)) {
+        if(name.equals("")&&div.equals(""))
+        {
+            ioccustomeruserList = ioccustomeruserDao.findAll();
+        }else if(name.equals("")){
+            params.put("div", div);
             String where = "div=:div";
             ioccustomeruserList = ioccustomeruserDao.findAll(where, params, null);
-        } else {
+        }else if(div.equals(""))
+        {
             params.put("custName", name.trim());
             StringBuilder sb = new StringBuilder("");
-            sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" and div=:div ");
+            sb.append(" custName like '%'||").append(":custName").append("||'%' ");
+            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
+        }else {
+            params.put("custName", name.trim());
+            StringBuilder sb = new StringBuilder("");
+            sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" or div=:div ");
             ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
         }
         return ioccustomeruserList;
@@ -128,8 +151,7 @@ public class SystemServiceImpl implements SystemService {
         iocCustTop7.setName(name);
 
         tbIocCustTop7Dao.update(iocCustTop7);
-        //TODO call procedure
-
+        sessionFactory.getCurrentSession().createSQLQuery("{call p_custom_rank.pro_custom_rank()}");
     }
 
 
@@ -143,6 +165,13 @@ public class SystemServiceImpl implements SystemService {
     public TestDto testData() {
         return new TestDto();
     }
+
+    @Override
+    public void userRole(String id, BigDecimal roleid) {
+        TbUserrole userrole = new TbUserrole(id,roleid);
+        userroleDao.save(userrole);
+    }
+
 
     @Override
     public TbIocCustTop7 getrankDetail(String ioccustomerusertop7id) {
@@ -178,8 +207,6 @@ public class SystemServiceImpl implements SystemService {
     public List<SfOrganizationDepartment> getDepartmentList() {
         return sfOrganizationDepartmentDao.findAll();
     }
-
-
 
 
 }

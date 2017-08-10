@@ -10,6 +10,7 @@ import com.hxqh.eam.model.view.VDig13;
 import com.hxqh.eam.model.view.VDig14;
 import com.hxqh.eam.model.view.VDig17;
 import com.hxqh.eam.model.view.VDig18;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ import java.util.List;
  */
 @Service("digitalService")
 public class DigitalServiceImpl implements DigitalService {
+    static Logger logger = Logger.getLogger(DigitalServiceImpl.class);
+
     @Autowired
     private VDig13Dao vDig13Dao;
     @Autowired

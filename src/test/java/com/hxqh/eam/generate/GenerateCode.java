@@ -58,7 +58,7 @@ public class GenerateCode {
 
         l.append(findAll);
 
-        System.out.println(l.toString());
+//        System.out.println(l.toString());
     }
 
     private static void outFind(String model, File find, String fun, String firstLetterSubString) {
@@ -70,7 +70,7 @@ public class GenerateCode {
 
         f.append(findAll);
 
-        System.out.println(f.toString());
+//        System.out.println(f.toString());
     }
 
     private static String outResource(String model, File res, String fun, String firstLetterSubString) {
@@ -82,7 +82,7 @@ public class GenerateCode {
                 replaceAll("_M_", fun);
 
         r.append(method);
-        System.out.println(r.toString());
+//        System.out.println(r.toString());
         return firstLetterSubString;
     }
 

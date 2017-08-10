@@ -8,6 +8,7 @@ import com.hxqh.eam.model.dto.TrafficTdo;
 import com.hxqh.eam.model.dto.WifiMonitoringDto;
 import com.hxqh.eam.model.dto.WifiMttrDto;
 import com.hxqh.eam.model.view.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ import java.util.*;
  */
 @Service("wiFiService")
 public class WiFiServiceImpl implements WiFiService {
+
+    static Logger logger = Logger.getLogger(WiFiServiceImpl.class);
+
 
     private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
