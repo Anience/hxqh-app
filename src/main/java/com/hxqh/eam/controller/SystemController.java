@@ -9,8 +9,10 @@ import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
-import com.hxqh.eam.model.dto.AccountDto;
+import com.hxqh.eam.model.dto.ModelDto;
+import com.hxqh.eam.model.dto.ModelRoleDto;
 import com.hxqh.eam.model.dto.RoleDto;
+import com.hxqh.eam.model.dto.UserDto;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ public class SystemController {
     @Autowired
     private SystemService systemService;
 
+    /****************************login logout************************/
     /**
      * first 页面跳转接口
      *
@@ -126,10 +129,10 @@ public class SystemController {
         redirectAttributes.addFlashAttribute("message", "您已安全退出!");
         return "redirect:/login.jsp";
     }
+    /****************************login logout************************/
 
 
-    /****************************Security Menu Configure**********************/
-
+    /****************************Security Menu Configure*************/
     /**
      * menu List页面接口
      *
@@ -227,6 +230,95 @@ public class SystemController {
             return message;
         }
     }
+    /****************************Security Menu Configure*************/
+
+
+    /****************************** Rank ***************************/
+    /**
+     * Rank List页面接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/rankList", method = RequestMethod.GET)
+    public String rankList() {
+        return "rank/rankList";
+    }
+
+    /**
+     * custtop7ListData 数据接口
+     * ok
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/custtop7ListData", method = RequestMethod.GET)
+    public List<TbIocCustTop7> custtop7ListData() {
+        return systemService.custtop7ListData();
+    }
+
+    /**
+     * RankDetail页面接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/rankDetail", method = RequestMethod.GET)
+    public ModelAndView rankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("custid", ioccustomerusertop7id);
+        return new ModelAndView("rank/rankDetail", result);
+    }
+
+
+    /**
+     * Detail页面接口
+     * OK
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getrankDetail", method = RequestMethod.GET)
+    public TbIocCustTop7 getrankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
+        return systemService.getrankDetail(ioccustomerusertop7id);
+    }
+
+    /**
+     * customeruserListData 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/customeruserListData", method = RequestMethod.GET)
+    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name, @RequestParam("div") String div) {
+        return systemService.customeruserListData(name, div);
+    }
+
+
+    /**
+     * 更新排名的业务接口
+     *
+     * @param ioccustomeruserid 需要更新的ioccustomeruserid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateRank", method = RequestMethod.GET)
+    public Message updateRank(
+            @RequestParam("ioccustomeruserid") Long ioccustomeruserid,
+            @RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id,
+            @RequestParam("name") String name) {
+        Message message = null;
+        try {
+            systemService.updateRank(ioccustomeruserid, ioccustomerusertop7id, name);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /****************************** Rank ***************************/
+
 
     /****************************User Configure**********************/
 
@@ -242,45 +334,44 @@ public class SystemController {
 
 
     /**
-     * User management OnlineList页面接口
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/onlineUserList", method = RequestMethod.GET)
-    public List<SfOrganizationAccount> onlineUserList() {
-        List<SfOrganizationAccount> onlineUserList = systemService.findOnlineUserList();
-        return onlineUserList;
-    }
-
-    /**
-     * User 新增与修改公用页面
-     *
-     * @param operate 前台传入操作标识符
-     * @return
-     */
-    @RequestMapping(value = "/userDetail", method = RequestMethod.GET)
-    public ModelAndView userDetail(@RequestParam("operate") String operate) {
-        Map<String, Object> result = new HashMap<>();
-        if (operate.equals(IConstants.EDIT) || operate.equals(IConstants.ADD)) {
-            List<SfOrganizationDepartment> departmentList = systemService.getDepartmentList();
-            result.put("departmentList", departmentList);
-        }
-        result.put("operate", operate);
-        return new ModelAndView("user/userDetail", result);
-    }
-
-    /**
      * userListData 数据接口
      *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/userListData", method = RequestMethod.GET)
-    public AccountDto userListData() {
-        AccountDto AccountDto = systemService.getUserListData();
-        return AccountDto;
+    public UserDto userListData() {
+        UserDto userDto = systemService.getUserListData();
+        return userDto;
     }
+
+    /**
+     * 获取User信息数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/userDetailData", method = RequestMethod.GET)
+    public SfOrganizationAccount userDetailData(@RequestParam("id") String id) {
+        SfOrganizationAccount account = systemService.findUserbyId(id);
+        return account;
+    }
+
+    /**
+     * User 新增与修改公用页面
+     *
+     * @param operate 前台传入操作标识符
+     * @param id      查询ID
+     * @return
+     */
+    @RequestMapping(value = "/userDetail", method = RequestMethod.GET)
+    public ModelAndView userDetail(@RequestParam("id") String id, @RequestParam("operate") String operate) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("id", id);
+        result.put("operate", operate);
+        return new ModelAndView("user/userDetail", result);
+    }
+
 
     /**
      * editUser 业务接口
@@ -371,14 +462,92 @@ public class SystemController {
 
 
     /**
+     * role 新增与修改公用页面
+     *
+     * @param operate 前台传入操作标识符
+     * @param id      查询ID
+     * @return
+     */
+    @RequestMapping(value = "/roleDetail", method = RequestMethod.GET)
+    public ModelAndView roleDetail(@RequestParam("id") String id, @RequestParam("operate") String operate) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("id", id);
+        result.put("operate", operate);
+        return new ModelAndView("role/roleDetail", result);
+    }
+
+
+    /**
+     * editrole 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/editrole", method = RequestMethod.GET)
+    public Message editrole(TbRole account) {
+        Message message = null;
+        try {
+            systemService.editrole(account);
+            message = new Message(IConstants.SUCCESS, IConstants.EDITSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.EDITSUCCESS);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * addrole 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addrole", method = RequestMethod.GET)
+    public Message addrole(TbRole account) {
+        Message message = null;
+        try {
+            systemService.addrole(account);
+            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * delrole 业务接口
+     *
+     * @param id 前台传入需要删除id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delrole", method = RequestMethod.GET)
+    public Message delrole(@RequestParam("id") String id) {
+        Message message = null;
+        try {
+            systemService.delrole(id);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+
+    /**
      * 设置User绑定Role，仅允许一个User一个Role
      */
     @ResponseBody
     @RequestMapping(value = "/userRole", method = RequestMethod.GET)
-    public Message userRole(@RequestParam("id") String id,@RequestParam("roleid")BigDecimal roleid) {
+    public Message userRole(@RequestParam("id") String id, @RequestParam("roleid") BigDecimal roleid) {
         Message message = null;
         try {
-            systemService.userRole(id,roleid);
+            systemService.userRole(id, roleid);
             message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
@@ -392,78 +561,98 @@ public class SystemController {
     /****************************Role Configure**********************/
 
 
-    /****************************** Rank ***************************/
+    /***************************Model Configure**********************/
+
     /**
-     * Rank List页面接口
+     * Model List页面接口
      *
      * @return
      */
-    @RequestMapping(value = "/rankList", method = RequestMethod.GET)
-    public String rankList() {
-        return "rank/rankList";
+    @RequestMapping(value = "/modelList", method = RequestMethod.GET)
+    public String modelList() {
+        return "model/modelList";
     }
 
     /**
-     * custtop7ListData 数据接口
-     * ok
+     * ModelListData 数据接口
+     *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/custtop7ListData", method = RequestMethod.GET)
-    public List<TbIocCustTop7> custtop7ListData() {
-        return systemService.custtop7ListData();
+    @RequestMapping(value = "/modelListData", method = RequestMethod.GET)
+    public ModelDto modelListData() {
+        ModelDto ModelDto = systemService.getModelListData();
+        return ModelDto;
     }
 
     /**
-     * RankDetail页面接口
+     * model 新增与修改公用页面
+     *
+     * @param operate 前台传入操作标识符
+     * @param id      查询ID
      * @return
      */
-    @RequestMapping(value = "/rankDetail", method = RequestMethod.GET)
-    public ModelAndView rankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
+    @RequestMapping(value = "/modelDetail", method = RequestMethod.GET)
+    public ModelAndView modelDetail(@RequestParam("id") String id, @RequestParam("operate") String operate) {
         Map<String, Object> result = new HashMap<>();
-        result.put("custid", ioccustomerusertop7id);
-        return new ModelAndView("rank/rankDetail",result);
+        result.put("id", id);
+        result.put("operate", operate);
+        return new ModelAndView("model/modelDetail", result);
     }
 
 
     /**
-     * Detail页面接口
-     *  OK
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/getrankDetail", method = RequestMethod.GET)
-    public TbIocCustTop7 getrankDetail(@RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id) {
-        return systemService.getrankDetail(ioccustomerusertop7id);
-    }
-
-    /**
-     * customeruserListData 数据接口
+     * editmodel 业务接口
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/customeruserListData", method = RequestMethod.GET)
-    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name,@RequestParam("div") String div) {
-        return systemService.customeruserListData(name,div);
-    }
-
-
-    /**
-     * 更新排名的业务接口
-     *
-     * @param ioccustomeruserid 需要更新的ioccustomeruserid
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/updateRank", method = RequestMethod.GET)
-    public Message updateRank(
-            @RequestParam("ioccustomeruserid") Long ioccustomeruserid,
-            @RequestParam("ioccustomerusertop7id") String ioccustomerusertop7id,
-            @RequestParam("name") String name) {
+    @RequestMapping(value = "/editmodel", method = RequestMethod.GET)
+    public Message editmodel(TbModel account) {
         Message message = null;
         try {
-            systemService.updateRank(ioccustomeruserid,ioccustomerusertop7id,name);
+            systemService.editmodel(account);
+            message = new Message(IConstants.SUCCESS, IConstants.EDITSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.EDITSUCCESS);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * addmodel 业务接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addmodel", method = RequestMethod.GET)
+    public Message addmodel(TbModel account) {
+        Message message = null;
+        try {
+            systemService.addmodel(account);
+            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * delmodel 业务接口
+     *
+     * @param id 前台传入需要删除id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delmodel", method = RequestMethod.GET)
+    public Message delmodel(@RequestParam("id") String id) {
+        Message message = null;
+        try {
+            systemService.delmodel(id);
             message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
@@ -473,13 +662,40 @@ public class SystemController {
         }
     }
 
-    /****************************** Rank ***************************/
+
+    /**
+     * 一个Role可以设置多个Model
+     */
+    @ResponseBody
+    @RequestMapping(value = "/roleModel", method = RequestMethod.GET)
+    public Message roleModel(@RequestParam("roleid") BigDecimal roleid, @RequestParam("models") String models) {
+        Message message = null;
+        try {
+            systemService.roleModel(models, roleid);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /**
+     * 根据role确定已经授权和未授权的模块
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/modelRoleData", method = RequestMethod.GET)
+    public ModelRoleDto modelRoleData() {
+        ModelRoleDto data = systemService.getModelRoleData();
+        return data;
+    }
 
 
 
-
-
-
+    /***************************Model Configure**********************/
 
 
 }

@@ -20,7 +20,6 @@ import scala.collection.JavaConversions._
 
   private[service] val logger = Logger.getLogger(classOf[SLAServiceImpl])
 
-
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
   @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null
   @Autowired private val iocSlaTregPerDao: IocSlaTregPerDao = null

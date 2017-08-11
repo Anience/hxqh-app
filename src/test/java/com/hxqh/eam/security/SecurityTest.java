@@ -39,11 +39,6 @@ public class SecurityTest {
         Assert.assertTrue(listData.size() > 0);
     }
 
-    @Test
-    public void testUserList() {
-        AccountDto userListData = systemService.getUserListData();
-        Assert.assertNotNull(userListData);
-    }
 
     @Test
     public void testDepartmentList() {

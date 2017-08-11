@@ -46,8 +46,14 @@ public class ViewTest {
 
     @Test
     public void testSla() {
-        systemService.userRole("111",new BigDecimal(22));
+        systemService.userRole("9986a9ab50564ede9e9bedaf0c190a62", new BigDecimal(1));
+        systemService.userRole("04dcd77f5fdb42e4a98cd180e8d376a8", new BigDecimal(1));
+        systemService.userRole("e2188d20e39848b1aaf58b0c7ef2a858", new BigDecimal(1));
+        systemService.userRole("00c8231732da4e5ea5a435de688ca140", new BigDecimal(1));
+//        SfOrganizationAccount user = systemService.findUserbyId("04dcd77f5fdb42e4a98cd180e8d376a8");
+//        Assert.assertEquals(user.getName(),"admin");
     }
+
 
 //    @Test
 //    public void callProcedure() {
@@ -109,7 +115,7 @@ public class ViewTest {
         Assert.assertTrue(account.getPassword().equals(Account.encrypt(loginDto.getPassword())));
     }
 
-    //    @Test
+    //@Test
     public void testLoginShiro() {
 
         // 1.获取SecurityManager工厂，此处使用ini配置文件初始化SecurityManager
