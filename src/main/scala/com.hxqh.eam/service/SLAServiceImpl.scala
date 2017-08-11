@@ -3,7 +3,7 @@ package com.hxqh.eam.service
 import java.util
 
 import com.hxqh.eam.common.util.GroupListUtil
-import com.hxqh.eam.dao.{IocSlaPerServiceDao, IocSlaTregPerDao, IocTeamRosterDao, TbIocSlaPerformanceDao}
+import com.hxqh.eam.dao._
 import com.hxqh.eam.model.dto._
 import com.hxqh.eam.model.{TbIocSlaPerService, TbIocSlaPerformance, TbIocSlaTregPer, TbIocTeamRoster}
 import org.apache.log4j.Logger
@@ -24,7 +24,7 @@ import scala.collection.JavaConversions._
   @Autowired private val tbIocSlaPerformanceDao: TbIocSlaPerformanceDao = null
   @Autowired private val iocSlaPerServiceDao: IocSlaPerServiceDao = null
   @Autowired private val iocSlaTregPerDao: IocSlaTregPerDao = null
-
+  @Autowired private val iocSlaNitsSourceDao: IocSlaNitsSourceDao = null
   @Autowired private val iocTeamRosterDao: IocTeamRosterDao = null
 
   override def variousunitData: VariousunitDto = {
@@ -112,13 +112,12 @@ import scala.collection.JavaConversions._
 
 
   override def internalData: InternalDto = {
-    //TODO 未完成
-    val x = null
-    x
+    val internalList = iocSlaNitsSourceDao.findAll()
+    new InternalDto(internalList)
   }
 
-  override def rosterData: RosterDto = {
 
+  override def rosterData: RosterDto = {
     val iocTeamList = iocTeamRosterDao.findAll()
     val fMap = GroupListUtil.group(iocTeamList, new GroupListUtil.GroupBy[String]() {
       override def groupby(obj: Any): String = {

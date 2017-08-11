@@ -61,6 +61,8 @@ public class AnoServiceImpl implements AnoService {
     private TbIocProMonthlyDao iocProMonthlyDao;
     @Autowired
     private TbIocConsSrMoningDao iocConsSrMoningDao;
+    @Autowired
+    private TbIocProInstallDao iocProInstallDao;
     @Resource
     protected SessionFactory sessionFactory;
 
@@ -268,7 +270,7 @@ public class AnoServiceImpl implements AnoService {
         String sqlSr = "select distinct(t.regional) ,t.SMS_OPEN as smsopen,t.SMS_BACKEND as smsbackend,t.EMAIL_OPEN as emailopen,t.EMAIL_BACKEND as emailbackend,t.REOPEN as reopen from V_IOC_CONS_SR_MONING t order by t.REGIONAL";
         List<SrDto> srDtoList = sessionFactory.getCurrentSession().createSQLQuery(sqlSr).addEntity(SrDto.class).list();
 
-        SolutionDto solutionDto = new SolutionDto(listMap, moningDtoList,srDtoList);
+        SolutionDto solutionDto = new SolutionDto(listMap, moningDtoList, srDtoList);
         return solutionDto;
     }
 
@@ -380,7 +382,27 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public ComplaintData getComplaintData() {
-        return null;
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("installId", "asc");
+        List<TbIocProInstall> iocProInstallList = iocProInstallDao.findAll(null, null, orderby);
+        //对iocProInstallList分组
+        Map<String, List<TbIocProInstall>> listMap = GroupListUtil.group(iocProInstallList, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbIocProInstall d = (TbIocProInstall) obj;
+                return d.getTreg();    // 分组依据为Treg
+            }
+        });
+        Map<String, List<BigDecimal>> listM = new LinkedHashMap<>();
+        for (Map.Entry<String, List<TbIocProInstall>> m : listMap.entrySet()) {
+            List<BigDecimal> numList = new LinkedList<>();
+            for (int i = 0; i < m.getValue().size(); i++) {
+                numList.add(m.getValue().get(i).getJmlPsb());
+            }
+            listM.put(m.getKey(), numList);
+        }
+
+        return new ComplaintData(listM);
     }
 
     @Override
