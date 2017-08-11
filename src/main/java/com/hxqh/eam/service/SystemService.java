@@ -1,9 +1,7 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.*;
-import com.hxqh.eam.model.dto.AccountDto;
-import com.hxqh.eam.model.dto.RoleDto;
-import com.hxqh.eam.model.dto.TestDto;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
 
 import java.math.BigDecimal;
@@ -34,7 +32,7 @@ public interface SystemService {
 
     List<SfOrganizationDepartment> getDepartmentList();
 
-    AccountDto getUserListData();
+    UserDto getUserListData();
 
     RoleDto getRoleListData();
 
@@ -51,4 +49,24 @@ public interface SystemService {
     TestDto testData();
 
     void userRole(String id, BigDecimal roleid);
+
+    SfOrganizationAccount findUserbyId(String id);
+
+    ModelDto getModelListData();
+
+    void editrole(TbRole account);
+
+    void addrole(TbRole account);
+
+    void delrole(String id);
+
+    void editmodel(TbModel account);
+
+    void addmodel(TbModel account);
+
+    void delmodel(String id);
+
+    void roleModel(String models, BigDecimal roleid);
+
+    ModelRoleDto getModelRoleData();
 }

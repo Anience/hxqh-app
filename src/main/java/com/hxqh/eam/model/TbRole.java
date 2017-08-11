@@ -15,7 +15,7 @@ public class TbRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TB_ROLE_ROLEID_GENERATOR", sequenceName="SEQ_ROLE")
+	@SequenceGenerator(name="TB_ROLE_ROLEID_GENERATOR",allocationSize = 1, sequenceName="SEQ_ROLE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_ROLE_ROLEID_GENERATOR")
 	private long roleid;
 

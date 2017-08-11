@@ -7,47 +7,51 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the TB_ROLEMODEL database table.
- * 
  */
 @Entity
-@Table(name="TB_ROLEMODEL")
+@Table(name = "TB_ROLEMODEL")
 public class TbRolemodel implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@SequenceGenerator(name="TB_ROLEMODEL_ROLEMODELID_GENERATOR", sequenceName="SEQ_ROLEMODEL")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_ROLEMODEL_ROLEMODELID_GENERATOR")
-	private long rolemodelid;
+    @Id
+    @SequenceGenerator(name = "TB_ROLEMODEL_ROLEMODELID_GENERATOR", allocationSize = 1,sequenceName = "SEQ_ROLEMODEL")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_ROLEMODEL_ROLEMODELID_GENERATOR")
+    private long rolemodelid;
 
-	private BigDecimal modelid;
+    private BigDecimal modelid;
 
-	private BigDecimal roleid;
+    private BigDecimal roleid;
 
-	public TbRolemodel() {
-	}
+    public TbRolemodel() {
+    }
 
-	public long getRolemodelid() {
-		return this.rolemodelid;
-	}
+    public TbRolemodel(BigDecimal modelid, BigDecimal roleid) {
+        this.modelid = modelid;
+        this.roleid = roleid;
+    }
 
-	public void setRolemodelid(long rolemodelid) {
-		this.rolemodelid = rolemodelid;
-	}
+    public long getRolemodelid() {
+        return this.rolemodelid;
+    }
 
-	public BigDecimal getModelid() {
-		return this.modelid;
-	}
+    public void setRolemodelid(long rolemodelid) {
+        this.rolemodelid = rolemodelid;
+    }
 
-	public void setModelid(BigDecimal modelid) {
-		this.modelid = modelid;
-	}
+    public BigDecimal getModelid() {
+        return this.modelid;
+    }
 
-	public BigDecimal getRoleid() {
-		return this.roleid;
-	}
+    public void setModelid(BigDecimal modelid) {
+        this.modelid = modelid;
+    }
 
-	public void setRoleid(BigDecimal roleid) {
-		this.roleid = roleid;
-	}
+    public BigDecimal getRoleid() {
+        return this.roleid;
+    }
+
+    public void setRoleid(BigDecimal roleid) {
+        this.roleid = roleid;
+    }
 
 }
