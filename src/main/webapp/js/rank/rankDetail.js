@@ -61,6 +61,7 @@ $(function () {
                     self.custid = data.custid;
                     self.custtype = data.custtype;
                     self.custrank = data.custrank;
+                    self.shortName = data.name;
                 },
                 error: function () {
 

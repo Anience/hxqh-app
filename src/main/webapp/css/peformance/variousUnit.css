@@ -47,6 +47,19 @@
     font-family: "Arial";
     color: rgb(206, 206, 206);
 }
+.bottom-item ul li span:nth-child(1){
+    display: block;
+    float: left;
+    width: 30%;
+    text-align: right;
+}
+.bottom-item ul li span:nth-child(2){
+    display: block;
+    float: left;
+    width: 60%;
+    text-align: left;
+    margin-left: 5%;
+}
 .bottom-item .right{
     width: 50%;
     float: left;
@@ -126,4 +139,8 @@ li.tip-icon{
     background: url("../../imgs/performance/warning.png") no-repeat 65% top;
     display: block;
     float: left;
+}
+#echart2,#echart3,#echart4{
+    width:200px;
+    height:200px;
 }

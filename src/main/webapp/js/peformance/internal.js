@@ -5,7 +5,7 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function (data) {
-               /* $("table.ano81 tbody").html("");
+                $("table.ano81 tbody").html("");
                 var tmpHtml  = '';
                 for(var i = 0;i<data.length;i++){
                     tmpHtml+='<tr><td>'+data[i].ioc1
@@ -18,7 +18,7 @@ $(function(){
                         +'</td><td>'+data[i].downunit
                         +'</td></tr>';
                 }
-                $("table.ano81 tbody").html(tmpHtml);*/
+                $("table.ano81 tbody").html(tmpHtml);
             },
             error: function () {
 

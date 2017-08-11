@@ -44,7 +44,7 @@
     </p>
     <p class="item">
         <label>Short Name</label>
-        <input type="text"  v-model="shortName">
+        <input type="text" :value="shortName" v-model="shortName">
     </p>
     <p class="btn-item">
         <button class="update" @click='update'>update</button>

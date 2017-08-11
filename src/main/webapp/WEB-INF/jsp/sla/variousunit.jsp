@@ -42,31 +42,55 @@
         <div class="right" id="echart1"></div>
     </div>
     <div class="bottom-item" style="border-left: 1px solid #000;">
-        <h6>Top 20 DBS</h6>
+        <h6>Top 20</h6>
         <ul>
-            <li>Ach(100%)</li>
-            <li>R(Jam)</li>
-            <li>Closed</li>
+            <li>
+                <span>Ach(100%)</span>
+                <span class="ach-left"></span>
+            </li>
+            <li>
+                <span>R(Jam)</span>
+                <span class="r-left"></span>
+            </li>
+            <li>
+                <span>Closed</span>
+                <span id="echart2"></span>
+            </li>
         </ul>
-        <div class="right" id="echart2"></div>
     </div>
     <div class="bottom-item">
-        <h6>Top 20 DBS</h6>
+        <h6>Top 200</h6>
         <ul>
-            <li>Ach(100%)</li>
-            <li>R(Jam)</li>
-            <li>Closed</li>
+            <li>
+                <span>Ach(100%)</span>
+                <span class="ach-center"></span>
+            </li>
+            <li>
+                <span>R(Jam)</span>
+                <span class="r-center"></span>
+            </li>
+            <li>
+                <span>Closed</span>
+                <span id="echart3"></span>
+            </li>
         </ul>
-        <div class="right" id="echart3"></div>
     </div>
     <div class="bottom-item">
-        <h6>Top 20 DBS</h6>
+        <h6>Other Top</h6>
         <ul>
-            <li>Ach(100%)</li>
-            <li>R(Jam)</li>
-            <li>Closed</li>
+            <li>
+                <span>Ach(100%)</span>
+                <span class="ach-left"></span>
+            </li>
+            <li>
+                <span>R(Jam)</span>
+                <span class="r-right"></span>
+            </li>
+            <li>
+                <span>Closed</span>
+                <span id="echart4"></span>
+            </li>
         </ul>
-        <div class="right" id="echart4"></div>
     </div>
     <div class="clearfix"></div>
 </div>

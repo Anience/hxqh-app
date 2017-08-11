@@ -104,7 +104,7 @@
 				<li><a href="${ctx}/enterprise/top?type=DES&show=4" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>12. DES TOP4-7</a></li>
 				<li><a href="http://10.40.9.78/noc/dash_bges.php" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>ENTERPRISE-business</a></li>
 				<li><a href="http://10.40.9.78/noc/monita/view/dashboard/dashboard.php" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Enterprise-government</a></li>
-				<li><a href="${ctx}/enterprise/url.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Enterprise-enterprise</a></li>
+				<li><a href="${ctx}/enterprise/urls" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>Enterprise-enterprise</a></li>
 			</ul>
 		</li>
 		<li class="menu-list">
