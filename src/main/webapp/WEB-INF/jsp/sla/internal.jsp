@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="${ctx}/css/reset.css">
     <link rel="stylesheet" href="${ctx}/css/digital.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
+    <script src="${ctx}/script/vue.js"></script>
     <script src="${ctx}/js/peformance/internal.js"></script>
     <script>
         var _ctx = "${ctx}";
@@ -17,7 +18,7 @@
 <body>
 <div class="digital">
     <div class="dig-layout">
-        <table class="dig-13" id="digital-data">
+        <table class="dig-13" id="internal-data">
             <thead>
                 <tr>
                     <td rowspan="3">OPERATIONAL</td>
@@ -46,209 +47,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="14" class="td-tit">Quality&&Assurance</td>
-                </tr>
-                <tr>
-                    <td colspan="14" class="td-tit">Quality</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-
-                <tr>
-                    <td colspan="14" class="td-tit">Assurance</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-
-
-                <tr>
-                    <td colspan="14" class="td-tit">Assurance</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-
-                <tr>
-                    <td colspan="14" class="td-tit">Digital Experience</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td colspan="14" class="td-tit">Internal Digital Touch Point</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td colspan="14" class="td-tit">Experience Digital Touch Point</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                </tr>
-                <tr>
-                    <td colspan="14" class="td-tit">Digital Experience  Bussiness  Point</td>
-                </tr>
-                <tr>
-                    <td>1.deliverry</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
-                    <td>222222</td>
+                <tr v-for="item in dataList">
+                    <td>{{item.type2}}</td>
+                    <td>{{item.unit}}</td>
+                    <td>{{item.target1}}</td>
+                    <td>{{item.real1}}</td>
+                    <td>{{item.ach1}}</td>
+                    <td>{{item.amountOutlook1}}</td>
+                    <td>{{item.achOutlook1}}</td>
+                    <td>{{item.mom}}</td>
+                    <td>{{item.target2}}</td>
+                    <td>{{item.real2}}</td>
+                    <td>{{item.ach2}}</td>
+                    <td>{{item.amountOutlook2}}</td>
+                    <td>{{item.achOutlook2}}</td>
+                    <td>{{item.yoy}}</td>
                 </tr>
             </tbody>
         </table>
