@@ -111,22 +111,22 @@ import scala.collection.JavaConversions._
 
 
   override def internalData: InternalDto = {
-    val internalList = iocSlaNitsSourceDao.findAll()
+    val orderby = new util.LinkedHashMap[String, String]
+    orderby.put("nitsId", "asc")
+    val internalList = iocSlaNitsSourceDao.findAll(null,null,orderby)
     new InternalDto(internalList)
   }
 
 
   override def rosterData: RosterDto = {
-    val iocTeamList = iocTeamRosterDao.findAll()
+    val iocTeamList = iocTeamRosterDao.findAll("dutyTime is not null",null,null)
     val fMap = GroupListUtil.group(iocTeamList, new GroupListUtil.GroupBy[String]() {
       override def groupby(obj: Any): String = {
         val d = obj.asInstanceOf[TbIocTeamRoster]
         d.getUnit // 分组依据为Unit
       }
     })
-
-    //TODO 排版表交互逻辑，已经按部门完成分组
-    new RosterDto
+    new RosterDto(fMap)
   }
 }
 
