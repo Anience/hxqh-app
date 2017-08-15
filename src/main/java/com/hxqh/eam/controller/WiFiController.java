@@ -130,7 +130,7 @@ public class WiFiController {
 
 
     /**
-     * distribution   页面跳转接口
+     * 6. Distribution Status Report   页面跳转接口
      *
      * @return
      */
@@ -141,7 +141,7 @@ public class WiFiController {
 
 
     /**
-     * vWifiDistributionData 数据接口
+     * 6. Distribution Status Report 数据接口
      * Access 2017-6-26 11:23:29
      *
      * @return
