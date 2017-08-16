@@ -9,10 +9,7 @@ import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
-import com.hxqh.eam.model.dto.ModelDto;
-import com.hxqh.eam.model.dto.ModelRoleDto;
-import com.hxqh.eam.model.dto.RoleDto;
-import com.hxqh.eam.model.dto.UserDto;
+import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import com.hxqh.eam.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -352,9 +349,10 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/userDetailData", method = RequestMethod.GET)
-    public SfOrganizationAccount userDetailData(@RequestParam("id") String id) {
+    public UserDetailDataDto userDetailData(@RequestParam("id") String id) {
         SfOrganizationAccount account = systemService.findUserbyId(id);
-        return account;
+        List<TbRole> roleList = systemService.findRoleList();
+        return new UserDetailDataDto(account, roleList);
     }
 
 
@@ -677,7 +675,6 @@ public class SystemController {
         ModelRoleDto data = systemService.getModelRoleData();
         return data;
     }
-
 
 
     /***************************Model Configure**********************/
