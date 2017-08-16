@@ -33,6 +33,10 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function (data) {
+                var date = new Date();
+                var time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+                var timeResult = "Last Update:"+time;
+                $(".ticket-time").text(timeResult);
                 $("table.num tbody").html("");
                 var tmpHtml  = '';
                 for(var i = 0;i<data.length;i++){

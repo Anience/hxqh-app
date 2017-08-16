@@ -22,13 +22,6 @@
 			<img src="${ctx}/imgs/none_user.gif" class="admin-img" />
 		</a>
 		<ul class="admin-down-ul" style="display: none;">
-			<%--<li>
-				<a href="">
-				    <i class="icon-set icon-user"></i>
-					Settings
-				</a>
-			</li>--%>
-			<%--<div class="line"></div>--%>
 			<li>
 				<a href="${ctx}/system/logoutnonesession">
 					<i class="icon-logout icon-user"></i>
@@ -46,6 +39,9 @@
 			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>System<i class="first-a-down"></i></a>
 			<ul>
 				<li class="menu-list"> <a  href="${ctx}/system/rankList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>customer rank<span class="sz"></span></a></li>
+				<li class="menu-list"> <a  href="${ctx}/system/roleList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-role<span class="sz"></span></a></li>
+				<li class="menu-list"> <a  href="${ctx}/system/userList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-user<span class="sz"></span></a></li>
+				<li class="menu-list"> <a  href="${ctx}/system/modelList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-module<span class="sz"></span></a></li>
 			</ul>
 		</li>
 		<li class="menu-list">

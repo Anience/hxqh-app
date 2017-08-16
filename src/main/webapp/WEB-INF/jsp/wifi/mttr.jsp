@@ -16,7 +16,10 @@
 </head>
 <body>
 <div class="ticket-layout" id="mttr-data">
-	<h4>MTTR Targets</h4>
+	<h4>
+		<span class="ticket-tit">MTTR Targets</span>
+		<span class="ticket-time">{{time}}</span>
+	</h4>
 	<div  style="background: #0C0E26;">
 		<div class="item-layout">
 			<table class="MTTR">

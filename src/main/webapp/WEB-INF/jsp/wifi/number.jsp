@@ -15,7 +15,10 @@
 </head>
 <body>
 <div class="ticket-layout" style="padding-top: 6%;">
-	<h4>Number of Access Point</h4>
+	<h4>
+		<span class="ticket-tit">Number of Access Point</span>
+		<span class="ticket-time"></span>
+	</h4>
 	<table class="num">
 		<thead>
 			<tr>

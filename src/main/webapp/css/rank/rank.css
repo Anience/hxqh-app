@@ -45,3 +45,85 @@ i.del-icon{
     background-position: -570px 0px;
     margin-left: 15px;
 }
+button.btn{
+    width:60px;
+    height:25px;
+    line-height:25px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #34B6A4;
+    display: block;
+    float: left;
+    margin-right:20px;
+}
+.box{
+    width: 720px;
+    height: 380px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -360px;
+    margin-top: -190px;
+    overflow-y: auto;
+    display: none;
+}
+.box h4{
+    padding-left: 10px;
+    background: #51B7A9;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+}
+i.close{
+    display: block;
+    width:20px;
+    height:20px;
+    background-image: url("../../imgs/close.png");
+    -webkit-background-size: 20px 20px;
+    background-size: 20px 20px;
+    position: absolute;
+    right:5px;
+    top:5px;
+    cursor: pointer;
+}
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #327979), color-stop(0.72, #26c1c1), color-stop(0.86, #3b7373));
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+p.item{
+    height: 80px;
+    width: 50%;
+    float: left;
+}
+p.item lable{
+    width:60px;
+    height:80px;
+    line-height:80px;
+    font-size: 12px;
+    color: #000;
+    display: block;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+}
+p.item input{
+    display: block;
+    float: left;
+    width:200px;
+    height: 35px;
+    margin-top: 20px;
+    border: 1px solid #ececec;
+}
+p.item input:hover{
+    border: 1px solid blue;
+}

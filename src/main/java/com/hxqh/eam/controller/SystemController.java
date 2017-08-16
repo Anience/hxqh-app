@@ -329,7 +329,7 @@ public class SystemController {
      */
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public String userList() {
-        return "user/userList";
+        return "authority/user";
     }
 
 
@@ -355,21 +355,6 @@ public class SystemController {
     public SfOrganizationAccount userDetailData(@RequestParam("id") String id) {
         SfOrganizationAccount account = systemService.findUserbyId(id);
         return account;
-    }
-
-    /**
-     * User 新增与修改公用页面
-     *
-     * @param operate 前台传入操作标识符
-     * @param id      查询ID
-     * @return
-     */
-    @RequestMapping(value = "/userDetail", method = RequestMethod.GET)
-    public ModelAndView userDetail(@RequestParam("id") String id, @RequestParam("operate") String operate) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("id", id);
-        result.put("operate", operate);
-        return new ModelAndView("user/userDetail", result);
     }
 
 
@@ -445,7 +430,7 @@ public class SystemController {
      */
     @RequestMapping(value = "/roleList", method = RequestMethod.GET)
     public String roleList() {
-        return "role/roleList";
+        return "authority/role";
     }
 
     /**
@@ -570,7 +555,7 @@ public class SystemController {
      */
     @RequestMapping(value = "/modelList", method = RequestMethod.GET)
     public String modelList() {
-        return "model/modelList";
+        return "authority/module";
     }
 
     /**

@@ -110,15 +110,6 @@ $(function () {
                trigger: 'item',
                formatter: '{a} : {b}'
            },
-           legend: {
-               x: 'left',
-               data:['叶子节点','非叶子节点', '根节点'],
-               textStyle: {
-                   fontSize: 16,
-                   fontFamily: "Arial",
-                   color: '#CECECE'
-               }
-           },
            series : [
                {
                    type:'force',

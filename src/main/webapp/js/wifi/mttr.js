@@ -7,7 +7,8 @@ $(function () {
         data: {
             mttrLeft: [],
             mttrRight: [],
-            nowTime: ''
+            nowTime: '',
+            time: '',
         },
         methods: {
 
@@ -19,6 +20,10 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
+                    var date = new Date();
+                    var time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+                    var timeResult = "Last Update:"+time;
+                    self.time = timeResult;
                     self.nowTime = data.nowtime;
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
