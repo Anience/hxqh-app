@@ -46,21 +46,24 @@
             </tr>
         </tbody>
     </table>
+    <div class="mask"></div>
     <div class="box" style="background: #fff;">
         <i class="close" @click="close"></i>
-        <h4>用户详细信息</h4>
-        <p class="item">
-            <lable>用户名</lable>
-            <input type="text" >
-        </p>
-        <p class="item">
-            <lable>角色</lable>
-            <input type="text">
-        </p>
-        <p>
-            <button>保存</button>
-            <button>取消</button>
-        </p>
+        <h4>Infomation</h4>
+        <div class="user-info">
+            <p class="item">
+                <lable>Module</lable>
+                <input type="text" >
+            </p>
+            <p class="item">
+                <lable>角色</lable>
+                <input type="text">
+            </p>
+            <p>
+                <button>保存</button>
+                <button>取消</button>
+            </p>
+        </div>
     </div>
 </div>
 </body>

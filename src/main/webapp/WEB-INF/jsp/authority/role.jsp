@@ -44,24 +44,22 @@
             </tr>
         </tbody>
     </table>
-    <div class="mask">
-
-    </div>
+    <div class="mask"></div>
     <div class="box" style="background: #fff;height: 260px;">
         <i class="close" @click="close"></i>
-        <h4>用户详细信息</h4>
+        <h4>Infomation</h4>
         <div class="user-info">
             <p class="item">
-                <lable>用户名</lable>
+                <lable>Role Name</lable>
                 <input type="text" >
             </p>
             <p class="item">
-                <lable>角色</lable>
+                <lable>Description</lable>
                 <input type="text">
             </p>
             <p>
-                <button>保存</button>
-                <button>取消</button>
+                <button>Save</button>
+                <button>Cancle</button>
             </p>
         </div>
     </div>

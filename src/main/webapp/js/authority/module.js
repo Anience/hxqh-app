@@ -5,7 +5,8 @@ $(function () {
     var system = new Vue({
         el: "#customer-data",
         data: {
-            modelList:[]
+            parentList:[],
+            sonList:[]
         },
         methods:{
             add:function(){
@@ -28,7 +29,9 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.modelList = data;
+                    self.parentList = data.listMap[0];
+                    self.sonList = data.listMap[1];
+
                 },
                 error: function () {
 
