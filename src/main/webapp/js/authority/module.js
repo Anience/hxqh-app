@@ -6,23 +6,47 @@ $(function () {
         el: "#customer-data",
         data: {
             parentList:[],
-            sonList:[]
+            sonList:[],
+            modelname:"",
+            modeldesc:"",
+            parentid:"",
+            modelid:""
         },
         methods:{
-            add:function(){
+            edit:function(item){
+                var self = this;
                 $(".mask").show();
                 $(".box").show();
-            },
-            edit:function(item){
-
-            },
-            del:function(){
-
+                self.modelname = item.modelname;
+                self.modeldesc = item.modeldesc;
+                self.parentid = item.parentid;
+                self.modelid = item.modelid;
             },
             close:function(){
                 $(".mask").hide();
                 $(".box").hide();
-            }
+            },
+            save:function(){
+                var self = this;
+                $.ajax({
+                    url: _ctx+"/system/editmodel",
+                    method: "get",
+                    dataType: "json",
+                    data: {
+                        modelname:self.modelname,
+                        modeldesc:self.modeldesc,
+                        parentid:self.parentid,
+                        modelid:self.modelid
+                    },
+                    success: function (data) {
+                        alert(data.message);
+                        window.location.href = _ctx+"/system/modelList";
+                    },
+                    error: function () {
+
+                    }
+                });
+            },
         },
         created: function () {
             var self = this;

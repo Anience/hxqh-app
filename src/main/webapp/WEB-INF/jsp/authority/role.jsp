@@ -40,6 +40,7 @@
                     <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
                     <button class="btn" @click="del">del</button>
+                    <button class="btn" @click="authorization(item)" style="width: 120px;">authorization</button>
                 </td>
             </tr>
         </tbody>
@@ -50,18 +51,34 @@
         <h4>Infomation</h4>
         <div class="user-info">
             <p class="item">
-                <lable>Role Name</lable>
-                <input type="text" >
+                <lable style="width: 70px;">Name</lable>
+                <input type="text" style="width: 190px;" v-text="roleName" v-model="roleName">
             </p>
             <p class="item">
-                <lable>Description</lable>
-                <input type="text">
+                <lable style="width: 70px;">Description</lable>
+                <input type="text" style="width: 190px;"  v-text="roleDesc" v-model="roleDesc">
             </p>
             <p>
                 <button>Save</button>
                 <button>Cancle</button>
             </p>
         </div>
+    </div>
+    <div class="auth-box" style="background: #fff;">
+        <i class="close" @click="close"></i>
+        <h4>Infomation</h4>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
+        <p style="width: 300px; margin: 0 auto;">
+            <button>Save</button>
+            <button>Cancle</button>
+        </p>
     </div>
 </div>
 </body>

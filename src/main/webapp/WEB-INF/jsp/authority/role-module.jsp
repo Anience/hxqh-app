@@ -27,9 +27,8 @@
     <table cellspacing="0">
         <thead>
         <tr>
-            <td width="7%">User Name</td>
-            <td width="7%">Role</td>
-            <td width="7%">Operation</td>
+            <td width="2%">Role Name</td>
+            <td width="7%">Module</td>
         </tr>
         </thead>
         <tbody>

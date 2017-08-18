@@ -42,7 +42,6 @@
 				<li class="menu-list"> <a  href="${ctx}/system/roleList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-role<span class="sz"></span></a></li>
 				<li class="menu-list"> <a  href="${ctx}/system/userList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-user<span class="sz"></span></a></li>
 				<li class="menu-list"> <a  href="${ctx}/system/modelList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-module<span class="sz"></span></a></li>
-				<li class="menu-list"> <a  href="${ctx}/system/roleModelList" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>Authority-role-module<span class="sz"></span></a></li>
 			</ul>
 		</li>
 		<li class="menu-list">

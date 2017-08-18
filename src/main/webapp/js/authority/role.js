@@ -2,39 +2,83 @@ $(function () {
     var system = new Vue({
         el: "#customer-data",
         data: {
-            roleList:[]
+            roleList:[],
+            roleName:"",
+            roleDesc: ""
         },
-        methods: {
+        methods:{
             add:function(){
+                self.roleName = "";
+                self.roleDesc = "";
                 $(".mask").show();
                 $(".box").show();
             },
             edit:function(item){
                 var self = this;
+                self.isNew = false;
                 $(".mask").show();
                 $(".box").show();
+                self.roleName = item.rolename;
+                self.roleDesc = item.roledesc;
+                self.roleId = item.roleid;
+            },
+            del:function(item){
                 $.ajax({
-                    url: _ctx+"/system/userDetail",
+                    url: _ctx+"/system/delrole",
                     method: "get",
                     dataType: "json",
                     data:{
-                        id: item.id
+                        id: item.roleid
                     },
                     success: function (data) {
-                        self.user = data;
+                        alert(data.message);
+                        window.location.href = _ctx+"/system/roleList";
                     },
                     error: function () {
 
                     }
                 });
             },
-            del:function(){
-
+            authorization:function(item){
+                $(".mask").show();
+                $(".auth-box").show();
             },
             close:function(){
                 $(".box").hide();
                 $(".mask").hide();
-            }
+            },
+            save:function(){
+                var self = this;
+                var tmpUrl = '';
+                var data = {};
+                if(self.isNew){
+                    tmpUrl = _ctx+"/system/addRole";
+                    datas = {
+                        rolename: self.roleId,
+                        roledesc: self.roleDesc
+                    }
+                }else{
+                    tmpUrl = _ctx+"/system/editRole";
+                    datas = {
+                        id: self.roleId,
+                        rolename: self.roleId,
+                        roledesc: self.roleDesc
+                    }
+                }
+                $.ajax({
+                    url: tmpUrl,
+                    method: "get",
+                    dataType: "json",
+                    data: datas,
+                    success: function (data) {
+                        alert(data.message);
+                        window.location.href = _ctx+"/system/RoleList";
+                    },
+                    error: function () {
+
+                    }
+                });
+            },
         },
         created: function () {
             var self = this;

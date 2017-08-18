@@ -14,9 +14,6 @@
     padding-left: 5px;
     border: 1px solid #cecece;
 }
-.rank-layout table tbody tr:nth-child(1) td{
-    text-align: center;
-}
 .rank-layout table tbody td:nth-child(1){
     text-align: center;
 }
@@ -167,4 +164,27 @@ p.item select option{
     width: 100%;
     height: 100%;
     display: none;
+}
+.auth-box{
+    width: 720px;
+    height: 380px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -360px;
+    margin-top: -190px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1003;
+}
+.auth-box h4{
+    padding-left: 10px;
+    background: #51B7A9;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #fff;
+}
+.auth-box label{
+    padding:20px;
 }

@@ -41,9 +41,7 @@
                 <td>{{item.modelid}}</td>
                 <td>{{item.parentid}}</td>
                 <td>
-                    <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
-                    <button class="btn" @click="del">del</button>
                 </td>
             </tr>
             <tr v-for="item in sonList">
@@ -52,9 +50,7 @@
                 <td>{{item.modelid}}</td>
                 <td>{{item.parentid}}</td>
                 <td>
-                    <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
-                    <button class="btn" @click="del">del</button>
                 </td>
             </tr>
         </tbody>
@@ -65,16 +61,20 @@
         <h4>Infomation</h4>
         <div class="user-info">
             <p class="item">
-                <lable>Module</lable>
-                <input type="text" >
+                <lable style="width: 70px;">Name</lable>
+                <input type="text"  style="width: 190px;" v-text="modelname" v-model="modelname">
             </p>
             <p class="item">
-                <lable>角色</lable>
-                <input type="text">
+                <lable style="width: 70px;">Description</lable>
+                <input type="text" style="width: 190px;" v-text="modeldesc" v-model="modeldesc">
             </p>
-            <p>
-                <button>保存</button>
-                <button>取消</button>
+            <p class="item">
+                <lable style="width: 70px;">parentId</lable>
+                <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
+            </p>
+            <p style="margin-top: 30px;">
+                <button>Save</button>
+                <button @click="close">Cancle</button>
             </p>
         </div>
     </div>
