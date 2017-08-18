@@ -162,6 +162,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void userRole(String id, BigDecimal roleid) {
+
 //        TbUserrole userrole = new TbUserrole(id, roleid);
 //        userroleDao.save(userrole);
     }
@@ -241,7 +242,11 @@ public class SystemServiceImpl implements SystemService {
         for (TbRolemodel rolemodel : role.getTbRolemodels()) {
             modelHaveList.add(modelDao.find(rolemodel.getTbModel().getModelid()));
         }
-        List<TbModel> modelNoList = modelDao.findAll();
+        Map<String, Object> params = new HashMap<>();
+        params.put("ismdeol", 1);
+        String where = "ismdeol=:ismdeol ";
+
+        List<TbModel> modelNoList = modelDao.findAll(where,params,null);
         modelNoList.removeAll(modelHaveList);
 
         return new ModelRoleDto(modelNoList, modelHaveList);
@@ -254,11 +259,35 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public List<UserObj> getUserList(LoginDto loginDto) {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("loginname", loginDto.getName());
         String where = "loginname=:loginname ";
         List<UserObj> accountList = userDao.findAll(where, params, null);
         return accountList;
+    }
+
+    @Override
+    public int forgetPassword(String loginname, String email) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", loginname);
+        params.put("email", email);
+        String where = "loginname=:loginname and email=:email";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        if (accountList.size() == 1) {
+            accountList.get(0).setUserstatus(0);
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int resetPassword(Long userid) {
+        UserObj userObj = userDao.find(userid);
+        //重置密码 初始密码123456
+        String password = Account.encrypt("123456");
+        userObj.setLoginpassword(password);
+        userDao.save(userObj);
+        return 0;
     }
 
 
@@ -278,6 +307,8 @@ public class SystemServiceImpl implements SystemService {
         //设置密码 初始密码123456
         String password = Account.encrypt("123456");
         account.setLoginpassword(password);
+        account.setUserstatus(1);
+
         userDao.save(account);
         // 写TB_USERROLE表
         TbUserrole urobj = new TbUserrole();

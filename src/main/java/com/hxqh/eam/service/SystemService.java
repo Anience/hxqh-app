@@ -73,4 +73,8 @@ public interface SystemService {
     List<TbRole> findRoleList();
 
     List<UserObj> getUserList(LoginDto loginDto);
+
+    int forgetPassword(String loginname, String email);
+
+    int resetPassword(Long loginname);
 }

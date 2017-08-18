@@ -354,8 +354,7 @@ public class SystemController {
     public UserDetailDataDto userDetailData(@RequestParam("id") Long id) {
         UserObj account = systemService.findUserbyId(id);
         List<TbRole> roleList = systemService.findRoleList();
-        for(TbRole role:roleList)
-        {
+        for (TbRole role : roleList) {
             role.setTbUserroles(null);
         }
         account.setTbUserroles(null);
@@ -447,8 +446,7 @@ public class SystemController {
     @RequestMapping(value = "/roleListData", method = RequestMethod.GET)
     public List<TbRole> roleListData() {
         List<TbRole> roleDto = systemService.getRoleListData();
-        for(TbRole e :roleDto)
-        {
+        for (TbRole e : roleDto) {
             e.setTbUserroles(null);
         }
         return roleDto;
@@ -689,6 +687,53 @@ public class SystemController {
 
 
     /***************************Model Configure**********************/
+
+
+    /******************************忘记密码***************************/
+    @ResponseBody
+    @RequestMapping(value = "/forget", method = RequestMethod.GET)
+    public Message forgetPassword(@RequestParam("loginname") String loginname,
+                                  @RequestParam("email") String email) {
+        Message message = null;
+        try {
+            int i = systemService.forgetPassword(loginname, email);
+            if (i == 1) {
+                message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
+            } else {
+                message = new Message(IConstants.SUCCESS, IConstants.OPNOUSER);
+            }
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /******************************忘记密码***************************/
+
+    /******************************重置密码***************************/
+    @ResponseBody
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
+    public Message resetPassword(@RequestParam("userid") Long userid) {
+        Message message = null;
+        try {
+            int i = systemService.resetPassword(userid);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+    /******************************重置密码***************************/
+
+    /******************************发送邮件**************************/
+
+
+    /******************************发送邮件**************************/
 
 
 }

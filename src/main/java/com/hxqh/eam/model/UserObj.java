@@ -41,7 +41,7 @@ public class UserObj implements Serializable {
 
     private BigDecimal usernum;
 
-    private BigDecimal userstatus;
+    private Integer userstatus;
 
 
     //bi-directional many-to-one association to UserroleObj
@@ -132,11 +132,11 @@ public class UserObj implements Serializable {
         this.usernum = usernum;
     }
 
-    public BigDecimal getUserstatus() {
+    public Integer getUserstatus() {
         return userstatus;
     }
 
-    public void setUserstatus(BigDecimal userstatus) {
+    public void setUserstatus(Integer userstatus) {
         this.userstatus = userstatus;
     }
 

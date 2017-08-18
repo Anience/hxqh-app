@@ -16,13 +16,17 @@ public interface IConstants {
     String DELETESUCCESS = "DELETE Success!";
     String DELETEFAIL = "DELETE Fail!";
 
+    String OPSUCCESS = "Success!";
+    String OPNOUSER = "No User!";
+    String OPFAIL = "Fail!";
+
 //    boolean BOOLSUCCESS=true;
 //    boolean BOOLFail=false;
 
 
     //增加与删除状态
-    String EDIT="edit";
-    String ADD="add";
+    String EDIT = "edit";
+    String ADD = "add";
 
 
 }
