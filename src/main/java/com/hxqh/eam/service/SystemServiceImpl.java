@@ -96,9 +96,8 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public RoleDto getRoleListData() {
-        List<TbRole> roleList = roleDao.findAll();
-        return new RoleDto(roleList);
+    public  List<TbRole> getRoleListData() {
+        return roleDao.findAll();
     }
 
     @Override
