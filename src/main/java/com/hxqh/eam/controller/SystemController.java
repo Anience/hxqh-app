@@ -354,6 +354,11 @@ public class SystemController {
     public UserDetailDataDto userDetailData(@RequestParam("id") Long id) {
         UserObj account = systemService.findUserbyId(id);
         List<TbRole> roleList = systemService.findRoleList();
+        for(TbRole role:roleList)
+        {
+            role.setTbUserroles(null);
+        }
+        account.setTbUserroles(null);
         return new UserDetailDataDto(account, roleList);
     }
 
