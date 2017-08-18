@@ -440,8 +440,12 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/roleListData", method = RequestMethod.GET)
-    public RoleDto roleListData() {
-        RoleDto roleDto = systemService.getRoleListData();
+    public List<TbRole> roleListData() {
+        List<TbRole> roleDto = systemService.getRoleListData();
+        for(TbRole e :roleDto)
+        {
+            e.setTbUserroles(null);
+        }
         return roleDto;
     }
 

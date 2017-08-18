@@ -34,7 +34,7 @@ public interface SystemService {
 
     UserDto getUserListData();
 
-    RoleDto getRoleListData();
+    List<TbRole> getRoleListData();
 
     List<TbIocCustTop7> custtop7ListData();
 
