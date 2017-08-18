@@ -69,4 +69,6 @@ public interface SystemService {
     void roleModel(String models, BigDecimal roleid);
 
     ModelRoleDto getModelRoleData();
+
+    List<TbRole> findRoleList();
 }

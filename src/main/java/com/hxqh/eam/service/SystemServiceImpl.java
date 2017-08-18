@@ -232,6 +232,11 @@ public class SystemServiceImpl implements SystemService {
         return null;
     }
 
+    @Override
+    public List<TbRole> findRoleList() {
+       return roleDao.findAll();
+    }
+
 
     @Override
     public TbIocCustTop7 getrankDetail(String ioccustomerusertop7id) {
