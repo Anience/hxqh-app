@@ -1,8 +1,11 @@
 package com.hxqh.eam.model;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -17,7 +20,7 @@ public class TbRole implements Serializable {
 	@Id
 	@SequenceGenerator(name="TB_ROLE_ROLEID_GENERATOR",allocationSize = 1, sequenceName="SEQ_ROLE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_ROLE_ROLEID_GENERATOR")
-	private long roleid;
+	private Long roleid;
 
 	private String roledesc;
 
@@ -27,14 +30,27 @@ public class TbRole implements Serializable {
 
 	private BigDecimal sortnum;
 
+	//bi-directional many-to-one association to UserroleObj
+	@OneToMany(mappedBy="tbRole")
+	@XStreamOmitField
+	private List<TbUserrole> tbUserroles;
+
 	public TbRole() {
 	}
 
-	public long getRoleid() {
-		return this.roleid;
+	public List<TbUserrole> getTbUserroles() {
+		return tbUserroles;
 	}
 
-	public void setRoleid(long roleid) {
+	public void setTbUserroles(List<TbUserrole> tbUserroles) {
+		this.tbUserroles = tbUserroles;
+	}
+
+	public Long getRoleid() {
+		return roleid;
+	}
+
+	public void setRoleid(Long roleid) {
 		this.roleid = roleid;
 	}
 

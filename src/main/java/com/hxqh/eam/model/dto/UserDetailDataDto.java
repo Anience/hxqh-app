@@ -2,6 +2,7 @@ package com.hxqh.eam.model.dto;
 
 import com.hxqh.eam.model.SfOrganizationAccount;
 import com.hxqh.eam.model.TbRole;
+import com.hxqh.eam.model.UserObj;
 
 import java.util.List;
 
@@ -10,22 +11,22 @@ import java.util.List;
  */
 public class UserDetailDataDto {
 
-    private SfOrganizationAccount account;
+    private UserObj account;
     private List<TbRole> roleList;
 
     public UserDetailDataDto() {
     }
 
-    public UserDetailDataDto(SfOrganizationAccount account, List<TbRole> roleList) {
+    public UserDetailDataDto(UserObj account, List<TbRole> roleList) {
         this.account = account;
         this.roleList = roleList;
     }
 
-    public SfOrganizationAccount getAccount() {
+    public UserObj getAccount() {
         return account;
     }
 
-    public void setAccount(SfOrganizationAccount account) {
+    public void setAccount(UserObj account) {
         this.account = account;
     }
 

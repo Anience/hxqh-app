@@ -41,6 +41,9 @@ public class SystemServiceImpl implements SystemService {
     private TbRolemodelDao rolemodelDao;
     @Autowired
     private TbUserroleDao userroleDao;
+    @Autowired
+    private UserDao userDao;
+
 
     @Resource
     protected SessionFactory sessionFactory;
@@ -82,11 +85,12 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public UserDto getUserListData() {
-        String sql = "select t1.id,t1.name,t3.rolename from sf_organization_account t1\n" +
+        String sql = "select distinct (t1.userid) as id, t1.loginname as name, t3.rolename\n" +
+                "  from TB_USER t1\n" +
                 "  left join tb_userrole t2\n" +
-                "    on t1.id = t2.id\n" +
-                "  left join tb_role t3 \n" +
-                "  on t2.roleid = t3.roleid";
+                "    on t1.userid = t2.userid\n" +
+                "  left join tb_role t3\n" +
+                "    on t2.roleid = t3.roleid";
         List<UserRoleDto> list = sessionFactory.getCurrentSession().createSQLQuery(sql).addEntity(UserRoleDto.class).list();
         return new UserDto(list);
     }
@@ -158,13 +162,13 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void userRole(String id, BigDecimal roleid) {
-        TbUserrole userrole = new TbUserrole(id, roleid);
-        userroleDao.save(userrole);
+//        TbUserrole userrole = new TbUserrole(id, roleid);
+//        userroleDao.save(userrole);
     }
 
     @Override
-    public SfOrganizationAccount findUserbyId(String id) {
-        return organizationAccountDao.find(id);
+    public UserObj findUserbyId(Long id) {
+        return userDao.find(id);
     }
 
     @Override
@@ -172,7 +176,7 @@ public class SystemServiceImpl implements SystemService {
         //分别返回一级节点和二级节点
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("sortnum", "asc");
-        List<TbModel> modelList = modelDao.findAll(null,null,orderby);
+        List<TbModel> modelList = modelDao.findAll(null, null, orderby);
         //对modelList分组
         Map<Integer, List<TbModel>> listMap = GroupListUtil.group(modelList, new GroupListUtil.GroupBy<Integer>() {
             @Override
@@ -220,8 +224,9 @@ public class SystemServiceImpl implements SystemService {
         String[] split = models.split(",");
         for (int i = 0; i < split.length; i++) {
             BigDecimal bd = new BigDecimal(split[i]);
-            TbRolemodel rolemodel = new TbRolemodel(bd, roleid);
-            rolemodelDao.save(rolemodel);
+            //TODO
+//            TbRolemodel rolemodel = new TbRolemodel(bd, roleid);
+//            rolemodelDao.save(rolemodel);
         }
     }
 
@@ -234,7 +239,16 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public List<TbRole> findRoleList() {
-       return roleDao.findAll();
+        return roleDao.findAll();
+    }
+
+    @Override
+    public List<UserObj> getUserList(LoginDto loginDto) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("loginname", loginDto.getName());
+        String where = "loginname=:loginname ";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        return accountList;
     }
 
 
@@ -244,13 +258,19 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void editUser(SfOrganizationAccount account) {
-        organizationAccountDao.update(account);
+    public void editUser(UserObj account) {
+        userDao.update(account);
     }
 
     @Override
-    public void addUser(SfOrganizationAccount account) {
-        organizationAccountDao.save(account);
+    public void addUser(UserObj account, Long roleid) {
+        // 写TB_USER表
+        userDao.save(account);
+        // 写TB_USERROLE表
+        TbUserrole urobj = new TbUserrole();
+        urobj.setTbRole(roleDao.find(new BigDecimal(roleid)));
+        urobj.setTbUser(account);
+        userroleDao.save(urobj);
     }
 
     @Override

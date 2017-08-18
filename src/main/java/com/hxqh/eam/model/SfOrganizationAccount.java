@@ -1,9 +1,12 @@
 package com.hxqh.eam.model;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -13,7 +16,6 @@ import java.util.Date;
 @Entity
 @Table(name="SF_ORGANIZATION_ACCOUNT")
 public class SfOrganizationAccount implements Serializable {
-
 
 
 	private static final long serialVersionUID = 1L;
@@ -57,6 +59,12 @@ public class SfOrganizationAccount implements Serializable {
 	private BigDecimal status;
 
 	private String useinitialpass;
+
+	//bi-directional many-to-one association to UserroleObj
+	@OneToMany(mappedBy="tbUser")
+	@XStreamOmitField
+	private List<TbUserrole> tbUserroles;
+
 
 	public SfOrganizationAccount() {
 	}

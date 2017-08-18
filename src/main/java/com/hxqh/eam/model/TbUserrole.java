@@ -1,58 +1,59 @@
 package com.hxqh.eam.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 
 /**
  * The persistent class for the TB_USERROLE database table.
- * 
  */
 @Entity
-@Table(name="TB_USERROLE")
+@Table(name = "TB_USERROLE")
 public class TbUserrole implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@SequenceGenerator(name="TB_USERROLE_USERROLEID_GENERATOR", allocationSize = 1,sequenceName="SEQ_USERROLE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_USERROLE_USERROLEID_GENERATOR")
-	private long userroleid;
+    @Id
+    @SequenceGenerator(name="TB_USERROLE_USERROLEID_GENERATOR", sequenceName="SEQ_USERROLE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_USERROLE_USERROLEID_GENERATOR")
+    private BigDecimal userroleid;
 
-	private String id;
+    //bi-directional many-to-one association to RoleObj
+    @ManyToOne
+    @JoinColumn(name="ROLEID")
+    private TbRole tbRole;
 
-	private BigDecimal roleid;
+    //bi-directional many-to-one association to UserObj
+    @ManyToOne
+    @JoinColumn(name="USERID")
+    private UserObj tbUser;
 
-	public TbUserrole() {
-	}
+    public TbUserrole() {
+    }
 
-	public TbUserrole(String id, BigDecimal roleid) {
-		this.id = id;
-		this.roleid = roleid;
-	}
+    public BigDecimal getUserroleid() {
+        return this.userroleid;
+    }
 
-	public long getUserroleid() {
-		return this.userroleid;
-	}
+    public void setUserroleid(BigDecimal userroleid) {
+        this.userroleid = userroleid;
+    }
 
-	public void setUserroleid(long userroleid) {
-		this.userroleid = userroleid;
-	}
+    public TbRole getTbRole() {
+        return tbRole;
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public void setTbRole(TbRole tbRole) {
+        this.tbRole = tbRole;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public UserObj getTbUser() {
+        return this.tbUser;
+    }
 
-	public BigDecimal getRoleid() {
-		return this.roleid;
-	}
+    public void setTbUser(UserObj tbUser) {
+        this.tbUser = tbUser;
+    }
 
-	public void setRoleid(BigDecimal roleid) {
-		this.roleid = roleid;
-	}
 
 }

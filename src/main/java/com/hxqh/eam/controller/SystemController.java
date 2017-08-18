@@ -75,11 +75,12 @@ public class SystemController {
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Message login(LoginDto loginDto, Map<String, Object> map) {
-        List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
+//        List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
+        List<UserObj> loginUserList = systemService.getUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);
     }
 
-    private Message webLogin(List<SfOrganizationAccount> loginUserList, LoginDto loginDto, Map<String, Object> map) {
+    private Message webLogin(List<UserObj> loginUserList, LoginDto loginDto, Map<String, Object> map) {
         Message message = new Message(0, "");
         Message success = new Message(1, "LoginSuccess");
 
@@ -88,12 +89,13 @@ public class SystemController {
             String password = null;
             try {
                 password = Account.encrypt(loginDto.getPassword());
-                if (loginUserList.get(0).getPassword().toUpperCase().equals(password)) {
+                if (loginUserList.get(0).getLoginpassword().toUpperCase().equals(password)) {
                     //加入Session中
-                    SfOrganizationAccount login = loginUserList.get(0);
+//                    SfOrganizationAccount login = loginUserList.get(0);
+                    UserObj login = loginUserList.get(0);
                     SessionInfo sessionInfo = new SessionInfo();
 
-                    sessionInfo.setName(login.getName());
+                    sessionInfo.setName(login.getLoginname());
                     map.put("sessionInfo", sessionInfo);
                     return success;
                 } else {
@@ -349,8 +351,8 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/userDetailData", method = RequestMethod.GET)
-    public UserDetailDataDto userDetailData(@RequestParam("id") String id) {
-        SfOrganizationAccount account = systemService.findUserbyId(id);
+    public UserDetailDataDto userDetailData(@RequestParam("id") Long id) {
+        UserObj account = systemService.findUserbyId(id);
         List<TbRole> roleList = systemService.findRoleList();
         return new UserDetailDataDto(account, roleList);
     }
@@ -363,7 +365,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/editUser", method = RequestMethod.GET)
-    public Message editUser(SfOrganizationAccount account) {
+    public Message editUser(UserObj account) {
         Message message = null;
         try {
             systemService.editUser(account);
@@ -383,10 +385,10 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public Message addUser(SfOrganizationAccount account) {
+    public Message addUser(UserObj account, @RequestParam("roleid") Long roleid) {
         Message message = null;
         try {
-            systemService.addUser(account);
+            systemService.addUser(account, roleid);
             message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.ADDFAIL);

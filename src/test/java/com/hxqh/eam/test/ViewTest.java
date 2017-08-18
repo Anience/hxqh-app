@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by lh on 2017/5/5.
@@ -46,12 +47,17 @@ public class ViewTest {
 
     @Test
     public void testSla() {
-        systemService.userRole("9986a9ab50564ede9e9bedaf0c190a62", new BigDecimal(1));
-        systemService.userRole("04dcd77f5fdb42e4a98cd180e8d376a8", new BigDecimal(1));
-        systemService.userRole("e2188d20e39848b1aaf58b0c7ef2a858", new BigDecimal(1));
-        systemService.userRole("00c8231732da4e5ea5a435de688ca140", new BigDecimal(1));
+//        systemService.userRole("9986a9ab50564ede9e9bedaf0c190a62", new BigDecimal(1));
+//        systemService.userRole("04dcd77f5fdb42e4a98cd180e8d376a8", new BigDecimal(1));
+//        systemService.userRole("e2188d20e39848b1aaf58b0c7ef2a858", new BigDecimal(1));
+//        systemService.userRole("00c8231732da4e5ea5a435de688ca140", new BigDecimal(1));
 //        SfOrganizationAccount user = systemService.findUserbyId("04dcd77f5fdb42e4a98cd180e8d376a8");
 //        Assert.assertEquals(user.getName(),"admin");
+
+        UUID uuid= UUID.randomUUID();
+        String str = uuid.toString();
+        String uuidStr=str.replace("-", "");
+        System.out.println(uuidStr);
     }
 
 
