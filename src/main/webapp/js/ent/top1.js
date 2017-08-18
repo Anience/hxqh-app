@@ -210,6 +210,7 @@ $(function(){
                     }
                 }
             ],
+            color:['#FF7F50','#87CEFA','#DA70D6','#32CD32','#e91437','#e9e857','#4019d3','#e99c1a'],
             series:  seriesData
         };
         myChart.setOption(option);
@@ -230,6 +231,7 @@ $(function(){
                 }
             ];
             bgcolor = ['#BDBEC3'];
+
         }else{
             initData=[
                 {value:data1, name:'close'},

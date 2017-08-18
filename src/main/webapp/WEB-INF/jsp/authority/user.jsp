@@ -46,19 +46,31 @@
     </table>
     <div class="box" style="background: #fff;">
         <i class="close" @click="close"></i>
-        <h4>用户详细信息</h4>
-        <p class="item">
-            <lable>用户名</lable>
-            <input type="text" >
-        </p>
-        <p class="item">
-            <lable>角色</lable>
-            <input type="text">
-        </p>
-        <p>
-            <button>保存</button>
-            <button>取消</button>
-        </p>
+        <h4>Infomation</h4>
+        <div class="user-info">
+            <p class="item">
+                <lable>UserName</lable>
+                <input type="text" v-text="userName" v-model="userName">
+            </p>
+            <p class="item">
+                <lable>Password</lable>
+                <input type="password" v-text="pwd" v-model="pwd">
+            </p>
+            <p class="item">
+                <lable>E-mail:</lable>
+                <input type="text" v-text="email" v-model="email">
+            </p>
+            <p class="item">
+                <lable>Role</lable>
+                <select v-model="selected">
+                    <option value="item.roleid" v-for="item in roleList">{{item.rolename}}</option>
+                </select>
+            </p>
+            <p class="btn">
+                <button @click="save">Save</button>
+                <button @click="close">Cancle</button>
+            </p>
+        </div>
     </div>
 </div>
 

@@ -72,7 +72,7 @@ button.btn{
     background: #51B7A9;
     height: 40px;
     line-height: 40px;
-    font-size: 16px;
+    font-size: 24px;
     color: #fff;
 }
 i.close{
@@ -101,14 +101,12 @@ i.close{
     border-radius: 10px;
 }
 p.item{
-    height: 80px;
-    width: 50%;
-    float: left;
+    height: 60px;
 }
 p.item lable{
     width:60px;
-    height:80px;
-    line-height:80px;
+    height:60px;
+    line-height:60px;
     font-size: 12px;
     color: #000;
     display: block;
@@ -121,9 +119,35 @@ p.item input{
     float: left;
     width:200px;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 10px;
     border: 1px solid #ececec;
+    padding-left: 5px;
 }
-p.item input:hover{
-    border: 1px solid blue;
+.user-info{
+    width:270px;
+    margin: 0 auto;
+}
+p button{
+    width: 120px;
+    height: 45px;
+    border: 1px solid #ececec;
+    border-radius: 10px;
+    background: #51B7A9;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-left: 13px;
+}
+p.btn{
+    margin-top:30px;
+}
+p.item select{
+    height: 35px;
+    border-radius: 3px;
+    color: #666;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    padding: 3px 4px;
+    width:200px;
+    margin-top: 10px;
 }
