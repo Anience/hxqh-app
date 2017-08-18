@@ -2,6 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.common.util.GroupListUtil;
+import com.hxqh.eam.common.util.MailUtils;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
@@ -9,6 +10,7 @@ import com.hxqh.eam.model.dto.action.LoginDto;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,15 @@ import java.util.*;
 public class SystemServiceImpl implements SystemService {
 
     static Logger logger = Logger.getLogger(SystemServiceImpl.class);
+
+    @Value("${hxqh.email.name}")
+    private String serverName;
+    @Value("${hxqh.email.username}")
+    private String username;
+    @Value("${hxqh.email.password}")
+    private String password;
+    @Value("${hxqh.email.path.name}")
+    private String pathName;
 
     @Autowired
     private SfOrganizationAccountDao organizationAccountDao;
@@ -44,11 +55,8 @@ public class SystemServiceImpl implements SystemService {
     private TbUserroleDao userroleDao;
     @Autowired
     private UserDao userDao;
-
-
     @Resource
     protected SessionFactory sessionFactory;
-
 
     @Override
     public List<SfOrganizationAccount> getLoginUserList(LoginDto loginDto) {
@@ -287,6 +295,34 @@ public class SystemServiceImpl implements SystemService {
         String password = Account.encrypt("123456");
         userObj.setLoginpassword(password);
         userDao.save(userObj);
+        return 0;
+    }
+
+    @Override
+    public int sendEmail(String loginname, String email) {
+        MailUtils cn = new MailUtils();
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", loginname);
+        params.put("email", email);
+        String where = "loginname=:loginname and email=:email";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        if (accountList.size() == 1) {
+            // 设置发件人地址、收件人地址和邮件标题
+            cn.setAddress(username, accountList.get(0).getEmail(), "The password has been reset");
+            // 设置要发送附件的位置和标题
+            cn.setAffix(pathName, "attach.txt");
+
+            /**
+             * 设置smtp服务器以及邮箱的帐号和密码
+             * 用QQ 邮箱作为发生者不好使 （原因不明）
+             * 163 邮箱可以，但是必须开启  POP3/SMTP服务 和 IMAP/SMTP服务
+             * 因为程序属于第三方登录，所以登录密码必须使用163的授权码
+             */
+            // 注意： [授权码和你平时登录的密码是不一样的]
+            cn.send(serverName, username, password, "重置密码为123456");
+            return 1;
+        }
         return 0;
     }
 
