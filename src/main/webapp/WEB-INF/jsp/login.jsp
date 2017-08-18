@@ -44,11 +44,11 @@
 					</div>
 					<div style="padding-top: 20px;">
 						<input type="checkbox" name=""/>Remember
-						<a href="" class="forgot">Forgot Password</a>
+						<a href="javasript:;" class="forgot">Forgot Password</a>
 					</div>
 					<div class="login-btn">
 						<%--button type="submit" name="submit">Sign in</button>--%>
-						<a href="javasript:void(0);" id="login">Sign in</a>
+						<a href="javasript:;" id="login">Sign in</a>
 					</div>
 				</form>
 			</div>
@@ -59,15 +59,18 @@
 </div>
 <div class="mask">
 </div>
-<div class="forget">
-     <p class="item">
-		 <lable></lable>
-		 <input type="text">
+<div class="forget-box" style="background: #fff">
+	<h4>Get PassWord</h4>
+	<i class="close" style="margin-top: 10px;"></i>
+     <p class="item" style="background: #EEEECC;">
+		 <lable>User Name</lable>
+		 <input type="text" placeholder="User Name">
 	 </p>
-	<p>
-		<lable></lable>
-		<input type="text">
+	<p  class="item" style="margin-top: 20px;background: #EEEEEE;">
+		<lable>Please enter your registered email address</lable>
+		<input type="text" placeholder="Please enter your registered email address">
 	</p>
+	<button class="getPwd">Get PassWord</button>
 </div>
 </body>
 </html>

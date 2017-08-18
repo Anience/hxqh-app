@@ -48,4 +48,8 @@ $(function(){
     $("#login").click(function(){
            loginAction();
     });
+    $(".forgot").click(function(){
+        $(".mask").show();
+        $(".forget-box").show();
+    });
 });

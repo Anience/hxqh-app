@@ -249,6 +249,7 @@ $(function(){
     function initEchart2(idDom,data1,data2,titName){
         var initData;
         var bgcolor = [];
+        var lableShow = false;
         if(typeof(data1)=="undefined"&&typeof(data2)=="undefined"){
             initData=[
                 {
@@ -262,6 +263,7 @@ $(function(){
                 {value:data2, name:'open'}
             ]
             bgcolor = ["#ff7f50", "#87cefa"];
+            lableShow = true;
         };
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
@@ -289,29 +291,24 @@ $(function(){
                 {
                     name:'',
                     type:'pie',
-                    radius : ['40%', '70%'],
+                    radius : ['30%', '50%'],
                     itemStyle : {
                         normal : {
                             //不显示中间的字，而显示成饼图的那种label
                             label : {
-                                show: false,
-                                position : 'inner',
-                                // formatter: '{b} : {c} ({d}%)'
-                                formatter: "{d}%"
-                                //formatter: '{b} : {c} ({d}%)'
+                                show: lableShow,
+                                fontSize: '18',
+                                textStyle:{
+                                    align:'center',
+                                    baseline: 'center',
+                                    color:"#fff"
+                                },
+                                fontWeight: 'normal',
+                                formatter: "{b}:\n{c}"
                             },
                             labelLine : {
-                                show : false
-                            }
-                        },
-                        emphasis : {
-                            label : {
-                                show : false,
-                                position : 'center',
-                                textStyle : {
-                                    fontSize : '20',
-                                    fontWeight : 'bold'
-                                }
+                                show : lableShow,
+                                length: -2
                             }
                         }
                     },
