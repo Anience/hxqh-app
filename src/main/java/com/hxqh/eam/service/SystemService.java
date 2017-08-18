@@ -77,4 +77,6 @@ public interface SystemService {
     int forgetPassword(String loginname, String email);
 
     int resetPassword(Long loginname);
+
+    int sendEmail(String loginname, String email);
 }

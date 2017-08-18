@@ -731,8 +731,25 @@ public class SystemController {
     /******************************重置密码***************************/
 
     /******************************发送邮件**************************/
-
-
+    @ResponseBody
+    @RequestMapping(value = "/forget", method = RequestMethod.GET)
+    public Message sendEmail(@RequestParam("loginname") String loginname,
+                                  @RequestParam("email") String email) {
+        Message message = null;
+        try {
+            int i = systemService.sendEmail(loginname, email);
+            if (i == 1) {
+                message = new Message(IConstants.SUCCESS, IConstants.MAILSUCCESS);
+            } else {
+                message = new Message(IConstants.SUCCESS, IConstants.MAILFAIL);
+            }
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
     /******************************发送邮件**************************/
 
 

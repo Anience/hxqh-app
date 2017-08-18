@@ -1,4 +1,4 @@
-package com.hxqh.eam.test;
+package com.hxqh.eam.common.util;
 
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -112,6 +112,5 @@ public class MailUtils {
          */
         // 注意： [授权码和你平时登录的密码是不一样的]
         cn.send("smtp.163.com", "hklhai@163.com", "lab1107","重置密码为123456");
-
     }
 }

@@ -20,6 +20,9 @@ public interface IConstants {
     String OPNOUSER = "No User!";
     String OPFAIL = "Fail!";
 
+    String MAILSUCCESS = "Mail Success!";
+    String MAILFAIL = "Mail Fail!";
+
 //    boolean BOOLSUCCESS=true;
 //    boolean BOOLFail=false;
 
