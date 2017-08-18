@@ -67,15 +67,9 @@
     <div class="auth-box" style="background: #fff;">
         <i class="close" @click="close"></i>
         <h4>Infomation</h4>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <label><input name="Fruit" type="checkbox" value="" />苹果 </label>
-        <p style="width: 300px; margin: 0 auto;">
+        <label v-for="item in modelNoList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" />{{item.modelname}} </label>
+        <label v-for="item in modelHaveList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" />{{item.modelname}} </label>
+        <p style="width: 300px; margin: 0 auto; clear: both;">
             <button>Save</button>
             <button>Cancle</button>
         </p>

@@ -57,5 +57,17 @@
 	</div>
 
 </div>
+<div class="mask">
+</div>
+<div class="forget">
+     <p class="item">
+		 <lable></lable>
+		 <input type="text">
+	 </p>
+	<p>
+		<lable></lable>
+		<input type="text">
+	</p>
+</div>
 </body>
 </html>
