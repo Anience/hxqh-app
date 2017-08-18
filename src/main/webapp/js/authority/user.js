@@ -10,22 +10,27 @@ $(function () {
             roleName:'',
             selected:'',
             roleList:[],
-            pwd:'000000',
             email:'',
             isNew: true
         },
         methods:{
             add:function(){
                 this.initBox();
+                $(".userName").text();
+                $(".email").text();
+                self.userName = "";
+                self.selected = "";
+                self.email = "";
                 $(".mask").show();
                 $(".box").show();
             },
             edit:function(item){
                 var self = this;
                 self.isNew = false;
-                self.pwd = "000000";
                 $(".mask").show();
                 $(".box").show();
+                self.userName = item.name;
+                self.selected = item.roleName;
                 $.ajax({
                     url: _ctx+"/system/userDetailData",
                     method: "get",
@@ -34,8 +39,6 @@ $(function () {
                         id: item.id
                     },
                     success: function (data) {
-                        self.userName = item.name;
-                        self.selected = item.roleName;
                         self.roleList = data.roleList;
                     },
                     error: function () {
@@ -80,11 +83,6 @@ $(function () {
                 });
             },
             initBox: function(){
-                self.userName = "";
-                self.selected = "";
-                self.roleList = [];
-                self.email = "";
-                self.pwd = "";
             }
         },
         created: function () {

@@ -10,6 +10,7 @@ $(function () {
         },
         methods:{
             add:function(){
+                $(".mask").show();
                 $(".box").show();
             },
             edit:function(item){
@@ -19,6 +20,7 @@ $(function () {
 
             },
             close:function(){
+                $(".mask").hide();
                 $(".box").hide();
             }
         },
@@ -31,7 +33,6 @@ $(function () {
                 success: function (data) {
                     self.parentList = data.listMap[0];
                     self.sonList = data.listMap[1];
-
                 },
                 error: function () {
 

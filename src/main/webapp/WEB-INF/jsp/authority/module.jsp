@@ -29,15 +29,28 @@
         <tr>
             <td width="7%">Name</td>
             <td width="7%">Description</td>
+            <td width="7%">ModuleId</td>
             <td width="7%">Parent</td>
             <td width="7%">Operation</td>
         </tr>
         </thead>
         <tbody>
-            <tr v-for="item in modelList">
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr v-for="item in parentList">
+                <td>{{item.modelname}}</td>
+                <td>{{item.modeldesc}}</td>
+                <td>{{item.modelid}}</td>
+                <td>{{item.parentid}}</td>
+                <td>
+                    <button class="btn" @click="add">add</button>
+                    <button class="btn" @click="edit(item)">edit</button>
+                    <button class="btn" @click="del">del</button>
+                </td>
+            </tr>
+            <tr v-for="item in sonList">
+                <td>{{item.modelname}}</td>
+                <td>{{item.modeldesc}}</td>
+                <td>{{item.modelid}}</td>
+                <td>{{item.parentid}}</td>
                 <td>
                     <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>

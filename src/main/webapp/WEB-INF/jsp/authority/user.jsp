@@ -51,15 +51,11 @@
         <div class="user-info">
             <p class="item">
                 <lable>UserName</lable>
-                <input type="text" v-text="userName" v-model="userName">
-            </p>
-            <p class="item">
-                <lable>Password</lable>
-                <input type="password" v-text="pwd" v-model="pwd">
+                <input type="text"  v-model="userName" class="userName">
             </p>
             <p class="item">
                 <lable>E-mail:</lable>
-                <input type="text" v-text="email" v-model="email">
+                <input type="text"  v-model="email" class="email">
             </p>
             <p class="item">
                 <lable>Role</lable>
