@@ -246,7 +246,7 @@ public class SystemServiceImpl implements SystemService {
         params.put("ismdeol", 1);
         String where = "ismdeol=:ismdeol ";
 
-        List<TbModel> modelNoList = modelDao.findAll(where,params,null);
+        List<TbModel> modelNoList = modelDao.findAll(where, params, null);
         modelNoList.removeAll(modelHaveList);
 
         return new ModelRoleDto(modelNoList, modelHaveList);
@@ -319,7 +319,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void delUser(Long id) {
-        userDao.delete(id);
+        if (!(id == 1)) {
+            userDao.delete(id);
+        }
     }
 
 
