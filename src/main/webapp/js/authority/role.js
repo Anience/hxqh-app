@@ -4,7 +4,9 @@ $(function () {
         data: {
             roleList:[],
             roleName:"",
-            roleDesc: ""
+            roleDesc: "",
+            modelNoList:[],
+            modelHaveList:[]
         },
         methods:{
             add:function(){
@@ -40,12 +42,29 @@ $(function () {
                 });
             },
             authorization:function(item){
+                var self = this;
                 $(".mask").show();
                 $(".auth-box").show();
+                $.ajax({
+                    url: _ctx+"/system/modelRoleData",
+                    method: "get",
+                    dataType: "json",
+                    data:{
+                        roleid: item.roleid
+                    },
+                    success: function (data) {
+                        self.modelNoList  = data.modelNoList;
+                        self.modelHaveList = data.modelHaveList;
+                    },
+                    error: function () {
+
+                    }
+                });
             },
             close:function(){
                 $(".box").hide();
                 $(".mask").hide();
+                $(".auth-box").hide();
             },
             save:function(){
                 var self = this;

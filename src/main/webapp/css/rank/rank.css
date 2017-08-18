@@ -186,5 +186,9 @@ p.item select option{
     color: #fff;
 }
 .auth-box label{
-    padding:20px;
+    display: block;
+    width: 140px;
+    height: 20px;
+    padding: 20px;
+    float: left;
 }
