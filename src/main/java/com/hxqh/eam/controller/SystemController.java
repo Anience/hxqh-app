@@ -411,7 +411,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/delUser", method = RequestMethod.GET)
-    public Message delUser(@RequestParam("id") String id) {
+    public Message delUser(@RequestParam("id") Long id) {
         Message message = null;
         try {
             systemService.delUser(id);
@@ -662,7 +662,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/roleModel", method = RequestMethod.GET)
-    public Message roleModel(@RequestParam("roleid") BigDecimal roleid, @RequestParam("models") String models) {
+    public Message roleModel(@RequestParam("roleid") Long roleid, @RequestParam("models") String models) {
         Message message = null;
         try {
             systemService.roleModel(models, roleid);
@@ -682,8 +682,8 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/modelRoleData", method = RequestMethod.GET)
-    public ModelRoleDto modelRoleData() {
-        ModelRoleDto data = systemService.getModelRoleData();
+    public ModelRoleDto modelRoleData(@RequestParam("roleid") Long roleid) {
+        ModelRoleDto data = systemService.getModelRoleData(roleid);
         return data;
     }
 

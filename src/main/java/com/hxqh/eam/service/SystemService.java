@@ -26,7 +26,7 @@ public interface SystemService {
 
     void addUser(UserObj account, Long roleid);
 
-    void delUser(String menuid);
+    void delUser(Long menuid);
 
     List<SfOrganizationAccount> findOnlineUserList();
 
@@ -66,9 +66,9 @@ public interface SystemService {
 
     void delmodel(String id);
 
-    void roleModel(String models, BigDecimal roleid);
+    void roleModel(String models, Long roleid);
 
-    ModelRoleDto getModelRoleData();
+    ModelRoleDto getModelRoleData(Long roleid);
 
     List<TbRole> findRoleList();
 
