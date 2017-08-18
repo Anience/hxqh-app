@@ -14,20 +14,21 @@ public class TbRolemodel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "TB_ROLEMODEL_ROLEMODELID_GENERATOR", allocationSize = 1,sequenceName = "SEQ_ROLEMODEL")
+    @SequenceGenerator(name = "TB_ROLEMODEL_ROLEMODELID_GENERATOR", allocationSize = 1, sequenceName = "SEQ_ROLEMODEL")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_ROLEMODEL_ROLEMODELID_GENERATOR")
     private long rolemodelid;
 
-    private BigDecimal modelid;
+    //bi-directional many-to-one association to ModelObj
+    @ManyToOne
+    @JoinColumn(name = "MODELID")
+    private TbModel tbModel;
 
-    private BigDecimal roleid;
+    //bi-directional many-to-one association to RoleObj
+    @ManyToOne
+    @JoinColumn(name = "ROLEID")
+    private TbRole tbRole;
 
     public TbRolemodel() {
-    }
-
-    public TbRolemodel(BigDecimal modelid, BigDecimal roleid) {
-        this.modelid = modelid;
-        this.roleid = roleid;
     }
 
     public long getRolemodelid() {
@@ -38,20 +39,19 @@ public class TbRolemodel implements Serializable {
         this.rolemodelid = rolemodelid;
     }
 
-    public BigDecimal getModelid() {
-        return this.modelid;
+    public TbModel getTbModel() {
+        return tbModel;
     }
 
-    public void setModelid(BigDecimal modelid) {
-        this.modelid = modelid;
+    public void setTbModel(TbModel tbModel) {
+        this.tbModel = tbModel;
     }
 
-    public BigDecimal getRoleid() {
-        return this.roleid;
+    public TbRole getTbRole() {
+        return tbRole;
     }
 
-    public void setRoleid(BigDecimal roleid) {
-        this.roleid = roleid;
+    public void setTbRole(TbRole tbRole) {
+        this.tbRole = tbRole;
     }
-
 }

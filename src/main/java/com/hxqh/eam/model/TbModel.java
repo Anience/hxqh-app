@@ -3,6 +3,7 @@ package com.hxqh.eam.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -34,7 +35,19 @@ public class TbModel implements Serializable {
 
     private String murl;
 
+    // bi-directional many-to-one association to RolemodelObj
+    @OneToMany(mappedBy = "tbModel")
+    private List<TbRolemodel> tbRolemodels;
+
     public TbModel() {
+    }
+
+    public List<TbRolemodel> getTbRolemodels() {
+        return tbRolemodels;
+    }
+
+    public void setTbRolemodels(List<TbRolemodel> tbRolemodels) {
+        this.tbRolemodels = tbRolemodels;
     }
 
     public long getModelid() {

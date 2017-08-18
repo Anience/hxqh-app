@@ -22,9 +22,9 @@ public interface SystemService {
 
     void delMenu(String menuid) throws Exception;
 
-    void editUser(SfOrganizationAccount account);
+    void editUser(UserObj account);
 
-    void addUser(SfOrganizationAccount account);
+    void addUser(UserObj account, Long roleid);
 
     void delUser(String menuid);
 
@@ -38,9 +38,9 @@ public interface SystemService {
 
     List<TbIocCustTop7> custtop7ListData();
 
-    List<TbIoccustomeruser> customeruserListData(String name,String div);
+    List<TbIoccustomeruser> customeruserListData(String name, String div);
 
-    void updateRank(Long ioccustomeruserid,String custid,String name);
+    void updateRank(Long ioccustomeruserid, String custid, String name);
 
     TbIocCustTop7 getrankDetail(String ioccustomerusertop7id);
 
@@ -50,7 +50,7 @@ public interface SystemService {
 
     void userRole(String id, BigDecimal roleid);
 
-    SfOrganizationAccount findUserbyId(String id);
+    UserObj findUserbyId(Long id);
 
     ModelDto getModelListData();
 
@@ -71,4 +71,6 @@ public interface SystemService {
     ModelRoleDto getModelRoleData();
 
     List<TbRole> findRoleList();
+
+    List<UserObj> getUserList(LoginDto loginDto);
 }
