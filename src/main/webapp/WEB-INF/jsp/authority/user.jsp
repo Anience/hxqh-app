@@ -39,7 +39,7 @@
                 <td>
                     <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
-                    <button class="btn" @click="del">del</button>
+                    <button class="btn" @click="del(item)">del</button>
                 </td>
             </tr>
         </tbody>
@@ -51,11 +51,11 @@
         <div class="user-info">
             <p class="item">
                 <lable>UserName</lable>
-                <input type="text"  v-model="userName" class="userName">
+                <input type="text" id="userName" v-text="userName" v-model="userName">
             </p>
             <p class="item">
                 <lable>E-mail:</lable>
-                <input type="text"  v-model="email" class="email">
+                <input type="text"  id="email" v-text="email" v-model="email">
             </p>
             <p class="item">
                 <lable>Role</lable>

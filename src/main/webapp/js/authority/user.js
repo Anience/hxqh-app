@@ -11,7 +11,8 @@ $(function () {
             selected:'',
             roleList:[],
             email:'',
-            isNew: true
+            isNew: true,
+            userid:''
         },
         methods:{
             add:function(){
@@ -21,6 +22,18 @@ $(function () {
                 self.userName = "";
                 self.selected = "";
                 self.email = "";
+                self.userid =  "";
+                $.ajax({
+                    url: _ctx+"/system/roleListData",
+                    method: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        self.roleList = data;
+                    },
+                    error: function () {
+
+                    }
+                });
                 $(".mask").show();
                 $(".box").show();
             },
@@ -31,6 +44,7 @@ $(function () {
                 $(".box").show();
                 self.userName = item.name;
                 self.selected = item.roleName;
+                self.userid = item.id;
                 $.ajax({
                     url: _ctx+"/system/userDetailData",
                     method: "get",
@@ -46,36 +60,55 @@ $(function () {
                     }
                 });
             },
-            del:function(){
-
-            },
-            close:function(){
-                $(".box").hide();
-                $(".mask").hide();
-            },
-            save:function(){
-                var url = '';
-                var data = {};
-                if(isNew){
-                    url = _ctx+"/system/addUser";
-                    data = {
-
-                    }
-                }else{
-                    url = _ctx+"/system/editUser";
-                }
+            del:function(item){
                 $.ajax({
-                    url: _ctx+"/system/editUser",
+                    url: _ctx+"/system/delUser",
                     method: "get",
                     dataType: "json",
                     data:{
                         id: item.id
                     },
                     success: function (data) {
-                        self.userName = item.name;
-                        self.selected = item.roleName;
-                        self.roleList = data.roleList;
-                        self.pwd = "";
+                        alert(data.message);
+                        window.location.href = _ctx+"/system/userList";
+                    },
+                    error: function () {
+
+                    }
+                });
+            },
+            close:function(){
+                $(".box").hide();
+                $(".mask").hide();
+            },
+            save:function(){
+                var self = this;
+                var tmpUrl = '';
+                var data = {};
+                if(self.isNew){
+                    tmpUrl = _ctx+"/system/addUser";
+                    datas = {
+                        username: self.userName,
+                        email: self.email,
+                        roleid: self.selected
+                    }
+                }else{
+                    tmpUrl = _ctx+"/system/editUser";
+                    datas = {
+                        username: self.userName,
+                        email: self.email,
+                        id: self.userid,
+                        roleid: self.selected
+                    }
+                }
+                $.ajax({
+                    url: tmpUrl,
+                    method: "get",
+                    dataType: "json",
+                    data: datas,
+                    success: function (data) {
+                       alert(data.message);
+                       window.location.href = _ctx+"/system/userList";
                     },
                     error: function () {
 
@@ -83,6 +116,9 @@ $(function () {
                 });
             },
             initBox: function(){
+                self.userName = "";
+                self.selected = "";
+                self.roleList = [];
             }
         },
         created: function () {

@@ -43,7 +43,7 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
-                    self.roleList = data.roleList;
+                    self.roleList = data;
                 },
                 error: function () {
 

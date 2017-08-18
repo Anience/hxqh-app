@@ -152,6 +152,11 @@ p.item select{
     width:200px;
     margin-top: 10px;
 }
+p.item select option{
+    height:30px;
+    line-height:30px;
+    width: 100%;
+}
 .mask {
     position: fixed;
     top: 0px;
