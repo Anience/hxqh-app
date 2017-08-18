@@ -31,6 +31,11 @@ public class TbRolemodel implements Serializable {
     public TbRolemodel() {
     }
 
+    public TbRolemodel(TbModel tbModel, TbRole tbRole) {
+        this.tbModel = tbModel;
+        this.tbRole = tbRole;
+    }
+
     public long getRolemodelid() {
         return this.rolemodelid;
     }

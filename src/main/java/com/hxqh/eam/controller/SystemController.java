@@ -354,8 +354,7 @@ public class SystemController {
     public UserDetailDataDto userDetailData(@RequestParam("id") Long id) {
         UserObj account = systemService.findUserbyId(id);
         List<TbRole> roleList = systemService.findRoleList();
-        for(TbRole role:roleList)
-        {
+        for (TbRole role : roleList) {
             role.setTbUserroles(null);
         }
         account.setTbUserroles(null);
@@ -411,7 +410,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/delUser", method = RequestMethod.GET)
-    public Message delUser(@RequestParam("id") String id) {
+    public Message delUser(@RequestParam("id") Long id) {
         Message message = null;
         try {
             systemService.delUser(id);
@@ -447,8 +446,7 @@ public class SystemController {
     @RequestMapping(value = "/roleListData", method = RequestMethod.GET)
     public List<TbRole> roleListData() {
         List<TbRole> roleDto = systemService.getRoleListData();
-        for(TbRole e :roleDto)
-        {
+        for (TbRole e : roleDto) {
             e.setTbUserroles(null);
         }
         return roleDto;
@@ -662,7 +660,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/roleModel", method = RequestMethod.GET)
-    public Message roleModel(@RequestParam("roleid") BigDecimal roleid, @RequestParam("models") String models) {
+    public Message roleModel(@RequestParam("roleid") Long roleid, @RequestParam("models") String models) {
         Message message = null;
         try {
             systemService.roleModel(models, roleid);
@@ -682,13 +680,60 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/modelRoleData", method = RequestMethod.GET)
-    public ModelRoleDto modelRoleData() {
-        ModelRoleDto data = systemService.getModelRoleData();
+    public ModelRoleDto modelRoleData(@RequestParam("roleid") Long roleid) {
+        ModelRoleDto data = systemService.getModelRoleData(roleid);
         return data;
     }
 
 
     /***************************Model Configure**********************/
+
+
+    /******************************忘记密码***************************/
+    @ResponseBody
+    @RequestMapping(value = "/forget", method = RequestMethod.GET)
+    public Message forgetPassword(@RequestParam("loginname") String loginname,
+                                  @RequestParam("email") String email) {
+        Message message = null;
+        try {
+            int i = systemService.forgetPassword(loginname, email);
+            if (i == 1) {
+                message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
+            } else {
+                message = new Message(IConstants.SUCCESS, IConstants.OPNOUSER);
+            }
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+
+    /******************************忘记密码***************************/
+
+    /******************************重置密码***************************/
+    @ResponseBody
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
+    public Message resetPassword(@RequestParam("userid") Long userid) {
+        Message message = null;
+        try {
+            int i = systemService.resetPassword(userid);
+            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+    /******************************重置密码***************************/
+
+    /******************************发送邮件**************************/
+
+
+    /******************************发送邮件**************************/
 
 
 }

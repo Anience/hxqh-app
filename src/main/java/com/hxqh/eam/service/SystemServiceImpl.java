@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
@@ -96,7 +97,7 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public  List<TbRole> getRoleListData() {
+    public List<TbRole> getRoleListData() {
         return roleDao.findAll();
     }
 
@@ -161,6 +162,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void userRole(String id, BigDecimal roleid) {
+
 //        TbUserrole userrole = new TbUserrole(id, roleid);
 //        userroleDao.save(userrole);
     }
@@ -219,21 +221,35 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void roleModel(String models, BigDecimal roleid) {
+    public void roleModel(String models, Long roleid) {
+        TbRole role = roleDao.find(roleid);
         String[] split = models.split(",");
+        List<TbModel> modelList = new ArrayList<>();
         for (int i = 0; i < split.length; i++) {
-            BigDecimal bd = new BigDecimal(split[i]);
-            //TODO
-//            TbRolemodel rolemodel = new TbRolemodel(bd, roleid);
-//            rolemodelDao.save(rolemodel);
+            modelList.add(modelDao.find(Long.valueOf(split[i])));
+        }
+
+        for (TbModel e : modelList) {
+            TbRolemodel rolemodel = new TbRolemodel(e, role);
+            rolemodelDao.save(rolemodel);
         }
     }
 
     @Override
-    public ModelRoleDto getModelRoleData() {
-        //TODO 根据role确定已经授权和未授权的模块
+    public ModelRoleDto getModelRoleData(Long roleid) {
+        TbRole role = roleDao.find(roleid);
+        List<TbModel> modelHaveList = new ArrayList<>();
+        for (TbRolemodel rolemodel : role.getTbRolemodels()) {
+            modelHaveList.add(modelDao.find(rolemodel.getTbModel().getModelid()));
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put("ismdeol", 1);
+        String where = "ismdeol=:ismdeol ";
 
-        return null;
+        List<TbModel> modelNoList = modelDao.findAll(where,params,null);
+        modelNoList.removeAll(modelHaveList);
+
+        return new ModelRoleDto(modelNoList, modelHaveList);
     }
 
     @Override
@@ -243,11 +259,35 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public List<UserObj> getUserList(LoginDto loginDto) {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("loginname", loginDto.getName());
         String where = "loginname=:loginname ";
         List<UserObj> accountList = userDao.findAll(where, params, null);
         return accountList;
+    }
+
+    @Override
+    public int forgetPassword(String loginname, String email) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", loginname);
+        params.put("email", email);
+        String where = "loginname=:loginname and email=:email";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        if (accountList.size() == 1) {
+            accountList.get(0).setUserstatus(0);
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int resetPassword(Long userid) {
+        UserObj userObj = userDao.find(userid);
+        //重置密码 初始密码123456
+        String password = Account.encrypt("123456");
+        userObj.setLoginpassword(password);
+        userDao.save(userObj);
+        return 0;
     }
 
 
@@ -264,6 +304,11 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public void addUser(UserObj account, Long roleid) {
         // 写TB_USER表
+        //设置密码 初始密码123456
+        String password = Account.encrypt("123456");
+        account.setLoginpassword(password);
+        account.setUserstatus(1);
+
         userDao.save(account);
         // 写TB_USERROLE表
         TbUserrole urobj = new TbUserrole();
@@ -273,8 +318,8 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void delUser(String id) {
-        organizationAccountDao.delete(id);
+    public void delUser(Long id) {
+        userDao.delete(id);
     }
 
 
