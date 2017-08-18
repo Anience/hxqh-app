@@ -12,17 +12,19 @@ $(function () {
             roleList:[],
             pwd:'000000',
             email:'',
-            isNew: ture
+            isNew: true
         },
         methods:{
             add:function(){
                 this.initBox();
+                $(".mask").show();
                 $(".box").show();
             },
             edit:function(item){
                 var self = this;
                 self.isNew = false;
                 self.pwd = "000000";
+                $(".mask").show();
                 $(".box").show();
                 $.ajax({
                     url: _ctx+"/system/userDetailData",
@@ -46,6 +48,7 @@ $(function () {
             },
             close:function(){
                 $(".box").hide();
+                $(".mask").hide();
             },
             save:function(){
                 var url = '';
