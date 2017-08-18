@@ -6,10 +6,12 @@ $(function () {
         },
         methods: {
             add:function(){
+                $(".mask").show();
                 $(".box").show();
             },
             edit:function(item){
                 var self = this;
+                $(".mask").show();
                 $(".box").show();
                 $.ajax({
                     url: _ctx+"/system/userDetail",
@@ -31,6 +33,7 @@ $(function () {
             },
             close:function(){
                 $(".box").hide();
+                $(".mask").hide();
             }
         },
         created: function () {
