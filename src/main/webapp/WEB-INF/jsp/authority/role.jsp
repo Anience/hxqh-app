@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="${ctx}/css/rank/rank.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/script/vue.js"></script>
-    <script type="text/javascript" src="${ctx}/js/author/vue.js"></script>
+    <script type="text/javascript" src="${ctx}/js/authority/role.js"></script>
     <script>
         var _ctx = "${ctx}";
     </script>
@@ -26,22 +26,40 @@
 <div class="rank-layout" id="customer-data">
     <table cellspacing="0">
         <thead>
-        <tr>
-            <td width="7%">Role Name</td>
-            <td width="7%">Description</td>
-            <td width="7%">Operation</td>
-        </tr>
+            <tr>
+                <td width="7%">Role Name</td>
+                <td width="7%">Description</td>
+                <td width="7%">Operation</td>
+            </tr>
         </thead>
         <tbody>
-            <tr v-for="item in customer">
-                <td>{{item.custid}}</td>
-                <td>{{item.custrank}}</td>
+            <tr v-for="item in roleList">
+                <td>{{item.rolename}}</td>
+                <td>{{item.roledesc}}</td>
                 <td>
-                    <a href="javascript:void(0);" @click="goto(item)"><i class="del-icon"></i></a>
+                    <button class="btn" @click="add">add</button>
+                    <button class="btn" @click="edit(item)">edit</button>
+                    <button class="btn" @click="del">del</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="box" style="background: #fff;">
+        <i class="close" @click="close"></i>
+        <h4>用户详细信息</h4>
+        <p class="item">
+            <lable>用户名</lable>
+            <input type="text" >
+        </p>
+        <p class="item">
+            <lable>角色</lable>
+            <input type="text">
+        </p>
+        <p>
+            <button>保存</button>
+            <button>取消</button>
+        </p>
+    </div>
 </div>
 </body>
 </html>

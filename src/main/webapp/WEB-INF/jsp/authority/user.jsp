@@ -49,11 +49,11 @@
         <h4>用户详细信息</h4>
         <p class="item">
             <lable>用户名</lable>
-            <input type="text" v-text="userName" v-model="userName">
+            <input type="text" >
         </p>
         <p class="item">
             <lable>角色</lable>
-            <input type="text" v-text="userName" v-model="userName">
+            <input type="text">
         </p>
         <p>
             <button>保存</button>
