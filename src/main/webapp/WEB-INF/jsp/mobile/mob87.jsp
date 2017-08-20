@@ -25,7 +25,7 @@
 			<div class="col-sm-2">
 				<ul>
 					<li><a href="javascript:void(0);"  style="background: #005E8A;">View:</a></li>
-					<li  style="background: #8D93A8;"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS:</a></li>
+					<li  style="background: #8D93A8;"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('1')">TREG-1</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('2')">TREG-2</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('3')">TREG-3</a></li>
@@ -37,23 +37,26 @@
 			</div>
 			<div class="col-sm-6">
 				<div id="echart1" style="height: 300px;width: 100%;"></div>
+				<h5>
+					<span class="ticket-time"></span>
+				</h5>
 			</div>
 			<div class="col-sm-3"  style="padding-right: 30px;">
 				<table>
 					<tr>
-						<td>FO Access</td>
+						<td ><span id="FOAccess"></span></td>
 						<td class="FOAccess"></td>
 					</tr>
 					<tr>
-						<td>RADIO Access</td>
+						<td ><span id="RADIO Access"></span></td>
 						<td class="RadioAccess"></td>
 					</tr>
 					<tr>
-						<td>SL_D</td>
+						<td ><span id="SL_D"></span></td>
 						<td class="SL_D"></td>
 					</tr>
 					<tr>
-						<td>OTHERS</td>
+						<td ><span id="OTHERS"></span></td>
 						<td class="OTHERS"></td>
 					</tr>
 				</table>

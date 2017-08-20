@@ -42,3 +42,23 @@
 .bg-blue{
     background: #33FF33;
 }
+.col-md-10 h5{
+    color: #FFFFFF;
+    background: #0C0E26;
+    line-height: 50px;
+    text-align: left;
+    font-size: 25px;
+    font-family: 'Arial';
+    /*padding-left: 20px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.col-md-10 h5 span.ticket-time{
+    color: #fff;
+    font-size: 18px;
+    height:50px;
+    line-height:50px;
+    display: block;
+    float: right;
+    padding-right: 30px;
+}
