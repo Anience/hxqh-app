@@ -5,6 +5,10 @@
     font-size: 42px;
     font-family: "Arial";
     color: #fff;
+    float: left;
+    height: 10px;
+    display: block;
+    width: 400px;
 }
 .md2 table tr td{
     font-size: 24px;
@@ -42,23 +46,26 @@
 .bg-blue{
     background: #33FF33;
 }
-.col-md-10 h5{
+.col-md-10 h5 span.ticket-tit{
     color: #FFFFFF;
-    background: #0C0E26;
+    margin-left: 30px;
     line-height: 50px;
     text-align: left;
-    font-size: 25px;
+    font-size: 27px;
     font-family: 'Arial';
     /*padding-left: 20px;*/
     margin-top: 0px;
     margin-bottom: 0px;
 }
-.col-md-10 h5 span.ticket-time{
+.col-md-10 .mytitle span.ticket-time{
     color: #fff;
-    font-size: 18px;
-    height:50px;
-    line-height:50px;
+    font-size: 20px;
+    height:46px;
+    width: 350px;
+    line-height:46px;
     display: block;
-    float: right;
+    float: left;
     padding-right: 30px;
+    padding-top: 25px;
+    margin-left: 360px;
 }

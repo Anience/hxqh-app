@@ -157,6 +157,13 @@ public class MobileController {
         Moblie92 moblie92 = mobileService.vMob92Data();
 //        JSONObject json = JSONObject.fromObject(moblie92);//将java对象转换为json对象
 //        String str = json.toString();//将json对象转换为字符串
+//        boolean contains = str.contains("\n");
+//        boolean contains2 = str.contains("\\r\\n");
+//
+//
+//        System.out.println(contains);
+//        System.out.println(contains2);
+//
 //        System.out.println(str);
         return moblie92;
     }

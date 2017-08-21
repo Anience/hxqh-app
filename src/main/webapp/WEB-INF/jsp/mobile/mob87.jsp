@@ -17,11 +17,14 @@
 <div class="mob" style="padding-top:60px;">
 	<div class="mob-layout">
 		<div class="row">
-			<div class="col-sm-2" style="padding-left: 130px;">
+			<div class="col-sm-2" style="padding-left: 130px;width: 100%;">
 				<h3>Nasional</h3>
+				<span class="ticket-time"></span>
+
 			</div>
 		</div>
 		<div class="row" id="mob87" style="margin-left: 100px;">
+
 			<div class="col-sm-2">
 				<ul>
 					<li><a href="javascript:void(0);"  style="background: #005E8A;">View:</a></li>
@@ -37,26 +40,24 @@
 			</div>
 			<div class="col-sm-6">
 				<div id="echart1" style="height: 300px;width: 100%;"></div>
-				<h5>
-					<span class="ticket-time"></span>
-				</h5>
 			</div>
 			<div class="col-sm-3"  style="padding-right: 30px;">
+
 				<table>
 					<tr>
-						<td ><span id="FOAccess"></span></td>
-						<td class="FOAccess"></td>
-					</tr>
-					<tr>
-						<td ><span id="RADIO Access"></span></td>
-						<td class="RadioAccess"></td>
-					</tr>
-					<tr>
-						<td ><span id="SL_D"></span></td>
+						<td ><div id="SLD"></div>SL_D</td>
 						<td class="SL_D"></td>
 					</tr>
 					<tr>
-						<td ><span id="OTHERS"></span></td>
+						<td ><div id="FOAccess"></div>FO Access</td>
+						<td class="FOAccess"></td>
+					</tr>
+					<tr>
+						<td ><div id="RadioAccess"></div>Radio Access</td>
+						<td class="RadioAccess"></td>
+					</tr>
+					<tr>
+						<td ><div id="OTHERS"></div>OTHERS</td>
 						<td class="OTHERS"></td>
 					</tr>
 				</table>

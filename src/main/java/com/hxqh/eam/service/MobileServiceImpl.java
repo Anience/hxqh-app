@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -84,6 +85,21 @@ public class MobileServiceImpl implements MobileService {
             dtoMap.put(entry.getKey(), mob92Dto);
         }
         Moblie92 moblie92 = new Moblie92(dtoMap);
+//        for (Map.Entry<String, Mob92Dto> entry : dtoMap.entrySet()) {
+//            if (entry.getKey().equals("LATENCY_KPI")) {
+//                Mob92Dto value = entry.getValue();
+//                List<Double> greenPercent = value.getGreenPercent();
+//                List<Double> orangePercent = value.getOrangePercent();
+//                List<Double> redPercent = value.getRedPercent();
+//                for (Double x : greenPercent)
+//                    System.out.print(x);
+//                for (Double x : orangePercent)
+//                    System.out.print(x);
+//                for (Double x : redPercent)
+//                    System.out.print(x);
+//            }
+//        }
+
         return moblie92;
     }
 
@@ -95,12 +111,24 @@ public class MobileServiceImpl implements MobileService {
             //如果sum不等于0
             Mob92PercentDto vMob92 = null;
             if (sum != 0) {
-                java.text.DecimalFormat df = new java.text.DecimalFormat("#.00");
+                DecimalFormat df = new DecimalFormat(".");
 
-                vMob92 = new Mob92PercentDto(df.format(mob92.getGreennum().doubleValue() / sum * 1000),
-                        mob92.getTreg(),
-                        df.format(mob92.getOrangenum().doubleValue() / sum * 1000),
-                        df.format(mob92.getRednum().doubleValue() / sum * 1000));
+                double green = mob92.getGreennum().doubleValue() / sum * 1000;
+                double orange = mob92.getOrangenum().doubleValue() / sum * 1000;
+                double red = mob92.getRednum().doubleValue() / sum * 1000;
+                if (green + orange + red <= 1000) {
+                    vMob92 = new Mob92PercentDto(df.format(green).trim(),
+                            mob92.getTreg(),
+                            df.format(orange).trim(),
+                            df.format(red).trim());
+                } else {
+                    if(green>1)
+                        green=green-1;
+                    vMob92 = new Mob92PercentDto(df.format(green).trim(),
+                            mob92.getTreg(),
+                            df.format(orange).trim(),
+                            df.format(red).trim());
+                }
             } else {
                 vMob92 = new Mob92PercentDto(new Double(0).toString(),
                         mob92.getTreg(),
