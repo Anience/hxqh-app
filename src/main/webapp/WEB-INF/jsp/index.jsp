@@ -220,9 +220,9 @@
 			<span class="header-router"></span>
 			<span id="all" style=""></span>
 		</div>
-		<div class="router">
+		<%--<div class="router">
 			<span class="router-txt">My portal</span>
-		</div>
+		</div>--%>
 		<div id="page_content">
 			<iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
 					width="100%" height="100%"  src="${ctx}/ano/map" onresize="alert('You have changed the size of the window')"></iframe>

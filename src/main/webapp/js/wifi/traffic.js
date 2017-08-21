@@ -33,7 +33,6 @@ $(function(){
             tmpObj.data = echartSData[el];
             seriesData.push(tmpObj)
         });
-        console.log(seriesData);
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             title: {

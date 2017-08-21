@@ -24,6 +24,10 @@
 </head>
 <body>
 <div class="rank-layout" id="customer-data">
+    <div class="router">
+        <span class="router-txt">My portal</span>
+        <span class="btn" @click="add">+ add</span>
+    </div>
     <table cellspacing="0">
         <thead>
             <tr>
@@ -37,7 +41,6 @@
                 <td>{{item.rolename}}</td>
                 <td>{{item.roledesc}}</td>
                 <td>
-                    <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
                     <button class="btn" @click="del">del</button>
                     <button class="btn" @click="authorization(item)" style="width: 120px;">authorization</button>

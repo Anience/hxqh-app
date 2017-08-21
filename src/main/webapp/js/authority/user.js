@@ -61,20 +61,23 @@ $(function () {
                 });
             },
             del:function(item){
-                $.ajax({
-                    url: _ctx+"/system/delUser",
-                    method: "get",
-                    dataType: "json",
-                    data:{
-                        id: item.id
-                    },
-                    success: function (data) {
-                        alert(data.message);
-                        window.location.href = _ctx+"/system/userList";
-                    },
-                    error: function () {
+                var msgs = 'Are you sure to delete the user?';
+                Showbo.Msg.confirm(msgs,function(){
+                    $.ajax({
+                        url: _ctx+"/system/delUser",
+                        method: "get",
+                        dataType: "json",
+                        data:{
+                            id: item.id
+                        },
+                        success: function (data) {
+                            alert(data.message);
+                            window.location.href = _ctx+"/system/userList";
+                        },
+                        error: function () {
 
-                    }
+                        }
+                    });
                 });
             },
             close:function(){

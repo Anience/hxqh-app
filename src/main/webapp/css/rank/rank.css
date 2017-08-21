@@ -1,5 +1,6 @@
 .rank-layout table{
     border-collapse: collapse;
+    clear: both;
 }
 .rank-layout table thead td{
     height: 35px;
@@ -52,6 +53,8 @@ button.btn{
     display: block;
     float: left;
     margin-right:20px;
+    border:none;
+    border-radius: 20px;
 }
 .box{
     width: 720px;
@@ -191,4 +194,36 @@ p.item select option{
     height: 20px;
     padding: 20px;
     float: left;
+}
+.router{
+    width:100%;
+    height: 41px;
+    line-height:41px;
+    background: #34B6A4;
+}
+.router span{
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 32px;
+    line-height: 32px;
+    background: #F5F7FA;
+    border-radius: 5px;
+    color: #399;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 15px;
+    font-weight: bolder;
+    font-family: "microsoft yahei", heiti, Arial, "Helvetica";
+    /* background: url("../imgs/tab_active_bg.png") left center no-repeat;*/
+}
+.router .btn{
+    float: right;
+    margin-right: 10px;
+    background: #B679C5;
+    color: #fff;
+    height:30px;
+    line-height:30px;
+    width:45px;
+    border-radius: 20px;
 }
