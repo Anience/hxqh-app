@@ -16,7 +16,7 @@
 	<table class="summary">
 		<thead>
 			<tr>
-				<td colspan="42">ALL Open Ticket for Non-games</td>
+				<td colspan="42">ALL Open Ticket for NoN-Gamas</td>
 			</tr>
 			<tr>
 				<td rowspan="3">Region</td>
@@ -82,6 +82,17 @@
 		</thead>
 		<tbody></tbody>
 	</table>
+	<div style=" height: 120px; font-size: 16px; color: #fff;
+    font-weight: bold;
+    line-height: 40px;
+    display: block;
+    float: left;">Ket :<br />
+		ENTERPRISE: A : 0 - 6 jam B : 6 - 24 jam C : 24 - 48 jam D : 48 - 72 jam E : 72 jam - 7 hari F : > 7 hari<br />
+		BUSINESS: A : 0 - 12 jam B : 12 - 24 jam C : 24 - 48 jam D : 48 - 72 jam E : 72 jam - 7 Hari F : > 7 hari<br />
+		CONSUMER: A : 0 - 24 jam B : 24 - 48 jam C : 48 - 72 jam D : 72 jam - 7 hari E : 7 hari - 30 hari F : > 30 hari<br />
+		Status Tiket : OPEN<br />
+		<span class="ticket-time"></span>
+	</div>
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
