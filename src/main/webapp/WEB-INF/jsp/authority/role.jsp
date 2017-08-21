@@ -15,8 +15,10 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="${ctx}/css/reset.css">
     <link rel="stylesheet" href="${ctx}/css/rank/rank.css">
+    <link rel="stylesheet" href="${ctx}/css/showBo.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/script/vue.js"></script>
+    <script type="text/javascript" src="${ctx}/script/alertCss/showBo.js"></script>
     <script type="text/javascript" src="${ctx}/js/authority/role.js"></script>
     <script>
         var _ctx = "${ctx}";
@@ -55,11 +57,11 @@
         <div class="user-info">
             <p class="item">
                 <lable style="width: 70px;">Name</lable>
-                <input type="text" style="width: 190px;" v-text="roleName" v-model="roleName">
+                <input type="text" style="width: 190px;" v-model="roleName">
             </p>
             <p class="item">
                 <lable style="width: 70px;">Description</lable>
-                <input type="text" style="width: 190px;"  v-text="roleDesc" v-model="roleDesc">
+                <input type="text" style="width: 190px;"  v-model="roleDesc">
             </p>
             <p>
                 <button>Save</button>

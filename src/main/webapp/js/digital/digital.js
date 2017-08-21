@@ -18,10 +18,10 @@ $(function () {
         methods: {
            initEchartData:function(domName1,data,domName2){
                for(var n=0;n<data.length;n++){
-                   var real = parseFloat(data[n]["ioc4"]);
-                   var target = parseFloat(data[n]["ioc3"]);
-                   var real1 = parseFloat(data[n]["ioc10"]);
-                   var target1 = parseFloat(data[n]["ioc9"]);
+                   var real = parseFloat(data[n]["ioc4"].toString().replace(',',''));
+                   var target = parseFloat(data[n]["ioc3"].toString().replace(',',''));
+                   var real1 = parseFloat(data[n]["ioc10"].toString().replace(',',''));
+                   var target1 = parseFloat(data[n]["ioc9"].toString().replace(',',''));
                    if(real>target){
                        initEchart(domName1+n,real);
                    }else{

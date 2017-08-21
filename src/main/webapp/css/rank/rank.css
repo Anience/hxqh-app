@@ -55,6 +55,7 @@ button.btn{
     margin-right:20px;
     border:none;
     border-radius: 20px;
+    cursor: pointer;
 }
 .box{
     width: 720px;
@@ -226,4 +227,5 @@ p.item select option{
     line-height:30px;
     width:45px;
     border-radius: 20px;
+    cursor: pointer;
 }
