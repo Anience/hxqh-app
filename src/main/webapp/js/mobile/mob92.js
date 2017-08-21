@@ -34,7 +34,7 @@ $(function(){
                             $("p").text("BAD<5ms<=GOOD");
                             break;
                     }
-                },5000);
+                },15000);
             },
             error: function(){
 
@@ -43,7 +43,7 @@ $(function(){
     }
     function initEchart(domId,echartData,tit){
         var legendData = ["No Data","Bad","Good"];
-        var xAxisData = ["TREG1","TREG2","TREG3","TREG4","TREG5","TREG6","TREG7"];
+        var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
         var colorData = ["#707B8E","#ECD201","#5ACF05"];
         var greenData = echartData.green;
         var redData = echartData.red;
@@ -221,7 +221,7 @@ $(function(){
                                             c+=greenDatas[i];
                                         }
                                     }
-                                    return c;
+                                   return c;
                                 },
                                 position: 'inside'
                             }
