@@ -7,8 +7,14 @@ $(function(){
 			success: function (data) {
 				var htmls = '';
                for(var i=0;i<data['listMap']['DBS'].length;i++){
+
                 	var j = i+1;
                 	var DBS = data['listMap']['DBS'][i];
+
+                   var time = DBS['ts'];
+                   var ttime = "Last Update:" + time;
+                   $(".ticket-time").text(ttime);
+
                 	var DES = data['listMap']['DES'][i];
                 	var DCS_P = data['listMap']['DCS_PLATINUM'][i];
                 	var DCS_G = data['listMap']['DCS_GOLD'][i];
