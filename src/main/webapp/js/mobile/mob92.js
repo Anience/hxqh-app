@@ -49,9 +49,9 @@ $(function(){
         var greenData = echartData.green;
         var redData = echartData.red;
         var orangeData = echartData.orange;
-        var greenPercent = echartData.greenPercent;
-        var redPercent = echartData.redPercent;
-        var orangePercent = echartData.orangePercent;
+        var greenPercent = echartData.greenPercent.toString().trim().split(',');
+        var redPercent = echartData.redPercent.toString().trim().split(',');
+        var orangePercent = echartData.orangePercent.toString().trim().split(',');
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             tooltip : {

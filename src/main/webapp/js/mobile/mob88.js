@@ -161,7 +161,7 @@ $(function () {
         });
     }
     init();
-    $("table#mob88-data tbody").on("mouseenter","td",function(){
+    $("table#mob88-data tbody").on("mouseenter","td",function(e){
         var type = ['','SR','PSR'];
         var typ = type[$(this).index()];
         var trg = $(this).prev().text();
@@ -175,7 +175,15 @@ $(function () {
                 },
                 dataType: "json",
                 success: function (data) {
-
+                   var eventX = e.pageX - 10;
+                   var eventY = e.pageY - 20;
+                   var creatDiv = document.createElement("div");
+                   var htmlP = "<p>TSEL Region-"+data.tselRegion+"</p>";
+                       htmlP +=  "<p>Region Name-"+data.tselRegion+"</p>"
+                             +"<p>Node-"+data.node+"</p>"
+                             +"<p>PDP_2G value-"+data.tselRegion+"</p>"
+                             +"<p>PDP_2G value-"+data.tselRegion+"</p>"
+                             +"<p>Date-"+data.dataTimes+"</p>"
                 },
                 error: function () {
 
