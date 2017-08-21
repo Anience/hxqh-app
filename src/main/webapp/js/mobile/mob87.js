@@ -9,10 +9,11 @@ $(function () {
             isShow: 0,
             nameList: ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'],
             illustruation:{
+                SL_D: '(0,0,0)',
                 FOAccess: '(0,0,0)',
                 RadioAccess: '(0,0,0)',
-                OTHERS: '(0,0,0)',
-                SL_D: '(0,0,0)'
+                OTHERS: '(0,0,0)'
+
             },
             i: 0
         },
@@ -51,10 +52,11 @@ $(function () {
                     var time ='Last Update:'+ nowTime;
                     $('.ticket-time').text(time);
                     var illustruation={
+                        SL_D: '(0,0,0)',
                         FOAccess: '(0,0,0)',
                             RadioAccess: '(0,0,0)',
-                            OTHERS: '(0,0,0)',
-                            SL_D: '(0,0,0)'
+                            OTHERS: '(0,0,0)'
+
                     };
                     self.anoList = data;
                     $("#mob87 ul").find("li").eq(1)
@@ -90,17 +92,18 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                var time ='Last Update:'+ data.nowTime;
+                var time ='Last Update:'+ nowTime;
                 $('.ticket-time').text(time);
                 window.clearInterval(timer);
                 var i = 0;
                 var isShow = 0;
                 var nameList = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
                 var illustruation = {
+                    SL_D: '(0,0,0)',
                     FOAccess: '(0,0,0)',
                     RadioAccess: '(0,0,0)',
-                    OTHERS: '(0,0,0)',
-                    SL_D: '(0,0,0)'
+                    OTHERS: '(0,0,0)'
+
                 };
                 var anoList = data;
                 $("#mob87 ul").find("li").eq(1)
@@ -151,25 +154,51 @@ $(function () {
         var serisData = [];
         var echartDatas;
         var echartLabel ={
-            'OTHERS':'',
+            'SL_D':'',
             'FO ACCESS':'',
             'RADIO ACCESS':'',
-            'SL_D':''
+            'OTHERS':''
         };
+        var echartDatas2= [{},{},{},{}];
+
         if(echartData){
+
             echartDatas = echartData;
             for(var i=0,len=echartDatas.length;i<len;i++){
+                var index;
+                if (echartDatas[i].name == 'SL_D') {
+                    echartDatas2[0].name = echartDatas[i].name;
+                    echartDatas2[0].value = echartDatas[i].value;
+                    index=0;
+                }
+                if (echartDatas[i] == 'FO ACCESS') {
+                    echartDatas2[1].name = echartDatas[i].name;
+                    echartDatas2[1].value = echartDatas[i].value;
+                    index=1;
+                }
+                if (echartDatas[i].name == 'RADIO ACCESS') {
+                    echartDatas2[2].name = echartDatas[i].name;
+                    echartDatas2[2].value = echartDatas[i].value;
+                    index=2;
+                }
+                if (echartDatas[i].name == 'OTHERS') {
+                    echartDatas2[3].name = echartDatas[i].name;
+                    echartDatas2[3].value = echartDatas[i].value;
+                    index=3;
+                }
                 var tmpObj = {};
-                tmpObj.value = echartDatas[i].value;
-                tmpObj.name = echartDatas[i].name;
-                lendData.push(echartDatas[i].name);
+                tmpObj.value = echartDatas2[index].value;
+                tmpObj.name = echartDatas2[index].name;
+                lendData.push(echartDatas2[index].name);
                 serisData.push(tmpObj);
+
                 for(var name in echartLabel){
                     if(name==echartDatas[i].name){
                         echartLabel[name] = echartDatas[i].otherfull;
                     }
                 }
             }
+            /*console.log(serisData);*/
         }else{
             serisData = [
                 {
@@ -196,26 +225,14 @@ $(function () {
             gid:{
 
             },
-            /*legend: {
-                orient : 'vertical',
-                x : 'left',
-                y : 150,
-                textStyle:{
-                    fontSize: 16,
-                    fontWeight: 'bolder',
-                    color: '#fff'
-                },
-                data:lendData,
-                selected:{
-                    lendData:false,
-                }
-            },*/
+
             series : [
                 {
                     name:"87Screen",
                     type:'pie',
                     radius : '60%',
                     center: ['60%', '50%'],
+
                     itemStyle:{
                         normal:{
                             label:{
@@ -240,10 +257,16 @@ $(function () {
                             show: true
                         }
                     },
-                    data:serisData,
-                    color:['#FF7F50', '#87CEFA','#DA70D6','#32CD32']
+                    data:serisData
+
                 }
-            ]
+            ],
+            color:['#FF7F50', '#87CEFA','#DA70D6','#32CD32']
+           /* legend: {
+                data:['SL_D','FO ACCESS','RADIO ACCESS','OTHERS'],
+                show:false
+
+            },*/
         };
         myChart.setOption(option);
         $("#all",window.parent.document).click(function(){
@@ -252,6 +275,11 @@ $(function () {
         $("#small",window.parent.document).click(function(){
             myChart.resize();
         });
+        /*serisData.forEach(function(value,index,array){
+            array[index] == value;    //结果为true
+            sum+=value;
+        });
+        console.log(sum);*/
     }
     setInterval(function(){
         init();

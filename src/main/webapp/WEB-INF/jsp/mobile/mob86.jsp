@@ -17,8 +17,12 @@
 <div id="mob86" style="padding-bottom: 120px;">
 	<div class="row">
 		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			<h3>KPI COMPLIANCE</h3>
+		<div class="col-md-10" >
+			<div style="width: 100%;" class="mytitle">
+				<h3>KPI COMPLIANCE</h3>
+				<span class="ticket-time"></span>
+			</div>
+
 			<div class="row">
 				<div class="col-md-4 md2">
 					<h4 style="color: #03091A;">Packet</h4>
@@ -60,7 +64,7 @@
 				</div>
 			</div>
 			<h5><span class="ticket-tit">Threshold Target Compliance = 95%</span>
-				<span class="ticket-time"></span>
+
 			</h5>
 		</div>
 		<div class="col-md-1"></div>
