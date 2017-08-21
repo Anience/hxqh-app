@@ -138,7 +138,7 @@ $(function(){
 			        {
 			            name: 'seizM',
 			            type: 'bar',
-			            barWidth:'20',
+			            barWidth:'40',
 			            itemStyle:{
 			                 normal:{
 			                      color: '#4B476A',
