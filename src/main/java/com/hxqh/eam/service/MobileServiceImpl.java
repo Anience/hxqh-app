@@ -69,6 +69,7 @@ public class MobileServiceImpl implements MobileService {
     @Override
     public Moblie92 vMob92Data() {
         List<VMob92> mob92List = vMob92Dao.findAll();
+        Collections.reverse(mob92List);
         // mob92List进行分组
         Map<String, List<VMob92>> map = GroupListUtil.group(mob92List, new GroupListUtil.GroupBy<String>() {
             @Override
