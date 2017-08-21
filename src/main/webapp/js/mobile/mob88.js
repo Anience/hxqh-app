@@ -140,10 +140,18 @@ $(function () {
                 var insertHtml = "";
                 for(var i=0;i<data.perforList.length;i++){
                     var tmpData = data.perforList[i];
-                    insertHtml+="<tr><td>"+tmpData.treg
-                        +"</td><td>"+tmpData.sr
-                        +"</td><td>"+tmpData.psr
-                        +"</td></tr>";
+                    insertHtml+="<tr><td>"+tmpData.treg;
+                        if(parseFloat(tmpData.sr)>0){
+                            insertHtml+="</td><td style='color:red;'>"+tmpData.sr;
+                        }else{
+                            insertHtml+="</td><td>"+tmpData.sr
+                        }
+                        if(parseFloat(tmpData.psr)>0){
+                            insertHtml+="</td><td style='color:red;'>"+tmpData.psr;
+                        }else{
+                            insertHtml+="</td><td>"+tmpData.psr;
+                        }
+                        insertHtml+="</td></tr>";
                 }
                 $("#mob88-data tbody").html(insertHtml);
             },
@@ -153,6 +161,27 @@ $(function () {
         });
     }
     init();
+    $("table#mob88-data tbody").on("click","td",function(){
+        var type = ['','SR','PSR'];
+        var typ = type[$(this).index()];
+        var trg = $(this).prev().text();
+        if(parseFloat($(this).text())>0){
+            $.ajax({
+                url: _ctx+"/mobile/badmsg",
+                method: "get",
+                data:{
+                    treg: trg,
+                    type: typ
+                },
+                dataType: "json",
+                success: function (data) {
+                },
+                error: function () {
+
+                }
+            });
+        }
+    });
     setInterval(function(){
         init();
     },10000);

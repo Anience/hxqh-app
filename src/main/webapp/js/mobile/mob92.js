@@ -9,6 +9,7 @@ $(function(){
             dataType: "json",
             success: function(data){
                 window.clearInterval(timer);
+                // initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
                 initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
                 var i = 0;
                 var timer = setInterval(function(){
