@@ -36,6 +36,20 @@ $(function () {
                 method: "get",
                 dataType: "json",
                 success: function (data) {
+                    var d = new Date();
+                    var years = d.getFullYear();
+                    var month = add_zero(d.getMonth()+1);
+                    var days = add_zero(d.getDate());
+                    var hours = add_zero(d.getHours());
+                    var minutes = add_zero(d.getMinutes());
+                    var second=add_zero(d.getSeconds());
+                    var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
+                    function add_zero(temp) {
+                        if(temp<10) return "0"+temp;
+                        else return temp;
+                    }
+                    var time ='Last Update:'+ nowTime;
+                    $('.ticket-time').text(time);
                     var illustruation={
                         FOAccess: '(0,0,0)',
                             RadioAccess: '(0,0,0)',
@@ -62,7 +76,7 @@ $(function () {
                             .css("background","#000");
                         $("#mob87 ul").find("li").eq(self.i+1)
                             .css("background","#8D93A8");
-                    },5000);
+                    },15000);
                 },
                 error: function () {
 
@@ -76,6 +90,8 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
+                var time ='Last Update:'+ data.nowTime;
+                $('.ticket-time').text(time);
                 window.clearInterval(timer);
                 var i = 0;
                 var isShow = 0;
@@ -106,7 +122,7 @@ $(function () {
                         .css("background","#000");
                     $("#mob87 ul").find("li").eq(self.i+1)
                         .css("background","#8D93A8");
-                },5000);
+                },15000);
             },
             error: function () {
 
@@ -180,7 +196,7 @@ $(function () {
             gid:{
 
             },
-            legend: {
+            /*legend: {
                 orient : 'vertical',
                 x : 'left',
                 y : 150,
@@ -189,8 +205,11 @@ $(function () {
                     fontWeight: 'bolder',
                     color: '#fff'
                 },
-                data:lendData
-            },
+                data:lendData,
+                selected:{
+                    lendData:false,
+                }
+            },*/
             series : [
                 {
                     name:"87Screen",
@@ -221,7 +240,8 @@ $(function () {
                             show: true
                         }
                     },
-                    data:serisData
+                    data:serisData,
+                    color:['#FF7F50', '#87CEFA','#DA70D6','#32CD32']
                 }
             ]
         };

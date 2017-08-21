@@ -59,6 +59,9 @@
 					</table>
 				</div>
 			</div>
+			<h5><span class="ticket-tit">Threshold Target Compliance = 95%</span>
+				<span class="ticket-time"></span>
+			</h5>
 		</div>
 		<div class="col-md-1"></div>
 	</div>

@@ -50,9 +50,11 @@ $(function () {
             serisData.push(tmpObj);
         }
         if(idDom=="echart1"){
-            tit = 'MTTR';
+            tit = 'MTTR（MTD）';
+            lendData = ['SL_D','OTHERS','FO ACCESS','RADIO ACCESS'];
         }else{
-            tit = 'MTTI';
+            tit = 'MTTI（MTD）';
+            lendData = ['SL-D','OTHER','METRO-E']
         }
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
@@ -139,8 +141,8 @@ $(function () {
                 for(var i=0;i<data.perforList.length;i++){
                     var tmpData = data.perforList[i];
                     insertHtml+="<tr><td>"+tmpData.treg
-                        +"</td><td>"+tmpData.psr
                         +"</td><td>"+tmpData.sr
+                        +"</td><td>"+tmpData.psr
                         +"</td></tr>";
                 }
                 $("#mob88-data tbody").html(insertHtml);
