@@ -1,30 +1,30 @@
 package com.hxqh.eam.model.dto;
 
-public class Mob92PercentDto  {
+public class Mob92PercentDto {
 
-	private Double greennum;
+	private String greennum;
 
 	private String id;
 
-	private Double orangenum;
+	private String orangenum;
 
-	private Double rednum;
+	private String rednum;
 
 	public Mob92PercentDto() {
 	}
 
-	public Mob92PercentDto(Double greennum, String id, Double orangenum, Double rednum) {
+	public Mob92PercentDto(String greennum, String id, String orangenum, String rednum) {
 		this.greennum = greennum;
 		this.id = id;
 		this.orangenum = orangenum;
 		this.rednum = rednum;
 	}
 
-	public Double getGreennum() {
+	public String getGreennum() {
 		return greennum;
 	}
 
-	public void setGreennum(Double greennum) {
+	public void setGreennum(String greennum) {
 		this.greennum = greennum;
 	}
 
@@ -36,19 +36,19 @@ public class Mob92PercentDto  {
 		this.id = id;
 	}
 
-	public Double getOrangenum() {
+	public String getOrangenum() {
 		return orangenum;
 	}
 
-	public void setOrangenum(Double orangenum) {
+	public void setOrangenum(String orangenum) {
 		this.orangenum = orangenum;
 	}
 
-	public Double getRednum() {
+	public String getRednum() {
 		return rednum;
 	}
 
-	public void setRednum(Double rednum) {
+	public void setRednum(String rednum) {
 		this.rednum = rednum;
 	}
 }

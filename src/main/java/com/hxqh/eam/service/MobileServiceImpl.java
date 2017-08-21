@@ -94,10 +94,17 @@ public class MobileServiceImpl implements MobileService {
             //如果sum不等于0
             Mob92PercentDto vMob92 = null;
             if (sum != 0) {
-                vMob92 = new Mob92PercentDto(mob92.getGreennum().doubleValue() / sum * 1000, mob92.getTreg(),
-                        mob92.getOrangenum().doubleValue() / sum * 1000, mob92.getRednum().doubleValue() / sum * 1000);
+                java.text.DecimalFormat df = new java.text.DecimalFormat("#.00");
+
+                vMob92 = new Mob92PercentDto(df.format(mob92.getGreennum().doubleValue() / sum * 1000),
+                        mob92.getTreg(),
+                        df.format(mob92.getOrangenum().doubleValue() / sum * 1000),
+                        df.format(mob92.getRednum().doubleValue() / sum * 1000));
             } else {
-                vMob92 = new Mob92PercentDto(new Double(0), mob92.getTreg(), new Double(0), new Double(1000));
+                vMob92 = new Mob92PercentDto(new Double(0).toString(),
+                        mob92.getTreg(),
+                        new Double(0).toString(),
+                        new Double(1000).toString());
             }
             percentMob92List.add(vMob92);
         }
@@ -116,9 +123,9 @@ public class MobileServiceImpl implements MobileService {
         List<Double> orangePercent = new LinkedList<>();
         List<Double> redPercent = new LinkedList<>();
         for (Mob92PercentDto mob92 : percentMob92List) {
-            greenPercent.add(mob92.getGreennum());
-            orangePercent.add(mob92.getOrangenum());
-            redPercent.add(mob92.getRednum());
+            greenPercent.add(Double.valueOf(mob92.getGreennum()));
+            orangePercent.add(Double.valueOf(mob92.getOrangenum()));
+            redPercent.add(Double.valueOf(mob92.getRednum()));
         }
         return new Mob92Dto(green, orange, red, greenPercent, orangePercent, redPercent);
     }
@@ -186,19 +193,18 @@ public class MobileServiceImpl implements MobileService {
                 opers.add(mValue.get(i).getOpers());
                 wrong.add(mValue.get(i).getWrong());
             }
-            BigDecimal maxVal = (Collections.max(in).compareTo(Collections.max(out)) == -1 )? Collections.max(out) : Collections.max(in);
+            BigDecimal maxVal = (Collections.max(in).compareTo(Collections.max(out)) == -1) ? Collections.max(out) : Collections.max(in);
 
-            ThroughtputAgte throughtputAgte = new ThroughtputAgte(in, out, opers, wrong,maxVal);
+            ThroughtputAgte throughtputAgte = new ThroughtputAgte(in, out, opers, wrong, maxVal);
             agteMap.put(m.getKey(), throughtputAgte);
         }
         List<String> namelist = new LinkedList<>();
-        for(int i = 0 ; i< map.get("JAKARTA").size();i++)
-        {
+        for (int i = 0; i < map.get("JAKARTA").size(); i++) {
             namelist.add(map.get("JAKARTA").get(i).getDataTimes());
         }
 
 
-        ThroughtputDto throughtputDto = new ThroughtputDto(agteMap,namelist);
+        ThroughtputDto throughtputDto = new ThroughtputDto(agteMap, namelist);
         return throughtputDto;
     }
 
