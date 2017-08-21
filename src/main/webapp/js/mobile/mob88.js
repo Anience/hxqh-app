@@ -161,7 +161,7 @@ $(function () {
         });
     }
     init();
-    $("table#mob88-data tbody").on("click","td",function(){
+    $("table#mob88-data tbody").on("mouseenter","td",function(){
         var type = ['','SR','PSR'];
         var typ = type[$(this).index()];
         var trg = $(this).prev().text();
@@ -175,6 +175,7 @@ $(function () {
                 },
                 dataType: "json",
                 success: function (data) {
+
                 },
                 error: function () {
 
