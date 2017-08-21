@@ -731,8 +731,8 @@ public class SystemController {
     /******************************重置密码***************************/
 
     /******************************发送邮件**************************/
-    @ResponseBody
-    @RequestMapping(value = "/eamil", method = RequestMethod.GET)
+   /* @ResponseBody
+    @RequestMapping(value = "/forget", method = RequestMethod.GET)
     public Message sendEmail(@RequestParam("loginname") String loginname,
                                   @RequestParam("email") String email) {
         Message message = null;
@@ -749,7 +749,7 @@ public class SystemController {
         } finally {
             return message;
         }
-    }
+    }*/
     /******************************发送邮件**************************/
 
 

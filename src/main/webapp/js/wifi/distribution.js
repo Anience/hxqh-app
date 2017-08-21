@@ -39,13 +39,13 @@ $(function(){
                     tmpHtml+='<tr><td>'+data[i].ioc1
                         +'</td><td>'+data[i].ioc2
                         +'</td><td>'+data[i].ioc3
-                        +'</td><td>'+data[i].ioc4
-                        +'</td><td>'+data[i].ioc5
-                        +'</td><td>'+data[i].ioc6
                         +'</td><td>'+data[i].ioc7
-                        +'</td><td>'+data[i].ioc8
-                        +'</td><td>'+data[i].ioc9
+                        +'</td><td>'+data[i].ioc5
                         +'</td><td>'+data[i].ioc10
+                        +'</td><td>'+data[i].ioc4
+                        +'</td><td>'+data[i].ioc8
+                        +'</td><td>'+data[i].ioc6
+                        +'</td><td>'+data[i].ioc9
                         +'</td><td>'+data[i].ioc11
                         +'</td></tr>';
                 }

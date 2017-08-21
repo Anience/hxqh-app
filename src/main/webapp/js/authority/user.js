@@ -16,9 +16,7 @@ $(function () {
         },
         methods:{
             add:function(){
-                this.initBox();
-                $(".userName").text();
-                $(".email").text();
+                var self = this;
                 self.userName = "";
                 self.selected = "";
                 self.email = "";
@@ -61,19 +59,25 @@ $(function () {
                 });
             },
             del:function(item){
-                $.ajax({
-                    url: _ctx+"/system/delUser",
-                    method: "get",
-                    dataType: "json",
-                    data:{
-                        id: item.id
-                    },
-                    success: function (data) {
-                        alert(data.message);
-                        window.location.href = _ctx+"/system/userList";
-                    },
-                    error: function () {
+                var msgs = 'Are you sure to delete the user?';
+                Showbo.Msg.confirm(msgs,function(f){
+                    if(f=='yes'){
+                        $.ajax({
+                            url: _ctx+"/system/delUser",
+                            method: "get",
+                            dataType: "json",
+                            data:{
+                                id: item.id
+                            },
+                            success: function (data) {
+                                window.location.href = _ctx+"/system/userList";
+                            },
+                            error: function () {
 
+                            }
+                        });
+                    }else{
+                        return false;
                     }
                 });
             },
@@ -114,11 +118,6 @@ $(function () {
 
                     }
                 });
-            },
-            initBox: function(){
-                self.userName = "";
-                self.selected = "";
-                self.roleList = [];
             }
         },
         created: function () {

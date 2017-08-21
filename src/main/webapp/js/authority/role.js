@@ -25,19 +25,25 @@ $(function () {
                 self.roleId = item.roleid;
             },
             del:function(item){
-                $.ajax({
-                    url: _ctx+"/system/delrole",
-                    method: "get",
-                    dataType: "json",
-                    data:{
-                        id: item.roleid
-                    },
-                    success: function (data) {
-                        alert(data.message);
-                        window.location.href = _ctx+"/system/roleList";
-                    },
-                    error: function () {
+                var msgs = 'Are you sure to delete the role?';
+                Showbo.Msg.confirm(msgs,function(f){
+                    if(f=='yes'){
+                        $.ajax({
+                            url: _ctx+"/system/delrole",
+                            method: "get",
+                            dataType: "json",
+                            data:{
+                                id: item.roleid
+                            },
+                            success: function (data) {
+                                window.location.href = _ctx+"/system/roleList";
+                            },
+                            error: function () {
 
+                            }
+                        });
+                    }else{
+                        return false;
                     }
                 });
             },

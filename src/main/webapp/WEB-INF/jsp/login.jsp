@@ -47,13 +47,12 @@
 						<a href="javasript:;" class="forgot">Forgot Password</a>
 					</div>
 					<div class="login-btn">
-						<%--button type="submit" name="submit">Sign in</button>--%>
 						<a href="javasript:;" id="login">Sign in</a>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="login-footer">© Copyright CCSI Corp. 2017. All rights reserved. Please refer to the product license for details</div>
+		<div class="login-footer">© Copyright Telkom 2017. All rights reserved. Please refer to the product license for details</div>
 	</div>
 
 </div>
@@ -64,11 +63,11 @@
 	<i class="close" style="margin-top: 10px;"></i>
      <p class="item" style="background: #EEEECC;">
 		 <lable>User Name</lable>
-		 <input type="text" placeholder="User Name">
+		 <input type="text" placeholder="User Name" class="user-name">
 	 </p>
 	<p  class="item" style="margin-top: 20px;background: #EEEEEE;">
 		<lable>Please enter your registered email address</lable>
-		<input type="text" placeholder="Please enter your registered email address">
+		<input type="text" placeholder="Please enter your registered email address" class="user-email">
 	</p>
 	<button class="getPwd">Get PassWord</button>
 </div>

@@ -77,6 +77,9 @@
 				<span class="img-bg bg3"></span>
 				<span class="txt">Red=Negative Growth</span>
 			</div>
+			<div class="legend-item" style="float: right; font-size: 16px; ">
+				<span class="txt">P=12  G=48  R=48  T=48</span>
+			</div>
 		</div>
 	</div>
 </div>

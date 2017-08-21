@@ -15,8 +15,10 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="${ctx}/css/reset.css">
     <link rel="stylesheet" href="${ctx}/css/rank/rank.css">
+    <link rel="stylesheet" href="${ctx}/css/showBo.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/script/vue.js"></script>
+    <script type="text/javascript" src="${ctx}/script/alertCss/showBo.js"></script>
     <script type="text/javascript" src="${ctx}/js/authority/role.js"></script>
     <script>
         var _ctx = "${ctx}";
@@ -24,6 +26,10 @@
 </head>
 <body>
 <div class="rank-layout" id="customer-data">
+    <div class="router">
+        <span class="router-txt">My portal</span>
+        <span class="btn" @click="add">+ add</span>
+    </div>
     <table cellspacing="0">
         <thead>
             <tr>
@@ -37,7 +43,6 @@
                 <td>{{item.rolename}}</td>
                 <td>{{item.roledesc}}</td>
                 <td>
-                    <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
                     <button class="btn" @click="del">del</button>
                     <button class="btn" @click="authorization(item)" style="width: 120px;">authorization</button>
@@ -52,11 +57,11 @@
         <div class="user-info">
             <p class="item">
                 <lable style="width: 70px;">Name</lable>
-                <input type="text" style="width: 190px;" v-text="roleName" v-model="roleName">
+                <input type="text" style="width: 190px;" v-model="roleName">
             </p>
             <p class="item">
                 <lable style="width: 70px;">Description</lable>
-                <input type="text" style="width: 190px;"  v-text="roleDesc" v-model="roleDesc">
+                <input type="text" style="width: 190px;"  v-model="roleDesc">
             </p>
             <p>
                 <button>Save</button>

@@ -52,4 +52,38 @@ $(function(){
         $(".mask").show();
         $(".forget-box").show();
     });
+    $(".close").click(function(){
+        $(".mask").hide();
+        $(".forget-box").hide();
+        $(".user-email").val("");
+        $(".user-name").val("");
+    });
+    $(".getPwd").click(function(){
+        $.ajax({
+            url: _ctx+"/system/login",
+            method: "post",
+            data: {
+                name : username,
+                password  : pwd
+            },
+            dataType: "json",
+            success: function(data){
+                if(data.code==1){
+                    window.location.href = _ctx+"/system/index";
+                }else{
+                    if(data.message == "The account does not exist!"){
+                        $("p.msg-user").text(data.message).show();
+                    }
+                    if(data.message == "Password authentication error!"){
+                        $("p.msg-pwd").text(data.message).show();
+                    }
+                }
+            },
+            error: function(){
+
+            }
+        })
+        $(".mask").hide();
+        $(".forget-box").hide();
+    });
 });

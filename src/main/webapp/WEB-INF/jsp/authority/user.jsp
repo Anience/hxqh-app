@@ -15,8 +15,10 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="${ctx}/css/reset.css">
     <link rel="stylesheet" href="${ctx}/css/rank/rank.css">
+    <link rel="stylesheet" href="${ctx}/css/showBo.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/script/vue.js"></script>
+    <script type="text/javascript" src="${ctx}/script/alertCss/showBo.js"></script>
     <script type="text/javascript" src="${ctx}/js/authority/user.js"></script>
     <script>
         var _ctx = "${ctx}";
@@ -24,6 +26,10 @@
 </head>
 <body>
 <div class="rank-layout" id="customer-data">
+    <div class="router">
+        <span class="router-txt">My portal</span>
+        <span class="btn" @click="add">+ add</span>
+    </div>
     <table cellspacing="0">
         <thead>
         <tr>
@@ -37,7 +43,6 @@
                 <td>{{item.name}}</td>
                 <td>{{item.rolename}}</td>
                 <td>
-                    <button class="btn" @click="add">add</button>
                     <button class="btn" @click="edit(item)">edit</button>
                     <button class="btn" @click="del(item)">del</button>
                 </td>
@@ -51,11 +56,11 @@
         <div class="user-info">
             <p class="item">
                 <lable>UserName</lable>
-                <input type="text" id="userName" v-text="userName" v-model="userName">
+                <input type="text" id="userName" v-model="userName">
             </p>
             <p class="item">
                 <lable>E-mail:</lable>
-                <input type="text"  id="email" v-text="email" v-model="email">
+                <input type="text"  id="email"v-model="email">
             </p>
             <p class="item">
                 <lable>Role</lable>

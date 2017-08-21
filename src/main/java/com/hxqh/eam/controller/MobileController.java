@@ -7,6 +7,7 @@ package com.hxqh.eam.controller;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.service.MobileService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -154,6 +155,9 @@ public class MobileController {
     @RequestMapping(value = "/vMob92Data", method = RequestMethod.GET)
     public Moblie92 vMob92Data() {
         Moblie92 moblie92 = mobileService.vMob92Data();
+//        JSONObject json = JSONObject.fromObject(moblie92);//将java对象转换为json对象
+//        String str = json.toString();//将json对象转换为字符串
+//        System.out.println(str);
         return moblie92;
     }
 
