@@ -162,43 +162,32 @@ $(function () {
         var echartDatas2= [{},{},{},{}];
 
         if(echartData){
-
             echartDatas = echartData;
             for(var i=0,len=echartDatas.length;i<len;i++){
-                var index;
+                console.log(i);
+                console.log(echartDatas[i].name);
                 if (echartDatas[i].name == 'SL_D') {
                     echartDatas2[0].name = echartDatas[i].name;
                     echartDatas2[0].value = echartDatas[i].value;
-                    index=0;
                 }
-                if (echartDatas[i] == 'FO ACCESS') {
+                if (echartDatas[i].name == 'FO ACCESS') {
                     echartDatas2[1].name = echartDatas[i].name;
                     echartDatas2[1].value = echartDatas[i].value;
-                    index=1;
                 }
                 if (echartDatas[i].name == 'RADIO ACCESS') {
                     echartDatas2[2].name = echartDatas[i].name;
                     echartDatas2[2].value = echartDatas[i].value;
-                    index=2;
                 }
                 if (echartDatas[i].name == 'OTHERS') {
                     echartDatas2[3].name = echartDatas[i].name;
                     echartDatas2[3].value = echartDatas[i].value;
-                    index=3;
                 }
-                var tmpObj = {};
-                tmpObj.value = echartDatas2[index].value;
-                tmpObj.name = echartDatas2[index].name;
-                lendData.push(echartDatas2[index].name);
-                serisData.push(tmpObj);
-
                 for(var name in echartLabel){
                     if(name==echartDatas[i].name){
                         echartLabel[name] = echartDatas[i].otherfull;
                     }
                 }
             }
-            /*console.log(serisData);*/
         }else{
             serisData = [
                 {
@@ -257,7 +246,7 @@ $(function () {
                             show: true
                         }
                     },
-                    data:serisData
+                    data:echartDatas2
 
                 }
             ],
