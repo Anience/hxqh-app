@@ -85,21 +85,6 @@ public class MobileServiceImpl implements MobileService {
             dtoMap.put(entry.getKey(), mob92Dto);
         }
         Moblie92 moblie92 = new Moblie92(dtoMap);
-//        for (Map.Entry<String, Mob92Dto> entry : dtoMap.entrySet()) {
-//            if (entry.getKey().equals("LATENCY_KPI")) {
-//                Mob92Dto value = entry.getValue();
-//                List<Double> greenPercent = value.getGreenPercent();
-//                List<Double> orangePercent = value.getOrangePercent();
-//                List<Double> redPercent = value.getRedPercent();
-//                for (Double x : greenPercent)
-//                    System.out.print(x);
-//                for (Double x : orangePercent)
-//                    System.out.print(x);
-//                for (Double x : redPercent)
-//                    System.out.print(x);
-//            }
-//        }
-
         return moblie92;
     }
 
