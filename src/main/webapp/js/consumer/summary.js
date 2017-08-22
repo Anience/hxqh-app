@@ -19,6 +19,7 @@ $(function(){
                 	var DCS_P = data['listMap']['DCS_PLATINUM'][i];
                 	var DCS_G = data['listMap']['DCS_GOLD'][i];
                 	var DCS_S = data['listMap']['DCS_SILVER'][i];
+                   var moningDtoList = data['moningDtoList'][i];
                 	var srDtoList = data['srDtoList'][i];
                     var tmpHtml = '<tr><td>TREG-'+j+'</td>';
                    tmpHtml += '<td>' + DES['a'] + '</td>'
@@ -57,7 +58,7 @@ $(function(){
                        + '<td>' + DCS_S['f'] + '</td>'
                        + '<td>' + DCS_S['ttl'] + '</td>'
 					   //Todo  应该为allTTl
-                       + '<td>' + srDtoList[''] + '</td>'
+                       + '<td>' + moningDtoList.allttl + '</td>'
                        + '<td>' + srDtoList['smsopen'] + '</td>'
                        + '<td>' + srDtoList['smsbackend'] + '</td>'
                        + '<td>' + srDtoList['emailopen'] + '</td>'
