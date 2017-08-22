@@ -11,7 +11,7 @@ public class SrMoningDto {
 
     @Id
     private String regional;
-    private Integer allttl;
+    private Long allttl;
 
     public String getRegional() {
         return regional;
@@ -21,11 +21,11 @@ public class SrMoningDto {
         this.regional = regional;
     }
 
-    public Integer getAllttl() {
+    public Long getAllttl() {
         return allttl;
     }
 
-    public void setAllttl(Integer allttl) {
+    public void setAllttl(Long allttl) {
         this.allttl = allttl;
     }
 }

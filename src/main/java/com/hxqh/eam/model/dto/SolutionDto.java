@@ -13,11 +13,13 @@ public class SolutionDto {
     private Map<String, List<TbIocConsSrMoning>> listMap;
     private  List<SrMoningDto> moningDtoList;
     private List<SrDto> srDtoList;
+    private List<Object> sumList;
 
-    public SolutionDto(Map<String, List<TbIocConsSrMoning>> listMap, List<SrMoningDto> moningDtoList, List<SrDto> srDtoList) {
+    public SolutionDto(Map<String, List<TbIocConsSrMoning>> listMap, List<SrMoningDto> moningDtoList, List<SrDto> srDtoList, List<Object> sumList) {
         this.listMap = listMap;
         this.moningDtoList = moningDtoList;
         this.srDtoList = srDtoList;
+        this.sumList = sumList;
     }
 
     public List<SrDto> getSrDtoList() {
@@ -42,5 +44,13 @@ public class SolutionDto {
 
     public void setMoningDtoList(List<SrMoningDto> moningDtoList) {
         this.moningDtoList = moningDtoList;
+    }
+
+    public List<Object> getSumList() {
+        return sumList;
+    }
+
+    public void setSumList(List<Object> sumList) {
+        this.sumList = sumList;
     }
 }

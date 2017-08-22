@@ -12,6 +12,7 @@ public interface IConstants {
     String EDITSUCCESS = "Edit Success!";
     String EDITFAIL = "Edit Fail!";
     String ADDSUCCESS = "Add Success!";
+    String USEREXISTS="User name already exists";
     String ADDFAIL = "Add Fail!";
     String DELETESUCCESS = "DELETE Success!";
     String DELETEFAIL = "DELETE Fail!";

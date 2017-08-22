@@ -24,7 +24,7 @@ public interface SystemService {
 
     void editUser(UserObj account);
 
-    void addUser(UserObj account, Long roleid);
+    int addUser(UserObj account, Long roleid);
 
     void delUser(Long menuid);
 

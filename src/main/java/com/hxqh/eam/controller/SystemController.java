@@ -75,7 +75,6 @@ public class SystemController {
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Message login(LoginDto loginDto, Map<String, Object> map) {
-//        List<SfOrganizationAccount> loginUserList = systemService.getLoginUserList(loginDto);
         List<UserObj> loginUserList = systemService.getUserList(loginDto);
         return webLogin(loginUserList, loginDto, map);
     }
@@ -91,7 +90,6 @@ public class SystemController {
                 password = Account.encrypt(loginDto.getPassword());
                 if (loginUserList.get(0).getLoginpassword().toUpperCase().equals(password)) {
                     //加入Session中
-//                    SfOrganizationAccount login = loginUserList.get(0);
                     UserObj login = loginUserList.get(0);
                     SessionInfo sessionInfo = new SessionInfo();
 
@@ -392,8 +390,11 @@ public class SystemController {
     public Message addUser(UserObj account) {
         Message message = null;
         try {
-            systemService.addUser(account, Long.valueOf(account.getRoleid()));
-            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+            int i = systemService.addUser(account, Long.valueOf(account.getRoleid()));
+            if(i==1)
+                message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+            else
+                message = new Message(IConstants.SUCCESS, IConstants.USEREXISTS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
             e.printStackTrace();

@@ -1,31 +1,29 @@
 package com.hxqh.eam.model.dto;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Ocean lin on 2017/8/3.
+ * Created by Ocean lin on 2017/8/22.
  */
-@Entity
-public class SrDto {
+public class SrTmpDto {
 
     @Id
     private String regional;
 
-    private String smsbackend;
+    private Integer smsbackend;
 
-    private String emailopen;
+    private Integer emailopen;
 
-    private String smsopen;
+    private Integer smsopen;
 
-    private String  emailbackend;
+    private Integer emailbackend;
 
     private Integer reopen;
 
-    public SrDto() {
+    public SrTmpDto() {
     }
 
-    public SrDto(String smsbackend, String emailopen, String smsopen, String emailbackend, Integer reopen) {
+    public SrTmpDto(Integer smsbackend, Integer emailopen, Integer smsopen, Integer emailbackend, Integer reopen) {
         this.smsbackend = smsbackend;
         this.emailopen = emailopen;
         this.smsopen = smsopen;
@@ -41,35 +39,35 @@ public class SrDto {
         this.regional = regional;
     }
 
-    public String getSmsbackend() {
+    public Integer getSmsbackend() {
         return smsbackend;
     }
 
-    public void setSmsbackend(String smsbackend) {
+    public void setSmsbackend(Integer smsbackend) {
         this.smsbackend = smsbackend;
     }
 
-    public String getEmailopen() {
+    public Integer getEmailopen() {
         return emailopen;
     }
 
-    public void setEmailopen(String emailopen) {
+    public void setEmailopen(Integer emailopen) {
         this.emailopen = emailopen;
     }
 
-    public String getSmsopen() {
+    public Integer getSmsopen() {
         return smsopen;
     }
 
-    public void setSmsopen(String smsopen) {
+    public void setSmsopen(Integer smsopen) {
         this.smsopen = smsopen;
     }
 
-    public String getEmailbackend() {
+    public Integer getEmailbackend() {
         return emailbackend;
     }
 
-    public void setEmailbackend(String emailbackend) {
+    public void setEmailbackend(Integer emailbackend) {
         this.emailbackend = emailbackend;
     }
 
