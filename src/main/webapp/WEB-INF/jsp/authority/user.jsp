@@ -55,12 +55,12 @@
         <h4>Infomation</h4>
         <div class="user-info">
             <p class="item">
-                <lable>UserName</lable>
-                <input type="text" id="loginName" v-model="loginName">
+                <lable>LoginName</lable>
+                <input type="text" id="loginName" v-model="userName">
             </p>
             <p class="item">
                 <lable>E-mail:</lable>
-                <input type="text"  id="email"v-model="email">
+                <input type="text"  id="email" v-model="email">
             </p>
             <p class="item">
                 <lable>Role</lable>

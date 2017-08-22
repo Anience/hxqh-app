@@ -106,7 +106,7 @@ p.item{
     height: 60px;
 }
 p.item lable{
-    width:60px;
+    width:70px;
     height:60px;
     line-height:60px;
     font-size: 12px;
@@ -126,7 +126,7 @@ p.item input{
     padding-left: 5px;
 }
 .user-info{
-    width:270px;
+    width:280px;
     margin: 0 auto;
 }
 p button{

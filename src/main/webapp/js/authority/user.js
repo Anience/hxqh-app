@@ -60,8 +60,9 @@ $(function () {
                     success: function (data) {
                         self.roleList = data.roleList;
                         self.userNum = data.account.usernum;
-                        self.department = data.account.usernum;
+                        self.department = data.account.department;
                         self.mobile = data.account.mobile;
+                        self.email = data.account.email;
                         $(".mask").show();
                         $(".box").show();
                     },
@@ -104,7 +105,7 @@ $(function () {
                 if(self.isNew){
                     tmpUrl = _ctx+"/system/addUser";
                     datas = {
-                        username: self.userName,
+                        loginname: self.userName,
                         email: self.email,
                         roleid: self.selected,
                         usernum:  self.userNum,
@@ -114,7 +115,7 @@ $(function () {
                 }else{
                     tmpUrl = _ctx+"/system/editUser";
                     datas = {
-                        username: self.userName,
+                        loginname: self.userName,
                         email: self.email,
                         id: self.userid,
                         roleid: self.selected,
