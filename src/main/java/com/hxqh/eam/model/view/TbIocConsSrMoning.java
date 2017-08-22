@@ -1,8 +1,10 @@
 package com.hxqh.eam.model.view;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import javax.persistence.*;
-import java.math.BigDecimal;
 
 
 /**
@@ -15,15 +17,15 @@ public class TbIocConsSrMoning implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="\"A\"")
-	private BigDecimal a;
+	private Long a;
 
-	private BigDecimal b;
+	private Long b;
 
-	private BigDecimal c;
+	private Long c;
 
-	private BigDecimal d;
+	private Long d;
 
-	private BigDecimal e;
+	private Long e;
 
 	@Column(name="EMAIL_BACKEND")
 	private String emailBackend;
@@ -31,11 +33,11 @@ public class TbIocConsSrMoning implements Serializable {
 	@Column(name="EMAIL_OPEN")
 	private String emailOpen;
 
-	private BigDecimal f;
+	private Long f;
 
 	private String regional;
 
-	private BigDecimal reopen;
+	private Long reopen;
 
 	@Column(name="SMS_BACKEND")
 	private String smsBackend;
@@ -45,55 +47,55 @@ public class TbIocConsSrMoning implements Serializable {
 
 	@Id
 	@Column(name="SR_ID")
-	private BigDecimal srId;
+	private Long srId;
 
 	@Column(name="TITLE_TYPE")
 	private String titleType;
 
 	private String ts;
 
-	private BigDecimal ttl;
+	private Long ttl;
 
 	public TbIocConsSrMoning() {
 	}
 
-	public BigDecimal getA() {
+	public Long getA() {
 		return this.a;
 	}
 
-	public void setA(BigDecimal a) {
+	public void setA(Long a) {
 		this.a = a;
 	}
 
-	public BigDecimal getB() {
+	public Long getB() {
 		return this.b;
 	}
 
-	public void setB(BigDecimal b) {
+	public void setB(Long b) {
 		this.b = b;
 	}
 
-	public BigDecimal getC() {
+	public Long getC() {
 		return this.c;
 	}
 
-	public void setC(BigDecimal c) {
+	public void setC(Long c) {
 		this.c = c;
 	}
 
-	public BigDecimal getD() {
+	public Long getD() {
 		return this.d;
 	}
 
-	public void setD(BigDecimal d) {
+	public void setD(Long d) {
 		this.d = d;
 	}
 
-	public BigDecimal getE() {
+	public Long getE() {
 		return this.e;
 	}
 
-	public void setE(BigDecimal e) {
+	public void setE(Long e) {
 		this.e = e;
 	}
 
@@ -113,11 +115,11 @@ public class TbIocConsSrMoning implements Serializable {
 		this.emailOpen = emailOpen;
 	}
 
-	public BigDecimal getF() {
+	public Long getF() {
 		return this.f;
 	}
 
-	public void setF(BigDecimal f) {
+	public void setF(Long f) {
 		this.f = f;
 	}
 
@@ -129,11 +131,11 @@ public class TbIocConsSrMoning implements Serializable {
 		this.regional = regional;
 	}
 
-	public BigDecimal getReopen() {
+	public Long getReopen() {
 		return this.reopen;
 	}
 
-	public void setReopen(BigDecimal reopen) {
+	public void setReopen(Long reopen) {
 		this.reopen = reopen;
 	}
 
@@ -153,11 +155,11 @@ public class TbIocConsSrMoning implements Serializable {
 		this.smsOpen = smsOpen;
 	}
 
-	public BigDecimal getSrId() {
+	public Long getSrId() {
 		return this.srId;
 	}
 
-	public void setSrId(BigDecimal srId) {
+	public void setSrId(Long srId) {
 		this.srId = srId;
 	}
 
@@ -177,11 +179,11 @@ public class TbIocConsSrMoning implements Serializable {
 		this.ts = ts;
 	}
 
-	public BigDecimal getTtl() {
+	public Long getTtl() {
 		return this.ttl;
 	}
 
-	public void setTtl(BigDecimal ttl) {
+	public void setTtl(Long ttl) {
 		this.ttl = ttl;
 	}
 

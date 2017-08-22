@@ -14,15 +14,15 @@ public class SrDto {
     @Id
     private String regional;
 
-    private String smsbackend;
+    private Long smsbackend;
 
-    private String emailopen;
+    private Long emailopen;
 
-    private String smsopen;
+    private Long smsopen;
 
-    private String  emailbackend;
+    private Long  emailbackend;
 
-    private BigDecimal reopen;
+    private Long reopen;
 
     public String getRegional() {
         return regional;
@@ -32,43 +32,43 @@ public class SrDto {
         this.regional = regional;
     }
 
-    public String getSmsbackend() {
+    public Long getSmsbackend() {
         return smsbackend;
     }
 
-    public void setSmsbackend(String smsbackend) {
+    public void setSmsbackend(Long smsbackend) {
         this.smsbackend = smsbackend;
     }
 
-    public String getEmailopen() {
+    public Long getEmailopen() {
         return emailopen;
     }
 
-    public void setEmailopen(String emailopen) {
+    public void setEmailopen(Long emailopen) {
         this.emailopen = emailopen;
     }
 
-    public String getSmsopen() {
+    public Long getSmsopen() {
         return smsopen;
     }
 
-    public void setSmsopen(String smsopen) {
+    public void setSmsopen(Long smsopen) {
         this.smsopen = smsopen;
     }
 
-    public String getEmailbackend() {
+    public Long getEmailbackend() {
         return emailbackend;
     }
 
-    public void setEmailbackend(String emailbackend) {
+    public void setEmailbackend(Long emailbackend) {
         this.emailbackend = emailbackend;
     }
 
-    public BigDecimal getReopen() {
+    public Long getReopen() {
         return reopen;
     }
 
-    public void setReopen(BigDecimal reopen) {
+    public void setReopen(Long reopen) {
         this.reopen = reopen;
     }
 }

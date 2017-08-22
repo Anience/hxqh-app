@@ -342,7 +342,16 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void addUser(UserObj account, Long roleid) {
+    public int addUser(UserObj account, Long roleid) {
+        //如果loginname重复不添加
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", account.getLoginname());
+        String where = "loginname=:loginname ";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        if(accountList.size()>0)
+        {
+            return 0;
+        }
         // 写TB_USER表
         //设置密码 初始密码123456
         String password = Account.encrypt("123456");
@@ -355,6 +364,7 @@ public class SystemServiceImpl implements SystemService {
         urobj.setTbRole(roleDao.find(roleid));
         urobj.setTbUser(account);
         userroleDao.save(urobj);
+        return 1;
     }
 
     @Override

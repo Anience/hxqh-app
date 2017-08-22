@@ -269,8 +269,44 @@ public class AnoServiceImpl implements AnoService {
 
         String sqlSr = "select distinct(t.regional) ,t.SMS_OPEN as smsopen,t.SMS_BACKEND as smsbackend,t.EMAIL_OPEN as emailopen,t.EMAIL_BACKEND as emailbackend,t.REOPEN as reopen from V_IOC_CONS_SR_MONING t order by t.REGIONAL";
         List<SrDto> srDtoList = sessionFactory.getCurrentSession().createSQLQuery(sqlSr).addEntity(SrDto.class).list();
+        //求和放入map中
+        Map<String, TbIocConsSrMoning> sumMap = new LinkedHashMap<>();
+        for (Map.Entry<String, List<TbIocConsSrMoning>> map : listMap.entrySet()) {
+            TbIocConsSrMoning sum = new TbIocConsSrMoning();
+            for (TbIocConsSrMoning ele : map.getValue()) {
+                sum.setA(sum.getA() + ele.getA());
+                sum.setB(sum.getB() + ele.getB());
+                sum.setC(sum.getC() + ele.getC());
+                sum.setD(sum.getD() + ele.getD());
+                sum.setE(sum.getE() + ele.getE());
+                sum.setTtl(sum.getTtl() + ele.getTtl());
+            }
+            sumMap.put(map.getKey(), sum);
+        }
+        //计算moningDtoList和
+        Long sumtota = 0l;
+        for (SrMoningDto s : moningDtoList) {
+            sumtota += s.getAllttl();
+        }
+        SrDto sum = new SrDto();
+        for (SrDto s : srDtoList) {
+            sum.setEmailbackend(sum.getEmailbackend() + s.getEmailbackend());
+            sum.setEmailopen(sum.getEmailopen() + s.getEmailopen());
+            sum.setReopen(sum.getReopen() + s.getReopen());
+            sum.setSmsbackend(sum.getSmsbackend() + s.getSmsbackend());
+            sum.setSmsopen(sum.getSmsopen() + s.getSmsopen());
+        }
+        //返回sum List
+        List<Object> sumList = new LinkedList<>();
+        sumList.add(sumMap.get("DES"));
+        sumList.add(sumMap.get("DBS"));
+        sumList.add(sumMap.get("DCS_PLATINUM"));
+        sumList.add(sumMap.get("DCS_GOLD"));
+        sumList.add(sumMap.get("DCS_SILVER"));
+        sumList.add(sumtota);
+        sumList.add(sum);
 
-        SolutionDto solutionDto = new SolutionDto(listMap, moningDtoList, srDtoList);
+        SolutionDto solutionDto = new SolutionDto(listMap, moningDtoList, srDtoList, sumList);
         return solutionDto;
     }
 
