@@ -175,21 +175,33 @@ $(function () {
                 },
                 dataType: "json",
                 success: function (data) {
-                   var eventX = e.pageX - 10;
+                   var eventX = e.pageX;
                    var eventY = e.pageY - 20;
-                   var creatDiv = document.createElement("div");
-                   var htmlP = "<p>TSEL Region-"+data.tselRegion+"</p>";
-                       htmlP +=  "<p>Region Name-"+data.tselRegion+"</p>"
-                             +"<p>Node-"+data.node+"</p>"
-                             +"<p>PDP_2G value-"+data.tselRegion+"</p>"
-                             +"<p>PDP_2G value-"+data.tselRegion+"</p>"
-                             +"<p>Date-"+data.dataTimes+"</p>"
+                   var htmlP = "<p>TSEL Region--"+data[0].tselRegion+"</p>";
+                       htmlP +=  "<p>Region Name--"+data[0].regionName+"</p>"
+                             +"<p>Node--"+data[0].node+"</p>"
+                           +"<p>Date--"+data[0].ts+"</p>";
+                       if(typ=='SR'){
+                           htmlP+="<p>value--"+data[0].accountSrPsr+"</p>";
+                       }else{
+                           htmlP+="<p>value--"+data[0].accountPsr+"</p>";
+                       }
+                   $(".data-tip").html("");
+                   $(".data-tip").html(htmlP);
+                   $(".data-tip").css({
+                        top:eventY,
+                       left:eventX
+                    });
+                    $(".data-tip").show();
                 },
                 error: function () {
 
                 }
             });
         }
+    });
+    $("table#mob88-data tbody").on("mouseleave","td",function(e){
+        $(".data-tip").hide();
     });
     setInterval(function(){
         init();
