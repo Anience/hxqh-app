@@ -23,7 +23,6 @@ public class UserObj implements Serializable {
 
     private String address;
 
-
     @Column(name = "\"DESCRIBE\"")
     private String describe;
 
@@ -43,6 +42,8 @@ public class UserObj implements Serializable {
 
     private Integer userstatus;
 
+    private String department;
+
 
     //bi-directional many-to-one association to UserroleObj
     @OneToMany(mappedBy = "tbUser")
@@ -50,6 +51,14 @@ public class UserObj implements Serializable {
     private List<TbUserrole> tbUserroles;
 
     public UserObj() {
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public Long getUserid() {

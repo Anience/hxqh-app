@@ -295,6 +295,10 @@ public class SystemServiceImpl implements SystemService {
         String password = Account.encrypt("123456");
         userObj.setLoginpassword(password);
         userDao.save(userObj);
+        //发送邮件
+        if (userObj.getLoginname() != null && userObj.getEmail() != null) {
+            sendEmail(userObj.getLoginname(), userObj.getEmail());
+        }
         return 0;
     }
 

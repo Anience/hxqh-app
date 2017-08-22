@@ -731,10 +731,10 @@ public class SystemController {
     /******************************重置密码***************************/
 
     /******************************发送邮件**************************/
-   /* @ResponseBody
-    @RequestMapping(value = "/forget", method = RequestMethod.GET)
+    @ResponseBody
+    @RequestMapping(value = "/mail", method = RequestMethod.GET)
     public Message sendEmail(@RequestParam("loginname") String loginname,
-                                  @RequestParam("email") String email) {
+                             @RequestParam("email") String email) {
         Message message = null;
         try {
             int i = systemService.sendEmail(loginname, email);
@@ -749,7 +749,7 @@ public class SystemController {
         } finally {
             return message;
         }
-    }*/
+    }
     /******************************发送邮件**************************/
 
 
