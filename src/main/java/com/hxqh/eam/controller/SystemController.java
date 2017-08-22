@@ -389,10 +389,10 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public Message addUser(UserObj account, @RequestParam("roleid") Long roleid) {
+    public Message addUser(UserObj account) {
         Message message = null;
         try {
-            systemService.addUser(account, roleid);
+            systemService.addUser(account, Long.valueOf(account.getRoleid()));
             message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.ADDFAIL);

@@ -8,7 +8,7 @@ $(function () {
             userList:[],
             userName:'',
             roleName:'',
-            selected:'',
+            selected:'1',
             roleList:[],
             email:'',
             isNew: true,
@@ -28,6 +28,7 @@ $(function () {
                 self.userNum = "";
                 self.department = "";
                 self.mobile = "";
+                self.selected = "";
                 $.ajax({
                     url: _ctx+"/system/roleListData",
                     method: "get",
@@ -48,6 +49,7 @@ $(function () {
                 self.userName = item.name;
                 self.selected = item.roleName;
                 self.userid = item.id;
+                self.selected = '1'
                 $.ajax({
                     url: _ctx+"/system/userDetailData",
                     method: "get",
@@ -99,14 +101,13 @@ $(function () {
                 var self = this;
                 var tmpUrl = '';
                 var data = {};
-                alert(self.isNew);
                 if(self.isNew){
                     tmpUrl = _ctx+"/system/addUser";
                     datas = {
                         username: self.userName,
                         email: self.email,
                         roleid: self.selected,
-                        userNum:  self.userNum,
+                        usernum:  self.userNum,
                         department: self.department,
                         mobile: self.mobile
                     }
@@ -117,7 +118,7 @@ $(function () {
                         email: self.email,
                         id: self.userid,
                         roleid: self.selected,
-                        userNum:  self.userNum,
+                        usernum:  self.userNum,
                         department: self.department,
                         mobile: self.mobile
                     }

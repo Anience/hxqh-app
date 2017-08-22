@@ -56,12 +56,13 @@ $(function(){
                        + '<td>' + DCS_S['e'] + '</td>'
                        + '<td>' + DCS_S['f'] + '</td>'
                        + '<td>' + DCS_S['ttl'] + '</td>'
-                       + '<td>' + srDtoList['reopen'] + '</td>'
+					   //Todo  应该为allTTl
+                       + '<td>' + srDtoList[''] + '</td>'
                        + '<td>' + srDtoList['smsopen'] + '</td>'
                        + '<td>' + srDtoList['smsbackend'] + '</td>'
                        + '<td>' + srDtoList['emailopen'] + '</td>'
                        + '<td>' + srDtoList['emailbackend'] + '</td>'
-                       + '<td>' + srDtoList['smsopen'] + '</td></tr>'
+                       + '<td>' + srDtoList['reopen'] + '</td></tr>'
 				   htmls+=tmpHtml;
                }
                $('table.summary tbody').html(htmls);

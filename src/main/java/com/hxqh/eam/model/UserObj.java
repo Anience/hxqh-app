@@ -17,7 +17,7 @@ public class UserObj implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "TB_USER_USERID_GENERATOR", sequenceName = "SEQ_USER")
+    @SequenceGenerator(name = "TB_USER_USERID_GENERATOR",allocationSize = 1, sequenceName = "SEQ_USER")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_USER_USERID_GENERATOR")
     private Long userid;
 
@@ -44,6 +44,9 @@ public class UserObj implements Serializable {
 
     private String department;
 
+    @Transient
+    private String roleid;
+
 
     //bi-directional many-to-one association to UserroleObj
     @OneToMany(mappedBy = "tbUser")
@@ -51,6 +54,14 @@ public class UserObj implements Serializable {
     private List<TbUserrole> tbUserroles;
 
     public UserObj() {
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
     }
 
     public String getDepartment() {

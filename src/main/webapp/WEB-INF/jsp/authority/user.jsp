@@ -33,7 +33,7 @@
     <table cellspacing="0">
         <thead>
         <tr>
-            <td width="7%">User Name</td>
+            <td width="7%">Login Name</td>
             <td width="7%">Role</td>
             <td width="7%">Operation</td>
         </tr>
@@ -56,7 +56,7 @@
         <div class="user-info">
             <p class="item">
                 <lable>UserName</lable>
-                <input type="text" id="userName" v-model="userName">
+                <input type="text" id="loginName" v-model="loginName">
             </p>
             <p class="item">
                 <lable>E-mail:</lable>
@@ -65,7 +65,7 @@
             <p class="item">
                 <lable>Role</lable>
                 <select v-model="selected">
-                    <option value="item.roleid" v-for="item in roleList">{{item.rolename}}</option>
+                    <option v-bind:value="item.roleid" v-for="item in roleList">{{item.rolename}}</option>
                 </select>
             </p>
             <p class="item">

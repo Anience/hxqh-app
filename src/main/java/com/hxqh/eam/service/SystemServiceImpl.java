@@ -352,7 +352,7 @@ public class SystemServiceImpl implements SystemService {
         userDao.save(account);
         // 写TB_USERROLE表
         TbUserrole urobj = new TbUserrole();
-        urobj.setTbRole(roleDao.find(new BigDecimal(roleid)));
+        urobj.setTbRole(roleDao.find(roleid));
         urobj.setTbUser(account);
         userroleDao.save(urobj);
     }
