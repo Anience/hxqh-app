@@ -38,6 +38,7 @@
 		</div>
 	</div>
 </div>
+<div  class="data-tip"></div>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/mob88.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>

@@ -65,6 +65,30 @@ $(function(){
                        + '<td>' + srDtoList['reopen'] + '</td></tr>'
 				   htmls+=tmpHtml;
                }
+
+
+                var totalhtmls='<tr><td>Total</td>';
+                var tdhtmls='';
+                var sumList = data['sumList']
+                for(var i=0;i<data['sumList'].length-2;i++){
+                        tdhtmls += '<td>' + sumList[i].a + '</td>'
+                            + '<td>' + sumList[i].b + '</td>'
+                            + '<td>' + sumList[i].c + '</td>'
+                            + '<td>' + sumList[i].d + '</td>'
+                            + '<td>' + sumList[i].e + '</td>'
+                            + '<td>' + sumList[i].f + '</td>'
+                            + '<td>' + sumList[i].ttl + '</td>'
+                }
+                tdhtmls +='<td>' + sumList[5]+ '</td>'
+                    + '<td>' + sumList[6].smsopen + '</td>'
+                    + '<td>' + sumList[6].smsbackend + '</td>'
+                    + '<td>' + sumList[6].emailopen + '</td>'
+                    + '<td>' + sumList[6].emailbackend + '</td>'
+                    + '<td>' + sumList[6].reopen + '</td></tr>'
+                 totalhtmls+=  tdhtmls;
+                htmls+=totalhtmls;
+
+
                $('table.summary tbody').html(htmls);
 			},
 			error: function () {
