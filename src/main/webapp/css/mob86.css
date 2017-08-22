@@ -46,12 +46,12 @@
 .bg-blue{
     background: #33FF33;
 }
-.col-md-10 h5 span.ticket-tit{
+.col-md-10 span.ticket-tit{
     color: #FFFFFF;
     margin-left: 30px;
     line-height: 50px;
     text-align: left;
-    font-size: 27px;
+    font-size: 22px;
     font-family: 'Arial';
     /*padding-left: 20px;*/
     margin-top: 0px;
@@ -64,8 +64,7 @@
     width: 350px;
     line-height:46px;
     display: block;
-    float: left;
-    padding-right: 30px;
+    float: right;
     padding-top: 25px;
     margin-left: 360px;
 }

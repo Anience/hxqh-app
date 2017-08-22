@@ -92,8 +92,7 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                var time ='Last Update:'+ nowTime;
-                $('.ticket-time').text(time);
+
                 window.clearInterval(timer);
                 var i = 0;
                 var isShow = 0;
@@ -234,7 +233,7 @@ $(function () {
                                     var res="";
                                     var datas = params.series.data;
                                     for(var i=0;i<datas.length;i++){
-                                        res+=params.value+"("+echartLabel[params.name]+")";
+                                        res+=params.value;
                                         break;
                                     }
                                     return res;
@@ -251,11 +250,6 @@ $(function () {
                 }
             ],
             color:['#FF7F50', '#87CEFA','#DA70D6','#32CD32']
-           /* legend: {
-                data:['SL_D','FO ACCESS','RADIO ACCESS','OTHERS'],
-                show:false
-
-            },*/
         };
         myChart.setOption(option);
         $("#all",window.parent.document).click(function(){
@@ -264,11 +258,7 @@ $(function () {
         $("#small",window.parent.document).click(function(){
             myChart.resize();
         });
-        /*serisData.forEach(function(value,index,array){
-            array[index] == value;    //结果为true
-            sum+=value;
-        });
-        console.log(sum);*/
+
     }
     setInterval(function(){
         init();
