@@ -63,9 +63,7 @@
 					</table>
 				</div>
 			</div>
-			<h5><span class="ticket-tit">Threshold Target Compliance = 95%</span>
-
-			</h5>
+			<span class="ticket-tit">Threshold Target Compliance = 95%</span>
 		</div>
 		<div class="col-md-1"></div>
 	</div>

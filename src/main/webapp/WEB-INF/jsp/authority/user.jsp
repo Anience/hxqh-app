@@ -50,7 +50,7 @@
         </tbody>
     </table>
     <div class="mask"></div>
-    <div class="box" style="background: #fff;">
+    <div class="box" style="background: #fff;height: 500px;margin-top: -280px;">
         <i class="close" @click="close"></i>
         <h4>Infomation</h4>
         <div class="user-info">
@@ -67,6 +67,18 @@
                 <select v-model="selected">
                     <option value="item.roleid" v-for="item in roleList">{{item.rolename}}</option>
                 </select>
+            </p>
+            <p class="item">
+                <lable>StuffId:</lable>
+                <input type="text"  id="userNum" v-model="userNum">
+            </p>
+            <p class="item">
+                <lable>Department:</lable>
+                <input type="text"  id="department"v-model="department">
+            </p>
+            <p class="item">
+                <lable>Contact:</lable>
+                <input type="text"  id="mobile"v-model="mobile">
             </p>
             <p class="btn">
                 <button @click="save">Save</button>

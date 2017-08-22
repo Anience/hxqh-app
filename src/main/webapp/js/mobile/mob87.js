@@ -92,8 +92,7 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                var time ='Last Update:'+ nowTime;
-                $('.ticket-time').text(time);
+
                 window.clearInterval(timer);
                 var i = 0;
                 var isShow = 0;
@@ -162,43 +161,32 @@ $(function () {
         var echartDatas2= [{},{},{},{}];
 
         if(echartData){
-
             echartDatas = echartData;
             for(var i=0,len=echartDatas.length;i<len;i++){
-                var index;
+                console.log(i);
+                console.log(echartDatas[i].name);
                 if (echartDatas[i].name == 'SL_D') {
                     echartDatas2[0].name = echartDatas[i].name;
                     echartDatas2[0].value = echartDatas[i].value;
-                    index=0;
                 }
-                if (echartDatas[i] == 'FO ACCESS') {
+                if (echartDatas[i].name == 'FO ACCESS') {
                     echartDatas2[1].name = echartDatas[i].name;
                     echartDatas2[1].value = echartDatas[i].value;
-                    index=1;
                 }
                 if (echartDatas[i].name == 'RADIO ACCESS') {
                     echartDatas2[2].name = echartDatas[i].name;
                     echartDatas2[2].value = echartDatas[i].value;
-                    index=2;
                 }
                 if (echartDatas[i].name == 'OTHERS') {
                     echartDatas2[3].name = echartDatas[i].name;
                     echartDatas2[3].value = echartDatas[i].value;
-                    index=3;
                 }
-                var tmpObj = {};
-                tmpObj.value = echartDatas2[index].value;
-                tmpObj.name = echartDatas2[index].name;
-                lendData.push(echartDatas2[index].name);
-                serisData.push(tmpObj);
-
                 for(var name in echartLabel){
                     if(name==echartDatas[i].name){
                         echartLabel[name] = echartDatas[i].otherfull;
                     }
                 }
             }
-            /*console.log(serisData);*/
         }else{
             serisData = [
                 {
@@ -245,7 +233,7 @@ $(function () {
                                     var res="";
                                     var datas = params.series.data;
                                     for(var i=0;i<datas.length;i++){
-                                        res+=params.value+"("+echartLabel[params.name]+")";
+                                        res+=params.value;
                                         break;
                                     }
                                     return res;
@@ -257,16 +245,11 @@ $(function () {
                             show: true
                         }
                     },
-                    data:serisData
+                    data:echartDatas2
 
                 }
             ],
             color:['#FF7F50', '#87CEFA','#DA70D6','#32CD32']
-           /* legend: {
-                data:['SL_D','FO ACCESS','RADIO ACCESS','OTHERS'],
-                show:false
-
-            },*/
         };
         myChart.setOption(option);
         $("#all",window.parent.document).click(function(){
@@ -275,11 +258,7 @@ $(function () {
         $("#small",window.parent.document).click(function(){
             myChart.resize();
         });
-        /*serisData.forEach(function(value,index,array){
-            array[index] == value;    //结果为true
-            sum+=value;
-        });
-        console.log(sum);*/
+
     }
     setInterval(function(){
         init();
