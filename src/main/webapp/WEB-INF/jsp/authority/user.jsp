@@ -68,6 +68,18 @@
                     <option value="item.roleid" v-for="item in roleList">{{item.rolename}}</option>
                 </select>
             </p>
+            <p class="item">
+                <lable>StuffId:</lable>
+                <input type="text"  id="" v-model="email">
+            </p>
+            <p class="item">
+                <lable>Department:</lable>
+                <input type="text"  id="email"v-model="email">
+            </p>
+            <p class="item">
+                <lable>Contact:</lable>
+                <input type="text"  id="email"v-model="email">
+            </p>
             <p class="btn">
                 <button @click="save">Save</button>
                 <button @click="close">Cancle</button>

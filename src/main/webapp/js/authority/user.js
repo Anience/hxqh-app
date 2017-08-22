@@ -12,7 +12,10 @@ $(function () {
             roleList:[],
             email:'',
             isNew: true,
-            userid:''
+            userid:'',
+            userNum:'',
+            department:'',
+            mobile:''
         },
         methods:{
             add:function(){
@@ -21,6 +24,9 @@ $(function () {
                 self.selected = "";
                 self.email = "";
                 self.userid =  "";
+                self.userNum = "";
+                self.department = "";
+                self.mobile = "";
                 $.ajax({
                     url: _ctx+"/system/roleListData",
                     method: "get",
@@ -52,6 +58,9 @@ $(function () {
                     },
                     success: function (data) {
                         self.roleList = data.roleList;
+                        self.userNum = data.account.usernum;
+                        self.department = data.account.usernum;
+                        self.mobile = data.account.mobile;
                     },
                     error: function () {
 
