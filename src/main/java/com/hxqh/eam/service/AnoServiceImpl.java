@@ -279,6 +279,7 @@ public class AnoServiceImpl implements AnoService {
                 sum.setC(sum.getC() + ele.getC());
                 sum.setD(sum.getD() + ele.getD());
                 sum.setE(sum.getE() + ele.getE());
+                sum.setF(sum.getF() + ele.getF());
                 sum.setTtl(sum.getTtl() + ele.getTtl());
             }
             sumMap.put(map.getKey(), sum);
