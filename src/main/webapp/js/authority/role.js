@@ -10,6 +10,8 @@ $(function () {
         },
         methods:{
             add:function(){
+                var self = this;
+                self.isNew = true;
                 self.roleName = "";
                 self.roleDesc = "";
                 $(".mask").show();
@@ -26,6 +28,7 @@ $(function () {
             },
             del:function(item){
                 var msgs = 'Are you sure to delete the role?';
+                console.log(item.roleid);
                 Showbo.Msg.confirm(msgs,function(f){
                     if(f=='yes'){
                         $.ajax({
@@ -36,6 +39,7 @@ $(function () {
                                 id: item.roleid
                             },
                             success: function (data) {
+                                alert(data.message);
                                 window.location.href = _ctx+"/system/roleList";
                             },
                             error: function () {
@@ -51,6 +55,7 @@ $(function () {
                 var self = this;
                 $(".mask").show();
                 $(".auth-box").show();
+                self.roleId = item.roleid;
                 $.ajax({
                     url: _ctx+"/system/modelRoleData",
                     method: "get",
@@ -75,18 +80,18 @@ $(function () {
             save:function(){
                 var self = this;
                 var tmpUrl = '';
-                var data = {};
+                var datas = {};
                 if(self.isNew){
-                    tmpUrl = _ctx+"/system/addRole";
+                    tmpUrl = _ctx+"/system/addrole";
                     datas = {
-                        rolename: self.roleId,
+                        rolename: self.roleName,
                         roledesc: self.roleDesc
                     }
                 }else{
-                    tmpUrl = _ctx+"/system/editRole";
+                    tmpUrl = _ctx+"/system/editrole";
                     datas = {
-                        id: self.roleId,
-                        rolename: self.roleId,
+                        roleid: self.roleId,
+                        rolename: self.roleName,
                         roledesc: self.roleDesc
                     }
                 }
@@ -97,13 +102,46 @@ $(function () {
                     data: datas,
                     success: function (data) {
                         alert(data.message);
-                        window.location.href = _ctx+"/system/RoleList";
+                        window.location.href = _ctx+"/system/roleList";
                     },
                     error: function () {
 
                     }
                 });
             },
+            saveModule:function(){
+                var self = this;
+                var arr = [];
+                var noList = this.modelNoList;
+                var haveList = this.modelHaveList;
+                for(var i = 0;i<noList.length;i++){
+                    if(noList[i].checked){
+                        arr.push(noList[i].modelid);
+                    }
+                }
+                for(var i = 0;i<haveList.length;i++){
+                    if(haveList[i].checked){
+                        arr.push(haveList[i].modelid);
+                    }
+                }
+                var result = arr.join(",");
+                $.ajax({
+                    url: _ctx+"/system/roleModel",
+                    method: "get",
+                    data:{
+                        roleid:self.roleId,
+                        models:result
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        alert(data.message);
+                        window.history.href = _ctx + "/system/roleList";
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
         },
         created: function () {
             var self = this;

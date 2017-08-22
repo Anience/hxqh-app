@@ -209,7 +209,7 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void delrole(String id) {
+    public void delrole(Long id) {
         roleDao.delete(id);
     }
 

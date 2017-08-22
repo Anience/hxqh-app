@@ -518,7 +518,7 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/delrole", method = RequestMethod.GET)
-    public Message delrole(@RequestParam("id") String id) {
+    public Message delrole(@RequestParam("id") Long id) {
         Message message = null;
         try {
             systemService.delrole(id);

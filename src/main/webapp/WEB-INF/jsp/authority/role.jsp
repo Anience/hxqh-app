@@ -44,7 +44,7 @@
                 <td>{{item.roledesc}}</td>
                 <td>
                     <button class="btn" @click="edit(item)">edit</button>
-                    <button class="btn" @click="del">del</button>
+                    <button class="btn" @click="del(item)">del</button>
                     <button class="btn" @click="authorization(item)" style="width: 120px;">authorization</button>
                 </td>
             </tr>
@@ -64,19 +64,19 @@
                 <input type="text" style="width: 190px;"  v-model="roleDesc">
             </p>
             <p>
-                <button>Save</button>
-                <button>Cancle</button>
+                <button @click="save">Save</button>
+                <button @click="close">Cancle</button>
             </p>
         </div>
     </div>
     <div class="auth-box" style="background: #fff;">
         <i class="close" @click="close"></i>
         <h4>Infomation</h4>
-        <label v-for="item in modelNoList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" />{{item.modelname}} </label>
-        <label v-for="item in modelHaveList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" />{{item.modelname}} </label>
+        <label v-for="item in modelNoList"><input checked="checked" type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
+        <label v-for="item in modelHaveList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
         <p style="width: 300px; margin: 0 auto; clear: both;">
-            <button>Save</button>
-            <button>Cancle</button>
+            <button @click="saveModule">Save</button>
+            <button @click="close">Cancle</button>
         </p>
     </div>
 </div>
