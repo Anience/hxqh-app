@@ -272,7 +272,7 @@ public class AnoServiceImpl implements AnoService {
         //求和放入map中
         Map<String, TbIocConsSrMoning> sumMap = new LinkedHashMap<>();
         for (Map.Entry<String, List<TbIocConsSrMoning>> map : listMap.entrySet()) {
-            TbIocConsSrMoning sum = new TbIocConsSrMoning();
+            TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l);
             for (TbIocConsSrMoning ele : map.getValue()) {
                 sum.setA(sum.getA() + ele.getA());
                 sum.setB(sum.getB() + ele.getB());
@@ -288,13 +288,13 @@ public class AnoServiceImpl implements AnoService {
         for (SrMoningDto s : moningDtoList) {
             sumtota += s.getAllttl();
         }
-        SrDto sum = new SrDto();
+        SrTmpDto sum = new SrTmpDto(0, 0, 0, 0, 0);
         for (SrDto s : srDtoList) {
-            sum.setEmailbackend(sum.getEmailbackend() + s.getEmailbackend());
-            sum.setEmailopen(sum.getEmailopen() + s.getEmailopen());
-            sum.setReopen(sum.getReopen() + s.getReopen());
-            sum.setSmsbackend(sum.getSmsbackend() + s.getSmsbackend());
-            sum.setSmsopen(sum.getSmsopen() + s.getSmsopen());
+            sum.setEmailbackend(sum.getEmailbackend() + Integer.valueOf(s.getEmailbackend()));
+            sum.setEmailopen(sum.getEmailopen() + Integer.valueOf(s.getEmailopen()));
+            sum.setReopen(sum.getReopen() + Integer.valueOf(s.getReopen()));
+            sum.setSmsbackend(sum.getSmsbackend() + Integer.valueOf(s.getSmsbackend()));
+            sum.setSmsopen(sum.getSmsopen() + Integer.valueOf(s.getSmsopen()));
         }
         //返回sum List
         List<Object> sumList = new LinkedList<>();
