@@ -20,6 +20,7 @@ $(function () {
         methods:{
             add:function(){
                 var self = this;
+                self.isNew = true;
                 self.userName = "";
                 self.selected = "";
                 self.email = "";
@@ -44,8 +45,6 @@ $(function () {
             edit:function(item){
                 var self = this;
                 self.isNew = false;
-                $(".mask").show();
-                $(".box").show();
                 self.userName = item.name;
                 self.selected = item.roleName;
                 self.userid = item.id;
@@ -61,6 +60,8 @@ $(function () {
                         self.userNum = data.account.usernum;
                         self.department = data.account.usernum;
                         self.mobile = data.account.mobile;
+                        $(".mask").show();
+                        $(".box").show();
                     },
                     error: function () {
 
@@ -98,12 +99,16 @@ $(function () {
                 var self = this;
                 var tmpUrl = '';
                 var data = {};
+                alert(self.isNew);
                 if(self.isNew){
                     tmpUrl = _ctx+"/system/addUser";
                     datas = {
                         username: self.userName,
                         email: self.email,
-                        roleid: self.selected
+                        roleid: self.selected,
+                        userNum:  self.userNum,
+                        department: self.department,
+                        mobile: self.mobile
                     }
                 }else{
                     tmpUrl = _ctx+"/system/editUser";
@@ -111,7 +116,10 @@ $(function () {
                         username: self.userName,
                         email: self.email,
                         id: self.userid,
-                        roleid: self.selected
+                        roleid: self.selected,
+                        userNum:  self.userNum,
+                        department: self.department,
+                        mobile: self.mobile
                     }
                 }
                 $.ajax({
