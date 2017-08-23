@@ -5,6 +5,20 @@ $(function(){
 			method: "get",
 			dataType: "json",
 			success: function (data) {
+                var d = new Date();
+                var years = d.getFullYear();
+                var month = add_zero(d.getMonth()+1);
+                var days = add_zero(d.getDate());
+                var hours = add_zero(d.getHours());
+                var minutes = add_zero(d.getMinutes());
+                var second=add_zero(d.getSeconds());
+                var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
+                function add_zero(temp) {
+                    if(temp<10) return "0"+temp;
+                    else return temp;
+                }
+                var time ='Last Update:'+ nowTime;
+                $('.ticket-time').text(time);
 				var dataOrder = ['TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
 				var scale = data.lineM;
 				var scaleName = data.linelist;
@@ -56,7 +70,7 @@ $(function(){
 			        }
 			    },
 			    legend: {
-			        data:['IPTV','Interent','Telle'],
+			        data:['IPTV','Internet','Pots'],
 			        x: 'right',
 			        y: 'top',
 			        textStyle:{
@@ -130,7 +144,7 @@ $(function(){
 			        {
 			            name:'IPTV',
 			            type:'bar',
-			            barWidth:'30',
+			            barWidth:'40',
 			            itemStyle:{
 			                 normal:{
 			                      color: '#4B476A',
@@ -152,7 +166,7 @@ $(function(){
 			            data:data.IPTV
 			        },
 			        {
-			            name:'Interent',
+			            name:'Internet',
 			            type:'bar',
 			            stack: '广告',
 			            itemStyle:{
@@ -175,7 +189,7 @@ $(function(){
 			            data:data.Interent
 			        },
 			        {
-			            name:'Telle',
+			            name:'Pots',
 			            type:'bar',
 			            stack: '广告',
 			            itemStyle:{

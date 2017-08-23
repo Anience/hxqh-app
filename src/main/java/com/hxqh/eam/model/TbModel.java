@@ -35,6 +35,8 @@ public class TbModel implements Serializable {
 
     private String murl;
 
+    private Integer isurl;
+
     // bi-directional many-to-one association to RolemodelObj
     @OneToMany(mappedBy = "tbModel")
     private List<TbRolemodel> tbRolemodels;
@@ -43,6 +45,14 @@ public class TbModel implements Serializable {
     private List<TbModel> childList;
 
     public TbModel() {
+    }
+
+    public Integer getIsurl() {
+        return isurl;
+    }
+
+    public void setIsurl(Integer isurl) {
+        this.isurl = isurl;
     }
 
     public List<TbModel> getChildList() {

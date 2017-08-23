@@ -16,6 +16,7 @@
 <body>
 <div class="pre1-layout">
 	<h4>Provisioning-Real Time Service Order Handling</h4>
+	<span class="ticket-time"></span>
 	<div class="item">
 		<div class="left" id="echart1"></div>
 		<div class="right">
