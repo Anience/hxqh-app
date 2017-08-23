@@ -354,6 +354,7 @@ public class SystemController {
         List<TbRole> roleList = systemService.findRoleList();
         for (TbRole role : roleList) {
             role.setTbUserroles(null);
+            role.setTbRolemodels(null);
         }
         account.setTbUserroles(null);
         return new UserDetailDataDto(account, roleList);
