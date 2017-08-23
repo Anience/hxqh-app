@@ -61,8 +61,8 @@ $(function(){
         $(".user-name").val("");
     });
     $(".getPwd").click(function(){
-        var emails = $(".user-email").text().trim();
-        var userName =  $(".user-name").text().trim();
+        var emails = $(".user-email").val().trim();
+        var userName =  $(".user-name").val().trim();
         if(userName==""){
             $(".forget-tip").text("UserName is required!").show();
             $(".getPwd").css("marginTop",0);

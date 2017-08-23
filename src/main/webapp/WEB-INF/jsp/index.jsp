@@ -21,7 +21,7 @@
 	<div class="admin">
 		<a href="#">
 			<i class="icon-down"></i>
-			<span>admin</span>
+			<span>${loginname}</span>
 			<img src="${ctx}/imgs/none_user.gif" class="admin-img" />
 		</a>
 		<ul class="admin-down-ul" style="display: none;">
