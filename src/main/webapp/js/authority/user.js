@@ -117,7 +117,7 @@ $(function () {
                     datas = {
                         loginname: self.userName,
                         email: self.email,
-                        useid: self.userid,
+                        userid: self.userid,
                         roleid: self.selected,
                         usernum:  self.userNum,
                         department: self.department,
