@@ -13,14 +13,16 @@ public class UserRoleDto {
     private String id;
     private String name;
     private String rolename;
+    private Integer userstatus;
 
     public UserRoleDto() {
     }
 
-    public UserRoleDto(String id, String name, String rolename) {
+    public UserRoleDto(String id, String name, String rolename, Integer userstatus) {
         this.id = id;
         this.name = name;
         this.rolename = rolename;
+        this.userstatus = userstatus;
     }
 
     public String getId() {
@@ -45,5 +47,13 @@ public class UserRoleDto {
 
     public void setRolename(String rolename) {
         this.rolename = rolename;
+    }
+
+    public Integer getUserstatus() {
+        return userstatus;
+    }
+
+    public void setUserstatus(Integer userstatus) {
+        this.userstatus = userstatus;
     }
 }
