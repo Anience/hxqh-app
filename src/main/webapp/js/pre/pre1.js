@@ -257,8 +257,11 @@ $(function(){
 		    legend: {
 		    	show: true,
 		        orient: 'vertical',
-                /*x: 'left',
-                y: '50px',*/
+                x: 'left',
+                y: '50px',
+                textStyle: {
+                    color:'#9F9FA1'
+                },
 		        data: ['Less 12 hours', '12 hours<yellow<24 hours', 'Red>24 hours']
 		    },
 		    series: [{
@@ -303,7 +306,7 @@ $(function(){
 		            itemStyle: dataStyle3,
 		            data: [{
 		                    value: data3,
-		                    name: 'Red>24 hours”'
+		                    name: 'Red>24 hours'
 		                },
 		                {
 		                    value: 97,

@@ -28,7 +28,7 @@
                 <td>JULY</td>
             </tr>
             <tr>
-                <td>Sasaran Nutu</td>
+                <td>Sasaran Mutu</td>
                 <td colspan="2">MTTI</td>
                 <td colspan="2">TTI Comply</td>
             </tr>
