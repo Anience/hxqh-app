@@ -69,11 +69,11 @@
             </p>
         </div>
     </div>
-    <div class="auth-box" style="background: #fff;">
+    <div class="auth-box" style="background: #fff;height: 410px;">
         <i class="close" @click="close"></i>
         <h4>Infomation</h4>
-        <label v-for="item in modelNoList"><input checked="checked" type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
-        <label v-for="item in modelHaveList"><input name="{{item.modelid}}" type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
+        <label v-for="item in modelNoList"><input  type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
+        <label v-for="item in modelHaveList"><input  type="checkbox" value="{{item.modelid}}" v-model="item.checked"/>{{item.modelname}} </label>
         <p style="width: 300px; margin: 0 auto; clear: both;">
             <button @click="saveModule">Save</button>
             <button @click="close">Cancle</button>

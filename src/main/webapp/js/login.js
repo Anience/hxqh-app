@@ -66,12 +66,12 @@ $(function(){
         if(userName==""){
             $(".forget-tip").text("UserName is required!").show();
             $(".getPwd").css("marginTop",0);
-            return false;
+            return;
         }
         if(emails==""){
             $(".forget-tip").text("Email is required!").show();
             $(".getPwd").css("marginTop",0);
-            return false;
+            return;
         }
         $.ajax({
             url: _ctx+"/system/forget",

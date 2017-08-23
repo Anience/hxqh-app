@@ -64,6 +64,12 @@ $(function () {
                         roleid: item.roleid
                     },
                     success: function (data) {
+                        for(var i=0;i<data.modelNoList.length;i++){
+                            data.modelNoList[i].checked = false;
+                        }
+                        for(var j=0;j<data.modelHaveList.length;j++){
+                            data.modelHaveList[j].checked = true;
+                        }
                         self.modelNoList  = data.modelNoList;
                         self.modelHaveList = data.modelHaveList;
                     },
@@ -135,6 +141,9 @@ $(function () {
                     dataType: "json",
                     success: function (data) {
                         alert(data.message);
+                        $(".box").hide();
+                        $(".mask").hide();
+                        $(".auth-box").hide();
                         window.history.href = _ctx + "/system/roleList";
                     },
                     error: function () {
