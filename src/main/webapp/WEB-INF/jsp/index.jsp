@@ -43,10 +43,10 @@
 				<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>${item.modelname}<i class="first-a-down"></i></a>
 				<ul>
 					<c:forEach items="${item.childList}" var="child">
-						<c:if test="${child.isurl == 1}">
+						<c:if test="${child.isurl == 0}">
 							<li class="menu-list"><a  href=${ctx}/${child.murl} target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz"></span></a></li>
 						</c:if>
-						<c:if test="${child.isurl == 0}">
+						<c:if test="${child.isurl == 1}">
 							<li class="menu-list"><a  href=${child.murl} target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz"></span></a></li>
 						</c:if>
 					</c:forEach>
