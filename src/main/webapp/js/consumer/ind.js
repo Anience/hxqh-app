@@ -36,46 +36,51 @@ $(function(){
     function dealData(data){
         for(var i=0;i<data.length;i++){
             if(data[i].dev<0){
-                data[i].status = 'menang';
+                data[i].status = 'Menang';
             }
             if(data[i].dev==0){
-                data[i].status = 'seri';
+                data[i].status = 'Seri';
             }
             if(data[i].dev>0){
-                data[i].status = 'kalah';
+                data[i].status = 'Kalah';
             }
         }
     }
     function initDom(data){
-        if(data[0].dev>0){
+
+
+        var c = data.length -1 ;
+        if(data[c].dev > 0){
             var  tmpHtml = '<tr><td rowspan="2"></td><td>'
-                +data[0].sh+'</td><td>'
-                +data[0].op+'</td><td>'
-                +data[0].dev+'</td></tr><tr><td>'
-                +data[0].sh1+'</td><td>'
-                +data[0].cl+'</td><td>'
-                +data[0].status+'</td></tr>';
+                +data[c].sh+'</td><td>'
+                +data[c].op+'</td><td style="color: red;">'
+                +data[c].dev+'</td></tr><tr><td>'
+                +data[c].sh1+'</td><td>'
+                +data[c].cl+'</td><td style="color: red;">'
+                +data[c].status+'</td></tr>';
+        }else if(data[c].dev < 0){
+            var  tmpHtml = '<tr><td rowspan="2"></td><td>'
+                +data[c].sh+'</td><td>'
+                +data[c].op+'</td><td style="color: green;">'
+                +data[c].dev+'</td></tr><tr><td>'
+                +data[c].sh1+'</td><td>'
+                +data[c].cl+'</td><td style="color: green;">'
+                +data[c].status+'</td></tr>';
         }else{
             var  tmpHtml = '<tr><td rowspan="2"></td><td>'
-                +data[0].sh+'</td><td>'
-                +data[0].op+'</td><td style="color: red;">'
-                +data[0].dev+'</td></tr><tr><td>'
-                +data[0].sh1+'</td><td>'
-                +data[0].cl+'</td><td style="color: red;">'
-                +data[0].status+'</td></tr>';
+                +data[c].sh+'</td><td>'
+                +data[c].op+'</td><td style="color: yellow;">'
+                +data[c].dev+'</td></tr><tr><td>'
+                +data[c].sh1+'</td><td>'
+                +data[c].cl+'</td><td style="color: yellow;">'
+                +data[c].status+'</td></tr>';
         }
 
-        for(var i=1;i<data.length;i++){
+
+
+        for(var i=0;i<data.length-1;i++){
+
             if(data[i].dev>0){
-                tmpHtml += '<tr><td rowspan="2">'
-                    +data[i].regional+'</td><td>'
-                    +data[i].sh+'</td><td>'
-                    +data[i].op+'</td><td>'
-                    +data[i].dev+'</td></tr><tr><td>'
-                    +data[i].sh1+'</td><td>'
-                    +data[i].cl+'</td><td>'
-                    +data[i].status+'</td></tr>';
-            }else{
                 tmpHtml += '<tr><td rowspan="2">'
                     +data[i].regional+'</td><td>'
                     +data[i].sh+'</td><td>'
@@ -84,8 +89,30 @@ $(function(){
                     +data[i].sh1+'</td><td>'
                     +data[i].cl+'</td><td style="color: red;">'
                     +data[i].status+'</td></tr>';
+            }else if(data[i].dev<0){
+                tmpHtml += '<tr><td rowspan="2">'
+                    +data[i].regional+'</td><td>'
+                    +data[i].sh+'</td><td>'
+                    +data[i].op+'</td><td style="color: green;">'
+                    +data[i].dev+'</td></tr><tr><td>'
+                    +data[i].sh1+'</td><td>'
+                    +data[i].cl+'</td><td style="color: green;">'
+                    +data[i].status+'</td></tr>';
+            }else{
+                tmpHtml += '<tr><td rowspan="2">'
+                    +data[i].regional+'</td><td>'
+                    +data[i].sh+'</td><td>'
+                    +data[i].op+'</td><td style="color: yellow;">'
+                    +data[i].dev+'</td></tr><tr><td>'
+                    +data[i].sh1+'</td><td>'
+                    +data[i].cl+'</td><td style="color: yellow;">'
+                    +data[i].status+'</td></tr>';
             }
         }
+
+
+
+
         return tmpHtml;
     }
     initData();
