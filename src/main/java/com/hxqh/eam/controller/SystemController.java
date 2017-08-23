@@ -54,6 +54,7 @@ public class SystemController {
         Map<String, Object> result = new HashMap<>();
         ModelIndexDto modelIndexDto = systemService.getModelIndex(loginname);
         result.put("modelIndexDto", modelIndexDto);
+        result.put("loginname", loginname);
         return new ModelAndView("index", result);
     }
 
