@@ -19,7 +19,7 @@ $(function(){
                 dataType: "json",
                 success: function(data){
                     if(data.code==1){
-                        window.location.href = _ctx+"/system/index";
+                        window.location.href = _ctx+"/system/index?loginname="+username;
                     }else{
                         if(data.message == "The account does not exist!"){
                             $("p.msg-user").text(data.message).show();
