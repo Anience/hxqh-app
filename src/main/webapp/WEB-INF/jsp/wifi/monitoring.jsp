@@ -31,35 +31,35 @@
 				<td colspan="4" width="7%">H-2 vs H-1</td>
 			</tr>
 			<tr>
-				<td width="7%">P</td>
-				<td width="7%">G</td>
-				<td width="7%">R</td>
-				<td width="7%">T</td>
-
-				<td width="7%">P</td>
-				<td width="7%">G</td>
-				<td width="7%">R</td>
-				<td width="7%">T</td>
-
-				<td width="7%">P</td>
-				<td width="7%">G</td>
-				<td width="7%">R</td>
-				<td width="7%">T</td>
+				<td width="4%">P</td>
+				<td width="4%">G</td>
+				<td width="4%">R</td>
+				<td width="4%">T</td>
 
 				<td width="4%">P</td>
 				<td width="4%">G</td>
 				<td width="4%">R</td>
 				<td width="4%">T</td>
 
-				<td>P</td>
-				<td>G</td>
-				<td>R</td>
-				<td>T</td>
+				<td width="4%">P</td>
+				<td width="4%">G</td>
+				<td width="4%">R</td>
+				<td width="4%">T</td>
 
-				<td>P</td>
-				<td>G</td>
-				<td>R</td>
-				<td>T</td>
+				<td width="4%">P</td>
+				<td width="4%">G</td>
+				<td width="4%">R</td>
+				<td width="4%">T</td>
+
+				<td width="3%">P</td>
+				<td width="3%">G</td>
+				<td width="3%">R</td>
+				<td width="3%">T</td>
+
+				<td width="3%">P</td>
+				<td width="3%">G</td>
+				<td width="3%">R</td>
+				<td width="3%">T</td>
 			</tr>
 			</thead>
 			<tbody></tbody>
