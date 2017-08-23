@@ -14,7 +14,7 @@
 <body>
 <div id="throughput-layout">
 	<div class="throughput-box">
-		<h4>Mobile-Throughput</h4>
+		<h4 style="color: #fff;">Mobile-Throughput</h4>
 		<ul class="nav">
 			<li>JAKARTA</li>
 			<li>SURABAYA</li>
