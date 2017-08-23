@@ -37,3 +37,13 @@
 .mtd-layout table tbody tr td:nth-child(1){
     background: #21223c;
 }
+
+table.monthly thead tr td span.ticket-time{
+    color: rgb(206, 206, 206);
+    font-size: 20px;
+    line-height:82px;
+
+}
+table.monthly thead tr td{
+    background: #21223c;
+}

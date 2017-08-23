@@ -24,8 +24,8 @@
     <table class="monthly">
         <thead>
             <tr>
-                <td colspan="4" style="text-align: left;padding-left: 80px;"> Provisioning-MtD MTTI monitoring per 7 regions</td>
-                <td>JULY</td>
+                <td colspan="3" style="text-align: left;padding-left: 80px;"> Provisioning-MtD MTTI monitoring per 7 regions</td>
+                <td colspan="2"><span class="ticket-time"></span></td>
             </tr>
             <tr>
                 <td>Sasaran Mutu</td>
