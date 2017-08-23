@@ -79,4 +79,6 @@ public interface SystemService {
     int resetPassword(Long loginname);
 
     int sendEmail(String loginname, String email);
+
+    ModelIndexDto getModelIndex(String loginname);
 }

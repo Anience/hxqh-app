@@ -50,9 +50,14 @@ public class SystemController {
      * @return
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index() {
-        return "index";
+    public ModelAndView index(@RequestParam("loginname") String loginname) {
+        Map<String, Object> result = new HashMap<>();
+        ModelIndexDto modelIndexDto = systemService.getModelIndex(loginname);
+        result.put("modelIndexDto", modelIndexDto);
+        return new ModelAndView("index", result);
     }
+
+
 
     /**
      * logoutnonesession 页面跳转接口
@@ -389,7 +394,7 @@ public class SystemController {
     @ResponseBody
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public Message addUser(UserObj account) {
-            Message message = null;
+        Message message = null;
         try {
             int i = systemService.addUser(account, Long.valueOf(account.getRoleid()));
             if (i == 1)
@@ -670,7 +675,7 @@ public class SystemController {
         Message message = null;
         try {
             systemService.roleModel(models, roleid);
-            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
             e.printStackTrace();

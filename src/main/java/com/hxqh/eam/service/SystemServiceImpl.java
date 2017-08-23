@@ -226,6 +226,11 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public void delrole(Long id) {
         if (!(id == 1l)) {
+            TbRole role = roleDao.find(id);
+            List<TbRolemodel> rolemodelList = role.getTbRolemodels();
+            for (TbRolemodel e : rolemodelList) {
+                rolemodelDao.delete(e.getRolemodelid());
+            }
             roleDao.delete(id);
         }
     }
@@ -274,6 +279,13 @@ public class SystemServiceImpl implements SystemService {
         List<TbModel> modelNoList = modelDao.findAll(where, params, null);
         modelNoList.removeAll(modelHaveList);
 
+        for (TbModel e : modelNoList) {
+            e.setTbRolemodels(null);
+        }
+        for (TbModel e : modelHaveList) {
+            e.setTbRolemodels(null);
+        }
+
         return new ModelRoleDto(modelNoList, modelHaveList);
     }
 
@@ -299,7 +311,9 @@ public class SystemServiceImpl implements SystemService {
         String where = "loginname=:loginname and email=:email";
         List<UserObj> accountList = userDao.findAll(where, params, null);
         if (accountList.size() == 1) {
-            accountList.get(0).setUserstatus(0);
+            UserObj userObj = accountList.get(0);
+            userObj.setUserstatus(0);
+            userDao.save(userObj);
             return 1;
         }
         return 0;
@@ -345,6 +359,36 @@ public class SystemServiceImpl implements SystemService {
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public ModelIndexDto getModelIndex(String loginname) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", loginname);
+        String where = "loginname=:loginname ";
+        List<UserObj> userObjList = userDao.findAll(where, params, null);
+        Set<TbModel> modelList = new HashSet<>();
+
+        if (userObjList.size() == 1) {
+            UserObj userObj = userObjList.get(0);
+            List<TbUserrole> tbUserroles = userObj.getTbUserroles();
+
+            List<TbRolemodel> tbRolemodels = new ArrayList<>();
+            for (TbUserrole e : tbUserroles) {
+                tbRolemodels.addAll(e.getTbRole().getTbRolemodels());
+            }
+            for (TbRolemodel e : tbRolemodels) {
+                modelList.add(e.getTbModel());
+            }
+            for (TbModel e : modelList) {
+                e.setTbRolemodels(null);
+            }
+        }
+        //返回子节点信息
+        //TODO
+
+
+        return new ModelIndexDto(modelList);
     }
 
 
