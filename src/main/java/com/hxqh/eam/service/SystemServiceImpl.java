@@ -2,6 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.common.util.GroupListUtil;
+import com.hxqh.eam.common.util.ListSortUtil;
 import com.hxqh.eam.common.util.MailUtils;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
@@ -370,7 +371,7 @@ public class SystemServiceImpl implements SystemService {
         params.put("loginname", loginname);
         String where = "loginname=:loginname ";
         List<UserObj> userObjList = userDao.findAll(where, params, null);
-        Set<TbModel> modelList = new HashSet<>();
+        Set<TbModel> modelList = new LinkedHashSet<>();
 
         if (userObjList.size() == 1) {
             UserObj userObj = userObjList.get(0);
@@ -397,14 +398,23 @@ public class SystemServiceImpl implements SystemService {
 
             List<TbModel> childlList = modelDao.findAll(w, p, null);
             for (TbModel ele : childlList) {
-                if (ele.getMurl()!=null) {
+                if (ele.getMurl() != null) {
                     String s = ele.getMurl().replaceAll("#", "&");
                     ele.setMurl(s);
                 }
             }
             e.setChildList(childlList);
         }
-        return new ModelIndexDto(modelList);
+        List<TbModel> mList = new LinkedList<>();
+        for (TbModel e : modelList) {
+            mList.add(e);
+        }
+        //modelList排序
+        ListSortUtil<TbModel> sortList = new ListSortUtil<TbModel>();
+        sortList.sort(mList, "sortnum", "asc");
+
+
+        return new ModelIndexDto(mList);
     }
 
 

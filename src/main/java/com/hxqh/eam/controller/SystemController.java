@@ -58,7 +58,6 @@ public class SystemController {
     }
 
 
-
     /**
      * logoutnonesession 页面跳转接口
      *
@@ -675,7 +674,7 @@ public class SystemController {
         Message message = null;
         try {
             systemService.roleModel(models, roleid);
-            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+            message = new Message(IConstants.SUCCESS, IConstants.AUTHORIZATIONSUCCESS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.DELETEFAIL);
             e.printStackTrace();
