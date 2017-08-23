@@ -384,10 +384,16 @@ public class SystemServiceImpl implements SystemService {
                 e.setTbRolemodels(null);
             }
         }
-        //返回子节点信息
-        //TODO
 
+        //返回子节点信息, 并打包到父节点下
+        for (TbModel e : modelList) {
+            Map<String, Object> p = new HashMap<>();
+            p.put("parentid", e.getModelid());
+            String w = "parentid=:parentid ";
 
+            List<TbModel> childlList = modelDao.findAll(w, p, null);
+            e.setChildList(childlList);
+        }
         return new ModelIndexDto(modelList);
     }
 

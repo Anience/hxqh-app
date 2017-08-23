@@ -17,7 +17,7 @@ public class TbModel implements Serializable {
     @Id
     @SequenceGenerator(name = "TB_MODEL_MODELID_GENERATOR", allocationSize = 1, sequenceName = "SEQ_MODEL")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_MODEL_MODELID_GENERATOR")
-    private long modelid;
+    private Long modelid;
 
     private Integer ismdeol;
 
@@ -27,7 +27,7 @@ public class TbModel implements Serializable {
 
     private BigDecimal modelstatus;
 
-    private BigDecimal parentid;
+    private Long parentid;
 
     private String remark;
 
@@ -39,7 +39,18 @@ public class TbModel implements Serializable {
     @OneToMany(mappedBy = "tbModel")
     private List<TbRolemodel> tbRolemodels;
 
+    @Transient
+    private List<TbModel> childList;
+
     public TbModel() {
+    }
+
+    public List<TbModel> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<TbModel> childList) {
+        this.childList = childList;
     }
 
     public List<TbRolemodel> getTbRolemodels() {
@@ -50,12 +61,20 @@ public class TbModel implements Serializable {
         this.tbRolemodels = tbRolemodels;
     }
 
-    public long getModelid() {
-        return this.modelid;
+    public Long getModelid() {
+        return modelid;
     }
 
-    public void setModelid(long modelid) {
+    public void setModelid(Long modelid) {
         this.modelid = modelid;
+    }
+
+    public Long getParentid() {
+        return parentid;
+    }
+
+    public void setParentid(Long parentid) {
+        this.parentid = parentid;
     }
 
     public Integer getIsmdeol() {
@@ -88,14 +107,6 @@ public class TbModel implements Serializable {
 
     public void setModelstatus(BigDecimal modelstatus) {
         this.modelstatus = modelstatus;
-    }
-
-    public BigDecimal getParentid() {
-        return this.parentid;
-    }
-
-    public void setParentid(BigDecimal parentid) {
-        this.parentid = parentid;
     }
 
     public String getRemark() {

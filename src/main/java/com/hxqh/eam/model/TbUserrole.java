@@ -14,28 +14,28 @@ public class TbUserrole implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name="TB_USERROLE_USERROLEID_GENERATOR", allocationSize = 1,sequenceName="SEQ_USERROLE")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_USERROLE_USERROLEID_GENERATOR")
-    private BigDecimal userroleid;
+    @SequenceGenerator(name = "TB_USERROLE_USERROLEID_GENERATOR", allocationSize = 1, sequenceName = "SEQ_USERROLE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_USERROLE_USERROLEID_GENERATOR")
+    private Long userroleid;
 
     //bi-directional many-to-one association to RoleObj
     @ManyToOne
-    @JoinColumn(name="ROLEID")
+    @JoinColumn(name = "ROLEID")
     private TbRole tbRole;
 
     //bi-directional many-to-one association to UserObj
     @ManyToOne
-    @JoinColumn(name="USERID")
+    @JoinColumn(name = "USERID")
     private UserObj tbUser;
 
     public TbUserrole() {
     }
 
-    public BigDecimal getUserroleid() {
-        return this.userroleid;
+    public Long getUserroleid() {
+        return userroleid;
     }
 
-    public void setUserroleid(BigDecimal userroleid) {
+    public void setUserroleid(Long userroleid) {
         this.userroleid = userroleid;
     }
 
