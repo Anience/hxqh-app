@@ -70,5 +70,13 @@ table tbody tr td.font-blue{
     color: #055FCF;
 }
 
+ticket-time{
+    color: #fff;
+    font-size: 18px;
+    height: 30px;
+    display: block;
+
+}
+
 
 
