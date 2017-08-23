@@ -56,7 +56,7 @@ public interface SystemService {
 
     void editrole(TbRole account);
 
-    void addrole(TbRole account);
+    int addrole(TbRole account);
 
     void delrole(Long id);
 

@@ -59,4 +59,14 @@ public class TbRolemodel implements Serializable {
     public void setTbRole(TbRole tbRole) {
         this.tbRole = tbRole;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TbRolemodel{");
+        sb.append("rolemodelid=").append(rolemodelid);
+        sb.append(", tbModel=").append(tbModel);
+        sb.append(", tbRole=").append(tbRole);
+        sb.append('}');
+        return sb.toString();
+    }
 }

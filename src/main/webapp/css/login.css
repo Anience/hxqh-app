@@ -313,3 +313,11 @@ button.getPwd{
 	font-family: Arial Narrow;
 	margin-top: 20px;
 }
+.forget-tip{
+	color:red;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	display: none;
+	font-size: 18px;
+}

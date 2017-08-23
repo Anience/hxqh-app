@@ -107,8 +107,8 @@ public class MobileServiceImpl implements MobileService {
                             df.format(orange).trim(),
                             df.format(red).trim());
                 } else {
-                    if(green>1)
-                        green=green-1;
+                    if (green > 1)
+                        green = green - 1;
                     vMob92 = new Mob92PercentDto(df.format(green).trim(),
                             mob92.getTreg(),
                             df.format(orange).trim(),
@@ -238,7 +238,16 @@ public class MobileServiceImpl implements MobileService {
         for (int i = 0; i < root7List.size(); i++) {
             List<TbIocMobileBackhaulTtc> backhaulTtcs2 = new LinkedList<>();
             backhaulTtcs2.add(root7List.get(i));
-            backhaulTtcs2.addAll(treeMenuList(allNode, root7List.get(i)));
+
+            List<TbIocMobileBackhaulTtc> twoLevelList = treeMenuList(allNode, root7List.get(i));
+            backhaulTtcs2.addAll(twoLevelList);
+            //增加二级节点所有孩子节点至backhaulTtcs2集合中
+            for (TbIocMobileBackhaulTtc e : twoLevelList) {
+                List<TbIocMobileBackhaulTtc> tbIocMobileBackhaulTtcs = new LinkedList<>();
+                tbIocMobileBackhaulTtcs = treeMenuList(allNode, e);
+                backhaulTtcs2.addAll(tbIocMobileBackhaulTtcs);
+            }
+
             map.put(root7List.get(i).getTitle(), backhaulTtcs2);
         }
 

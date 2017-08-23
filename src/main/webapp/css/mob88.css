@@ -21,3 +21,12 @@
 #mob88 table tbody tr td{
     color: #8D93A8;
 }
+.data-tip{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: #fff;
+    background: #8D93A8;
+    padding: 10px;
+    font-size: 16px;
+}

@@ -272,13 +272,14 @@ public class AnoServiceImpl implements AnoService {
         //求和放入map中
         Map<String, TbIocConsSrMoning> sumMap = new LinkedHashMap<>();
         for (Map.Entry<String, List<TbIocConsSrMoning>> map : listMap.entrySet()) {
-            TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l);
+            TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l,0l);
             for (TbIocConsSrMoning ele : map.getValue()) {
                 sum.setA(sum.getA() + ele.getA());
                 sum.setB(sum.getB() + ele.getB());
                 sum.setC(sum.getC() + ele.getC());
                 sum.setD(sum.getD() + ele.getD());
                 sum.setE(sum.getE() + ele.getE());
+                sum.setF(sum.getF() + ele.getF());
                 sum.setTtl(sum.getTtl() + ele.getTtl());
             }
             sumMap.put(map.getKey(), sum);
