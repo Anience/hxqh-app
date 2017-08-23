@@ -49,6 +49,8 @@ $(function(){
            loginAction();
     });
     $(".forgot").click(function(){
+        $(".forget-tip").text("").hide();
+        $(".getPwd").css("marginTop",20);
         $(".mask").show();
         $(".forget-box").show();
     });
@@ -59,31 +61,35 @@ $(function(){
         $(".user-name").val("");
     });
     $(".getPwd").click(function(){
+        var emails = $(".user-email").text().trim();
+        var userName =  $(".user-name").text().trim();
+        if(userName==""){
+            $(".forget-tip").text("UserName is required!").show();
+            $(".getPwd").css("marginTop",0);
+            return false;
+        }
+        if(emails==""){
+            $(".forget-tip").text("Email is required!").show();
+            $(".getPwd").css("marginTop",0);
+            return false;
+        }
         $.ajax({
-            url: _ctx+"/system/login",
-            method: "post",
+            url: _ctx+"/system/forget",
+            method: "get",
             data: {
-                name : username,
-                password  : pwd
+                loginname : userName,
+                email  : emails
             },
             dataType: "json",
             success: function(data){
-                if(data.code==1){
-                    window.location.href = _ctx+"/system/index";
-                }else{
-                    if(data.message == "The account does not exist!"){
-                        $("p.msg-user").text(data.message).show();
-                    }
-                    if(data.message == "Password authentication error!"){
-                        $("p.msg-pwd").text(data.message).show();
-                    }
-                }
+                $(".forget-tip").text(data.message).show();
+                $(".getPwd").css("marginTop",0);
             },
             error: function(){
 
             }
         })
-        $(".mask").hide();
-        $(".forget-box").hide();
+        /*$(".mask").hide();
+        $(".forget-box").hide();*/
     });
 });
