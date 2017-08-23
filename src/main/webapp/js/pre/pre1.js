@@ -6,6 +6,20 @@ $(function(){
 			method: "get",
 			dataType: "json",
 			success: function (data) {
+                var d = new Date();
+                var years = d.getFullYear();
+                var month = add_zero(d.getMonth()+1);
+                var days = add_zero(d.getDate());
+                var hours = add_zero(d.getHours());
+                var minutes = add_zero(d.getMinutes());
+                var second=add_zero(d.getSeconds());
+                var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
+                function add_zero(temp) {
+                    if(temp<10) return "0"+temp;
+                    else return temp;
+                }
+                var time ='Last Update:'+ nowTime;
+                $('.ticket-time').text(time);
 				var data1 = [];
 				var legend1 = [];
 				var tit1 = "Today’s Status WO on FFM";
@@ -51,7 +65,7 @@ $(function(){
 				initEPie("echart21",tit21,data21,legend2,false);
 				initEPie("echart22",tit22,data22,legend2,true);
 
-				var tit4 = "Time Achievement ofWO on FFM（weekly）";
+				var tit4 = "Time Achievement of WO on FFM（weekly）";
 				var echartData4 = data.arcList;
 				initE("echart4",tit4,echartData4[0].jumlah,echartData4[1].jumlah,echartData4[2].jumlah)
 			},
@@ -243,8 +257,8 @@ $(function(){
 		    legend: {
 		    	show: true,
 		        orient: 'vertical',
-		        x: 'top',
-		        y: 'right',
+                /*x: 'left',
+                y: '50px',*/
 		        data: ['Less 12 hours', '12 hours<yellow<24 hours', 'Red>24 hours']
 		    },
 		    series: [{
