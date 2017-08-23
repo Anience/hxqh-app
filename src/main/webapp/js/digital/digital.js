@@ -22,18 +22,22 @@ $(function () {
                    var target = parseFloat(data[n]["ioc3"].toString().replace(',',''));
                    var real1 = parseFloat(data[n]["ioc10"].toString().replace(',',''));
                    var target1 = parseFloat(data[n]["ioc9"].toString().replace(',',''));
+                   alert(real+"----" +target+"~~"+real1+"--"+target1);
                    if(real>target){
+                       alert("111");
                        initEchart(domName1+n,real);
                    }else{
+
                        var data1 = real/target;
-                       var data2 = target-real/target;
+                       var data2 = (target-real)/target;
                        initEchart(domName1+n,data1,data2);
                    }
                    if(real1>target1){
+
                        initEchart(domName2+n,real1);
                    }else{
                        var data3 = real1/target1;
-                       var data4 = target1-real1/target1;
+                       var data4 = (target1-real1)/target1;
                        initEchart(domName2+n,data3,data4);
                    }
                }
