@@ -98,6 +98,23 @@ $(function () {
                 $(".box").hide();
                 $(".mask").hide();
             },
+            reset:function(item){
+                $.ajax({
+                    url: _ctx+"/system/resetPassword",
+                    method: "get",
+                    dataType: "json",
+                    data: {
+                        userid:item.id
+                    },
+                    success: function (data) {
+                        alert(data.message);
+                        window.location.href = _ctx+"/system/userList";
+                    },
+                    error: function () {
+
+                    }
+                });
+            },
             save:function(){
                 var self = this;
                 var tmpUrl = '';

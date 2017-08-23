@@ -45,7 +45,7 @@
                 <td>
                     <button class="btn" @click="edit(item)">edit</button>
                     <button class="btn" @click="del(item)">del</button>
-                    <button class="btn" v-show="item.userState" @click="reset(item)">reset</button>
+                    <button class="btn" v-show="!!!item.userstatus" @click="reset(item)">reset</button>
                 </td>
             </tr>
         </tbody>
