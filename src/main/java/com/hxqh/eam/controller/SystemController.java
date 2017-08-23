@@ -388,10 +388,10 @@ public class SystemController {
     @ResponseBody
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public Message addUser(UserObj account) {
-        Message message = null;
+            Message message = null;
         try {
             int i = systemService.addUser(account, Long.valueOf(account.getRoleid()));
-            if(i==1)
+            if (i == 1)
                 message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
             else
                 message = new Message(IConstants.SUCCESS, IConstants.USEREXISTS);
@@ -448,6 +448,7 @@ public class SystemController {
     public List<TbRole> roleListData() {
         List<TbRole> roleDto = systemService.getRoleListData();
         for (TbRole e : roleDto) {
+            e.setTbRolemodels(null);
             e.setTbUserroles(null);
         }
         return roleDto;
@@ -500,8 +501,11 @@ public class SystemController {
     public Message addrole(TbRole account) {
         Message message = null;
         try {
-            systemService.addrole(account);
-            message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+            int i = systemService.addrole(account);
+            if (i == 1)
+                message = new Message(IConstants.SUCCESS, IConstants.ADDSUCCESS);
+            else
+                message = new Message(IConstants.SUCCESS, IConstants.ROLEEXISTS);
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.ADDFAIL);
             e.printStackTrace();

@@ -186,6 +186,10 @@ public class SystemServiceImpl implements SystemService {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("sortnum", "asc");
         List<TbModel> modelList = modelDao.findAll(null, null, orderby);
+        for (TbModel model : modelList) {
+            model.setTbRolemodels(null);
+        }
+
         //对modelList分组
         Map<Integer, List<TbModel>> listMap = GroupListUtil.group(modelList, new GroupListUtil.GroupBy<Integer>() {
             @Override
@@ -204,13 +208,26 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public void addrole(TbRole account) {
+    public int addrole(TbRole account) {
+        //如果loginname重复不添加
+        Map<String, Object> params = new HashMap<>();
+        params.put("rolename", account.getRolename());
+        String where = "rolename=:rolename ";
+        List<TbRole> roleList = roleDao.findAll(where, params, null);
+        if (roleList.size() > 0) {
+            return 0;
+        }
+        // 写TB_Role表
+        account.setSortnum(new BigDecimal(1));
         roleDao.save(account);
+        return 1;
     }
 
     @Override
     public void delrole(Long id) {
-        roleDao.delete(id);
+        if (!(id == 1l)) {
+            roleDao.delete(id);
+        }
     }
 
     @Override
@@ -348,8 +365,7 @@ public class SystemServiceImpl implements SystemService {
         params.put("loginname", account.getLoginname());
         String where = "loginname=:loginname ";
         List<UserObj> accountList = userDao.findAll(where, params, null);
-        if(accountList.size()>0)
-        {
+        if (accountList.size() > 0) {
             return 0;
         }
         // 写TB_USER表
