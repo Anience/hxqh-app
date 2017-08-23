@@ -13,6 +13,10 @@
 </head>
 <body>
 <div class="wifiId-layout">
+	<div class="mytitle" >
+		<h3>SR View</h3>
+		<span class="ticket-time"></span>
+	</div>
 	<div class="left" id="echart1"></div>
 	<div class="right">
 		<div class="scoll-nav">
@@ -40,6 +44,7 @@
 		<div class="item" id="echart2"></div>
 		<div class="item" id="echart3"></div>
 		<div class="item" id="echart4"></div>
+		<span class="ket">Ket:</br>A<=24jam， B=24-48jam， C=48-72jam， D=72jam-7hari， E=7hari-30hari，  F＞30hari</span>
 	</div>
 	<div class="clearfix"></div>
 </div>

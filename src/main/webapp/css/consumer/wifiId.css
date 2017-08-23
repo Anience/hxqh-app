@@ -8,7 +8,7 @@
   height: 80%;
   background: #0A0F25;
   float: left;
-  margin-top: 5%;
+  margin-top: 3%;
   margin-left: 2%;
 }
 .wifiId-layout .right{
@@ -16,7 +16,7 @@
   height: 80%;
   background: #0A0F25;
   float: right;
-  margin-top: 5%;
+  margin-top: 3%;
   margin-right: 2%;
 }
 .right .scoll-nav{
@@ -26,7 +26,7 @@
 }
 .right .item{
   width: 100%;
-  height: 30%;
+  height: 28%;
 }
 ul.first-nav{
   margin-top: 10px;
@@ -67,4 +67,43 @@ span.radius{
 }
 span.radius:hover{
   background: #4a476a;
+}
+
+.wifiId-layout .mytitle{
+  padding-left: 130px;
+  width: 100%;
+  height: 6%;
+  padding-top: 40px;
+
+}
+
+.wifiId-layout .mytitle h3{
+  color: #fff;
+  display : inline;
+  font-size: 30px;
+  height: 50px;
+  width: 120px;
+  line-height: 50px;
+  font-family: microsoft yahei,heiti;
+  font-weight: normal;
+  float: left;
+}
+
+.wifiId-layout .mytitle span.ticket-time{
+
+  color: #FFFFFF;
+  font-size: 20px;
+  height:20px;
+  width: 300px;
+  line-height:20px;
+  display: block;
+  float:right;
+  margin-top: 26px;
+  margin-right: 200px;
+}
+.ket{
+  width: 30%;
+  height: 6%;
+  color: #ffffff;
+  font-size: 16px;
 }

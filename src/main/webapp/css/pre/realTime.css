@@ -12,6 +12,8 @@
     height: 136px;
     line-height: 136px;
     padding-left: 3%;
+    display : inline;
+    float: left;
 }
 .item{
     margin-left: 3%;
@@ -49,4 +51,15 @@
     float: left;
     width: 50%;
     height: 100%;
+}
+.pre1-layout span.ticket-time{
+    color:rgb(206, 206, 206);
+    font-size: 20px;
+    height:76px;
+    width: 300px;
+    line-height:20px;
+    display: block;
+    float:right;
+    margin-top: 60px;
+    margin-right: 100px;
 }
