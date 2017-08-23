@@ -18,14 +18,14 @@
 	<div class="mob-layout" id="mob88">
 		<div class="row">
 			<div class="col-sm-1"></div>
-			<div class="col-sm-4">
+			<div class="col-sm-4" style=" padding-top: 65px; padding-left: 0px;">
 				<h4>Performance</h4>
 				<table class="table table-bordered" id="mob88-data">
 					<thead>
 						<tr>
 							<td width="200px;"></td>
 							<td width="100px;">SCR:</td>
-							<td width="100px;">PDP-SR:</td>
+							<td width="120px;">PDP-SR:</td>
 						</tr>
 					</thead>
 					<tbody></tbody>
