@@ -363,6 +363,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public ModelIndexDto getModelIndex(String loginname) {
+//        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+//        orderby.put("modelid", "asc");
+
         Map<String, Object> params = new HashMap<>();
         params.put("loginname", loginname);
         String where = "loginname=:loginname ";
@@ -381,6 +384,7 @@ public class SystemServiceImpl implements SystemService {
                 modelList.add(e.getTbModel());
             }
             for (TbModel e : modelList) {
+                //#修改为&
                 e.setTbRolemodels(null);
             }
         }
@@ -392,6 +396,12 @@ public class SystemServiceImpl implements SystemService {
             String w = "parentid=:parentid ";
 
             List<TbModel> childlList = modelDao.findAll(w, p, null);
+            for (TbModel ele : childlList) {
+                if (ele.getMurl()!=null) {
+                    String s = ele.getMurl().replaceAll("#", "&");
+                    ele.setMurl(s);
+                }
+            }
             e.setChildList(childlList);
         }
         return new ModelIndexDto(modelList);
