@@ -326,6 +326,7 @@ public class SystemServiceImpl implements SystemService {
         //重置密码 初始密码123456
         String password = Account.encrypt("123456");
         userObj.setLoginpassword(password);
+        userObj.setUserstatus(1);
         userDao.save(userObj);
         //发送邮件
         if (userObj.getLoginname() != null && userObj.getEmail() != null) {

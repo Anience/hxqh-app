@@ -730,7 +730,7 @@ public class SystemController {
         Message message = null;
         try {
             int i = systemService.resetPassword(userid);
-            message = new Message(IConstants.SUCCESS, IConstants.DELETESUCCESS);
+            message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
 
         } catch (Exception e) {
             message = new Message(IConstants.FAIL, IConstants.OPFAIL);
