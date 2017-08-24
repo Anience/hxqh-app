@@ -115,13 +115,19 @@ $(function(){
                 {
                     name: 'mttr',
                     type: 'bar',
-                    barWidth:'20',
+                    barWidth:'30',
                     itemStyle:{
                         normal:{
                             color: '#4B476A',
                             barBorderColor: '#4B476A',
                             barBorderWidth: 6,
-                            barBorderRadius:0
+                            barBorderRadius:0,
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
                         }
                     },
                     data: echartData
