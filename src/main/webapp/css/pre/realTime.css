@@ -5,7 +5,17 @@
     height: 100%;
     min-height: 1080px;
 }
-.pre1-layout h4{
+.pre1-layout .mycontent{
+    width: 94%;
+    height: 920px;
+}
+.pre1-layout .mytitle{
+    width:94%;
+    height: 136px;
+
+}
+
+.pre1-layout .mytitle h4{
     font-size: 36px;
     font-family: "Arial";
     color: rgb(206, 206, 206);
@@ -52,14 +62,13 @@
     width: 50%;
     height: 100%;
 }
-.pre1-layout span.ticket-time{
+.pre1-layout .mytitle span.ticket-time{
     color:rgb(206, 206, 206);
     font-size: 20px;
-    height:76px;
     width: 300px;
     line-height:20px;
     display: block;
     float:right;
     margin-top: 60px;
-    margin-right: 100px;
+   margin-right: 60px;
 }
