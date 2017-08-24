@@ -95,7 +95,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public UserDto getUserListData() {
-        String sql = "select distinct (t1.userid) as id, t1.loginname as name, t3.rolename,t1.userstatus as userstatus\n" +
+        String sql = "select distinct (t1.userid) as id, t1.loginname as name, t3.rolename,t3.roleid,t1.userstatus as userstatus\n" +
                 "  from TB_USER t1\n" +
                 "  left join tb_userrole t2\n" +
                 "    on t1.userid = t2.userid\n" +

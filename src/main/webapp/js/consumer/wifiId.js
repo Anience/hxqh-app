@@ -31,7 +31,7 @@ $(function(){
 				var i = 0;
 				var timer = setInterval(function(){
 					i++;
-					if(i>=9){
+					if(i>=8){
 						i=0;
 					}else{
 						var index= i;
@@ -45,7 +45,8 @@ $(function(){
 						$(liNav2).css("backgroundColor","#0a0f25");
 						$(thisLi2).css("backgroundColor","#4a476a");
 
-						var indexName = dataOrder[i];
+						var indexName = dataOrder[i-1];
+
 						initEScale("echart2",scale[indexName].Platinum,scaleName,'PLATINUM');
 						initEScale("echart3",scale[indexName].Gold,scaleName,'TITANNIUM&GOLD');
 						initEScale("echart4",scale[indexName].Silver,scaleName,'SILVER');
