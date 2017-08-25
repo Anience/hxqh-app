@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="team-roster">
-    <h3>Team Roster-01/07/2017</h3>
+    <h3 class="ticket-time"></h3>
     <ul>
         <li>HSI</li>
         <li>TELEPHONY</li>
@@ -36,7 +36,7 @@
                 <td>No</td>
                 <td>ID</td>
                 <td>NAME</td>
-                <td>PLEA</td>
+                <td>Group</td>
                 <td>DUTY TIME</td>
             </tr>
             </thead>
@@ -49,7 +49,7 @@
                 <td>No</td>
                 <td>ID</td>
                 <td>NAME</td>
-                <td>PLEA</td>
+                <td>Group</td>
                 <td>DUTY TIME</td>
             </tr>
             </thead>
@@ -62,7 +62,7 @@
                 <td>No</td>
                 <td>ID</td>
                 <td>NAME</td>
-                <td>PLEA</td>
+                <td>Group</td>
                 <td>DUTY TIME</td>
             </tr>
             </thead>

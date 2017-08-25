@@ -14,6 +14,7 @@
     font-size: 30px;
     font-family: 'Arial';
 }
+
 ul{
     display: block;
     width: 600px;
@@ -40,6 +41,9 @@ div.table-layout table{
     width: 32%;
     float: left;
     margin-left: 1%;
+}
+div.table-layout table thead td{
+    background: #1F3E50;
 }
 div.table-layout table td{
     color: #fff;
