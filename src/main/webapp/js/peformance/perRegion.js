@@ -155,7 +155,7 @@ $(function(){
                 {
                     name: 'mttr',
                     type: 'bar',
-                    barWidth:'20',
+                    barWidth:'25',
                     itemStyle:{
                         normal:{
                             color: '#4B476A',
