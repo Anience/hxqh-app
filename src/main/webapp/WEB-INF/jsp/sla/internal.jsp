@@ -20,6 +20,9 @@
     <div class="dig-layout">
         <table class="dig-13" id="internal-data">
             <thead>
+            <tr>
+                <td colspan="14" class="mytitle">SLA - NITS</td>
+            </tr>
                 <tr>
                     <td rowspan="3">OPERATIONAL</td>
                     <td rowspan="3">UNIT</td>
