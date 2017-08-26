@@ -37,7 +37,13 @@ $(function(){
                	   var tmpHtml = '<tr><td></td><td>'+tableName[i]+'</td>';
                	   var data = dealedData[i];
                	   for(var j=0;j<data.length;j++){
-                       tmpHtml+='<td>'+data[j]+'</td>';
+               	   	  var tdHtml='';
+               	   	  if(parseFloat(data[j])<100){
+                          tdHtml='<td style="color: red">'+data[j]+'</td>';
+					  }else {
+                          tdHtml= '<td>' + data[j] + '</td>';
+                      }
+                       tmpHtml+=tdHtml
 				   }
 				   tmpHtml+='</tr>';
 				   htmls+=tmpHtml;
@@ -60,9 +66,9 @@ function initELine(domId,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			    backgroundColor: '#0A0F25',
-			    color:['#4a476a','#6b6082','#9f5b72','#ef7d58','#e8b46f','#787388'],
-			    color: ['#4a476a', '#d46e87'],
-			    tooltip: {
+			    color:['#4a476a','#FF7F50','#32CD32','#e9e857','#4019d3','#e99c1a'],
+
+                    tooltip: {
 			        trigger: 'axis'
 			    },
 			    legend: {
