@@ -53,18 +53,18 @@
                 <tr v-for="item in dataList">
                     <td>{{item.type2}}</td>
                     <td>{{item.unit}}</td>
-                    <td>{{item.target1}}</td>
-                    <td>{{item.real1}}</td>
-                    <td>{{item.ach1}}</td>
-                    <td>{{item.amountOutlook1}}</td>
-                    <td>{{item.achOutlook1}}</td>
-                    <td>{{item.mom}}</td>
-                    <td>{{item.target2}}</td>
-                    <td>{{item.real2}}</td>
-                    <td>{{item.ach2}}</td>
-                    <td>{{item.amountOutlook2}}</td>
-                    <td>{{item.achOutlook2}}</td>
-                    <td>{{item.yoy}}</td>
+                    <td>{{toDecimal(item.target1)}}</td>
+                    <td>{{toDecimal(item.real1)}}</td>
+                    <td>{{toPercent(item.ach1)}}</td>
+                    <td>{{toDecimal(item.amountOutlook1)}}</td>
+                    <td>{{toPercent(item.achOutlook1)}}</td>
+                    <td>{{toDecimal(item.mom)}}</td>
+                    <td>{{toDecimal(item.target2)}}</td>
+                    <td>{{toDecimal(item.real2)}}</td>
+                    <td>{{toPercent(item.ach2)}}</td>
+                    <td>{{toDecimal(item.amountOutlook2)}}</td>
+                    <td>{{toPercent(item.achOutlook2)}}</td>
+                    <td>{{toDecimal(item.yoy)}}</td>
                 </tr>
             </tbody>
         </table>
