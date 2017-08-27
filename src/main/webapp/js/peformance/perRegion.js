@@ -1,5 +1,5 @@
 $(function(){
-	function init(){
+    function init(){
         $.ajax({
             url: _ctx+"/sla/viewperregionData",
             method: "get",
@@ -15,69 +15,70 @@ $(function(){
                     'TREG-6':[],
                     'TREG-7':[],
                     'NAS':[]
-				};
-                month.forEach(function(el){
-                	var tmpData = data['fmap'][el];
-                	for(var i=0;i<tmpData.length;i++){
-                       switch(tmpData[i]['regional']){
-                           case 'TREG-1':
-                               datas['TREG-1'].push(tmpData[i]['mttr']);
-                               break;
-						   case 'TREG-2':
-							   datas['TREG-2'].push(tmpData[i]['mttr']);
-							   break;
-                           case 'TREG-3':
-                               datas['TREG-3'].push(tmpData[i]['mttr']);
-                               break;
-                           case 'TREG-4':
-                               datas['TREG-4'].push(tmpData[i]['mttr']);
-                               break;
-                           case 'TREG-5':
-                               datas['TREG-5'].push(tmpData[i]['mttr']);
-                               break;
-                           case 'TREG-6':
-                               datas['TREG-6'].push(tmpData[i]['mttr']);
-                               break;
-                           case 'TREG-7':
-                               datas['TREG-7'].push(tmpData[i]['mttr']);
-                               break;
-						   default:
-                               datas['NAS'].push(tmpData[i]['mttr']);
-                               break;
-					   }
-					}
-                    initEchart("echart1",datas['NAS']);
-                    initEchart("echart2",datas['TREG-1']);
-                    //轮播图
-					var j = 0;
-                    setInterval(function(){
-                        j++;
-                        if(j>=8){
-                            j=0;
-                        }else{
-                            var index= j;
-                            var liNav = '.first-nav li';
-                            var thisLi = '.first-nav li:nth-child('+index+')';
-                            $(liNav).css("color","#727386");
-                            $(thisLi).css("color","#fff");
-
-                            var liNav2 = '.sec-nav li'+' span';
-                            var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
-                            $(liNav2).css("backgroundColor","#0a0f25");
-                            $(thisLi2).css("backgroundColor","#4a476a");
-
-                            var objName = 'TREG-'+j;
-                            initEchart("echart2",datas[objName]);
+                };
+                month.forEach(function(el) {
+                    var tmpData = data['fmap'][el];
+                    for (var i = 0; i < tmpData.length; i++) {
+                        switch (tmpData[i]['regional']) {
+                            case 'TREG-1':
+                                datas['TREG-1'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-2':
+                                datas['TREG-2'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-3':
+                                datas['TREG-3'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-4':
+                                datas['TREG-4'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-5':
+                                datas['TREG-5'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-6':
+                                datas['TREG-6'].push(tmpData[i]['mttr']);
+                                break;
+                            case 'TREG-7':
+                                datas['TREG-7'].push(tmpData[i]['mttr']);
+                                break;
+                            default:
+                                datas['NAS'].push(tmpData[i]['mttr']);
+                                break;
                         }
-                    },5000);
-				});
+                    }
+                });
+                initEchart("echart1",datas['NAS']);
+                initEchart("echart2",datas['TREG-1']);
+                //轮播图
+                var j = 0;
+                setInterval(function(){
+                    j++;
+                    if(j>=8){
+                        j=0;
+                    }else{
+                        var index= j;
+                        var liNav = '.first-nav li';
+                        var thisLi = '.first-nav li:nth-child('+index+')';
+                        $(liNav).css("color","#727386");
+                        $(thisLi).css("color","#fff");
+
+                        var liNav2 = '.sec-nav li'+' span';
+                        var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+                        $(liNav2).css("backgroundColor","#0a0f25");
+                        $(thisLi2).css("backgroundColor","#4a476a");
+
+                        var objName = 'TREG-'+j;
+                        initEchart("echart2",datas[objName]);
+                    }
+                },5000);
+
             },
             error: function () {
 
             }
         });
-	}
-	init();
+    }
+    init();
     function initEchart(domId,echartData) {
         var myChart = echarts.init(document.getElementById(domId));
         option = {
