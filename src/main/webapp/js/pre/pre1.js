@@ -62,7 +62,7 @@ $(function(){
 				data22[0].value = pieMap[2].jumlah;
 				data22[1].value = pieMap[3].jumlah;
 				var tit22 = "SA";
-				initEPie("echart21",tit21,data21,legend2,false);
+				initEPie("echart21",tit21,data21,legend2,true);
 				initEPie("echart22",tit22,data22,legend2,true);
 
 				var tit4 = "Time Achievement of WO on FFM（weekly）";

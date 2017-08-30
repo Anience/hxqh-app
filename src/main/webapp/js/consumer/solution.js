@@ -65,6 +65,13 @@ $(function(){
 			            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 			        }
 			    },
+                legend: {
+                    show: true,
+                    name:"Call Attempt",
+                    x: 'right',
+                    y: '40px',
+					data: [{name: 'answM',icon : 'line'},{name: 'seizM',icon:'bar'}]
+                },
 			    calculable : true,
 			    grid:{
 			        borderWidth: 1,
