@@ -11,7 +11,9 @@ $(function(){
         map.addLayer(mapnik);
         map.setCenter(new OpenLayers.LonLat(115.269, -0.286)
             .transform(fromProjection, toProjection), 6.5);
+        initLines(map, fromProjection, toProjection);
         initAllPoints(map, fromProjection, toProjection);
+
         initTable();
         //事件绑定
         $("#bottom-table").on("click","td",function(){
@@ -33,6 +35,7 @@ $(function(){
                 },
                 dataType: "json",
                 success: function(data){
+
                     initPoints(data,map,fromProjection, toProjection);
                 },
                 error: function(){
@@ -57,6 +60,7 @@ $(function(){
     function initPoints(pointDatas,map, fromProjection, toProjection){
         var size = new OpenLayers.Size(21, 25);
         var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
+
         var lineLayers = map.getLayersByName(new RegExp("Markers", ""));
         for ( var t = 0; t < lineLayers.length; t++) {
             map.removeLayer(lineLayers[t]);
@@ -101,8 +105,9 @@ $(function(){
                 + i + ".hide();}); ");
             eval("markers.addMarker(marker);");
         }
+
         map.addLayer(markers,{zoomOffset:12});
-        initLines(map, fromProjection, toProjection);
+
     }
 
     function initLines(map, fromProjection, toProjection) {
@@ -146,6 +151,7 @@ $(function(){
                     vectors.addFeatures([lineFeature]);
                     map.addLayer(vectors);
                 }
+
             },
             error: function(){
 
