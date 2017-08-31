@@ -10,7 +10,8 @@ $(function () {
             modelname:"",
             modeldesc:"",
             parentid:"",
-            modelid:""
+            modelid:"",
+            modelnum:""
         },
         methods:{
             edit:function(item){
@@ -21,6 +22,7 @@ $(function () {
                 self.modeldesc = item.modeldesc;
                 self.parentid = item.parentid;
                 self.modelid = item.modelid;
+                self.modelnum = item.modelnum;
             },
             close:function(){
                 $(".mask").hide();
@@ -36,7 +38,8 @@ $(function () {
                         modelname:self.modelname,
                         modeldesc:self.modeldesc,
                         parentid:self.parentid,
-                        modelid:self.modelid
+                        modelid:self.modelid,
+                        modelnum:self.modelnum
                     },
                     success: function (data) {
                         alert(data.message);

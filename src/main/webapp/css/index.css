@@ -8,13 +8,14 @@
 }
 .admin:nth-child(1){
     height: 100%;
-    width: 132px;
+    padding-left: 10px;
     display: block;
     float: right;
     background: #6acabd;
 }
 .admin a span {
-    width: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
     color: #FFF;
     display: block;
     text-align: center;

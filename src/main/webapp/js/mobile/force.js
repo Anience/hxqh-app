@@ -84,7 +84,7 @@ $(function () {
                         var objectName = "TREG-"+i;
                         initEchart("echart1",totalData[objectName].nodes,totalData[objectName].links,tit);
                     }
-                },5000);
+                },50000);
 
             },
             error: function () {
@@ -96,7 +96,6 @@ $(function () {
    function initEchart(domId,nodes,links){
        var constMaxRadius = 10;
        var constMinRadius = 2;
-       console.log(links);
        var myChart = echarts.init(document.getElementById(domId));
        option = {
            backgroundColor:'#0A0F25',
@@ -106,6 +105,7 @@ $(function () {
                x:'right',
                y:'bottom'
            },
+           animation:false,
            tooltip : {
                trigger: 'item',
                formatter: '{a} : {b}'
