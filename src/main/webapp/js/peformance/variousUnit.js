@@ -9,7 +9,7 @@ $(function(){
 				var rightTop = data.fmap.DBS.righttopList;
 				var bottom = data.fmap.DBS.pieDto.arcMap;
 				var bottomPie = data.fmap.DBS.pieDto.pieMap;
-				var dataSquence = ['DBS','DES','DGS','DwS'];
+				var dataSquence = ['DBS','DES','DGS','DWS'];
                 initData(leftTop,rightTop,bottom,bottomPie);
 				var n = 0;
 				setInterval(function(){
@@ -18,10 +18,10 @@ $(function(){
                     	n=0;
 					}
                     var objName = dataSquence[n];
-                    leftTop = dat['fmap'][objName]['lefttop'];
-                    rightTop = dat['fmap'][objName]['rightTop'];
-                    bottom = dat['fmap'][objName]['arcMap'];
-                    bottomPie = dat['fmap'][objName]['pieMap'];
+                    leftTop = data['fmap'][objName]['lefttop'];
+                    rightTop = data['fmap'][objName]['righttopList'];
+                    bottom = data['fmap'][objName]['pieDto']['arcMap'];
+                    bottomPie = data['fmap'][objName]['pieDto']['pieMap'];
                     initData(leftTop,rightTop,bottom,bottomPie);
 				},5000);
 			},
@@ -36,7 +36,7 @@ $(function(){
         $('.t_closeYear').text(leftTop.closeYears);
         $('.t_num').text(leftTop.ticketNums);
         $('.r_mtt').text(leftTop.rMtt);
-        $('.class_name').text('DBS');
+        $('.class_name').text(leftTop.custType);
         //初始化右上角的数据
         var data2 = [];
         for(var i=0;i<rightTop.length;i++){
@@ -50,19 +50,19 @@ $(function(){
         var data3 = [];
         if('Other Top' in bottom){
             $('.ach-right').text(bottom['Other Top'][0].openMttrLeft);
-            $('.r-right').text(bottom['Other Top'][0].rMtt);
+            $('.r-right').text(bottom['Other Top'][0].rMtt.toFixed(2));
             var pieData0 = bottomPie['Other Top'];
             for(var j=0;j<pieData0.length;j++){
                 var tmpObj0 = {};
                 tmpObj0.value = pieData0[j].ticketNums
                 tmpObj0.name = pieData0[j].pieLabel;
-                data3.push(tmpObj0);
+                data3.push(tmpObj0)
             }
         }
         var data4 = [];
         if('Top 20' in bottom){
             $('.ach-left').text(bottom['Top 20'][0].openMttrLeft);
-            $('.r-left').text(bottom['Top 20'][0].rMtt);
+            $('.r-left').text(bottom['Top 20'][0].rMtt.toFixed(2));
             var pieData1 = bottomPie['Top 20'];
             for(var k=0;k<pieData1.length;k++){
                 var tmpObj1 = {};
@@ -74,7 +74,7 @@ $(function(){
         var data5 = [];
         if('Top 200' in bottom){
             $('.ach-center').text(bottom['Top 200'][0].openMttrLeft);
-            $('.r-center').text(bottom['Top 200'][0].rMtt);
+            $('.r-center').text(bottom['Top 200'][0].rMtt.toFixed(2));
             var pieData2 = bottomPie['Top 200'];
             for(var m=0;m<pieData2.length;m++){
                 var tmpObj2 = {};
@@ -159,6 +159,13 @@ $(function(){
 				trigger: 'item',
 				formatter: "{a} <br/>{b} : {c} ({d}%)"
 			},
+            legend:{
+			    show:true,
+                orient:'vertical',
+                x : 'left',
+                data:['1~3H','3H~24H','24H~7D','>7D']
+
+            },
 			series : [
 				{
 					name:'ticketNum',
@@ -183,5 +190,4 @@ $(function(){
 		};
 		myChart.setOption(option);
 	}
-
 });

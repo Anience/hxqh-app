@@ -6,6 +6,17 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function (data) {
+                var d = new Date();
+                var years = d.getFullYear();
+                var month = add_zero(d.getMonth()+1);
+                var days = add_zero(d.getDate());
+                var nowTime =days+"/"+month+"/"+years;
+                function add_zero(temp) {
+                    if(temp<10) return "0"+temp;
+                    else return temp;
+                }
+                var time ='Team Roster-'+ nowTime;
+                $('.ticket-time').text(time);
                 var dataObj = {
                     datin:[],
                     hsi:[],

@@ -13,16 +13,19 @@ public class UserRoleDto {
     private String id;
     private String name;
     private String rolename;
+    private Integer roleid;
     private Integer userstatus;
 
     public UserRoleDto() {
     }
 
-    public UserRoleDto(String id, String name, String rolename, Integer userstatus) {
-        this.id = id;
-        this.name = name;
-        this.rolename = rolename;
-        this.userstatus = userstatus;
+
+    public Integer getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(Integer roleid) {
+        this.roleid = roleid;
     }
 
     public String getId() {

@@ -62,7 +62,7 @@ $(function(){
 				data22[0].value = pieMap[2].jumlah;
 				data22[1].value = pieMap[3].jumlah;
 				var tit22 = "SA";
-				initEPie("echart21",tit21,data21,legend2,false);
+				initEPie("echart21",tit21,data21,legend2,true);
 				initEPie("echart22",tit22,data22,legend2,true);
 
 				var tit4 = "Time Achievement of WO on FFM（weekly）";
@@ -257,8 +257,11 @@ $(function(){
 		    legend: {
 		    	show: true,
 		        orient: 'vertical',
-                /*x: 'left',
-                y: '50px',*/
+                x: 'left',
+                y: '50px',
+                textStyle: {
+                    color:'#9F9FA1'
+                },
 		        data: ['Less 12 hours', '12 hours<yellow<24 hours', 'Red>24 hours']
 		    },
 		    series: [{
@@ -303,7 +306,7 @@ $(function(){
 		            itemStyle: dataStyle3,
 		            data: [{
 		                    value: data3,
-		                    name: 'Red>24 hours”'
+		                    name: 'Red>24 hours'
 		                },
 		                {
 		                    value: 97,

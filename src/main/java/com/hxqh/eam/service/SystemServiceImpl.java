@@ -95,7 +95,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public UserDto getUserListData() {
-        String sql = "select distinct (t1.userid) as id, t1.loginname as name, t3.rolename,t1.userstatus as userstatus\n" +
+        String sql = "select distinct (t1.userid) as id, t1.loginname as name, t3.rolename,t3.roleid,t1.userstatus as userstatus\n" +
                 "  from TB_USER t1\n" +
                 "  left join tb_userrole t2\n" +
                 "    on t1.userid = t2.userid\n" +
@@ -326,6 +326,7 @@ public class SystemServiceImpl implements SystemService {
         //重置密码 初始密码123456
         String password = Account.encrypt("123456");
         userObj.setLoginpassword(password);
+        userObj.setUserstatus(1);
         userDao.save(userObj);
         //发送邮件
         if (userObj.getLoginname() != null && userObj.getEmail() != null) {
@@ -428,17 +429,17 @@ public class SystemServiceImpl implements SystemService {
         //查询TB_USERROLE  userid
         Map<String, Object> params = new HashMap<>();
         params.put("userid", account.getUserid());
-        params.put("roleid", account.getRoleid());
-        String where = "userid=:userid and roleid=:roleid";
+//        params.put("roleid", account.getRoleid());
+        String where = "userid=:userid";
         List<TbUserrole> userroleList = userroleDao.findAll(where, params, null);
 
         if (userroleList.size() == 1) {
             TbUserrole userrole = userroleList.get(0);
-            TbRole role = roleDao.find(userrole.getTbRole().getRoleid());
+            TbRole role = roleDao.find(Long.valueOf(account.getRoleid()));
             userrole.setTbRole(role);
             userroleDao.update(userrole);
         }
-        userDao.update(account);
+        userDao.update(userroleList.get(0).getTbUser());
     }
 
     @Override

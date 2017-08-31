@@ -19,4 +19,26 @@ $(function(){
             });
         }
     });
+
 });
+
+
+function toDecimal(x) {
+    var f = parseFloat(x);
+    if (isNaN(f)) {
+        return;
+    }
+    f = Math.round(x*100)/100;
+    return f;
+}
+function toPercent(x) {
+    var f = parseFloat(x);
+    if (isNaN(f)) {
+        return;
+    }
+    if(f==0){
+        return 0;
+    }
+    f = Math.round(x*100*100)/100+"%";
+    return f;
+}

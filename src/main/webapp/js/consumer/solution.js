@@ -65,6 +65,12 @@ $(function(){
 			            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 			        }
 			    },
+                legend: {
+                    show: true,
+                    x: 'right',
+                    y: '40px',
+					data: [{name:'Success Call',icon : 'line'},{name: 'Call Attempt',icon:'bar'}]
+                },
 			    calculable : true,
 			    grid:{
 			        borderWidth: 1,
@@ -129,14 +135,14 @@ $(function(){
 			        }
 			    ],
 			    series :[{
-			            name: 'answM',
+                        name:'Success Call',
 			            type: 'line',
 			            smooth:true,
 			            symbol:'none',
 			            data: lineData
 			        },
 			        {
-			            name: 'seizM',
+			            name: 'Call Attempt',
 			            type: 'bar',
 			            barWidth:'40',
 			            itemStyle:{

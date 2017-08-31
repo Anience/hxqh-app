@@ -28,7 +28,7 @@ public class AnoServiceImpl implements AnoService {
     private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
 
     @Autowired
-    private VAno81Dao vAno81Dao;
+    private VAno81Dao ano81Dao;
     @Autowired
     private VAno82Dao ano82Dao;
     @Autowired
@@ -68,12 +68,16 @@ public class AnoServiceImpl implements AnoService {
 
     @Override
     public List<VAno81> getAno81Data() {
-        return vAno81Dao.findAll();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("ioc1", "desc");
+        return ano81Dao.findAll(null,null,orderby);
     }
 
     @Override
     public List<VAno82> getAno82Data() {
-        return ano82Dao.findAll();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("ioc3", "desc");
+        return ano82Dao.findAll(null,null,orderby);
     }
 
     @Override

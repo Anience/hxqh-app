@@ -15,8 +15,11 @@
 <body>
 <body>
 <div class="pre1-layout">
+	<div class="mytitle">
 	<h4>Provisioning-Real Time Service Order Handling</h4>
 	<span class="ticket-time"></span>
+	</div>
+	<div class="mycontent">
 	<div class="item">
 		<div class="left" id="echart1"></div>
 		<div class="right">
@@ -32,6 +35,7 @@
 		<div class="right" id="echart4"></div>
 	</div>
 	<div class="clearfix"></div>
+	</div>
 </div>
 </body>
 </body>

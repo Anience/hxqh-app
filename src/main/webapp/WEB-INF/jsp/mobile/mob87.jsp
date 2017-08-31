@@ -41,7 +41,7 @@
 			<div class="col-sm-6">
 				<div id="echart1" style="height: 300px;width: 100%;"></div>
 			</div>
-			<div class="col-sm-3"  style="padding-right: 30px;">
+			<div class="col-sm-3"  style="padding-right: 60px;">
 
 				<table>
 					<tr>

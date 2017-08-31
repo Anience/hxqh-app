@@ -1,7 +1,7 @@
 $(function(){
     var totalData;
     var nameList;
-    var dataOder = ["JAKARTA","MAKASAR","PEKANBARU","SURABAYA"];
+    var dataOder = ["JAKARTA","SURABAYA","MAKASAR","PEKANBARU"];
     $.ajax({
         url: _ctx+"/mobile/throughtputData",
         method: "get",
@@ -33,7 +33,8 @@ $(function(){
                 var thisLi2 = '.'+domName2+' li:nth-child('+index+')'+' span';
                 $(liNav2).css("backgroundColor","#0a0f25");
                 $(thisLi2).css("backgroundColor","#4a476a");
-                var objectName = dataOder[i];
+
+                var objectName = dataOder[i-1];
                 initEchart('echart1',nameList,totalData[objectName].in,totalData[objectName].out,totalData[objectName].opers,totalData[objectName].wrong,objectName);
             }
         },5000);
