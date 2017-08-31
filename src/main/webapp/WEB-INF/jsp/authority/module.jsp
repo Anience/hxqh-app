@@ -30,6 +30,7 @@
             <td width="7%">Name</td>
             <td width="7%">Description</td>
             <td width="7%">ModuleId</td>
+            <td width="7%">sortNum</td>
             <td width="7%">Parent</td>
             <td width="7%">Operation</td>
         </tr>
@@ -39,6 +40,7 @@
                 <td>{{item.modelname}}</td>
                 <td>{{item.modeldesc}}</td>
                 <td>{{item.modelid}}</td>
+                <td>{{item.sortnum}}</td>
                 <td>{{item.parentid}}</td>
                 <td>
                     <button class="btn" @click="edit(item)">edit</button>
@@ -48,6 +50,7 @@
                 <td>{{item.modelname}}</td>
                 <td>{{item.modeldesc}}</td>
                 <td>{{item.modelid}}</td>
+                <td>{{item.sortnum}}</td>
                 <td>{{item.parentid}}</td>
                 <td>
                     <button class="btn" @click="edit(item)">edit</button>
@@ -70,6 +73,10 @@
             </p>
             <p class="item">
                 <lable style="width: 70px;">parentId</lable>
+                <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
+            </p>
+            <p class="item">
+                <lable style="width: 70px;">sortNum</lable>
                 <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
             </p>
             <p style="margin-top: 30px;">
