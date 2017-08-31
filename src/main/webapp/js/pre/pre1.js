@@ -39,7 +39,7 @@ $(function(){
 				var data3 = [{
 					name: 'Closed Order',
 					type: 'bar',
-					data: data.value3List
+					data: data.name3List
 				}
 				];
 				var legend3 = ['Closed Order'];

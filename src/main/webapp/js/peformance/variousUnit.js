@@ -161,6 +161,10 @@ $(function(){
 			},
             legend:{
 			    show:true,
+                textStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
                 orient:'vertical',
                 x : 'left',
                 data:['1~3H','3H~24H','24H~7D','>7D']

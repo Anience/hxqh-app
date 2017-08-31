@@ -67,9 +67,14 @@ $(function(){
 			    },
                 legend: {
                     show: true,
+                    textStyle:{
+                        color:'#fff',
+                        fontSize:14
+                    },
                     x: 'right',
                     y: '40px',
-					data: [{name:'Success Call',icon : 'line'},{name: 'Call Attempt',icon:'bar'}]
+                    data: [{name: 'Success Call', icon: 'line'},
+                           {name: 'Call Attempt', icon: 'bar'}]
                 },
 			    calculable : true,
 			    grid:{
