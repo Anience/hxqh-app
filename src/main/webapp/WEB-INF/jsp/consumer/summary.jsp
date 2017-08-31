@@ -16,7 +16,7 @@
 	<table class="summary">
 		<thead>
 			<tr>
-				<td colspan="42">Open Ticket Daily for Non-GAMAS (not Non-Games)</td>
+				<td colspan="42">Open Ticket Daily for Non-GAMAS</td>
 			</tr>
 			<tr>
 				<td rowspan="3">Region</td>
