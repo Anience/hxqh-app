@@ -14,6 +14,8 @@ public class VAno82 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	private Integer rn;
+
 	private String ioc1;
 
 	private String ioc2;
@@ -29,6 +31,10 @@ public class VAno82 implements Serializable {
 	private String ioc7;
 
 	public VAno82() {
+	}
+
+	public VAno82(Integer rn) {
+		this.rn = rn;
 	}
 
 	public String getIoc1() {

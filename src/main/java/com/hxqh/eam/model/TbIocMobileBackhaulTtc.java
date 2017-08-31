@@ -36,6 +36,9 @@ public class TbIocMobileBackhaulTtc implements Serializable {
 
     private Integer deptdepth;
 
+
+
+
     public TbIocMobileBackhaulTtc() {
     }
 
