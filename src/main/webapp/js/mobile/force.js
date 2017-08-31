@@ -57,6 +57,8 @@ $(function () {
                         tmpNode.depth = nodeMap[el][i].deptdepth;
                         tmpNode.name = nodeMap[el][i].ttcId;
                         tmpNode.id = nodeMap[el][i].ttcId;
+                        tmpNode.index=i;
+                        tmpNode.msg=nodeMap[el][i].msg;
                         tmpNode.initial = [x,y];
                         tmpNode.fixY = true;
                         totalData[el].links.push(tmpLink);
@@ -108,7 +110,25 @@ $(function () {
            animation:false,
            tooltip : {
                trigger: 'item',
-               formatter: '{a} : {b}'
+               formatter: function(params) {
+                    var res="";
+                    var datas = params.series.nodes;
+                    for(var i=0;i<datas.length;i++){
+                       if(i==params.dataIndex){
+                           res=datas[i].msg;
+                       }
+                      /* if(res!=null&&res!=""){
+                           var a = res.split("\\n")+"<br />";
+                       }*/
+                      while(res.indexOf("\n">=0)){
+                        var res2=res.replace("\n"," \n ");
+                      }
+                    }
+                      console.log(res2);
+                       return res2;
+
+
+               }
            },
            series : [
                {
