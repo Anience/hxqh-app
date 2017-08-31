@@ -20,19 +20,19 @@ $(function(){
                     switch(i){
                         case 0:
                             initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
-                            $("p").text("BAD<20ms<=GOOD");
+                            $("p").text("BAD >= 20ms > GOOD");
                             break;
                         case 1:
                             initEchart("echart1",data.dtoMap.LOSS_KPI,'Packet Loss');
-                            $("p").text("BAD<0.1%<=GOOD");
+                            $("p").text("BAD >= 0.1% > GOOD");
                             break;
                         case 2:
                             initEchart("echart1",data.dtoMap.MOS_KPI,'MOS');
-                            $("p").text("BAD<3.5<=GOOD");
+                            $("p").text("BAD < 3.5 <= GOOD");
                             break;
                         default:
                             initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
-                            $("p").text("BAD<5ms<=GOOD");
+                            $("p").text("BAD >= 5ms > GOOD");
                             break;
                     }
                 },15000);
