@@ -112,7 +112,7 @@ import scala.collection.JavaConversions._
 
   override def internalData: InternalDto = {
     val orderby = new util.LinkedHashMap[String, String]
-    orderby.put("nitsId", "asc")
+    orderby.put("sourceId", "asc")
     val internalList = iocSlaNitsSourceDao.findAll(null,null,orderby)
     new InternalDto(internalList)
   }

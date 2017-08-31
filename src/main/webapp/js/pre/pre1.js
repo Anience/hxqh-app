@@ -39,7 +39,7 @@ $(function(){
 				var data3 = [{
 					name: 'Closed Order',
 					type: 'bar',
-					data: data.name3List
+					data: data.value3List
 				}
 				];
 				var legend3 = ['Closed Order'];
@@ -209,22 +209,22 @@ $(function(){
     	var dataStyle1 = {
 				    normal: {
 				    	color:'green',
-				        label: { show: false },
-				        labelLine: { show: false }
+				        label: { show: true,data:data1,formatter: "{b}:\n{c}({d}%)" },
+				        labelLine: { show: true,length:30 }
 				    }
 				};
 		var dataStyle2 = {
 			normal: {
 				color:'yellow',
-				label: { show: false },
-				labelLine: { show: false }
+				label: { show: true ,data:data2,formatter: "{b}:\n{c}({d}%)"},
+				labelLine: { show: true,length:50 }
 			}
 		};
 		var dataStyle3 = {
 			normal: {
 				color:'red',
-				label: { show: false },
-				labelLine: { show: false }
+				label: { show: true,data:data3,formatter: "{b}:\n{c}({d}%)" },
+				labelLine: { show: true ,length:70}
 			}
 		};
 		var placeHolderStyle = {

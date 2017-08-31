@@ -127,7 +127,9 @@ public class AnoServiceImpl implements AnoService {
     @Override
     public OpenMapTableDto getOpenMapTableData() {
         List<VMapOpenmaptable> mapOpenmaptable = mapOpenmaptableDao.findAll();
-        List<VMapOpenmaptableRighttable> mapOpenmaptableRighttable = mapOpenmaptableRighttableDao.findAll();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("dates", "desc");
+        List<VMapOpenmaptableRighttable> mapOpenmaptableRighttable = mapOpenmaptableRighttableDao.findAll(null,null,orderby);
         //对mapOpenmaptable分组
         Map<String, List<VMapOpenmaptable>> mapOpenmaptableMap = GroupListUtil.group(mapOpenmaptable, new GroupListUtil.GroupBy<String>() {
             @Override
