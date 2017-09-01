@@ -117,14 +117,22 @@ $(function () {
                        if(i==params.dataIndex){
                            res=datas[i].msg;
                        }
-                      /* if(res!=null&&res!=""){
-                           var a = res.split("\\n")+"<br />";
-                       }*/
-                      while(res.indexOf("\n">=0)){
-                        var res2=res.replace("\n"," \n ");
+                      while(res.indexOf("\\n")>=0){
+                          var res2=res.replace(/\\n/g, "<br />");
+                          break;
                       }
+                        if(res!=null&&res!=""){
+                            var a = res.split("\\n");
+                            if(a.length==9){
+                                var errors=a[5].split(":");
+                                var flap=a[6].split(":");
+                                var alters=a[7].split(":");
+                                if(parseFloat(errors[1])==0||parseFloat(flap[1])==0||parseFloat(alters[1]==0)){
+                                    params.color="red";
+                                }
+                            }
+                        }
                     }
-                      console.log(res2);
                        return res2;
 
 
