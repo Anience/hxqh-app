@@ -51,20 +51,21 @@
             </thead>
             <tbody>
                 <tr v-for="item in dataList">
-                    <td>{{item.type2}}</td>
-                    <td>{{item.unit}}</td>
-                    <td>{{toDecimal(item.target1)}}</td>
-                    <td>{{toDecimal(item.real1)}}</td>
-                    <td>{{toPercent(item.ach1)}}</td>
-                    <td>{{toDecimal(item.amountOutlook1)}}</td>
-                    <td>{{toPercent(item.achOutlook1)}}</td>
-                    <td>{{toDecimal(item.mom)}}</td>
-                    <td>{{toDecimal(item.target2)}}</td>
-                    <td>{{toDecimal(item.real2)}}</td>
-                    <td>{{toPercent(item.ach2)}}</td>
-                    <td>{{toDecimal(item.amountOutlook2)}}</td>
-                    <td>{{toPercent(item.achOutlook2)}}</td>
-                    <td>{{toDecimal(item.yoy)}}</td>
+                    <td v-if="item.kode=='HEAD'" colspan="15" style="background:rgb(31, 62, 80);font-size:26px;text-align: left;">{{item.type2}}</td>
+                    <td v-if="item.kode!='HEAD'">{{item.type2}}</td>
+                    <td v-if="item.kode!='HEAD'">{{item.unit}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.target1)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.real1)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toPercent(item.ach1)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.amountOutlook1)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toPercent(item.achOutlook1)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.mom)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.target2)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.real2)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toPercent(item.ach2)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.amountOutlook2)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toPercent(item.achOutlook2)}}</td>
+                    <td v-if="item.kode!='HEAD'">{{toDecimal(item.yoy)}}</td>
                 </tr>
             </tbody>
         </table>
