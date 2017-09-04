@@ -177,22 +177,27 @@ $(function () {
                 success: function (data) {
                    var eventX = e.pageX;
                    var eventY = e.pageY - 20;
-                   var htmlP = "<p>TSEL Region--"+data[0].tselRegion+"</p>";
+                   if(data.length>=1){
+                       var htmlP = "<p>TSEL Region--"+data[0].tselRegion+"</p>";
                        htmlP +=  "<p>Region Name--"+data[0].regionName+"</p>"
-                             +"<p>Node--"+data[0].node+"</p>"
+                           +"<p>Node--"+data[0].node+"</p>"
                            +"<p>Date--"+data[0].ts+"</p>";
                        if(typ=='SR'){
                            htmlP+="<p>value--"+data[0].accountSrPsr+"</p>";
                        }else{
                            htmlP+="<p>value--"+data[0].accountPsr+"</p>";
                        }
-                   $(".data-tip").html("");
-                   $(".data-tip").html(htmlP);
-                   $(".data-tip").css({
+                       $(".data-tip").html("");
+                       $(".data-tip").html(htmlP);
+                   }else{
+                       $(".data-tip").html("No Data!");
+                   }
+                    $(".data-tip").css({
                         top:eventY,
-                       left:eventX
+                        left:eventX
                     });
-                    $(".data-tip").show();
+                   $(".data-tip").show();
+
                 },
                 error: function () {
 
