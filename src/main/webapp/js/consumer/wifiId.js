@@ -13,10 +13,6 @@ $(function(){
                 var minutes = add_zero(d.getMinutes());
                 var second=add_zero(d.getSeconds());
                 var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
-                function add_zero(temp) {
-                    if(temp<10) return "0"+temp;
-                    else return temp;
-                }
                 var time ='Last Update:'+ nowTime;
                 $('.ticket-time').text(time);
 				var dataOrder = ['TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
@@ -59,7 +55,10 @@ $(function(){
 			}
 		});
 	}
-
+    function add_zero(temp) {
+        if(temp<10) return "0"+temp;
+        else return temp;
+    }
 	function initEchart(domId,data,xdata) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
@@ -187,7 +186,7 @@ $(function(){
 			                      }
 			                 }
 			            },
-			            data:data.Interent
+			            data:data.Internet
 			        },
 			        {
 			            name:'Pots',
@@ -210,7 +209,7 @@ $(function(){
 			                      }
 			                 }
 			            },
-			            data:data.Telle
+			            data:data.Pots
 			        },
 			     ]
 			};               

@@ -52,7 +52,7 @@
             <tbody>
                 <tr v-for="item in dataList">
                     <td v-if="item.kode=='HEAD'" colspan="15" style="background:rgb(31, 62, 80);font-size:26px;text-align: left;">{{item.type2}}</td>
-                    <td v-if="item.kode!='HEAD'">{{item.type2}}</td>
+                    <td v-if="item.kode!='HEAD'" style="text-align:left;text-indent: 2em;">{{item.type2}}</td>
                     <td v-if="item.kode!='HEAD'">{{item.unit}}</td>
                     <td v-if="item.kode!='HEAD'">{{toDecimal(item.target1)}}</td>
                     <td v-if="item.kode!='HEAD'">{{toDecimal(item.real1)}}</td>
