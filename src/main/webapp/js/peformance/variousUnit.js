@@ -58,7 +58,7 @@ $(function(){
                 tmpObj0.name = pieData0[j].pieLabel;
                 data3.push(tmpObj0)
             }
-        }
+        }else  {$('.ach-right').html("NULL!");}
         var data4 = [];
         if('Top 20' in bottom){
             $('.ach-left').text(bottom['Top 20'][0].openMttrLeft);
