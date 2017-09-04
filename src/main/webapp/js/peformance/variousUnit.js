@@ -70,7 +70,7 @@ $(function(){
                 tmpObj1.name = pieData1[k].pieLabel;
                 data4.push(tmpObj1);
             }
-        }
+        } else { $('.ach-left').html("NULL!");}
         var data5 = [];
         if('Top 200' in bottom){
             $('.ach-center').text(bottom['Top 200'][0].openMttrLeft);
@@ -82,7 +82,7 @@ $(function(){
                 tmpObj2.name = pieData2[m].pieLabel;
                 data5.push(tmpObj2);
             }
-        }
+        }else { $('.ach-center').html("NULL!");}
         initEchart('echart2',false,false,data4);
         initEchart('echart3',false,false,data5);
         initEchart('echart4',false,false,data3);

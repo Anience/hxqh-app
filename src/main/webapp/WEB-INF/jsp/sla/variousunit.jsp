@@ -80,7 +80,7 @@
         <ul>
             <li>
                 <span>Ach(100%)</span>
-                <span class="ach-left"></span>
+                <span class="ach-right"></span>
             </li>
             <li>
                 <span>R(Jam)</span>
