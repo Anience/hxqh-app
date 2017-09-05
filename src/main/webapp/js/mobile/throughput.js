@@ -66,7 +66,7 @@ $(function(){
         }
         option = {
             backgroundColor:'#0A0F25',
-            color:['#ef8a92','#2c2a4e'],
+            color:['#ef8a92','#87CEFA'],
             title: {
                 text: tit,
                 x:'center',
