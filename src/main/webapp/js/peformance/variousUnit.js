@@ -47,6 +47,20 @@ $(function(){
         }
         initEchart('echart1',true,true,data2);
         //初始化底部数据的数据
+
+        var data4 = [];
+        if('TOP 20' in bottom){
+            $('.ach-left').text(bottom['TOP 20'][0].openMttrLeft);
+            $('.r-left').text(bottom['TOP 20'][0].rMtt.toFixed(2));
+            var pieData1 = bottomPie['TOP 20'];
+            for(var k=0;k<pieData1.length;k++){
+                var tmpObj1 = {};
+                tmpObj1.value = pieData1[k].ticketNums
+                tmpObj1.name = pieData1[k].pieLabel;
+                data4.push(tmpObj1);
+            }
+        }
+
         var data3 = [];
         if('Other Top' in bottom){
             $('.ach-right').text(bottom['Other Top'][0].openMttrLeft);
@@ -58,31 +72,20 @@ $(function(){
                 tmpObj0.name = pieData0[j].pieLabel;
                 data3.push(tmpObj0)
             }
-        }else  {$('.ach-right').html("NULL!");}
-        var data4 = [];
-        if('Top 20' in bottom){
-            $('.ach-left').text(bottom['Top 20'][0].openMttrLeft);
-            $('.r-left').text(bottom['Top 20'][0].rMtt.toFixed(2));
-            var pieData1 = bottomPie['Top 20'];
-            for(var k=0;k<pieData1.length;k++){
-                var tmpObj1 = {};
-                tmpObj1.value = pieData1[k].ticketNums
-                tmpObj1.name = pieData1[k].pieLabel;
-                data4.push(tmpObj1);
-            }
-        } else { $('.ach-left').html("NULL!");}
+        }
+
         var data5 = [];
-        if('Top 200' in bottom){
-            $('.ach-center').text(bottom['Top 200'][0].openMttrLeft);
-            $('.r-center').text(bottom['Top 200'][0].rMtt.toFixed(2));
-            var pieData2 = bottomPie['Top 200'];
+        if('TOP 200' in bottom){
+            $('.ach-center').text(bottom['TOP 200'][0].openMttrLeft);
+            $('.r-center').text(bottom['TOP 200'][0].rMtt.toFixed(2));
+            var pieData2 = bottomPie['TOP 200'];
             for(var m=0;m<pieData2.length;m++){
                 var tmpObj2 = {};
                 tmpObj2.value = pieData2[m].ticketNums
                 tmpObj2.name = pieData2[m].pieLabel;
                 data5.push(tmpObj2);
             }
-        }else { $('.ach-center').html("NULL!");}
+        }
         initEchart('echart2',false,false,data4);
         initEchart('echart3',false,false,data5);
         initEchart('echart4',false,false,data3);

@@ -15,7 +15,7 @@ $(function(){
                 var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
                 var time ='Last Update:'+ nowTime;
                 $('.ticket-time').text(time);
-				var dataOrder = ['TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
+				var dataOrder = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
 				var scale = data.lineM;
 				var scaleName = data.linelist;
 				var line = data.pillM;
@@ -27,7 +27,7 @@ $(function(){
 				var i = 0;
 				var timer = setInterval(function(){
 					i++;
-					if(i>=8){
+					if(i>=9){
 						i=0;
 					}else{
 						var index= i;
