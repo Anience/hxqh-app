@@ -46,7 +46,7 @@ $(function(){
                         +'</td><td>'+data[i].ioc8
                         +'</td><td>'+data[i].ioc6
                         +'</td><td>'+data[i].ioc9
-                        +'</td><td>'+data[i].ioc11
+                        //+'</td><td>'+data[i].ioc11
                         +'</td></tr>';
                 }
                 $("table.distribution tbody").html(tmpHtml);
