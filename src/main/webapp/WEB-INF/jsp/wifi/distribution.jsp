@@ -17,12 +17,12 @@
 </head>
 <body>
 <div class="ticket-layout" style="padding-bottom: 100px;">
-	<h4>Distribution Status Report</h4>
+	<h4>Distribution AP Status Report</h4>
 	<table class="distribution">
 		<thead>
 			<tr>
 				<td rowspan="3" width="8%">TREG</td>
-				<td colspan="10">STATUS UP</td>
+				<td colspan="10">STATUS AP</td>
 			</tr>
 			<tr>
 				<td rowspan="2" width="6%">UP</td>
@@ -33,7 +33,7 @@
 				<td rowspan="2">RUSAK</td>
 				<td rowspan="2">HILANG</td>
 				<td rowspan="2">TEMPORER</td>
-				<td rowspan="2" class="dis-td">DISPEND<br>ORDER</td>
+				<!--<td rowspan="2" class="dis-td">DISPEND<br>ORDER</td>-->
 			</tr>
 			<tr>
 				<td class="dis-td">REAL<br>DOWN</td>
