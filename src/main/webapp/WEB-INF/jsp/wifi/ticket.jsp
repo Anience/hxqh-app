@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="ticket-layout" style="padding-bottom: 120px;"  id="ticket-data">
-	<h4><span class="ticket-tit">WIFI TICKET MONITORING</span>
+	<h4><span class="ticket-tit">WIFI Proaetive TICKET MONITORING</span>
 		<span class="ticket-time"></span>
 	</h4>
 	<table class="ticket">
