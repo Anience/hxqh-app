@@ -21,10 +21,17 @@ $(function () {
                 dataType: "json",
                 success: function (data) {
                     var date = new Date();
+                    var date2 = new Date();
+                    var dateshow= "";
+                    date2.setMonth(date.getMonth()-1);
+                    if((date2.getMonth()+1)<10)
+                        dateshow = date2.getFullYear()+'-0'+(date2.getMonth()+1);
+                    else
+                        dateshow = date2.getFullYear()+'-'+(date2.getMonth()+1);
                     var time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
                     var timeResult = "Last Update:"+time;
                     self.time = timeResult;
-                    self.nowTime = data.nowtime;
+                    self.nowTime = dateshow;
                     self.mttrLeft = data.leftList;
                     self.mttrRight = data.rightList;
                     initEchart("echart1",data.mttrM,data.axisiData);
