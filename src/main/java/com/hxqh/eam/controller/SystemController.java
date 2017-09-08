@@ -763,5 +763,8 @@ public class SystemController {
     }
     /******************************发送邮件**************************/
 
-
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView test() {
+        return new ModelAndView("test/test");
+    }
 }
