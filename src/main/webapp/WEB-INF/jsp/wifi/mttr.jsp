@@ -17,7 +17,7 @@
 <body>
 <div class="ticket-layout" id="mttr-data">
 	<h4>
-		<span class="ticket-tit">MTTR Targets - Proaetice Ticket(AP Down)</span>
+		<span class="ticket-tit">MTTR Targets - Proactive Ticket (AP Down)</span>
 		<span class="ticket-time">{{time}}</span>
 	</h4>
 	<div  style="background: #0C0E26;">
