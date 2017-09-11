@@ -763,8 +763,24 @@ public class SystemController {
     }
     /******************************发送邮件**************************/
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+
+    /*
+    Upoint页面自动登录
+     */
+    @RequestMapping(value = "/upoint", method = RequestMethod.GET)
     public ModelAndView test() {
-        return new ModelAndView("test/test");
+        return new ModelAndView("singleLogin/upoint");
     }
+
+    /*
+    Enterprrisegovement页面自动登录
+    */
+    @RequestMapping(value = "/enterprrisegovement", method = RequestMethod.GET)
+    public ModelAndView  enterprrisegovement() {
+        return new ModelAndView("singleLogin/enterprrisegovement");
+    }
+
+
+
+
 }
