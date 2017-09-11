@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="digital">
-    <form id="formid" method="POST" action="https://app.brandfibres.com/591965d788c9ffdd1fd3a6a3">
+    <form id="formid" method="POST" action="https://app.brandfibres.com/dashboards/591965d788c9ffdd1fd3a6a3">
         <input type="text" name="_username" size="40" style="width: 295px;" value="dashboardioc@gmail.com">
         <input type="password" name="_password" size="40" style="width: 295px;" value="Telkom3s">
         <input type="submit" value="Login">
