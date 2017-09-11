@@ -763,8 +763,39 @@ public class SystemController {
     }
     /******************************发送邮件**************************/
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView test() {
-        return new ModelAndView("test/test");
+    @RequestMapping(value = "/upoint", method = RequestMethod.GET)
+    public ModelAndView upoint() {
+        return new ModelAndView("singleLogin/upoint");
     }
+
+
+    @RequestMapping(value = "/enterprrisegovement", method = RequestMethod.GET)
+    public ModelAndView enterprrisegovement() {
+        return new ModelAndView("singleLogin/enterprrisegovement");
+    }
+
+
+    @RequestMapping(value = "/summary", method = RequestMethod.GET)
+    public ModelAndView summary() {
+        return new ModelAndView("singleLogin/summary");
+    }
+
+    @RequestMapping(value = "/indihome", method = RequestMethod.GET)
+    public ModelAndView indihome() {
+        return new ModelAndView("singleLogin/indihome");
+    }
+
+    @RequestMapping(value = "/wifiid", method = RequestMethod.GET)
+    public ModelAndView wifiid() {
+        return new ModelAndView("singleLogin/wifiid");
+    }
+
+    @RequestMapping(value = "/telkomsolution", method = RequestMethod.GET)
+    public ModelAndView telkomsolution() {
+        return new ModelAndView("singleLogin/telkomsolution");
+    }
+
+
+
+
 }
