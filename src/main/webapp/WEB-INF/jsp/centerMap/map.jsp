@@ -20,7 +20,7 @@
    <div class="top-table-div">
 	   <table class="top-table" style="width: 100%; height: 100%;text-align:center;" border="0" cellpadding="2" cellspacing="0">
 		   <thead class="Maptthead">
-			   <tr style="height : 90px">
+			   <tr style="height : 60px">
 				   <td>No</td>
 				   <td>Date</td>
 				   <td>Ruas</td>
