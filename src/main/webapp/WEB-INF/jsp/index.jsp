@@ -54,6 +54,10 @@
 		    </li>
 			</c:forEach>
 		<li class="menu-list"><a  href="${ctx}/system/test" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">test</span></a></li>
+		<li class="menu-list"><a  href="${ctx}/system/summary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">summary</span></a></li>
+		<li class="menu-list"><a  href="${ctx}/system/indihome" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">indihome</span></a></li>
+		<li class="menu-list"><a  href="${ctx}/system/wifiid" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">wifi id</span></a></li>
+		<li class="menu-list"><a  href="${ctx}/system/telkomsolution" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">telkom solution</span></a></li>
 	</ul>
 </div>
 <!--菜单右边的iframe页面-->

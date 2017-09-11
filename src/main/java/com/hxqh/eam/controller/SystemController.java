@@ -767,4 +767,29 @@ public class SystemController {
     public ModelAndView test() {
         return new ModelAndView("test/test");
     }
+
+
+    @RequestMapping(value = "/summary", method = RequestMethod.GET)
+    public ModelAndView summary() {
+        return new ModelAndView("singleLogin/summary");
+    }
+
+    @RequestMapping(value = "/indihome", method = RequestMethod.GET)
+    public ModelAndView indihome() {
+        return new ModelAndView("singleLogin/summary");
+    }
+
+    @RequestMapping(value = "/wifiid", method = RequestMethod.GET)
+    public ModelAndView wifiid() {
+        return new ModelAndView("singleLogin/summary");
+    }
+
+    @RequestMapping(value = "/telkomsolution", method = RequestMethod.GET)
+    public ModelAndView telkomsolution() {
+        return new ModelAndView("singleLogin/summary");
+    }
+
+
+
+
 }
