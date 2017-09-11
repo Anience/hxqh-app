@@ -776,17 +776,17 @@ public class SystemController {
 
     @RequestMapping(value = "/indihome", method = RequestMethod.GET)
     public ModelAndView indihome() {
-        return new ModelAndView("singleLogin/summary");
+        return new ModelAndView("singleLogin/indihome");
     }
 
     @RequestMapping(value = "/wifiid", method = RequestMethod.GET)
     public ModelAndView wifiid() {
-        return new ModelAndView("singleLogin/summary");
+        return new ModelAndView("singleLogin/wifiid");
     }
 
     @RequestMapping(value = "/telkomsolution", method = RequestMethod.GET)
     public ModelAndView telkomsolution() {
-        return new ModelAndView("singleLogin/summary");
+        return new ModelAndView("singleLogin/telkomsolution");
     }
 
 
