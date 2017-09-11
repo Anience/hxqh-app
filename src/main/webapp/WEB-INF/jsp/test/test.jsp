@@ -7,7 +7,6 @@
     <title></title>
     <meta name="keywords" content="">
     <link rel="stylesheet" href="${ctx}/css/reset.css">
-    <link rel="stylesheet" href="${ctx}/css/digital.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
 </head>
 <body>
