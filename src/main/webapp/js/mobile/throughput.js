@@ -37,7 +37,7 @@ $(function(){
                 var objectName = dataOder[i-1];
                 initEchart('echart1',nameList,totalData[objectName].in,totalData[objectName].out,totalData[objectName].opers,totalData[objectName].wrong,totalData[objectName].maxVal,objectName);
             }
-        },5000);
+        },15000);
     }
     function initEchart(domId,xData,lineData1,lineData2,barData1,barData2,max,tit) {
         var legendData=["GbitsPerSecondOut","GbitsPerSecondIn"]
