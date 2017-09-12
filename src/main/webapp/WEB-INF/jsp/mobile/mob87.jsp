@@ -27,15 +27,15 @@
 
 			<div class="col-sm-2">
 				<ul>
-					<li><a href="javascript:void(0);"  style="background: #005E8A;">View:</a></li>
-					<li  style="background: #8D93A8;"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('1')">TREG-1</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('2')">TREG-2</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('3')">TREG-3</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('4')">TREG-4</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('5')">TREG-5</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('6')">TREG-6</a></li>
-					<li><a href="javascript:void(0);" v-on:click="navClick('7')">TREG-7</a></li>
+					<li><a href="javascript:void(0);"  style=" background: #005E8A;font-size: 24px;color: #fff;  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ">View:</a></li>
+					<li  style="background: #8D93A8;font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('1')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-1</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('2')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-2</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('3')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-3</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('4')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-4</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('5')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-5</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('6')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-6</a></li>
+					<li><a href="javascript:void(0);" v-on:click="navClick('7')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-7</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-6">
