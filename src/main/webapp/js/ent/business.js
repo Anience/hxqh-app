@@ -32,7 +32,8 @@ $(function(){
                 }
                 $(".pageTit").text(pageTit);
                 var tool = new entUtil();
-                tool.ShowSla(data.threeColor,"");
+                tool.ShowSla(data.threeColor,pageTit);
+                //tool.ShowSla(data.threeColor,"");
 
                 var pieTop = data.pieRightnowList;
                 var pieBottom = data.pieProactiveList;
