@@ -30,6 +30,12 @@ $(function(){
 					var tmpObj = {};
 					tmpObj.name = name;
 					tmpObj.type = 'bar';
+                    tmpObj.itemStyle = {};
+                    tmpObj.itemStyle.normal = {};
+                    tmpObj.itemStyle.normal.label = {};
+                    tmpObj.itemStyle.normal.label.show = true;
+                    tmpObj.itemStyle.normal.label.textStyle = {};
+                    tmpObj.itemStyle.normal.label.textStyle.color = '#ffffff';
 					tmpObj.data = echartData1[name];
 					data1.push(tmpObj);
 				}
@@ -44,7 +50,7 @@ $(function(){
 				];
 				var legend3 = ['Closed Order'];
 				var tit3 = "Accumulated Closed Order Volume ";
-				initELine("echart3",tit3,data3,legend3,xData3);
+                initELineBar("echart3",tit3,data3,legend3,xData3);
 
 				var pieMap = data.pieMap.PIE;
 				var tit21 = "RA";
@@ -78,7 +84,8 @@ $(function(){
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			    backgroundColor: '#0A0F25',
-			    color: ['#4a476a', '#d46e87'],
+				//color: ['#4a476a', '#d46e87'],
+			    color: ['#d46e87', '#4a476a'],
 			    title: {
 			        text: tit,
 			        textStyle: {
@@ -150,14 +157,93 @@ $(function(){
 			        },
 			    }],
 			    series: data
-			};      
+			};
+        myChart.setOption(option);
+    }
+    function initELineBar(domId,tit,data,legendData,xData) {
+        var myChart = echarts.init(document.getElementById(domId));
+        option = {
+            backgroundColor: '#0A0F25',
+            color: ['#4a476a', '#d46e87'],
+            title: {
+                text: tit,
+                textStyle: {
+                    fontSize: 26,
+                    fontFamily: 'Arial',
+                    color: '#9F9FA1'
+                }
+            },
+            // tooltip: {
+            //     trigger: 'axis'
+            // },
+            legend: {
+                data: legendData,
+                x: 'right',
+                y: 'top',
+                textStyle: {
+                    fontSize: 16,
+                    fontFamily: "Arial",
+                    color: '#CECECE'
+                }
+            },
+            calculable: true,
+            grid: {
+                borderWidth: 1,
+                borderColor: '#212538'
+            },
+            xAxis: [{
+                show: true,
+                type: 'category',
+
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 12,
+                        fontFamily: "Arial",
+                        color: '#9F9FA1'
+                    }
+                },
+
+                splitArea: {
+                    show: false
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#212538',
+                    }
+                },
+                data: xData
+            }],
+            yAxis: [{
+                type: 'value',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 12,
+                        fontFamily: "Arial",
+                        color: '#9F9FA1'
+                    }
+                },
+                splitArea: {
+                    show: false
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#212538',
+                    }
+                },
+            }],
+            series: data
+        };
         myChart.setOption(option);
     }
     function initEPie(domId,tit,data,legendData,legendShow) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			    backgroundColor: '#0A0F25',
-			    color: ['#4a476a', '#d46e87'],
+			    color: ['#d46e87', '#4a476a'],
 			    title: {
 			        text: tit,
 			        x: 'center',
