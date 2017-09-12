@@ -58,8 +58,8 @@ $(function(){
 					{ value: 0, name: 'Open' },
 				];
 				data21[0].value = pieMap[0].jumlah;
-				data21[1].value = pieMap[1].jumlah;
-				data22[0].value = pieMap[2].jumlah;
+				data21[1].value = pieMap[2].jumlah;
+				data22[0].value = pieMap[1].jumlah;
 				data22[1].value = pieMap[3].jumlah;
 				var tit22 = "SA";
 				initEPie("echart21",tit21,data21,legend2,true);
