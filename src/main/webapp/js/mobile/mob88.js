@@ -41,6 +41,7 @@ $(function () {
     function initEchart(idDom,echartData){
         var lendData = [];
         var serisData = [];
+        var color = [];
         var tit;
         for(var i=0,len=echartData.length;i<len;i++){
             var tmpObj = {};
@@ -52,9 +53,11 @@ $(function () {
         if(idDom=="echart1"){
             tit = 'MTTR（MTD）';
             lendData = ['SL_D','OTHERS','FO ACCESS','RADIO ACCESS'];
+            color = ['#FF7F50', '#32CD32','#87CEFA','#DA70D6'];
         }else{
             tit = 'MTTI（MTD）';
             lendData = ['SL-D','OTHER','METRO-E']
+            color = ['#FF7F50', '#32CD32','#000099'];
         }
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
@@ -116,7 +119,8 @@ $(function () {
                     },
                     data:serisData
                 }
-            ]
+            ],
+            color : color
         };
         myChart.setOption(option);
         $("#all",window.parent.document).click(function(){
@@ -142,14 +146,14 @@ $(function () {
                     var tmpData = data.perforList[i];
                     insertHtml+="<tr><td>"+tmpData.treg;
                         if(parseFloat(tmpData.sr)>0){
-                            insertHtml+="</td><td style='color:red;'>"+tmpData.sr;
+                            insertHtml+="</td><td style='background: red;color: #fff;'>"+tmpData.sr;
                         }else{
-                            insertHtml+="</td><td>"+tmpData.sr
+                            insertHtml+="</td><td style='background: #33FF33;color: #fff;'>"+tmpData.sr
                         }
                         if(parseFloat(tmpData.psr)>0){
-                            insertHtml+="</td><td style='color:red;'>"+tmpData.psr;
+                            insertHtml+="</td><td style='background: red;color: #fff;'>"+tmpData.psr;
                         }else{
-                            insertHtml+="</td><td>"+tmpData.psr;
+                            insertHtml+="</td><td style='background: #33FF33;color: #fff;'>"+tmpData.psr;
                         }
                         insertHtml+="</td></tr>";
                 }
