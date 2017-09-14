@@ -185,7 +185,7 @@ $(function () {
                        var htmlP = "<p>TSEL Region--"+data[0].tselRegion+"</p>";
                        htmlP +=  "<p>Region Name--"+data[0].regionName+"</p>"
                            +"<p>Node--"+data[0].node+"</p>"
-                           +"<p>Date--"+data[0].ts+"</p>";
+                           +"<p>Date--"+data[0].dataTimes+"</p>";
                        if(typ=='SR'){
                            htmlP+="<p>value--"+data[0].accountSrPsr+"</p>";
                        }else{
