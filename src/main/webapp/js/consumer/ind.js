@@ -53,26 +53,26 @@ $(function(){
         if(data[c].dev > 0){
             var  tmpHtml = '<tr><td rowspan="2"></td><td>'
                 +data[c].sh+'</td><td>'
-                +data[c].op+'</td><td style="color: red;">'
+                +data[c].op+'</td><td style="color: #FFFFFF;background: red;">'
                 +data[c].dev+'</td></tr><tr><td>'
                 +data[c].sh1+'</td><td>'
-                +data[c].cl+'</td><td style="color: red;">'
+                +data[c].cl+'</td><td style="color: #FFFFFF;background: red;">'
                 +data[c].status+'</td></tr>';
         }else if(data[c].dev < 0){
             var  tmpHtml = '<tr><td rowspan="2"></td><td>'
                 +data[c].sh+'</td><td>'
-                +data[c].op+'</td><td style="color: green;">'
+                +data[c].op+'</td><td style="color: #FFFFFF;background: green;">'
                 +data[c].dev+'</td></tr><tr><td>'
                 +data[c].sh1+'</td><td>'
-                +data[c].cl+'</td><td style="color: green;">'
+                +data[c].cl+'</td><td style="color: #FFFFFF;background: green;">'
                 +data[c].status+'</td></tr>';
         }else{
             var  tmpHtml = '<tr><td rowspan="2"></td><td>'
                 +data[c].sh+'</td><td>'
-                +data[c].op+'</td><td style="color: yellow;">'
+                +data[c].op+'</td><td style="color: #000000;background: yellow;">'
                 +data[c].dev+'</td></tr><tr><td>'
                 +data[c].sh1+'</td><td>'
-                +data[c].cl+'</td><td style="color: yellow;">'
+                +data[c].cl+'</td><td style="color: #000000;background: yellow;">'
                 +data[c].status+'</td></tr>';
         }
 
@@ -84,28 +84,28 @@ $(function(){
                 tmpHtml += '<tr><td rowspan="2">'
                     +data[i].regional+'</td><td>'
                     +data[i].sh+'</td><td>'
-                    +data[i].op+'</td><td style="color: red;">'
+                    +data[i].op+'</td><td style="color: #FFFFFF;background: red;">'
                     +data[i].dev+'</td></tr><tr><td>'
                     +data[i].sh1+'</td><td>'
-                    +data[i].cl+'</td><td style="color: red;">'
+                    +data[i].cl+'</td><td style="color: #FFFFFF;background: red;">'
                     +data[i].status+'</td></tr>';
             }else if(data[i].dev<0){
                 tmpHtml += '<tr><td rowspan="2">'
                     +data[i].regional+'</td><td>'
                     +data[i].sh+'</td><td>'
-                    +data[i].op+'</td><td style="color: green;">'
+                    +data[i].op+'</td><td style="color: #FFFFFF;background: green;">'
                     +data[i].dev+'</td></tr><tr><td>'
                     +data[i].sh1+'</td><td>'
-                    +data[i].cl+'</td><td style="color: green;">'
+                    +data[i].cl+'</td><td style="color: #FFFFFF;background: green;">'
                     +data[i].status+'</td></tr>';
             }else{
                 tmpHtml += '<tr><td rowspan="2">'
                     +data[i].regional+'</td><td>'
                     +data[i].sh+'</td><td>'
-                    +data[i].op+'</td><td style="color: yellow;">'
+                    +data[i].op+'</td><td style="color: #000000;background: yellow;">'
                     +data[i].dev+'</td></tr><tr><td>'
                     +data[i].sh1+'</td><td>'
-                    +data[i].cl+'</td><td style="color: yellow;">'
+                    +data[i].cl+'</td><td style="color: #000000;background: yellow;">'
                     +data[i].status+'</td></tr>';
             }
         }
