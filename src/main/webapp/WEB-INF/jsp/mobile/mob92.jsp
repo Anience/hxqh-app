@@ -36,7 +36,7 @@
 	<div id="mob91">
 		<h3>Quality CNOP</h3>
 		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;padding-left: 30px;padding-right: 30px;"></div>
-		<p>BAD >= 5ms < GOOD</p>
+		<p>BAD >= 5ms > GOOD</p>
 	</div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
