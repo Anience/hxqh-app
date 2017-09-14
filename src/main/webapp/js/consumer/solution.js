@@ -139,13 +139,7 @@ $(function(){
 			          }
 			        }
 			    ],
-			    series :[{
-                        name:'Success Call',
-			            type: 'line',
-			            smooth:true,
-			            symbol:'none',
-			            data: lineData
-			        },
+			    series :[
 			        {
 			            name: 'Call Attempt',
 			            type: 'bar',
@@ -159,7 +153,14 @@ $(function(){
 			                 }
 			            },
 			            data: barData
-			        }
+			        },
+                    {
+                        name:'Success Call',
+                        type: 'line',
+                        smooth:true,
+                        symbol:'none',
+                        data: lineData
+                    }
 			    ]
 			};               
         myChart.setOption(option);
