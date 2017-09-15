@@ -87,7 +87,7 @@ $(function(){
                     +data[i].op+'</td><td style="color: #FFFFFF;background: red;">'
                     +data[i].dev+'</td></tr><tr><td>'
                     +data[i].sh1+'</td><td>'
-                    +data[i].cl+'</td><td style="color: #FFFFFF;background: red;">'
+                    +data[i].cl+'</td><td style="color: #FFFFFF;background: RED;">'
                     +data[i].status+'</td></tr>';
             }else if(data[i].dev<0){
                 tmpHtml += '<tr><td rowspan="2">'
