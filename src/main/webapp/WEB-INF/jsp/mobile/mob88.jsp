@@ -25,7 +25,7 @@
 						<tr>
 							<td width="200px;"></td>
 							<td style=" width: 100px;background: #015E8A;" >SCR:</td>
-							<td style=" width: 120px;background: #015E8A;">PDP-SR:</td>
+							<td style=" width: 145px;background: #015E8A;">PDP-SR:</td>
 						</tr>
 					</thead>
 					<tbody></tbody>
