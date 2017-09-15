@@ -27,8 +27,8 @@
 
 			<div class="col-sm-2" style="padding-top: 35px">
 				<ul>
-					<li><a href="javascript:void(0);"  style=" background: #005E8A;font-size: 24px;color: #fff;  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ">View:</a></li>
-					<li  style="background: #8D93A8;font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS</a></li>
+					<li><a href="javascript:void(0);"  style=" background: #005E8A;font-size: 24px;color: #fff;  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ">View</a></li>
+					<li  style="background: #8D93A8;"><a href="javascript:void(0);" v-on:click="navClick('0')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">NAS</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('1')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-1</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('2')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-2</a></li>
 					<li><a href="javascript:void(0);" v-on:click="navClick('3')" style="font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">TREG-3</a></li>
