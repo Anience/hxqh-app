@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="wifiId-layout">
-    <h3>SLA - MTTR Monthly</h3>
+    <h3>SLA - MTTR Monthly (Hours)</h3>
     <div class="left" id="echart1"></div>
     <div class="right">
         <div class="scoll-nav">
