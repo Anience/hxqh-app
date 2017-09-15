@@ -292,6 +292,9 @@ $(function(){
     }
     function initE(domId,tit,data1,data2,data3){
     	var myChart = echarts.init(document.getElementById(domId));
+    	var total1 = parseFloat(data2)+parseFloat(data3);
+    	var total2 = parseFloat(data1)+parseFloat(data3);
+    	var total3 = parseFloat(data1)+parseFloat(data2);
     	var dataStyle1 = {
 				    normal: {
 				    	color:'green',
@@ -302,14 +305,23 @@ $(function(){
 		var dataStyle2 = {
 			normal: {
 				color:'yellow',
-				label: { show: true ,data:data2,formatter: "{b}:\n{c}({d}%)"},
-				labelLine: { show: true,length:50 }
+				label: {
+					show: true ,
+					data:data2,
+					formatter: "{b}:\n{c}({d}%)",
+                    position:"inner"
+				},
+				labelLine: { show: false,length:50 }
 			}
 		};
 		var dataStyle3 = {
 			normal: {
 				color:'red',
-				label: { show: true,data:data3,formatter: "{b}:\n{c}({d}%)" },
+				label: {
+					show: true,
+					data:data3,
+					formatter: "{b}:\n{c}({d}%)"
+				},
 				labelLine: { show: true ,length:70}
 			}
 		};
@@ -361,7 +373,7 @@ $(function(){
 		                    name: 'Less 12 hours'
 		                },
 		                {
-		                    value: 32,
+		                    value: total1,
 		                    name: 'invisible',
 		                    itemStyle: placeHolderStyle
 		                }
@@ -378,7 +390,7 @@ $(function(){
 		                    name: '12 hours<yellow<24 hours'
 		                },
 		                {
-		                    value: 71,
+		                    value: total2,
 		                    name: 'invisible',
 		                    itemStyle: placeHolderStyle
 		                }
@@ -395,7 +407,7 @@ $(function(){
 		                    name: 'Red>24 hours'
 		                },
 		                {
-		                    value: 97,
+		                    value: total3,
 		                    name: 'invisible',
 		                    itemStyle: placeHolderStyle
 		                }
