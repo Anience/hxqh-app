@@ -49,14 +49,14 @@ $(function(){
 					}
 				},5000);
 
-				var j = 0;
+				var j = 4;
 				var timer2 = setInterval(function(){
 					var domName = 'treg57';
 					j++;
-					if(j>=4){
-						j=0;
+					if(j>=8){
+						j=4;
 					}else{
-						var index= j+1;
+						var index= j-3;
 						var liNav = '.'+domName+' li';
 						var thisLi = '.'+domName+' li:nth-child('+index+')';
 						$(liNav).css("color","#727386");
@@ -71,9 +71,10 @@ $(function(){
 			error: function () {
 
 			}
-		});
+		});//regional
 	}
 	function dataBind(data,domName){
+        $('.'+domName+' .my-TregDown').text(data[0].regional);
 		$('.'+domName+' .my-cPsDown').text(data[0].psDone);
 		$('.'+domName+' .my-notPsDown').text(data[0].notPsDone);
 		$('.'+domName+' .my-totalPsDown').text(data[0].grandTotal);
