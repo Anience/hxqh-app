@@ -57,7 +57,7 @@ $(function () {
         }else{
             tit = 'MTTI（MTD）';
             lendData = ['SL-D','OTHER','METRO-E']
-            color = ['#FF7F50', '#32CD32','#000099'];
+            color = ['#FF7F50', '#32CD32','#87CEFA'];
         }
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
