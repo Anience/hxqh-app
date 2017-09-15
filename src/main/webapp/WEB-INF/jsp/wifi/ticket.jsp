@@ -51,7 +51,9 @@
 			</tr>
 		</thead>
 		<tbody></tbody>
+
 	</table>
+	<span class="ticket-tit2">Menang = 0 Open Ticket Today</span>
 </div>
 </body>
 </html>
