@@ -40,13 +40,13 @@ table.ano82 tbody tr td{
     line-height: 21px;
     font-size: 18px;
     font-family: 'Arial';
-    color: #000
+    'color: #000
 }
 table.ano81 tbody tr:nth-child(even){
     background: #112B3A;
 }
-table.ano82 tbody tr{
-    background: #00B0F0;
+table.ano82 tbody tr:nth-child(even){
+    background: #112B3A;
 }
 ::-webkit-scrollbar{
     width: 5px;
