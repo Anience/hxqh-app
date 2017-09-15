@@ -224,3 +224,15 @@ table.MTTR tbody tr td.bg-blue{
     float: right;
     padding-right: 30px;
 }
+span.ticket-tit2{
+     float: right;
+    color: #00ff00;
+    margin-left: 30px;
+    line-height: 50px;
+    text-align: left;
+    font-size: 22px;
+    font-family: 'Arial';
+    /*padding-left: 20px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
