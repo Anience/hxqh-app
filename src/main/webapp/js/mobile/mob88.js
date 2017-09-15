@@ -57,7 +57,7 @@ $(function () {
         }else{
             tit = 'MTTI（MTD）';
             lendData = ['SL-D','OTHER','METRO-E']
-            color = ['#FF7F50', '#32CD32','#000099'];
+            color = ['#FF7F50', '#32CD32','#87CEFA'];
         }
         var myChart = echarts.init(document.getElementById(idDom));
         option = {
@@ -185,7 +185,7 @@ $(function () {
                        var htmlP = "<p>TSEL Region--"+data[0].tselRegion+"</p>";
                        htmlP +=  "<p>Region Name--"+data[0].regionName+"</p>"
                            +"<p>Node--"+data[0].node+"</p>"
-                           +"<p>Date--"+data[0].ts+"</p>";
+                           +"<p>Date--"+data[0].dataTimes+"</p>";
                        if(typ=='SR'){
                            htmlP+="<p>value--"+data[0].accountSrPsr+"</p>";
                        }else{

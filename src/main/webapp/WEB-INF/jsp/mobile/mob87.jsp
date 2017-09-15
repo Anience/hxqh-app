@@ -17,15 +17,15 @@
 <div class="mob" style="padding-top:60px;">
 	<div class="mob-layout">
 		<div class="row">
-			<div class="col-sm-2" style="padding-left: 130px;width: 100%;">
+			<div class="col-sm-2" style="padding-left: 130px; width: 100%; padding-top: 30px;">
 				<h3>Nasional</h3>
 				<span class="ticket-time"></span>
 
 			</div>
 		</div>
-		<div class="row" id="mob87" style="margin-left: 100px;">
+		<div class="row" id="mob87" style="margin-left: 100px;padding-top: 30px;">
 
-			<div class="col-sm-2">
+			<div class="col-sm-2" style="padding-top: 35px">
 				<ul>
 					<li><a href="javascript:void(0);"  style=" background: #005E8A;font-size: 24px;color: #fff;  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ">View:</a></li>
 					<li  style="background: #8D93A8;font-size: 24px;color: #fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif"><a href="javascript:void(0);" v-on:click="navClick('0')">NAS</a></li>
@@ -39,9 +39,9 @@
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<div id="echart1" style="height: 300px;width: 100%;"></div>
+				<div id="echart1" style="height: 300px;width: 100%; padding-top: 30px;"></div>
 			</div>
-			<div class="col-sm-3"  style="padding-right: 30px;">
+			<div class="col-sm-3"  style="padding-right: 15px; padding-top: 30px;">
 
 				<table>
 					<tr>
