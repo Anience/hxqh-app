@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="ano-layout">
-	<h4>AWAS</h4>
+	<h4>AWAS (Automatic Warning Alarm System)</h4>
 	<table class="ano81" id="ano81-data">
 		<thead>
 			<tr style="height: 50px;">
