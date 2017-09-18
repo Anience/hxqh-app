@@ -31,8 +31,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td rowspan="3">1</td>
-					<td rowspan="3">INIHOME</td>
+					<td rowspan="3" class="my-TregDown">1</td>
+					<td rowspan="3">INDIHOME</td>
 					<td>MYINDIHOME</td>
 					<td class="my-cPsDown">222</td>
 					<td class="my-notPsDown">41</td>
@@ -83,8 +83,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td rowspan="3">1</td>
-					<td rowspan="3">INIHOME</td>
+					<td rowspan="3" class="my-TregDown">1</td>
+					<td rowspan="3">INDIHOME</td>
 					<td>MYINDIHOME</td>
 					<td class="my-cPsDown">222</td>
 					<td class="my-notPsDown">41</td>

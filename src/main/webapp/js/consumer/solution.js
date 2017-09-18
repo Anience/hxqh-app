@@ -48,7 +48,7 @@ $(function(){
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			   backgroundColor:'#0A0F25',
-			   color:['#ef8a92','#2c2a4e'],
+			   color:['#00ff00','#ef8a92'],  //2c2a4e
 			   title: {
 			        text: tit,
 			        x:'right',
@@ -143,7 +143,7 @@ $(function(){
 			        {
 			            name: 'Call Attempt',
 			            type: 'bar',
-			            barWidth:'40',
+			            barWidth:'70',
 			            itemStyle:{
 			                 normal:{
 			                      color: '#4B476A',
