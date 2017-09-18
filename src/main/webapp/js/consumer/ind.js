@@ -51,7 +51,8 @@ $(function(){
 
         var c = data.length -1 ;
         if(data[c].dev > 0){
-            var  tmpHtml = '<tr><td rowspan="2"></td><td>'
+            var  tmpHtml = '<tr><td rowspan="2">'
+                +'TOTAL' +'</td><td>'
                 +data[c].sh+'</td><td>'
                 +data[c].op+'</td><td style="color: #FFFFFF;background: red;">'
                 +data[c].dev+'</td></tr><tr><td>'
@@ -59,7 +60,8 @@ $(function(){
                 +data[c].cl+'</td><td style="color: #FFFFFF;background: red;">'
                 +data[c].status+'</td></tr>';
         }else if(data[c].dev < 0){
-            var  tmpHtml = '<tr><td rowspan="2"></td><td>'
+            var  tmpHtml = '<tr><td rowspan="2">'
+                +'TOTAL' +'</td><td>'
                 +data[c].sh+'</td><td>'
                 +data[c].op+'</td><td style="color: #FFFFFF;background: green;">'
                 +data[c].dev+'</td></tr><tr><td>'
@@ -67,7 +69,8 @@ $(function(){
                 +data[c].cl+'</td><td style="color: #FFFFFF;background: green;">'
                 +data[c].status+'</td></tr>';
         }else{
-            var  tmpHtml = '<tr><td rowspan="2"></td><td>'
+            var  tmpHtml = '<tr><td rowspan="2">'
+                +'TOTAL' +'</td><td>'
                 +data[c].sh+'</td><td>'
                 +data[c].op+'</td><td style="color: #000000;background: yellow;">'
                 +data[c].dev+'</td></tr><tr><td>'
