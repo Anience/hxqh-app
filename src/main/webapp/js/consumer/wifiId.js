@@ -309,11 +309,18 @@ $(function(){
 			    series : [
 			        {
 			            name:'成交',
-			            type:'line',
+			            type:'bar',
+                        barWidth: 40,
 			            smooth:true,
 			            symbol:'none',
 			            itemStyle: {
 			            	normal: {
+                                label:{
+                                    show : true,
+									textStyle: {
+                                        color: '#ffffff'
+                                    }
+								},
 			            		areaStyle: {
 			            			type: 'default',
 			            			color:'#2a2b48'
