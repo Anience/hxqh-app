@@ -168,7 +168,12 @@ $(function () {
     $("table#mob88-data tbody").on("mouseenter","td",function(e){
         var type = ['','SR','PSR'];
         var typ = type[$(this).index()];
-        var trg = $(this).prev().text();
+        var trg = '';
+        if(typ=='SR'){
+            trg = $(this).prev().text();
+        }else{
+            trg = $(this).prev().prev().text();
+        }
         if(parseFloat($(this).text())>0){
             $.ajax({
                 url: _ctx+"/mobile/badmsg",
