@@ -12,12 +12,27 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                var pageTit = '';
+                switch(_type){
+                    case 'DES':
+                        pageTit = "Enterprise";
+                        break;
+                    case 'DGS':
+                        pageTit = "Government";
+                        break;
+                    case 'DBS':
+                        pageTit = "Business";
+                        break;
+                    default:
+                        pageTit = "Wholesale";
+                        break;
+                }
                 window.clearInterval(timer);
                 var tool = new entUtil();
                 if(_show == "2"){
-                    tool.headerInit(data.enterpriseMap["2"],".top2-layout-left");
+                    tool.headerInit(data.enterpriseMap["2"],".top2-layout-left",pageTit);
                     var data1 = tool.dealData(data.enterpriseMap["2"]);
-                    tool.headerInit(data.enterpriseMap["3"],".top2-layout-right");
+                    tool.headerInit(data.enterpriseMap["3"],".top2-layout-right",pageTit);
                     var data2 = tool.dealData(data.enterpriseMap["3"]);
                     //initEchart1折线图，initEchart2圆形图
                     initEchart2("echart11",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
@@ -41,7 +56,7 @@ $(function(){
                     var data3  = tool.dealData(data.enterpriseMap[dataIndex+2]);
                     var data4  = tool.dealData(data.enterpriseMap[dataIndex+3]);
                     //initEchart1折线图，initEchart2圆形图
-                    tool.headerInit(data.enterpriseMap[dataIndex],".top2-layout-left");
+                    tool.headerInit(data.enterpriseMap[dataIndex],".top2-layout-left",pageTit);
                     initEchart2("echart11",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
                     initEchart1("echart12",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                     initEchart1("echart13",data1.rightTop,data1.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
@@ -50,7 +65,7 @@ $(function(){
                     initEchart1("echart16",data1.rightBottom,data1.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
                     //initEchart1折线图，initEchart2圆形图
                     //两个用户
-                    tool.headerInit(data.enterpriseMap[dataIndex+1],".top2-layout-right");
+                    tool.headerInit(data.enterpriseMap[dataIndex+1],".top2-layout-right",pageTit);
                     initEchart2("echart21",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
                     initEchart1("echart22",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                     initEchart1("echart23",data2.rightTop,data2.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
@@ -66,7 +81,7 @@ $(function(){
                         switch(i){
                             case 1:
                                 //initEchart1折线图，initEchart2圆形图
-                                tool.headerInit(data.enterpriseMap[dataIndex+2],".top2-layout-left");
+                                tool.headerInit(data.enterpriseMap[dataIndex+2],".top2-layout-left",pageTit);
                                 initEchart2("echart11",data3.leftTop.closenums,data3.leftTop.opennums,"REACTIVE");
                                 initEchart1("echart12",data3.middleTop,data3.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                                 initEchart1("echart13",data3.rightTop,data3.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
@@ -75,7 +90,7 @@ $(function(){
                                 initEchart1("echart16",data3.rightBottom,data3.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
                                 //initEchart1折线图，initEchart2圆形图
                                 //两个用户
-                                tool.headerInit(data.enterpriseMap[dataIndex+3],".top2-layout-right");
+                                tool.headerInit(data.enterpriseMap[dataIndex+3],".top2-layout-right",pageTit);
                                 initEchart2("echart21",data4.leftTop.closenums,data4.leftTop.opennums,"REACTIVE");
                                 initEchart1("echart22",data4.middleTop,data4.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                                 initEchart1("echart23",data4.rightTop,data4.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
@@ -84,7 +99,7 @@ $(function(){
                                 break;
                             default:
                                 //initEchart1折线图，initEchart2圆形图
-                                tool.headerInit(data.enterpriseMap[dataIndex],".top2-layout-left");
+                                tool.headerInit(data.enterpriseMap[dataIndex],".top2-layout-left",pageTit);
                                 initEchart2("echart11",data1.leftTop.closenums,data1.leftTop.opennums,"REACTIVE");
                                 initEchart1("echart12",data1.middleTop,data1.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                                 initEchart1("echart13",data1.rightTop,data1.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");
@@ -93,7 +108,7 @@ $(function(){
                                 initEchart1("echart16",data1.rightBottom,data1.rightBName,"TRAFFIC BY PRODUCT(2 DAYS PER 6 HOURS)");
                                 //initEchart1折线图，initEchart2圆形图
                                 //两个用户
-                                tool.headerInit(data.enterpriseMap[dataIndex+1],".top2-layout-right");
+                                tool.headerInit(data.enterpriseMap[dataIndex+1],".top2-layout-right",pageTit);
                                 initEchart2("echart21",data2.leftTop.closenums,data2.leftTop.opennums,"REACTIVE");
                                 initEchart1("echart22",data2.middleTop,data2.middleTopName,"REACTIVE TICKETS(30 DAYS)");
                                 initEchart1("echart23",data2.rightTop,data2.rightTopName,"TRAFFIC BY REGION(2 DAYS PER 30 MINS)");

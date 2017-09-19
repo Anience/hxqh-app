@@ -12,6 +12,21 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                var pageTit = '';
+                switch(_type){
+                    case 'DES':
+                        pageTit = "Enterprise";
+                        break;
+                    case 'DGS':
+                        pageTit = "Government";
+                        break;
+                    case 'DBS':
+                        pageTit = "Business";
+                        break;
+                    default:
+                        pageTit = "Wholesale";
+                        break;
+                }
                 window.clearInterval(timer);
                 var tool = new entUtil();
                 if(_type == "DWS"){
@@ -22,7 +37,7 @@ $(function(){
                         var data2 = tool.dealData(data.enterpriseMap[j-2]);
                         var data3 = tool.dealData(data.enterpriseMap[j-1]);
                         var data4 = tool.dealData(data.enterpriseMap[j]);
-                        tool.headerInit(data.enterpriseMap[j],"");
+                        tool.headerInit(data.enterpriseMap[j],"",pageTit);
                         initPage(data4);
                         var i = 0;
                         setInterval(function(){
@@ -32,17 +47,17 @@ $(function(){
                             }
                             switch(i){
                                 case 1:
-                                    tool.headerInit(data.enterpriseMap[j-3],"");
+                                    tool.headerInit(data.enterpriseMap[j-3],"",pageTit);
                                     initPage(data1);
                                     break;
                                 case 2:
-                                    tool.headerInit(data.enterpriseMap[j-2],"");
+                                    tool.headerInit(data.enterpriseMap[j-2],"",pageTit);
                                     initPage(data2);
                                 case 3:
-                                    tool.headerInit(data.enterpriseMap[j-1],"");
+                                    tool.headerInit(data.enterpriseMap[j-1],"",pageTit);
                                     initPage(data3);
                                 default:
-                                    tool.headerInit(data.enterpriseMap[j],"");
+                                    tool.headerInit(data.enterpriseMap[j],"",pageTit);
                                     initPage(data4);
                                     break;
                             }
@@ -52,7 +67,7 @@ $(function(){
                         var data1 = tool.dealData(data.enterpriseMap[j-1]);
                         var data2 = tool.dealData(data.enterpriseMap[j]);
                         //initEchart1折线图，initEchart2圆形图
-                        tool.headerInit(data.enterpriseMap[j],"");
+                        tool.headerInit(data.enterpriseMap[j],"",pageTit);
                         initPage(data2);
                         var i = 0;
                         var timer = setInterval(function(){
@@ -62,11 +77,11 @@ $(function(){
                             }
                             switch(i){
                                 case 1:
-                                    tool.headerInit(data.enterpriseMap[j-1],"");
+                                    tool.headerInit(data.enterpriseMap[j-1],"",pageTit);
                                     initPage(data1);
                                     break;
                                 default:
-                                    tool.headerInit(data.enterpriseMap[j],"");
+                                    tool.headerInit(data.enterpriseMap[j],"",pageTit);
                                     initPage(data2);
                                     break;
                             }

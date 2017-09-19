@@ -12,10 +12,25 @@ $(function(){
             },
             dataType: "json",
             success: function(data){
+                var pageTit = '';
+                switch(type){
+                    case 'DES':
+                        pageTit = "Enterprise";
+                        break;
+                    case 'DGS':
+                        pageTit = "Government";
+                        break;
+                    case 'DBS':
+                        pageTit = "Business";
+                        break;
+                    default:
+                        pageTit = "Wholesale";
+                        break;
+                }
                 //页面用户名展示
                 $("#top45 .top2-layout-left .ent-header h4").text(data.enterpriseMap["4"].name);
                 //sla数据展示
-                ShowSla(data.enterpriseMap["4"].threeColor,"#top45 .top2-layout-left");
+                ShowSla(data.enterpriseMap["4"].threeColor,"#top45 .top2-layout-left",pageTit);
                 //event
                 showEvent(data.enterpriseMap["4"].eventList,"#top45 .top2-layout-left");
                 //图标展示
@@ -47,7 +62,7 @@ $(function(){
                 //页面用户名展示
                 $("#top45 .top2-layout-right .ent-header h4").text(data.enterpriseMap["5"].name);
                 //sla数据展示
-                ShowSla(data.enterpriseMap["5"].threeColor,"#top45 .top2-layout-right");
+                ShowSla(data.enterpriseMap["5"].threeColor,"#top45 .top2-layout-right",pageTit);
                 //event
                 showEvent(data.enterpriseMap["5"].eventList,"#top45 .top2-layout-right");
                 //图标展示
@@ -80,7 +95,7 @@ $(function(){
                 //页面用户名展示
                 $("#top67 .top2-layout-left .ent-header h4").text(data.enterpriseMap["6"].name);
                 //sla数据展示
-                ShowSla(data.enterpriseMap["6"].threeColor,"#top67 .top2-layout-left");
+                ShowSla(data.enterpriseMap["6"].threeColor,"#top67 .top2-layout-left",pageTit);
                 //event
                 showEvent(data.enterpriseMap["6"].eventList,"#top67 .top2-layout-left");
                 //图标展示
@@ -112,7 +127,7 @@ $(function(){
                 //页面用户名展示
                 $("#top67 .top2-layout-right .ent-header h4").text(data.enterpriseMap["7"].name);
                 //sla数据展示
-                ShowSla(data.enterpriseMap["7"].threeColor,"#top67 .top2-layout-right");
+                ShowSla(data.enterpriseMap["7"].threeColor,"#top67 .top2-layout-right",pageTit);
                 //event
                 showEvent(data.enterpriseMap["7"].eventList,"#top67 .top2-layout-right");
                 //图标展示

@@ -32,41 +32,41 @@ entUtil.prototype={
         dealedData.rightBName = data.productNameList;
         return dealedData;
     },
-    headerInit:function(data,domName){
+    headerInit:function(data,domName,appName){
         var self = this;
         //页面用户名展示
         $(domName+" .ent-header h4").text(data.name);
         //sla数据展示
-        self.ShowSla(data.threeColor,domName);
+        self.ShowSla(data.threeColor,domName,appName);
         //event
         self.showEvent(data.eventList,domName);
         //图标展示
         self.showLogo(data.iconList,domName);
     },
-    ShowSla: function (data,domName){
+    ShowSla: function (data,domName,appName){
         var colorData1 = data;
         var eq = "";
         var gt = "";
         var lt = "";
-        if(domName.toString() == "Enterprise"){
-            eq = colorData1.eq ==null?'0':colorData1.eq + " ( >3.5H ) ";
-            gt = colorData1.gt ==null?'0':colorData1.gt + " ( =3.5H ) ";
-            lt = colorData1.lt ==null?'0':colorData1.lt + " (< 3.5H ) ";
-        }else if(domName.toString() == "Government"){
-            eq = colorData1.eq ==null?'0':colorData1.eq + " ( >3H ) ";
-            gt = colorData1.gt ==null?'0':colorData1.gt + " ( =3H ) ";
-            lt = colorData1.lt ==null?'0':colorData1.lt + " ( <3H ) ";
+        if(appName.toString() == "Enterprise"){
+            eq = colorData1.eq ==null?'0 ( >3.5H ) ':colorData1.eq + " ( >3.5H ) ";
+            gt = colorData1.gt ==null?'0 ( =3.5H ) ':colorData1.gt + " ( =3.5H ) ";
+            lt = colorData1.lt ==null?'0 (< 3.5H ) ':colorData1.lt + " (< 3.5H ) ";
+        }else if(appName.toString() == "Government"){
+            eq = colorData1.eq ==null?'0 ( >3H ) ':colorData1.eq + " ( >3H ) ";
+            gt = colorData1.gt ==null?'0 ( =3H ) ':colorData1.gt + " ( =3H ) ";
+            lt = colorData1.lt ==null?'0 ( <3H ) ':colorData1.lt + " ( <3H ) ";
         }else{
-            eq = colorData1.eq ==null?'0':colorData1.eq + " ( >4H ) ";
-            gt = colorData1.gt ==null?'0':colorData1.gt + " ( =4H ) ";
-            lt = colorData1.lt ==null?'0':colorData1.lt + " ( <4H ) ";
+            eq = colorData1.eq ==null?'0 ( >4H ) ':colorData1.eq + " ( >4H ) ";
+            gt = colorData1.gt ==null?'0 ( =4H ) ':colorData1.gt + " ( =4H ) ";
+            lt = colorData1.lt ==null?'0 ( <4H ) ':colorData1.lt + " ( <4H ) ";
         }
-        /*eq = colorData1.eq ==null?'0':colorData1.eq+"(>3)";
+        /*eq = colorData1.eq ==null?'0(111)':colorData1.eq+"(111)";
         gt = colorData1.gt ==null?'0':colorData1.gt;
         lt = colorData1.lt ==null?'0':colorData1.lt;*/
-        $(" "+".span-layout .red").text(eq);
-        $(" "+".span-layout .yellow").text(gt);
-        $(" "+".span-layout .green").text(lt);
+        $(domName +" "+".span-layout .red").text(eq);
+        $(domName +" "+".span-layout .yellow").text(gt);
+        $(domName +" "+".span-layout .green").text(lt);
     },
     showEvent: function(data,domName){
         var events = data;

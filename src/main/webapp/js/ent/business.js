@@ -32,8 +32,8 @@ $(function(){
                 }
                 $(".pageTit").text(pageTit);
                 var tool = new entUtil();
-                tool.ShowSla(data.threeColor,pageTit);
-                //tool.ShowSla(data.threeColor,"");
+                //tool.ShowSla(data.threeColor,pageTit);
+                tool.ShowSla(data.threeColor,"",pageTit);
 
                 var pieTop = data.pieRightnowList;
                 var pieBottom = data.pieProactiveList;
@@ -183,6 +183,7 @@ $(function(){
             yAxis: [
                 {
                     type: 'value',
+                    name:'Ticket',
                     axisLabel : {
                         show:true,
                         interval:0,    // {number}刻度的长短，可设为数字 间隔
@@ -356,14 +357,14 @@ $(function(){
                         show: true
                     },
                     axisLabel : {//轴文本
-                        show:false,
+                        show:true,
                         interval:0,    // {number}刻度的长短，可设为数字
                         rotate: 45,    //旋转度数
                         margin:5,
                         splitNumber: 18,
                         textStyle:{
                             color: '#666C7F',
-                            fontSize:15
+                            fontSize:12
                         }
                     },
 
@@ -387,6 +388,7 @@ $(function(){
             yAxis: [
                 {
                     type: 'value',
+                    name: 'GB',
                     axisLabel : {
                         show:true,
                         interval:0,    // {number}刻度的长短，可设为数字 间隔
