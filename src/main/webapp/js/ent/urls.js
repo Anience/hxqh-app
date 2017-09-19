@@ -11,10 +11,10 @@ $(function(){
     var i = 0;
     setInterval(function(){
         i++;
-        if(i>7){
-            i=1;
+        if(i>6){
+            i=0;
         }
-        $("#menuFrame").src = urls[i];
+        $("#menuFrame").attr("src",urls[i]);
         console.log(urls[i]);
     },5000);
 });
