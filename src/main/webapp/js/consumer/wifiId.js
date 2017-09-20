@@ -60,6 +60,19 @@ $(function(){
         else return temp;
     }
 	function initEchart(domId,data,xdata) {
+		var tol = [
+			{value:0 ,name:0},
+            {value:0 ,name:0},
+            {value:0 ,name:0},
+            {value:0 ,name:0},
+            {value:0 ,name:0},
+            {value:0 ,name:0},
+            {value:0 ,name:0},
+			];
+		for(var i = 0;i<7;i++){
+			tol[i].name = data.IPTV[i] + data.Internet[i] +data.Pots[i];
+		}
+
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 			  backgroundColor:'#0A0F25',
@@ -211,6 +224,47 @@ $(function(){
 			            },
 			            data:data.Pots
 			        },
+                    {
+                        name:' ',
+                        type:'bar',
+                        stack: '广告',
+                        itemStyle:{
+
+                            normal:{
+
+                                color: '#F7AA62',
+                                barBorderColor: '#F7AA62',
+                                barBorderWidth: 6,
+                                barBorderRadius:0,
+                                label:{
+                                    show: true,
+                                    position:'top',
+                                    formatter:function(params){
+                                        if(params['name'] == 'R1')
+                                            return tol[0].name;
+                                        else if(params['name'] == 'R2')
+                                            return tol[1].name;
+                                        else if(params['name'] == 'R3')
+                                            return tol[2].name;
+                                        else if(params['name'] == 'R4')
+                                            return tol[3].name;
+                                        else if(params['name'] == 'R5')
+                                            return tol[4].name;
+                                        else if(params['name'] == 'R6')
+                                            return tol[5].name;
+                                        else
+											return tol[6].name;
+                                    },
+                                    textStyle:{
+                                        color: '#fff',
+                                        align: 'center',
+                                        fontSize: 12,
+                                    }
+                                }
+                            }
+                        },
+                        data:tol
+                    }
 			     ]
 			};               
         myChart.setOption(option);
