@@ -71,8 +71,22 @@ $(function(){
 				initEPie("echart21",tit21,data21,legend2,true);
 				initEPie("echart22",tit22,data22,legend2,true);
 
+
 				var tit4 = "Time Achievement of WO on FFM（weekly）";
-				var echartData4 = data.arcList;
+                var echartData4 = data.arcList;
+               /*//UAT后修改部分
+                var data23 =[
+                { value: 0, name: 'Pink' },
+                { value: 0, name: 'Black' },
+                { value: 0, name: 'Blue' }
+                ];
+                var legend4=['Pink','Black','Blue'];
+
+				data23[0].value = echartData4[0].jumlah;
+                data23[1].value = echartData4[1].jumlah;
+                data23[2].value = echartData4[2].jumlah;
+
+                initEPie2("echart4",tit4,data23,legend4,true);*/
 				initE("echart4",tit4,echartData4[0].jumlah,echartData4[1].jumlah,echartData4[2].jumlah)
 			},
 			error: function () {
@@ -290,6 +304,58 @@ $(function(){
 			};      
         myChart.setOption(option);
     }
+
+    function initEPie2(domId,tit,data,legendData,legendShow) {
+        var myChart = echarts.init(document.getElementById(domId));
+        option = {
+            backgroundColor: '#0A0F25',
+            color: ['#d46e87', '#4a476a','#CC6666'],
+            title: {
+                text: tit,
+                x: 'center',
+                y: 'top',
+                textStyle: {
+                    fontSize: 26,
+                    fontFamily: 'Arial',
+                    color: '#9F9FA1'
+                }
+            },
+            legend: {
+                show: legendShow,
+                data: legendData,
+                x: 'right',
+                y: 'top',
+                textStyle: {
+                    fontSize: 16,
+                    fontFamily: "Arial",
+                    color: '#CECECE'
+                }
+            },
+            series: [{
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                itemStyle:{
+                    normal:{
+                        label:{
+                            show:true,
+                            position:'inner',
+                            formatter:"{b} : {d}%  {c}",
+                            textStyle:{
+                                color:'#fff',
+                                fontSize:14
+                            }
+                        },
+                        labelLine:{
+                            show:false
+                        }
+                    }
+                },
+                data: data
+            }]
+        };
+        myChart.setOption(option);
+    }
     function initE(domId,tit,data1,data2,data3){
     	var myChart = echarts.init(document.getElementById(domId));
     	var total1 = parseFloat(data2)+parseFloat(data3);
@@ -297,14 +363,14 @@ $(function(){
     	var total3 = parseFloat(data1)+parseFloat(data2);
     	var dataStyle1 = {
 				    normal: {
-				    	color:'green',
+				    	color:'#d46e87',
 				        label: { show: true,data:data1,formatter: "{b}:\n{c}({d}%)" },
 				        labelLine: { show: true,length:30 }
 				    }
 				};
 		var dataStyle2 = {
 			normal: {
-				color:'yellow',
+				color:'#CC9933',
 				label: {
 					show: true ,
 					data:data2,
@@ -316,7 +382,7 @@ $(function(){
 		};
 		var dataStyle3 = {
 			normal: {
-				color:'red',
+				color:'#4a476a',
 				label: {
 					show: true,
 					data:data3,
@@ -336,7 +402,7 @@ $(function(){
 		    }
 		};
 		option = {
-			color:['green','yellow','red'],
+			color:['#d46e87','#CC9933','#4a476a'],
 		    title: {
 		        text: tit,
 		        x: 'left',
@@ -360,7 +426,7 @@ $(function(){
                 textStyle: {
                     color:'#9F9FA1'
                 },
-		        data: ['Less 12 hours', '12 hours<yellow<24 hours', 'Red>24 hours']
+		        data: ['Less 12 hours', '12 hours<Orange<24 hours', 'Black>24 hours']
 		    },
 		    series: [{
 		            name: '1',
@@ -387,7 +453,7 @@ $(function(){
 		            itemStyle: dataStyle2,
 		            data: [{
 		                    value: data2,
-		                    name: '12 hours<yellow<24 hours'
+		                    name: '12 hours<Orange<24 hours'
 		                },
 		                {
 		                    value: total2,
@@ -404,7 +470,7 @@ $(function(){
 		            itemStyle: dataStyle3,
 		            data: [{
 		                    value: data3,
-		                    name: 'Red>24 hours'
+		                    name: 'Black>24 hours'
 		                },
 		                {
 		                    value: total3,
