@@ -70,7 +70,7 @@ $(function(){
         if(parseInt(data)==0){
             str = '<td><span class="bule-star"></span></td>';
         }else{
-            str = '<td style="color: #eb0300;">kalah</td>';
+            str = '<td style="color: #FFFFFF;background: #eb0300;">kalah</td>';
         }
          return str;
     }
