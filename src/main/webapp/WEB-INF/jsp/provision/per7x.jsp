@@ -25,8 +25,8 @@
 					<td width="175px">COMPLY PS_DONE</td>
 					<td width="228px">NOT COMPLY PS_DONE</td>
 					<td width="216px">GRAND TOTAL PS_DONE</td>
-					<td width="220px">MYINDIHOME</td>
-					<td width="210px">OTHERS</td>
+					<td width="220px">MYINDIHOME<br />COMPLIANCE</td>
+					<td width="210px">OTHERS<br />COMPLIANCE</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,8 +77,8 @@
 					<td width="175px">COMPLY PS_DONE</td>
 					<td width="228px">NOT COMPLY PS_DONE</td>
 					<td width="216px">GRAND TOTAL PS_DONE</td>
-					<td width="220px">MYINDIHOME</td>
-					<td width="210px">OTHERS</td>
+					<td width="220px">MYINDIHOME<br />COMPLIANCE</td>
+					<td width="210px">OTHERS<br />COMPLIANCE</td>
 				</tr>
 			</thead>
 			<tbody>
