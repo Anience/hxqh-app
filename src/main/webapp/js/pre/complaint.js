@@ -40,24 +40,17 @@ $(function(){
 	init();
     function initEchart(domId,echartData) {
         var myChart = echarts.init(document.getElementById(domId));
-        var tit = '';
+
         var leg = '';
         if(domId == 'echart1')
-        {tit = 'Legend';
+        {
         leg = 'Number of New Installtion (INDIHOME)';
         }
         option = {
             backgroundColor:'#0A0F25',
             color:['#ef8a92'],
             //color:['#ef8a92','#2c2a4e'],
-            title: {
-                text: tit,
-                textStyle: {
-                    fontSize: 26,
-                    fontFamily: 'Arial',
-                    color: '#9F9FA1'
-                }
-            },
+
             legend: {
                 show: true,
                 orient: 'vertical',
