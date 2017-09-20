@@ -47,7 +47,7 @@ $(function(){
 						initEPie("echart1",totalData[pieData][0].myindihome,totalData[pieData][0].other);
 						initEPie("echart2",totalData[pieData][1].myindihome,totalData[pieData][1].other);
 					}
-				},5000);
+				},15000);
 
 				var j = 4;
 				var timer2 = setInterval(function(){
@@ -66,7 +66,7 @@ $(function(){
 						initEPie("echart3",totalData[pieData][0].myindihome,totalData[pieData][0].other);
 						initEPie("echart4",totalData[pieData][1].myindihome,totalData[pieData][1].other);
 					}
-				},5000);
+				},15000);
 			},
 			error: function () {
 
@@ -98,22 +98,28 @@ $(function(){
               $(liNav).css("color","#727386");
 			  $(thisLi).css("color","#fff");
            }
-		},5000);
+		},15000);
 	}
 	function initEPie(domId,openData,closeData) {
         var myChart = echarts.init(document.getElementById(domId));
 			option = {
 				background:'#21233c',
-			    color:['#35314e','#d46e87'],
+                color:['#d46e87','#35314e'],
+			    //color:['#35314e','#d46e87'],
 			    series : [{
 			            type:'pie',
-			            radius : '55%',
+			            radius : '65%',
 			            center: ['50%', '50%'],
 			            itemStyle:{
 			             normal:{
 			                label:{
-			                    show: false,
-			                    position:'inner'
+			                    show: true,
+			                    position:'inner',
+                                formatter:"{b}  {d}%",
+                                textStyle:{
+                                    color:'#fff',
+                                    fontSize:18
+                                }
 			                },
 			               labelLine:{
 			                  show:false
@@ -121,8 +127,8 @@ $(function(){
 			              }
 			            },
 			            data:[
-			                {value:openData, name:'open'},
-			                {value:closeData, name:'close'}
+			                {value:openData, name:'Comp'},
+			                {value:closeData, name:'Not Comp'}
 			            ]
 			        }
 			    ]
