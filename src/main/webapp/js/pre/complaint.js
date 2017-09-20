@@ -40,9 +40,35 @@ $(function(){
 	init();
     function initEchart(domId,echartData) {
         var myChart = echarts.init(document.getElementById(domId));
+        var tit = '';
+        var leg = '';
+        if(domId == 'echart1')
+        {tit = 'Legend';
+        leg = 'Number of New Installtion (INDIHOME)';
+        }
         option = {
             backgroundColor:'#0A0F25',
-            color:['#ef8a92','#2c2a4e'],
+            color:['#ef8a92'],
+            //color:['#ef8a92','#2c2a4e'],
+            title: {
+                text: tit,
+                textStyle: {
+                    fontSize: 26,
+                    fontFamily: 'Arial',
+                    color: '#9F9FA1'
+                }
+            },
+            legend: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'top',
+                textStyle: {
+                    color:'#9F9FA1'
+                },
+                data: [leg]
+                //data: ['Number of New Installtion (INDIHOME)', 'Number of Complaint ≤ 60 Day (UNIQUE)']
+            },
             tooltip : {
                 trigger: 'axis',
                 axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -113,7 +139,7 @@ $(function(){
             ],
             series :[
                 {
-                    name: 'mttr',
+                    name: 'Number of New Installtion (INDIHOME)',
                     type: 'bar',
                     barWidth:'25',
                     itemStyle:{
@@ -132,6 +158,27 @@ $(function(){
                     },
                     data: echartData
                 }
+                /*,
+                {
+                    name: 'Number of Complaint ≤ 60 Day (UNIQUE)',
+                    type: 'bar',
+                    barWidth:'25',
+                    itemStyle:{
+                        normal:{
+                            color: '#2c2a4e',
+                            barBorderColor: '#2c2a4e',
+                            barBorderWidth: 6,
+                            barBorderRadius:0,
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
+                    },
+                    data: ''
+                }*/
             ]
         };
         myChart.setOption(option);
