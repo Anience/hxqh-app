@@ -24,18 +24,20 @@
     <table class="monthly">
         <thead>
             <tr>
-                <td colspan="3" style="text-align: left;padding-left: 80px;"> Provisioning-MtD MTTI monitoring per 7 regions</td>
+                <td colspan="3" style="text-align: left;padding-left: 80px;"> Provisioning-MtD MTTI monitoring per 7 regions (HATIN)</td>
                 <td colspan="2"><span class="ticket-time"></span></td>
             </tr>
             <tr>
                 <td>Sasaran Mutu</td>
-                <td colspan="2">MTTI</td>
-                <td colspan="2">TTI Comply</td>
+                <td colspan="2">MTTI(5HK)</td>
+                <td colspan="2">TTI Comply(90%)</td>
             </tr>
             <tr>
                 <td>Target</td>
-                <td colspan="2">5HK</td>
-                <td colspan="2">90%</td>
+                <td >Realsasi</td>
+                <td >Pencapaian</td>
+                <td >Realisasi</td>
+                <td >Pencapaian</td>
             </tr>
         </thead>
         <tbody>
