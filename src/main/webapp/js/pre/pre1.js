@@ -22,7 +22,7 @@ $(function(){
                 $('.ticket-time').text(time);
 				var data1 = [];
 				var legend1 = [];
-				var tit1 = "Today’s Status WO on FFM";
+				var tit1 = "Today’s WO per CFU on FFM";
 				var xData1 = data.name2List;
 				var echartData1 = data.pillartM;
 				for(var name in echartData1){
