@@ -80,7 +80,7 @@
                 <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
             </p>
             <p style="margin-top: 30px;">
-                <button>Save</button>
+                <button @click="save">Save</button>
                 <button @click="close">Cancle</button>
             </p>
         </div>
