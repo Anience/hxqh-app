@@ -45,16 +45,16 @@ $(function(){
                         +'</td><td>'+data[i].ioc3
                         +'</td><td>'+data[i].ioc4
                         +'</td><td>'+data[i].ioc5
-                        +'</td><td>'+data[i].ioc6
-                        +'</td><td>'+data[i].ioc7
-                        +'</td><td>'+data[i].ioc8
-                        +'</td><td>'+data[i].ioc9
-                        +'</td><td>'+data[i].ioc10
-                        +'</td><td>'+data[i].ioc11
                         +'</td><td>'+data[i].ioc12
                         +'</td><td>'+data[i].ioc13
                         +'</td><td>'+data[i].ioc14
                         +'</td><td>'+data[i].ioc15
+                        +'</td><td>'+data[i].ioc8
+                        +'</td><td>'+data[i].ioc9
+                        +'</td><td>'+data[i].ioc10
+                        +'</td><td>'+data[i].ioc11
+                        +'</td><td>'+data[i].ioc6
+                        +'</td><td>'+data[i].ioc7
                         +'</td><td>'+data[i].ioc16
                         +'</td></tr>';
                 }
