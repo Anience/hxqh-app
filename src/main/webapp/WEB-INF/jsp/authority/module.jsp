@@ -65,19 +65,19 @@
         <div class="user-info">
             <p class="item">
                 <lable style="width: 70px;">Name</lable>
-                <input type="text"  style="width: 190px;" v-text="modelname" v-model="modelname">
+                <input type="text"  style="width: 190px;" v-model="modelname">
             </p>
             <p class="item">
                 <lable style="width: 70px;">Description</lable>
-                <input type="text" style="width: 190px;" v-text="modeldesc" v-model="modeldesc">
+                <input type="text" style="width: 190px;"  v-model="modeldesc">
             </p>
             <p class="item">
                 <lable style="width: 70px;">parentId</lable>
-                <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
+                <input type="text" style="width: 190px;"  v-model="parentid">
             </p>
             <p class="item">
                 <lable style="width: 70px;">sortNum</lable>
-                <input type="text" style="width: 190px;" v-text="parentid" v-model="parentid">
+                <input type="text" style="width: 190px;"  v-model="parentid">
             </p>
             <p style="margin-top: 30px;">
                 <button @click="save">Save</button>
