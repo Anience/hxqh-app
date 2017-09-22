@@ -15,7 +15,7 @@
 
 <div class="wifiId-layout">
 	<div class="mytitle" >
-		<h3>SR View</h3>
+		<h3>Ticket Distribution NON - GAMAS</h3>
 		<span class="ticket-time"></span>
 	</div>
 	<div class="mycontent">
