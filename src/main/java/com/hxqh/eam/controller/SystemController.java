@@ -6,6 +6,7 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.common.IConstants;
 import com.hxqh.eam.common.hxqh.Account;
+import com.hxqh.eam.dao.TbModelDao;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.base.Message;
 import com.hxqh.eam.model.base.SessionInfo;
@@ -31,6 +32,9 @@ public class SystemController {
 
     @Autowired
     private SystemService systemService;
+
+    @Autowired
+    private TbModelDao modelDao;
 
     /****************************login logout************************/
     /**
@@ -603,6 +607,14 @@ public class SystemController {
         return new ModelAndView("model/modelDetail", result);
     }
 
+    @ModelAttribute
+    public void getModel(@RequestParam(value = "modelid", required = false) Long modelid,
+                                  Map<String, Object> map) {
+        if (modelid != null) {
+            map.put("account", modelDao.find(modelid));
+        }
+    }
+
 
     /**
      * editmodel 业务接口
@@ -761,6 +773,7 @@ public class SystemController {
             return message;
         }
     }
+
     /******************************发送邮件**************************/
 
     @RequestMapping(value = "/upoint", method = RequestMethod.GET)
@@ -794,8 +807,6 @@ public class SystemController {
     public ModelAndView telkomsolution() {
         return new ModelAndView("singleLogin/telkomsolution");
     }
-
-
 
 
 }
