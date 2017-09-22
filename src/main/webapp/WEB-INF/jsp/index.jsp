@@ -46,7 +46,10 @@
 						<c:if test="${child.isurl == 0}">
 							<li class="menu-list"><a  href=${ctx}/${child.murl} target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz"></span></a></li>
 						</c:if>
-						<c:if test="${child.isurl == 1}">
+						<c:if test="${child.isurl == 1 && child.murl=='https://dashboard.telkom.co.id/idwifi/prabagen/index/page/390'}">
+							<li class="menu-list"><a  href=${child.murl} target="_blank" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz"></span></a></li>
+						</c:if>
+						<c:if test="${child.isurl == 1 && child.murl!='https://dashboard.telkom.co.id/idwifi/prabagen/index/page/390'}">
 							<li class="menu-list"><a  href=${child.murl} target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz"></span></a></li>
 						</c:if>
 					</c:forEach>
