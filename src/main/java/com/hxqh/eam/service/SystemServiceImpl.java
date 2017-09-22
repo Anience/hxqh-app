@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.common.ObjectUtil;
 import com.hxqh.eam.common.hxqh.Account;
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.common.util.ListSortUtil;
@@ -10,6 +11,7 @@ import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -238,7 +240,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void editmodel(TbModel account) {
-        modelDao.update(account);
+        TbModel model = modelDao.find(account.getModelid());
+        BeanUtils.copyProperties(account, model, ObjectUtil.getNullPropertyNames(account));
+        modelDao.update(model);
     }
 
     @Override

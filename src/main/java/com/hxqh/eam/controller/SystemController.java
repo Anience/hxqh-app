@@ -607,13 +607,13 @@ public class SystemController {
         return new ModelAndView("model/modelDetail", result);
     }
 
-    @ModelAttribute
-    public void getModel(@RequestParam(value = "modelid", required = false) Long modelid,
-                                  Map<String, Object> map) {
-        if (modelid != null) {
-            map.put("account", modelDao.find(modelid));
-        }
-    }
+//    @ModelAttribute
+//    public void getModel(@RequestParam(value = "modelid", required = false) Long modelid,
+//                                  Map<String, Object> map) {
+//        if (modelid != null) {
+//            map.put("account", modelDao.find(modelid));
+//        }
+//    }
 
 
     /**

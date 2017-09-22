@@ -18,8 +18,5 @@ SSH-FrameWork-IDEA-HXQH-EAM
 > silencu  
 > hanj@bjhxqh.com
 
-> wangkailun631  
-> wangkl@bjhxqh.com
-
 
 
