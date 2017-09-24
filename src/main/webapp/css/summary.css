@@ -52,9 +52,9 @@ table tbody tr:nth-child(odd) td{
 table tbody tr:nth-child(even) td{
     background: #122B3A;
 }
-table tbody tr td:nth-child(1),table tbody tr td:nth-child(8),table tbody tr td:nth-child(15),table tbody tr td:nth-child(22),
-table tbody tr td:nth-child(29),table tbody tr td:nth-child(36),table tbody tr td:nth-child(37),table tbody tr td:nth-child(38),
-table tbody tr td:nth-child(39),table tbody tr td:nth-child(40),table tbody tr td:nth-child(41){
+table tbody tr td:nth-child(1),table tbody tr td:nth-child(8),table tbody tr td:nth-child(15),table tbody tr td:nth-child(21),
+table tbody tr td:nth-child(27),table tbody tr td:nth-child(33),table tbody tr td:nth-child(34),table tbody tr td:nth-child(35),
+table tbody tr td:nth-child(36),table tbody tr td:nth-child(37),table tbody tr td:nth-child(38){
     border-right: 2px solid #27526C;
 }
 table tbody tr td.font-red{
