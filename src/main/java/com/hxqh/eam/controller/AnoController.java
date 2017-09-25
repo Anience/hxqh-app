@@ -339,7 +339,7 @@ public class AnoController {
 
     @RequestMapping(value = "/url", method = RequestMethod.GET)
     public String url() {
-        return "consumer/urls";
+        return "consumer/url";
     }
     /***********************************provisioning***************************************/
 
