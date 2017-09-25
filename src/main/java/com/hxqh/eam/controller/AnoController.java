@@ -341,6 +341,12 @@ public class AnoController {
     public String url() {
         return "consumer/url";
     }
+
+
+    @RequestMapping(value = "/graphUrl", method = RequestMethod.GET)
+    public String graphUrl() {
+        return "consumer/graphUrl";
+    }
     /***********************************provisioning***************************************/
 
 }
