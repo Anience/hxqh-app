@@ -18,6 +18,5 @@ $(function(){
             i=0;
         }
         $("#menuFrame").attr("src",urls[i]);
-        console.log(urls[i]);
-    },5000);
+    },10000);
 });
