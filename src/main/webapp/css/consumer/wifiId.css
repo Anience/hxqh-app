@@ -88,7 +88,7 @@ span.radius:hover{
   display : inline;
   font-size: 30px;
   height: 50px;
-  width: 120px;
+  width: 500px;
   line-height: 50px;
   font-family: microsoft yahei,heiti;
   font-weight: normal;
@@ -100,7 +100,7 @@ span.radius:hover{
   color: #FFFFFF;
   font-size: 20px;
   height:20px;
-  width: 300px;
+  width: 350px;
   line-height:20px;
   display: block;
   float:right;
