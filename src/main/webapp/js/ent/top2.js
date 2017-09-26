@@ -265,7 +265,7 @@ $(function(){
         var initData;
         var bgcolor = [];
         var lableShow = false;
-        if(typeof(data1)=="undefined"&&typeof(data2)=="undefined"){
+        if((typeof(data1)=="undefined"&&typeof(data2)=="undefined")||(data1==0&&data2==0)){
             initData=[
                 {
                     value:1,name:'nodata'
