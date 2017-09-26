@@ -89,7 +89,7 @@ $(function(){
                     }
                 }else{
                     //enterprise
-                    tool.headerInit(data.enterpriseMap["1"],"");
+                    tool.headerInit(data.enterpriseMap["1"],"",pageTit);
                     var data1 = tool.dealData(data.enterpriseMap["1"]);
                     //initEchart1折线图，initEchart2圆形图
                     initPage(data1);
