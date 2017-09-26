@@ -41,21 +41,21 @@ $(function(){
                        + '<td>' + DCS_P['c'] + '</td>'
                        + '<td>' + DCS_P['d'] + '</td>'
                        + '<td>' + DCS_P['e'] + '</td>'
-                       + '<td>' + DCS_P['f'] + '</td>'
+                       //+ '<td>' + DCS_P['f'] + '</td>'
                        + '<td>' + DCS_P['ttl'] + '</td>'
                        + '<td>' + DCS_G['a'] + '</td>'
                        + '<td>' + DCS_G['b'] + '</td>'
                        + '<td>' + DCS_G['c'] + '</td>'
                        + '<td>' + DCS_G['d'] + '</td>'
                        + '<td>' + DCS_G['e'] + '</td>'
-                       + '<td>' + DCS_G['f'] + '</td>'
+                      // + '<td>' + DCS_G['f'] + '</td>'
                        + '<td>' + DCS_G['ttl'] + '</td>'
                        + '<td>' + DCS_S['a'] + '</td>'
                        + '<td>' + DCS_S['b'] + '</td>'
                        + '<td>' + DCS_S['c'] + '</td>'
                        + '<td>' + DCS_S['d'] + '</td>'
                        + '<td>' + DCS_S['e'] + '</td>'
-                       + '<td>' + DCS_S['f'] + '</td>'
+                       //+ '<td>' + DCS_S['f'] + '</td>'
                        + '<td>' + DCS_S['ttl'] + '</td>'
 					   //Todo  应该为allTTl
                        + '<td>' + moningDtoList.allttl + '</td>'
@@ -72,6 +72,7 @@ $(function(){
                 var tdhtmls='';
                 var sumList = data['sumList']
                 for(var i=0;i<data['sumList'].length-2;i++){
+                    if(i<=1) {
                         tdhtmls += '<td>' + sumList[i].a + '</td>'
                             + '<td>' + sumList[i].b + '</td>'
                             + '<td>' + sumList[i].c + '</td>'
@@ -79,6 +80,14 @@ $(function(){
                             + '<td>' + sumList[i].e + '</td>'
                             + '<td>' + sumList[i].f + '</td>'
                             + '<td>' + sumList[i].ttl + '</td>'
+                    }else{
+                        tdhtmls += '<td>' + sumList[i].a + '</td>'
+                            + '<td>' + sumList[i].b + '</td>'
+                            + '<td>' + sumList[i].c + '</td>'
+                            + '<td>' + sumList[i].d + '</td>'
+                            + '<td>' + sumList[i].e + '</td>'
+                            + '<td>' + sumList[i].ttl + '</td>'
+                    }
                 }
                 tdhtmls +='<td>' + sumList[5]+ '</td>'
                     + '<td>' + sumList[6].smsopen + '</td>'

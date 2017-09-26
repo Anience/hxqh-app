@@ -337,7 +337,16 @@ public class AnoController {
         return complaintData;
     }
 
+    @RequestMapping(value = "/url", method = RequestMethod.GET)
+    public String url() {
+        return "consumer/url";
+    }
 
+
+    @RequestMapping(value = "/graphUrl", method = RequestMethod.GET)
+    public String graphUrl() {
+        return "consumer/graphUrl";
+    }
     /***********************************provisioning***************************************/
 
 }
