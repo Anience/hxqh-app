@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/commons/meta.jsp" %>
 <html>
 <head>
-	<title></title>//当前替换为Backbone
+	<title></title>
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 </head>
