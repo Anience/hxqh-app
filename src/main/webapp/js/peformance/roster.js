@@ -39,7 +39,7 @@ $(function(){
                 var dataTurn = ['hsi','telephony','imes','datin','surveillance','wifi'];
                 setInterval(function(){
                     i++;
-                    if(i>=5){
+                    if(i>=6){
                         i=0;
                     }
                     var dataName = dataTurn[i];
