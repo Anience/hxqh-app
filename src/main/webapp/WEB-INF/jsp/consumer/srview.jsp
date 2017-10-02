@@ -46,7 +46,7 @@
 		<div class="item" id="echart2"></div>
 		<div class="item" id="echart3"></div>
 		<div class="item" id="echart4"></div>
-		<span class="ket">Ket:</br>A<24jam， B=24-48jam， C=48-72jam， D=72jam-7hari， E=7hari-30hari，  F＞30hari</span>
+		<span class="ket">Ket:</br>A=0-12jam， B=12-24jam， C=24-48jam， D=48jam-72jam， E=＞72jam</span>
 	</div>
 	<div class="clearfix"></div>
 	</div>
