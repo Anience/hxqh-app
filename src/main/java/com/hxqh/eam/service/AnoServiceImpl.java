@@ -25,8 +25,8 @@ public class AnoServiceImpl implements AnoService {
 
 
     private static final String[] PILLLIST = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"};
-    private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
-
+   // private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
+    private static final String[] LINELIST = {"A", "B", "C", "D", "E"};
     @Autowired
     private VAno81Dao ano81Dao;
     @Autowired
