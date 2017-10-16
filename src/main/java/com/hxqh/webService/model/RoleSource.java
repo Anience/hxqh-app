@@ -17,7 +17,6 @@ package com.hxqh.webService.model;
 public class RoleSource {
     private String sourceId;
     private String roleId;
-    private int  optionType;//1:人员  2：资源
 
     public String getSourceId() {
         return sourceId;
@@ -35,11 +34,4 @@ public class RoleSource {
         this.roleId = roleId;
     }
 
-    public int getOptionType() {
-        return optionType;
-    }
-
-    public void setOptionType(int optionType) {
-        this.optionType = optionType;
-    }
 }

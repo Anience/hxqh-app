@@ -21,13 +21,6 @@ import javax.jws.WebService;
 @WebService
 public interface CommonService {
 
-    /**
-     * 获取用户列表
-     *
-     * @return
-     */
-    @WebMethod
-    String getUserList();
 
     /**
      * 获取角色列表
@@ -37,41 +30,55 @@ public interface CommonService {
     @WebMethod
     String getRoleList();
 
-    /**
-     * 获取资源列表
-     *
-     * @return
-     */
-    @WebMethod
-    String getResouleList();
+
 
     /**
-     * 操作用户（新增、修改、修改密码）
+     * 增加用户
      *
      * @param inPutVal
      * @return
      */
     @WebMethod
-    String OptionUser(@WebParam(name = "inPutVal") String inPutVal, @WebParam(name = "optionType") int optionType);
-
+    String addUser(@WebParam(name = "inPutVal") String inPutVal);
+    /**
+     * 删除用户
+     *
+     * @param inPutVal
+     * @return
+     */
+    @WebMethod
+    String delUser(@WebParam(name = "inPutVal") String inPutVal);
+    /**
+     * 修改用户
+     *
+     * @param inPutVal
+     * @return
+     */
+    @WebMethod
+    String editUser(@WebParam(name = "inPutVal") String inPutVal);
     /**
      * 角色操作
      *(新增、删除、修改)
      * @param inPutVal
      * @return
-     */
+     *//*
     @WebMethod
-    String OptionRole(@WebParam(name = "inPutVal") String inPutVal, @WebParam(name = "optionType") int optionType);
+    String OptionRole(@WebParam(name = "inPutVal") String inPutVal, @WebParam(name = "optionType") int optionType);*/
 
     /**
      * 操作角色拥有的资源以及关联的用户
      * @param inPutVal
-     * @param optionType
      * @return
      */
     @WebMethod
-    String OptionRoleSource(@WebParam(name = "inPutVal") String inPutVal, @WebParam(name = "optionType") int optionType);
-
+    String roleAddUser(@WebParam(name = "inPutVal") String inPutVal);
+    /**
+     * 操作角色拥有的资源以及关联的用户
+     * @param inPutVal
+     * @return
+     */
+    @WebMethod
+    String roleDelUser(@WebParam(name = "inPutVal") String inPutVal);
 
 
 

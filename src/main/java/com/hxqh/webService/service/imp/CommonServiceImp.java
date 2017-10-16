@@ -9,6 +9,7 @@ import com.hxqh.eam.model.dto.UserDto;
 import com.hxqh.eam.service.SystemService;
 import com.hxqh.webService.model.RetrunVal;
 import com.hxqh.webService.model.RoleSource;
+import com.hxqh.webService.model.WebServiceUserObj;
 import com.hxqh.webService.service.CommonService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,12 +41,6 @@ public class CommonServiceImp implements CommonService {
     @Autowired
     private SystemService systemService;
 
-    @Override
-    public String getUserList() {
-        UserDto userDto = systemService.getUserListData();
-        String jsonVal = JsonUtil.object2Json(userDto);
-        return jsonVal;
-    }
 
     /**
      * 获取角色列表
@@ -63,139 +59,58 @@ public class CommonServiceImp implements CommonService {
     }
 
     /**
-     * 获取资源列表
+     * 增加用户
      *
+     * @param inPutVal
      * @return
      */
     @Override
-    public String getResouleList() {
-        List<Menu> menuList = systemService.getMenuListData();
-        String jsonVal = JsonUtil.list2Json(menuList);
-        return jsonVal;
+    public String addUser(String inPutVal) {
+        return OptionWebserviceData(inPutVal, 1);
     }
 
     /**
-     * 操作用户（修改）
+     * 删除用户
      *
      * @param inPutVal
-     * @param optionType 1:新增 2 修改 3 删除
      * @return
      */
     @Override
-    public String OptionUser(String inPutVal, int optionType) {
-        RetrunVal retrunVal = new RetrunVal();
-        boolean valid = ValidInputVal(inPutVal);
-        if (valid) {
-            List<UserObj> userObjList = JsonUtil.json2List(inPutVal, UserObj.class);
-            if (userObjList.size() > 0) {
-                String option_msg = "";
-                switch (optionType) {
-                    case 1:
-                        option_msg = systemService.addUser(userObjList);
-                        break;
-                    case 2:
-                        option_msg = systemService.editUser(userObjList);
-                        break;
-                    case 3:
-                        option_msg = systemService.delUser(userObjList);
-                        break;
-                    default:
-                        option_msg = "操作标识未知！";
-                }
-                retrunVal.setMsg(option_msg);
-                retrunVal.setCode("1");
-            } else {
-                retrunVal.setMsg("解析出错，请联系管理员!");
-                retrunVal.setCode("-1");
-            }
-        } else {
-            retrunVal.setMsg("参数不合格，请重新输入!");
-            retrunVal.setCode("-1");
-        }
-        return getReturnJsonVal(retrunVal);
+    public String delUser(String inPutVal) {
+        return OptionWebserviceData(inPutVal, 3);
     }
 
     /**
-     * 角色操作
+     * 修改用户
      *
      * @param inPutVal
-     * @param optionType
      * @return
-     * 1:新增 2 修改 3 删除
      */
     @Override
-    public String OptionRole(String inPutVal, int optionType) {
-        RetrunVal retrunVal = new RetrunVal();
-        boolean valid = ValidInputVal(inPutVal);
-        if (valid) {
-            List<TbRole> tbRoles = JsonUtil.json2List(inPutVal, TbRole.class);
-            if (tbRoles.size() > 0) {
-                String option_msg = "";
-                switch (optionType) {
-                    case 1:
-                        option_msg = systemService.addrole(tbRoles);
-                        break;
-                    case 2:
-                         option_msg = systemService.editrole(tbRoles);
-                        break;
-                    case 3:
-                        option_msg = systemService.delrole(tbRoles);
-                        break;
-                    default:
-                        option_msg = "操作标识未知！";
-                }
-                retrunVal.setMsg(option_msg);
-                retrunVal.setCode("1");
-            } else {
-                retrunVal.setMsg("解析出错，请联系管理员!");
-                retrunVal.setCode("-1");
-            }
-        } else {
-            retrunVal.setMsg("参数不合格，请重新输入!");
-            retrunVal.setCode("-1");
-        }
-        return getReturnJsonVal(retrunVal);
+    public String editUser(String inPutVal) {
+        return OptionWebserviceData(inPutVal, 2);
     }
 
     /**
      * 操作角色拥有的资源以及关联的用户
      *
      * @param inPutVal
-     * @param optionType
      * @return
      */
     @Override
-    public String OptionRoleSource(String inPutVal, int optionType) {
-        RetrunVal retrunVal = new RetrunVal();
-        boolean valid = ValidInputVal(inPutVal);
-        if (valid) {
-            List<RoleSource> roleSources = JsonUtil.json2List(inPutVal, RoleSource.class);
-            if (roleSources.size() > 0) {
-                String option_msg = "";
-                switch (optionType) {
-                    case 1:
-                        option_msg = systemService.addRoleSource(roleSources);
-                        break;
-                    case 2:
-                        option_msg = systemService.editRoleSource(roleSources);
-                        break;
-                    case 3:
-                        option_msg = systemService.delRoleSource(roleSources);
-                        break;
-                    default:
-                        option_msg = "操作标识未知！";
-                }
-                retrunVal.setMsg(option_msg);
-                retrunVal.setCode("1");
-            } else {
-                retrunVal.setMsg("解析出错，请联系管理员!");
-                retrunVal.setCode("-1");
-            }
-        } else {
-            retrunVal.setMsg("参数不合格，请重新输入!");
-            retrunVal.setCode("-1");
-        }
-        return getReturnJsonVal(retrunVal);
+    public String roleAddUser(String inPutVal) {
+        return OptionWebserviceData(inPutVal, 4);
+    }
+
+    /**
+     * 操作角色拥有的资源以及关联的用户
+     *
+     * @param inPutVal
+     * @return
+     */
+    @Override
+    public String roleDelUser(String inPutVal) {
+        return OptionWebserviceData(inPutVal, 5);
     }
 
 
@@ -224,4 +139,165 @@ public class CommonServiceImp implements CommonService {
         }
         return validStatus;
     }
+
+
+    /**
+     * 操作用户（修改）
+     *
+     * @param inPutVal
+     * @param optionType 1:新增用户 2 修改用户 3 删除用户，4 角色关联用户 5：角色删除用户
+     * @return
+     */
+    public String OptionWebserviceData(String inPutVal, int optionType) {
+        RetrunVal retrunVal = new RetrunVal();
+        boolean valid = ValidInputVal(inPutVal);
+        if (valid) {
+            List<WebServiceUserObj> webServiceUserObjs = JsonUtil.json2List(inPutVal, WebServiceUserObj.class);
+            if (webServiceUserObjs.size() > 0) {
+                List<UserObj> userObjList = new ArrayList<>();
+                List<RoleSource> tbRoleList = new ArrayList<>();
+                WebServiceUserObj wsu = new WebServiceUserObj();
+                for (WebServiceUserObj webServiceUserObj : webServiceUserObjs) {
+                    UserObj u = wsu.webUserObj2UseObj(webServiceUserObj);
+                    userObjList.add(u);
+                    RoleSource rs = new RoleSource();
+                    rs.setRoleId(webServiceUserObj.getRoleID());
+                    rs.setSourceId(webServiceUserObj.getUserCode());
+                    tbRoleList.add(rs);
+                }
+                String option_msg = "";
+                switch (optionType) {
+                    case 1:
+                        option_msg = systemService.addUser(userObjList);
+                        break;
+                    case 2:
+                        option_msg = systemService.editUser(userObjList);
+                        break;
+                    case 3:
+                        option_msg = systemService.delUser(userObjList);
+                        break;
+                    case 4:
+                        option_msg = systemService.addRoleSource(tbRoleList);
+                        break;
+                    case 5:
+                        option_msg = systemService.delRoleSource(tbRoleList);
+                        break;
+                    default:
+                        option_msg = "操作标识未知！";
+                }
+                retrunVal.setReturnMess(option_msg);
+                retrunVal.setReturnCode(1);
+            } else {
+                retrunVal.setReturnMess("解析出错，请联系管理员!");
+                retrunVal.setReturnCode(0);
+            }
+        } else {
+            retrunVal.setReturnMess("参数不合格，请重新输入!");
+            retrunVal.setReturnCode(0);
+        }
+        return getReturnJsonVal(retrunVal);
+    }
+
+    /*****************************************oldVersion***********************************/
+
+    /**
+     * 角色操作
+     *
+     * @param inPutVal
+     * @param optionType
+     * @return 1:新增 2 删除
+     */
+    public String OptionRole(String inPutVal, int optionType) {
+        RetrunVal retrunVal = new RetrunVal();
+        boolean valid = ValidInputVal(inPutVal);
+        if (valid) {
+            List<TbRole> tbRoles = JsonUtil.json2List(inPutVal, TbRole.class);
+            if (tbRoles.size() > 0) {
+                String option_msg = "";
+                switch (optionType) {
+                    case 1:
+                        option_msg = systemService.addrole(tbRoles);
+                        break;
+                    case 2:
+                        option_msg = systemService.editrole(tbRoles);
+                        break;
+                    case 3:
+                        option_msg = systemService.delrole(tbRoles);
+                        break;
+                    default:
+                        option_msg = "操作标识未知！";
+                }
+                retrunVal.setReturnMess(option_msg);
+                retrunVal.setReturnCode(1);
+            } else {
+                retrunVal.setReturnMess("解析出错，请联系管理员!");
+                retrunVal.setReturnCode(0);
+            }
+        } else {
+            retrunVal.setReturnMess("参数不合格，请重新输入!");
+            retrunVal.setReturnCode(0);
+        }
+        return getReturnJsonVal(retrunVal);
+    }
+
+
+    public String getUserList() {
+        UserDto userDto = systemService.getUserListData();
+        String jsonVal = JsonUtil.object2Json(userDto);
+        return jsonVal;
+    }
+
+    /**
+     * 获取资源列表
+     *
+     * @return
+     */
+    public String getResouleList() {
+        List<Menu> menuList = systemService.getMenuListData();
+        String jsonVal = JsonUtil.list2Json(menuList);
+        return jsonVal;
+    }
+
+
+    /**
+     * 操作角色拥有的资源以及关联的用户
+     *
+     * @param inPutVal
+     * @param optionType
+     * @return
+     */
+    public String OptionRoleSource(String inPutVal, int optionType) {
+        RetrunVal retrunVal = new RetrunVal();
+        boolean valid = ValidInputVal(inPutVal);
+        if (valid) {
+            List<RoleSource> roleSources = JsonUtil.json2List(inPutVal, RoleSource.class);
+            if (roleSources.size() > 0) {
+                String option_msg = "";
+                switch (optionType) {
+                    case 1:
+                        option_msg = systemService.addRoleSource(roleSources);
+                        break;
+                    case 2:
+                        //  option_msg = systemService.editRoleSource(roleSources);
+                        break;
+                    case 3:
+                        option_msg = systemService.delRoleSource(roleSources);
+                        break;
+                    default:
+                        option_msg = "操作标识未知！";
+                }
+                retrunVal.setReturnMess(option_msg);
+                retrunVal.setReturnCode(1);
+            } else {
+                retrunVal.setReturnMess("解析出错，请联系管理员!");
+                retrunVal.setReturnCode(0);
+            }
+        } else {
+            retrunVal.setReturnMess("参数不合格，请重新输入!");
+            retrunVal.setReturnCode(0);
+        }
+        return getReturnJsonVal(retrunVal);
+    }
+
+
 }

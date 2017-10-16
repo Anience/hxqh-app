@@ -4,7 +4,7 @@ package com.hxqh.webService.model;
  * ╔           ←══╬∞           ∝╬══→           ╗
  * § File Name:  RetrunVal.java                             §
  * §┇File Path: com.hxqh.webService.model.RetrunVal           §
- * §Descrption:                                          §
+ * §Descrption:     接口返回消息对象                                  §
  * §Version:  V0.1                                       §
  * §Create Date:   2017/10/13                              §
  * §IDE:    IntelliJ IDEA.2017                           §
@@ -17,22 +17,23 @@ package com.hxqh.webService.model;
 public class RetrunVal {
 
 
-    private String msg;
-    private String code;
+    private String returnMess;
+    private int returnCode;
 
-    public String getMsg() {
-        return msg;
+
+    public String getReturnMess() {
+        return returnMess;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setReturnMess(String returnMess) {
+        this.returnMess = returnMess;
     }
 
-    public String getCode() {
-        return code;
+    public int getReturnCode() {
+        return returnCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setReturnCode(int returnCode) {
+        this.returnCode = returnCode;
     }
 }
