@@ -36,9 +36,9 @@ public interface Dao<T extends Serializable> {
     /**
      * 原生态Sql删除  add Ocean_hy
      *
-     * @param sql
+     * @param
      */
-    public abstract int delete(String sql, String where, Map<String, ?> params);
+    public abstract int delete( String where, Map<String, ?> params);
 
     public abstract long getCount();
 
