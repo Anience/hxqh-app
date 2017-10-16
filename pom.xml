@@ -349,6 +349,19 @@
             <version>1.6.3</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+            <version>1.5.2.RELEASE</version>
+        </dependency>
+        <!-- CXF webservice -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>3.1.11</version>
+        </dependency>
+        <!-- CXF webservice -->
+
+        <dependency>
             <groupId>xml-resolver</groupId>
             <artifactId>xml-resolver</artifactId>
             <version>1.2</version>
@@ -514,6 +527,12 @@
         <!--<artifactId>jsonlib</artifactId>-->
         <!--<version>1.1</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
     </dependencies>
     <build>
         <finalName>dashboard</finalName>
@@ -560,6 +579,18 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+           <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-surefire-plugin</artifactId>  
+        <version>2.4.2</version>  
+        <configuration>  
+          <skipTests>true</skipTests>  
+        </configuration>  
+</plugin>  
         </plugins>
     </build>
 </project>

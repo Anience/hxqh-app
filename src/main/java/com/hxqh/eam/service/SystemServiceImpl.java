@@ -8,6 +8,7 @@ import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import com.hxqh.webService.model.RoleSource;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -208,6 +209,32 @@ public class SystemServiceImpl implements SystemService {
         roleDao.update(account);
     }
 
+    /**
+     * 批量编辑角色 add Ocean_hy
+     *
+     * @param tbRoleList
+     * @return
+     */
+    @Override
+    public String editrole(List<TbRole> tbRoleList) {
+        for (TbRole tbRole : tbRoleList) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("sourceId", tbRole.getSourceid());
+            String where = "sourceid=:sourceId";
+            List<TbRole> roleObjs = roleDao.findAll(where, params, null);
+            if (roleObjs.size() == 1) {
+                List<UserObj> userObjList = new ArrayList<>();
+                tbRole.setRoleid(roleObjs.get(0).getRoleid());
+                roleDao.update(tbRole, null, null, null);
+            } else {
+                roleDao.delete(roleObjs.get(0).getRoleid());
+                roleDao.save(tbRole);
+            }
+        }
+
+        return null;
+    }
+
     @Override
     public int addrole(TbRole account) {
         //如果loginname重复不添加
@@ -224,6 +251,93 @@ public class SystemServiceImpl implements SystemService {
         return 1;
     }
 
+    /**
+     * 批量新增角色 Add Ocean
+     *
+     * @param tbRoleList
+     * @return
+     */
+    @Override
+    public String addrole(List<TbRole> tbRoleList) {
+        int error_Num = 0;
+        int success_Num = 0;
+        for (TbRole tb : tbRoleList) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("rolename", tb.getRolename());
+            String where = "rolename=:rolename ";
+            List<TbRole> roleList = roleDao.findAll(where, params, null);
+            if (roleList.size() > 0) {
+                error_Num++;
+            } else {
+                tb.setSortnum(new BigDecimal(1));
+                roleDao.save(tb);
+                success_Num++;
+            }
+        }
+        return "成功数量：" + success_Num + "    异常数量：" + error_Num;
+    }
+
+    @Override
+    public String addRoleSource(List<RoleSource> tbRoleList) {
+        for (RoleSource roleSource : tbRoleList) {
+            int type = roleSource.getOptionType();
+            //查找角色信息
+            TbRole tbRole = roleDao.find(roleSource.getRoleId());
+            if (type == 1) {
+                //查找用户信息
+                UserObj userObj = userDao.find(roleSource.getSourceId());
+                TbUserrole tbUserrole = new TbUserrole();
+                tbUserrole.setTbUser(userObj);
+                tbUserrole.setTbRole(tbRole);
+                userroleDao.save(tbUserrole);
+            } else if (type == 2) {
+                //查找资源信息
+                TbModel tbModel = modelDao.find(roleSource.getSourceId());
+                TbRolemodel tbRolemodel = new TbRolemodel();
+                tbRolemodel.setTbModel(tbModel);
+                rolemodelDao.save(tbRolemodel);
+            }
+        }
+
+
+        return null;
+    }
+
+    @Override
+    public String editRoleSource(List<RoleSource> tbRoleList) {
+
+        return null;
+    }
+
+    @Override
+    public String delRoleSource(List<RoleSource> tbRoleList) {
+        for (RoleSource roleSource : tbRoleList) {
+            int type = roleSource.getOptionType();
+            //查找角色信息
+            if (type == 1) {
+                Map<String, Object> params = new HashMap<String, Object>();
+                params.put("userid", roleSource.getSourceId());
+                params.put("roleid", roleSource.getRoleId());
+                String where = "userid:userid   and roleid=:roleid";
+                List<TbUserrole> userroleList = userroleDao.findAll(where, params, null);
+                for (TbUserrole t : userroleList) {
+                    userroleDao.delete(t.getUserroleid());
+                }
+            } else if (type == 2) {
+                //查找资源信息
+                Map<String, Object> params = new HashMap<String, Object>();
+                params.put("modelid", roleSource.getSourceId());
+                params.put("roleid", roleSource.getRoleId());
+                String where = "userid:userid   and modelid=:modelid";
+                List<TbRolemodel> rolemodelList = rolemodelDao.findAll(where, params, null);
+                for (TbRolemodel t : rolemodelList) {
+                    rolemodelDao.delete(t.getRolemodelid());
+                }
+            }
+        }
+        return null;
+    }
+
     @Override
     public void delrole(Long id) {
         if (!(id == 1l)) {
@@ -234,6 +348,34 @@ public class SystemServiceImpl implements SystemService {
             }
             roleDao.delete(id);
         }
+    }
+
+    /**
+     * 批量删除角色
+     * add Ocean
+     *
+     * @param tbRoleList
+     * @return
+     */
+    @Override
+    public String delrole(List<TbRole> tbRoleList) {
+        int delNum = 0;
+        for (TbRole tr : tbRoleList) {
+            TbRole role = roleDao.find(tr.getRoleid());
+            List<TbRolemodel> rolemodelList = role.getTbRolemodels();
+            for (TbRolemodel e : rolemodelList) {
+                rolemodelDao.delete(e.getRolemodelid());
+            }
+            List<TbUserrole> tbUserroleList = role.getTbUserroles();
+            for (TbUserrole e : tbUserroleList) {
+                userroleDao.delete(e.getUserroleid());
+            }
+            delNum++;
+            roleDao.delete(tr.getRoleid());
+        }
+
+
+        return "与角色相关的信息已删除,共计删除角色：" + delNum;
     }
 
     @Override
@@ -443,10 +585,94 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
+    public String editUser(List<UserObj> objList) {
+        String msg = "";
+        int updateSuccessNum = 0;
+        if (objList.size() < 0) {
+            msg = "不存在修改的用户";
+        } else {
+            for (UserObj u : objList) {
+                Map<String, Object> params = new HashMap<>();
+                params.put("sourceuserId", u.getSourceuserid());
+                String where = "sourceuserid=:sourceuserId";
+                List<UserObj> userObjs = userDao.findAll(where, params, null);
+                if (userObjs.size() > 0) {
+                    u.setUserid(Long.valueOf(userObjs.get(0).getUserid()));
+                    if (null != u.getLoginpassword().trim() && !"".equals(u.getLoginpassword().trim())) {
+                        String newPwd = Account.encrypt(u.getLoginpassword());
+                        u.setLoginpassword(newPwd);
+                    }
+                    userDao.update(u, null, null, null);
+
+
+                    String whereRole = "userid=:userid";
+                    Map<String, Object> paramsrole = new HashMap<>();
+                    paramsrole.put("userid", userObjs.get(0).getUserid());
+                    List<TbUserrole> userroleList = userroleDao.findAll(whereRole, paramsrole, null);
+                    TbUserrole userrole = userroleList.get(0);
+                    TbRole role = roleDao.find(Long.valueOf(u.getRoleid()));
+                    userrole.setTbRole(role);
+                    userroleDao.update(userrole, null, null, null);
+                    msg = "用户信息修改成功！";
+
+
+                }
+            }
+            updateSuccessNum++;
+        }
+        return msg + updateSuccessNum;
+    }
+
+    /**
+     * add hy
+     *
+     * @param objList
+     * @return
+     */
+    @Override
+    public String addUser(List<UserObj> objList) {
+        int addSuccessNum = 0;
+        int addErrorNum = 0;
+        String msg = "";
+        if (objList.size() < 0) {
+            msg = "推送的用户数据为空";
+        } else {
+            for (UserObj u : objList) {
+                Map<String, Object> params = new HashMap<>();
+                params.put("loginname", u.getLoginname().toLowerCase());
+                String where = "loginname=:loginname ";
+                List<UserObj> accountList = userDao.findAll(where, params, null);
+                boolean isAdd = accountList.size() == 0 ? true : false;
+                if (isAdd) {
+                    String newPwd = Account.encrypt(u.getLoginpassword() == null ? u.getLoginpassword() : "123456");
+                    u.setLoginpassword(newPwd);
+                    u.setLoginname(u.getLoginname().toLowerCase());
+                    userDao.save(u);
+                    TbUserrole urobj = new TbUserrole();
+                    urobj.setTbRole(roleDao.find(Long.valueOf(u.getRoleid())));
+                    urobj.setTbUser(u);
+                    userroleDao.save(urobj);
+                    addSuccessNum++;
+                } else {
+                    addErrorNum++;
+                    msg += u.getLoginname().toLowerCase() + ",";
+                }
+            }
+            if (addErrorNum > 0)
+                msg = "SUCCESS:" + addSuccessNum + "ERRORS:" + addErrorNum + "账户名" + msg + "已存在！";
+            else {
+                msg = "SUCCESS:" + addSuccessNum + "ERRORS:" + addErrorNum;
+            }
+        }
+        return msg;
+    }
+
+
+    @Override
     public int addUser(UserObj account, Long roleid) {
         //如果loginname重复不添加
         Map<String, Object> params = new HashMap<>();
-        params.put("loginname", account.getLoginname());
+        params.put("loginname", account.getLoginname().toLowerCase());
         String where = "loginname=:loginname ";
         List<UserObj> accountList = userDao.findAll(where, params, null);
         if (accountList.size() > 0) {
@@ -456,6 +682,7 @@ public class SystemServiceImpl implements SystemService {
         //设置密码 初始密码123456
         String password = Account.encrypt("123456");
         account.setLoginpassword(password);
+        account.setLoginname(account.getLoginname().toLowerCase());
         account.setUserstatus(1);
 
         userDao.save(account);
@@ -472,6 +699,41 @@ public class SystemServiceImpl implements SystemService {
         if (!(id == 1)) {
             userDao.delete(id);
         }
+    }
+
+    /**
+     * 接口删除用户 add Ocean_hy
+     *
+     * @param userObjList
+     */
+    @Override
+    public String delUser(List<UserObj> userObjList) {
+        String msg = "";
+        for (UserObj u : userObjList) {
+            //查找用户
+            Map<String, Object> params = new HashMap<>();
+            params.put("sourceuserId", u.getSourceuserid());
+            String where = "sourceuserid=:sourceuserId";
+            List<UserObj> userObjs = userDao.findAll(where, params, null);
+
+            //查找用户拥有的角色
+
+            Long userId = userObjs.get(0).getUserid();
+            if (userId == 1) {
+                msg = "内置管理员账户禁止删除";
+            } else {
+                String whereRole = "userid=:userid";
+                Map<String, Object> paramsrole = new HashMap<>();
+                paramsrole.put("userid", userId);
+                List<TbUserrole> userroleList = userroleDao.findAll(whereRole, paramsrole, null);
+                for (TbUserrole tbu : userroleList) {
+                    userroleDao.delete(tbu.getUserroleid());
+                }
+                userDao.delete(userId);
+                msg = "用户删除成功！";
+            }
+        }
+        return msg;
     }
 
 
