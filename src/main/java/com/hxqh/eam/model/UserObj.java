@@ -54,18 +54,12 @@ public class UserObj implements Serializable {
     @XStreamOmitField
     private List<TbUserrole> tbUserroles;
 
-    private String sourceuserid;//HR系统的ID
+
 
     public UserObj() {
     }
 
-    public String getSourceuserid() {
-        return sourceuserid;
-    }
 
-    public void setSourceuserid(String sourceuserid) {
-        this.sourceuserid = sourceuserid;
-    }
 
     public String getRoleid() {
         return roleid;
