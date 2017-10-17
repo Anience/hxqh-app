@@ -15,7 +15,7 @@
 </head>
 <body>
    <div class="tit">
-	   <p style="">NetWork Surveillance</p>
+	   <p style="">Network Surveillance</p>
    </div>
    <div class="top-table-div">
 	   <table class="top-table" style="width: 100%; height: 100%;text-align:center;" border="0" cellpadding="2" cellspacing="0">

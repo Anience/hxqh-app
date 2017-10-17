@@ -67,14 +67,22 @@ $(function(){
                     sitesHtml+='<tr><td>'+mobList[i].ioc1
                               +'</td><td>'+mobList[i].total_site
                               +'</td></tr>';
-                    week1Html+='<tr>'+ selectBg(mobList[i].ioc2,95)
-                             + selectBg(mobList[i].ioc3,95)
-                             + selectBg(mobList[i].ioc4,0)
+                    week1Html+='<tr>'+ selectBg(mobList[i].ioc5,95)
+                             + selectBg(mobList[i].ioc6,95)
+                             + selectBg(mobList[i].ioc7,0)
                              +'</tr>';
-                    week2Html+='<tr>'+ selectBg(mobList[i].ioc5,95)
-                              + selectBg(mobList[i].ioc6,95)
-                              + selectBg(mobList[i].ioc7,0)
+                    week2Html+='<tr>'+ selectBg(mobList[i].ioc2,95)
+                              + selectBg(mobList[i].ioc3,95)
+                              + selectBg(mobList[i].ioc4,0)
                               +'</tr>';
+                    /*week1Html+='<tr>'+ selectBg(mobList[i].ioc2,95)
+                        + selectBg(mobList[i].ioc3,95)
+                        + selectBg(mobList[i].ioc4,0)
+                        +'</tr>';
+                    week2Html+='<tr>'+ selectBg(mobList[i].ioc5,95)
+                        + selectBg(mobList[i].ioc6,95)
+                        + selectBg(mobList[i].ioc7,0)
+                        +'</tr>';*/
                 }
                 $("table.sites-table tbody").html(sitesHtml);
                 $("table.week-table1 tbody").html(week1Html);

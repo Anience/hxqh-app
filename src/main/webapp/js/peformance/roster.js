@@ -18,11 +18,11 @@ $(function(){
                 var time ='Team Roster-'+ nowTime;
                 $('.ticket-time').text(time);
                 var dataObj = {
-                    datin:[],
                     hsi:[],
-                    imes:[],
-                    surveillance:[],
                     telephony:[],
+                    imes:[],
+                    datin:[],
+                    surveillance:[],
                     wifi:[],
                 }
                 dataObj.datin = data.fmap.DATIN;
@@ -32,6 +32,9 @@ $(function(){
                 dataObj.telephony = data.fmap.TELEPHONY;
                 dataObj.wifi = data.fmap.WIFI;
                 initDom(dataObj.hsi);
+                var domInde = 'ul li:nth-child(1)';
+                $("ul li").css("color","#42435F");
+                $(domInde).css("color","#fff");
                 var i = 0;
                 var dataTurn = ['hsi','telephony','imes','datin','surveillance','wifi'];
                 setInterval(function(){
@@ -41,7 +44,7 @@ $(function(){
                     }
                     var dataName = dataTurn[i];
                     initDom(dataObj[dataName]);
-                    var domIndex = 'ul li:nth-child('+i+')';
+                    var domIndex = "ul li:nth-child("+(i+1)+")";
                     $("ul li").css("color","#42435F");
                     $(domIndex).css("color","#fff");
                 },10000)

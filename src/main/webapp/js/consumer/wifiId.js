@@ -71,6 +71,12 @@ $(function(){
 			];
 		for(var i = 0;i<7;i++){
 			tol[i].name = data.IPTV[i] + data.Internet[i] +data.Pots[i];
+			if(tol[i].name.toString().length>3)
+			{
+				var c = tol[i].name.toString().length % 3;
+                tol[i].name = tol[i].name.toString().substring(0,c) +","+ tol[i].name.toString().substring(c,tol[i].name.toString().length);
+			}
+
 		}
 
         var myChart = echarts.init(document.getElementById(domId));

@@ -3,6 +3,7 @@ package com.hxqh.eam.service;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.LoginDto;
+import com.hxqh.webService.model.RoleSource;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,9 +25,27 @@ public interface SystemService {
 
     void editUser(UserObj account);
 
+
+    /**
+     * 批量修改
+     *
+     * @param objList
+     * @return
+     */
+    String editUser(List<UserObj> objList);
+
+    String addUser(List<UserObj> objList);
+
     int addUser(UserObj account, Long roleid);
 
     void delUser(Long menuid);
+
+    /**
+     * 接口删除用户
+     *
+     * @param sourceIds
+     */
+    String delUser(List<UserObj> sourceIds);
 
     List<SfOrganizationAccount> findOnlineUserList();
 
@@ -56,9 +75,39 @@ public interface SystemService {
 
     void editrole(TbRole account);
 
+    /**
+     * 批量编辑角色 add Ocean_hy
+     *
+     * @param tbRoleList
+     * @return
+     */
+    String editrole(List<TbRole> tbRoleList);
+
     int addrole(TbRole account);
 
+    /**
+     * 批量新增角色 Add Ocean
+     *
+     * @param tbRoleList
+     * @return
+     */
+    String addrole(List<TbRole> tbRoleList);
+
+    String addRoleSource(List<RoleSource> tbRoleList);
+     String delRoleSource(List<RoleSource> tbRoleList);
+
+
+
+
     void delrole(Long id);
+
+    /**
+     * 批量删除角色
+     * add Ocean
+     * @param tbRoleList
+     * @return
+     */
+    String delrole(List<TbRole> tbRoleList);
 
     void editmodel(TbModel account);
 

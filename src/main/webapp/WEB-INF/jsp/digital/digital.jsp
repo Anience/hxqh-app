@@ -24,14 +24,14 @@
 				<tr>
 					<td rowspan="3">OPERATIONAL</td>
 					<td rowspan="3">UNIT</td>
-					<td colspan="5">{{month}}</td>
+					<td colspan="6">{{month}}</td>
 					<td rowspan="3">MOM</td>
 					<td colspan="5">YtD&nbsp;{{year}}</td>
 					<td rowspan="3">YOY</td>
 				</tr>
 				<tr>
 					<td rowspan="2">TARGET</td>
-					<td colspan="2">MtD</td>
+					<td colspan="3">MtD</td>
 					<td colspan="2">OUTLOOK</td>
 					<td rowspan="2">TARGET</td>
 					<td rowspan="2">REAL</td>
@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>REAL</td>
-					<td>ACH</td>
+					<td colspan="2">ACH</td>
 					<td>AMOUNT</td>
 					<td>ACH</td>
 					<td>REAL</td>
@@ -49,13 +49,14 @@
 			</thead>
 			<tbody v-if="!isShow">
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;">
-					<td colspan="14" style="padding-left:20px;">{{tit}}</td>
+					<td colspan="15" style="padding-left:20px;">{{tit}}</td>
 				</tr>
 				<tr v-for="(item,index) of digList">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id" style="width: 150px;height: 75px;"></td>
+					<td style="width: 120px;">{{item.ioc4}}</td>
+					<td :id="item.id" style="width: 100px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100,'text-blue':parseInt(item.ioc7)>=100}">{{item.ioc7}}</td>
@@ -70,13 +71,14 @@
 			</tbody>
 			<tbody v-if="isShow">
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;padding-left:20px;">
-					<td colspan="14" style="padding-left:20px;">{{dig13Dto.name}}</td>
+					<td colspan="15" style="padding-left:20px;">{{dig13Dto.name}}</td>
 				</tr>
 				<tr v-for="(item,index) of dig13Dto.vDig13List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id" style="width: 150px;height: 75px;"></td>
+					<td style="width: 120px;">{{item.ioc4}}</td>
+					<td :id="item.id" style="width: 100px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100}">{{item.ioc7}}</td>
@@ -90,13 +92,14 @@
 				</tr>
 
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;padding-left:20px;">
-					<td colspan="14" style="padding-left:20px;">{{dig14Dto.name}}</td>
+					<td colspan="15" style="padding-left:20px;">{{dig14Dto.name}}</td>
 				</tr>
 				<tr v-for="(item,index) of dig14Dto.dig14List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id" style="width: 150px;height: 75px;"></td>
+					<td style="width: 120px;">{{item.ioc4}}</td>
+					<td :id="item.id" style="width: 100px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100}">{{item.ioc7}}</td>
@@ -110,13 +113,14 @@
 				</tr>
 
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;padding-left:20px;">
-					<td colspan="14" style="padding-left:20px;">{{dig17Dto.name}}</td>
+					<td colspan="15" style="padding-left:20px;">{{dig17Dto.name}}</td>
 				</tr>
 				<tr v-for="(item,index) of dig17Dto.dig17List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id" style="width: 150px;height: 75px;"></td>
+					<td style="width: 120px;">{{item.ioc4}}</td>
+					<td :id="item.id" style="width: 100px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100}">{{item.ioc7}}</td>
@@ -130,13 +134,14 @@
 				</tr>
 
 				<tr style="text-align: left;background-color: #1F3E50;font-size: 26px;height: 46px;padding-left:20px;">
-					<td colspan="14" style="padding-left:20px;">{{dig18Dto.name}}</td>
+					<td colspan="15" style="padding-left:20px;">{{dig18Dto.name}}</td>
 				</tr>
 				<tr v-for="(item,index) of dig18Dto.dig18List">
 					<td>{{item.ioc1}}</td>
 					<td style="font-family: Brush Script MT;">{{item.ioc2}}</td>
 					<td>{{item.ioc3}}</td>
-					<td :id="item.id" style="width: 150px;height: 75px;"></td>
+					<td style="width: 120px;">{{item.ioc4}}</td>
+					<td :id="item.id" style="width: 100px;height: 75px;"></td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc5)<100}">{{item.ioc5}}</td>
 					<td>{{item.ioc6}}</td>
 					<td v-bind:class="{'text-red':parseInt(item.ioc7)<100}">{{item.ioc7}}</td>

@@ -144,7 +144,8 @@ $(function(){
                             label: {
                                 show: true,
                                 textStyle: {
-                                    color: '#ffffff'
+                                    color: '#ffffff',
+                                    fontSize: 15
                                 }
                             }
                         }
