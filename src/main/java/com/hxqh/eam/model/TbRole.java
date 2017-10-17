@@ -28,15 +28,7 @@ public class TbRole implements Serializable {
     private BigDecimal rolestatus;
 
     private BigDecimal sortnum;
-    private String sourceid;
 
-    public String getSourceid() {
-        return sourceid;
-    }
-
-    public void setSourceid(String sourceid) {
-        this.sourceid = sourceid;
-    }
 
     //bi-directional many-to-one association to UserroleObj
     @OneToMany(mappedBy = "tbRole")
