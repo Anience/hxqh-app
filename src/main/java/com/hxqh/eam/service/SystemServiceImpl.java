@@ -279,63 +279,85 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public String addRoleSource(List<RoleSource> tbRoleList) {
-        for (RoleSource roleSource : tbRoleList) {
-            int type = roleSource.getOptionType();
-            //查找角色信息
-            TbRole tbRole = roleDao.find(roleSource.getRoleId());
-            if (type == 1) {
-                //查找用户信息
-                UserObj userObj = userDao.find(roleSource.getSourceId());
-                TbUserrole tbUserrole = new TbUserrole();
-                tbUserrole.setTbUser(userObj);
-                tbUserrole.setTbRole(tbRole);
-                userroleDao.save(tbUserrole);
-            } else if (type == 2) {
-                //查找资源信息
-                TbModel tbModel = modelDao.find(roleSource.getSourceId());
-                TbRolemodel tbRolemodel = new TbRolemodel();
-                tbRolemodel.setTbModel(tbModel);
-                rolemodelDao.save(tbRolemodel);
+        String msg = "";
+        String notFindUser = "";
+        if (tbRoleList.size() > 0) {
+            for (RoleSource roleSource : tbRoleList) {
+                //查找角色
+                TbRole tbRole = roleDao.find(roleSource.getRoleId());
+                //通过来源id查找用户信息
+                Map<String, Object> params = new HashMap<>();
+                params.put("sourceuserId", roleSource.getSourceId());
+                String where = "sourceuserid=:sourceuserId";
+                List<UserObj> userObjs = userDao.findAll(where, params, null);
+                if (userObjs.size() == 1) {
+                    UserObj userObj = userDao.find(userObjs.get(0).getUserid());
+                    TbUserrole tbUserrole = new TbUserrole();
+                    tbUserrole.setTbUser(userObj);
+                    tbUserrole.setTbRole(tbRole);
+                    //删除改用户下的所有角色关联关系
+                    Long userId = userObjs.get(0).getUserid();
+                    if (userId == 1) {
+                        msg = "内置管理员" + roleSource.getSourceId() + "账户禁止删除";
+                    } else {
+                        //确保一个用户只拥有一个角色（参照林海的逻辑）
+                        String whereRole = "userid=:userid";
+                        Map<String, Object> paramsrole = new HashMap<>();
+                        paramsrole.put("userid", userId);
+                        List<TbUserrole> userroleList = userroleDao.findAll(whereRole, paramsrole, null);
+                        for (TbUserrole tbu : userroleList) {
+                            userroleDao.delete(tbu.getUserroleid());
+                        }
+                    }
+                    //保存关联关系
+                    userroleDao.save(tbUserrole);
+                } else if (userObjs.size() > 1) {
+                    msg = "找到多个匹配用户，请联系管理员！";
+                    notFindUser += roleSource.getSourceId() + "、";
+                } else {
+                    msg = "未找到匹配用户！";
+                    notFindUser += roleSource.getSourceId() + "、";
+                }
+
             }
+        } else {
+            msg = "不存在操作数据";
         }
 
 
-        return null;
-    }
-
-    @Override
-    public String editRoleSource(List<RoleSource> tbRoleList) {
-
-        return null;
+        return msg+";"+ notFindUser;
     }
 
     @Override
     public String delRoleSource(List<RoleSource> tbRoleList) {
-        for (RoleSource roleSource : tbRoleList) {
-            int type = roleSource.getOptionType();
-            //查找角色信息
-            if (type == 1) {
-                Map<String, Object> params = new HashMap<String, Object>();
-                params.put("userid", roleSource.getSourceId());
-                params.put("roleid", roleSource.getRoleId());
-                String where = "userid:userid   and roleid=:roleid";
-                List<TbUserrole> userroleList = userroleDao.findAll(where, params, null);
-                for (TbUserrole t : userroleList) {
-                    userroleDao.delete(t.getUserroleid());
-                }
-            } else if (type == 2) {
-                //查找资源信息
-                Map<String, Object> params = new HashMap<String, Object>();
-                params.put("modelid", roleSource.getSourceId());
-                params.put("roleid", roleSource.getRoleId());
-                String where = "userid:userid   and modelid=:modelid";
-                List<TbRolemodel> rolemodelList = rolemodelDao.findAll(where, params, null);
-                for (TbRolemodel t : rolemodelList) {
-                    rolemodelDao.delete(t.getRolemodelid());
+        String msg = "";
+        if (tbRoleList.size() > 0) {
+            for (RoleSource roleSource : tbRoleList) {
+                Map<String, Object> params = new HashMap<>();
+                params.put("sourceuserId", roleSource.getSourceId());
+                String where = "sourceuserid=:sourceuserId";
+                List<UserObj> userObjs = userDao.findAll(where, params, null);
+                //删除改用户下的所有角色关联关系
+                Long userId = userObjs.get(0).getUserid();
+                if (userId == 1) {
+                    msg = "内置管理员" + roleSource.getSourceId() + "账户禁止删除";
+                } else {
+                    //确保一个用户只拥有一个角色（参照林海的逻辑）
+                    String whereRole = "userid=:userid";
+                    Map<String, Object> paramsrole = new HashMap<>();
+                    paramsrole.put("userid", userId);
+                    List<TbUserrole> userroleList = userroleDao.findAll(whereRole, paramsrole, null);
+                    for (TbUserrole tbu : userroleList) {
+                        userroleDao.delete(tbu.getUserroleid());
+                    }
                 }
             }
+        } else {
+            msg = "不存在操作数据";
         }
-        return null;
+
+
+        return msg;
     }
 
     @Override

@@ -94,8 +94,7 @@ public interface SystemService {
     String addrole(List<TbRole> tbRoleList);
 
     String addRoleSource(List<RoleSource> tbRoleList);
-    String editRoleSource(List<RoleSource> tbRoleList);
-    String delRoleSource(List<RoleSource> tbRoleList);
+     String delRoleSource(List<RoleSource> tbRoleList);
 
 
 
