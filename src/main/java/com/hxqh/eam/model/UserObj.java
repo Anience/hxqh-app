@@ -17,7 +17,7 @@ public class UserObj implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "TB_USER_USERID_GENERATOR",allocationSize = 1, sequenceName = "SEQ_USER")
+    @SequenceGenerator(name = "TB_USER_USERID_GENERATOR", allocationSize = 1, sequenceName = "SEQ_USER")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_USER_USERID_GENERATOR")
     private Long userid;
 
@@ -31,6 +31,7 @@ public class UserObj implements Serializable {
     private String loginname;
 
     private String loginpassword;
+
 
     private String mobile;
 
@@ -53,8 +54,12 @@ public class UserObj implements Serializable {
     @XStreamOmitField
     private List<TbUserrole> tbUserroles;
 
+
+
     public UserObj() {
     }
+
+
 
     public String getRoleid() {
         return roleid;
