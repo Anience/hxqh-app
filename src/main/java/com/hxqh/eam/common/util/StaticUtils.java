@@ -94,6 +94,26 @@ public class StaticUtils {
         return getDayStartTime(cal.getTime());
     }
 
+    //获取自定义时间
+    public static Date getMyTime(int day) {
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE,   day);
+        Date weekEndSta = cal.getTime();
+        return getDayEndTime(weekEndSta);
+    }
+
+
+    //获取星期几
+    public static int getWeekTime(Date d) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        return w;
+    }
+
 
     //获取本周的结束时间
     public static Date getEndDayOfWeek() {
