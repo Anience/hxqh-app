@@ -19,7 +19,8 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10" >
 			<div style="width: 100%;" class="mytitle">
-				<h3>KPI COMPLIANCE</h3>
+				<h2 style="width: 300px; height: 60px; background-color: #cc0000;color: #FFFFFF; font-size: 40px; text-align: center">Mobile</h2>
+				<h3 >KPI COMPLIANCE</h3>
 				<span class="ticket-time"></span>
 			</div>
 
