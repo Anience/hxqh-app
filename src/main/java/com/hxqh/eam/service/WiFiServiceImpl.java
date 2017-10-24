@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.util.*;
 
 /**
@@ -26,7 +27,23 @@ public class WiFiServiceImpl implements WiFiService {
 
     private static final String[] AXISIDATA = {"NAS", "TREG-1", "TREG-2", "TREG-3", "TREG-4", "TREG-5", "TREG-6", "TREG-7"};
 
-    private static final String[] DAILYTICKET = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    //private static final String[] DAILYTICKET2 = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+
+    private static String[] DAILYTICKET ={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+
+
+    static{
+
+          for(int i=0;i<7;i++){
+              Calendar cal = Calendar.getInstance();
+              int k = i+1;
+              cal.add(Calendar.DATE,   -(k));
+              Date weekEndSta = cal.getTime();
+              DateFormat df1 = DateFormat.getDateInstance();
+              DAILYTICKET[6-i] = df1.format(weekEndSta);
+
+            }
+    }
 
     @Autowired
     private VWifiDailyDao vWifiDailyDao;
@@ -146,11 +163,15 @@ public class WiFiServiceImpl implements WiFiService {
             dailyktM.put(m.getKey(), daily);
         }
 
+
+
         DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET);
         //示例：Daily Ticket Distribution(2017-07-09 To 2017-07-15)
         StringBuilder builder = new StringBuilder(50);
-        builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));
-        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getEndDayOfWeek())).append(")");
+       /* builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));
+        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getEndDayOfWeek())).append(")");*/
+        builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-1)));
+        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-7))).append(")");
         dailyDto.setNowtime(builder.toString());
         return dailyDto;
     }
