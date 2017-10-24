@@ -2,6 +2,7 @@ package com.hxqh.eam.common.basedao;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -59,7 +60,11 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	public void update(T entity) {
 		sessionFactory.getCurrentSession().update(entity);
 	}
-	
+
+	public void update(T entity, String where, Map<String, ?> params, String setColoumn) {
+		sessionFactory.getCurrentSession().merge(entity);
+	}
+
 	public void merge(T entity) {
 		sessionFactory.getCurrentSession().merge(entity);
 	}
@@ -83,7 +88,7 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 					if (f != null) {
 						Class<?> type = getMethod.getReturnType();
 						Method setMethod = entityClass.getMethod(
-								setfiledMethodName, new Class[] { type });
+								setfiledMethodName, new Class[]{type});
 						setMethod.invoke(entitycur, f);
 					}
 				} catch (NoSuchMethodException e) {
@@ -100,6 +105,25 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	public void delete(Serializable id) {
 		sessionFactory.getCurrentSession().delete(
 				sessionFactory.getCurrentSession().load(entityClass, id));
+	}
+
+	/**
+	 * 原生态Sql删除  add Ocean_hy
+	 *
+	 * @param where
+	 * @param params
+	 * @return
+	 */
+	public int delete(String where, Map<String, ?> params) {
+		String wheresql = where != null && !"".equals(where.trim()) ? " where "
+				+ where : "";
+		Query query = sessionFactory.getCurrentSession().createQuery("delete from " + entityName + wheresql);
+		if (where != null && !"".equals(where.trim())) {
+			setParameter(query, params);
+		}
+		int i = query.executeUpdate();
+		return i;
+
 	}
 
 	@Transactional(readOnly = true)
@@ -124,7 +148,7 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<T> findAll(String where, Map<String, ?> params,
-			LinkedHashMap<String, String> orderby) {
+						   LinkedHashMap<String, String> orderby) {
 		String whereql = where != null && !"".equals(where.trim()) ? " where "
 				+ where : "";
 		Query query = sessionFactory.getCurrentSession().createQuery(
@@ -134,11 +158,11 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 		}
 		return query.list();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<T> findAll(int firstResult,int maxResult,String where, Map<String, Object> params,
-			String orderby) {
+	public List<T> findAll(int firstResult, int maxResult, String where, Map<String, Object> params,
+						   String orderby) {
 		String whereql = where != null && !"".equals(where.trim()) ? " where "
 				+ where : "";
 		orderby = orderby == null ? "" : orderby;
@@ -148,7 +172,7 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 			query.setFirstResult(firstResult).setMaxResults(maxResult);
 		return query.list();
 	}
-	
+
 
 	public List<T> findAll() {
 		return findAll(null, null, null);
@@ -157,7 +181,7 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public QueryResult<T> getScrollData(int firstResult, int maxResult,
-			String where, Map<String, Object> params, String orderby) {
+										String where, Map<String, Object> params, String orderby) {
 		String whereql = where != null && !"".equals(where.trim()) ? " where "
 				+ where : "";
 		orderby = orderby == null ? "" : orderby;
@@ -182,8 +206,8 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public QueryResult<Map<String, Object>> getScrollData(int firstResult,
-			int maxResult, String where, Map<String, Object> params,
-			String orderby, String[] fields) {
+														  int maxResult, String where, Map<String, Object> params,
+														  String orderby, String[] fields) {
 		String whereql = where != null && !"".equals(where.trim()) ? " where "
 				+ where : "";
 		String strFields = buildFields(fields);
@@ -208,8 +232,8 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	}
 
 	public QueryResult<T> getScrollData(int firstResult, int maxResult,
-			String where, Map<String, Object> params,
-			LinkedHashMap<String, String> orderby) {
+										String where, Map<String, Object> params,
+										LinkedHashMap<String, String> orderby) {
 		return getScrollData(firstResult, maxResult, where, params,
 				buildOrderby(orderby));
 	}
@@ -219,10 +243,10 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	}
 
 	public QueryResult<T> getScrollData(int firstResult, int maxResult,
-			LinkedHashMap<String, String> orderby) {
+										LinkedHashMap<String, String> orderby) {
 		return getScrollData(firstResult, maxResult, "", null, orderby);
 	}
-	
+
 	/**
 	 * 获得记录集
 	 */
@@ -231,12 +255,10 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 	}
 
 	/**
-
-	/**
+	 * /**
 	 * 构建排序语句
-	 * 
-	 * @param orderby
-	 *            key排序属性 value asc/desc
+	 *
+	 * @param orderby key排序属性 value asc/desc
 	 * @return
 	 */
 	protected static String buildOrderby(LinkedHashMap<String, String> orderby) {
@@ -263,7 +285,7 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 		for (String field : fields) {
 			if (field.lastIndexOf(".") >= 0)
 				sb.append(field.toLowerCase()).append(" as ")
-						.append(field.substring(field.lastIndexOf(".")+1))
+						.append(field.substring(field.lastIndexOf(".") + 1))
 						.append(",");
 			else
 				sb.append(field.toLowerCase()).append(" as ").append(field)
@@ -283,6 +305,6 @@ public abstract class DaoSupport<T extends Serializable> implements Dao<T> {
 		}
 		return null;
 	}
-	
-	
+
+
 }

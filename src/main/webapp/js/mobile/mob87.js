@@ -49,8 +49,7 @@ $(function () {
                         if(temp<10) return "0"+temp;
                         else return temp;
                     }
-                    var time ='Last Update:'+ nowTime;
-                    $('.ticket-time').text(time);
+
                     var illustruation={
                         SL_D: '(0,0,0)',
                         FOAccess: '(0,0,0)',
@@ -59,6 +58,9 @@ $(function () {
 
                     };
                     self.anoList = data;
+                    var cc = self.anoList.map['NAS'];
+                    var time ='Last Update:'+ cc[0].ts;
+                    $('.ticket-time').text(time);
                     $("#mob87 ul").find("li").eq(1)
                         .css("background","#8D93A8");
                     initEchart("echart1",self.anoList.map['NAS']);
@@ -192,7 +194,7 @@ $(function () {
                 {
                     value:1,name:'nodata'
                 }
-            ];;
+            ];
         }
         var myChart = echarts.init(document.getElementById(idDom));
         option = {

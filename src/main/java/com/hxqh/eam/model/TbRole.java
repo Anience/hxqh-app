@@ -29,6 +29,7 @@ public class TbRole implements Serializable {
 
     private BigDecimal sortnum;
 
+
     //bi-directional many-to-one association to UserroleObj
     @OneToMany(mappedBy = "tbRole")
     @XStreamOmitField

@@ -208,6 +208,7 @@ public class SystemServiceImpl implements SystemService {
         roleDao.update(account);
     }
 
+
     @Override
     public int addrole(TbRole account) {
         //如果loginname重复不添加
@@ -224,6 +225,8 @@ public class SystemServiceImpl implements SystemService {
         return 1;
     }
 
+
+
     @Override
     public void delrole(Long id) {
         if (!(id == 1l)) {
@@ -235,6 +238,8 @@ public class SystemServiceImpl implements SystemService {
             roleDao.delete(id);
         }
     }
+
+
 
     @Override
     public void editmodel(TbModel account) {
@@ -442,11 +447,12 @@ public class SystemServiceImpl implements SystemService {
         userDao.update(userroleList.get(0).getTbUser());
     }
 
+
     @Override
     public int addUser(UserObj account, Long roleid) {
         //如果loginname重复不添加
         Map<String, Object> params = new HashMap<>();
-        params.put("loginname", account.getLoginname());
+        params.put("loginname", account.getLoginname().toLowerCase());
         String where = "loginname=:loginname ";
         List<UserObj> accountList = userDao.findAll(where, params, null);
         if (accountList.size() > 0) {
@@ -456,6 +462,7 @@ public class SystemServiceImpl implements SystemService {
         //设置密码 初始密码123456
         String password = Account.encrypt("123456");
         account.setLoginpassword(password);
+        account.setLoginname(account.getLoginname().toLowerCase());
         account.setUserstatus(1);
 
         userDao.save(account);
@@ -473,6 +480,7 @@ public class SystemServiceImpl implements SystemService {
             userDao.delete(id);
         }
     }
+
 
 
     @Override

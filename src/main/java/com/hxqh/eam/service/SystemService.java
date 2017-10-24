@@ -28,6 +28,7 @@ public interface SystemService {
 
     void delUser(Long menuid);
 
+
     List<SfOrganizationAccount> findOnlineUserList();
 
     List<SfOrganizationDepartment> getDepartmentList();
@@ -56,9 +57,12 @@ public interface SystemService {
 
     void editrole(TbRole account);
 
+
     int addrole(TbRole account);
 
+
     void delrole(Long id);
+
 
     void editmodel(TbModel account);
 
