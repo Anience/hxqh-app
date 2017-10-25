@@ -13,14 +13,14 @@
 }
 .wifiId-layout .left{
     width: 56%;
-    height: 80%;
+    height: 90%;
     background: #0A0F25;
     float: left;
     margin-left: 2%;
 }
 .wifiId-layout .right{
     width: 38%;
-    height: 80%;
+    height: 90%;
     background: #0A0F25;
     float: right;
     margin-right: 2%;
@@ -42,18 +42,18 @@ ul.sec-nav{
 }
 ul.first-nav li{
     float: left;
-    width: 50px;
+    width: 70px;
     text-align: center;
     color: #42435f;
     display: block;
-    font-size: 12px;
+    font-size: 16px;
     font-family: "Arial";
 }
 ul.sec-nav li{
     float: left;
-    width: 50px;
+    width: 70px;
     height: 10px;
-    border-radius: 50%;
+    border-radius: 60%;
     text-align: center;
     color: #42435f;
     display: block;
