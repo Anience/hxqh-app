@@ -11,8 +11,20 @@ public class ComplaintData {
 
     private Map<String, List<BigDecimal>> listM;
 
-    public ComplaintData(Map<String, List<BigDecimal>> listM) {
+    private Map<String, List<BigDecimal>> listUN;
+
+
+    public Map<String, List<BigDecimal>> getlistUN() {
+        return listUN;
+    }
+
+    public void setlistUN(Map<String, List<BigDecimal>> listUN) {
+        this.listUN = listUN;
+    }
+
+    public ComplaintData(Map<String, List<BigDecimal>> listM,Map<String, List<BigDecimal>> listUN) {
         this.listM = listM;
+        this.listUN = listUN;
     }
 
     public Map<String, List<BigDecimal>> getListM() {
