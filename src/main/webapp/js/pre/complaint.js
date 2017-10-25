@@ -7,8 +7,9 @@ $(function(){
             success: function (data) {
                 var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
                 var datas = data.listM;
-                initEchart("echart1",datas['NAS']);
-                initEchart("echart2",datas['TREG-1']);
+                var datasUN = data.listUN;
+                initEchart("echart1",datas['NAS'],datasUN['NAS']);
+                initEchart("echart2",datas['TREG-1'],datasUN['TREG-1']);
                 //轮播图
                 var j = 0;
                 setInterval(function(){
@@ -28,7 +29,7 @@ $(function(){
                         $(thisLi2).css("backgroundColor","#4a476a");
 
                         var objName = 'TREG-'+j;
-                        initEchart("echart2",datas[objName]);
+                        initEchart("echart2",datas[objName],datasUN[objName]);
                     }
                 },5000);
             },
@@ -38,18 +39,18 @@ $(function(){
         });
 	}
 	init();
-    function initEchart(domId,echartData) {
+    function initEchart(domId,echartData,echartData2) {
         var myChart = echarts.init(document.getElementById(domId));
 
-        var leg = '';
+        var leg = [];
         if(domId == 'echart1')
         {
-        leg = 'Number of New Installtion (INDIHOME)';
+        leg = ['Number of New Installtion (INDIHOME)', 'Number of Complaint ≤ 60 Day (UNIQUE)'];
         }
         option = {
             backgroundColor:'#0A0F25',
-            color:['#ef8a92'],
-            //color:['#ef8a92','#2c2a4e'],
+            //color:['#ef8a92'],
+            color:['#ef8a92','#2c2a4e'],
 
             legend: {
                 show: true,
@@ -59,7 +60,7 @@ $(function(){
                 textStyle: {
                     color:'#9F9FA1'
                 },
-                data: [leg]
+                data: leg
                 //data: ['Number of New Installtion (INDIHOME)', 'Number of Complaint ≤ 60 Day (UNIQUE)']
             },
             tooltip : {
@@ -80,6 +81,7 @@ $(function(){
                         show: true,
                         textStyle:{
                             color:'#9FA0A1',
+                            fontSize: 15
                         }
                     },
                     axisLine : {    // 轴线
@@ -107,6 +109,7 @@ $(function(){
                         show: true,
                         textStyle:{
                             color:'#9FA0A1',
+                            fontSize: 15
                         }
                     },
                     axisLine : {    // 轴线
@@ -137,8 +140,32 @@ $(function(){
                     barWidth:'25',
                     itemStyle:{
                         normal:{
+                            rotate: 90,
                             color: '#4B476A',
                             barBorderColor: '#4B476A',
+                            barBorderWidth: 6,
+                            barBorderRadius:0,
+                            label: {
+                                //position: 'inside',
+                                show: true,
+                                textStyle: {
+                                    color: '#ffffff',
+                                    fontSize: 15
+                                }
+                            }
+                        }
+                    },
+                    data: echartData
+                }
+                ,
+                {
+                    name: 'Number of Complaint ≤ 60 Day (UNIQUE)',
+                    type: 'line',
+                    barWidth:'25',
+                    itemStyle:{
+                        normal:{
+                            color: '#ef8a92',
+                            barBorderColor: '#ef8a92',
                             barBorderWidth: 6,
                             barBorderRadius:0,
                             label: {
@@ -150,29 +177,8 @@ $(function(){
                             }
                         }
                     },
-                    data: echartData
+                    data: echartData2
                 }
-                /*,
-                {
-                    name: 'Number of Complaint ≤ 60 Day (UNIQUE)',
-                    type: 'bar',
-                    barWidth:'25',
-                    itemStyle:{
-                        normal:{
-                            color: '#2c2a4e',
-                            barBorderColor: '#2c2a4e',
-                            barBorderWidth: 6,
-                            barBorderRadius:0,
-                            label: {
-                                show: true,
-                                textStyle: {
-                                    color: '#ffffff'
-                                }
-                            }
-                        }
-                    },
-                    data: ''
-                }*/
             ]
         };
         myChart.setOption(option);
