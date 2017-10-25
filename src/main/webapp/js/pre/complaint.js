@@ -8,8 +8,17 @@ $(function(){
                 var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
                 var datas = data.listM;
                 var datasUN = data.listUN;
-                initEchart("echart1",datas['NAS'],datasUN['NAS']);
-                initEchart("echart2",datas['TREG-1'],datasUN['TREG-1']);
+                var myDate = new Date();
+                var nowMon = myDate.getMonth();
+                var Mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var newMon = new Array();
+                for(var i=0 ; i<nowMon-1;i++){      //只显示两个月前的月期
+                    newMon[i]=Mon[i];
+                }
+
+
+                initEchart("echart1",datas['NAS'],datasUN['NAS'],newMon);
+                initEchart("echart2",datas['TREG-1'],datasUN['TREG-1'],newMon);
                 //轮播图
                 var j = 0;
                 setInterval(function(){
@@ -29,7 +38,7 @@ $(function(){
                         $(thisLi2).css("backgroundColor","#4a476a");
 
                         var objName = 'TREG-'+j;
-                        initEchart("echart2",datas[objName],datasUN[objName]);
+                        initEchart("echart2",datas[objName],datasUN[objName],newMon);
                     }
                 },5000);
             },
@@ -39,7 +48,7 @@ $(function(){
         });
 	}
 	init();
-    function initEchart(domId,echartData,echartData2) {
+    function initEchart(domId,echartData,echartData2,Mon) {
         var myChart = echarts.init(document.getElementById(domId));
 
         var leg = [];
@@ -77,7 +86,8 @@ $(function(){
             xAxis : [
                 {
                     type : 'category',
-                    data:  ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                    data:Mon,
+                    //data:  ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
                     axisLabel:{
                         show: true,
                         textStyle:{
