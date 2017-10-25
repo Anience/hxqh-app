@@ -58,7 +58,8 @@ $(function(){
                 x: 'right',
                 y: 'top',
                 textStyle: {
-                    color:'#9F9FA1'
+                    color:'#9F9FA1',
+                    fontSize: 16
                 },
                 data: leg
                 //data: ['Number of New Installtion (INDIHOME)', 'Number of Complaint ≤ 60 Day (UNIQUE)']
@@ -81,7 +82,7 @@ $(function(){
                         show: true,
                         textStyle:{
                             color:'#9FA0A1',
-                            fontSize: 15
+                            fontSize: 16
                         }
                     },
                     axisLine : {    // 轴线
@@ -109,7 +110,7 @@ $(function(){
                         show: true,
                         textStyle:{
                             color:'#9FA0A1',
-                            fontSize: 15
+                            fontSize: 16
                         }
                     },
                     axisLine : {    // 轴线
@@ -137,7 +138,7 @@ $(function(){
                 {
                     name: 'Number of New Installtion (INDIHOME)',
                     type: 'bar',
-                    barWidth:'25',
+                    barWidth:'26',
                     itemStyle:{
                         normal:{
                             rotate: 90,
@@ -149,8 +150,8 @@ $(function(){
                                 //position: 'inside',
                                 show: true,
                                 textStyle: {
-                                    color: '#ffffff',
-                                    fontSize: 15
+                                    color: '#F5CBA7',
+                                    fontSize: 16
                                 }
                             }
                         }
@@ -172,7 +173,7 @@ $(function(){
                                 show: true,
                                 textStyle: {
                                     color: '#ffffff',
-                                    fontSize: 15
+                                    fontSize: 16
                                 }
                             }
                         }
