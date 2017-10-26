@@ -12,7 +12,9 @@
 	</script>
 </head>
 <body>
+
 <div class="ind-layout">
+	<div style="width: 300px; height: 60px; background-color: #cc0000;color: #FFFFFF;font-size: 50px; text-align: center">Consumer</div>
 	<table class="summary">
 		<thead>
 			<tr>

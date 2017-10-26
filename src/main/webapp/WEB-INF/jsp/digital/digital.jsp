@@ -18,7 +18,8 @@
 </head>
 <body>
 <div class="digital">
-	<div class="dig-layout" style="padding-top: 40px;">
+	<div style="width: 300px; height: 60px; background-color: #cc0000;color: #FFFFFF;font-size: 50px; text-align: center">Digital</div>
+	<div class="dig-layout" style="padding-top: 20px;">
 		<table class="dig-13" id="digital-data">
 			<thead>
 				<tr>
