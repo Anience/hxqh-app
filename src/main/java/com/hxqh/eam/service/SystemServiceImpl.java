@@ -346,6 +346,21 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
+    public int modifyPassword(String password, String name) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("loginname", name);
+        String where = "loginname=:loginname ";
+        List<UserObj> accountList = userDao.findAll(where, params, null);
+        if (accountList.size() == 1) {
+            UserObj userObj = accountList.get(0);
+            userObj.setLoginpassword(Account.encrypt(password));
+            userDao.update(userObj);
+        }
+        return 0;
+    }
+
+
+    @Override
     public int sendEmail(String loginname, String email) {
         MailUtils cn = new MailUtils();
 
