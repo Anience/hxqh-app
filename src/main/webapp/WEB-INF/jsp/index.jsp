@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="${ctx}/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/main.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${ctx}/css/index.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${ctx}/css/mask.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/tendina.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/AL-index.js"></script>
@@ -29,6 +30,10 @@
 				<a href="${ctx}/system/logoutnonesession">
 					<i class="icon-logout icon-user"></i>
 					LogOut
+				</a>
+				<a href="javascript:;" class="changePwd">
+					<i class="icon-logout icon-user"></i>
+                    Change Password
 				</a>
 			</li>
 		</ul>
@@ -76,13 +81,29 @@
 			<span class="header-router"></span>
 			<span id="all" style=""></span>
 		</div>
-		<%--<div class="router">
-			<span class="router-txt">My portal</span>
-		</div>--%>
 		<div id="page_content">
 			<iframe id="menuFrame" name="menuFrame" style="overflow:visible;"
 					width="100%" height="100%"  src="${ctx}/ano/map" onresize="alert('You have changed the size of the window')"></iframe>
 		</div>
+	</div>
+</div>
+<div class="mask"></div>
+<div class="box" style="background: #fff;height: 280px;margin-top: -140px;">
+	<i class="closeMask"></i>
+	<h4>Infomation</h4>
+	<div class="user-info">
+		<p class="item">
+			<lable>Password</lable>
+			<input type="text" id="newPwd1">
+		</p>
+		<p class="item">
+			<lable>Confirm Password:</lable>
+			<input type="text"  id="newPwd2">
+		</p>
+		<p class="btn">
+			<button class="save">Save</button>
+			<button class="cancle">Cancle</button>
+		</p>
 	</div>
 </div>
 </body>
