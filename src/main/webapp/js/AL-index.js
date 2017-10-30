@@ -105,29 +105,6 @@ $(function(){
         $("#newPwd1").val("");
         $("#newPwd2").val("");
     });
-    $(".save").click(function(){
-        var pwd1 = $("#newPwd1").val("");
-        var pwd2 = $("#newPwd2").val("");
-        if(pwd1!=""&&pwd1==pwd2){
-            $.ajax({
-                url: _ctx+"/system/resetPassword",
-                method: "get",
-                dataType: "json",
-                data: {
-                    password:pwd1
-                },
-                success: function (data) {
-                    alert(data.message);
-                    $(".mask").hide();
-                    $(".box").hide();
-                },
-                error: function () {
 
-                }
-            });
-        }else{
-            alert("The two password is not the same!");
-        }
-    });
 });
 

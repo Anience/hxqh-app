@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="${ctx}/css/mask.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="${ctx}/script/tendina.min.js"></script>
-	<script type="text/javascript" src="${ctx}/js/AL-index.js"></script>
 	<script>
 		var _ctx = ${ctx};
 	</script>
@@ -33,7 +32,7 @@
 				</a>
 				<a href="javascript:;" class="changePwd">
 					<i class="icon-logout icon-user"></i>
-                    Change Password
+					Modify Password
 				</a>
 			</li>
 		</ul>
@@ -107,6 +106,7 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="${ctx}/js/AL-index.js"></script>
 <script>
 	$(function(){
 		var contentH = document.body.clientHeight-$(".header").height();
@@ -115,6 +115,34 @@
 		$(".content").height(contentH);
         $("#page_content").height(iframeH);
         $(".left-menu").height(contentH);
+        //事件绑定
+        $(".save").click(function(){
+            var pwd1 = $("#newPwd1").val().trim();
+            var pwd2 = $("#newPwd2").val().trim();
+            if(pwd1==""||pwd1.length<6){
+                alert("The minimum length of the password is six!");
+			}
+            if(pwd1!=""&&pwd1==pwd2){
+                $.ajax({
+                    url: "${ctx}"+"/system/modifyPassword",
+                    method: "post",
+                    dataType: "json",
+                    data: {
+                        password:pwd1
+                    },
+                    success: function (data) {
+                        alert(data.message);
+                        $(".mask").hide();
+                        $(".box").hide();
+                    },
+                    error: function () {
+
+                    }
+                });
+            }else{
+                alert("The two password is not the same!");
+            }
+        });
 	});
 </script>
 </html>
