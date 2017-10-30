@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.lang.annotation.ElementType;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -228,7 +229,6 @@ public class SystemServiceImpl implements SystemService {
     }
 
 
-
     @Override
     public void delrole(Long id) {
         if (!(id == 1l)) {
@@ -240,7 +240,6 @@ public class SystemServiceImpl implements SystemService {
             roleDao.delete(id);
         }
     }
-
 
 
     @Override
@@ -330,11 +329,13 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public int resetPassword(Long userid) {
+    public int resetPassword(Long userid, String password) {
         UserObj userObj = userDao.find(userid);
         //重置密码 初始密码123456
-        String password = Account.encrypt("123456");
-        userObj.setLoginpassword(password);
+        if (null == password)
+            password = Account.encrypt("123456");
+
+        userObj.setLoginpassword(Account.encrypt(password));
         userObj.setUserstatus(1);
         userDao.save(userObj);
         //发送邮件
@@ -484,7 +485,6 @@ public class SystemServiceImpl implements SystemService {
             userDao.delete(id);
         }
     }
-
 
 
     @Override

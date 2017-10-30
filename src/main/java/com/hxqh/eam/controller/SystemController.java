@@ -738,10 +738,11 @@ public class SystemController {
     /******************************重置密码***************************/
     @ResponseBody
     @RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
-    public Message resetPassword(@RequestParam("userid") Long userid) {
+    public Message resetPassword(@RequestParam("userid") Long userid,
+                                 @RequestParam(name = "password", required = false) String password) {
         Message message = null;
         try {
-            int i = systemService.resetPassword(userid);
+            int i = systemService.resetPassword(userid, password);
             message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
 
         } catch (Exception e) {

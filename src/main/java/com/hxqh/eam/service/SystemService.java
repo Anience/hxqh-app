@@ -80,7 +80,7 @@ public interface SystemService {
 
     int forgetPassword(String loginname, String email);
 
-    int resetPassword(Long loginname);
+    int resetPassword(Long loginname, String password);
 
     int sendEmail(String loginname, String email);
 
