@@ -754,6 +754,25 @@ public class SystemController {
     }
     /******************************重置密码***************************/
 
+    /******************************修改密码***************************/
+    @ResponseBody
+    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+    public Message modifyPassword(@RequestParam(name = "password") String password,
+                                  @ModelAttribute("sessionInfo") SessionInfo sessionInfo) {
+        Message message = null;
+        try {
+            int i = systemService.modifyPassword(password,sessionInfo.getName());
+            message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
+
+        } catch (Exception e) {
+            message = new Message(IConstants.FAIL, IConstants.OPFAIL);
+            e.printStackTrace();
+        } finally {
+            return message;
+        }
+    }
+    /******************************修改密码***************************/
+
     /******************************发送邮件**************************/
     @ResponseBody
     @RequestMapping(value = "/mail", method = RequestMethod.GET)

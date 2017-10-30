@@ -85,4 +85,6 @@ public interface SystemService {
     int sendEmail(String loginname, String email);
 
     ModelIndexDto getModelIndex(String loginname);
+
+    int modifyPassword(String password, String name);
 }
