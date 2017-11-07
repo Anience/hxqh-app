@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.model.MobileCnopMsg;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.service.MobileService;
@@ -95,20 +96,19 @@ public class MobileController {
 
 
     /**
-     *  4. MTTR & MTTI  悬停数据接口
-     *  treg: TREG-1~7
-     *  type: SR,PSR
+     * 4. MTTR & MTTI  悬停数据接口
+     * treg: TREG-1~7
+     * type: SR,PSR
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/badmsg", method = RequestMethod.GET)
     public List<TbIocMobilePerforBadMsg> badmsgData(@RequestParam("treg") String treg,
-                               @RequestParam("type") String type) {
-        List<TbIocMobilePerforBadMsg> badmsgData= mobileService.badmsgData(treg,type);
+                                                    @RequestParam("type") String type) {
+        List<TbIocMobilePerforBadMsg> badmsgData = mobileService.badmsgData(treg, type);
         return badmsgData;
     }
-
-
 
 
     /**
@@ -160,6 +160,22 @@ public class MobileController {
     }
 
     /**
+     * CNOP 悬停数据接口
+     * @param kpitype  参数KPITYPE
+     * @param treg    参数区域
+     * @param sourceType   参数类型
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/cnopNoBad", method = RequestMethod.GET)
+    public List<MobileCnopMsg> cnopNoBad(@RequestParam("kpitype") String kpitype,
+                                         @RequestParam("treg") String treg,
+                                         @RequestParam(value = "sourceType", defaultValue = "NoData", required = false) String sourceType) {
+        return mobileService.cnopNoBadData(kpitype, treg, sourceType);
+    }
+
+
+    /**
      * 6. Throughtput IP Transit  页面接口
      *
      * @return
@@ -183,7 +199,7 @@ public class MobileController {
     }
 
     /**
-     *  1. Backhaul TTC Tsel National  页面跳转接口（拓扑图）
+     * 1. Backhaul TTC Tsel National  页面跳转接口（拓扑图）
      *
      * @return
      */

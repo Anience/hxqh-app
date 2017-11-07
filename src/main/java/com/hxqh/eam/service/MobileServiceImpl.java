@@ -2,6 +2,7 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
+import com.hxqh.eam.model.MobileCnopMsg;
 import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
 import com.hxqh.eam.model.view.TbIocMobileIpTransit;
 import com.hxqh.eam.model.TbIocMobilePerfor;
@@ -48,6 +49,8 @@ public class MobileServiceImpl implements MobileService {
     private TbIocMobilePerforDao tbIocMobilePerforDao;
     @Autowired
     private TbIocMobilePerforBadMsgDao tbIocMobilePerforBadMsgDao;
+    @Autowired
+    private MobileCnopMsgDao mobileCnopMsgDao;
 
     @Override
     public Mob91Dto vMob91Data() {
@@ -280,10 +283,21 @@ public class MobileServiceImpl implements MobileService {
 
     @Override
     public List<TbIocMobilePerforBadMsg> badmsgData(String treg, String type) {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("treg", treg);
         params.put("type", type);
         String where = "treg=:treg and perforType =:type ";
         return tbIocMobilePerforBadMsgDao.findAll(where, params, null);
+    }
+
+    @Override
+    public List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg, String sourceType) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("treg", treg);
+        params.put("kpiType", kpitype);
+        params.put("sourceType", sourceType);
+
+        String where = "treg=:treg and kpiType =:kpiType and sourceType=:sourceType";
+        return mobileCnopMsgDao.findAll(where, params, null);
     }
 }

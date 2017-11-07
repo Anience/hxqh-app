@@ -1,5 +1,6 @@
 package com.hxqh.eam.service;
 
+import com.hxqh.eam.model.MobileCnopMsg;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.VMob86;
@@ -29,4 +30,6 @@ public interface MobileService {
     TopologicalDto topologicalData();
 
     List<TbIocMobilePerforBadMsg> badmsgData(String treg, String type);
+
+    List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg, String sourceType);
 }
