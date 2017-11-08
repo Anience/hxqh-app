@@ -21,18 +21,22 @@ $(function(){
                         case 0:
                             initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
                             $("p").text("BAD >= 20ms > GOOD");
+                            $(".noData-content").hide();
                             break;
                         case 1:
                             initEchart("echart1",data.dtoMap.LOSS_KPI,'Packet Loss');
                             $("p").text("BAD >= 0.1% > GOOD");
+                            $(".noData-content").hide();
                             break;
                         case 2:
                             initEchart("echart1",data.dtoMap.MOS_KPI,'MOS');
                             $("p").text("BAD < 3.5 <= GOOD");
+                            $(".noData-content").hide();
                             break;
                         default:
                             initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
                             $("p").text("BAD >= 5ms > GOOD");
+                            $(".noData-content").hide();
                             break;
                     }
                 },15000);
@@ -246,8 +250,8 @@ $(function(){
             var data1 = [];
             var data2 = [];
             if (param.type == 'click') {
-                var _treg = param.name;
-                var _kpitype = tit.trim().toLocaleUpperCase()+"_KPI";
+                var _treg = "TREG-"+param.name.charAt(param.name.length-1);
+                var _kpitype = (tit.split(" ")[1]||tit.split(" ")[0]).toLocaleUpperCase()+"_KPI";
                 $.ajax({
                     url: _ctx+"/mobile/cnopNoBad",
                     method: "get",
@@ -270,7 +274,7 @@ $(function(){
                     data: {
                         kpitype : _kpitype,
                         treg  : _treg,
-                        sourceType: 'BAD'
+                        sourceType: 'Bad'
                     },
                     dataType: "json",
                     success: function(data){
