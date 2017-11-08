@@ -276,9 +276,32 @@ $(function(){
                     success: function(data){
                         data2 = data;
                         var tmpHtml = "";
-                        for(var i=0;i<data1.length;i++){
-                            tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                        var data1Len = data1.length;
+                        var data2Len = data2.length;
+                        //如果数据长度相等
+                        if(data1Len==data2Len){
+                            for(var i=0;i<data1.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
                         }
+                        //如果数据长度不一样
+                        if(data1Len<data2Len){
+                            for(var i=0;i<data1.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
+                            for(var j=i;j<data2.length;j++){
+                                tmpHtml += "<tr><td></td><td>"+data2[j].msg+"</td></tr>";
+                            }
+                        }
+                        if(data1Len>data2Len){
+                            for(var i=0;i<data2.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
+                            for(var j=i;j<data1.length;j++){
+                                tmpHtml += "<tr><td>"+data1[j].msg+"</td><td></td></tr>";
+                            }
+                        }
+
                         $(".noData-content table tbody").html(tmpHtml);
                         $(".noData-content").show();
                     },

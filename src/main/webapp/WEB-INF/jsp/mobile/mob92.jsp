@@ -57,6 +57,7 @@
 		.noData-content table{
 			width: 90%;
 			margin: 0 auto;
+			border: 1px solid #fff;
 		}
 		.noData-content table thead tr td{
 			text-align: center;
@@ -71,6 +72,11 @@
 			padding-right: 5px;
 			text-align: center;
 			font-size: 18px;
+		}
+		.noData-content table tbody tr td{
+			border-left:none;
+			border-bottom: none;
+			border-top:none;
 		}
 	</style>
 </head>
