@@ -46,6 +46,8 @@ $(function(){
         var legendData = ["No Data","Bad","Good"];
         var xAxisData = ["TREG7","TREG6","TREG5","TREG4","TREG3","TREG2","TREG1"];
         var colorData = ["#707B8E","#ECD201","#5ACF05"];
+        // var ecConfig = require('../../script/echarts-config');
+        var ecConfig = echarts.config;
         var greenData = echartData.green;
         var redData = echartData.red;
         var orangeData = echartData.orange;
@@ -53,6 +55,7 @@ $(function(){
         var redPercent = echartData.redPercent.toString().trim().split(',');
         var orangePercent = echartData.orangePercent.toString().trim().split(',');
         var myChart = echarts.init(document.getElementById(domId));
+        myChart.on(ecConfig.EVENT.CLICK, eConsole)
         option = {
             tooltip : {
                 trigger: 'axis',
@@ -60,7 +63,6 @@ $(function(){
                     type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                 }
             },
-
             title: {
                 text: tit,
                 x:'center',
@@ -79,7 +81,6 @@ $(function(){
                     fontSize: 20,
                 }
             },
-
             xAxis : [
                 {
                     type : 'value',
@@ -135,7 +136,6 @@ $(function(){
             ],
             color:colorData,
             grid:{
-
                 borderWidth:0,//外围边框线
                 borderColor:'#e3b'
             },
@@ -239,6 +239,78 @@ $(function(){
         $("#small",window.parent.document).click(function(){
             myChart.resize();
         });
+        function eConsole(param){
+            if (typeof param.seriesIndex == 'undefined') {
+                return;
+            }
+            var data1 = [];
+            var data2 = [];
+            if (param.type == 'click') {
+                var _treg = param.name;
+                var _kpitype = tit.trim().toLocaleUpperCase()+"_KPI";
+                $.ajax({
+                    url: _ctx+"/mobile/cnopNoBad",
+                    method: "get",
+                    data: {
+                        kpitype : _kpitype,
+                        treg  : _treg,
+                        sourceType: 'NoData'
+                    },
+                    dataType: "json",
+                    success: function(data){
+                        data1 = data;
+                    },
+                    error: function(){
+
+                    }
+                })
+                $.ajax({
+                    url: _ctx+"/mobile/cnopNoBad",
+                    method: "get",
+                    data: {
+                        kpitype : _kpitype,
+                        treg  : _treg,
+                        sourceType: 'BAD'
+                    },
+                    dataType: "json",
+                    success: function(data){
+                        data2 = data;
+                        var tmpHtml = "";
+                        var data1Len = data1.length;
+                        var data2Len = data2.length;
+                        //如果数据长度相等
+                        if(data1Len==data2Len){
+                            for(var i=0;i<data1.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
+                        }
+                        //如果数据长度不一样
+                        if(data1Len<data2Len){
+                            for(var i=0;i<data1.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
+                            for(var j=i;j<data2.length;j++){
+                                tmpHtml += "<tr><td></td><td>"+data2[j].msg+"</td></tr>";
+                            }
+                        }
+                        if(data1Len>data2Len){
+                            for(var i=0;i<data2.length;i++){
+                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                            }
+                            for(var j=i;j<data1.length;j++){
+                                tmpHtml += "<tr><td>"+data1[j].msg+"</td><td></td></tr>";
+                            }
+                        }
+
+                        $(".noData-content table tbody").html(tmpHtml);
+                        $(".noData-content").show();
+                    },
+                    error: function(){
+
+                    }
+                })
+            }
+        }
     }
     initData();
     setInterval(function(){
