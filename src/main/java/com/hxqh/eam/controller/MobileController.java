@@ -161,9 +161,10 @@ public class MobileController {
 
     /**
      * CNOP 悬停数据接口
-     * @param kpitype  参数KPITYPE
-     * @param treg    参数区域
-     * @param sourceType   参数类型
+     * @param kpitype  参数KPITYPE  (JITTER_KPI,LATENCY_KPI,LOSS_KPI,MOS_KPI) select distinct(t.kpi_type) from TB_MOBILE_CNOP_MSG t
+     * @param treg    参数区域  (TREG-1,TREG-2,TREG-3,TREG-4,TREG-5,TREG-6,TREG-7) select distinct(t.treg) from TB_MOBILE_CNOP_MSG t
+     * @param sourceType   参数类型 (NoData,Bad) select distinct (t.source_type) from TB_MOBILE_CNOP_MSG t
+
      * @return
      */
     @ResponseBody
