@@ -11,6 +11,10 @@
 		var _ctx = "${ctx}";
 	</script>
 	<style>
+		body{
+			padding-bottom:100px;
+			background: #03071D;
+		}
 		#mob91{
 			width: 100%;
 			min-height: 100%;
@@ -24,11 +28,49 @@
 			padding-top: 60px;
 			padding-left: 30px;
 		}
-		p{
+		#mob91 p{
 			color: #fff;
 			font-size: 20px;
 			text-align: right;
 			padding-right: 30px;
+		}
+		.noData-content{
+			width: 100%;
+			height: 500px;
+			overflow: auto;
+			background: #03071D;
+			margin-bottom: 20px;
+		}
+		::-webkit-scrollbar{
+			width: 5px;
+			background-color: #F5F5F5;
+		}
+		::-webkit-scrollbar-thumb{
+			border-radius: 10px;
+			background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #327979), color-stop(0.72, #26c1c1), color-stop(0.86, #3b7373));
+		}
+		::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+			background-color: #F5F5F5;
+			border-radius: 10px;
+		}
+		.noData-content table{
+			width: 90%;
+			margin: 0 auto;
+		}
+		.noData-content table thead tr td{
+			text-align: center;
+		}
+		.noData-content table tr td{
+			height:35px;
+			line-height:35px;
+			width: 50%;
+			color: #fff;
+			border: 1px solid #fff;
+			padding-left:5px;
+			padding-right: 5px;
+			text-align: center;
+			font-size: 18px;
 		}
 	</style>
 </head>
@@ -37,6 +79,17 @@
 		<h3>Quality CNOP</h3>
 		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;padding-left: 30px;padding-right: 30px;"></div>
 		<p>BAD >= 5ms > GOOD</p>
+	</div>
+    <div class="noData-content" style="display: none;">
+		<table>
+			<thead>
+				<tr>
+					<td>No Data</td>
+					<td>BAD</td>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 	</div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
