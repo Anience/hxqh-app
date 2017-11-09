@@ -170,8 +170,8 @@ public class WiFiServiceImpl implements WiFiService {
         StringBuilder builder = new StringBuilder(50);
        /* builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));
         builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getEndDayOfWeek())).append(")");*/
-        builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-1)));
-        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-7))).append(")");
+        builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-7)));
+        builder.append(" To ").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getMyTime(-1))).append(")");
         dailyDto.setNowtime(builder.toString());
         return dailyDto;
     }
