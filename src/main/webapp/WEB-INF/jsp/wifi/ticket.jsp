@@ -14,7 +14,8 @@
 		var _ctx = "${ctx}";
 	</script>
 </head>
-<body>
+<body style="background: #03081C;">
+<h5 style="width: 350px; height: 60px; background-color: #cc0000;color: #FFFFFF; font-size: 50px; text-align: center">WIFI</h5>
 <div class="ticket-layout" style="padding-bottom: 120px;"  id="ticket-data">
 	<h4><span class="ticket-tit">WIFI PROACTIVE TICKET MONITORING</span>
 		<span class="ticket-time"></span>
