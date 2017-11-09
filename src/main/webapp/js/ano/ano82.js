@@ -38,7 +38,16 @@ $(function(){
             success: function (data) {
                 $("table.ano82 tbody").html("");
                 var tmpHtml  = '';
+                var Medium =0,Low =0,Very_High = 0,High=0;
                 for(var i = 0;i<data.length;i++){
+                    if(data[i].ioc1 == "Medium")
+                        Medium+=1;
+                    else if(data[i].ioc1 == "Low")
+                        Low +=1;
+                    else if(data[i].ioc1 == "Very High")
+                        Very_High+=1;
+                    else
+                        High+=1;
                     tmpHtml+='<tr><td>'+data[i].ioc1
                         +'</td><td>'+data[i].ioc2
                         +'</td><td>'+data[i].ioc3
@@ -48,6 +57,7 @@ $(function(){
                         +'</td><td>-</td></tr>';
                 }
                 $("table.ano82 tbody").html(tmpHtml);
+                $(".ano-layout h5").html("Medium = "+Medium+", Low = "+Low+", Very High ="+Very_High+", High ="+High);
             },
             error: function () {
 
