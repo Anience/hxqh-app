@@ -11,10 +11,10 @@
 		var _ctx = "${ctx}";
 	</script>
 </head>
-<body>
-
+<body style=" background: #03091B;">
+<div style="width: 500px; height: 80px; background-color: #cc0000;color: #FFFFFF;font-size: 70px; text-align: center;">Consumer</div>
 <div class="ind-layout">
-	<div style="width: 300px; height: 60px; background-color: #cc0000;color: #FFFFFF;font-size: 50px; text-align: center">Consumer</div>
+
 	<table class="summary">
 		<thead>
 			<tr>
