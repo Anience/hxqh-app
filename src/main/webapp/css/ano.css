@@ -14,6 +14,18 @@
     padding-left: 20px;
     margin-bottom: 0px;
     margin-top: 0px;
+    float: left;
+}
+.ano-layout h5{
+    color: #FFFFFF;
+    background: #1F3E50;
+    line-height: 50px;
+    font-size: 30px;
+    font-family: 'Arial';
+    padding-right: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    float: right;
 }
 .ano-layout table{
     width: 100%;
