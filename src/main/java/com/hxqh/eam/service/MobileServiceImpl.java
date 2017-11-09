@@ -2,11 +2,8 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
-import com.hxqh.eam.model.MobileCnopMsg;
-import com.hxqh.eam.model.TbIocMobileBackhaulTtc;
+import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.view.TbIocMobileIpTransit;
-import com.hxqh.eam.model.TbIocMobilePerfor;
-import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.view.*;
 import org.apache.log4j.Logger;
@@ -16,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by lh on 2017/4/14.
@@ -51,6 +49,9 @@ public class MobileServiceImpl implements MobileService {
     private TbIocMobilePerforBadMsgDao tbIocMobilePerforBadMsgDao;
     @Autowired
     private MobileCnopMsgDao mobileCnopMsgDao;
+
+    @Autowired
+    private IocMobileBackhaulTtcDao iocMobileBackhaulTtcDao;
 
     @Override
     public Mob91Dto vMob91Data() {
@@ -299,5 +300,70 @@ public class MobileServiceImpl implements MobileService {
 
         String where = "treg=:treg and kpiType =:kpiType and sourceType=:sourceType";
         return mobileCnopMsgDao.findAll(where, params, null);
+    }
+
+    @Override
+    public TopoDto topoData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("ttcId", "asc");
+        List<IocMobileBackhaulTtc> backhaulTtcs = iocMobileBackhaulTtcDao.findAll(null, null, orderby);
+
+        // 第一步，准备节点数据详细
+        Map<Integer, List<IocMobileBackhaulTtc>> ttcMap = GroupListUtil.group(backhaulTtcs, new GroupListUtil.GroupBy<Integer>() {
+            @Override
+            public Integer groupby(Object obj) {
+                IocMobileBackhaulTtc d = (IocMobileBackhaulTtc) obj;
+                return d.getCatagory();    // 分组依据为getCatagory
+            }
+        });
+
+        int i = 1;
+        List<Node> nodeList = new LinkedList<>();
+        for (IocMobileBackhaulTtc backhaulTtc : ttcMap.get(0)) {
+            nodeList.add(new Node(backhaulTtc.getTitle(), i * 260, 600));
+            i++;
+        }
+
+        i = 1;
+        for (IocMobileBackhaulTtc backhaulTtc : ttcMap.get(1)) {
+            nodeList.add(new Node(backhaulTtc.getTitle(), i * 26, 450));
+            i++;
+        }
+
+        i = 1;
+        for (IocMobileBackhaulTtc backhaulTtc : ttcMap.get(2)) {
+            nodeList.add(new Node(backhaulTtc.getTitle(), i * 10, 300));
+            i++;
+        }
+
+        i = 1;
+        for (IocMobileBackhaulTtc backhaulTtc : ttcMap.get(3)) {
+            nodeList.add(new Node(backhaulTtc.getTitle(), i * 10, 150));
+            i++;
+        }
+
+
+//        List<IocMobileBackhaulTtc> iocMobileBackhaulTtcs = new ArrayList<>();
+//        for (IocMobileBackhaulTtc backhaulTtc : backhaulTtcs) {
+//            if (backhaulTtc.getParentId() != null) {
+//                iocMobileBackhaulTtcs.add(backhaulTtc);
+//            }
+//        }
+
+        // 设置line
+        List<Line> lineList = new LinkedList<>();
+        Map<Long, IocMobileBackhaulTtc> backhaulTtcMap = backhaulTtcs.stream().collect(
+                Collectors.toMap(IocMobileBackhaulTtc::getTtcId, a -> a, (k1, k2) -> k1));
+        for (IocMobileBackhaulTtc backhaulTtc : backhaulTtcs) {
+            if (backhaulTtc.getParentId() != null) {
+                String target = backhaulTtc.getTitle();
+                Integer x = backhaulTtc.getParentId();
+                String source = backhaulTtcMap.get(Long.valueOf(x)).getTitle();
+                lineList.add(new Line(source, target));
+            }
+        }
+        TopoDto topoDto = new TopoDto(nodeList, lineList);
+
+        return topoDto;
     }
 }
