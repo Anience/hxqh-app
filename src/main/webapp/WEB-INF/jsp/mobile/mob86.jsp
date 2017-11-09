@@ -13,13 +13,14 @@
 		var _ctx = "${ctx}";
 	</script>
 </head>
-<body>
+<body style=" background: #03091A;">
+<h5 style="width: 350px; height: 60px; background-color: #cc0000;color: #FFFFFF; font-size: 50px; text-align: center">Mobile</h5>
 <div id="mob86" style="padding-bottom: 120px;">
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10" >
 			<div style="width: 100%;" class="mytitle">
-				<h2 style="width: 300px; height: 60px; background-color: #cc0000;color: #FFFFFF; font-size: 50px; text-align: center">Mobile</h2>
+
 				<h3 >KPI COMPLIANCE</h3>
 				<span class="ticket-time"></span>
 			</div>
