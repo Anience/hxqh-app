@@ -17,7 +17,10 @@
 <div class="ano-layout">
 	<%--<div class="padding-layout" style="width: 96%;padding-left: 2%;padding-right: 2%;">--%>
 		<div class="vimid">
-			<h4>Gamas Node Metro & Access</h4>
+			<div style=" width: 100%; height: 50px; color: #FFFFFF;background: #1F3E50;" >
+				<h4 style="float: left">Gamas Node Metro & Access</h4> <h5 style="float: right"></h5>
+			</div>
+
 			<table class="ano82" cellpadding="2" id="ano82-data">
 				<thead>
 				<tr style="height: 50px;">
