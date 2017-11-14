@@ -29,6 +29,8 @@ public class VWifiNumber implements Serializable {
 
 	private String ioc16;
 
+	private String ioc17;
+
 	private String ioc2;
 
 	private String ioc3;
@@ -102,6 +104,14 @@ public class VWifiNumber implements Serializable {
 
 	public void setIoc15(String ioc15) {
 		this.ioc15 = ioc15;
+	}
+
+	public String getIoc17() {
+		return this.ioc17;
+	}
+
+	public void setIoc17(String ioc17) {
+		this.ioc17 = ioc17;
 	}
 
 	public String getIoc16() {
