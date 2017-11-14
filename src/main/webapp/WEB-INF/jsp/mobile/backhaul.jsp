@@ -34,6 +34,6 @@
 	</ul>
 </div>
 </body>
-<script type="text/javascript" src="${ctx}/js/mobile/force.js"></script>
-<script src="${ctx}/script/echarts-all.js"></script>
+<script type="text/javascript" src="${ctx}/js/mobile/force1.js"></script>
+<script src="${ctx}/script/echarts.min.js"></script>
 </html>

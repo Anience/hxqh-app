@@ -4,7 +4,7 @@
 $(function () {
     function init(){
         $.ajax({
-            url: _ctx+"/mobile/topologicalData",
+            url: _ctx+"/mobile/topoData",
             method: "get",
             dataType: "json",
             success: function (data) {
@@ -91,7 +91,7 @@ $(function () {
             },
             error: function () {
 
-            }
+             }
         });
     }
 
