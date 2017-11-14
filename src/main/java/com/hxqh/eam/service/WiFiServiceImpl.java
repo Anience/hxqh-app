@@ -40,7 +40,7 @@ public class WiFiServiceImpl implements WiFiService {
               cal.add(Calendar.DATE,   -(k));
               Date weekEndSta = cal.getTime();
               DateFormat df1 = DateFormat.getDateInstance();
-              DAILYTICKET[6-i] = df1.format(weekEndSta);
+              DAILYTICKET[ 6-i ] = df1.format(weekEndSta);
 
             }
     }
