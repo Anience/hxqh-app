@@ -23,6 +23,8 @@ public class VWifiTicket implements Serializable {
 
 	private String ioc13;
 
+	private String ioc14;
+
 	private String ioc2;
 
 	private String ioc3;
@@ -80,6 +82,14 @@ public class VWifiTicket implements Serializable {
 
 	public void setIoc13(String ioc13) {
 		this.ioc13 = ioc13;
+	}
+
+	public String getIoc14() {
+		return this.ioc14;
+	}
+
+	public void setIoc14(String ioc14) {
+		this.ioc14 = ioc14;
 	}
 
 	public String getIoc2() {
