@@ -37,10 +37,11 @@ $(function(){
             dataType: "json",
             success: function (data) {
                 var time ='Last Update:'+ data.nowTime;
-                $('.ticket-time').text(time);
+
                 $("table.ticket tbody").html("");
                 var tmpHtml  = '';
                 var tableData = data.vWifiTickets;
+                $('.ticket-time').text('Agg Last Update: '+tableData[0].ioc14);
                 for(var i = 0;i<tableData.length;i++){
                     tmpHtml+='<tr><td>'+tableData[i].ioc1
                         +'</td><td>'+tableData[i].ioc2
