@@ -50,7 +50,7 @@ $(function(){
             else return temp;
         }
                 var time ='Last Update:'+nowTime;
-                $('.ticket-time').text(time);
+
                 $("table.sites-table tbody").html("");
                 $("table.week-table1 tbody").html("");
                 $("table.week-table2 tbody").html("");
@@ -60,6 +60,7 @@ $(function(){
                 var week2 = data.week2.replace("W","W-");
                 $(".week1").text(week1);
                 $(".week2").text(week2);
+                $('.ticket-time').text('Last Update: '+mobList[0].ioc8);
                 var sitesHtml = "";
                 var week1Html = "";
                 var week2Html = "";

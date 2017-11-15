@@ -17,6 +17,8 @@ public class VMob87 implements Serializable {
 
     private String name;
 
+    private String agg_ts;
+
     private String otherfull;
 
     private String regional;
@@ -65,6 +67,14 @@ public class VMob87 implements Serializable {
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public String getAgg_ts() {
+        return this.agg_ts;
+    }
+
+    public void setAgg_ts(String agg_ts) {
+        this.agg_ts = agg_ts;
     }
 
 }
