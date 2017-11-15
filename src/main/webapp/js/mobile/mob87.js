@@ -224,7 +224,7 @@ $(function () {
                 {
                     name:"87Screen",
                     type:'pie',
-                    radius : '60%',
+                    radius : '80%',
                     center: ['60%', '50%'],
 
                     itemStyle:{
