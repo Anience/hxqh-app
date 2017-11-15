@@ -13,27 +13,27 @@
 </head>
 <body>
 <div id="echart1" style="width: 100%;height: 100%;background: #03081c;"></div>
-<div class="scoll-nav">
-	<ul class="first-nav">
-		<li>TREG1</li>
-		<li>TREG2</li>
-		<li>TREG3</li>
-		<li>TREG4</li>
-		<li>TREG5</li>
-		<li>TREG6</li>
-		<li>TREG7</li>
-	</ul>
-	<ul class="sec-nav">
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-		<li><span class="radius"></span></li>
-	</ul>
-</div>
+<%--<div class="scoll-nav">--%>
+	<%--<ul class="first-nav">--%>
+		<%--<li>TREG1</li>--%>
+		<%--<li>TREG2</li>--%>
+		<%--<li>TREG3</li>--%>
+		<%--<li>TREG4</li>--%>
+		<%--<li>TREG5</li>--%>
+		<%--<li>TREG6</li>--%>
+		<%--<li>TREG7</li>--%>
+	<%--</ul>--%>
+	<%--<ul class="sec-nav">--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+		<%--<li><span class="radius"></span></li>--%>
+	<%--</ul>--%>
+<%--</div>--%>
 </body>
 <script type="text/javascript" src="${ctx}/js/mobile/force1.js"></script>
-<script src="${ctx}/script/echarts.min.js"></script>
+<script src="${ctx}/script/echarts-all.js"></script>
 </html>
