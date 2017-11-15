@@ -12,7 +12,7 @@ $(function(){
                 var d = new Date();
                 var years = d.getFullYear();
                 var month = d.getMonth();
-                initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-'+m[month]+' '+years);
+                initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-'+m[month]+'  '+years);
                 initEchart("echart2",data.bottomMap,data.bottomNameList,'Daily Traffic Distribution By CONS/DWS/EBIS/Tsel');
             },
             error: function(){
