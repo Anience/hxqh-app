@@ -44,7 +44,7 @@ $(function () {
                     var hours = add_zero(d.getHours());
                     var minutes = add_zero(d.getMinutes());
                     var second=add_zero(d.getSeconds());
-                    var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
+                    var nowTime = "";
                     function add_zero(temp) {
                         if(temp<10) return "0"+temp;
                         else return temp;
@@ -59,7 +59,11 @@ $(function () {
                     };
                     self.anoList = data;
                     var cc = self.anoList.map['NAS'];
-                    var time ='Last Update:'+ cc[0].ts;
+                    for(var i=0;i<cc.length;i++){
+                        if(cc[i].agg_ts !="")
+                            nowTime = cc[i].agg_ts;
+                    }
+                    var time ='Last Update:'+ nowTime;
                     $('.ticket-time').text(time);
                     $("#mob87 ul").find("li").eq(1)
                         .css("background","#8D93A8");
