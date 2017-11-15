@@ -8,7 +8,11 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
-                initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-Oct 2017');
+                var m=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Spt","Oct","Nov","Dec");
+                var d = new Date();
+                var years = d.getFullYear();
+                var month = d.getMonth();
+                initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-'+m[month]+' '+years);
                 initEchart("echart2",data.bottomMap,data.bottomNameList,'Daily Traffic Distribution By CONS/DWS/EBIS/Tsel');
             },
             error: function(){
