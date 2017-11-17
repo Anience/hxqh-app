@@ -1,5 +1,7 @@
 package com.hxqh.eam.model.dto;
 
+import com.hxqh.eam.model.IocMobileBackhaulTtc;
+
 import java.util.List;
 
 /**
@@ -8,13 +10,23 @@ import java.util.List;
 public class TopoDto {
     private List<Node> nodeList;
     private List<Line> lineList;
+    private List<IocMobileBackhaulTtc> colorList;
 
     public TopoDto() {
     }
 
-    public TopoDto(List<Node> nodeList, List<Line> lineList) {
+    public TopoDto(List<Node> nodeList, List<Line> lineList, List<IocMobileBackhaulTtc> colorList) {
         this.nodeList = nodeList;
         this.lineList = lineList;
+        this.colorList = colorList;
+    }
+
+    public List<IocMobileBackhaulTtc> getColorList() {
+        return colorList;
+    }
+
+    public void setColorList(List<IocMobileBackhaulTtc> colorList) {
+        this.colorList = colorList;
     }
 
     public List<Line> getLineList() {

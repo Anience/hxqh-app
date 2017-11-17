@@ -350,6 +350,7 @@ public class MobileServiceImpl implements MobileService {
 //            }
 //        }
 
+        List<IocMobileBackhaulTtc> colorList = new LinkedList<>();
         // 设置line
         List<Line> lineList = new LinkedList<>();
         Map<Long, IocMobileBackhaulTtc> backhaulTtcMap = backhaulTtcs.stream().collect(
@@ -361,9 +362,11 @@ public class MobileServiceImpl implements MobileService {
                 String source = backhaulTtcMap.get(Long.valueOf(x)).getTitle();
                 lineList.add(new Line(source, target));
             }
+            if (backhaulTtc.getColorType() != null) {
+                colorList.add(backhaulTtc);
+            }
         }
-        TopoDto topoDto = new TopoDto(nodeList, lineList);
-
+        TopoDto topoDto = new TopoDto(nodeList, lineList, colorList);
         return topoDto;
     }
 }
