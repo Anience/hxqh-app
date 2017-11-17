@@ -10,8 +10,9 @@ $(function () {
             success: function (data) {
                 window.clearInterval(timer);
                 var datas = [];
-                for(var i=0;i<data.nodeList.length;i++){
-                    var node = data.nodeList[i].name;
+                var nodeLists = ["TREG-1","TREG-2","TREG-3","TREG-4","TREG-5","TREG-6","TREG-7"];
+                for(var i=0;i<nodeLists.length;i++){
+                    var node = nodeLists[i];
                     var tmpObj = {};
                     tmpObj.name = node;
                     tmpObj.children = [];
@@ -39,14 +40,32 @@ $(function () {
                         }
                     }
                     datas.push(tmpObj);
+                    initEchart("echart1",datas[0]);
+                    var m = 0;
+                    var timer = setInterval(function(){
+                        m++;
+                        if(m>=8){
+                            m=0;
+                        }else{
+                            var index= m;
+                            var liNav = '.first-nav li';
+                            var thisLi = '.first-nav li:nth-child('+index+')';
+                            $(liNav).css("color","#727386");
+                            $(thisLi).css("color","#fff");
+
+                            var liNav2 = '.sec-nav li'+' span';
+                            var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+                            $(liNav2).css("backgroundColor","#0a0f25");
+                            $(thisLi2).css("backgroundColor","#4a476a");
+                            initEchart("echart1",datas[m-1]);
+                        }
+                    },10000);
                 }
-                initEchart("echart1",datas);
             }
         });
     }
 
    function initEchart(domId,datas){
-       console.log(datas);
        var myChart = echarts.init(document.getElementById(domId));
        var option = {
            toolbox: {
@@ -101,7 +120,7 @@ $(function () {
                            borderWidth: 0
                        }
                    },
-                   data: datas
+                   data: [datas]
                }
            ]
        };
