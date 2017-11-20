@@ -429,54 +429,19 @@ $(function(){
 		        data: ['Less 12 hours', '12 hours<Orange<24 hours', 'Black>24 hours']
 		    },
 		    series: [{
-		            name: '1',
 		            type: 'pie',
 		            clockWise: false,
 		            radius: [125, 150],
-		            itemStyle: dataStyle1,
 		            data: [{
 		                    value: data1,
 		                    name: 'Less 12 hours'
-		                },
-		                {
-		                    value: total1,
-		                    name: 'invisible',
-		                    itemStyle: placeHolderStyle
-		                }
-		            ]
-		        },
-		        {
-		            name: '2',
-		            type: 'pie',
-		            clockWise: false,
-		            radius: [100, 125],
-		            itemStyle: dataStyle2,
-		            data: [{
-		                    value: data2,
-		                    name: '12 hours<Orange<24 hours'
-		                },
-		                {
-		                    value: total2,
-		                    name: 'invisible',
-		                    itemStyle: placeHolderStyle
-		                }
-		            ]
-		        },
-		        {
-		            name: '3',
-		            type: 'pie',
-		            clockWise: false,
-		            radius: [75, 100],
-		            itemStyle: dataStyle3,
-		            data: [{
-		                    value: data3,
-		                    name: 'Black>24 hours'
-		                },
-		                {
-		                    value: total3,
-		                    name: 'invisible',
-		                    itemStyle: placeHolderStyle
-		                }
+		                },{
+                       		 value: data2,
+                       		 name: '12 hours<Orange<24 hours'
+					    },{
+                            value: data3,
+                            name: 'Black>24 hours'
+                        }
 		            ]
 		        }
 		    ]

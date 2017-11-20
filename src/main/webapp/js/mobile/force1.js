@@ -8,7 +8,7 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                window.clearInterval(timer);
+                // window.clearInterval(timer);
                 var datas = [];
                 var nodeLists = ["TREG-1","TREG-2","TREG-3","TREG-4","TREG-5","TREG-6","TREG-7"];
                 for(var i=0;i<nodeLists.length;i++){
@@ -27,12 +27,22 @@ $(function () {
                                     var childrenObj2 = {};
                                     childrenObj2.name = data.lineList[m].target;
                                     childrenObj1.children.push(childrenObj2);
+                                    for(var l=0;l<data.colorList.length;k++){
+                                        if(childrenObj2.name == data.colorList[l].title){
+                                            childrenObj2.itemStyle={normal:{color:'#DC143C'},label:{show:true}};
+                                        }
+                                    }
                                     childrenObj2.children = [];
                                     for(var n=0;n<data.lineList.length;n++){
                                         if(childrenObj2.name == data.lineList[n].source){
                                             var childrenObj3 = {};
                                             childrenObj3.name = data.lineList[n].target;
                                             childrenObj2.children.push(childrenObj3);
+                                            for(var k=0;k<data.colorList.length;k++){
+                                                if(childrenObj3.name == data.colorList[k].title){
+                                                    childrenObj3.itemStyle={normal:{color:'#DC143C'},label:{show:true}};
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -41,13 +51,13 @@ $(function () {
                     }
                     datas.push(tmpObj);
                     initEchart("echart1",datas[0]);
-                    var m = 0;
+                    var p = 0;
                     var timer = setInterval(function(){
-                        m++;
-                        if(m>=8){
-                            m=0;
+                        p++;
+                        if(p>=8){
+                            p=0;
                         }else{
-                            var index= m;
+                            var index= p;
                             var liNav = '.first-nav li';
                             var thisLi = '.first-nav li:nth-child('+index+')';
                             $(liNav).css("color","#727386");
@@ -57,9 +67,9 @@ $(function () {
                             var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
                             $(liNav2).css("backgroundColor","#0a0f25");
                             $(thisLi2).css("backgroundColor","#4a476a");
-                            initEchart("echart1",datas[m-1]);
+                            initEchart("echart1",datas[p-1]);
                         }
-                    },10000);
+                    },50000);
                 }
             }
         });
@@ -68,24 +78,9 @@ $(function () {
    function initEchart(domId,datas){
        var myChart = echarts.init(document.getElementById(domId));
        var option = {
-           toolbox: {
-               show : true,
-               feature : {
-                   mark : {show: true},
-                   dataView : {show: true, readOnly: false},
-                   restore : {show: true},
-                   saveAsImage : {show: true}
-               },
-               dataZoom:{
-                   orient:"vertical", //水平显示
-                   show:true, //显示滚动条
-                   start:0, //起始值为20%
-                   end:100,  //结束值为60%
-               }
-           },
+           backgroundColor:'#0A0F25',
            series : [
                {
-                   name:'树图',
                    type:'tree',
                    orient: 'horizontal',  // vertical horizontal
                    rootLocation: {x: 100,y: 230}, // 根节点位置  {x: 100, y: 'center'}
@@ -102,7 +97,7 @@ $(function () {
                                position: 'right',
                                formatter: "{b}",
                                textStyle: {
-                                   color: '#000',
+                                   color: '#fff',
                                    fontSize: 5
                                }
                            },
@@ -127,7 +122,7 @@ $(function () {
        myChart.setOption(option);
    }
     init();
-    var timer=setInterval(function(){
-        init();
-    },300000);
+    // var timer=setInterval(function(){
+    //     init();
+    // },300000);
 });
