@@ -27,9 +27,10 @@ $(function () {
                                     var childrenObj2 = {};
                                     childrenObj2.name = data.lineList[m].target;
                                     childrenObj1.children.push(childrenObj2);
-                                    for(var l=0;l<data.colorList.length;k++){
+                                    for(var l=0;l<data.colorList.length;l++){
                                         if(childrenObj2.name == data.colorList[l].title){
-                                            childrenObj2.itemStyle={normal:{color:'#DC143C'},label:{show:true}};
+                                            childrenObj2.itemStyle={normal:{color:'#DC143C'},label:{show:true},emphasis:{color:'#DC143C'}};
+                                            childrenObj2.value = data.colorList[l].msg;
                                         }
                                     }
                                     childrenObj2.children = [];
@@ -40,7 +41,8 @@ $(function () {
                                             childrenObj2.children.push(childrenObj3);
                                             for(var k=0;k<data.colorList.length;k++){
                                                 if(childrenObj3.name == data.colorList[k].title){
-                                                    childrenObj3.itemStyle={normal:{color:'#DC143C'},label:{show:true}};
+                                                    childrenObj3.itemStyle={normal:{color:'#DC143C'},label:{show:true},emphasis:{color:'#DC143C'}};
+                                                    childrenObj3.value = data.colorList[k].msg;
                                                 }
                                             }
                                         }
@@ -51,26 +53,26 @@ $(function () {
                     }
                     datas.push(tmpObj);
                     initEchart("echart1",datas[0]);
-                    var p = 0;
-                    var timer = setInterval(function(){
-                        p++;
-                        if(p>=8){
-                            p=0;
-                        }else{
-                            var index= p;
-                            var liNav = '.first-nav li';
-                            var thisLi = '.first-nav li:nth-child('+index+')';
-                            $(liNav).css("color","#727386");
-                            $(thisLi).css("color","#fff");
-
-                            var liNav2 = '.sec-nav li'+' span';
-                            var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
-                            $(liNav2).css("backgroundColor","#0a0f25");
-                            $(thisLi2).css("backgroundColor","#4a476a");
-                            initEchart("echart1",datas[p-1]);
-                        }
-                    },50000);
                 }
+                var p = 0;
+                var timer = setInterval(function(){
+                    p++;
+                    if(p>=8){
+                        p=0;
+                    }else{
+                        var index= p;
+                        var liNav = '.first-nav li';
+                        var thisLi = '.first-nav li:nth-child('+index+')';
+                        $(liNav).css("color","#727386");
+                        $(thisLi).css("color","#fff");
+
+                        var liNav2 = '.sec-nav li'+' span';
+                        var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+                        $(liNav2).css("backgroundColor","#0a0f25");
+                        $(thisLi2).css("backgroundColor","#4a476a");
+                        initEchart("echart1",datas[p-1]);
+                    }
+                },10000);
             }
         });
     }
@@ -79,6 +81,16 @@ $(function () {
        var myChart = echarts.init(document.getElementById(domId));
        var option = {
            backgroundColor:'#0A0F25',
+           tooltip : {
+               trigger: 'item',
+               formatter: function(params){
+                   if(typeof params.value =='string'){
+                       return params.value.replace(/\\n/g, "<br />");
+                   }else{
+                       return "";
+                   }
+               }
+           },
            series : [
                {
                    type:'tree',
