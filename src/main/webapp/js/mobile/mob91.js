@@ -39,6 +39,7 @@ $(function(){
                 var mobRight = data.mob9RightList;
                 $("table.mobLeft tbody").html("");
                 $("table.mobRight tbody").html("");
+                $('.ticket-time').text("Last Update: "+mobLeft[0].ioc8);
                 var tmpHtml1  = '';
                 var tmpHtml2  = '';
                 for(var i = 0;i<mobLeft.length;i++){

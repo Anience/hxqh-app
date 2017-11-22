@@ -31,6 +31,8 @@ public class VMob91 implements Serializable {
 
 	private String ioc7;
 
+	private String ioc8;
+
 	public VMob91() {
 	}
 
@@ -98,4 +100,11 @@ public class VMob91 implements Serializable {
 		this.ioc7 = ioc7;
 	}
 
+	public String getIoc8() {
+		return ioc8;
+	}
+
+	public void setIoc8(String ioc8) {
+		this.ioc8 = ioc8;
+	}
 }
