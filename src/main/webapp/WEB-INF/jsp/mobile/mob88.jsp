@@ -17,8 +17,9 @@
 <div>
 	<div class="mob-layout" id="mob88">
 		<div class="row">
+			<span class="ticket-time"></span>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-4" style=" padding-top: 65px; padding-left: 0px;">
+			<div class="col-sm-4" style=" padding-top: 35px; padding-left: 0px;">
 				<h4>Performance</h4>
 				<table class="table table-bordered" id="mob88-data">
 					<thead>

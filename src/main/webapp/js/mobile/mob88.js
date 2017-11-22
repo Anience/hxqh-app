@@ -141,6 +141,8 @@ $(function () {
                 initEchart('echart1',data.mob88MttrList);
                 initEchart('echart2',data.mob88MttiList);
                 self.perforList = data.perforList;
+
+                $('.ticket-time').text("Last Update: " + data.perforList[0].aggts);
                 var insertHtml = "";
                 for(var i=0;i<data.perforList.length;i++){
                     var tmpData = data.perforList[i];
