@@ -24,6 +24,9 @@ $(function(){
 				totalData.treg5 = data.stringListMap['TREG-5'];
 				totalData.treg6 = data.stringListMap['TREG-6'];
 				totalData.treg7 = data.stringListMap['TREG-7'];
+
+				var time = "Last Update: " +totalData.treg1[0].aggts;
+                $('.ticket-time').text(time);
 				dataBind(totalData.treg1,'treg14-table');
 				initEPie("echart1",totalData.treg1[0].myindihome,totalData.treg1[0].other);
 				initEPie("echart2",totalData.treg1[1].myindihome,totalData.treg1[1].other);

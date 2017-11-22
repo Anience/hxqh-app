@@ -40,6 +40,9 @@ public class TbIocProIndihome implements Serializable {
     @Column(name = "TREG_NUM")
     private String tregNum;
 
+    @Column(name = "AGG_TS")
+    private String aggts;
+
     private String ts;
 
     public TbIocProIndihome() {
@@ -133,4 +136,11 @@ public class TbIocProIndihome implements Serializable {
         this.ts = ts;
     }
 
+    public String getAggts() {
+        return aggts;
+    }
+
+    public void setAggts(String aggts) {
+        this.aggts = aggts;
+    }
 }
