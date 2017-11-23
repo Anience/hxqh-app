@@ -13,6 +13,8 @@ public class ComplaintData {
 
     private Map<String, List<BigDecimal>> listUN;
 
+    private List<String> listTime;
+
 
     public Map<String, List<BigDecimal>> getlistUN() {
         return listUN;
@@ -22,9 +24,16 @@ public class ComplaintData {
         this.listUN = listUN;
     }
 
-    public ComplaintData(Map<String, List<BigDecimal>> listM,Map<String, List<BigDecimal>> listUN) {
+   /* public ComplaintData(Map<String, List<BigDecimal>> listM,Map<String, List<BigDecimal>> listUN) {
         this.listM = listM;
         this.listUN = listUN;
+
+    }*/
+
+    public ComplaintData(Map<String, List<BigDecimal>> listM, Map<String, List<BigDecimal>> listUN, List<String> listTime) {
+        this.listM = listM;
+        this.listUN = listUN;
+        this.listTime = listTime;
     }
 
     public Map<String, List<BigDecimal>> getListM() {
@@ -33,5 +42,13 @@ public class ComplaintData {
 
     public void setListM(Map<String, List<BigDecimal>> listM) {
         this.listM = listM;
+    }
+
+    public List<String> getListTime() {
+        return listTime;
+    }
+
+    public void setListTime(List<String> listTime) {
+        this.listTime = listTime;
     }
 }

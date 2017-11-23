@@ -38,6 +38,9 @@ public class TbIocProInstall implements Serializable {
 
     private String ts;
 
+    @Column(name = "AGG_TS")
+    private String aggts;
+
     public TbIocProInstall() {
     }
 
@@ -113,4 +116,11 @@ public class TbIocProInstall implements Serializable {
         this.ts = ts;
     }
 
+    public String getAggts() {
+        return aggts;
+    }
+
+    public void setAggts(String aggts) {
+        this.aggts = aggts;
+    }
 }

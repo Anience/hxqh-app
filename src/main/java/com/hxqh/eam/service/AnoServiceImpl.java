@@ -438,18 +438,20 @@ public class AnoServiceImpl implements AnoService {
         });
         Map<String, List<BigDecimal>> listM = new LinkedHashMap<>();
         Map<String, List<BigDecimal>> listUN = new LinkedHashMap<>();
+        List<String> listTime = new ArrayList<>();
         for (Map.Entry<String, List<TbIocProInstall>> m : listMap.entrySet()) {
             List<BigDecimal> numList = new LinkedList<>();
             List<BigDecimal> UNList = new LinkedList<>();
             for (int i = 0; i < m.getValue().size(); i++) {
                 numList.add(m.getValue().get(i).getJmlPsb());
                 UNList.add(m.getValue().get(i).getJmlGgn60HariUnique());
+                listTime.add(m.getValue().get(i).getAggts());
             }
             listM.put(m.getKey(), numList);
             listUN.put(m.getKey(), UNList);
         }
 
-        return new ComplaintData(listM,listUN);
+        return new ComplaintData(listM,listUN,listTime);
     }
 
 
