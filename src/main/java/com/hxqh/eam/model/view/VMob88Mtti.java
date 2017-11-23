@@ -20,6 +20,9 @@ public class VMob88Mtti implements Serializable {
 	@Column(name="\"VALUE\"")
 	private BigDecimal value;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public VMob88Mtti() {
 	}
 
@@ -39,4 +42,11 @@ public class VMob88Mtti implements Serializable {
 		this.value = value;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

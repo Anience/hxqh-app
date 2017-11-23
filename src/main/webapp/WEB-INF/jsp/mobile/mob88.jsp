@@ -17,7 +17,7 @@
 <div>
 	<div class="mob-layout" id="mob88">
 		<div class="row">
-			<span class="ticket-time"></span>
+			<span class="ticket-time">Last update 2017-1-1</span>
 			<div class="col-sm-1"></div>
 			<div class="col-sm-4" style=" padding-top: 35px; padding-left: 0px;">
 				<h4>Performance</h4>
