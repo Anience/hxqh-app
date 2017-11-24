@@ -15,15 +15,20 @@ public class TrafficTdo {
 
     Map<String, List<BigDecimal>> bottomMap;
 
+    private List<String> timeList;
+
     public TrafficTdo() {
     }
 
-    public TrafficTdo(List<String> topNameList, List<String> bottomNameList, Map<String, List<BigDecimal>> topMap, Map<String, List<BigDecimal>> bottomMap) {
+    public TrafficTdo(List<String> topNameList, List<String> bottomNameList, Map<String, List<BigDecimal>> topMap, Map<String, List<BigDecimal>> bottomMap, List<String> timeList) {
         this.topNameList = topNameList;
         this.bottomNameList = bottomNameList;
         this.topMap = topMap;
         this.bottomMap = bottomMap;
+        this.timeList = timeList;
     }
+
+
 
     public List<String> getTopNameList() {
         return topNameList;
@@ -55,5 +60,13 @@ public class TrafficTdo {
 
     public void setBottomMap(Map<String, List<BigDecimal>> bottomMap) {
         this.bottomMap = bottomMap;
+    }
+
+    public List<String> getTimeList() {
+        return timeList;
+    }
+
+    public void setTimeList(List<String> timeList) {
+        this.timeList = timeList;
     }
 }

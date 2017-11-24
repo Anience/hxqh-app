@@ -193,6 +193,11 @@ public class WiFiServiceImpl implements WiFiService {
             topNameList.add(tempTopMap.get(key));
         }
 
+        List<String> timeList = new LinkedList<>();
+        for (VWifiTrafficTop key : trafficTopList) {
+            timeList.add(key.getAggts());
+        }
+
         HashMap<String, String> tempBottomMap = new LinkedHashMap<>();
         for (VWifiTrafficBottom bottom : trafficBottomList) {
             String name = bottom.getName();
@@ -217,7 +222,7 @@ public class WiFiServiceImpl implements WiFiService {
             /*如果取不到数据,那么直接new一个空的ArrayList**/
             groupList(bottomMap, tempList, skuVo.getCount(), skuVo.getDa());
         }
-        TrafficTdo trafficTdo = new TrafficTdo(topNameList, bottomNameList, topMap, bottomMap);
+        TrafficTdo trafficTdo = new TrafficTdo(topNameList, bottomNameList, topMap, bottomMap,timeList);
         return trafficTdo;
     }
 

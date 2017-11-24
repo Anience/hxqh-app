@@ -18,9 +18,21 @@
 			padding-top: 5%;
 			padding-bottom: 5%;
 		}
+		 .ticket-time{
+			color: #fff;
+			font-size: 30px;
+			height:46px;
+			width: 550px;
+			line-height:46px;
+			display: block;
+			float: right;
+			padding-top: 25px;
+			margin-left: 360px;
+		}
 	</style>
 </head>
 <body>
+<span class="ticket-time"></span>
 	<div class="traffic-layout">
 		<div class="row" style="height: 50%;width:100%;" id="echart1"></div>
 		<div class="row" style="height: 50%;width:100%;" id="echart2"></div>

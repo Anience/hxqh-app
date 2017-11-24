@@ -12,6 +12,14 @@ $(function(){
                 var d = new Date();
                 var years = d.getFullYear();
                 var month = d.getMonth();
+                var time = "";
+                for(var i = 0;i<data.timeList.length;i++){
+                    var t = data.timeList[i];
+                    if(t != null && t != "") {
+                        time = "Last Update: "+ t;
+                    }
+                }
+                $('.ticket-time').text(time);
                 initEchart("echart1",data.topMap,data.topNameList,'Daily Traffic Distribution By Regions-'+m[month]+'  '+years);
                 initEchart("echart2",data.bottomMap,data.bottomNameList,'Daily Traffic Distribution By CONS/DWS/EBIS/Tsel');
             },
