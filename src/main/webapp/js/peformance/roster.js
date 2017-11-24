@@ -66,20 +66,20 @@ $(function(){
             var m = 3*i+1;
             var n = 3*i+2;
             tmpHtml1+="<tr><td>"+index1+"</td>"
-                     +"<td>"+data[3*i].rosterId+"</td>"
+                     +"<td>"+data[3*i].perner+"</td>"
                      +"<td>"+data[3*i].nama+"</td>"
                      +"<td>"+data[3*i].status+"</td>"
                      +"<td>"+data[3*i].dutyTime+"</td></tr>";
             if(m<data.length){
                 tmpHtml2+="<tr><td>"+index2+"</td>"
-                    +"<td>"+data[m].rosterId+"</td>"
+                    +"<td>"+data[m].perner+"</td>"
                     +"<td>"+data[m].nama+"</td>"
                     +"<td>"+data[m].status+"</td>"
                     +"<td>"+data[m].dutyTime+"</td></tr>";
             }
             if(n<data.length){
                 tmpHtml3+="<tr><td>"+index3+"</td>"
-                    +"<td>"+data[n].rosterId+"</td>"
+                    +"<td>"+data[n].perner+"</td>"
                     +"<td>"+data[n].nama+"</td>"
                     +"<td>"+data[n].status+"</td>"
                     +"<td>"+data[n].dutyTime+"</td></tr>";
