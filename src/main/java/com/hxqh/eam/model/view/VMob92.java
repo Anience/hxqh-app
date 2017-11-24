@@ -29,16 +29,19 @@ public class VMob92 implements Serializable {
 
     private String kpitype;
 
+    private String aggts;
+
     public VMob92() {
     }
 
-    public VMob92(Integer rn, BigDecimal greennum, String treg, BigDecimal orangenum, BigDecimal rednum, String kpitype) {
+    public VMob92(Integer rn, BigDecimal greennum, String treg, BigDecimal orangenum, BigDecimal rednum, String kpitype, String aggts) {
         this.rn = rn;
         this.greennum = greennum;
         this.treg = treg;
         this.orangenum = orangenum;
         this.rednum = rednum;
         this.kpitype = kpitype;
+        this.aggts = aggts;
     }
 
     public static long getSerialVersionUID() {
@@ -91,5 +94,13 @@ public class VMob92 implements Serializable {
 
     public void setKpitype(String kpitype) {
         this.kpitype = kpitype;
+    }
+
+    public String getAggts() {
+        return aggts;
+    }
+
+    public void setAggts(String aggts) {
+        this.aggts = aggts;
     }
 }

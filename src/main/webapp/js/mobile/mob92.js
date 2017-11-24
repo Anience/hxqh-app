@@ -10,6 +10,7 @@ $(function(){
             success: function(data){
                 window.clearInterval(timer);
                 // initEchart("echart1",data.dtoMap.LATENCY_KPI,'Roundtrip Latency');
+                $('.ticket-time').text("Last Update: "+data.timeList[0] );
                 initEchart("echart1",data.dtoMap.JITTER_KPI,'Jitter');
                 var i = 0;
                 var timer = setInterval(function(){
