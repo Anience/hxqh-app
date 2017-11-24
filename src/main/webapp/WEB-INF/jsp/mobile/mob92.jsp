@@ -34,7 +34,7 @@
 			color: #fff;
 			font-size: 26px;
 			height:46px;
-			width: 30%;
+			width: 40%;
 			line-height:46px;
 			display: block;
 			float: right;
