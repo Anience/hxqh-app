@@ -16,6 +16,17 @@
     /*padding-left: 20px;*/
     margin-top: 0px;
     margin-bottom: 0px;
+    float: left;
+}
+
+.ticket-layout .ticket-time{
+    color: #fff;
+    font-size: 29px;
+    height:46px;
+    width: 30%;
+    line-height: 50px;
+    display: block;
+    float: right;
 }
 .ticket-layout table{
     width: 100%;

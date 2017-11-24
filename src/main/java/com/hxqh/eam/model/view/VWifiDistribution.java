@@ -19,6 +19,8 @@ public class VWifiDistribution implements Serializable {
 
 	private String ioc11;
 
+	private String ioc12;
+
 	private String ioc2;
 
 	private String ioc3;
@@ -126,4 +128,11 @@ public class VWifiDistribution implements Serializable {
 		this.ioc9 = ioc9;
 	}
 
+	public String getIoc12() {
+		return ioc12;
+	}
+
+	public void setIoc12(String ioc12) {
+		this.ioc12 = ioc12;
+	}
 }

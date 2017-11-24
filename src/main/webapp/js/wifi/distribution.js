@@ -35,6 +35,7 @@ $(function(){
             success: function (data) {
                 $("table.distribution tbody").html("");
                 var tmpHtml  = '';
+                $(".ticket-time").text("Last Update: " +data[0].ioc12);
                 for(var i = 0;i<data.length;i++){
                     tmpHtml+='<tr><td>'+data[i].ioc1
                         +'</td><td>'+data[i].ioc2
