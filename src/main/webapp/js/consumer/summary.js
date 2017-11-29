@@ -11,9 +11,10 @@ $(function(){
                 	var j = i+1;
                 	var DBS = data['listMap']['DBS'][i];
 
-                   var time = DBS['ts'];
+                   var time = DBS['aggts'];
                    var ttime = "Last Update:" + time;
                    $(".ticket-time").text(ttime);
+
 
                 	var DES = data['listMap']['DES'][i];
                 	var DCS_P = data['listMap']['DCS_PLATINUM'][i];
@@ -21,6 +22,7 @@ $(function(){
                 	var DCS_S = data['listMap']['DCS_SILVER'][i];
                    var moningDtoList = data['moningDtoList'][i];
                 	var srDtoList = data['srDtoList'][i];
+
                     var tmpHtml = '<tr><td>TREG-'+j+'</td>';
                    tmpHtml += '<td>' + DES['a'] + '</td>'
                        + '<td>' + DES['b'] + '</td>'

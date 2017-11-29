@@ -108,6 +108,13 @@ public class WiFiServiceImpl implements WiFiService {
             }
         }
 
+        List<String> timeList = new ArrayList<>();
+        for (Map.Entry<String, List<VWifiMttrList>> t: map.entrySet()) {
+            for (VWifiMttrList v: t.getValue()) {
+                timeList.add(v.getIoc7());
+            }
+        }
+
         // wifiMttrList进行分组
         Map<String, List<VWifiMttr>> mttrMap = GroupListUtil.group(wifiMttrList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -126,7 +133,7 @@ public class WiFiServiceImpl implements WiFiService {
             mttrM.put(m.getKey(), mttrs);
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA, timeList);
         //示例：2017-07
         mttrDto.setNowtime(StaticUtils.getYearMonthFormat(new Date()));
         return mttrDto;

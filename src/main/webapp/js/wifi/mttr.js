@@ -29,7 +29,7 @@ $(function () {
                     else
                         dateshow = date2.getFullYear()+'-'+(date2.getMonth()+1);
                     var time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
-                    var timeResult = "Last Update:"+time;
+                    var timeResult = "Last Update:"+data.lastTime[0];
                     self.time = timeResult;
                     self.nowTime = dateshow;
                     self.mttrLeft = data.leftList;

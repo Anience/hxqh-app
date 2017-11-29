@@ -21,7 +21,7 @@
 
 .ticket-layout .ticket-time{
     color: #fff;
-    font-size: 29px;
+    font-size: 30px;
     height:46px;
     width: 30%;
     line-height: 50px;
@@ -228,7 +228,7 @@ table.MTTR tbody tr td.bg-blue{
 }
 .ticket-layout h4 span.ticket-time{
     color: #fff;
-    font-size: 18px;
+    font-size: 30px;
     height:50px;
     line-height:50px;
     display: block;

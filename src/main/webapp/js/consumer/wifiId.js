@@ -13,7 +13,14 @@ $(function(){
                 var minutes = add_zero(d.getMinutes());
                 var second=add_zero(d.getSeconds());
                 var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
-                var time ='Last Update:'+ nowTime;
+                var time ='Last Update:';
+                for(var i =0;i<data.lastTime.length;i++){
+                	if(data.lastTime[i]!="" && data.lastTime[i] != null) {
+                        time += data.lastTime[i];
+                        break;
+                    }
+				}
+
                 $('.ticket-time').text(time);
 				var dataOrder = ['NAS','TREG-1','TREG-2','TREG-3','TREG-4','TREG-5','TREG-6','TREG-7'];
 				var scale = data.lineM;

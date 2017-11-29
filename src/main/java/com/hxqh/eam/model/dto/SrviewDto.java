@@ -17,12 +17,17 @@ public class SrviewDto {
 
     Map<String, Map<String, List<BigDecimal>>> lineM;
 
+    private List<String> lastTime;
 
-    public SrviewDto(String[] pilllist, Map<String, List<BigDecimal>> pillM, String[] linelist, Map<String, Map<String, List<BigDecimal>>> lineM) {
+
+
+
+    public SrviewDto(String[] pilllist, Map<String, List<BigDecimal>> pillM, String[] linelist, Map<String, Map<String, List<BigDecimal>>> lineM, List<String> lastTime) {
         this.pilllist = pilllist;
         this.pillM = pillM;
         this.linelist = linelist;
         this.lineM = lineM;
+        this.lastTime = lastTime;
     }
 
     public String[] getPilllist() {
@@ -55,5 +60,13 @@ public class SrviewDto {
 
     public void setLineM(Map<String, Map<String, List<BigDecimal>>> lineM) {
         this.lineM = lineM;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }
