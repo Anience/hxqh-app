@@ -6,106 +6,118 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the TB_IOC_CUST_TOP7 database table.
- * 
  */
 @Entity
-@Table(name="TB_IOC_CUST_TOP7")
+@Table(name = "TB_IOC_CUST_TOP7")
 public class TbIocCustTop7 implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 
-	private String custid;
+    private String custid;
 
-	private String custname;
+    private String custname;
 
-	private String custrank;
+    private String custrank;
 
-	private String custtype;
+    private String custtype;
 
-	private String filename;
+    private String filename;
 
-	@Id
-	private String ioccustomerusertop7id;
+    @Id
+    @SequenceGenerator(name = "TB_IOC_CUST_TOP7_IOCCUSTOMERUSERTOP7ID_GENERATOR", allocationSize = 1, sequenceName = "SEQ_IOC_CUST_TOP7")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TB_IOC_CUST_TOP7_IOCCUSTOMERUSERTOP7ID_GENERATOR")
+    private String ioccustomerusertop7id;
 
-	private String loginpath;
+    private String loginpath;
 
-	private String name;
+    private String name;
 
-	private String ts;
+    private String ts;
 
-	public TbIocCustTop7() {
-	}
+    private Integer crank;
 
-	public String getCustid() {
-		return this.custid;
-	}
 
-	public void setCustid(String custid) {
-		this.custid = custid;
-	}
+    public TbIocCustTop7() {
+    }
 
-	public String getCustname() {
-		return this.custname;
-	}
+    public Integer getCrank() {
+        return crank;
+    }
 
-	public void setCustname(String custname) {
-		this.custname = custname;
-	}
+    public void setCrank(Integer crank) {
+        this.crank = crank;
+    }
 
-	public String getCustrank() {
-		return this.custrank;
-	}
+    public String getCustid() {
+        return this.custid;
+    }
 
-	public void setCustrank(String custrank) {
-		this.custrank = custrank;
-	}
+    public void setCustid(String custid) {
+        this.custid = custid;
+    }
 
-	public String getCusttype() {
-		return this.custtype;
-	}
+    public String getCustname() {
+        return this.custname;
+    }
 
-	public void setCusttype(String custtype) {
-		this.custtype = custtype;
-	}
+    public void setCustname(String custname) {
+        this.custname = custname;
+    }
 
-	public String getFilename() {
-		return this.filename;
-	}
+    public String getCustrank() {
+        return this.custrank;
+    }
 
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+    public void setCustrank(String custrank) {
+        this.custrank = custrank;
+    }
 
-	public String getIoccustomerusertop7id() {
-		return this.ioccustomerusertop7id;
-	}
+    public String getCusttype() {
+        return this.custtype;
+    }
 
-	public void setIoccustomerusertop7id(String ioccustomerusertop7id) {
-		this.ioccustomerusertop7id = ioccustomerusertop7id;
-	}
+    public void setCusttype(String custtype) {
+        this.custtype = custtype;
+    }
 
-	public String getLoginpath() {
-		return this.loginpath;
-	}
+    public String getFilename() {
+        return this.filename;
+    }
 
-	public void setLoginpath(String loginpath) {
-		this.loginpath = loginpath;
-	}
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getIoccustomerusertop7id() {
+        return this.ioccustomerusertop7id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setIoccustomerusertop7id(String ioccustomerusertop7id) {
+        this.ioccustomerusertop7id = ioccustomerusertop7id;
+    }
 
-	public String getTs() {
-		return this.ts;
-	}
+    public String getLoginpath() {
+        return this.loginpath;
+    }
 
-	public void setTs(String ts) {
-		this.ts = ts;
-	}
+    public void setLoginpath(String loginpath) {
+        this.loginpath = loginpath;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTs() {
+        return this.ts;
+    }
+
+    public void setTs(String ts) {
+        this.ts = ts;
+    }
 
 }
