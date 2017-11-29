@@ -258,8 +258,8 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/custtop7ListData", method = RequestMethod.GET)
-    public List<TbIocCustTop7> custtop7ListData() {
-        return systemService.custtop7ListData();
+    public List<TbIocCustTop7> custtop7ListData(@RequestParam(value = "custtype",required = false) String custtype) {
+        return systemService.custtop7ListData(custtype);
     }
 
     /**

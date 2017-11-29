@@ -37,7 +37,7 @@ public interface SystemService {
 
     List<TbRole> getRoleListData();
 
-    List<TbIocCustTop7> custtop7ListData();
+    List<TbIocCustTop7> custtop7ListData(String custtype);
 
     List<TbIoccustomeruser> customeruserListData(String name, String div);
 
