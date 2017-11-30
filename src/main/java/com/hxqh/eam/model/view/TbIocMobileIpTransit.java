@@ -35,6 +35,9 @@ public class TbIocMobileIpTransit implements Serializable {
 
 	private BigDecimal wrong;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public TbIocMobileIpTransit() {
 	}
 
@@ -102,4 +105,11 @@ public class TbIocMobileIpTransit implements Serializable {
 		this.wrong = wrong;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

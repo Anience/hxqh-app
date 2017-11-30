@@ -35,6 +35,9 @@ public class TbIocProTicketResult implements Serializable {
     @Column(name = "X_VALUE")
     private String xValue;
 
+    @Column(name = "AGG_TS")
+    private String aggts;
+
     public TbIocProTicketResult() {
     }
 
@@ -102,4 +105,11 @@ public class TbIocProTicketResult implements Serializable {
         this.xValue = xValue;
     }
 
+    public String getAggts() {
+        return aggts;
+    }
+
+    public void setAggts(String aggts) {
+        this.aggts = aggts;
+    }
 }

@@ -6,19 +6,15 @@ $(function(){
 			method: "get",
 			dataType: "json",
 			success: function (data) {
-                var d = new Date();
-                var years = d.getFullYear();
-                var month = add_zero(d.getMonth()+1);
-                var days = add_zero(d.getDate());
-                var hours = add_zero(d.getHours());
-                var minutes = add_zero(d.getMinutes());
-                var second=add_zero(d.getSeconds());
-                var nowTime = years+"-"+month+"-"+days+" "+hours+":"+minutes+":"+second;
-                function add_zero(temp) {
-                    if(temp<10) return "0"+temp;
-                    else return temp;
-                }
-                var time ='Last Update:'+ nowTime;
+
+
+                var time ='Last Update: ';
+                for(var i = 0;i<data.lastTime.length;i++){
+                	if(data.lastTime[i]!="" && data.lastTime[i] != null){
+                		time += data.lastTime[i];
+                		break
+					}
+				}
                 $('.ticket-time').text(time);
 				var data1 = [];
 				var legend1 = [];

@@ -345,6 +345,7 @@ public class AnoServiceImpl implements AnoService {
 
 
         /**************左上 完成**********************/
+        List<String> lastTime = new ArrayList<>();
         Map<String, List<Integer>> pillartM = new LinkedHashMap<>();
         //获取PILLAR信息再分组
         List<TbIocProTicketResult> pillartList = proactiveTicketMap.get("PILLAR");
@@ -362,6 +363,7 @@ public class AnoServiceImpl implements AnoService {
             for (Map.Entry<String, List<TbIocProTicketResult>> m : pillartMap.entrySet()) {
                 List<Integer> mttrs = new LinkedList<>();
                 for (TbIocProTicketResult l : m.getValue()) {
+                    lastTime.add(l.getAggts());
                     mttrs.add(Integer.valueOf(l.getJumlah()));
                 }
                 pillartM.put(m.getKey(), mttrs);
@@ -399,7 +401,7 @@ public class AnoServiceImpl implements AnoService {
         }
         /**************右下完成**********************/
 
-        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List, pieMap, arcList);
+        RealtimeData realtimeData = new RealtimeData(name3List, value3List, pillartM, name2List, pieMap, arcList, lastTime);
         return realtimeData;
     }
 
