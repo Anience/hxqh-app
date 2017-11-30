@@ -8,7 +8,7 @@ $(function () {
             custname: '',
             custid:'',
             custtype:'',
-            custrank:'',
+            crank:'',
             newId:'',
             shortName:''
         },
@@ -60,7 +60,7 @@ $(function () {
                     self.custname = data.custname;
                     self.custid = data.custid;
                     self.custtype = data.custtype;
-                    self.custrank = data.custrank;
+                    self.crank = data.crank;
                     self.shortName = data.name;
                 },
                 error: function () {

@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="${ctx}/css/rank/rank.css">
     <script src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/script/vue.js"></script>
-    <script src="${ctx}/js/rank/rankList.js"></script>
     <script>
         var _ctx = "${ctx}";
     </script>
@@ -26,29 +25,18 @@
 <div class="rank-layout" id="customer-data">
     <table cellspacing="0">
         <thead>
-        <tr>
-            <td width="7%">Customer Num</td>
-            <td width="7%">Rank</td>
-            <td width="7%">Type</td>
-            <td width="7%">Operation</td>
-        </tr>
+            <tr>
+                <td width="7%">Customer Num</td>
+                <td width="7%">Customer Name</td>
+                <td width="7%">Rank</td>
+                <td width="7%" class="custtype">Type</td>
+                <td width="7%" style="display: none;">ioccustomerusertop7id</td>
+                <td width="7%">Operation</td>
+            </tr>
         </thead>
-        <tbody>
-            <tr class="select">
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
-            <tr v-for="item in customer">
-                <td>{{item.custid}}</td>
-                <td>{{item.custrank}}</td>
-                <td>{{item.custtype}}</td>
-                <td>
-                    <a href="javascript:void(0);" @click="goto(item)"><i class="del-icon"></i></a>
-                </td>
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
+<script src="${ctx}/js/rank/rankList.js"></script>
 </body>
 </html>
