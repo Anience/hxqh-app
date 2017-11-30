@@ -114,16 +114,29 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public List<TbIocCustTop7> custtop7ListData(String custtype) {
+    public List<TbIocCustTop7> custtop7ListData(String custid, String custname, String custtype, Integer crank) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("custtype", "DWS");
-        String where = "custtype<>:custtype";
-        if (null != custtype)
-        {
-            params.put("DS", custtype);
-            where = "custtype<>:custtype and custtype = :DS";
+        StringBuilder where = new StringBuilder();
+        where.append("custtype<>:custtype");
+        if (null != custid) {
+            params.put("custid", custid);
+            where.append(" and custid = :custid");
         }
-        return tbIocCustTop7Dao.findAll(where, params, null);
+        if (null != custname) {
+            params.put("custname", custname);
+            where.append(" and custname like '%'"+custname+"'%' ");
+        }
+        if (null != custtype) {
+            params.put("DS", custtype);
+            where.append(" and custtype = :DS");
+        }
+        if (null!=crank) {
+            params.put("crank", crank);
+            where.append(" and crank = :crank");
+        }
+
+        return tbIocCustTop7Dao.findAll(where.toString(), params, null);
     }
 
     @Override

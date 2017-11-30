@@ -37,8 +37,6 @@ public interface SystemService {
 
     List<TbRole> getRoleListData();
 
-    List<TbIocCustTop7> custtop7ListData(String custtype);
-
     List<TbIoccustomeruser> customeruserListData(String name, String div);
 
     void updateRank(Long ioccustomeruserid, String custid, String name);
@@ -87,4 +85,6 @@ public interface SystemService {
     ModelIndexDto getModelIndex(String loginname);
 
     int modifyPassword(String password, String name);
+
+    List<TbIocCustTop7> custtop7ListData(String custnum, String custname, String custtype, Integer rank);
 }
