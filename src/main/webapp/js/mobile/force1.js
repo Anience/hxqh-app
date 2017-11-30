@@ -95,7 +95,7 @@ $(function () {
                {
                    type:'tree',
                    orient: 'horizontal',  // vertical horizontal
-                   rootLocation: {x: 100,y: 230}, // 根节点位置  {x: 100, y: 'center'}
+                   rootLocation: {x: 220,y: 230}, // 根节点位置  {x: 100, y: 'center'}
                    nodePadding: 8,
                    layerPadding: 200,
                    hoverable: false,
