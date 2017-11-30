@@ -361,36 +361,36 @@ $(function(){
     	var total1 = parseFloat(data2)+parseFloat(data3);
     	var total2 = parseFloat(data1)+parseFloat(data3);
     	var total3 = parseFloat(data1)+parseFloat(data2);
-    	var dataStyle1 = {
-				    normal: {
-				    	color:'#d46e87',
-				        label: { show: true,data:data1,formatter: "{b}:\n{c}({d}%)" },
-				        labelLine: { show: true,length:30 }
-				    }
-				};
-		var dataStyle2 = {
-			normal: {
-				color:'#CC9933',
-				label: {
-					show: true ,
-					data:data2,
-					formatter: "{b}:\n{c}({d}%)",
-                    position:"inner"
-				},
-				labelLine: { show: false,length:50 }
-			}
-		};
-		var dataStyle3 = {
-			normal: {
-				color:'#4a476a',
-				label: {
-					show: true,
-					data:data3,
-					formatter: "{b}:\n{c}({d}%)"
-				},
-				labelLine: { show: true ,length:70}
-			}
-		};
+        // var dataStyle1 = {
+		// 		    normal: {
+		// 		    	color:'#d46e87',
+		// 		        label: { show: true,data:data1,formatter: "{b}:\n{c}({d}%)" },
+		// 		        labelLine: { show: true,length:30 }
+		// 		    }
+		// 		};
+		// var dataStyle2 = {
+		// 	normal: {
+		// 		color:'#CC9933',
+		// 		label: {
+		// 			show: true ,
+		// 			data:data2,
+		// 			formatter: "{b}:\n{c}({d}%)",
+         //            position:"inner"
+		// 		},
+		// 		labelLine: { show: false,length:50 }
+		// 	}
+		// };
+		// var dataStyle3 = {
+		// 	normal: {
+		// 		color:'#4a476a',
+		// 		label: {
+		// 			show: true,
+		// 			data:data3,
+		// 			formatter: "{b}:\n{c}({d}%)"
+		// 		},
+		// 		labelLine: { show: true ,length:70}
+		// 	}
+		// };
 		var placeHolderStyle = {
 		    normal: {
 		        color: 'rgba(0,0,0,0)',
@@ -430,8 +430,23 @@ $(function(){
 		    },
 		    series: [{
 		            type: 'pie',
-		            clockWise: false,
-		            radius: [125, 150],
+		            radius: "55%",
+                	center: ['50%', '60%'],
+					itemStyle:{
+						normal:{
+							label:{
+								show:true,
+								formatter:"{b} : {d}%  {c}",
+								textStyle:{
+									color:'#fff',
+									fontSize:14
+								}
+							},
+							labelLine:{
+								show:true
+							}
+						}
+					},
 		            data: [{
 		                    value: data1,
 		                    name: 'Less 12 hours'

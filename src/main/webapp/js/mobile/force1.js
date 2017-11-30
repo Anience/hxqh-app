@@ -114,7 +114,7 @@ $(function () {
                                }
                            },
                            lineStyle: {
-                               color: '#ccc',
+                               color: '#8B8682',
                                type: 'curve' // 'curve'|'broken'|'solid'|'dotted'|'dashed'
 
                            }
