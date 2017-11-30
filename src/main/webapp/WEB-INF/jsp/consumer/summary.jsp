@@ -18,7 +18,8 @@
 	<table class="summary">
 		<thead>
 			<tr>
-				<td colspan="39">Open Ticket Daily for Non-GAMAS</td>
+				<td colspan="34">Open Ticket Daily for Non-GAMAS</td>
+				<td colspan="5"><span class="ticket-time"></span></td>
 			</tr>
 			<tr>
 				<td rowspan="3">Region</td>
@@ -90,7 +91,6 @@
 		BUSINESS: A : 0 - 12 jam B : 12 - 24 jam C : 24 - 48 jam D : 48 - 72 jam E : 72 jam - 7 Hari F : > 7 hari<br />
 		CONSUMER: A : 0 - 12 jam B : 12 - 24 jam C : 24 - 48 jam D : 48 jam - 72 jam E : >= 72 jam<br />
 		Status Tiket : OPEN<br />
-		<span class="ticket-time"></span>
 	</div>
 </div>
 </body>

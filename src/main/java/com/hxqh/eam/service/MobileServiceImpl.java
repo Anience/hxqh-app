@@ -84,11 +84,19 @@ public class MobileServiceImpl implements MobileService {
         });
 
         Map<String, Mob92Dto> dtoMap = new HashMap<>();
+        List<String> timeList = new ArrayList<>();
+        List<VMob92> li = new ArrayList<VMob92>();
         for (Map.Entry<String, List<VMob92>> entry : map.entrySet()) {
+             li = entry.getValue();
             Mob92Dto mob92Dto = getMob92Dto(entry.getValue());
             dtoMap.put(entry.getKey(), mob92Dto);
+
         }
-        Moblie92 moblie92 = new Moblie92(dtoMap);
+        for (VMob92 mob92 : li) {
+            if(mob92.getAggts()!=null && mob92.getAggts() != "")
+                   timeList.add(mob92.getAggts()) ;
+        }
+        Moblie92 moblie92 = new Moblie92(dtoMap,timeList);
         return moblie92;
     }
 

@@ -12,9 +12,22 @@
     color: rgb(227, 227, 233);
     height: 96px;
     line-height: 96px;
+    float: left;
     padding-left: 3%;
     margin-top: 58px;
 }
+.pre-layout .ticket-time{
+    color: rgb(227, 227, 233);
+    font-family: "Arial";
+    font-size: 36px;
+    line-height:96px;
+    display: block;
+    float:right;
+    margin-top: 60px;
+    margin-right: 60px;
+    width: 30%;
+}
+
 .item{
     margin-left: 3%;
     margin-right: 3%;

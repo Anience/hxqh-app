@@ -15,7 +15,7 @@ $(function(){
                 for(var i=0 ; i<nowMon-1;i++){      //只显示两个月前的月期
                     newMon[i]=Mon[i];
                 }
-
+                $('.ticket-time').text("Last Update: " +data.listTime[0]);
 
                 initEchart("echart1",datas['NAS'],datasUN['NAS'],newMon);
                 initEchart("echart2",datas['TREG-1'],datasUN['TREG-1'],newMon);

@@ -42,3 +42,15 @@ span.ticket-tit{
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.mob-layout .ticket-time{
+    color: #fff;
+    font-size: 30px;
+    height:46px;
+    width: 550px;
+    line-height:46px;
+    display: block;
+    float: right;
+    padding-top: 25px;
+    margin-left: 360px;
+}

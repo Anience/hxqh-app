@@ -7,11 +7,23 @@
 #mob91 h3{
     font-size: 29px;
     font-weight: bold;
-    height: 55px;
+    height: 15%;
     line-height: 55px;
     color: #fff;
     margin-top: 0px;
+    float: left;
+    text-align: left;
 }
+#mob91 .ticket-time{
+    color: #fff;
+    font-size: 29px;
+    height:46px;
+    width: 30%;
+    line-height:46px;
+    display: block;
+    float: right;
+}
+
 #mob91 table{
     width: 100%;
 }

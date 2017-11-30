@@ -56,6 +56,9 @@ public class TbIocConsSrMoning implements Serializable {
 
 	private Long ttl;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public TbIocConsSrMoning() {
 	}
 
@@ -197,4 +200,11 @@ public class TbIocConsSrMoning implements Serializable {
 		this.ttl = ttl;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

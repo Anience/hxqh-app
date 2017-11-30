@@ -277,6 +277,7 @@ public class AnoServiceImpl implements AnoService {
         List<SrDto> srDtoList = sessionFactory.getCurrentSession().createSQLQuery(sqlSr).addEntity(SrDto.class).list();
         //求和放入map中
         Map<String, TbIocConsSrMoning> sumMap = new LinkedHashMap<>();
+        List<String> lastTime = new ArrayList<>();
         for (Map.Entry<String, List<TbIocConsSrMoning>> map : listMap.entrySet()) {
             TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l,0l);
             for (TbIocConsSrMoning ele : map.getValue()) {
@@ -287,6 +288,7 @@ public class AnoServiceImpl implements AnoService {
                 sum.setE(sum.getE() + ele.getE());
                 sum.setF(sum.getF() + ele.getF());
                 sum.setTtl(sum.getTtl() + ele.getTtl());
+                lastTime.add(ele.getAggts());
             }
             sumMap.put(map.getKey(), sum);
         }
@@ -438,18 +440,20 @@ public class AnoServiceImpl implements AnoService {
         });
         Map<String, List<BigDecimal>> listM = new LinkedHashMap<>();
         Map<String, List<BigDecimal>> listUN = new LinkedHashMap<>();
+        List<String> listTime = new ArrayList<>();
         for (Map.Entry<String, List<TbIocProInstall>> m : listMap.entrySet()) {
             List<BigDecimal> numList = new LinkedList<>();
             List<BigDecimal> UNList = new LinkedList<>();
             for (int i = 0; i < m.getValue().size(); i++) {
                 numList.add(m.getValue().get(i).getJmlPsb());
                 UNList.add(m.getValue().get(i).getJmlGgn60HariUnique());
+                listTime.add(m.getValue().get(i).getAggts());
             }
             listM.put(m.getKey(), numList);
             listUN.put(m.getKey(), UNList);
         }
 
-        return new ComplaintData(listM,listUN);
+        return new ComplaintData(listM,listUN,listTime);
     }
 
 
@@ -457,6 +461,8 @@ public class AnoServiceImpl implements AnoService {
     public SrviewDto getSrviewData() {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("srviewId", "asc");
+
+        List<String> lastTime = new ArrayList<>();
 
         List<TbIocConsSrview> consSrviewList = tbIocConsSrviewDao.findAll(null, null, orderby);
         Map<String, List<TbIocConsSrview>> stringListMap = GroupListUtil.group(consSrviewList, new GroupListUtil.GroupBy<String>() {
@@ -482,6 +488,7 @@ public class AnoServiceImpl implements AnoService {
             List<BigDecimal> numList = new LinkedList<>();
             for (int i = 0; i < m.getValue().size(); i++) {
                 numList.add(m.getValue().get(i).getLevCount());
+                lastTime.add(m.getValue().get(i).getAggts());
             }
             pillM.put(m.getKey(), numList);
         }
@@ -519,13 +526,14 @@ public class AnoServiceImpl implements AnoService {
                 List<BigDecimal> lineList = new LinkedList<>();
                 for (int i = 0; i < m.getValue().size(); i++) {
                     lineList.add(m.getValue().get(i).getLevCount());
+                    lastTime.add(m.getValue().get(i).getAggts());
                 }
                 tmp.put(m.getKey(), lineList);
             }
             lineM.put(entry.getKey(), tmp);
         }
 
-        SrviewDto srviewDto = new SrviewDto(PILLLIST, pillM, LINELIST, lineM);
+        SrviewDto srviewDto = new SrviewDto(PILLLIST, pillM, LINELIST, lineM, lastTime);
         return srviewDto;
     }
 

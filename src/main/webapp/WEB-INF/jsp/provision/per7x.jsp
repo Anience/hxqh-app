@@ -14,7 +14,8 @@
 </head>
 <body>
 <div class="pre-layout">
-	<h4>Provisioning-7 x  regions INDIHOME Comply Order</h4>
+	<div style=" width: 100%;"><h4>Provisioning-7 x  regions INDIHOME Comply Order</h4><span class="ticket-time"></span></div>
+
 	<div class="item">
 		<table class="treg14-table">
 			<thead>

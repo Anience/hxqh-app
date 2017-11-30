@@ -26,6 +26,7 @@ public class VWifiMttrList implements Serializable {
     private String ioc4;
     private String ioc5;
     private String ioc6;
+    private String ioc7;
 
 
     public VWifiMttrList() {
@@ -85,5 +86,13 @@ public class VWifiMttrList implements Serializable {
 
     public void setIoc6(String ioc6) {
         this.ioc6 = ioc6;
+    }
+
+    public String getIoc7() {
+        return ioc7;
+    }
+
+    public void setIoc7(String ioc7) {
+        this.ioc7 = ioc7;
     }
 }

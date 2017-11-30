@@ -20,7 +20,8 @@
 </head>
 <body>
 <div class="wifiId-layout">
-    <h3>Provisioning-Complaint Following New Installation (INDIHOME)</h3>
+    <div style=" width: 100%; height: 50px;"><h3>Provisioning-Complaint Following New Installation (INDIHOME)</h3><span class="ticket-time"></span></div>
+
     <div class="left" id="echart1"></div>
     <div class="right">
         <div class="scoll-nav">

@@ -23,15 +23,21 @@ public class VWifiTrafficTop implements Serializable {
 
 	private String name;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public VWifiTrafficTop() {
 	}
 
-	public VWifiTrafficTop(BigDecimal count, String da, Integer rn, String name) {
+	public VWifiTrafficTop(BigDecimal count, String da, Integer rn, String name, String aggts) {
 		this.count = count;
 		this.da = da;
 		this.rn = rn;
 		this.name = name;
+		this.aggts = aggts;
 	}
+
+
 
 	public Integer getRn() {
 		return rn;
@@ -65,4 +71,11 @@ public class VWifiTrafficTop implements Serializable {
 		this.name = name;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

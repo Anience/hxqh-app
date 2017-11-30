@@ -7,6 +7,15 @@
     font-family: "Arial";
     height: 100%;
 }
+.ind-layout .ticket-time{
+    color: #fff;
+    font-size: 30px;
+    width: 550px;
+    line-height:46px;
+    display: block;
+    text-align: right;
+
+}
 .ind-layout table thead tr:nth-child(2) td,
 .ind-layout table thead tr:nth-child(3) td,
 .ind-layout table thead tr:nth-child(4) td{

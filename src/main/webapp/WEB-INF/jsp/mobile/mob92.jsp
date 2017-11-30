@@ -27,6 +27,17 @@
 			margin: 0px;
 			padding-top: 60px;
 			padding-left: 30px;
+			float: left;
+			text-align: left;
+		}
+		#mob91 .ticket-time{
+			color: #fff;
+			font-size: 26px;
+			height:46px;
+			width: 40%;
+			line-height:46px;
+			display: block;
+			float: right;
 		}
 		#mob91 p{
 			color: #fff;
@@ -82,7 +93,8 @@
 </head>
 <body>
 	<div id="mob91">
-		<h3>Quality CNOP</h3>
+		<div style=" width: 100%; height: 50px;"><h3>Quality CNOP</h3><span class="ticket-time"></span></div>
+
 		<div id="echart1" style="width: 100%;height: 80%;padding-top:80px;padding-left: 30px;padding-right: 30px;"></div>
 		<p>BAD >= 5ms > GOOD</p>
 	</div>

@@ -114,10 +114,15 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public List<TbIocCustTop7> custtop7ListData() {
+    public List<TbIocCustTop7> custtop7ListData(String custtype) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("custtype", "DWS");
         String where = "custtype<>:custtype";
+        if (null != custtype)
+        {
+            params.put("DS", custtype);
+            where = "custtype<>:custtype and custtype = :DS";
+        }
         return tbIocCustTop7Dao.findAll(where, params, null);
     }
 

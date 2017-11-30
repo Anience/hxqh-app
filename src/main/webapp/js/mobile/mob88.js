@@ -141,6 +141,15 @@ $(function () {
                 initEchart('echart1',data.mob88MttrList);
                 initEchart('echart2',data.mob88MttiList);
                 self.perforList = data.perforList;
+
+                var LT = "";
+
+                for(var i =0;i<data.mob88MttiList.length;i++){
+                    if(data.mob88MttiList[i].aggts != "" && data.mob88MttiList[i].aggts !=null)
+                        LT = data.mob88MttiList[i].aggts;
+                }
+
+                $('.ticket-time').text("Last Update: " + LT);
                 var insertHtml = "";
                 for(var i=0;i<data.perforList.length;i++){
                     var tmpData = data.perforList[i];

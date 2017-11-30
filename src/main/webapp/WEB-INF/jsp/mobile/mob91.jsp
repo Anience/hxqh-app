@@ -14,7 +14,7 @@
 	</script>
 </head>
 <div id="mob91" style="padding-bottom: 120px;padding-top: 20px;">
-	<h3>SQUAT</h3>
+	<div style=" width: 100%; height: 50px;"><h3>SQUAT</h3><span class="ticket-time"></span></div>
 	<div class="row" id="mob91-data">
 		<div class="col-sm-6">
 			<table class="mobLeft">

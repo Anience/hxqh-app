@@ -34,6 +34,9 @@ public class TbIocConsSrview implements Serializable {
 
 	private String ts;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public TbIocConsSrview() {
 	}
 
@@ -93,4 +96,11 @@ public class TbIocConsSrview implements Serializable {
 		this.ts = ts;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

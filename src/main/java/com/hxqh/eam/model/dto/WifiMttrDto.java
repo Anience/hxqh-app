@@ -19,14 +19,18 @@ public class WifiMttrDto {
 
     private String nowtime;
 
+    private List<String> lastTime;
+
     public WifiMttrDto() {
     }
+    
 
-    public WifiMttrDto(Map<String, List<BigDecimal>> mttrM, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList, String[] axisiData) {
+    public WifiMttrDto(Map<String, List<BigDecimal>> mttrM, Map<String, List<VWifiMttrList>> leftList, Map<String, List<VWifiMttrList>> rightList, String[] axisiData, List<String> lastTime) {
         this.mttrM = mttrM;
         this.leftList = leftList;
         this.rightList = rightList;
         this.axisiData = axisiData;
+        this.lastTime = lastTime;
     }
 
     public String[] getAxisiData() {
@@ -67,5 +71,13 @@ public class WifiMttrDto {
 
     public void setNowtime(String nowtime) {
         this.nowtime = nowtime;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }

@@ -108,6 +108,13 @@ public class WiFiServiceImpl implements WiFiService {
             }
         }
 
+        List<String> timeList = new ArrayList<>();
+        for (Map.Entry<String, List<VWifiMttrList>> t: map.entrySet()) {
+            for (VWifiMttrList v: t.getValue()) {
+                timeList.add(v.getIoc7());
+            }
+        }
+
         // wifiMttrList进行分组
         Map<String, List<VWifiMttr>> mttrMap = GroupListUtil.group(wifiMttrList, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -126,7 +133,7 @@ public class WiFiServiceImpl implements WiFiService {
             mttrM.put(m.getKey(), mttrs);
         }
 
-        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA);
+        WifiMttrDto mttrDto = new WifiMttrDto(mttrM, leftList, rightList, AXISIDATA, timeList);
         //示例：2017-07
         mttrDto.setNowtime(StaticUtils.getYearMonthFormat(new Date()));
         return mttrDto;
@@ -163,9 +170,16 @@ public class WiFiServiceImpl implements WiFiService {
             dailyktM.put(m.getKey(), daily);
         }
 
+        List<String> lastTime = new ArrayList<>();
+        for (Map.Entry<String, List<VWifiDaily>> m : map.entrySet()) {
+            for (VWifiDaily l : m.getValue()) {
+                lastTime.add(l.getAggts());
+            }
+        }
 
 
-        DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET);
+
+        DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET, lastTime);
         //示例：Daily Ticket Distribution(2017-07-09 To 2017-07-15)
         StringBuilder builder = new StringBuilder(50);
        /* builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));
@@ -193,6 +207,11 @@ public class WiFiServiceImpl implements WiFiService {
             topNameList.add(tempTopMap.get(key));
         }
 
+        List<String> timeList = new LinkedList<>();
+        for (VWifiTrafficTop key : trafficTopList) {
+            timeList.add(key.getAggts());
+        }
+
         HashMap<String, String> tempBottomMap = new LinkedHashMap<>();
         for (VWifiTrafficBottom bottom : trafficBottomList) {
             String name = bottom.getName();
@@ -217,7 +236,7 @@ public class WiFiServiceImpl implements WiFiService {
             /*如果取不到数据,那么直接new一个空的ArrayList**/
             groupList(bottomMap, tempList, skuVo.getCount(), skuVo.getDa());
         }
-        TrafficTdo trafficTdo = new TrafficTdo(topNameList, bottomNameList, topMap, bottomMap);
+        TrafficTdo trafficTdo = new TrafficTdo(topNameList, bottomNameList, topMap, bottomMap,timeList);
         return trafficTdo;
     }
 

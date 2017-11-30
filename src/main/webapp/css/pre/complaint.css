@@ -10,6 +10,18 @@
     height: 70px;
     line-height: 70px;
     padding-left: 2%;
+    float: left;
+    text-align: left;
+}
+
+.wifiId-layout .ticket-time{
+    color: #fff;
+    font-size: 29px;
+    height:46px;
+    width: 30%;
+    line-height:46px;
+    display: block;
+    float: right;
 }
 .wifiId-layout .left{
     width: 56%;

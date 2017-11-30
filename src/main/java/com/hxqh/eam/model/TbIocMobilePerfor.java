@@ -36,6 +36,9 @@ public class TbIocMobilePerfor implements Serializable {
 
 	private String treg;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	private String ts;
 
 	public TbIocMobilePerfor() {
@@ -113,4 +116,11 @@ public class TbIocMobilePerfor implements Serializable {
 		this.ts = ts;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }
