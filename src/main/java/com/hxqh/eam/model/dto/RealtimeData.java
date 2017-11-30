@@ -19,13 +19,18 @@ public class RealtimeData {
     private Map<String, List<TbIocProTicketResult>> pieMap;
     private List<TbIocProTicketResult> arcList;
 
-    public RealtimeData(List<String> name3List, List<Integer> value3List, Map<String, List<Integer>> pillartM, List<String> name2List, Map<String, List<TbIocProTicketResult>> pieMap, List<TbIocProTicketResult> arcList) {
+    private List<String> lastTime;
+
+
+
+    public RealtimeData(List<String> name3List, List<Integer> value3List, Map<String, List<Integer>> pillartM, List<String> name2List, Map<String, List<TbIocProTicketResult>> pieMap, List<TbIocProTicketResult> arcList, List<String> lastTime) {
         this.name3List = name3List;
         this.value3List = value3List;
         this.pillartM = pillartM;
         this.name2List = name2List;
         this.pieMap = pieMap;
         this.arcList = arcList;
+        this.lastTime = lastTime;
     }
 
     public Map<String, List<TbIocProTicketResult>> getPieMap() {
@@ -74,5 +79,13 @@ public class RealtimeData {
 
     public void setName2List(List<String> name2List) {
         this.name2List = name2List;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }
