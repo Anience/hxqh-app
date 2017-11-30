@@ -19,8 +19,19 @@
     height: 10%;
     line-height: 300%;
     background: #292a49;
-    width: 98%;
+    width: 30%;
+    float: left;
     padding-left: 2%;
+}
+.throughput-box .ticket-time{
+    color: #fff;
+    font-size: 36px;
+    height:46px;
+    width: 55%;
+    line-height:300%;
+    text-align: right;
+    display: block;
+    float: right;
 }
 .throughput-box ul.nav,.throughput-box ul.sec-nav{
     width: 50%;

@@ -14,7 +14,8 @@
 <body>
 <div id="throughput-layout">
 	<div class="throughput-box">
-		<h4 style="color: #fff;">Mobile-Throughput</h4>
+		<div style=" width: 98%; height: 10%;background: #292a49;"><h4 style="color: #fff;">Mobile-Throughput</h4><span class="ticket-time"></span></div>
+
 		<ul class="nav">
 			<li>JAKARTA</li>
 			<li>SURABAYA</li>

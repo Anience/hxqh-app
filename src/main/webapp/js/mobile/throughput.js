@@ -9,6 +9,14 @@ $(function(){
         success: function (data) {
             totalData = data.agteMap;
             nameList = data.namelist;
+            var time = "Last Update: ";
+            for(var i=0; i<data.lastTime.length;i++){
+                if(data.lastTime[i] != "" && data.lastTime[i] != null){
+                    time += data.lastTime[i];
+                    break;
+                }
+            }
+            $('.ticket-time').text(time);
             initEchart('echart1',nameList,totalData["JAKARTA"].in,totalData["JAKARTA"].out,totalData["JAKARTA"].opers,totalData["JAKARTA"].wrong,totalData["JAKARTA"].maxVal,'JAKARTA');
         },
         error: function () {

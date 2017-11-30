@@ -12,12 +12,17 @@ public class ThroughtputDto {
 
     private List<String> namelist;
 
+    private List<String> lastTime;
+
     public ThroughtputDto() {
     }
 
-    public ThroughtputDto(Map<String, ThroughtputAgte> agteMap, List<String> namelist) {
+
+
+    public ThroughtputDto(Map<String, ThroughtputAgte> agteMap, List<String> namelist, List<String> lastTime) {
         this.agteMap = agteMap;
         this.namelist = namelist;
+        this.lastTime = lastTime;
     }
 
     public List<String> getNamelist() {
@@ -34,6 +39,14 @@ public class ThroughtputDto {
 
     public void setAgteMap(Map<String, ThroughtputAgte> agteMap) {
         this.agteMap = agteMap;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }
 

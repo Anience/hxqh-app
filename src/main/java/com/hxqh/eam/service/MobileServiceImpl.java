@@ -206,6 +206,7 @@ public class MobileServiceImpl implements MobileService {
             }
         });
 
+        List<String> lastTime = new ArrayList<>();
         Map<String, ThroughtputAgte> agteMap = new HashMap<>();
         for (Map.Entry<String, List<TbIocMobileIpTransit>> m : map.entrySet()) {
             List<TbIocMobileIpTransit> mValue = m.getValue();
@@ -213,11 +214,13 @@ public class MobileServiceImpl implements MobileService {
             List<BigDecimal> out = new ArrayList<>();
             List<BigDecimal> opers = new ArrayList<>();
             List<BigDecimal> wrong = new ArrayList<>();
+
             for (int i = 0; i < mValue.size(); i++) {
                 in.add(mValue.get(i).getSumIn());
                 out.add(mValue.get(i).getSumOut());
                 opers.add(mValue.get(i).getOpers());
                 wrong.add(mValue.get(i).getWrong());
+                lastTime.add(mValue.get(i).getAggts());
             }
             BigDecimal maxVal = (Collections.max(in).compareTo(Collections.max(out)) == -1) ? Collections.max(out) : Collections.max(in);
 
@@ -230,7 +233,7 @@ public class MobileServiceImpl implements MobileService {
         }
 
 
-        ThroughtputDto throughtputDto = new ThroughtputDto(agteMap, namelist);
+        ThroughtputDto throughtputDto = new ThroughtputDto(agteMap, namelist, lastTime);
         return throughtputDto;
     }
 
