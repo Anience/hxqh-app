@@ -23,6 +23,8 @@ public class VWifiDaily implements Serializable {
 
 	private String name;
 
+	private String aggts;
+
 	public VWifiDaily() {
 	}
 
@@ -58,4 +60,11 @@ public class VWifiDaily implements Serializable {
 		this.name = name;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }

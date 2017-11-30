@@ -170,9 +170,16 @@ public class WiFiServiceImpl implements WiFiService {
             dailyktM.put(m.getKey(), daily);
         }
 
+        List<String> lastTime = new ArrayList<>();
+        for (Map.Entry<String, List<VWifiDaily>> m : map.entrySet()) {
+            for (VWifiDaily l : m.getValue()) {
+                lastTime.add(l.getAggts());
+            }
+        }
 
 
-        DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET);
+
+        DailyDto dailyDto = new DailyDto(dailyktM, DAILYTICKET, lastTime);
         //示例：Daily Ticket Distribution(2017-07-09 To 2017-07-15)
         StringBuilder builder = new StringBuilder(50);
        /* builder.append("Daily Ticket Distribution (").append(StaticUtils.getYearMonthDayFormat(StaticUtils.getBeginDayOfWeek()));

@@ -8,6 +8,14 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function(data){
+                var time = "Last Update: ";
+                for(var i = 0;i<data.lastTime.length;i++){
+                    if(data.lastTime[i]!="" && data.lastTime[i] !=null){
+                        time += data.lastTime[i];
+                        break
+                    }
+                }
+                $('.ticket-time').text(time);
                 initEchart("echart1",data.dailyticket,data.skuIdMap,data.nowtime);
             },
             error: function(){

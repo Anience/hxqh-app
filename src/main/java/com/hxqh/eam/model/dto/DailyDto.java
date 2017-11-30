@@ -15,10 +15,15 @@ public class DailyDto {
 
     private String nowtime;
 
+    private List<String> lastTime;
 
-    public DailyDto(Map<String, List<BigDecimal>> skuIdMap, String[] dailyticket) {
+
+
+
+    public DailyDto(Map<String, List<BigDecimal>> skuIdMap, String[] dailyticket, List<String> lastTime) {
         this.skuIdMap = skuIdMap;
         this.dailyticket = dailyticket;
+        this.lastTime = lastTime;
     }
 
     public Map<String, List<BigDecimal>> getSkuIdMap() {
@@ -43,5 +48,13 @@ public class DailyDto {
 
     public void setNowtime(String nowtime) {
         this.nowtime = nowtime;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }

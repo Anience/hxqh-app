@@ -17,12 +17,23 @@
 			height: 100%;
 			background: #03071D;
 		}
+		.ticket-time{
+			color: #fff;
+			font-size: 26px;
+			height:46px;
+			width: 500px;
+			line-height:46px;
+			display: block;
+			float: right;
+		}
 	</style>
 </head>
 <body>
 	<div class="daily-layout">
 		<div id="echart1" style="height: 80%;width: 100%;"></div>
+		<span class="ticket-time"></span>
 	</div>
+
 </body>
 <script type="text/javascript" src="${ctx}/js/wifi/daily.js"></script>
 <script src="${ctx}/script/echarts-all.js"></script>
