@@ -125,18 +125,18 @@ public class SystemServiceImpl implements SystemService {
         }
         if (null != custname) {
             params.put("custname", custname);
-            where.append(" and custname like '%'"+custname+"'%' ");
+            where.append(" and custname like '%'" + custname + "'%' ");
         }
         if (null != custtype) {
             params.put("DS", custtype);
             where.append(" and custtype = :DS");
         }
-        if (null!=crank) {
+        if (null != crank) {
             params.put("crank", crank);
             where.append(" and crank = :crank");
         }
-
-        return tbIocCustTop7Dao.findAll(where.toString(), params, null);
+        List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(where.toString(), params, null);
+        return iocCustTop7s;
     }
 
     @Override
@@ -161,6 +161,17 @@ public class SystemServiceImpl implements SystemService {
             sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" or div=:div ");
             ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
         }
+
+        String whereTop21 = "custtype=:div";
+        List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(whereTop21, params, null);
+
+        for (TbIoccustomeruser e : ioccustomeruserList) {
+            for (TbIocCustTop7 custTop7 : iocCustTop7s){
+                if(e.getGrpCust().equals(custTop7.getCustid()))
+                    ioccustomeruserList.remove(e);
+            }
+        }
+
         return ioccustomeruserList;
     }
 
