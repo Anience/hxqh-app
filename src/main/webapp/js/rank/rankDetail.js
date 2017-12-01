@@ -77,7 +77,6 @@ $(function () {
             method: "get",
             dataType: "json",
             data:{
-                name:custName,
                 div:type
             },
             success: function (data) {

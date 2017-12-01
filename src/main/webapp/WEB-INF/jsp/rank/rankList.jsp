@@ -29,7 +29,7 @@
                 <td width="7%">Customer Num</td>
                 <td width="7%">Customer Name</td>
                 <td width="7%">Rank</td>
-                <td width="7%" class="custtype">Type</td>
+                <td width="7%" >Type</td>
                 <td width="7%" style="display: none;">ioccustomerusertop7id</td>
                 <td width="7%">Operation</td>
             </tr>
