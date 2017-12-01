@@ -298,7 +298,8 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/customeruserListData", method = RequestMethod.GET)
-    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name, @RequestParam("div") String div) {
+    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name,
+                                                        @RequestParam("div") String div) {
         return systemService.customeruserListData(name, div);
     }
 
