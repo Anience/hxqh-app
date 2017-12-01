@@ -32,11 +32,11 @@
     </p>
     <p class="item">
         <label>Customer Name</label>
-        <input type="text" :value="custname" readonly id="custName">
+        <input type="text" :value="custname" readonly>
     </p>
     <p class="item">
         <label for="">Type</label>
-        <input type="text" :value="custtype" readonly id="type">
+        <input type="text" :value="custtype" readonly class="type">
     </p>
     <p class="item" style="margin-bottom: 50px;padding-left: 2%;">
         <label for="">Rank</label>
@@ -65,7 +65,7 @@
                         <input type="text" id="custName">
                     </td>
                     <td>
-                        <input type="text" id="type">
+                        <input type="text" id="type" readonly>
                     </td>
                 </tr>
             </thead>

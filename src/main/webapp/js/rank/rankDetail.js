@@ -71,13 +71,15 @@ $(function () {
     });
     function searchCustumer(){
         var custName = $("input#custName").val();
-        var type = $("input#type").val();
+        var type = $("input.type").val();
+        $("input#type").val(type);
         $.ajax({
             url: _ctx+"/system/customeruserListData",
             method: "get",
             dataType: "json",
             data:{
-                div:type
+                div:type,
+                name:custName
             },
             success: function (data) {
                 $('.box table tbody').html("");
