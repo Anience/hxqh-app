@@ -143,35 +143,38 @@ public class SystemServiceImpl implements SystemService {
     public List<TbIoccustomeruser> customeruserListData(String name, String div) {
         Map<String, Object> params = new HashMap<>();
 
+        StringBuilder where = new StringBuilder();
+        where.append(" 1=1 ");
+
+
         List<TbIoccustomeruser> ioccustomeruserList = new ArrayList<>();
-        if (name.equals("") && div.equals("")) {
+        if (name != null && div != null) {
             ioccustomeruserList = ioccustomeruserDao.findAll();
-        } else if (name.equals("")) {
-            params.put("div", div);
-            String where = "div=:div";
-            ioccustomeruserList = ioccustomeruserDao.findAll(where, params, null);
-        } else if (div.equals("")) {
-            params.put("custName", name.trim());
-            StringBuilder sb = new StringBuilder("");
-            sb.append(" custName like '%'||").append(":custName").append("||'%' ");
-            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
-        } else {
-            params.put("custName", name.trim());
-            StringBuilder sb = new StringBuilder("");
-            sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" or div=:div ");
-            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
         }
+        if (div != null) {
+            params.put("div", div);
+            where.append("and div=:div");
+        }
+        if (name != null) {
+            params.put("custName", name.trim());
+            where.append(" and custName like '%'||").append(":custName").append("||'%' ");
+        }
+        ioccustomeruserList = ioccustomeruserDao.findAll(where.toString(), params, null);
+
 
         String whereTop21 = "custtype=:div";
         List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(whereTop21, params, null);
 
+        List<TbIoccustomeruser> removeList = new ArrayList<>();
         for (TbIoccustomeruser e : ioccustomeruserList) {
-            for (TbIocCustTop7 custTop7 : iocCustTop7s){
-                if(e.getGrpCust().equals(custTop7.getCustid()))
-                    ioccustomeruserList.remove(e);
+            for (TbIocCustTop7 custTop7 : iocCustTop7s) {
+                if (e.getGrpCust() != null && custTop7.getCustid() != null) {
+                    if (e.getGrpCust().equals(custTop7.getCustid()))
+                        removeList.add(e);
+                }
             }
         }
-
+        ioccustomeruserList.removeAll(removeList);
         return ioccustomeruserList;
     }
 
