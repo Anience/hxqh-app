@@ -110,7 +110,7 @@ $(function () {
                                formatter: "{b}",
                                textStyle: {
                                    color: '#fff',
-                                   fontSize: 5
+                                   fontSize: 9
                                }
                            },
                            lineStyle: {

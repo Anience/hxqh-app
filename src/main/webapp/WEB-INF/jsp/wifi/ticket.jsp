@@ -54,9 +54,9 @@
 		<tbody></tbody>
 
 	</table>
-	<span class="ticket-tit2">Menang = Create > Close Ticket Today</span>&nbsp;&nbsp;
-	<span class="ticket-tit2">KALAH = Create < Close Ticket Today</span>&nbsp;&nbsp;
-	<span class="ticket-tit2">SERI = Create = Close Ticket Today</span>
+	<span class="ticket-tit2">Menang : Create > Close Ticket Today</span>&nbsp;&nbsp;
+	<span class="ticket-tit2">KALAH : Create < Close Ticket Today</span>&nbsp;&nbsp;
+	<span class="ticket-tit2">SERI : Create = Close Ticket Today</span>
 </div>
 </body>
 </html>

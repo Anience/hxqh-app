@@ -34,10 +34,11 @@
 			color: #fff;
 			font-size: 26px;
 			height:46px;
-			width: 40%;
+			width: 55%;
 			line-height:46px;
 			display: block;
 			float: right;
+			text-align: right;
 		}
 		#mob91 p{
 			color: #fff;

@@ -1,7 +1,7 @@
 .tit{
     width: 800px;
-    height:110px;
-    line-height:110px;
+    height:160px;
+    line-height:80px;
     background-color: /* #C8032A */#ed3237;
     position: absolute;
     left: 50%;
@@ -12,7 +12,7 @@
 p{
     text-align: center;
     color: #fff;
-    line-height: 100px;
+    line-height: 80px;
     font-size: 78px;
 }
 table.top-table thead{

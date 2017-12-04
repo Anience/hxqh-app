@@ -141,7 +141,7 @@ $(function () {
                 initEchart('echart1',data.mob88MttrList);
                 initEchart('echart2',data.mob88MttiList);
                 self.perforList = data.perforList;
-
+                $('.ticket-tit2').text("Last Update: "+ data.perforList[0].aggts);
                 var LT = "";
 
                 for(var i =0;i<data.mob88MttiList.length;i++){

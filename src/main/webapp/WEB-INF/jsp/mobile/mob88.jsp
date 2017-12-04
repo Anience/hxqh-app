@@ -31,7 +31,8 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-				<span class="ticket-tit">Threshold Target = 95%</span>
+				<span class="ticket-tit">Threshold Target = 95%</span><br />
+				<span class="ticket-tit2"></span>
 			</div>
 			<div class="col-sm-7" style="padding-top: 80px;">
 				<div id="echart1" class="row" style="height:300px;"></div>

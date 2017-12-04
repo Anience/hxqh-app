@@ -17,8 +17,10 @@
 </head>
 <body>
 <div class="ticket-layout" style="padding-bottom: 100px;">
-	<div style=" width: 100%; height: 50px; background: #1F3E50;"><h4>Distribution AP Status Report</h4><span class="ticket-time"></span></div>
 
+	<h4><span class="ticket-tit">Distribution AP Status Report</span>
+		<span class="ticket-time"></span>
+	</h4>
 	<table class="distribution">
 		<thead>
 			<tr>

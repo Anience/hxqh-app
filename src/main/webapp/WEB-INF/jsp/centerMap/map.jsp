@@ -12,10 +12,26 @@
 	<script>
 		var _ctx = "${ctx}";
 	</script>
+    <script type="text/javascript">
+        function showTime(){
+            nowtime=new Date();
+            year=nowtime.getFullYear();
+            month=nowtime.getMonth()+1;
+            date=nowtime.getDate();
+            hour =nowtime.getHours();
+            min = nowtime.getMinutes();
+            sec = nowtime.getSeconds();
+            document.getElementById("ticket-time").innerText=year+"-"+month+"-"+date+" "+hour +":"+min+":"+sec;
+        }
+
+        setInterval("showTime()",1000);
+
+    </script>
+
 </head>
 <body>
    <div class="tit">
-	   <p style="">Network Surveillance</p>
+	   <p style="">Network Surveillance<br /> <span id="ticket-time" style=" font-size:55px; "></span></p>
    </div>
    <div class="top-table-div">
 	   <table class="top-table" style="width: 100%; height: 100%;text-align:center;" border="0" cellpadding="2" cellspacing="0">

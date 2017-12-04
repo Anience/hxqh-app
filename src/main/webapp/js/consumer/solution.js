@@ -22,10 +22,11 @@ $(function(){
 				}
 				if(_type == '4'){
                     initEchart("echart1","Node:"+echartData[0].name,nameList,echartData[0].tmpLine,echartData[0].tmpBar);
-                    scroll(0,5);
+                    scroll(0,4);
 				}else{
                     initEchart("echart1","Node:"+echartData[4].name,nameList,echartData[0].tmpLine,echartData[0].tmpBar);
-                    scroll(5,9);
+                    i=4;
+                    scroll(4,8);
 				}
 
 			},
@@ -39,6 +40,7 @@ $(function(){
            i++;
            if(i>=count){
               i=init;
+               initEchart("echart1","Node:"+echartData[i].name,nameList,echartData[i].tmpLine,echartData[i].tmpBar);
            }else{
            	  initEchart("echart1","Node:"+echartData[i].name,nameList,echartData[i].tmpLine,echartData[i].tmpBar);
            }
