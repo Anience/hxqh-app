@@ -8,7 +8,7 @@ $(function () {
             custname: '',
             custid:'',
             custtype:'',
-            custrank:'',
+            crank:'',
             newId:'',
             shortName:''
         },
@@ -60,7 +60,7 @@ $(function () {
                     self.custname = data.custname;
                     self.custid = data.custid;
                     self.custtype = data.custtype;
-                    self.custrank = data.custrank;
+                    self.crank = data.crank;
                     self.shortName = data.name;
                 },
                 error: function () {
@@ -71,14 +71,15 @@ $(function () {
     });
     function searchCustumer(){
         var custName = $("input#custName").val();
-        var type = $("input#type").val();
+        var type = $("input.type").val();
+        $("input#type").val(type);
         $.ajax({
             url: _ctx+"/system/customeruserListData",
             method: "get",
             dataType: "json",
             data:{
-                name:custName,
-                div:type
+                div:type,
+                name:custName
             },
             success: function (data) {
                 $('.box table tbody').html("");

@@ -28,7 +28,7 @@
     <p class="item" style="position: relative;padding-left: 2%;">
         <label for="custid">Customer Num</label>
         <input type="text"  :value="custid" v-model="custid" name="custid">
-        <div class="search-name"></div>
+        <i class="search-name"></i>
     </p>
     <p class="item">
         <label>Customer Name</label>
@@ -36,11 +36,11 @@
     </p>
     <p class="item">
         <label for="">Type</label>
-        <input type="text" :value="custtype" readonly>
+        <input type="text" :value="custtype" readonly class="type">
     </p>
     <p class="item" style="margin-bottom: 50px;padding-left: 2%;">
         <label for="">Rank</label>
-        <input type="text" :value="custrank" readonly>
+        <input type="text" :value="crank" readonly>
     </p>
     <p class="item">
         <label>Short Name</label>
@@ -65,7 +65,7 @@
                         <input type="text" id="custName">
                     </td>
                     <td>
-                        <input type="text" id="type">
+                        <input type="text" id="type" readonly>
                     </td>
                 </tr>
             </thead>

@@ -114,40 +114,67 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public List<TbIocCustTop7> custtop7ListData(String custtype) {
+    public List<TbIocCustTop7> custtop7ListData(String custid, String custname, String custtype, Integer crank) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("custtype", "DWS");
-        String where = "custtype<>:custtype";
-        if (null != custtype)
-        {
-            params.put("DS", custtype);
-            where = "custtype<>:custtype and custtype = :DS";
+        StringBuilder where = new StringBuilder();
+        where.append("custtype<>:custtype");
+        if (null != custid) {
+            params.put("custid", custid);
+            where.append(" and custid = :custid");
         }
-        return tbIocCustTop7Dao.findAll(where, params, null);
+        if (null != custname) {
+            params.put("custname", custname);
+            where.append(" and custname like '%'" + custname + "'%' ");
+        }
+        if (null != custtype) {
+            params.put("DS", custtype);
+            where.append(" and custtype = :DS");
+        }
+        if (null != crank) {
+            params.put("crank", crank);
+            where.append(" and crank = :crank");
+        }
+        List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(where.toString(), params, null);
+        return iocCustTop7s;
     }
 
     @Override
     public List<TbIoccustomeruser> customeruserListData(String name, String div) {
         Map<String, Object> params = new HashMap<>();
 
+        StringBuilder where = new StringBuilder();
+        where.append(" 1=1 ");
+
+
         List<TbIoccustomeruser> ioccustomeruserList = new ArrayList<>();
-        if (name.equals("") && div.equals("")) {
+        if (name != null && div != null) {
             ioccustomeruserList = ioccustomeruserDao.findAll();
-        } else if (name.equals("")) {
-            params.put("div", div);
-            String where = "div=:div";
-            ioccustomeruserList = ioccustomeruserDao.findAll(where, params, null);
-        } else if (div.equals("")) {
-            params.put("custName", name.trim());
-            StringBuilder sb = new StringBuilder("");
-            sb.append(" custName like '%'||").append(":custName").append("||'%' ");
-            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
-        } else {
-            params.put("custName", name.trim());
-            StringBuilder sb = new StringBuilder("");
-            sb.append(" custName like '%'||").append(":custName").append("||'%' ").append(" or div=:div ");
-            ioccustomeruserList = ioccustomeruserDao.findAll(sb.toString(), params, null);
         }
+        if (div != null) {
+            params.put("div", div);
+            where.append("and div=:div");
+        }
+        if (name != null) {
+            params.put("custName", name.trim());
+            where.append(" and custName like '%'||").append(":custName").append("||'%' ");
+        }
+        ioccustomeruserList = ioccustomeruserDao.findAll(where.toString(), params, null);
+
+
+        String whereTop21 = "custtype=:div";
+        List<TbIocCustTop7> iocCustTop7s = tbIocCustTop7Dao.findAll(whereTop21, params, null);
+
+        List<TbIoccustomeruser> removeList = new ArrayList<>();
+        for (TbIoccustomeruser e : ioccustomeruserList) {
+            for (TbIocCustTop7 custTop7 : iocCustTop7s) {
+                if (e.getGrpCust() != null && custTop7.getCustid() != null) {
+                    if (e.getGrpCust().equals(custTop7.getCustid()))
+                        removeList.add(e);
+                }
+            }
+        }
+        ioccustomeruserList.removeAll(removeList);
         return ioccustomeruserList;
     }
 

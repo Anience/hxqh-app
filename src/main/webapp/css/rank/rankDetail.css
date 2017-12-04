@@ -22,25 +22,31 @@
     margin-right: 5px;
     color: #fff;
     width:80px;
+    display: block;
+    float: left;
 }
 .item  input{
     border-radius: 5px;
     border: 1px solid #d5d5d5;
     height: 35px;
     margin-top: 3px;
+    display: block;
+    float: left;
 }
 .item  input:hover{
     border: 1px solid #d5d5d5;
 }
-div.search-name{
+i.search-name{
     display: block;
+    float: left;
     width: 20px;
     height: 20px;
     background: red;
     float: left;
-    position: absolute;
-    right: 0px;
-    top: 0px;
+    background: url("../../imgs/search.png") no-repeat;
+    background-size: 20px 20px;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 p.btn-item{
     width: 100%;

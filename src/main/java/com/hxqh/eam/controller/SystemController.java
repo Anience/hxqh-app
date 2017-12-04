@@ -258,8 +258,12 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/custtop7ListData", method = RequestMethod.GET)
-    public List<TbIocCustTop7> custtop7ListData(@RequestParam(value = "custtype",required = false) String custtype) {
-        return systemService.custtop7ListData(custtype);
+    public List<TbIocCustTop7> custtop7ListData(
+            @RequestParam(value = "custid", required = false) String custid,
+            @RequestParam(value = "custname", required = false) String custname,
+            @RequestParam(value = "custtype", required = false) String custtype,
+            @RequestParam(value = "crank", required = false) Integer crank) {
+        return systemService.custtop7ListData(custid, custname, custtype, crank);
     }
 
     /**
@@ -294,7 +298,8 @@ public class SystemController {
      */
     @ResponseBody
     @RequestMapping(value = "/customeruserListData", method = RequestMethod.GET)
-    public List<TbIoccustomeruser> customeruserListData(@RequestParam("name") String name, @RequestParam("div") String div) {
+    public List<TbIoccustomeruser> customeruserListData(@RequestParam(value = "name", required = false) String name,
+                                                        @RequestParam("div") String div) {
         return systemService.customeruserListData(name, div);
     }
 
@@ -761,7 +766,7 @@ public class SystemController {
                                   @ModelAttribute("sessionInfo") SessionInfo sessionInfo) {
         Message message = null;
         try {
-            int i = systemService.modifyPassword(password,sessionInfo.getName());
+            int i = systemService.modifyPassword(password, sessionInfo.getName());
             message = new Message(IConstants.SUCCESS, IConstants.OPSUCCESS);
 
         } catch (Exception e) {
