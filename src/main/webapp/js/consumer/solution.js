@@ -13,6 +13,14 @@ $(function(){
 				nameList = data.nList;
 				var dataLine = data.answM;  //折线
 				var dataBar = data.seizM;
+				var time = "Last Update: ";
+				for(var i =0;i<data.lastTime.length;i++){
+					if(data.lastTime[i]!="" && data.lastTime[i]!=null) {
+                        time += data.lastTime[i];
+                        break;
+                    }
+				}
+				$('.ticket-time').text(time);
 				for(var name in dataLine){
 					var tmpObj = {};
 					tmpObj.name = name;

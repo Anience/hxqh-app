@@ -11,15 +11,19 @@ public class VoiceDto {
     private Map<String, List<BigDecimal>> seizM;
     private Map<String, List<BigDecimal>> answM;
     private List<String> nList;
+    private List<String> lastTime;
 
     public VoiceDto() {
     }
 
-    public VoiceDto(Map<String, List<BigDecimal>> seizM, Map<String, List<BigDecimal>> answM, List<String> nList) {
+    public VoiceDto(Map<String, List<BigDecimal>> seizM, Map<String, List<BigDecimal>> answM, List<String> nList, List<String> lastTime) {
         this.seizM = seizM;
         this.answM = answM;
         this.nList = nList;
+        this.lastTime = lastTime;
     }
+
+
 
     public Map<String, List<BigDecimal>> getSeizM() {
         return seizM;
@@ -43,5 +47,13 @@ public class VoiceDto {
 
     public void setnList(List<String> nList) {
         this.nList = nList;
+    }
+
+    public List<String> getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(List<String> lastTime) {
+        this.lastTime = lastTime;
     }
 }

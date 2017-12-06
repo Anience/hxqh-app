@@ -210,6 +210,7 @@ public class AnoServiceImpl implements AnoService {
             }
         });
 
+        List<String> lastTime = new ArrayList<>();
         Map<String, List<BigDecimal>> seizM = new LinkedHashMap<>();
         Map<String, List<BigDecimal>> answM = new LinkedHashMap<>();
         for (Map.Entry<String, List<TbIocConsumerVoiceTraffic>> m : listMap.entrySet()) {
@@ -219,6 +220,7 @@ public class AnoServiceImpl implements AnoService {
             for (TbIocConsumerVoiceTraffic l : m.getValue()) {
                 seiz.add(l.getSeiz());
                 answ.add(l.getAnsw());
+                lastTime.add(l.getAggts());
             }
             seizM.put(m.getKey(), seiz);
             answM.put(m.getKey(), answ);
@@ -231,7 +233,7 @@ public class AnoServiceImpl implements AnoService {
         for (EnterpriseNameDto nameDto : nameList) {
             nList.add(nameDto.getName());
         }
-        VoiceDto voiceDto = new VoiceDto(seizM, answM, nList);
+        VoiceDto voiceDto = new VoiceDto(seizM, answM, nList, lastTime);
         return voiceDto;
     }
 

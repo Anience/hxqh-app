@@ -11,10 +11,22 @@
 		var _ctx = "${ctx}";
 		var _type = "${page}";
 	</script>
+	<style>
+		.ticket-time{
+			color: #fff;
+			font-size: 29px;
+			height:46px;
+			width: 30%;
+			line-height:46px;
+			display: block;
+			float: right;
+		}
+	</style>
 </head>
 <body>
 <div class="new3-layout">
-	<h4>Consumer- Voice Traffic</h4>
+	<div style=" width: 100%; height: 50px;"><h4>Consumer- Voice Traffic</h4><span class="ticket-time"></span></div>
+
 	<div id="echart1" style="height:80%; "></div>
 </div>
 </body>

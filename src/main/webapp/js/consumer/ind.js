@@ -17,7 +17,7 @@ $(function(){
                 dealData(impactList);
                 dealData(regularList);
                 dealData(totalList);
-                $('.ind-time').text(data.clienttime);
+                $('.ind-time').text(impactList[0].aggts);
                 var totalHtml = initDom(totalList);
                 var imHtml = initDom(impactList);
                 var reHtml = initDom(regularList);

@@ -833,5 +833,10 @@ public class SystemController {
         return new ModelAndView("singleLogin/telkomsolution");
     }
 
+    @RequestMapping(value = "/uad", method = RequestMethod.GET)
+    public ModelAndView uad() {
+        return new ModelAndView("singleLogin/uad");
+    }
+
 
 }

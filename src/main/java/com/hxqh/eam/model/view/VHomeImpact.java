@@ -28,6 +28,9 @@ public class VHomeImpact implements Serializable {
     @Column(name = "IMDEV")
     private BigDecimal dev;
 
+    @Column(name = "AGG_TS")
+    private String aggts;
+
     @Id
     private String regional;
 
@@ -82,4 +85,11 @@ public class VHomeImpact implements Serializable {
         this.regional = regional;
     }
 
+    public String getAggts() {
+        return aggts;
+    }
+
+    public void setAggts(String aggts) {
+        this.aggts = aggts;
+    }
 }

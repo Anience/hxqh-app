@@ -41,6 +41,9 @@ public class TbIocConsumerVoiceTraffic implements Serializable {
 
 	private String ts;
 
+	@Column(name="AGG_TS")
+	private String aggts;
+
 	public TbIocConsumerVoiceTraffic() {
 	}
 
@@ -124,4 +127,11 @@ public class TbIocConsumerVoiceTraffic implements Serializable {
 		this.ts = ts;
 	}
 
+	public String getAggts() {
+		return aggts;
+	}
+
+	public void setAggts(String aggts) {
+		this.aggts = aggts;
+	}
 }
