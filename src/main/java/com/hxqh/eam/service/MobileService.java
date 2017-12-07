@@ -31,7 +31,7 @@ public interface MobileService {
 
     List<TbIocMobilePerforBadMsg> badmsgData(String treg, String type);
 
-    List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg, String sourceType);
+    List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg);
 
     TopoDto topoData();
 }

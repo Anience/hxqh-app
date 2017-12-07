@@ -87,16 +87,16 @@ public class MobileServiceImpl implements MobileService {
         List<String> timeList = new ArrayList<>();
         List<VMob92> li = new ArrayList<VMob92>();
         for (Map.Entry<String, List<VMob92>> entry : map.entrySet()) {
-             li = entry.getValue();
+            li = entry.getValue();
             Mob92Dto mob92Dto = getMob92Dto(entry.getValue());
             dtoMap.put(entry.getKey(), mob92Dto);
 
         }
         for (VMob92 mob92 : li) {
-            if(mob92.getAggts()!=null && mob92.getAggts() != "")
-                   timeList.add(mob92.getAggts()) ;
+            if (mob92.getAggts() != null && mob92.getAggts() != "")
+                timeList.add(mob92.getAggts());
         }
-        Moblie92 moblie92 = new Moblie92(dtoMap,timeList);
+        Moblie92 moblie92 = new Moblie92(dtoMap, timeList);
         return moblie92;
     }
 
@@ -303,13 +303,14 @@ public class MobileServiceImpl implements MobileService {
     }
 
     @Override
-    public List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg, String sourceType) {
+    public List<MobileCnopMsg> cnopNoBadData(String kpitype, String treg) {
         Map<String, Object> params = new HashMap<>();
         params.put("treg", treg);
         params.put("kpiType", kpitype);
-        params.put("sourceType", sourceType);
+        params.put("sourceType1", "NoData");
+        params.put("sourceType2", "Bad");
 
-        String where = "treg=:treg and kpiType =:kpiType and sourceType=:sourceType";
+        String where = "treg=:treg and kpiType =:kpiType and (sourceType=:sourceType1 or sourceType=:sourceType2)";
         return mobileCnopMsgDao.findAll(where, params, null);
     }
 
