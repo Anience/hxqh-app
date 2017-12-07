@@ -4,6 +4,7 @@ package com.hxqh.eam.controller;
  * Created by Ocean Lin on 2017/6/26.
  */
 
+import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.model.MobileCnopMsg;
 import com.hxqh.eam.model.TbIocMobilePerforBadMsg;
 import com.hxqh.eam.model.dto.*;
@@ -12,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/mobile")
@@ -169,9 +172,22 @@ public class MobileController {
      */
     @ResponseBody
     @RequestMapping(value = "/cnopNoBad", method = RequestMethod.GET)
-    public List<MobileCnopMsg> cnopNoBad(@RequestParam("kpitype") String kpitype,
-                                         @RequestParam("treg") String treg) {
-        return mobileService.cnopNoBadData(kpitype, treg);
+    public Map<String, List<MobileCnopMsg>> cnopNoBad(@RequestParam("kpitype") String kpitype,
+                                                      @RequestParam("treg") String treg) {
+
+        List<MobileCnopMsg> mobileCnopMsgsList = mobileService.cnopNoBadData(kpitype, treg);
+        Map<String, List<MobileCnopMsg>> mobileCnopMsgsMap = new HashMap<>();
+        if (mobileCnopMsgsList.size() > 0) {
+            //对mobileCnopMsgsList分组
+            mobileCnopMsgsMap = GroupListUtil.group(mobileCnopMsgsList, new GroupListUtil.GroupBy<String>() {
+                @Override
+                public String groupby(Object obj) {
+                    MobileCnopMsg d = (MobileCnopMsg) obj;
+                    return d.getSourceType();    // 分组依据为SourceType
+                }
+            });
+        }
+        return mobileCnopMsgsMap;
     }
 
 

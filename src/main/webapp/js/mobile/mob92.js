@@ -259,56 +259,86 @@ $(function(){
                     data: {
                         kpitype : _kpitype,
                         treg  : _treg,
-                        sourceType: 'NoData'
                     },
                     dataType: "json",
                     success: function(data){
-                        data1 = data;
-                    },
-                    error: function(){
+                                data1 = data.NoData||[];
+                                data2 = data.Bad||[];
+                                var tmpHtml = "";
+                                var data1Len = data1.length||0;
+                                var data2Len = data2.length||0;
+                                //如果数据长度相等
+                                if(data1Len==data2Len){
+                                    for(var i=0;i<data1.length;i++){
+                                        tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                                    }
+                                }
+                                //如果数据长度不一样
+                                if(data1Len<data2Len){
+                                    for(var i=0;i<data1.length;i++){
+                                        tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                                    }
+                                    for(var j=i;j<data2.length;j++){
+                                        tmpHtml += "<tr><td></td><td>"+data2[j].msg+"</td></tr>";
+                                    }
+                                }
+                                if(data1Len>data2Len){
+                                    for(var i=0;i<data2.length;i++){
+                                        tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                                    }
+                                    for(var j=i;j<data1.length;j++){
+                                        tmpHtml += "<tr><td>"+data1[j].msg+"</td><td></td></tr>";
+                                    }
+                                }
 
-                    }
-                })
-                $.ajax({
-                    url: _ctx+"/mobile/cnopNoBad",
-                    method: "get",
-                    data: {
-                        kpitype : _kpitype,
-                        treg  : _treg,
-                        sourceType: 'Bad'
-                    },
-                    dataType: "json",
-                    success: function(data){
-                        data2 = data;
-                        var tmpHtml = "";
-                        var data1Len = data1.length;
-                        var data2Len = data2.length;
-                        //如果数据长度相等
-                        if(data1Len==data2Len){
-                            for(var i=0;i<data1.length;i++){
-                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
-                            }
-                        }
-                        //如果数据长度不一样
-                        if(data1Len<data2Len){
-                            for(var i=0;i<data1.length;i++){
-                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
-                            }
-                            for(var j=i;j<data2.length;j++){
-                                tmpHtml += "<tr><td></td><td>"+data2[j].msg+"</td></tr>";
-                            }
-                        }
-                        if(data1Len>data2Len){
-                            for(var i=0;i<data2.length;i++){
-                                tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
-                            }
-                            for(var j=i;j<data1.length;j++){
-                                tmpHtml += "<tr><td>"+data1[j].msg+"</td><td></td></tr>";
-                            }
-                        }
+                                $(".noData-content table tbody").html(tmpHtml);
+                                $(".noData-content").show();
 
-                        $(".noData-content table tbody").html(tmpHtml);
-                        $(".noData-content").show();
+                        // $.ajax({
+                        //     url: _ctx+"/mobile/cnopNoBad",
+                        //     method: "get",
+                        //     data: {
+                        //         kpitype : _kpitype,
+                        //         treg  : _treg,
+                        //         sourceType: 'Bad'
+                        //     },
+                        //     dataType: "json",
+                        //     success: function(data){
+                        //         data2 = data;
+                        //         var tmpHtml = "";
+                        //         var data1Len = data1.length;
+                        //         var data2Len = data2.length;
+                        //         //如果数据长度相等
+                        //         if(data1Len==data2Len){
+                        //             for(var i=0;i<data1.length;i++){
+                        //                 tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                        //             }
+                        //         }
+                        //         //如果数据长度不一样
+                        //         if(data1Len<data2Len){
+                        //             for(var i=0;i<data1.length;i++){
+                        //                 tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                        //             }
+                        //             for(var j=i;j<data2.length;j++){
+                        //                 tmpHtml += "<tr><td></td><td>"+data2[j].msg+"</td></tr>";
+                        //             }
+                        //         }
+                        //         if(data1Len>data2Len){
+                        //             for(var i=0;i<data2.length;i++){
+                        //                 tmpHtml += "<tr><td>"+data1[i].msg+"</td><td>"+data2[i].msg+"</td></tr>";
+                        //             }
+                        //             for(var j=i;j<data1.length;j++){
+                        //                 tmpHtml += "<tr><td>"+data1[j].msg+"</td><td></td></tr>";
+                        //             }
+                        //         }
+                        //
+                        //         $(".noData-content table tbody").html(tmpHtml);
+                        //         $(".noData-content").show();
+                        //     },
+                        //     error: function(){
+                        //
+                        //     }
+                        // })
                     },
                     error: function(){
 
