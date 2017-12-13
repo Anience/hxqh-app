@@ -40,7 +40,7 @@ public class EnterpriseController {
         if (!type.equals("DWS")) {
             if (integer == 1) {
                 return new ModelAndView("enterprise/top1", result);
-            } else{
+            } else {
                 return new ModelAndView("enterprise/top2", result);
             }
         } else {
@@ -50,12 +50,11 @@ public class EnterpriseController {
 
 
     /**
-     * enterprise  government business Top1Data Top2&3 Top4~7数据接口
-     *
-     *  1    2    3    4   5 (1个用户轮询5次) 情况A
-     *  67    89  1011  1213 (2个用户轮询4次) 情况B
-     *  1415 1617 1819  2021 (2个用户轮询4次) 情况C
-     *
+     * enterprise government business Top1~5Data Top6~13 Top14~21数据接口、wholesale数据接口
+     * <p>
+     * 1    2    3    4   5 (1个用户轮询5次) 情况A
+     * 67    89  1011  1213 (2个用户轮询4次) 情况B
+     * 1415 1617 1819  2021 (2个用户轮询4次) 情况C
      *
      * @param show 情况A传入(1,2,3,4,5);  情况B传入(6,8,10,12);  情况C(14,16,18,20)
      * @param type DBS DES DGS
@@ -95,6 +94,7 @@ public class EnterpriseController {
         EntDto entDto = enterpriseService.getEntData(type);
         return entDto;
     }
+
     /**
      * urls 页面跳转接口
      *

@@ -75,7 +75,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
             return enterpriseDto;
-        } else if ((DAILY.contains(type) && integer == 2) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
+        } else if (DAILY.contains(type) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
             //处理两个Dto
             String rank2 = "and (custrank=:custrank2)";
             String rank3 = "and (custrank=:custrank3)";
@@ -116,17 +116,24 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             String rank6 = "and (custrank=:custrank6)";
             String rank7 = "and (custrank=:custrank7)";
 
-            if (integer == 4 && DAILY.contains(type)) {
-                params.put("custrank4", integer);
-                params.put("custrank5", integer + 1);
-                params.put("custrank6", integer + 2);
-                params.put("custrank7", integer + 3);
-            } else {//(type.equals("DWS") && integer == 18)
-                params.put("custrank4", integer - 3);
-                params.put("custrank5", integer - 2);
-                params.put("custrank6", integer - 1);
-                params.put("custrank7", integer);
-            }
+
+            params.put("custrank4", integer - 3);
+            params.put("custrank5", integer - 2);
+            params.put("custrank6", integer - 1);
+            params.put("custrank7", integer);
+
+//            if (integer == 4 && DAILY.contains(type)) {
+//                // 2017年12月需求变更后 本段内容失效
+//                params.put("custrank4", integer);
+//                params.put("custrank5", integer + 1);
+//                params.put("custrank6", integer + 2);
+//                params.put("custrank7", integer + 3);
+//            } else {//(type.equals("DWS") && integer == 18)
+//                params.put("custrank4", integer - 3);
+//                params.put("custrank5", integer - 2);
+//                params.put("custrank6", integer - 1);
+//                params.put("custrank7", integer);
+//            }
             String rightnowWhere4, roactiveWhere4, rightnowWhere5, roactiveWhere5, rightnowWhere6, roactiveWhere6, rightnowWhere7, roactiveWhere7;
             rightnowWhere4 = where1 + rank4;
             roactiveWhere4 = where2 + rank4;
@@ -138,28 +145,37 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             roactiveWhere7 = where2 + rank7;
 
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
-            if (integer == 4 && DAILY.contains(type)) {
-                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show + 1, type, params, rightnowWhere5, roactiveWhere5);
-                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show + 2, type, params, rightnowWhere6, roactiveWhere6);
-                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show + 3, type, params, rightnowWhere7, roactiveWhere7);
-                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
-                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
-                enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
-                enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
-            } else {//(type.equals("DWS") && integer == 18)
-                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
-                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show - 1, type, params, rightnowWhere5, roactiveWhere5);
-                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show - 2, type, params, rightnowWhere6, roactiveWhere6);
-                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show - 3, type, params, rightnowWhere7, roactiveWhere7);
-                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
-                enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
-                enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
-                enterpriseMap.put(String.valueOf(integer - 3), enterpriseTopDto7);
-            }
+            EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+            EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show - 1, type, params, rightnowWhere5, roactiveWhere5);
+            EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show - 2, type, params, rightnowWhere6, roactiveWhere6);
+            EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show - 3, type, params, rightnowWhere7, roactiveWhere7);
+            enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+            enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
+            enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
+            enterpriseMap.put(String.valueOf(integer - 3), enterpriseTopDto7);
+
+//            if (integer == 4 && DAILY.contains(type)) {
+//                // 2017年12月需求变更后 本段内容失效
+//                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+//                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show + 1, type, params, rightnowWhere5, roactiveWhere5);
+//                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show + 2, type, params, rightnowWhere6, roactiveWhere6);
+//                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show + 3, type, params, rightnowWhere7, roactiveWhere7);
+//                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+//                enterpriseMap.put(String.valueOf(integer + 1), enterpriseTopDto5);
+//                enterpriseMap.put(String.valueOf(integer + 2), enterpriseTopDto6);
+//                enterpriseMap.put(String.valueOf(integer + 3), enterpriseTopDto7);
+//            } else {//(type.equals("DWS") && integer == 18)
+//                EnterpriseTopDto enterpriseTopDto4 = generateEnterpriseDto(show, type, params, rightnowWhere4, roactiveWhere4);
+//                EnterpriseTopDto enterpriseTopDto5 = generateEnterpriseDto(show - 1, type, params, rightnowWhere5, roactiveWhere5);
+//                EnterpriseTopDto enterpriseTopDto6 = generateEnterpriseDto(show - 2, type, params, rightnowWhere6, roactiveWhere6);
+//                EnterpriseTopDto enterpriseTopDto7 = generateEnterpriseDto(show - 3, type, params, rightnowWhere7, roactiveWhere7);
+//                enterpriseMap.put(String.valueOf(integer), enterpriseTopDto4);
+//                enterpriseMap.put(String.valueOf(integer - 1), enterpriseTopDto5);
+//                enterpriseMap.put(String.valueOf(integer - 2), enterpriseTopDto6);
+//                enterpriseMap.put(String.valueOf(integer - 3), enterpriseTopDto7);
+//            }
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
-
             return enterpriseDto;
         }
     }
