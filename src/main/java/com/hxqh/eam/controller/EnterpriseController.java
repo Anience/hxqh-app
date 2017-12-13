@@ -52,6 +52,13 @@ public class EnterpriseController {
     /**
      * enterprise  government business Top1Data Top2&3 Top4~7数据接口
      *
+     *  1    2    3    4   5 (1个用户轮询5次) 情况A
+     *  67    89  1011  1213 (2个用户轮询4次) 情况B
+     *  1415 1617 1819  2021 (2个用户轮询4次) 情况C
+     *
+     *
+     * @param show 情况A传入(1,2,3,4,5);  情况B传入(6,8,10,12);  情况C(14,16,18,20)
+     * @param type DBS DES DGS
      * @return
      */
     @ResponseBody

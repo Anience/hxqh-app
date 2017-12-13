@@ -40,6 +40,14 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
     @Override
     public EnterpriseDto getTopData(Integer show, String type) {
+        // 需求变更 7用户扩展为21用户
+        // DBG总体统计不变
+        // 总计修改9块屏幕显示数据
+
+        // 1    2    3    4   5 (1个用户轮询5次)
+        // 67    89  1011  1213 (2个用户轮询4次)
+        // 1415 1617 1819  2021 (2个用户轮询4次)
+
 
         //查询左侧RIGHTNOW PROACTIVE
         Map<String, Object> params = new HashMap<>();
@@ -54,23 +62,25 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         Integer integer = Integer.valueOf(show);
         //实现方法返回一个list，其中有2个或者多个对象EnterpriseTopDto
 
-        if (integer == 1 && DAILY.contains(type)) {
-            params.put("custrank", 1);
+        if (integer <= 5 && DAILY.contains(type)) {
+            // 1    2    3    4    5 (1个用户轮询5次)
+            params.put("custrank", integer);
             rightnowWhere = where1 + "and custrank=:custrank";
             roactiveWhere = where2 + "and custrank=:custrank";
-            //处理一个Dto
 
+            //处理一个Dto
             EnterpriseTopDto enterpriseTopDto = generateEnterpriseDto(show, type, params, rightnowWhere, roactiveWhere);
             Map<String, EnterpriseTopDto> enterpriseMap = new HashMap<>();
             enterpriseMap.put(String.valueOf(integer), enterpriseTopDto);
 
             EnterpriseDto enterpriseDto = new EnterpriseDto(enterpriseMap);
             return enterpriseDto;
-        } else if ((integer == 2 && DAILY.contains(type)) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
+        } else if ((DAILY.contains(type) && integer == 2) || (type.equals("DWS") && integer % 2 == 0 && integer != 18)) {
             //处理两个Dto
             String rank2 = "and (custrank=:custrank2)";
             String rank3 = "and (custrank=:custrank3)";
             if (!type.equals("DWS")) {
+                // 67    89  1011  1213 (2个用户轮询4次)
                 params.put("custrank2", integer);
                 params.put("custrank3", integer + 1);
             } else {
