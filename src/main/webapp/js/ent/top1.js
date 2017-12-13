@@ -2,6 +2,14 @@
  * Created by lenovo on 2017/6/26.
  */
 $(function(){
+    var dataSet = {
+        1:{},
+        2:{},
+        3:{},
+        4:{},
+        5:{}
+    };
+    var tool = new entUtil();
     function initData(){
         $.ajax({
             url: _ctx+"/enterprise/top1Data",
@@ -28,7 +36,6 @@ $(function(){
                         break;
                 }
                 window.clearInterval(timer);
-                var tool = new entUtil();
                 if(_type == "DWS"){
                     var j = parseInt(_show);
                     //wholesale
@@ -91,9 +98,46 @@ $(function(){
                     //enterprise
                     tool.headerInit(data.enterpriseMap["1"],"",pageTit);
                     var data1 = tool.dealData(data.enterpriseMap["1"]);
+                    dataSet["1"]=data.enterpriseMap["1"];
                     //initEchart1折线图，initEchart2圆形图
                     initPage(data1);
+                    getData(2);
+                    var i = 1;
+                    var timer = setInterval(function(){
+                        i++;
+                        if(i==6){
+                           i=1;
+                        }
+                        showEnt(i,pageTit);
+                    },30000);
                 }
+            },
+            error: function(){
+
+            }
+        })
+    }
+    function showEnt(n,pageTit){
+        //enterprise
+        tool.headerInit(dataSet[n],"",pageTit);
+        var data1 = tool.dealData(dataSet[n]);
+        //initEchart1折线图，initEchart2圆形图
+        initPage(data1);
+        if(n<5&&JSON.stringify(dataSet[n+1]) == "{}"){
+            getData(n+1);
+        }
+    }
+    function getData(n){
+        $.ajax({
+            url: _ctx+"/enterprise/top1Data",
+            method: "get",
+            data:{
+                type: _type,
+                show: n
+            },
+            dataType: "json",
+            success: function(data){
+                dataSet[n] = data.enterpriseMap[n];
             },
             error: function(){
 
