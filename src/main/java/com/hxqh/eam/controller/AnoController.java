@@ -349,4 +349,11 @@ public class AnoController {
     }
     /***********************************provisioning***************************************/
 
+
+
+    //前端临时测试跳转接口
+    @RequestMapping(value = "/asr", method = RequestMethod.GET)
+    public String asr() {
+        return "new_chrismas/asr_bdis";
+    }
 }
