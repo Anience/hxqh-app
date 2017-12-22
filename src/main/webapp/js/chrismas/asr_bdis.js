@@ -1,6 +1,17 @@
 
 $(function(){
     function init(){
+        $.ajax({
+            url: _ctx+"/ano/asrsummaryData",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                //处理数据，数据顺序输出
+                initELine('echart1');
+            },
+            error: function () {
+            }
+        });
         initELine('echart1');
         //轮播图
         var j = 0;

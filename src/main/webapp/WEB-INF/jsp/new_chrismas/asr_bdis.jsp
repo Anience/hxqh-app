@@ -22,6 +22,39 @@
 <div class="layout">
     <div class="box">
         <h4 class="tit"></h4>
+        <table class="perservice">
+            <thead>
+                <tr>
+                    <td width="3%"></td>
+                    <td width="7%">Jan</td>
+                    <td width="7%">Feb</td>
+                    <td width="7%">Mar</td>
+                    <td width="7%">Apr</td>
+                    <td width="7%">May</td>
+                    <td width="7%">May</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="3%">Previous</td>
+                    <td width="7%">Jan</td>
+                    <td width="7%">Feb</td>
+                    <td width="7%">Mar</td>
+                    <td width="7%">Apr</td>
+                    <td width="7%">May</td>
+                    <td width="7%">May</td>
+                </tr>
+                <tr>
+                    <td width="3%">current</td>
+                    <td width="7%">Jan</td>
+                    <td width="7%">Feb</td>
+                    <td width="7%">Mar</td>
+                    <td width="7%">Apr</td>
+                    <td width="7%">May</td>
+                    <td width="7%">May</td>
+                </tr>
+            </tbody>
+        </table>
         <div id="echart1"></div>
         <div class="scoll-nav">
             <ul class="sec-nav">
