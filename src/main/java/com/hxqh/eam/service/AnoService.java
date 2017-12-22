@@ -2,6 +2,9 @@ package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.ComplaintData;
 import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.action.ArsDto;
+import com.hxqh.eam.model.dto.action.CbrbdisDto;
+import com.hxqh.eam.model.dto.action.CbrsummaryDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -43,7 +46,11 @@ public interface AnoService {
 
     SrviewDto getSrviewData();
 
-    AsrsummaryDto getAsrsummaryData();
+    ArsDto getAsrsummaryData();
 
     AsrbdisDto asrbdisData();
+
+    CbrbdisDto getCbrbdisData();
+
+    CbrsummaryDto cbrsummaryData();
 }

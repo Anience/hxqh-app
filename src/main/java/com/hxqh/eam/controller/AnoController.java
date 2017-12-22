@@ -6,6 +6,9 @@ package com.hxqh.eam.controller;
 
 import com.hxqh.eam.model.ComplaintData;
 import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.action.ArsDto;
+import com.hxqh.eam.model.dto.action.CbrbdisDto;
+import com.hxqh.eam.model.dto.action.CbrsummaryDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -246,8 +249,8 @@ public class AnoController {
         return srviewDto;
     }
 
-    // 圣诞节展示开始
 
+    // 圣诞节展示开始
     /**
      * asrbdis 页面跳转接口
      *
@@ -257,7 +260,6 @@ public class AnoController {
     public String asrbdis() {
         return "new_chrismas/asr_bdis";
     }
-
     /**
      * asrbdis 数据接口
      *
@@ -272,6 +274,7 @@ public class AnoController {
 
 
 
+
     /**
      * asrsummary 页面跳转接口
      *
@@ -281,30 +284,15 @@ public class AnoController {
     public String asrsummary() {
         return "new_chrismas/asr_summary";
     }
-
-//    /**
-//     * asrsummary 数据接口
-//     *
-//     * @return
-//     */
-//    @ResponseBody
-//    @RequestMapping(value = "/asrsummaryData", method = RequestMethod.GET)
-//    public AsrsummaryDto asrsummaryData() {
-//        return anoService.getAsrsummaryData();
-//    }
-
-
-
-
-
     /**
-     * asrbdis 页面跳转接口
+     * asrsummary 数据接口
      *
      * @return
      */
-    @RequestMapping(value = "/cbrbdis", method = RequestMethod.GET)
-    public String cbrbdis() {
-        return "new_chrismas/cbr_bdis";
+    @ResponseBody
+    @RequestMapping(value = "/asrsummaryData", method = RequestMethod.GET)
+    public ArsDto asrsummaryData() {
+        return anoService.getAsrsummaryData();
     }
 
 
@@ -312,17 +300,47 @@ public class AnoController {
 
 
 
+    /**
+     * cbrbdis 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/cbrbdis", method = RequestMethod.GET)
+    public String cbrbdis() {
+        return "new_chrismas/cbr_bdis";
+    }
+    /**
+     * cbrbdis 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/cbrbdisData", method = RequestMethod.GET)
+    public CbrbdisDto cbrbdisData() {
+        return anoService.getCbrbdisData();
+    }
+
 
 
 
     /**
-     * asrbdis 页面跳转接口
+     * cbrsummary 页面跳转接口
      *
      * @return
      */
     @RequestMapping(value = "/cbrsummary", method = RequestMethod.GET)
     public String cbrsummary() {
         return "new_chrismas/cbr_summary";
+    }
+    /**
+     * cbrsummary 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/cbrsummaryData", method = RequestMethod.GET)
+    public CbrsummaryDto cbrsummaryData() {
+        return anoService.cbrsummaryData();
     }
 
     /***********************************Consumer*******************************************/

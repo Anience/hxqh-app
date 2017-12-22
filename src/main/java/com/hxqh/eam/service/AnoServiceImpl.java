@@ -5,6 +5,8 @@ import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
+import com.hxqh.eam.model.dto.action.CbrbdisDto;
+import com.hxqh.eam.model.dto.action.CbrsummaryDto;
 import com.hxqh.eam.model.view.*;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -560,23 +562,41 @@ public class AnoServiceImpl implements AnoService {
     }
 
 
-    //    @Autowired
-//    private TAsrWeekDao tAsrWeekDao;
-//    @Autowired
-//    private TAsrMonthDao tAsrMonthDao;
-//    @Autowired
-//    private VAsrDayDao vAsrDayDao;
-//    @Autowired
-//    private VNodeweekstatisticDao vNodeweekstatisticDao;
-//    @Autowired
-//    private VTotalMonthAsrDao vTotalMonthAsrDao;
-//    @Autowired
-//    private VTotalMonthDao vTotalMonthDao;
-//    @Autowired
-//    private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
     @Override
-    public AsrsummaryDto getAsrsummaryData() {
-        return null;
+    public ArsDto getAsrsummaryData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("w1Tanggal", "asc");
+        List<VNodeweekstatistic> vNodeweekstatistics = vNodeweekstatisticDao.findAll(null, null, orderby);
+
+
+        List<String> w1Aser = new LinkedList<>();
+        List<String> w2Aser = new LinkedList<>();
+
+        List<Long> w1Attempt = new LinkedList<>();
+        List<Long> w1Answer = new LinkedList<>();
+
+        List<Long> w2Attempt = new LinkedList<>();
+        List<Long> w2Answer = new LinkedList<>();
+
+        List<String> weekday = new LinkedList<>();
+
+        List<Long> w1Oglost = new LinkedList<>();
+        List<Long> w2Oglost = new LinkedList<>();
+
+        for (VNodeweekstatistic tAsrWeek : vNodeweekstatistics) {
+
+            w1Aser.add(tAsrWeek.getW1Asr());
+            w2Aser.add(tAsrWeek.getW2Asr());
+            w1Attempt.add(tAsrWeek.getW1Attempt());
+            w1Answer.add(tAsrWeek.getW2Attempt());
+            w2Attempt.add(tAsrWeek.getW2Attempt());
+            w2Answer.add(tAsrWeek.getW2Answer());
+            weekday.add(tAsrWeek.getWeekday());
+            w1Oglost.add(tAsrWeek.getW1Oglost());
+            w2Oglost.add(tAsrWeek.getW2Oglost());
+        }
+        return new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
+                weekday, w1Oglost, w2Oglost, null, null, null);
     }
 
     @Override
@@ -596,7 +616,6 @@ public class AnoServiceImpl implements AnoService {
 
         Map<String, ArsDto> arsMap = new LinkedHashMap<>();
         for (String key : group.keySet()) {
-            // System.out.println("key= "+ key + " and value= " + group.get(key));
             List<TAsrWeek> weeks = group.get(key);
 
 
@@ -611,6 +630,13 @@ public class AnoServiceImpl implements AnoService {
 
             List<String> weekday = new LinkedList<>();
 
+            List<Long> w1Oglost = new LinkedList<>();
+            List<Long> w2Oglost = new LinkedList<>();
+
+            List<String> w1Asrerror = new LinkedList<>();
+            List<String> w2Asrerror = new LinkedList<>();
+
+
             for (TAsrWeek tAsrWeek : weeks) {
                 w1Aser.add(tAsrWeek.getW1Asrsuccess());
                 w2Aser.add(tAsrWeek.getW2Asrsuccess());
@@ -619,11 +645,117 @@ public class AnoServiceImpl implements AnoService {
                 w2Attempt.add(tAsrWeek.getW2Attempt());
                 w2Answer.add(tAsrWeek.getW2Answer());
                 weekday.add(tAsrWeek.getWeekday());
+                w1Oglost.add(tAsrWeek.getW1Oglost());
+                w2Oglost.add(tAsrWeek.getW2Oglost());
+                w1Asrerror.add(tAsrWeek.getW1Asrerror());
+                w2Asrerror.add(tAsrWeek.getW2Asrerror());
             }
-            arsMap.put(key, new ArsDto(w1Aser,w2Aser,w1Attempt,w1Answer,w2Attempt,w2Answer,weekday));
+            arsMap.put(key, new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
+                    weekday, w1Oglost, w2Oglost, w1Asrerror, w2Asrerror, null));
         }
 
         return new AsrbdisDto(arsMap);
+    }
+
+    @Override
+    public CbrbdisDto getCbrbdisData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("w1Tanggal", "asc");
+        List<TAsrMonth> tAsrMonths = tAsrMonthDao.findAll(null, null, orderby);
+
+        Map<String, List<TAsrMonth>> group = GroupListUtil.group(tAsrMonths, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TAsrMonth d = (TAsrMonth) obj;
+                return d.getNode();    // 分组依据为Node
+            }
+        });
+
+
+        List<VTotalNodeMonthAsr> totalNodeMonthAsrs = vTotalNodeMonthAsrDao.findAll();
+        Map<String, List<VTotalNodeMonthAsr>> listMap = GroupListUtil.group(totalNodeMonthAsrs, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                VTotalNodeMonthAsr d = (VTotalNodeMonthAsr) obj;
+                return d.getNode();    // 分组依据为Node
+            }
+        });
+
+
+        Map<String, ArsDto> arsMap = new LinkedHashMap<>();
+        for (String key : group.keySet()) {
+            List<TAsrMonth> weeks = group.get(key);
+
+            List<String> w1Aser = new LinkedList<>();
+            List<String> w2Aser = new LinkedList<>();
+
+            List<Long> w1Attempt = new LinkedList<>();
+            List<Long> w1Answer = new LinkedList<>();
+
+            List<Long> w2Attempt = new LinkedList<>();
+            List<Long> w2Answer = new LinkedList<>();
+
+            List<String> weekday = new LinkedList<>();
+
+            List<Long> w1Oglost = new LinkedList<>();
+            List<Long> w2Oglost = new LinkedList<>();
+
+            List<String> w1Asrerror = new LinkedList<>();
+            List<String> w2Asrerror = new LinkedList<>();
+
+
+            for (TAsrMonth tAsrWeek : weeks) {
+                w1Attempt.add(tAsrWeek.getW1Attempt());
+                w1Answer.add(tAsrWeek.getW1Answer());
+                w2Attempt.add(tAsrWeek.getW2Attempt());
+                w2Answer.add(tAsrWeek.getW2Answer());
+                weekday.add(tAsrWeek.getW1Tanggal());
+                w1Oglost.add(tAsrWeek.getW1Oglost());
+                w2Oglost.add(tAsrWeek.getW2Oglost());
+                w1Asrerror.add(tAsrWeek.getW1Asrerror());
+                w2Asrerror.add(tAsrWeek.getW2Asrerror());
+            }
+
+            arsMap.put(key, new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
+                    weekday, w1Oglost, w2Oglost, w1Asrerror, w2Asrerror, listMap.get(key).get(0)));
+        }
+
+        return new CbrbdisDto(arsMap);
+    }
+
+    @Override
+    public CbrsummaryDto cbrsummaryData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("w1Mm", "asc");
+        List<VTotalMonth> vTotalMonths = vTotalMonthDao.findAll(null, null, orderby);
+
+        List<Long> w1Attempt = new LinkedList<>();
+        List<Long> w1Answer = new LinkedList<>();
+
+        List<Long> w2Attempt = new LinkedList<>();
+        List<Long> w2Answer = new LinkedList<>();
+
+        List<String> weekday = new LinkedList<>();
+
+        List<Long> w1Oglost = new LinkedList<>();
+        List<Long> w2Oglost = new LinkedList<>();
+
+        for (VTotalMonth tAsrWeek : vTotalMonths) {
+            w1Attempt.add(tAsrWeek.getW1Attempt());
+            w1Answer.add(tAsrWeek.getW1Answer());
+            w2Attempt.add(tAsrWeek.getW2Attempt());
+            w2Answer.add(tAsrWeek.getW2Answer());
+            weekday.add(tAsrWeek.getW1Mm());
+            w1Oglost.add(tAsrWeek.getW1Oglost());
+            w2Oglost.add(tAsrWeek.getW2Oglost());
+        }
+
+        ArsDto arsDto = new ArsDto(null, null, w1Attempt, w1Answer, w2Attempt, w2Answer,
+                weekday, w1Oglost, w2Oglost, null, null, null);
+        List<VTotalMonthAsr> vTotalMonthAsrs = vTotalMonthAsrDao.findAll();
+
+
+        return new CbrsummaryDto(arsDto, vTotalMonthAsrs);
     }
 
 }
