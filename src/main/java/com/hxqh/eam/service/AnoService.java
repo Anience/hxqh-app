@@ -42,4 +42,6 @@ public interface AnoService {
     ComplaintData getComplaintData();
 
     SrviewDto getSrviewData();
+
+    AsrsummaryDto getAsrsummaryData();
 }

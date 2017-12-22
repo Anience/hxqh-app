@@ -187,6 +187,7 @@ public class AnoController {
         result.put("page", type);
         return new ModelAndView("consumer/voice", result);
     }
+
     /**
      * voice traffic performance  数据接口
      *
@@ -216,7 +217,7 @@ public class AnoController {
      * @return
      */
     @ResponseBody
-        @RequestMapping(value = "/solutionData", method = RequestMethod.GET)
+    @RequestMapping(value = "/solutionData", method = RequestMethod.GET)
     public SolutionDto getSolutionData() {
         SolutionDto solutionData = anoService.getSolutionData();
         return solutionData;
@@ -232,6 +233,7 @@ public class AnoController {
     public String wifiInd() {
         return "consumer/srview";
     }
+
     /**
      * SR view 数据接口
      *
@@ -244,6 +246,75 @@ public class AnoController {
         return srviewDto;
     }
 
+    // 圣诞节展示开始
+
+    /**
+     * asrbdis 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/asrbdis", method = RequestMethod.GET)
+    public String asrbdis() {
+        return "new_chrismas/asr_bdis";
+    }
+
+
+
+
+
+
+    /**
+     * asrsummary 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/asrsummary", method = RequestMethod.GET)
+    public String asrsummary() {
+        return "new_chrismas/asr_summary";
+    }
+
+    /**
+     * asrsummary 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/asrsummaryData", method = RequestMethod.GET)
+    public AsrsummaryDto asrsummaryData() {
+        return anoService.getAsrsummaryData();
+    }
+
+
+
+
+
+    /**
+     * asrbdis 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/cbrbdis", method = RequestMethod.GET)
+    public String cbrbdis() {
+        return "new_chrismas/cbr_bdis";
+    }
+
+
+
+
+
+
+
+
+
+    /**
+     * asrbdis 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/cbrsummary", method = RequestMethod.GET)
+    public String cbrsummary() {
+        return "new_chrismas/cbr_summary";
+    }
 
     /***********************************Consumer*******************************************/
     /***********************************provisioning***************************************/
@@ -347,8 +418,8 @@ public class AnoController {
     public String graphUrl() {
         return "consumer/graphUrl";
     }
-    /***********************************provisioning***************************************/
 
+    /***********************************provisioning***************************************/
 
 
     //前端临时测试跳转接口

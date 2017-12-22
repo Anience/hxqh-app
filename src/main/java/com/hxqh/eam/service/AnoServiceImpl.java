@@ -25,7 +25,7 @@ public class AnoServiceImpl implements AnoService {
 
 
     private static final String[] PILLLIST = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"};
-   // private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
+    // private static final String[] LINELIST = {"A", "B", "C", "D", "E", "F"};
     private static final String[] LINELIST = {"A", "B", "C", "D", "E"};
     @Autowired
     private VAno81Dao ano81Dao;
@@ -63,6 +63,23 @@ public class AnoServiceImpl implements AnoService {
     private TbIocConsSrMoningDao iocConsSrMoningDao;
     @Autowired
     private TbIocProInstallDao iocProInstallDao;
+
+    @Autowired
+    private TAsrWeekDao tAsrWeekDao;
+    @Autowired
+    private TAsrMonthDao tAsrMonthDao;
+    @Autowired
+    private VAsrDayDao vAsrDayDao;
+    @Autowired
+    private VNodeweekstatisticDao vNodeweekstatisticDao;
+    @Autowired
+    private VTotalMonthAsrDao vTotalMonthAsrDao;
+    @Autowired
+    private VTotalMonthDao vTotalMonthDao;
+    @Autowired
+    private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
+
+
     @Resource
     protected SessionFactory sessionFactory;
 
@@ -70,14 +87,14 @@ public class AnoServiceImpl implements AnoService {
     public List<VAno81> getAno81Data() {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("ioc1", "desc");
-        return ano81Dao.findAll(null,null,orderby);
+        return ano81Dao.findAll(null, null, orderby);
     }
 
     @Override
     public List<VAno82> getAno82Data() {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("ioc3", "desc");
-        return ano82Dao.findAll(null,null,orderby);
+        return ano82Dao.findAll(null, null, orderby);
     }
 
     @Override
@@ -129,7 +146,7 @@ public class AnoServiceImpl implements AnoService {
         List<VMapOpenmaptable> mapOpenmaptable = mapOpenmaptableDao.findAll();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("dates", "desc");
-        List<VMapOpenmaptableRighttable> mapOpenmaptableRighttable = mapOpenmaptableRighttableDao.findAll(null,null,orderby);
+        List<VMapOpenmaptableRighttable> mapOpenmaptableRighttable = mapOpenmaptableRighttableDao.findAll(null, null, orderby);
         //对mapOpenmaptable分组
         Map<String, List<VMapOpenmaptable>> mapOpenmaptableMap = GroupListUtil.group(mapOpenmaptable, new GroupListUtil.GroupBy<String>() {
             @Override
@@ -281,7 +298,7 @@ public class AnoServiceImpl implements AnoService {
         Map<String, TbIocConsSrMoning> sumMap = new LinkedHashMap<>();
         List<String> lastTime = new ArrayList<>();
         for (Map.Entry<String, List<TbIocConsSrMoning>> map : listMap.entrySet()) {
-            TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l,0l);
+            TbIocConsSrMoning sum = new TbIocConsSrMoning(0l, 0l, 0l, 0l, 0l, 0l, 0l);
             for (TbIocConsSrMoning ele : map.getValue()) {
                 sum.setA(sum.getA() + ele.getA());
                 sum.setB(sum.getB() + ele.getB());
@@ -457,7 +474,7 @@ public class AnoServiceImpl implements AnoService {
             listUN.put(m.getKey(), UNList);
         }
 
-        return new ComplaintData(listM,listUN,listTime);
+        return new ComplaintData(listM, listUN, listTime);
     }
 
 
@@ -539,6 +556,39 @@ public class AnoServiceImpl implements AnoService {
 
         SrviewDto srviewDto = new SrviewDto(PILLLIST, pillM, LINELIST, lineM, lastTime);
         return srviewDto;
+    }
+
+
+    //    @Autowired
+//    private TAsrWeekDao tAsrWeekDao;
+//    @Autowired
+//    private TAsrMonthDao tAsrMonthDao;
+//    @Autowired
+//    private VAsrDayDao vAsrDayDao;
+//    @Autowired
+//    private VNodeweekstatisticDao vNodeweekstatisticDao;
+//    @Autowired
+//    private VTotalMonthAsrDao vTotalMonthAsrDao;
+//    @Autowired
+//    private VTotalMonthDao vTotalMonthDao;
+//    @Autowired
+//    private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
+    @Override
+    public AsrsummaryDto getAsrsummaryData() {
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
+        orderby.put("w1Tanggal", "asc");
+
+        List<TAsrWeek> tAsrWeeks = tAsrWeekDao.findAll(null, null, orderby);
+
+        final Map<String, List<TAsrWeek>> group = GroupListUtil.group(tAsrWeeks, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TAsrWeek d = (TAsrWeek) obj;
+                return d.getNode();    // 分组依据为Node
+            }
+        });
+
+        return new AsrsummaryDto(group);
     }
 
 }
