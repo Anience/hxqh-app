@@ -44,4 +44,6 @@ public interface AnoService {
     SrviewDto getSrviewData();
 
     AsrsummaryDto getAsrsummaryData();
+
+    AsrbdisDto asrbdisData();
 }

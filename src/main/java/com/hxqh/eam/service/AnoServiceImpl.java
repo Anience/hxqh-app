@@ -4,6 +4,7 @@ import com.hxqh.eam.common.util.GroupListUtil;
 import com.hxqh.eam.dao.*;
 import com.hxqh.eam.model.*;
 import com.hxqh.eam.model.dto.*;
+import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.view.*;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -575,6 +576,11 @@ public class AnoServiceImpl implements AnoService {
 //    private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
     @Override
     public AsrsummaryDto getAsrsummaryData() {
+        return null;
+    }
+
+    @Override
+    public AsrbdisDto asrbdisData() {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<>();
         orderby.put("w1Tanggal", "asc");
 
@@ -588,7 +594,36 @@ public class AnoServiceImpl implements AnoService {
             }
         });
 
-        return new AsrsummaryDto(group);
+        Map<String, ArsDto> arsMap = new LinkedHashMap<>();
+        for (String key : group.keySet()) {
+            // System.out.println("key= "+ key + " and value= " + group.get(key));
+            List<TAsrWeek> weeks = group.get(key);
+
+
+            List<String> w1Aser = new LinkedList<>();
+            List<String> w2Aser = new LinkedList<>();
+
+            List<Long> w1Attempt = new LinkedList<>();
+            List<Long> w1Answer = new LinkedList<>();
+
+            List<Long> w2Attempt = new LinkedList<>();
+            List<Long> w2Answer = new LinkedList<>();
+
+            List<String> weekday = new LinkedList<>();
+
+            for (TAsrWeek tAsrWeek : weeks) {
+                w1Aser.add(tAsrWeek.getW1Asrsuccess());
+                w2Aser.add(tAsrWeek.getW2Asrsuccess());
+                w1Attempt.add(tAsrWeek.getW1Attempt());
+                w1Answer.add(tAsrWeek.getW1Answer());
+                w2Attempt.add(tAsrWeek.getW2Attempt());
+                w2Answer.add(tAsrWeek.getW2Answer());
+                weekday.add(tAsrWeek.getWeekday());
+            }
+            arsMap.put(key, new ArsDto(w1Aser,w2Aser,w1Attempt,w1Answer,w2Attempt,w2Answer,weekday));
+        }
+
+        return new AsrbdisDto(arsMap);
     }
 
 }
