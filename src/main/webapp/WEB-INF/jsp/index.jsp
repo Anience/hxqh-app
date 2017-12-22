@@ -60,12 +60,15 @@
 				</ul>
 		    </li>
 			</c:forEach>
-		<%--<li class="menu-list"><a  href="${ctx}/system/upoint" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">upoint</span></a></li>
-        <li class="menu-list"><a  href="${ctx}/system/enterprrisegovement" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">enterprrisegovement</span></a></li>
-        <li class="menu-list"><a  href="${ctx}/system/summary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">summary</span></a></li>
-      	<li class="menu-list"><a  href="${ctx}/system/indihome" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">indihome</span></a></li>
-       	<li class="menu-list"><a  href="${ctx}/system/wifiid" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">wifiid</span></a></li>
-        <li class="menu-list"><a  href="${ctx}/system/telkomsolution" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>${child.modelname}<span class="sz">telkomsolution</span></a></li>--%>
+		<li class="menu-list">
+			<a style="border-top: none;" target="menuFrame" class="firsta" ><i  class="first-a-icon"></i>Chrismas<i class="first-a-down"></i></a>
+			<ul>
+				<li class="menu-list"><a  href="${ctx}/ano/asrsummary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>asr_summary<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/asrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>asr_node<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/asrsummary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>bdis_summary<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/asrsummary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>bdis_node<span class="sz"></span></a></li>
+			</ul>
+		</li>
     </ul>
 </div>
 <!--菜单右边的iframe页面-->

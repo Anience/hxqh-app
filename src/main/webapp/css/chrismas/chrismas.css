@@ -27,6 +27,30 @@
     height: 50%;
     width: 85%;
     margin: 0 auto;
+    margin-top: 30px;
+}
+.layout table{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.layout table thead td:not(.no-bg){
+    font-size: 24px;
+    font-family: "Arial";
+    color: rgb(159, 159, 161);
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #292a49;
+}
+.layout table tbody td{
+    border:2px solid #1a1e32;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Arial";
+    color: rgb(159, 159, 161);
 }
 .scoll-nav{
     width: 100%;

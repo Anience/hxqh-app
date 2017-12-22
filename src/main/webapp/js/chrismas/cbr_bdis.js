@@ -1,34 +1,60 @@
 
 $(function(){
     function init(){
-        initELine('echart1');
-        //轮播图
-        var j = 0;
-        setInterval(function(){
-            j++;
-            if(j>=8){
-                j=0;
-            }else{
-                var index= j;
-                var liNav = '.first-nav li';
-                var thisLi = '.first-nav li:nth-child('+index+')';
-                $(liNav).css("color","#727386");
-                $(thisLi).css("color","#fff");
+        $.ajax({
+            url: _ctx+"/ano/asrbdisData",
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                //处理数据，数据顺序输出
+                var totalData =  data.group;;
+                var legendData = ["w1Attempt","w2Attempt","w1Answer","w2Answer"];
+                var xData = totalData.BD1S.weekday;
+                var data = [];
+                for(var i=0;i<legendData.length;i++){
+                    var tmpObj = {};
+                    tmpObj.name=legendData[i];
+                    if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
+                        tmpObj.type="bar";
+                    }else{
+                        tmpObj.type="line";
+                    }
+                    tmpObj.data=totalData.BD1S[legendData[i]];
+                    data.push(tmpObj);
+                }
+                initELine('echart1',data,legendData,xData);
 
-                var liNav2 = '.sec-nav li'+' span';
-                var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
-                $(liNav2).css("backgroundColor","#0a0f25");
-                $(thisLi2).css("backgroundColor","#4a476a");
+                //轮播图
+                var j = 0;
+                setInterval(function(){
+                    j++;
+                    if(j>=8){
+                        j=0;
+                    }else{
+                        var index= j;
+                        var liNav = '.first-nav li';
+                        var thisLi = '.first-nav li:nth-child('+index+')';
+                        $(liNav).css("color","#727386");
+                        $(thisLi).css("color","#fff");
 
-                var objName = 'TREG-'+j;
-                initELine('echart1');
+                        var liNav2 = '.sec-nav li'+' span';
+                        var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+                        $(liNav2).css("backgroundColor","#0a0f25");
+                        $(thisLi2).css("backgroundColor","#4a476a");
+
+                        var objName = 'TREG-'+j;
+                        initELine('echart1');
+                    }
+                },5000);
+            },
+            error: function () {
             }
-        },5000);
+        });
     }
     init();
 
     //调用此函数时，参数domId,data,legendData,xData
-    function initELine(domId) {
+    function initELine(domId,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             backgroundColor: '#0A0F25',
@@ -38,7 +64,7 @@ $(function(){
                 trigger: 'axis'
             },
             legend: {
-                data: ['蒸发量','降水量','蒸发量line','降水量line'],
+                data: legendData,
                 x: 'center',
                 y: 'bottom',
                 textStyle: {
@@ -73,7 +99,7 @@ $(function(){
                         color: '#212538',
                     }
                 },
-                data: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
+                data: xData
             }],
             yAxis: [{
                 type: 'value',
@@ -95,28 +121,7 @@ $(function(){
                     }
                 },
             }],
-            series : [
-                {
-                    name:'蒸发量',
-                    type:'bar',
-                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-                },
-                {
-                    name:'降水量',
-                    type:'bar',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                },
-                {
-                    name:'蒸发量line',
-                    type:'line',
-                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-                },
-                {
-                    name:'降水量line',
-                    type:'line',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                }
-            ]
+            series : data
         };
         myChart.setOption(option);
     }
