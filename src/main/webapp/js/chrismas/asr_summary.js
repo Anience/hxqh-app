@@ -2,7 +2,7 @@
 $(function(){
     function init(){
         $.ajax({
-            url: _ctx+"/ano/asrbdisData",
+            url: _ctx+"/ano/asrsummaryData",
             method: "get",
             dataType: "json",
             success: function (data) {
