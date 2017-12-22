@@ -19,13 +19,27 @@
     </script>
 </head>
 <body>
-<div class="layout">
-    <div class="box">
-        <h4 class="tit"></h4>
-        <div id="echart1"></div>
-    </div>
+<div class="p_layout">
+    <div id="echart2"></div>
+    <table border="2" bordercolor="black" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>TOTAL</td>
+            <td>93.5%</td>
+        </tr>
+        <tr>
+            <td>IP RAN</td>
+            <td>93.5%</td>
+        </tr>
+        <tr>
+            <td>IP Core</td>
+            <td>93.5%</td>
+        </tr>
+        <tr>
+            <td colSpan="2">UIC:PND,DSO,TREG,TSEL</td>
+        </tr>
+    </table>
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
-<script type="text/javascript" src="${ctx}/js/chrismas/cbr_summary.js"></script>
+<script type="text/javascript" src="${ctx}/js/chrismas/progess.js"></script>
 </html>

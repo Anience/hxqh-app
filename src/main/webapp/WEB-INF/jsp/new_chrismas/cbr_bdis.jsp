@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
-  Date: 2017/8/2
-  Time: 14:35
+  Date: 2017/12/22
+  Time: 03:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,32 +21,31 @@
 <body>
 <div class="layout">
     <div class="box">
-        <h4>Monthly SLA Report</h4>
+        <h4 class="tit"></h4>
         <div id="echart1"></div>
-        <table class="perservice">
-            <thead>
-                <tr>
-                    <td width="3%" class="no-bg"></td>
-                    <td width="3%" class="no-bg"></td>
-                    <td width="7%">Jan</td>
-                    <td width="7%">Feb</td>
-                    <td width="7%">Mar</td>
-                    <td width="7%">Apr</td>
-                    <td width="7%">May</td>
-                    <td width="7%">Jun</td>
-                    <td width="7%">Jul</td>
-                    <td width="7%">Aug</td>
-                    <td width="7%">Sept</td>
-                    <td width="7%">Oct</td>
-                    <td width="7%">Nov</td>
-                    <td width="7%">Dec</td>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="scoll-nav">
+            <ul class="sec-nav">
+                <li style="margin-left: 60px;"><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
+            </ul>
+            <ul class="first-nav">
+                <li style="margin-left: 60px;">BD1S</li>
+                <li>JK1S</li>
+                <li>JK2S</li>
+                <li>SM1S</li>
+                <li>MD1S</li>
+                <li>MK1S</li>
+                <li>BM1S</li>
+            </ul>
+        </div>
     </div>
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
-<script type="text/javascript" src="${ctx}/js/peformance/perService.js"></script>
+<script type="text/javascript" src="${ctx}/js/chrismas/cbr_bdis.js"></script>
 </html>

@@ -1,29 +1,18 @@
 
 $(function(){
     function init(){
+        // $.ajax({
+        //     url: _ctx+"/sla/perserviceData",
+        //     method: "get",
+        //     dataType: "json",
+        //     success: function (data) {
+        //         //处理数据，数据顺序输出
+        //         initELine('echart1');
+        //     },
+        //     error: function () {
+        //     }
+        // });
         initELine('echart1');
-        //轮播图
-        var j = 0;
-        setInterval(function(){
-            j++;
-            if(j>=8){
-                j=0;
-            }else{
-                var index= j;
-                var liNav = '.first-nav li';
-                var thisLi = '.first-nav li:nth-child('+index+')';
-                $(liNav).css("color","#727386");
-                $(thisLi).css("color","#fff");
-
-                var liNav2 = '.sec-nav li'+' span';
-                var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
-                $(liNav2).css("backgroundColor","#0a0f25");
-                $(thisLi2).css("backgroundColor","#4a476a");
-
-                var objName = 'TREG-'+j;
-                initELine('echart1');
-            }
-        },5000);
     }
     init();
 
@@ -32,7 +21,7 @@ $(function(){
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             backgroundColor: '#0A0F25',
-            color:['#4B92D1','#70AD47','#FFC300','#A3A3A3'],
+            color:['#4a476a','#FF7F50','#32CD32','#e9e857','#4019d3','#e99c1a'],
 
             tooltip: {
                 trigger: 'axis'
