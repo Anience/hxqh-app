@@ -258,7 +258,16 @@ public class AnoController {
         return "new_chrismas/asr_bdis";
     }
 
-
+    /**
+     * asrbdis 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/asrbdisData", method = RequestMethod.GET)
+    public AsrbdisDto asrbdisData() {
+        return anoService.asrbdisData();
+    }
 
 
 
@@ -273,16 +282,16 @@ public class AnoController {
         return "new_chrismas/asr_summary";
     }
 
-    /**
-     * asrsummary 数据接口
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/asrsummaryData", method = RequestMethod.GET)
-    public AsrsummaryDto asrsummaryData() {
-        return anoService.getAsrsummaryData();
-    }
+//    /**
+//     * asrsummary 数据接口
+//     *
+//     * @return
+//     */
+//    @ResponseBody
+//    @RequestMapping(value = "/asrsummaryData", method = RequestMethod.GET)
+//    public AsrsummaryDto asrsummaryData() {
+//        return anoService.getAsrsummaryData();
+//    }
 
 
 
