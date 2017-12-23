@@ -7,6 +7,7 @@ import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
 import com.hxqh.eam.model.dto.action.CbrsummaryDto;
+import com.hxqh.eam.model.dto.action.TbNaruDto;
 import com.hxqh.eam.model.view.*;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -761,8 +762,17 @@ public class AnoServiceImpl implements AnoService {
     }
 
     @Override
-    public List<TbNaru> naruData() {
-        return tbNaruDao.findAll();
+    public TbNaruDto naruData() {
+        List<TbNaru> tbNarus = tbNaruDao.findAll();
+
+        Map<String, List<TbNaru>> listMap = GroupListUtil.group(tbNarus, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbNaru d = (TbNaru) obj;
+                return d.getChartnum();    // 分组依据为Chartnum
+            }
+        });
+        return new TbNaruDto(listMap);
     }
 
 }

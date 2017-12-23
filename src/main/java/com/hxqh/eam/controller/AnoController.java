@@ -5,11 +5,11 @@ package com.hxqh.eam.controller;
  */
 
 import com.hxqh.eam.model.ComplaintData;
-import com.hxqh.eam.model.TbNaru;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
 import com.hxqh.eam.model.dto.action.CbrsummaryDto;
+import com.hxqh.eam.model.dto.action.TbNaruDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -358,7 +358,7 @@ public class AnoController {
      */
     @ResponseBody
     @RequestMapping(value = "/naruData", method = RequestMethod.GET)
-    public List<TbNaru> naruData() {
+    public TbNaruDto naruData() {
         return anoService.naruData();
     }
 
