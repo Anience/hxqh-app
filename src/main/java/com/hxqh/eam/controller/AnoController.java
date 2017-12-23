@@ -348,7 +348,7 @@ public class AnoController {
      */
     @RequestMapping(value = "/naru", method = RequestMethod.GET)
     public String naru() {
-        return "new_chrismas/naru";
+        return "new_chrismas/progress";
     }
 
     /**
