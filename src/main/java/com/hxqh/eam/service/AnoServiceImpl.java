@@ -81,6 +81,8 @@ public class AnoServiceImpl implements AnoService {
     private VTotalMonthDao vTotalMonthDao;
     @Autowired
     private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
+    @Autowired
+    private TbNaruDao tbNaruDao;
 
 
     @Resource
@@ -756,6 +758,11 @@ public class AnoServiceImpl implements AnoService {
 
 
         return new CbrsummaryDto(arsDto, vTotalMonthAsrs);
+    }
+
+    @Override
+    public List<TbNaru> naruData() {
+        return tbNaruDao.findAll();
     }
 
 }

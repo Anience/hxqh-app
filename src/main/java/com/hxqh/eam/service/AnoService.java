@@ -1,6 +1,7 @@
 package com.hxqh.eam.service;
 
 import com.hxqh.eam.model.ComplaintData;
+import com.hxqh.eam.model.TbNaru;
 import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
@@ -53,4 +54,6 @@ public interface AnoService {
     CbrbdisDto getCbrbdisData();
 
     CbrsummaryDto cbrsummaryData();
+
+    List<TbNaru> naruData();
 }
