@@ -1,33 +1,102 @@
 
 $(function(){
+    var legendData = ["w1Attempt","w2Attempt","w1Oglost","w2Oglost"];
+    var xData = [];
     function init(){
-        // $.ajax({
-        //     url: _ctx+"/sla/perserviceData",
-        //     method: "get",
-        //     dataType: "json",
-        //     success: function (data) {
-        //         //处理数据，数据顺序输出
-        //         initELine('echart1');
-        //     },
-        //     error: function () {
-        //     }
-        // });
-        initELine('echart1');
+        getData("asrsummaryData");
+        var i = 0;
+        setInterval(function(){
+            i++;
+            if(i==2){
+                i=0;
+            }
+            if(i==0){
+                getData("cbrsummaryData","years");
+            }
+            if(i==1){
+                getData("asrsummaryData","weeks");
+            }
+        },10000)
     }
     init();
 
+    function getData(urlName,showContent){
+        var urls = _ctx+"/ano/"+urlName;
+        $.ajax({
+            url: urls,
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                if(showContent=="years"){
+                    xData = data.arsDto.weekday;
+                    tit = "Call Block Ratio (%) Summary for Years 2016 & 2017        as of 15 Dec 2017";
+                    dealData(data.arsDto,"years",data.vTotalMonthAsrs[0]);
+                }else{
+                    xData = data.weekday;
+                    tit1 = "Call Block Ratio (%) Summary for Week 1 & Week 2        as of 15 Dec 2017";
+                    $(".tit").text(tit1,"week");
+                    // 每组数据
+                    dealData(data);
+                }
+
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function dealData(datas,showContent,titData){
+        var data = [];
+        for(var i=0;i<legendData.length;i++){
+            var tmpObj = {};
+            tmpObj.name=legendData[i];
+            if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
+                tmpObj.type="bar";
+            }else{
+                tmpObj.type="line";
+            }
+            tmpObj.data=datas[legendData[i]];
+            data.push(tmpObj);
+        }
+        if(showContent=="years"){
+            $(".showcontent span:nth-child(1)").text(titData.upLost);
+            $(".showcontent span:nth-child(2)").text(titData.tlost);
+            $(".showcontent").show();
+            $("table.perservice").hide();
+        }else{
+            var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
+            var tmpHtml2 = "<tr><td width='3%'>current</td>";
+            var tmpHtml3 = "<tr><td width='3%'></td>";
+            var w1Aser = datas.w1Block;
+            var w2Aser = datas.w2Block;
+            for(var m=0;m<w1Aser.length;m++){
+                tmpHtml1+="<td>"+w1Aser[m]+"</td>";
+                tmpHtml2+="<td>"+w2Aser[m]+"</td>";
+                tmpHtml3+="<td>"+xData[m]+"</td>";
+            }
+            tmpHtml1 += "</tr>";
+            tmpHtml2 += "</tr>";
+            $("table.perservice thead").html(tmpHtml3);
+            $("table.perservice tbody").html("");
+            $("table.perservice tbody").html(tmpHtml1+tmpHtml2);
+            $("table.perservice").show();
+            $(".showcontent").hide();
+        }
+        initELine('echart1',data,legendData,xData);
+    }
+
     //调用此函数时，参数domId,data,legendData,xData
-    function initELine(domId) {
+    function initELine(domId,data,legendData,xData) {
         var myChart = echarts.init(document.getElementById(domId));
         option = {
             backgroundColor: '#0A0F25',
-            color:['#4a476a','#FF7F50','#32CD32','#e9e857','#4019d3','#e99c1a'],
+            color:['#4B92D1','#70AD47','#FFC300','#A3A3A3'],
 
             tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data: ['蒸发量','降水量','蒸发量line','降水量line'],
+                data: legendData,
                 x: 'center',
                 y: 'bottom',
                 textStyle: {
@@ -62,7 +131,7 @@ $(function(){
                         color: '#212538',
                     }
                 },
-                data: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
+                data: xData
             }],
             yAxis: [{
                 type: 'value',
@@ -84,28 +153,7 @@ $(function(){
                     }
                 },
             }],
-            series : [
-                {
-                    name:'蒸发量',
-                    type:'bar',
-                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-                },
-                {
-                    name:'降水量',
-                    type:'bar',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                },
-                {
-                    name:'蒸发量line',
-                    type:'line',
-                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-                },
-                {
-                    name:'降水量line',
-                    type:'line',
-                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                }
-            ]
+            series : data
         };
         myChart.setOption(option);
     }

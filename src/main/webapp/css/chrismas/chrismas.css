@@ -60,12 +60,12 @@
 }
 ul.first-nav{
     margin-top: 40px;
-    width: 550px;
+    width: 650px;
     margin: 30px auto;
 }
 ul.sec-nav{
     margin-top: 5px;
-    width: 550px;
+    width: 650px;
     margin: 0px auto;
 }
 ul.first-nav li{
@@ -118,4 +118,18 @@ p_layout table tr td{
     font-size: 16px;
     height: 40px;
     line-height: 40px;
+}
+.showcontent span{
+    margin-left: 80%;
+    display: block;
+    width:100px;
+    text-align: center;
+    height:60px;
+    line-height:60px;
+    border: 1px solid #434062;
+    color: #9499AD;
+    font-size: 16px;
+}
+.showcontent span:nth-child(1){
+    margin-top: 80px;
 }

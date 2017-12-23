@@ -2,7 +2,7 @@ $(function(){
     var legendData = ["w1Attempt","w2Attempt","w1Answer","w2Answer"];
     var xData = [];
     var totalData = [];
-    var dataTurn = ["BD1S","JK1S","JK2S","SM1S","MD1S","MK1S","BM1S"];
+    var dataTurn = ["BD1S","PG1S","JK1S","JK2S","SM1S","MD1S","MK1S","BM1S"];
     function init(){
         $.ajax({
             url: _ctx+"/ano/asrbdisData",
@@ -20,7 +20,7 @@ $(function(){
                 var j = 0;
                 setInterval(function(){
                     j++;
-                    if(j>=8){
+                    if(j>=9){
                         j=0;
                     }else{
                         var index= j;
@@ -61,8 +61,8 @@ $(function(){
         var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
         var tmpHtml2 = "<tr><td width='3%'>current</td>";
         var tmpHtml3 = "<tr><td width='3%'></td>";
-        var w1Aser = totalData[objName].w1Aser;
-        var w2Aser = totalData[objName].w2Aser;
+        var w1Aser = totalData[objName].w1Block;
+        var w2Aser = totalData[objName].w2Block;
         for(var m=0;m<w1Aser.length;m++){
             tmpHtml1+="<td>"+w1Aser[m]+"</td>";
             tmpHtml2+="<td>"+w2Aser[m]+"</td>";

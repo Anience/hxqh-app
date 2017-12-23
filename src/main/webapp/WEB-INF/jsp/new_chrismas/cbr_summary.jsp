@@ -22,6 +22,14 @@
 <div class="layout">
     <div class="box">
         <h4 class="tit"></h4>
+        <table class="perservice">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+        <div class="showcontent">
+            <span></span>
+            <span></span>
+        </div>
         <div id="echart1"></div>
     </div>
 </div>

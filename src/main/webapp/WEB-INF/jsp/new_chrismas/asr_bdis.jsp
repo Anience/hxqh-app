@@ -46,9 +46,11 @@
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
                 <li><span class="radius"></span></li>
+                <li><span class="radius"></span></li>
             </ul>
             <ul class="first-nav">
                 <li style="margin-left: 60px;">BD1S</li>
+                <li>PG1S</li>
                 <li>JK1S</li>
                 <li>JK2S</li>
                 <li>SM1S</li>
