@@ -9,6 +9,7 @@ import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
 import com.hxqh.eam.model.dto.action.CbrsummaryDto;
+import com.hxqh.eam.model.dto.action.TbNaruDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -251,6 +252,7 @@ public class AnoController {
 
 
     // 圣诞节展示开始
+
     /**
      * asrbdis 页面跳转接口
      *
@@ -260,6 +262,7 @@ public class AnoController {
     public String asrbdis() {
         return "new_chrismas/asr_bdis";
     }
+
     /**
      * asrbdis 数据接口
      *
@@ -272,9 +275,6 @@ public class AnoController {
     }
 
 
-
-
-
     /**
      * asrsummary 页面跳转接口
      *
@@ -284,6 +284,7 @@ public class AnoController {
     public String asrsummary() {
         return "new_chrismas/asr_summary";
     }
+
     /**
      * asrsummary 数据接口
      *
@@ -296,10 +297,6 @@ public class AnoController {
     }
 
 
-
-
-
-
     /**
      * cbrbdis 页面跳转接口
      *
@@ -309,6 +306,7 @@ public class AnoController {
     public String cbrbdis() {
         return "new_chrismas/cbr_bdis";
     }
+
     /**
      * cbrbdis 数据接口
      *
@@ -321,8 +319,6 @@ public class AnoController {
     }
 
 
-
-
     /**
      * cbrsummary 页面跳转接口
      *
@@ -332,6 +328,7 @@ public class AnoController {
     public String cbrsummary() {
         return "new_chrismas/cbr_summary";
     }
+
     /**
      * cbrsummary 数据接口
      *
@@ -342,6 +339,29 @@ public class AnoController {
     public CbrsummaryDto cbrsummaryData() {
         return anoService.cbrsummaryData();
     }
+
+
+    /**
+     * naru 页面跳转接口
+     *
+     * @return
+     */
+    @RequestMapping(value = "/naru", method = RequestMethod.GET)
+    public String naru() {
+        return "new_chrismas/naru";
+    }
+
+    /**
+     * naru 数据接口
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/naruData", method = RequestMethod.GET)
+    public TbNaruDto naruData() {
+        return anoService.naruData();
+    }
+
 
     /***********************************Consumer*******************************************/
     /***********************************provisioning***************************************/

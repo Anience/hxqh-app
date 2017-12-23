@@ -42,10 +42,33 @@ public class VNodeweekstatistic implements Serializable {
     @Column(name = "W2_OGLOST")
     private Long w2Oglost;
 
+    @Column(name = "W1_BLOCK")
+    private String w1block;
+
+    @Column(name = "W2_BLOCK")
+    private String w2block;
+
     @Id
     private String weekday;
 
+
     public VNodeweekstatistic() {
+    }
+
+    public String getW1block() {
+        return w1block;
+    }
+
+    public void setW1block(String w1block) {
+        this.w1block = w1block;
+    }
+
+    public String getW2block() {
+        return w2block;
+    }
+
+    public void setW2block(String w2block) {
+        this.w2block = w2block;
     }
 
     public Long getW1Answer() {

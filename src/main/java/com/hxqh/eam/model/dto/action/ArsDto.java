@@ -28,6 +28,10 @@ public class ArsDto {
 
     private VTotalNodeMonthAsr vTotalNodeMonthAsr;
 
+
+    private List<String> w1Block;
+    private List<String> w2Block;
+
     public ArsDto() {
     }
 
@@ -46,6 +50,23 @@ public class ArsDto {
         this.w1Asrerror = w1Asrerror;
         this.w2Asrerror = w2Asrerror;
         this.vTotalNodeMonthAsr = vTotalNodeMonthAsr;
+    }
+
+
+    public List<String> getW1Block() {
+        return w1Block;
+    }
+
+    public void setW1Block(List<String> w1Block) {
+        this.w1Block = w1Block;
+    }
+
+    public List<String> getW2Block() {
+        return w2Block;
+    }
+
+    public void setW2Block(List<String> w2Block) {
+        this.w2Block = w2Block;
     }
 
     public VTotalNodeMonthAsr getvTotalNodeMonthAsr() {

@@ -5,8 +5,20 @@
     <artifactId>hxqh-eam</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>hxqh-eam Maven Webapp</name>
+    <name>hxqh-eam Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <organization>
+        <name>HXQH Corporation</name>
+        <url>http://www.bjhxqh.com/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>HXQH Overseas Development Department</name>
+            <organization>HXQH Corporation</organization>
+        </developer>
+    </developers>
 
 
     <properties>

@@ -7,6 +7,7 @@ import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
 import com.hxqh.eam.model.dto.action.CbrsummaryDto;
+import com.hxqh.eam.model.dto.action.TbNaruDto;
 import com.hxqh.eam.model.view.*;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -81,6 +82,8 @@ public class AnoServiceImpl implements AnoService {
     private VTotalMonthDao vTotalMonthDao;
     @Autowired
     private VTotalNodeMonthAsrDao vTotalNodeMonthAsrDao;
+    @Autowired
+    private TbNaruDao tbNaruDao;
 
 
     @Resource
@@ -583,6 +586,9 @@ public class AnoServiceImpl implements AnoService {
         List<Long> w1Oglost = new LinkedList<>();
         List<Long> w2Oglost = new LinkedList<>();
 
+        List<String> w1Block = new LinkedList<>();
+        List<String> w2Block = new LinkedList<>();
+
         for (VNodeweekstatistic tAsrWeek : vNodeweekstatistics) {
 
             w1Aser.add(tAsrWeek.getW1Asr());
@@ -594,9 +600,14 @@ public class AnoServiceImpl implements AnoService {
             weekday.add(tAsrWeek.getWeekday());
             w1Oglost.add(tAsrWeek.getW1Oglost());
             w2Oglost.add(tAsrWeek.getW2Oglost());
+            w1Block.add(tAsrWeek.getW1block());
+            w2Block.add(tAsrWeek.getW2block());
         }
-        return new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
+        ArsDto arsDto = new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
                 weekday, w1Oglost, w2Oglost, null, null, null);
+        arsDto.setW1Block(w1Block);
+        arsDto.setW2Block(w2Block);
+        return arsDto;
     }
 
     @Override
@@ -756,6 +767,20 @@ public class AnoServiceImpl implements AnoService {
 
 
         return new CbrsummaryDto(arsDto, vTotalMonthAsrs);
+    }
+
+    @Override
+    public TbNaruDto naruData() {
+        List<TbNaru> tbNarus = tbNaruDao.findAll();
+
+        Map<String, List<TbNaru>> listMap = GroupListUtil.group(tbNarus, new GroupListUtil.GroupBy<String>() {
+            @Override
+            public String groupby(Object obj) {
+                TbNaru d = (TbNaru) obj;
+                return d.getChartnum();    // 分组依据为Chartnum
+            }
+        });
+        return new TbNaruDto(listMap);
     }
 
 }

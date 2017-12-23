@@ -5,6 +5,7 @@ import com.hxqh.eam.model.dto.*;
 import com.hxqh.eam.model.dto.action.ArsDto;
 import com.hxqh.eam.model.dto.action.CbrbdisDto;
 import com.hxqh.eam.model.dto.action.CbrsummaryDto;
+import com.hxqh.eam.model.dto.action.TbNaruDto;
 import com.hxqh.eam.model.view.VAno81;
 import com.hxqh.eam.model.view.VAno82;
 import com.hxqh.eam.model.view.VMapOpenmappoint;
@@ -53,4 +54,6 @@ public interface AnoService {
     CbrbdisDto getCbrbdisData();
 
     CbrsummaryDto cbrsummaryData();
+
+    TbNaruDto naruData();
 }
