@@ -67,6 +67,10 @@
 				<li class="menu-list"><a  href="${ctx}/ano/asrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>asr_node<span class="sz"></span></a></li>
 				<li class="menu-list"><a  href="${ctx}/ano/cbrsummary" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>bdis_summary<span class="sz"></span></a></li>
 				<li class="menu-list"><a  href="${ctx}/ano/cbrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>bdis_node<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/cbrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>pie_1<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/cbrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>pie_2<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/cbrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>pie_3<span class="sz"></span></a></li>
+				<li class="menu-list"><a  href="${ctx}/ano/cbrbdis" target="menuFrame" class="firsta"><i  class="glyph-icon icon-chevron-right3"></i>pie_4<span class="sz"></span></a></li>
 			</ul>
 		</li>
     </ul>
