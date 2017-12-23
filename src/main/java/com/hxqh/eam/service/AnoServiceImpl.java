@@ -586,6 +586,9 @@ public class AnoServiceImpl implements AnoService {
         List<Long> w1Oglost = new LinkedList<>();
         List<Long> w2Oglost = new LinkedList<>();
 
+        List<String> w1Block = new LinkedList<>();
+        List<String> w2Block = new LinkedList<>();
+
         for (VNodeweekstatistic tAsrWeek : vNodeweekstatistics) {
 
             w1Aser.add(tAsrWeek.getW1Asr());
@@ -597,9 +600,14 @@ public class AnoServiceImpl implements AnoService {
             weekday.add(tAsrWeek.getWeekday());
             w1Oglost.add(tAsrWeek.getW1Oglost());
             w2Oglost.add(tAsrWeek.getW2Oglost());
+            w1Block.add(tAsrWeek.getW1block());
+            w2Block.add(tAsrWeek.getW2block());
         }
-        return new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
+        ArsDto arsDto = new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
                 weekday, w1Oglost, w2Oglost, null, null, null);
+        arsDto.setW1Block(w1Block);
+        arsDto.setW2Block(w2Block);
+        return arsDto;
     }
 
     @Override
