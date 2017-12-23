@@ -347,8 +347,10 @@ public class AnoController {
      * @return
      */
     @RequestMapping(value = "/naru", method = RequestMethod.GET)
-    public String naru() {
-        return "new_chrismas/progress";
+    public ModelAndView cbrsummary(@RequestParam("pie") String pie) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("pie", pie);
+        return new ModelAndView("new_chrismas/progress", result);
     }
 
     /**

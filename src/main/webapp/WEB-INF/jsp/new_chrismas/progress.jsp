@@ -16,28 +16,14 @@
     <script type="text/javascript" src="${ctx}/script/jquery-3.2.1.min.js"></script>
     <script>
         var _ctx = "${ctx}";
+        var pie = "${pie}";
     </script>
 </head>
 <body>
 <div class="p_layout">
+    <h3></h3>
     <div id="echart2"></div>
-    <table border="2" bordercolor="black" cellspacing="0" cellpadding="5">
-        <tr>
-            <td>TOTAL</td>
-            <td>93.5%</td>
-        </tr>
-        <tr>
-            <td>IP RAN</td>
-            <td>93.5%</td>
-        </tr>
-        <tr>
-            <td>IP Core</td>
-            <td>93.5%</td>
-        </tr>
-        <tr>
-            <td colSpan="2">UIC:PND,DSO,TREG,TSEL</td>
-        </tr>
-    </table>
+    <table border="2" bordercolor="black" cellspacing="0" cellpadding="5"></table>
 </div>
 </body>
 <script src="${ctx}/script/echarts-all.js"></script>
