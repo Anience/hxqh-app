@@ -20,7 +20,7 @@ $(function(){
                 totalData =  data.group;
                 xData1 = totalData.BD1S.weekday;
                 xData = totalData.BD1S.weekday;
-                var tit1 = "Call Answer Ratio (% ASR) For BD1S on Week 1 & Week 2           as of 15 Dec 2017\n";
+                tit1 = "Call Block Ratio (%) For  BD1S on Week 1 & Week 2           as of 15 Dec 2017\n";
                 $(".tit").text(tit1);
                 // 每组数据
                 dealData(totalData.BD1S,"BD1S","weeks");
@@ -33,25 +33,28 @@ $(function(){
                         j=0;
                     }else{
                         var index= j%8;
+                        var liIndex = index+1;
                         var showContent = "weeks";
                         var liNav = '.first-nav li';
-                        var thisLi = '.first-nav li:nth-child('+index+')';
+                        var thisLi = '.first-nav li:nth-child('+liIndex+')';
                         $(liNav).css("color","#727386");
                         $(thisLi).css("color","#fff");
                         j
-                        if(j>=9){
+                        if(j>=8){
                             xData = xData2;
                             totalData = totalData2;
                             showContent = "years";
+                            tit2 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Years 2016 & 2017        as of "+getDate();
                             $(".tit").text(tit2);
                         }else{
                             xData = xData1;
                             totalData = totalData1;
                             showContent = "weeks";
+                            tit1 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Week 1 & Week 2           as of "+getDate();
                             $(".tit").text(tit1);
                         }
                         var liNav2 = '.sec-nav li'+' span';
-                        var thisLi2 = '.sec-nav li:nth-child('+index+')'+' span';
+                        var thisLi2 = '.sec-nav li:nth-child('+liIndex+')'+' span';
                         $(liNav2).css("backgroundColor","#0a0f25");
                         $(thisLi2).css("backgroundColor","#4a476a");
                         dealData(totalData[dataTurn[index]],dataTurn[index],showContent);
@@ -73,11 +76,19 @@ $(function(){
             success: function (data) {
                 totalData2 =  data.group;
                 xData2 = data.group.BD1S.weekday;
-                tit2 = "Call Block Ratio (%) For BD1S on Years 2016 & 2017        as of 15 Dec 2017";
+                tit2 = "Call Block Ratio (%) For  BD1S on Years 2016 & 2017        as of 15 Dec 2017";
             },
             error: function () {
             }
         });
+    }
+
+    function getDate(){
+        var monthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var myDate = new Date();
+        var month = myDate.getMonth();      //获取当前月份(0-11,0代表1月)
+        var dates = myDate.getDate()+" "+monthName[month]+" "+myDate.getFullYear();
+        return dates;
     }
 
     function dealData(datas,objName,showContent){

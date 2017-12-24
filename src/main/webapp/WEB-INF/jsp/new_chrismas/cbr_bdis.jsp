@@ -26,6 +26,10 @@
             <thead></thead>
             <tbody></tbody>
         </table>
+        <div class="showcontent">
+            <span></span>
+            <span></span>
+        </div>
         <div id="echart1"></div>
         <div class="scoll-nav">
             <ul class="sec-nav">

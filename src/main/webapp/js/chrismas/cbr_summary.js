@@ -27,13 +27,14 @@ $(function(){
             method: "get",
             dataType: "json",
             success: function (data) {
+                var today = getDate();
                 if(showContent=="years"){
                     xData = data.arsDto.weekday;
-                    tit = "Call Block Ratio (%) Summary for Years 2016 & 2017        as of 15 Dec 2017";
+                    tit = "Call Block Ratio (%) Summary for Years 2016 & 2017        as of "+today;
                     dealData(data.arsDto,"years",data.vTotalMonthAsrs[0]);
                 }else{
                     xData = data.weekday;
-                    tit1 = "Call Block Ratio (%) Summary for Week 1 & Week 2        as of 15 Dec 2017";
+                    tit1 = "Call Block Ratio (%) Summary for Week 1 & Week 2        as of "+today;
                     $(".tit").text(tit1,"week");
                     // 每组数据
                     dealData(data);
@@ -83,6 +84,14 @@ $(function(){
             $(".showcontent").hide();
         }
         initELine('echart1',data,legendData,xData);
+    }
+
+    function getDate(){
+        var monthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var myDate = new Date();
+        var month = myDate.getMonth();      //获取当前月份(0-11,0代表1月)
+        var dates = myDate.getDate()+" "+monthName[month]+" "+myDate.getFullYear();
+        return dates;
     }
 
     //调用此函数时，参数domId,data,legendData,xData
