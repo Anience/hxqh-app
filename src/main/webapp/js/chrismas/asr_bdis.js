@@ -163,7 +163,7 @@ j
                 axisLabel: {
                     show: true,
                     textStyle: {
-                        fontSize: 12,
+                        fontSize: 24,
                         fontFamily: "Arial",
                         color: '#9F9FA1'
                     }

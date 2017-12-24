@@ -53,14 +53,14 @@ $(function(){
                 {
                     name:"87Screen",
                     type:'pie',
-                    radius : '50%',
+                    radius : '40%',
                     center: ['50%', '50%'],
                     itemStyle:{
                         normal:{
                             label:{
                                 show: true,
                                 textStyle: {
-                                    fontSize: '18',
+                                    fontSize: '30',
                                     fontWeight: 'normal'
                                 },
                                 formatter: "{d}%"
