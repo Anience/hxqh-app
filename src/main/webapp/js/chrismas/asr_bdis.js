@@ -109,9 +109,15 @@ j
             var w1Aser = datas.w1Aser||[];
             var w2Aser = datas.w2Aser||[];
             for(var m=0;m<w1Aser.length;m++){
-                tmpHtml1+="<td>"+w1Aser[m]+"</td>";
-                tmpHtml2+="<td>"+w2Aser[m]+"</td>";
-                tmpHtml3+="<td>"+xData[m]+"</td>";
+                if(m==w1Aser.length-1){
+                    tmpHtml1+="<td style='background-color: #4B92D1'>"+w1Aser[m]+"</td>";
+                    tmpHtml2+="<td style='background-color: #70AD47'>"+w2Aser[m]+"</td>";
+                    tmpHtml3 += "<td>" + xData[m] + "</td>";
+                }else{
+                    tmpHtml1+="<td>"+w1Aser[m]+"</td>";
+                    tmpHtml2+="<td>"+w2Aser[m]+"</td>";
+                    tmpHtml3+="<td>"+xData[m]+"</td>";
+                }
             }
             tmpHtml1 += "</tr>";
             tmpHtml2 += "</tr>";
