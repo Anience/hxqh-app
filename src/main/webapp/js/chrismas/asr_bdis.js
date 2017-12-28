@@ -1,5 +1,9 @@
 $(function(){
+    var myDate = new Date();
+    var preYear = myDate.getFullYear()-1;
     var legendData = ["w1Attempt","w2Attempt","w1Answer","w2Answer"];
+    var echartLegendW = ["Previous Week Attempt","Current Week Attempt","Previous Week Answer","Current Week Answer"];
+    var echartLegendY = [preYear+" Attempt",myDate.getFullYear()+" Attempt",preYear+" Answer",myDate.getFullYear()+" Answer"];
     var xData1 = [];
     var xData2 = [];
     var xData = [];
@@ -21,7 +25,7 @@ $(function(){
                 totalData =  data.group;
                 xData1 = totalData.BD1S.weekday;
                 xData = totalData.BD1S.weekday;
-                tit1 = "Call Answer Ratio (% ASR) For BD1S on Week 1 & Week 2           as of "+today;
+                tit1 = "Call Answer Ratio (% ASR) For BD1S on Previous Week against Current Week  as of "+today;
                 $(".tit").text(tit1);
                 // 每组数据
                 dealData(totalData.BD1S,"BD1S","weeks");
@@ -40,18 +44,17 @@ $(function(){
                         var thisLi = '.first-nav li:nth-child('+liIndex+')';
                         $(liNav).css("color","#727386");
                         $(thisLi).css("color","#fff");
-j
                         if(j>=8){
                             xData = xData2;
                             totalData = totalData2;
                             showContent = "years";
-                            tit2 = "Call Answer Ratio (% ASR) For "+dataTurn[index]+" on Years 2016 & 2017         as of "+today;
+                            tit2 = "Call Answer Ratio (% ASR) For "+dataTurn[index]+" on Years "+preYear+" & "+myDate.getFullYear()+"  as of "+today;
                             $(".tit").text(tit2);
                         }else{
                             xData = xData1;
                             totalData = totalData1;
                             showContent = "weeks";
-                            tit1 =  "Call Answer Ratio (% ASR) For "+dataTurn[index]+" on Week 1 & Week 2           as of "+today;
+                            tit1 =  "Call Answer Ratio (% ASR) For "+dataTurn[index]+" on Previous Week against Current Week as of "+today;
                             $(".tit").text(tit1);
                         }
                         var liNav2 = '.sec-nav li'+' span';
@@ -77,7 +80,6 @@ j
             success: function (data) {
                 totalData2 =  data.group;
                 xData2 = data.group.BD1S.weekday;
-                tit2 = "Call Answer Ratio (% ASR) For BD1S on Years 2016 & 2017         as of "+today;
             },
             error: function () {
             }
@@ -88,7 +90,37 @@ j
         var data = [];
         for(var i=0;i<legendData.length;i++){
             var tmpObj = {};
-            tmpObj.name=legendData[i];
+            if(showContent=="years"){
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name=preYear+" Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name=myDate.getFullYear()+" Attempt";
+                        break;
+                    case 'w1Answer':
+                        tmpObj.name=preYear+" Answer";
+                        break;
+                    case 'w2Answer':
+                        tmpObj.name=myDate.getFullYear()+" Answer";
+                        break;
+                }
+            }else{
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name="Previous Week Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name="Current Week Attempt";
+                        break;
+                    case 'w1Answer':
+                        tmpObj.name="Previous Week Answer";
+                        break;
+                    case 'w2Answer':
+                        tmpObj.name="Current Week Answer";
+                        break;
+                }
+            }
             if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
                 tmpObj.type="bar";
             }else{
@@ -102,6 +134,7 @@ j
             $(".showcontent span:nth-child(2)").text(datas.w2Block);
             $(".showcontent").show();
             $("table.perservice").hide();
+            initELine('echart1',data,echartLegendY,xData);
         }else{
             var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
             var tmpHtml2 = "<tr><td width='3%'>current</td>";
@@ -126,8 +159,8 @@ j
             $("table.perservice tbody").html(tmpHtml1+tmpHtml2);
             $("table.perservice").show();
             $(".showcontent").hide();
+            initELine('echart1',data,echartLegendW,xData);
         }
-        initELine('echart1',data,legendData,xData);
     }
 
     function getDate(){

@@ -1,6 +1,10 @@
 
 $(function(){
+    var myDate = new Date();
+    var preYear = myDate.getFullYear()-1;
     var legendData = ["w1Attempt","w2Attempt","w1Answer","w2Answer"];
+    var echartLegendW = ["Previous Week Attempt","Current Week Attempt","Previous Week Answer","Current Week Answer"];
+    var echartLegendY = [preYear+" Attempt",myDate.getFullYear()+" Attempt",preYear+" Answer",myDate.getFullYear()+" Answer"];
     var xData = [];
     var tit1 = "";
     function init(){
@@ -29,13 +33,16 @@ $(function(){
             success: function (data) {
                 var today = getDate();
                 if(showContent=="years"){
+                    var myDate = new Date();
+                    var preYear = myDate.getFullYear()-1;
                     xData = data.arsDto.weekday;
-                    tit = "Call Answer Ratio (% ASR) Summary for Years 2016 & 2017         as of "+today;
+                    tit = "Call Answer Ratio (% ASR) Summary for Years "+preYear+"& "+myDate.getFullYear()+" as of "+today;
+                    $(".tit").text(tit);
                     dealData(data.arsDto,"years",data.vTotalMonthAsrs[0]);
                 }else{
                     xData = data.weekday;
-                    tit1 = "Call Answer Ratio (% ASR) Summary for Week 1 & Week 2         as of "+today;
-                    $(".tit").text(tit1,"week");
+                    tit1 = "Call Answer Ratio (% ASR) Summary for Previous Week against Current Week as of "+today;
+                    $(".tit").text(tit1);
                     // 每组数据
                     dealData(data);
                 }
@@ -58,7 +65,37 @@ $(function(){
         var data = [];
         for(var i=0;i<legendData.length;i++){
             var tmpObj = {};
-            tmpObj.name=legendData[i];
+            if(showContent=="years"){
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name=preYear+" Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name=myDate.getFullYear()+" Attempt";
+                        break;
+                    case 'w1Answer':
+                        tmpObj.name=preYear+" Answer";
+                        break;
+                    case 'w2Answer':
+                        tmpObj.name=myDate.getFullYear()+" Answer";
+                        break;
+                }
+            }else{
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name="Previous Week Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name="Current Week Attempt";
+                        break;
+                    case 'w1Answer':
+                        tmpObj.name="Previous Week Answer";
+                        break;
+                    case 'w2Answer':
+                        tmpObj.name="Current Week Answer";
+                        break;
+                }
+            }
             if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
                 tmpObj.type="bar";
             }else{
@@ -72,6 +109,7 @@ $(function(){
             $(".showcontent span:nth-child(2)").text(titData.upAns);
             $(".showcontent").show();
             $("table.perservice").hide();
+            initELine('echart1',data,echartLegendY,xData);
         }else{
             var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
             var tmpHtml2 = "<tr><td width='3%'>current</td>";
@@ -96,8 +134,8 @@ $(function(){
             $("table.perservice tbody").html(tmpHtml1+tmpHtml2);
             $("table.perservice").show();
             $(".showcontent").hide();
+            initELine('echart1',data,echartLegendW,xData);
         }
-        initELine('echart1',data,legendData,xData);
     }
 
     //调用此函数时，参数domId,data,legendData,xData

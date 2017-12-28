@@ -726,9 +726,15 @@ public class AnoServiceImpl implements AnoService {
                 w1Asrerror.add(tAsrWeek.getW1Asrerror());
                 w2Asrerror.add(tAsrWeek.getW2Asrerror());
             }
+            VTotalNodeMonthAsr vTotalNodeMonthAsr = new VTotalNodeMonthAsr();
+
+            if (listMap.get(key) != null && listMap.get(key).size() > 0)
+                vTotalNodeMonthAsr = listMap.get(key).get(0);
+            else
+                vTotalNodeMonthAsr = null;
 
             arsMap.put(key, new ArsDto(w1Aser, w2Aser, w1Attempt, w1Answer, w2Attempt, w2Answer,
-                    weekday, w1Oglost, w2Oglost, w1Asrerror, w2Asrerror, listMap.get(key).get(0)));
+                    weekday, w1Oglost, w2Oglost, w1Asrerror, w2Asrerror, vTotalNodeMonthAsr));
         }
 
         return new CbrbdisDto(arsMap);
