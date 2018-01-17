@@ -10,9 +10,11 @@ $(function(){
                 var datasUN = data.listUN;
                 var myDate = new Date();
                 var nowMon = myDate.getMonth();
+                var brTwoMon = new Date();
+                brTwoMon.setMonth(brTwoMon.getMonth()-1);
                 var Mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
                 var newMon = new Array();
-                for(var i=0 ; i<nowMon-1;i++){      //只显示两个月前的月期
+                for(var i=0 ; i<brTwoMon.getMonth();i++){      //只显示两个月前的月期
                     newMon[i]=Mon[i];
                 }
                 $('.ticket-time').text("Last Update: " +data.listTime[0]);
