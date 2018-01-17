@@ -1,7 +1,12 @@
 
 $(function(){
+    var myDate = new Date();
+    var preYear = myDate.getFullYear()-1;
     var legendData = ["w1Attempt","w2Attempt","w1Oglost","w2Oglost"];
+    var echartLegendW = ["Previous Week Attempt","Current Week Attempt","Previous Week Oglost","Current Week Oglost"];
+    var echartLegendY = [preYear+" Attempt",myDate.getFullYear()+" Attempt",preYear+" Oglost",myDate.getFullYear()+" Oglost"];
     var xData = [];
+    var tit1 = "";
     function init(){
         getData("asrsummaryData");
         var i = 0;
@@ -29,13 +34,16 @@ $(function(){
             success: function (data) {
                 var today = getDate();
                 if(showContent=="years"){
+                    var myDate = new Date();
+                    var preYear = myDate.getFullYear()-1;
                     xData = data.arsDto.weekday;
-                    tit = "Call Block Ratio (%) Summary for Years 2016 & 2017        as of "+today;
+                    var tit = "Call Block Ratio (%) Summary for Years"+preYear+"& "+myDate.getFullYear()+" as of "+today;
+                    $(".tit").text(tit);
                     dealData(data.arsDto,"years",data.vTotalMonthAsrs[0]);
                 }else{
                     xData = data.weekday;
-                    tit1 = "Call Block Ratio (%) Summary for Week 1 & Week 2        as of "+today;
-                    $(".tit").text(tit1,"week");
+                    tit1 = "Call Block Ratio (%) Summary for Previous Week against Current Week as of          as of "+today;
+                    $(".tit").text(tit1);
                     // 每组数据
                     dealData(data);
                 }
@@ -50,7 +58,37 @@ $(function(){
         var data = [];
         for(var i=0;i<legendData.length;i++){
             var tmpObj = {};
-            tmpObj.name=legendData[i];
+            if(showContent=="years"){
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name=preYear+" Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name=myDate.getFullYear()+" Attempt";
+                        break;
+                    case 'w1Oglost':
+                        tmpObj.name=preYear+" Oglost";
+                        break;
+                    case 'w2Oglost':
+                        tmpObj.name=myDate.getFullYear()+" Oglost";
+                        break;
+                }
+            }else{
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name="Previous Week Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name="Current Week Attempt";
+                        break;
+                    case 'w1Oglost':
+                        tmpObj.name="Previous Week Oglost";
+                        break;
+                    case 'w2Oglost':
+                        tmpObj.name="Current Week Oglost";
+                        break;
+                }
+            }
             if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
                 tmpObj.type="bar";
             }else{
@@ -64,6 +102,7 @@ $(function(){
             $(".showcontent span:nth-child(2)").text(titData.tlost);
             $(".showcontent").show();
             $("table.perservice").hide();
+            initELine('echart1',data,echartLegendY,xData);
         }else{
             var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
             var tmpHtml2 = "<tr><td width='3%'>current</td>";
@@ -88,8 +127,9 @@ $(function(){
             $("table.perservice tbody").html(tmpHtml1+tmpHtml2);
             $("table.perservice").show();
             $(".showcontent").hide();
+            initELine('echart1',data,echartLegendW,xData);
         }
-        initELine('echart1',data,legendData,xData);
+
     }
 
     function getDate(){

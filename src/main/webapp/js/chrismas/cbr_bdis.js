@@ -1,5 +1,9 @@
 $(function(){
+    var myDate = new Date();
+    var preYear = myDate.getFullYear()-1;
     var legendData = ["w1Attempt","w2Attempt","w1Oglost","w2Oglost"];
+    var echartLegendW = ["Previous Week Attempt","Current Week Attempt","Previous Week Oglost","Current Week Oglost"];
+    var echartLegendY = [preYear+" Attempt",myDate.getFullYear()+" Attempt",preYear+" Oglost",myDate.getFullYear()+" Oglost"];
     var xData1 = [];
     var xData2 = [];
     var xData = [];
@@ -20,7 +24,7 @@ $(function(){
                 totalData =  data.group;
                 xData1 = totalData.BD1S.weekday;
                 xData = totalData.BD1S.weekday;
-                tit1 = "Call Block Ratio (%) For  BD1S on Week 1 & Week 2           as of 15 Dec 2017\n";
+                tit1 = "Call Block Ratio (%) For  BD1S on Previous Week against Current Week as of 15 Dec 2017\n";
                 $(".tit").text(tit1);
                 // 每组数据
                 dealData(totalData.BD1S,"BD1S","weeks");
@@ -44,13 +48,15 @@ $(function(){
                             xData = xData2;
                             totalData = totalData2;
                             showContent = "years";
-                            tit2 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Years 2016 & 2017        as of "+getDate();
+                            var myDate = new Date();
+                            var preYear = myDate.getFullYear()-1;
+                            tit2 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Years"+preYear+" & "+myDate.getFullYear()+" as of "+getDate();
                             $(".tit").text(tit2);
                         }else{
                             xData = xData1;
                             totalData = totalData1;
                             showContent = "weeks";
-                            tit1 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Week 1 & Week 2           as of "+getDate();
+                            tit1 = "Call Block Ratio (%) For  "+dataTurn[index]+" on Previous Week against Current Week as of "+getDate();
                             $(".tit").text(tit1);
                         }
                         var liNav2 = '.sec-nav li'+' span';
@@ -95,7 +101,37 @@ $(function(){
         var data = [];
         for(var i=0;i<legendData.length;i++){
             var tmpObj = {};
-            tmpObj.name=legendData[i];
+            if(showContent=="years"){
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name=preYear+" Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name=myDate.getFullYear()+" Attempt";
+                        break;
+                    case 'w1Oglost':
+                        tmpObj.name=preYear+" Oglost";
+                        break;
+                    case 'w2Oglost':
+                        tmpObj.name=myDate.getFullYear()+" Oglost";
+                        break;
+                }
+            }else{
+                switch (legendData[i]){
+                    case 'w1Attempt':
+                        tmpObj.name="Previous Week Attempt";
+                        break;
+                    case 'w2Attempt':
+                        tmpObj.name="Current Week Attempt";
+                        break;
+                    case 'w1Oglost':
+                        tmpObj.name="Previous Week Oglost";
+                        break;
+                    case 'w2Oglost':
+                        tmpObj.name="Current Week Oglost";
+                        break;
+                }
+            }
             if(legendData[i]=="w1Attempt"||legendData[i]=="w2Attempt"){
                 tmpObj.type="bar";
             }else{
@@ -109,6 +145,7 @@ $(function(){
             $(".showcontent span:nth-child(2)").text(datas.w2Block);
             $(".showcontent").show();
             $("table.perservice").hide();
+            initELine('echart1',data,echartLegendY,xData);
         }else{
             var tmpHtml1 = "<tr><td width='3%'>Previous</td>";
             var tmpHtml2 = "<tr><td width='3%'>current</td>";
@@ -133,8 +170,8 @@ $(function(){
             $("table.perservice tbody").html(tmpHtml1+tmpHtml2);
             $("table.perservice").show();
             $(".showcontent").hide();
+            initELine('echart1',data,echartLegendW,xData);
         }
-        initELine('echart1',data,legendData,xData);
     }
     //调用此函数时，参数domId,data,legendData,xData
     function initELine(domId,data,legendData,xData) {
