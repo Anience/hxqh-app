@@ -80,6 +80,7 @@ $(function(){
     }
     init();
     setInterval(function(){
+
         init();
     },300000)
 });
