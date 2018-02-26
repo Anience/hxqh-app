@@ -59,6 +59,7 @@ $(function(){
                         +'</td><td>'+mobRight[i].ioc6
                         +selectBg(mobRight[i].ioc7,40)
                         +'</td></tr>';
+
                 }
                 $("table.mobLeft tbody").html(tmpHtml1);
                 $("table.mobRight tbody").html(tmpHtml2);
