@@ -2,6 +2,11 @@
 SSH-FrameWork-IDEA-HXQH-EAM
 
 
+![image](https://github.com/hklhai/hxqh-app/blob/master/screenshot/1.jpg)
+---
+![image](https://github.com/hklhai/hxqh-app/blob/master/screenshot/2.jpg)
+
+
 ---
 > HK  
 > linh@bjhxqh.com

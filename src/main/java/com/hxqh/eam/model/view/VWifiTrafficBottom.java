@@ -19,7 +19,7 @@ public class VWifiTrafficBottom implements Serializable {
 
 	private String da;
 	@Id
-	private Integer rn;
+	private Double rn;
 
 
 	private String name;
@@ -27,11 +27,11 @@ public class VWifiTrafficBottom implements Serializable {
 	public VWifiTrafficBottom() {
 	}
 
-	public Integer getRn() {
+	public Double getRn() {
 		return rn;
 	}
 
-	public void setRn(Integer rn) {
+	public void setRn(Double rn) {
 		this.rn = rn;
 	}
 

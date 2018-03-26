@@ -19,7 +19,7 @@ public class VWifiTrafficTop implements Serializable {
 
 	private String da;
 	@Id
-	private Integer rn;
+	private Double rn;
 
 	private String name;
 
@@ -29,7 +29,7 @@ public class VWifiTrafficTop implements Serializable {
 	public VWifiTrafficTop() {
 	}
 
-	public VWifiTrafficTop(BigDecimal count, String da, Integer rn, String name, String aggts) {
+	public VWifiTrafficTop(BigDecimal count, String da, Double rn, String name, String aggts) {
 		this.count = count;
 		this.da = da;
 		this.rn = rn;
@@ -39,11 +39,11 @@ public class VWifiTrafficTop implements Serializable {
 
 
 
-	public Integer getRn() {
+	public Double getRn() {
 		return rn;
 	}
 
-	public void setRn(Integer rn) {
+	public void setRn(Double rn) {
 		this.rn = rn;
 	}
 

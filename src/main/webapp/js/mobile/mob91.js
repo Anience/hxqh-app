@@ -47,7 +47,7 @@ $(function(){
                         +'</td><td>'+mobLeft[i].ioc2
                         +'</td><td>'+mobLeft[i].ioc3
                         +'</td><td>'+mobLeft[i].ioc4
-                        +selectBg(mobLeft[i].ioc5,99)
+                        +selectBg(mobLeft[i].ioc5,85)
                         +'</td><td>'+mobLeft[i].ioc6
                         +selectBg(mobLeft[i].ioc7,85)
                         +'</td></tr>';
@@ -55,10 +55,11 @@ $(function(){
                         +'</td><td>'+mobRight[i].ioc2
                         +'</td><td>'+mobRight[i].ioc3
                         +'</td><td>'+mobRight[i].ioc4
-                        +selectBg(mobRight[i].ioc5,99)
+                        +selectBg(mobRight[i].ioc5,85)
                         +'</td><td>'+mobRight[i].ioc6
                         +selectBg(mobRight[i].ioc7,85)
                         +'</td></tr>';
+
                 }
                 $("table.mobLeft tbody").html(tmpHtml1);
                 $("table.mobRight tbody").html(tmpHtml2);
@@ -79,6 +80,7 @@ $(function(){
     }
     init();
     setInterval(function(){
+
         init();
     },300000)
 });
