@@ -57,7 +57,7 @@ $(function(){
                         +'</td><td>'+mobRight[i].ioc4
                         +selectBg(mobRight[i].ioc5,85)
                         +'</td><td>'+mobRight[i].ioc6
-                        +selectBg(mobRight[i].ioc7,40)
+                        +selectBg(mobRight[i].ioc7,85)
                         +'</td></tr>';
 
                 }
