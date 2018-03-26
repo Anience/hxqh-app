@@ -49,7 +49,7 @@ $(function(){
                         +'</td><td>'+mobLeft[i].ioc4
                         +selectBg(mobLeft[i].ioc5,85)
                         +'</td><td>'+mobLeft[i].ioc6
-                        +selectBg(mobLeft[i].ioc7,40)
+                        +selectBg(mobLeft[i].ioc7,85)
                         +'</td></tr>';
                     tmpHtml2+='<tr><td>'+mobRight[i].ioc1
                         +'</td><td>'+mobRight[i].ioc2
