@@ -213,7 +213,7 @@ $(function(){
                         oneDeal(nodeLists[p]);
                     }
                     initEchart(data.nodesList,data.links);
-                },5000);
+                },10000);
 
             }
         });
