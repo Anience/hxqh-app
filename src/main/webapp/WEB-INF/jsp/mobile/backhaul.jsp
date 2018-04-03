@@ -12,8 +12,8 @@
 	</script>
 </head>
 <body>
-<div id="echart1" style="width: 100%;height: 100%;background: #03081c;"></div>
-<div class="scoll-nav">
+<div id="echart1" style="width: 100%;height: 100%;background: #03081c;z-index:100;"></div>
+<div class="scoll-nav" style="z-index:1002;margin-top:0px;">
 	<ul class="first-nav">
 		<li>TREG1</li>
 		<li>TREG2</li>
@@ -34,6 +34,6 @@
 	</ul>
 </div>
 </body>
+<script src="${ctx}/script/echarts-graph.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/mobile/force1.js"></script>
-<script src="${ctx}/script/echarts-all.js"></script>
 </html>
